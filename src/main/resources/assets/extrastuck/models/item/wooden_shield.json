@@ -1,0 +1,6 @@
+{
+	"parent": "extrastuck:item/basic_shield",
+	"textures": {
+		"layer0": "extrastuck:item/wooden_shield"
+	}
+}
