@@ -10,6 +10,8 @@ Figure out how to make shields look like they're blocking
 
 Add tooltips, see [this](https://github.com/lunar-sway/minestuck/blob/main/src/main/java/com/mraof/minestuck/event/ClientEventHandler.java#L50) for how
 
+Add small brace to shield model
+
 ### Shields ###
 
 See tree for full list
