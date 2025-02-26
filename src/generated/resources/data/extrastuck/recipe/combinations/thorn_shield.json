@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:wooden_shield"
+  },
+  "input2": {
+    "item": "minecraft:rose_bush"
+  },
+  "mode": "and",
+  "output": "extrastuck:thorn_shield"
+}

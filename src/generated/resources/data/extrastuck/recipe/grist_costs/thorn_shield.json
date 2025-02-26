@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 24,
+    "minestuck:garnet": 6,
+    "minestuck:iodine": 8
+  },
+  "ingredient": {
+    "item": "extrastuck:thorn_shield"
+  }
+}

@@ -4,6 +4,8 @@
 
 Find a better way to include Minestuck without needing a local file
 
+Add local html docs
+
 ## Content ##
 
 Add tooltips, see [this](https://github.com/lunar-sway/minestuck/blob/main/src/main/java/com/mraof/minestuck/event/ClientEventHandler.java#L50) for how
@@ -16,7 +18,7 @@ See tree for full list
 
 Glass shield: 1 durability, can be dyed
 Reinforced glass shield: can be dyed
-Thorn/spike shield: damage melee attackers
+Spike shield: damage melee attackers
 Withered shield: apply wither to melee attackers
 Netherite shield: crafted like normal netherite stuff
 Flame shield: burns melee attackers

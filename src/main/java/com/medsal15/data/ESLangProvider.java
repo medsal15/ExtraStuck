@@ -11,10 +11,15 @@ public class ESLangProvider extends LanguageProvider {
         super(output, ExtraStuck.MODID, "en_us");
     }
 
+    public static final String SHIELD_DAMAGE_KEY = ExtraStuck.MODID + ".shield_damage";
+
     @Override
     protected void addTranslations() {
         add("itemGroup.extrastuck", "ExtraStuck");
 
+        add(SHIELD_DAMAGE_KEY, "Deals %s damage to melee attackers");
+
         addItem(ESItems.WOODEN_SHIELD, "Wooden Shield");
+        addItem(ESItems.THORN_SHIELD, "Thorn Shield");
     }
 }

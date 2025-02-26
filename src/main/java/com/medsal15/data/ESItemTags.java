@@ -12,9 +12,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ESItemTags extends ItemTagsProvider {
     public ESItemTags(PackOutput output, CompletableFuture<Provider> lookupProvider,
@@ -24,8 +26,13 @@ public class ESItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
-        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ESItems.WOODEN_SHIELD.get());
-        tag(ItemTags.VANISHING_ENCHANTABLE).add(ESItems.WOODEN_SHIELD.get());
-        tag(Tags.Items.TOOLS_SHIELD).add(ESItems.WOODEN_SHIELD.get());
+        tagShield(ESItems.WOODEN_SHIELD);
+        tagShield(ESItems.THORN_SHIELD);
+    }
+
+    private void tagShield(DeferredItem<Item> item) {
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(item.get());
+        tag(ItemTags.VANISHING_ENCHANTABLE).add(item.get());
+        tag(Tags.Items.TOOLS_SHIELD).add(item.get());
     }
 }
