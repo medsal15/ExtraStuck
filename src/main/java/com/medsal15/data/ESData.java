@@ -24,6 +24,9 @@ public final class ESData {
         gen.addProvider(event.includeClient(), new ESLangProvider(output));
         gen.addProvider(event.includeClient(), new ESItemModelProvider(output, fileHelper));
 
+        var blocktags = gen.addProvider(event.includeServer(), new ESBlockTags(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(), new ESRecipeProvider(output, lookupProvider));
+        gen.addProvider(event.includeServer(),
+                new ESItemTags(output, lookupProvider, blocktags.contentsGetter(), fileHelper));
     }
 }

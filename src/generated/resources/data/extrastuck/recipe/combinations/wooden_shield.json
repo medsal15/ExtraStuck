@@ -7,10 +7,10 @@
   ],
   "type": "minestuck:combination",
   "input1": {
-    "item": "minecraft:shield"
+    "tag": "c:rods/wooden"
   },
   "input2": {
-    "tag": "minecraft:planks"
+    "tag": "minecraft:wooden_pressure_plates"
   },
   "mode": "and",
   "output": "extrastuck:wooden_shield"

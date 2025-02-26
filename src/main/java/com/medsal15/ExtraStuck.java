@@ -4,14 +4,20 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -63,5 +69,16 @@ public class ExtraStuck {
         private void commonSetup(final FMLCommonSetupEvent event) {
                 if (ServerConfig.warnNoMinestuck && !ModList.get().isLoaded("minestuck"))
                         LOGGER.info("Minestuck is not loaded!");
+        }
+
+        @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+        public static class ClientModEvents {
+                @SubscribeEvent
+                public static void onClientSetup(FMLClientSetupEvent event) {
+                        ItemProperties.register(ESItems.WOODEN_SHIELD.get(),
+                                        ResourceLocation.withDefaultNamespace("blocking"),
+                                        (stack, world, entity, integer) -> entity != null && entity.isUsingItem()
+                                                        && entity.getUseItem() == stack ? 1.0F : 0.0F);
+                }
         }
 }

@@ -14,7 +14,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Items;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 
@@ -28,7 +28,7 @@ public class ESRecipeProvider extends RecipeProvider {
         RecipeOutput msOutput = output.withConditions(new ICondition[] { new ModLoadedCondition("minestuck") });
 
         CombinationRecipeBuilder.of(ESItems.WOODEN_SHIELD)
-                .input(Items.SHIELD).and().input(ItemTags.PLANKS)
+                .input(Tags.Items.RODS_WOODEN).and().input(ItemTags.WOODEN_PRESSURE_PLATES)
                 .build(msOutput);
 
         GristCostRecipeBuilder.of(ESItems.WOODEN_SHIELD)
