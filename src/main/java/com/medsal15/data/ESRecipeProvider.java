@@ -15,6 +15,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
@@ -40,6 +41,14 @@ public class ESRecipeProvider extends RecipeProvider {
                                 .build(msOutput);
                 GristCostRecipeBuilder.of(ESItems.THORN_SHIELD)
                                 .grist(GristTypes.BUILD, 24).grist(GristTypes.GARNET, 6).grist(GristTypes.IODINE, 8)
+                                .build(msOutput);
+
+                CombinationRecipeBuilder.of(ESItems.FLAME_SHIELD)
+                                .input(ESItems.WOODEN_SHIELD).and()
+                                .input(Ingredient.of(Items.FLINT_AND_STEEL, Items.FIRE_CHARGE))
+                                .build(msOutput);
+                GristCostRecipeBuilder.of(ESItems.FLAME_SHIELD)
+                                .grist(GristTypes.TAR, 73).grist(GristTypes.GOLD, 13)
                                 .build(msOutput);
 
                 CombinationRecipeBuilder.of(ESItems.WITHERED_SHIELD)

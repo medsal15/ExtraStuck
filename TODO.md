@@ -20,7 +20,6 @@ Glass shield: 1 durability, can be dyed
 Reinforced glass shield: can be dyed
 Spike shield: damage melee attackers
 Netherite shield: crafted like normal netherite stuff
-Flame shield: burns melee attackers
 Slied: chance to drop on block
 Pogo shield: reflects projectiles *somewhat* where the player looks at
 Light shield: only visible when blocking

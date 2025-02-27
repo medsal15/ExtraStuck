@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:gold": 13,
+    "minestuck:tar": 73
+  },
+  "ingredient": {
+    "item": "extrastuck:flame_shield"
+  }
+}

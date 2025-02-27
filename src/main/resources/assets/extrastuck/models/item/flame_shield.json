@@ -1,0 +1,15 @@
+{
+    "parent": "extrastuck:item/base_shield",
+    "textures": {
+        "layer0": "extrastuck:item/flame_shield"
+    },
+    "gui_light": "front",
+    "overrides": [
+        {
+            "predicate": {
+                "blocking": 1
+            },
+            "model": "extrastuck:item/flame_shield_blocking"
+        }
+    ]
+}

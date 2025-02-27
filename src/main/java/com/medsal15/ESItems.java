@@ -2,6 +2,7 @@ package com.medsal15;
 
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.EffectShield;
+import com.medsal15.items.shields.FlameShield;
 import com.medsal15.items.shields.ThornShield;
 
 import net.minecraft.world.effect.MobEffects;
@@ -20,4 +21,7 @@ public class ESItems {
         public static final DeferredItem<Item> WITHERED_SHIELD = ITEMS.registerItem("withered_shield",
                         (properties) -> new EffectShield(properties, MobEffects.WITHER, 200),
                         new Item.Properties().durability(792));
+        public static final DeferredItem<Item> FLAME_SHIELD = ITEMS.registerItem("flame_shield",
+                        (properties) -> new FlameShield(properties, 100),
+                        new Item.Properties().durability(151));
 }

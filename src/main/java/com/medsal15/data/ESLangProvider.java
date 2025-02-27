@@ -24,5 +24,6 @@ public class ESLangProvider extends LanguageProvider {
         addItem(ESItems.WOODEN_SHIELD, "Wooden Shield");
         addItem(ESItems.THORN_SHIELD, "Thorn Shield");
         addItem(ESItems.WITHERED_SHIELD, "Withered Shield");
+        addItem(ESItems.FLAME_SHIELD, "Flame Shield");
     }
 }

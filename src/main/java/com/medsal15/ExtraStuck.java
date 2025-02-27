@@ -58,6 +58,7 @@ public class ExtraStuck {
                                                 output.accept(ESItems.WOODEN_SHIELD.get());
                                                 output.accept(ESItems.THORN_SHIELD.get());
                                                 output.accept(ESItems.WITHERED_SHIELD.get());
+                                                output.accept(ESItems.FLAME_SHIELD.get());
                                         }).build());
 
         // The constructor for the mod class is the first code that is run when your mod
@@ -102,6 +103,7 @@ public class ExtraStuck {
                         addBlocking(ESItems.WOODEN_SHIELD);
                         addBlocking(ESItems.THORN_SHIELD);
                         addBlocking(ESItems.WITHERED_SHIELD);
+                        addBlocking(ESItems.FLAME_SHIELD);
                 }
 
                 private static void addBlocking(DeferredItem<Item> item) {
@@ -136,7 +138,7 @@ public class ExtraStuck {
                                 i++;
                         }
 
-                        // Fance item descriptions
+                        // Fancy item descriptions
                         final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
                         if (itemId != null && itemId.getNamespace().equals(ExtraStuck.MODID)) {
                                 String name = stack.getDescriptionId() + ".tooltip";
