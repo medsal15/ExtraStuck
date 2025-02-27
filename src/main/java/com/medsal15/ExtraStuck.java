@@ -3,6 +3,8 @@ package com.medsal15;
 import org.slf4j.Logger;
 
 import com.medsal15.data.ESLangProvider;
+import com.medsal15.items.shields.EffectShield;
+import com.medsal15.items.shields.IShieldBlock;
 import com.medsal15.items.shields.ThornShield;
 import com.mojang.logging.LogUtils;
 
@@ -13,10 +15,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -59,6 +57,7 @@ public class ExtraStuck {
                                         .displayItems((parameters, output) -> {
                                                 output.accept(ESItems.WOODEN_SHIELD.get());
                                                 output.accept(ESItems.THORN_SHIELD.get());
+                                                output.accept(ESItems.WITHERED_SHIELD.get());
                                         }).build());
 
         // The constructor for the mod class is the first code that is run when your mod
@@ -88,28 +87,12 @@ public class ExtraStuck {
 
         @SubscribeEvent
         public void onShieldBlock(LivingShieldBlockEvent event) {
-                // todo? move handling this to ThornShield
                 // Ensure we're using a thorn shield
                 var item = event.getEntity().getUseItem().getItem();
-                if (!(item instanceof ThornShield))
+                if (item instanceof IShieldBlock shield) {
+                        shield.onShieldBlock(event);
                         return;
-                // Ensure the damage is melee and does not bypass shields
-                var damageSource = event.getDamageSource();
-                if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD) || !damageSource.isDirect())
-                        return;
-                // Ensure the attacker exists and can be damaged
-                var attacker = damageSource.getDirectEntity();
-                if (attacker == null || !(attacker instanceof LivingEntity))
-                        return;
-                // Hurt them
-                // This will crash at some point due to a null or whatever, no clue when or why
-                var livingEntity = (LivingEntity) attacker;
-                var thornShield = (ThornShield) item;
-                var level = event.getEntity().level();
-                var type = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
-                                .getHolderOrThrow(DamageTypes.THORNS);
-                var retSource = new DamageSource(type, event.getEntity());
-                livingEntity.hurt(retSource, thornShield.damage);
+                }
         }
 
         @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -118,6 +101,7 @@ public class ExtraStuck {
                 public static void onClientSetup(FMLClientSetupEvent event) {
                         addBlocking(ESItems.WOODEN_SHIELD);
                         addBlocking(ESItems.THORN_SHIELD);
+                        addBlocking(ESItems.WITHERED_SHIELD);
                 }
 
                 private static void addBlocking(DeferredItem<Item> item) {
@@ -133,11 +117,25 @@ public class ExtraStuck {
                 public static void addCustomTooltip(ItemTooltipEvent event) {
                         int i = 1;
                         ItemStack stack = event.getItemStack();
-                        if (stack.getItem() instanceof ThornShield) {
+
+                        if (stack.getItem() instanceof ThornShield shield) {
                                 event.getToolTip().add(i, Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
-                                                (int) ((ThornShield) stack.getItem()).damage)
+                                                (int) shield.damage)
                                                 .withStyle(ChatFormatting.GRAY));
+                                i++;
                         }
+
+                        if (stack.getItem() instanceof EffectShield shield) {
+                                // Dirty and ugly, but it works
+                                var effectName = "effect." + shield.effect.getRegisteredName().replace(':', '.');
+                                event.getToolTip().add(i, Component.translatable(ESLangProvider.SHIELD_EFFECT_KEY,
+                                                Component.translatable(effectName),
+                                                String.format("%02d:%02d", (shield.duration / 20 / 60) % 60,
+                                                                shield.duration / 20))
+                                                .withStyle(ChatFormatting.GRAY));
+                                i++;
+                        }
+
                         // Fance item descriptions
                         final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
                         if (itemId != null && itemId.getNamespace().equals(ExtraStuck.MODID)) {

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:thorn_shield"
+  },
+  "input2": {
+    "item": "minecraft:wither_rose"
+  },
+  "mode": "or",
+  "output": "extrastuck:withered_shield"
+}

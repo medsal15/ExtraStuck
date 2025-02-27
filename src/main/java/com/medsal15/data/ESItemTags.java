@@ -28,6 +28,7 @@ public class ESItemTags extends ItemTagsProvider {
     protected void addTags(@Nonnull Provider provider) {
         tagShield(ESItems.WOODEN_SHIELD);
         tagShield(ESItems.THORN_SHIELD);
+        tagShield(ESItems.WITHERED_SHIELD);
     }
 
     private void tagShield(DeferredItem<Item> item) {

@@ -1,6 +1,8 @@
 {
   "extrastuck.shield_damage": "Deals %s damage to melee attackers",
+  "extrastuck.shield_effect": "Applies %s (%s) to melee attackers",
   "item.extrastuck.thorn_shield": "Thorn Shield",
+  "item.extrastuck.withered_shield": "Withered Shield",
   "item.extrastuck.wooden_shield": "Wooden Shield",
   "itemGroup.extrastuck": "ExtraStuck"
 }
