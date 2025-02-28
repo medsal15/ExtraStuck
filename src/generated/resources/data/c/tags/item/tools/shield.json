@@ -3,6 +3,8 @@
     "extrastuck:wooden_shield",
     "extrastuck:thorn_shield",
     "extrastuck:withered_shield",
-    "extrastuck:flame_shield"
+    "extrastuck:flame_shield",
+    "extrastuck:glass_shield",
+    "extrastuck:reinforced_glass_shield"
   ]
 }

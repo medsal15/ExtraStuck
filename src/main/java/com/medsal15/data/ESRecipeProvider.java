@@ -5,6 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ESItems;
+import com.medsal15.ExtraStuck;
 import com.mraof.minestuck.api.alchemy.GristTypes;
 import com.mraof.minestuck.api.alchemy.recipe.GristCostRecipeBuilder;
 import com.mraof.minestuck.api.alchemy.recipe.combination.CombinationRecipeBuilder;
@@ -13,6 +14,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -56,6 +58,24 @@ public class ESRecipeProvider extends RecipeProvider {
                                 .build(msOutput);
                 GristCostRecipeBuilder.of(ESItems.WITHERED_SHIELD)
                                 .grist(GristTypes.URANIUM, 25).grist(GristTypes.TAR, 140).grist(GristTypes.CAULK, 236)
+                                .build(msOutput);
+
+                CombinationRecipeBuilder.of(ESItems.GLASS_SHIELD)
+                                .input(Items.SHIELD).or().input(Ingredient.of(Tags.Items.GLASS_BLOCKS_COLORLESS))
+                                .build(msOutput);
+                CombinationRecipeBuilder.of(ESItems.GLASS_SHIELD)
+                                .input(Items.SHIELD).or().input(Ingredient.of(Tags.Items.GLASS_PANES_COLORLESS))
+                                .build(msOutput, ResourceLocation.fromNamespaceAndPath(ExtraStuck.MODID,
+                                                ESItems.GLASS_SHIELD.getId().getPath() + "_alt"));
+                GristCostRecipeBuilder.of(ESItems.GLASS_SHIELD)
+                                .grist(GristTypes.BUILD, 10).grist(GristTypes.QUARTZ, 1)
+                                .build(msOutput);
+
+                CombinationRecipeBuilder.of(ESItems.REINFORCED_GLASS_SHIELD)
+                                .input(ESItems.GLASS_SHIELD).and().input(Items.IRON_BARS)
+                                .build(msOutput);
+                GristCostRecipeBuilder.of(ESItems.REINFORCED_GLASS_SHIELD)
+                                .grist(GristTypes.BUILD, 10).grist(GristTypes.QUARTZ, 15).grist(GristTypes.RUST, 5)
                                 .build(msOutput);
         }
 }

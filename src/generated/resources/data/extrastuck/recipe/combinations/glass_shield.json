@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:shield"
+  },
+  "input2": {
+    "tag": "c:glass_blocks/colorless"
+  },
+  "mode": "or",
+  "output": "extrastuck:glass_shield"
+}

@@ -12,12 +12,13 @@ At some point, I'm gonna need to redo the textures (and models)
 
 Add small brace to shield model
 
+Fancier shield names
+
 ### Shields ###
 
 See tree for full list
 
-Glass shield: 1 durability, can be dyed
-Reinforced glass shield: can be dyed
+(Reinforced) glass shield: can be dyed
 Spike shield: damage melee attackers
 Netherite shield: crafted like normal netherite stuff
 Slied: chance to drop on block

@@ -1,7 +1,0 @@
-{
-	"parent": "extrastuck:item/base_shield_blocking",
-	"textures": {
-		"layer0": "extrastuck:item/wooden_shield"
-	},
-	"gui_light": "front"
-}

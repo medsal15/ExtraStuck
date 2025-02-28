@@ -42,23 +42,23 @@ public class ExtraStuck {
         public static final String MODID = "extrastuck";
         // Directly reference a slf4j logger
         private static final Logger LOGGER = LogUtils.getLogger();
-        // Create a Deferred Register to hold CreativeModeTabs which will all be
-        // registered under the "extrastuck" namespace
+
         public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister
                         .create(Registries.CREATIVE_MODE_TAB, MODID);
 
-        // Creates a creative tab with the id "extrastuck:example_tab" for the example
-        // item, that is placed after the combat tab
         public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MOD_TAB = CREATIVE_MODE_TABS
                         .register("extrastuck_tab", () -> CreativeModeTab.builder()
                                         // The language key for the title of your CreativeModeTab
                                         .title(Component.translatable("itemGroup.extrastuck"))
                                         .icon(() -> ESItems.WOODEN_SHIELD.get().getDefaultInstance())
                                         .displayItems((parameters, output) -> {
+                                                // todo improve so I dont need to do that
                                                 output.accept(ESItems.WOODEN_SHIELD.get());
                                                 output.accept(ESItems.THORN_SHIELD.get());
                                                 output.accept(ESItems.WITHERED_SHIELD.get());
                                                 output.accept(ESItems.FLAME_SHIELD.get());
+                                                output.accept(ESItems.GLASS_SHIELD.get());
+                                                output.accept(ESItems.REINFORCED_GLASS_SHIELD.get());
                                         }).build());
 
         // The constructor for the mod class is the first code that is run when your mod
@@ -79,6 +79,7 @@ public class ExtraStuck {
                 // Register our mod's ModConfigSpec so that FML can create and load the config
                 // file for us
                 modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
+                modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
         }
 
         private void commonSetup(final FMLCommonSetupEvent event) {
@@ -104,6 +105,8 @@ public class ExtraStuck {
                         addBlocking(ESItems.THORN_SHIELD);
                         addBlocking(ESItems.WITHERED_SHIELD);
                         addBlocking(ESItems.FLAME_SHIELD);
+                        addBlocking(ESItems.GLASS_SHIELD);
+                        addBlocking(ESItems.REINFORCED_GLASS_SHIELD);
                 }
 
                 private static void addBlocking(DeferredItem<Item> item) {
@@ -120,22 +123,29 @@ public class ExtraStuck {
                         int i = 1;
                         ItemStack stack = event.getItemStack();
 
-                        if (stack.getItem() instanceof ThornShield shield) {
-                                event.getToolTip().add(i, Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
-                                                (int) shield.damage)
-                                                .withStyle(ChatFormatting.GRAY));
-                                i++;
-                        }
+                        if (ClientConfig.displayShieldInfo) {
+                                if (stack.getItem() instanceof ThornShield shield) {
+                                        event.getToolTip().add(i,
+                                                        Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
+                                                                        (int) shield.damage)
+                                                                        .withStyle(ChatFormatting.GRAY));
+                                        i++;
+                                }
 
-                        if (stack.getItem() instanceof EffectShield shield) {
-                                // Dirty and ugly, but it works
-                                var effectName = "effect." + shield.effect.getRegisteredName().replace(':', '.');
-                                event.getToolTip().add(i, Component.translatable(ESLangProvider.SHIELD_EFFECT_KEY,
-                                                Component.translatable(effectName),
-                                                String.format("%02d:%02d", (shield.duration / 20 / 60) % 60,
-                                                                shield.duration / 20))
-                                                .withStyle(ChatFormatting.GRAY));
-                                i++;
+                                if (stack.getItem() instanceof EffectShield shield) {
+                                        // Dirty and ugly, but it works
+                                        var effectName = "effect."
+                                                        + shield.effect.getRegisteredName().replace(':', '.');
+                                        event.getToolTip().add(i, Component
+                                                        .translatable(ESLangProvider.SHIELD_EFFECT_KEY,
+                                                                        Component.translatable(effectName),
+                                                                        String.format("%02d:%02d",
+                                                                                        (shield.duration / 20 / 60)
+                                                                                                        % 60,
+                                                                                        shield.duration / 20))
+                                                        .withStyle(ChatFormatting.GRAY));
+                                        i++;
+                                }
                         }
 
                         // Fancy item descriptions

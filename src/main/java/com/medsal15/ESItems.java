@@ -3,6 +3,7 @@ package com.medsal15;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.EffectShield;
 import com.medsal15.items.shields.FlameShield;
+import com.medsal15.items.shields.GlassShield;
 import com.medsal15.items.shields.ThornShield;
 
 import net.minecraft.world.effect.MobEffects;
@@ -24,4 +25,8 @@ public class ESItems {
         public static final DeferredItem<Item> FLAME_SHIELD = ITEMS.registerItem("flame_shield",
                         (properties) -> new FlameShield(properties, 100),
                         new Item.Properties().durability(151));
+        public static final DeferredItem<Item> GLASS_SHIELD = ITEMS.registerItem("glass_shield", GlassShield::new,
+                        new Item.Properties().durability(1));
+        public static final DeferredItem<Item> REINFORCED_GLASS_SHIELD = ITEMS.registerItem("reinforced_glass_shield",
+                        GlassShield::new, new Item.Properties().durability(336));
 }

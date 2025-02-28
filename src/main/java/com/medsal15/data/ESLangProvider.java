@@ -2,6 +2,8 @@ package com.medsal15.data;
 
 import com.medsal15.ESItems;
 import com.medsal15.ExtraStuck;
+import java.util.function.Supplier;
+import net.minecraft.world.item.Item;
 
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -25,5 +27,12 @@ public class ESLangProvider extends LanguageProvider {
         addItem(ESItems.THORN_SHIELD, "Thorn Shield");
         addItem(ESItems.WITHERED_SHIELD, "Withered Shield");
         addItem(ESItems.FLAME_SHIELD, "Flame Shield");
+        addItem(ESItems.GLASS_SHIELD, "Glass Shield");
+        addItemTooltip(ESItems.GLASS_SHIELD, "Caution: Fragile");
+        addItem(ESItems.REINFORCED_GLASS_SHIELD, "Reinforced Glass Shield");
+    }
+
+    protected void addItemTooltip(Supplier<? extends Item> key, String name) {
+        add(((Item) (key.get())).getDescriptionId() + ".tooltip", name);
     }
 }
