@@ -1,5 +1,8 @@
 package com.medsal15;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.EffectShield;
 import com.medsal15.items.shields.FlameShield;
@@ -29,4 +32,21 @@ public class ESItems {
                         new Item.Properties().durability(1));
         public static final DeferredItem<Item> REINFORCED_GLASS_SHIELD = ITEMS.registerItem("reinforced_glass_shield",
                         GlassShield::new, new Item.Properties().durability(336));
+
+        public static Collection<DeferredItem<Item>> getItems() {
+                ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+                list.addAll(getShields());
+                return list;
+        }
+
+        public static Collection<DeferredItem<Item>> getShields() {
+                ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+                list.add(WOODEN_SHIELD);
+                list.add(THORN_SHIELD);
+                list.add(WITHERED_SHIELD);
+                list.add(FLAME_SHIELD);
+                list.add(GLASS_SHIELD);
+                list.add(REINFORCED_GLASS_SHIELD);
+                return list;
+        }
 }

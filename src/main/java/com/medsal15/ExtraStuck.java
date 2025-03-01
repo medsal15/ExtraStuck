@@ -52,13 +52,9 @@ public class ExtraStuck {
                                         .title(Component.translatable("itemGroup.extrastuck"))
                                         .icon(() -> ESItems.WOODEN_SHIELD.get().getDefaultInstance())
                                         .displayItems((parameters, output) -> {
-                                                // todo improve so I dont need to do that
-                                                output.accept(ESItems.WOODEN_SHIELD.get());
-                                                output.accept(ESItems.THORN_SHIELD.get());
-                                                output.accept(ESItems.WITHERED_SHIELD.get());
-                                                output.accept(ESItems.FLAME_SHIELD.get());
-                                                output.accept(ESItems.GLASS_SHIELD.get());
-                                                output.accept(ESItems.REINFORCED_GLASS_SHIELD.get());
+                                                for (var item : ESItems.getItems()) {
+                                                        output.accept(item.get());
+                                                }
                                         }).build());
 
         // The constructor for the mod class is the first code that is run when your mod
@@ -101,12 +97,9 @@ public class ExtraStuck {
         public static class ClientModEvents {
                 @SubscribeEvent
                 public static void onClientSetup(FMLClientSetupEvent event) {
-                        addBlocking(ESItems.WOODEN_SHIELD);
-                        addBlocking(ESItems.THORN_SHIELD);
-                        addBlocking(ESItems.WITHERED_SHIELD);
-                        addBlocking(ESItems.FLAME_SHIELD);
-                        addBlocking(ESItems.GLASS_SHIELD);
-                        addBlocking(ESItems.REINFORCED_GLASS_SHIELD);
+                        for (var shield : ESItems.getShields()) {
+                                addBlocking(shield);
+                        }
                 }
 
                 private static void addBlocking(DeferredItem<Item> item) {
