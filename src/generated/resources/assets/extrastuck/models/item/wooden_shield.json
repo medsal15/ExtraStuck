@@ -9,6 +9,7 @@
     }
   ],
   "textures": {
-    "layer0": "extrastuck:item/wooden_shield"
+    "0": "extrastuck:item/wooden_shield",
+    "particle": "extrastuck:item/wooden_shield"
   }
 }

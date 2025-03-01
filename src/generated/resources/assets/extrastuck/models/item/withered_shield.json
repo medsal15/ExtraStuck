@@ -9,6 +9,7 @@
     }
   ],
   "textures": {
-    "layer0": "extrastuck:item/withered_shield"
+    "0": "extrastuck:item/withered_shield",
+    "particle": "extrastuck:item/withered_shield"
   }
 }

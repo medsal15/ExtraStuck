@@ -9,6 +9,7 @@
     }
   ],
   "textures": {
-    "layer0": "extrastuck:item/reinforced_glass_shield"
+    "0": "extrastuck:item/reinforced_glass_shield",
+    "particle": "extrastuck:item/reinforced_glass_shield"
   }
 }

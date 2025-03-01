@@ -10,8 +10,6 @@ At some point, I'm gonna need to redo the textures (and models)
 
 ## Content ##
 
-Add small brace to shield model
-
 Fancier shield names
 
 ### Shields ###

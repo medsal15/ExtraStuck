@@ -1,5 +1,5 @@
 {
-  "parent": "extrastuck:item/base_shield",
+  "parent": "extrastuck:item/thin_shield",
   "overrides": [
     {
       "model": "extrastuck:item/flame_shield_blocking",
@@ -9,6 +9,7 @@
     }
   ],
   "textures": {
-    "layer0": "extrastuck:item/flame_shield"
+    "0": "extrastuck:item/flame_shield",
+    "particle": "extrastuck:item/flame_shield"
   }
 }

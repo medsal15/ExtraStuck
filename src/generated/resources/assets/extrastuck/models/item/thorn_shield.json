@@ -9,6 +9,7 @@
     }
   ],
   "textures": {
-    "layer0": "extrastuck:item/thorn_shield"
+    "0": "extrastuck:item/thorn_shield",
+    "particle": "extrastuck:item/thorn_shield"
   }
 }
