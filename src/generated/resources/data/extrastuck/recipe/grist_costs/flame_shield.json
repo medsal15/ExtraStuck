@@ -7,8 +7,8 @@
   ],
   "type": "minestuck:grist_cost",
   "grist_cost": {
-    "minestuck:gold": 13,
-    "minestuck:tar": 73
+    "minestuck:sulfur": 13,
+    "minestuck:tar": 34
   },
   "ingredient": {
     "item": "extrastuck:flame_shield"

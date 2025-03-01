@@ -16,12 +16,11 @@ Fancier shield names
 
 See tree for full list
 
-(Reinforced) glass shield: can be dyed
-Spike shield: damage melee attackers
+Spikes on a Slab: damage melee attackers
 Netherite shield: crafted like normal netherite stuff
 Slied: chance to drop on block
 Pogo shield: reflects projectiles *somewhat* where the player looks at
-Light shield: only visible when blocking
+Halting shield: only visible when blocking, reflects projectiles
 Eldritch shield: charge on attack, deals damage
-Target shield: reflects projectiles where the player looks at
-Capitashield: takes less damage the more boondollars
+Return shield: reflects projectiles where the player looks at
+Capitashield: converts damage to boondollars (loss)

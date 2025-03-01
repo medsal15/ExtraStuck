@@ -24,12 +24,9 @@ public class ESLangProvider extends LanguageProvider {
         add(SHIELD_EFFECT_KEY, "Applies %s (%s) to melee attackers");
 
         addItem(ESItems.WOODEN_SHIELD, "Wooden Shield");
-        addItem(ESItems.THORN_SHIELD, "Thorn Shield");
-        addItem(ESItems.WITHERED_SHIELD, "Withered Shield");
+        addItemTooltip(ESItems.WOODEN_SHIELD, "This cheap shield is 100% fire-ready");
         addItem(ESItems.FLAME_SHIELD, "Flame Shield");
-        addItem(ESItems.GLASS_SHIELD, "Glass Shield");
-        addItemTooltip(ESItems.GLASS_SHIELD, "Caution: Fragile");
-        addItem(ESItems.REINFORCED_GLASS_SHIELD, "Reinforced Glass Shield");
+        addItemTooltip(ESItems.FLAME_SHIELD, "Uh oh, it seems your wooden shield is burning!");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String name) {

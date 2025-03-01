@@ -42,12 +42,12 @@
 			"translation": [2.5, 0, 4]
 		},
 		"firstperson_righthand": {
-			"rotation": [0, 180, -5],
-			"translation": [-2, 0, 0]
+			"rotation": [0, 180, 5],
+			"translation": [-2, -2, 0]
 		},
 		"firstperson_lefthand": {
-			"rotation": [0, 180, -5],
-			"translation": [-2, 0, 0]
+			"rotation": [0, 180, 5],
+			"translation": [-2, -2, 0]
 		},
 		"ground": {
 			"scale": [0.35, 0.35, 0.35]

@@ -18,11 +18,7 @@ public class ESItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         modelShield(ESItems.WOODEN_SHIELD);
-        modelShield(ESItems.THORN_SHIELD);
-        modelShield(ESItems.WITHERED_SHIELD);
         modelThinShield(ESItems.FLAME_SHIELD);
-        modelShield(ESItems.GLASS_SHIELD);
-        modelShield(ESItems.REINFORCED_GLASS_SHIELD);
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base) {
