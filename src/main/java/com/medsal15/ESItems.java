@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import com.medsal15.items.shields.ChangeShield;
 import com.medsal15.items.shields.FlameShield;
+import com.medsal15.items.shields.HaltShield;
 
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.item.Item;
@@ -20,6 +21,8 @@ public class ESItems {
         public static final DeferredItem<Item> WOODEN_SHIELD = ITEMS.registerItem("wooden_shield",
                         (properties) -> new ChangeShield(properties, FLAME_SHIELD, DamageTypeTags.IS_FIRE),
                         new Item.Properties().durability(80));
+        public static final DeferredItem<Item> HALT_SHIELD = ITEMS.registerItem("halt_shield", HaltShield::new,
+                        new Item.Properties().durability(243));
 
         public static Collection<DeferredItem<Item>> getItems() {
                 ArrayList<DeferredItem<Item>> list = new ArrayList<>();
@@ -31,6 +34,7 @@ public class ESItems {
                 ArrayList<DeferredItem<Item>> list = new ArrayList<>();
                 list.add(WOODEN_SHIELD);
                 list.add(FLAME_SHIELD);
+                list.add(HALT_SHIELD);
                 return list;
         }
 }

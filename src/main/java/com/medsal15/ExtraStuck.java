@@ -41,7 +41,7 @@ public class ExtraStuck {
         // Define mod id in a common place for everything to reference
         public static final String MODID = "extrastuck";
         // Directly reference a slf4j logger
-        private static final Logger LOGGER = LogUtils.getLogger();
+        public static final Logger LOGGER = LogUtils.getLogger();
 
         public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister
                         .create(Registries.CREATIVE_MODE_TAB, MODID);

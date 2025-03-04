@@ -3,6 +3,8 @@
   "extrastuck.shield_effect": "Applies %s (%s) to melee attackers",
   "item.extrastuck.flame_shield": "Flame Shield",
   "item.extrastuck.flame_shield.tooltip": "Uh oh, it seems your wooden shield is burning!",
+  "item.extrastuck.halt_shield": "Halt Shield",
+  "item.extrastuck.halt_shield.tooltip": "Forces your enemies to turn back",
   "item.extrastuck.wooden_shield": "Wooden Shield",
   "item.extrastuck.wooden_shield.tooltip": "This cheap shield is 100% fire-ready",
   "itemGroup.extrastuck": "ExtraStuck"

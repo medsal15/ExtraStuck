@@ -27,6 +27,8 @@ public class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.WOODEN_SHIELD, "This cheap shield is 100% fire-ready");
         addItem(ESItems.FLAME_SHIELD, "Flame Shield");
         addItemTooltip(ESItems.FLAME_SHIELD, "Uh oh, it seems your wooden shield is burning!");
+        addItem(ESItems.HALT_SHIELD, "Halt Shield");
+        addItemTooltip(ESItems.HALT_SHIELD, "Forces your enemies to turn back");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String name) {

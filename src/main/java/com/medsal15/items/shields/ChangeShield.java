@@ -1,5 +1,7 @@
 package com.medsal15.items.shields;
 
+import com.medsal15.ExtraStuck;
+
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageType;
@@ -24,12 +26,14 @@ public class ChangeShield extends ESShield implements IShieldBlock {
             return false;
 
         var entity = event.getEntity();
+        // There has to be a better way to do that
         InteractionHand hand;
         if (entity.getItemInHand(InteractionHand.MAIN_HAND).is(this)) {
             hand = InteractionHand.MAIN_HAND;
         } else if (entity.getItemInHand(InteractionHand.OFF_HAND).is(this)) {
             hand = InteractionHand.OFF_HAND;
         } else {
+            ExtraStuck.LOGGER.warn("ChangeShield.onShieldBlock called without a ChangeShield. This may be a bug");
             return false;
         }
         entity.setItemInHand(hand, new ItemStack(next.get()));
