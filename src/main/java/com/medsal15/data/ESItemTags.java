@@ -29,6 +29,8 @@ public class ESItemTags extends ItemTagsProvider {
         for (var shield : ESItems.getShields()) {
             tagShield(shield);
         }
+
+        tag(ItemTags.PIGLIN_LOVED).add(ESItems.GOLD_SHIELD.get());
     }
 
     private void tagShield(DeferredItem<Item> item) {

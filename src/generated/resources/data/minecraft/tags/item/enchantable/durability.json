@@ -2,6 +2,10 @@
   "values": [
     "extrastuck:wooden_shield",
     "extrastuck:flame_shield",
-    "extrastuck:halt_shield"
+    "extrastuck:halt_shield",
+    "extrastuck:iron_shield",
+    "extrastuck:gold_shield",
+    "extrastuck:diamond_shield",
+    "extrastuck:netherite_shield"
   ]
 }

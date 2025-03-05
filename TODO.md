@@ -16,8 +16,8 @@ Fancier shield names
 
 See tree for full list
 
+Jawshatterer: damage melee attackers, allows dropping candy
 Spikes on a Slab: damage melee attackers
-Netherite Shield: crafted like normal netherite stuff
 Slied: chance to drop on block
 Pogo Shield: reflects projectiles *somewhat* where the player looks at
 Eldritch Shield: charge on attack, deals damage

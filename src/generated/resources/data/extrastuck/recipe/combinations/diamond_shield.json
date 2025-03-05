@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:gold_shield"
+  },
+  "input2": {
+    "tag": "c:gems/diamond"
+  },
+  "mode": "or",
+  "output": "extrastuck:diamond_shield"
+}
