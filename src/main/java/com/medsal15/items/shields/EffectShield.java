@@ -19,11 +19,16 @@ public class EffectShield extends ESShield implements IShieldBlock {
      * Duration in ticks
      */
     public int duration;
+    /**
+     * If true, applies to user instead of attacker
+     */
+    public boolean self;
 
-    public EffectShield(Properties properties, Holder<MobEffect> effect, int duration) {
+    public EffectShield(Properties properties, Holder<MobEffect> effect, int duration, boolean self) {
         super(properties);
         this.effect = effect;
         this.duration = duration;
+        this.self = self;
     }
 
     public boolean onShieldBlock(LivingShieldBlockEvent event) {
@@ -34,10 +39,17 @@ public class EffectShield extends ESShield implements IShieldBlock {
         var damageSource = event.getDamageSource();
         if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD) || !damageSource.isDirect())
             return false;
-        // Ensure the attacker exists and can be damaged
-        var attacker = damageSource.getDirectEntity();
-        if (attacker == null || !(attacker instanceof LivingEntity target))
-            return false;
+
+        LivingEntity target;
+        if (self) {
+            target = event.getEntity();
+        } else {
+            // Ensure the attacker exists and can be damaged
+            var attacker = damageSource.getDirectEntity();
+            if (attacker == null || !(attacker instanceof LivingEntity))
+                return false;
+            target = (LivingEntity) attacker;
+        }
 
         target.addEffect(new MobEffectInstance(this.effect, this.duration));
         return true;

@@ -129,9 +129,10 @@ public class ExtraStuck {
                                         // Dirty and ugly, but it works
                                         var effectName = "effect."
                                                         + shield.effect.getRegisteredName().replace(':', '.');
+                                        var key = shield.self ? ESLangProvider.SHIELD_SELF_EFFECT_KEY
+                                                        : ESLangProvider.SHIELD_EFFECT_KEY;
                                         event.getToolTip().add(i, Component
-                                                        .translatable(ESLangProvider.SHIELD_EFFECT_KEY,
-                                                                        Component.translatable(effectName),
+                                                        .translatable(key, Component.translatable(effectName),
                                                                         String.format("%02d:%02d",
                                                                                         (shield.duration / 20 / 60)
                                                                                                         % 60,

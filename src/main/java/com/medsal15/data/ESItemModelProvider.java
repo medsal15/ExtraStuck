@@ -20,6 +20,10 @@ public class ESItemModelProvider extends ItemModelProvider {
         modelShield(ESItems.WOODEN_SHIELD);
         modelThinShield(ESItems.FLAME_SHIELD);
         modelThinShield(ESItems.HALT_SHIELD);
+        modelThinShield(ESItems.NON_CONTACT_CONTRACT);
+        basicItem(ESItems.SLIED.getId());
+        modelLargeShield(ESItems.RIOT_SHIELD);
+        modelShield(ESItems.CAPITASHIELD);
         modelShield(ESItems.IRON_SHIELD);
         modelShield(ESItems.GOLD_SHIELD);
         modelShield(ESItems.DIAMOND_SHIELD);
@@ -49,5 +53,10 @@ public class ESItemModelProvider extends ItemModelProvider {
     private void modelThinShield(DeferredItem<Item> shield) {
         var path = shield.getId().getPath().toString();
         modelShield(shield, "item/" + path, "thin_shield");
+    }
+
+    private void modelLargeShield(DeferredItem<Item> shield) {
+        var path = shield.getId().getPath().toString();
+        modelShield(shield, "item/" + path, "large_shield");
     }
 }

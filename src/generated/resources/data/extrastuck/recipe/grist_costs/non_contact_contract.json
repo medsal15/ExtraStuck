@@ -7,10 +7,10 @@
   ],
   "type": "minestuck:grist_cost",
   "grist_cost": {
-    "minestuck:amethyst": 256,
-    "minestuck:diamond": 768
+    "minestuck:chalk": 202,
+    "minestuck:tar": 20
   },
   "ingredient": {
-    "item": "extrastuck:diamond_shield"
+    "item": "extrastuck:non_contact_contract"
   }
 }

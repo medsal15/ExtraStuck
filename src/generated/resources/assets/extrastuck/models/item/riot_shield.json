@@ -1,0 +1,15 @@
+{
+  "parent": "extrastuck:item/large_shield",
+  "overrides": [
+    {
+      "model": "extrastuck:item/riot_shield_blocking",
+      "predicate": {
+        "minecraft:blocking": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "0": "extrastuck:item/riot_shield",
+    "particle": "extrastuck:item/riot_shield"
+  }
+}

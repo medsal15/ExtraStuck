@@ -1,6 +1,9 @@
 {
   "extrastuck.shield_damage": "Deals %s damage to melee attackers",
   "extrastuck.shield_effect": "Applies %s (%s) to melee attackers",
+  "extrastuck.shield_self_effect": "Applies %s (%s) when attacked",
+  "item.extrastuck.capitashield": "Capitashield",
+  "item.extrastuck.capitashield.tooltip": "Protects you, at a cost",
   "item.extrastuck.diamond_shield": "Diamond Shield",
   "item.extrastuck.flame_shield": "Flame Shield",
   "item.extrastuck.flame_shield.tooltip": "Uh oh, it seems your wooden shield is burning!",
@@ -9,6 +12,12 @@
   "item.extrastuck.halt_shield.tooltip": "Forces your enemies to turn back",
   "item.extrastuck.iron_shield": "Iron Shield",
   "item.extrastuck.netherite_shield": "Netherite Shield",
+  "item.extrastuck.non_contact_contract": "Non-Contact Contract",
+  "item.extrastuck.non_contact_contract.tooltip": "This piece of paper has the ability to prevent contact with you",
+  "item.extrastuck.riot_shield": "Riot Shield",
+  "item.extrastuck.slied": "slied",
+  "item.extrastuck.slied.drop": "Expectedly, it could not",
+  "item.extrastuck.slied.tooltip": "Can this even block damage?",
   "item.extrastuck.wooden_shield": "Wooden Shield",
   "item.extrastuck.wooden_shield.tooltip": "This cheap shield is 100% fire-ready",
   "itemGroup.extrastuck": "ExtraStuck"

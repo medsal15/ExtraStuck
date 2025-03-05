@@ -9,6 +9,7 @@ import com.medsal15.ExtraStuck;
 import com.mraof.minestuck.api.alchemy.GristTypes;
 import com.mraof.minestuck.api.alchemy.recipe.GristCostRecipeBuilder;
 import com.mraof.minestuck.api.alchemy.recipe.combination.CombinationRecipeBuilder;
+import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -51,6 +52,36 @@ public class ESRecipeProvider extends RecipeProvider {
                                 .grist(GristTypes.TAR, 187).grist(GristTypes.DIAMOND, 60)
                                 .build(msOutput);
 
+                CombinationRecipeBuilder.of(ESItems.NON_CONTACT_CONTRACT)
+                                .input(ESItems.WOODEN_SHIELD).and().input(Items.PAPER)
+                                .build(msOutput);
+                GristCostRecipeBuilder.of(ESItems.NON_CONTACT_CONTRACT)
+                                .grist(GristTypes.CHALK, 202).grist(GristTypes.TAR, 20)
+                                .build(msOutput);
+
+                CombinationRecipeBuilder.of(ESItems.SLIED)
+                                .input(ESItems.NON_CONTACT_CONTRACT).and().input(MSItems.SBAHJ_POSTER)
+                                .build(msOutput);
+                GristCostRecipeBuilder.of(ESItems.SLIED)
+                                .grist(GristTypes.ARTIFACT, -5)
+                                .build(msOutput);
+
+                CombinationRecipeBuilder.of(ESItems.RIOT_SHIELD)
+                                .input(ESItems.NON_CONTACT_CONTRACT).or()
+                                .input(Ingredient.of(MSItems.ROCKEFELLERS_WALKING_BLADECANE,
+                                                MSItems.ROCKEFELLERS_WALKING_BLADECANE_SHEATHED))
+                                .build(msOutput);
+                GristCostRecipeBuilder.of(ESItems.RIOT_SHIELD)
+                                .grist(GristTypes.TAR, 197).grist(GristTypes.RUST, 228)
+                                .build(msOutput);
+
+                CombinationRecipeBuilder.of(ESItems.CAPITASHIELD)
+                                .input(ESItems.GOLD_SHIELD).and().input(ESItems.NON_CONTACT_CONTRACT)
+                                .build(msOutput);
+                GristCostRecipeBuilder.of(ESItems.CAPITASHIELD)
+                                .grist(GristTypes.GOLD, 567).grist(GristTypes.DIAMOND, 246)
+                                .build(msOutput);
+
                 CombinationRecipeBuilder.of(ESItems.IRON_SHIELD)
                                 .input(Items.SHIELD).and().input(Tags.Items.INGOTS_IRON)
                                 .build(msOutput);
@@ -69,7 +100,7 @@ public class ESRecipeProvider extends RecipeProvider {
                                 .input(ESItems.GOLD_SHIELD).or().input(Tags.Items.GEMS_DIAMOND)
                                 .build(msOutput);
                 GristCostRecipeBuilder.of(ESItems.DIAMOND_SHIELD)
-                                .grist(GristTypes.DIAMOND, 512).grist(GristTypes.AMETHYST, 256)
+                                .grist(GristTypes.DIAMOND, 768).grist(GristTypes.AMETHYST, 256)
                                 .build(msOutput);
 
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),

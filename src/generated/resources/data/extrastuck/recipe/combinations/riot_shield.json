@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:non_contact_contract"
+  },
+  "input2": [
+    {
+      "item": "minestuck:rockefellers_walking_bladecane"
+    },
+    {
+      "item": "minestuck:rockefellers_walking_bladecane_sheathed"
+    }
+  ],
+  "mode": "or",
+  "output": "extrastuck:riot_shield"
+}

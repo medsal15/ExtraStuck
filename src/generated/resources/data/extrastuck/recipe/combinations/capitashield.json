@@ -7,11 +7,11 @@
   ],
   "type": "minestuck:combination",
   "input1": {
-    "item": "extrastuck:iron_shield"
+    "item": "extrastuck:gold_shield"
   },
   "input2": {
-    "tag": "c:ingots/gold"
+    "item": "extrastuck:non_contact_contract"
   },
   "mode": "and",
-  "output": "extrastuck:gold_shield"
+  "output": "extrastuck:capitashield"
 }
