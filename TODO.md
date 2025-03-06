@@ -10,6 +10,8 @@ At some point, I'm gonna need to redo the textures (and models)
 
 Add a mod icon
 
+Test with tactical shield overhaul
+
 ## Content ##
 
 Fancier shield names
@@ -18,8 +20,7 @@ Fancier shield names
 
 See tree for full list
 
-Jawshatterer: damage melee attackers, allows dropping candy
+Jawbiter: damage melee attackers, allows dropping candy, speed on kill
 Spikes on a Slab: damage melee attackers
-Pogo Shield: reflects projectiles *somewhat* where the player looks at
-Eldritch Shield: charge on attack, deals damage
+Eldritch Shield: charge on attack, deals damage, strength on block
 Return to Sender: reflects projectiles where the player looks at

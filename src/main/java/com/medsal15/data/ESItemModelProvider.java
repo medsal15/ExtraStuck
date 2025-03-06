@@ -28,6 +28,8 @@ public class ESItemModelProvider extends ItemModelProvider {
         modelShield(ESItems.GOLD_SHIELD);
         modelShield(ESItems.DIAMOND_SHIELD);
         modelShield(ESItems.NETHERITE_SHIELD);
+        modelShield(ESItems.GARNET_SHIELD);
+        modelShield(ESItems.POGO_SHIELD);
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base) {

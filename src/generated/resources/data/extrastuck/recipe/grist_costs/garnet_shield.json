@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:diamond": 1000,
+    "minestuck:garnet": 1500,
+    "minestuck:ruby": 444
+  },
+  "ingredient": {
+    "item": "extrastuck:garnet_shield"
+  }
+}

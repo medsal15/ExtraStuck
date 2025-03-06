@@ -44,6 +44,9 @@ public class ESLangProvider extends LanguageProvider {
         addItem(ESItems.GOLD_SHIELD, "Gold Shield");
         addItem(ESItems.DIAMOND_SHIELD, "Diamond Shield");
         addItem(ESItems.NETHERITE_SHIELD, "Netherite Shield");
+        addItem(ESItems.GARNET_SHIELD, "Garnet Shield");
+        addItem(ESItems.POGO_SHIELD, "Pogo Shield");
+        addItemTooltip(ESItems.POGO_SHIELD, "The shield that bounces back!");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {

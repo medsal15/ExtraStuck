@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:rust": 125,
+    "minestuck:shale": 55
+  },
+  "ingredient": {
+    "item": "extrastuck:pogo_shield"
+  }
+}
