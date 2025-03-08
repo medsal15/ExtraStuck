@@ -1,0 +1,7 @@
+{
+  "parent": "extrastuck:item/base_shield_blocking",
+  "textures": {
+    "0": "extrastuck:item/return_to_sender",
+    "particle": "extrastuck:item/return_to_sender"
+  }
+}

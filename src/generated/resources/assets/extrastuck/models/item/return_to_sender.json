@@ -1,0 +1,15 @@
+{
+  "parent": "extrastuck:item/base_shield",
+  "overrides": [
+    {
+      "model": "extrastuck:item/return_to_sender_blocking",
+      "predicate": {
+        "minecraft:blocking": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "0": "extrastuck:item/return_to_sender",
+    "particle": "extrastuck:item/return_to_sender"
+  }
+}

@@ -19,6 +19,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -65,7 +66,7 @@ public class ESItems {
                             EquipmentSlotGroup.OFFHAND).build()));
     public static final DeferredItem<Item> POGO_SHIELD = ITEMS.registerItem("pogo_shield",
             (properties) -> new BounceShield(properties, (projectile, entity, random) -> {
-                // randomly multiply by 1/5 - 5
+                // randomly multiply by 1 / 5 - 5
                 var mx = random.nextDouble() * 4D + 1D;
                 var fx = random.nextBoolean() ? mx : 1 / mx;
                 var mz = random.nextDouble() * 4D + 1D;
@@ -73,6 +74,15 @@ public class ESItems {
                 projectile.setDeltaMovement(projectile.getDeltaMovement().multiply(fx, 1, fz));
             }),
             new Item.Properties().durability(450));
+    public static final DeferredItem<Item> RETURN_TO_SENDER = ITEMS.registerItem("return_to_sender",
+            (properties) -> new BounceShield(properties, (projectile, entity, random) -> {
+                if (entity != null) {
+                    // todo? should these be higher?
+                    Vec3 vec3 = entity.getLookAngle().normalize().multiply(-4, -4, -4);
+                    projectile.setDeltaMovement(vec3);
+                    projectile.hasImpulse = true;
+                }
+            }), new Item.Properties().durability(1353));
     // #endregion Shields
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -96,6 +106,7 @@ public class ESItems {
         list.add(NETHERITE_SHIELD);
         list.add(GARNET_SHIELD);
         list.add(POGO_SHIELD);
+        list.add(RETURN_TO_SENDER);
         return list;
     }
 }

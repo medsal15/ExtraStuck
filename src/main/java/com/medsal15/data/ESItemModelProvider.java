@@ -30,6 +30,7 @@ public class ESItemModelProvider extends ItemModelProvider {
         modelShield(ESItems.NETHERITE_SHIELD);
         modelShield(ESItems.GARNET_SHIELD);
         modelShield(ESItems.POGO_SHIELD);
+        modelShield(ESItems.RETURN_TO_SENDER);
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base) {

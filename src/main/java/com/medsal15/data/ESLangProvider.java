@@ -47,6 +47,8 @@ public class ESLangProvider extends LanguageProvider {
         addItem(ESItems.GARNET_SHIELD, "Garnet Shield");
         addItem(ESItems.POGO_SHIELD, "Pogo Shield");
         addItemTooltip(ESItems.POGO_SHIELD, "The shield that bounces back!");
+        addItem(ESItems.RETURN_TO_SENDER, "Return to Sender");
+        addItemTooltip(ESItems.RETURN_TO_SENDER, "The shield that shoots back!");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {

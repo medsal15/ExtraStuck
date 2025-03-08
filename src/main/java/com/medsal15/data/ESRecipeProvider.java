@@ -125,5 +125,12 @@ public class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.POGO_SHIELD)
                 .grist(GristTypes.RUST, 125).grist(GristTypes.SHALE, 55)
                 .build(msOutput);
+
+        CombinationRecipeBuilder.of(ESItems.RETURN_TO_SENDER)
+                .input(ESItems.POGO_SHIELD).or().input(MSItems.MAILBOX)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.RETURN_TO_SENDER)
+                .grist(GristTypes.MARBLE, 868).grist(GristTypes.CAULK, 133)
+                .build(msOutput);
     }
 }
