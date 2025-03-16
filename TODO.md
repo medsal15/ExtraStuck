@@ -12,12 +12,11 @@ Add a mod icon
 
 ## Content ##
 
-Fancier shield names
-
 ### Shields ###
 
 See tree for full list
 
+Light Shield: burn melee attackers longer
 Jawbiter: damage melee attackers, allows dropping candy, speed on kill
 Spikes on a Slab: damage melee attackers
 Eldritch Shield: charge on attack, deals damage, strength on block

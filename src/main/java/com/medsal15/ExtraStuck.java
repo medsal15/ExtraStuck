@@ -57,6 +57,8 @@ public class ExtraStuck {
                         }
                     }).build());
 
+    public static boolean isMinestuckLoaded = false;
+
     // The constructor for the mod class is the first code that is run when your mod
     // is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and
@@ -79,7 +81,8 @@ public class ExtraStuck {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        if (ServerConfig.warnNoMinestuck && !ModList.get().isLoaded("minestuck"))
+        isMinestuckLoaded = ModList.get().isLoaded("minestuck");
+        if (ServerConfig.warnNoMinestuck && !isMinestuckLoaded)
             LOGGER.info("Minestuck is not loaded!");
     }
 

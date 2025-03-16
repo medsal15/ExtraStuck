@@ -1,5 +1,6 @@
 package com.medsal15.items.shields;
 
+import com.medsal15.ExtraStuck;
 import com.mraof.minestuck.player.PlayerBoondollars;
 import com.mraof.minestuck.player.PlayerData;
 
@@ -19,6 +20,10 @@ public class BoondollarShield extends ESShield implements IShieldBlock {
 
     @Override
     public boolean onShieldBlock(LivingShieldBlockEvent event) {
+        // Nothing to do here
+        if (!ExtraStuck.isMinestuckLoaded)
+            return false;
+
         var user = event.getEntity();
         // Only players get boondollars
         if (!(user instanceof ServerPlayer player))

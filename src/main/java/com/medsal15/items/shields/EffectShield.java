@@ -31,13 +31,21 @@ public class EffectShield extends ESShield implements IShieldBlock {
         this.self = self;
     }
 
+    public EffectShield(Properties properties, Holder<MobEffect> effect, int duration) {
+        super(properties);
+        this.effect = effect;
+        this.duration = duration;
+        this.self = false;
+    }
+
     public boolean onShieldBlock(LivingShieldBlockEvent event) {
         if (this.duration <= 0)
             return false;
 
-        // Ensure the damage is melee and does not bypass shields
+        // Ensure the damage does not bypass shields
+        // and can be applied to self/melee attacker
         var damageSource = event.getDamageSource();
-        if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD) || !damageSource.isDirect())
+        if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD) || (!damageSource.isDirect() && !self))
             return false;
 
         LivingEntity target;
