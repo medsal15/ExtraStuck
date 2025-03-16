@@ -1,0 +1,23 @@
+{
+    "name": "Gold Shield",
+    "icon": "extrastuck:gold_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_iron_shield",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:gold_shield"
+            },
+            "text": "This shield is made mostly of pure gold! That $(o)has$() to be valuable!"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/gold_shield_recipe.png"
+            ],
+            "text": "Combine an $(l:extrastuck:shields/iron_shield)iron shield$(/l) and a gold ingot in a totem lathe."
+        }
+    ]
+}

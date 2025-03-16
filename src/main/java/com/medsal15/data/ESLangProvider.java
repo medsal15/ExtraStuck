@@ -26,6 +26,9 @@ public class ESLangProvider extends LanguageProvider {
         add(SHIELD_EFFECT_KEY, "Applies %s (%s) to melee attackers");
         add(SHIELD_SELF_EFFECT_KEY, "Applies %s (%s) when attacked");
 
+        add("patchouli.extrastuck.title", "ExtraStuck Guide");
+        add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
+
         addItem(ESItems.WOODEN_SHIELD, "Wooden Shield");
         addItemTooltip(ESItems.WOODEN_SHIELD, "This cheap shield is 100% fire-ready");
         addItem(ESItems.FLAME_SHIELD, "Flame Shield");

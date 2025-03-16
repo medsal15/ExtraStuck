@@ -1,0 +1,23 @@
+{
+    "name": "Pogo Shield",
+    "icon": "extrastuck:pogo_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_iron_shield",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:pogo_shield"
+            },
+            "text": "The unexpected pogo shield.$(br2)$(3)$(l)Special:$() Blocked projectiles bounce back. Don't expect good aim."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/pogo_shield_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:shields/iron_shield)iron shield$(/l) and a slime ball in a totem lathe."
+        }
+    ]
+}

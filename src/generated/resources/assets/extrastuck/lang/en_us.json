@@ -25,5 +25,7 @@
   "item.extrastuck.slied.tooltip": "Can this even block damage?",
   "item.extrastuck.wooden_shield": "Wooden Shield",
   "item.extrastuck.wooden_shield.tooltip": "This cheap shield is 100% fire-ready",
-  "itemGroup.extrastuck": "ExtraStuck"
+  "itemGroup.extrastuck": "ExtraStuck",
+  "patchouli.extrastuck.landing": "Unofficial ExtraStuck Walkthrough (100%% official)",
+  "patchouli.extrastuck.title": "ExtraStuck Guide"
 }

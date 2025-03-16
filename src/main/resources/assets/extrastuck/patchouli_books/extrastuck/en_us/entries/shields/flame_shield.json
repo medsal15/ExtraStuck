@@ -1,0 +1,22 @@
+{
+    "name": "Flame Shield",
+    "icon": "extrastuck:flame_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_wooden_shield",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:flame_shield"
+            },
+            "text": "A more advanced shield, made of flames.$(br2)$(3)$(l)Special:$() Sets melee enemies on fire for 5 seconds."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/flame_shield_recipe.png"
+            ]
+        }
+    ]
+}

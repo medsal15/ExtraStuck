@@ -1,0 +1,23 @@
+{
+    "name": "Halt Shield",
+    "icon": "extrastuck:halt_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_flame_shield",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:halt_shield"
+            },
+            "text": "A shield with the face of a powerful being on it.$(br2)$(3)$(l)Special:$() Knocks melee attackers back and turns them around."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/halt_shield_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:shields/flame_shield)flame shield$(/l) and any wooden door in a punch designix."
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Riot Shield",
+    "icon": "extrastuck:riot_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_non_contact_contract",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:riot_shield"
+            },
+            "text": "This large shield was made for defensive measures.$(br)It even has a glass viewport!"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/riot_shield_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:shields/non_contact_contract)non-contact contract(/l) and Rockefeller's walking bladecane in a punch designix."
+        }
+    ]
+}

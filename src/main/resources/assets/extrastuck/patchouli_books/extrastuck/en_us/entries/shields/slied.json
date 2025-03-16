@@ -1,0 +1,23 @@
+{
+    "name": "Slied",
+    "icon": "extrastuck:slied",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_non_contact_contract",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:slied"
+            },
+            "text": "A protective(?) piece of paper depicting a pair of people.$(br2)$(3)$(l)Special:$() Has a 25% to drop itself on block."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/slied_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:shields/non_contact_contract)non-contact contract(/l) and a SBAHJ poster in a totem lathe."
+        }
+    ]
+}

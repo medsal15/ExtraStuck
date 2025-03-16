@@ -1,0 +1,23 @@
+{
+    "name": "Diamond Shield",
+    "icon": "extrastuck:diamond_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_gold_shield",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:diamond_shield"
+            },
+            "text": "A shield made of diamonds. A greatly valuable protection in your arsenal."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/diamond_shield_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:shields/gold_shield)gold shield$(/l) and a diamond in a punch designix."
+        }
+    ]
+}

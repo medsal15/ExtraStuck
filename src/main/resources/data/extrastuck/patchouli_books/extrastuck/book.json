@@ -1,0 +1,8 @@
+{
+    "name": "patchouli.extrastuck.title",
+    "landing_text": "patchouli.extrastuck.landing",
+    "version": 1,
+    "model": "extrastuck:guide",
+    "creative_tab": "extrastuck:extrastuck_tab",
+    "use_resource_pack": true
+}
