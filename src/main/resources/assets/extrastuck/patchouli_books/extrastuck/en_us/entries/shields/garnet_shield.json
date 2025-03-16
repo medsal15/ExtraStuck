@@ -1,23 +1,23 @@
 {
-    "name": "Pogo Shield",
-    "icon": "extrastuck:pogo_shield",
+    "name": "Garnet Shield",
+    "icon": "extrastuck:garnet_shield",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_iron_shield",
+    "advancement": "extrastuck:patchouli_books/has_diamond_shield",
     "sortnum": 1,
     "pages": [
         {
             "type": "patchouli:spotlight",
             "item": {
-                "item": "extrastuck:pogo_shield"
+                "item": "extrastuck:garnet_shield"
             },
-            "text": "The unexpected pogo shield.$(br2)$(3)$(l)Special:$() Blocked projectiles bounce back. Don't expect good aim."
+            "text": "A powerful shield made of garnet (mostly).$(br2)$(3)$(l)Special:$() When held in off-hand, grants +10% attack speed."
         },
         {
             "type": "patchouli:image",
             "images": [
-                "extrastuck:textures/patchouli_books/pogo_shield_recipe.png"
+                "extrastuck:textures/patchouli_books/garnet_shield_recipe.png"
             ],
-            "text": "Combine a $(l:extrastuck:shields/iron_shield)iron shield$(/l) and a slime ball in a totem lathe."
+            "text": "Combine a $(l:extrastuck:shields/diamond_shield)diamond shield$(/l) and a frog in a totem lathe."
         }
     ]
 }
