@@ -1,0 +1,23 @@
+{
+    "name": "Light Shield",
+    "icon": "extrastuck:light_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_flame_shield",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:light_shield"
+            },
+            "text": "This very bright shield is made of pure light.$(br2)$(3)$(l)Special:$() Sets melee enemies on fire for 30 seconds."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/light_shield_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:shields/flame_shield)flame shield$(/l) and a beacon in a totem lathe."
+        }
+    ]
+}

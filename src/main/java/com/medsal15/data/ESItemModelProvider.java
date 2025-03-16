@@ -19,6 +19,7 @@ public class ESItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         modelShield(ESItems.WOODEN_SHIELD);
         modelThinShield(ESItems.FLAME_SHIELD);
+        modelShield(ESItems.LIGHT_SHIELD);
         modelThinShield(ESItems.HALT_SHIELD);
         modelThinShield(ESItems.NON_CONTACT_CONTRACT);
         basicItem(ESItems.SLIED.getId());

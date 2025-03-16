@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:flame_shield"
+  },
+  "input2": {
+    "item": "minecraft:beacon"
+  },
+  "mode": "and",
+  "output": "extrastuck:light_shield"
+}

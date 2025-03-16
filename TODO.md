@@ -14,7 +14,6 @@ Use attributes for EffectShield effect & duration, FlameShield duration, FluxShi
 
 See tree for full list
 
-Light Shield: burn melee attackers longer
 Eldritch Shield: charge on attack, deals damage, strength on block
 Captain Justice's Throwable Shield: has a throwable mode
 

@@ -37,6 +37,7 @@ public class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.FLAME_SHIELD, "Uh oh, it seems your wooden shield is burning!");
         addItem(ESItems.HALT_SHIELD, "Halt Shield");
         addItemTooltip(ESItems.HALT_SHIELD, "Forces your enemies to turn back");
+        addItem(ESItems.LIGHT_SHIELD, "Light Shield");
         addItem(ESItems.NON_CONTACT_CONTRACT, "Non-Contact Contract");
         addItemTooltip(ESItems.NON_CONTACT_CONTRACT, "This piece of paper has the ability to prevent contact with you");
         addItem(ESItems.SLIED, "slied");

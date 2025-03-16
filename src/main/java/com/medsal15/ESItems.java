@@ -100,10 +100,12 @@ public class ESItems {
             p -> new ThornShield(p, 6), new Item.Properties().durability(732));
     public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter", p -> new CandyShield(p, 8),
             new Item.Properties().durability(612));
-    // todo model, texture, recipe
     public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
             p -> new FluxShield(p, 10, 100000),
             new Item.Properties().durability(490));
+    public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
+            (properties) -> new FlameShield(properties, 600),
+            new Item.Properties().durability(888));
     // #endregion Shields
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -117,6 +119,7 @@ public class ESItems {
         list.add(WOODEN_SHIELD);
         list.add(FLAME_SHIELD);
         list.add(HALT_SHIELD);
+        list.add(LIGHT_SHIELD);
         list.add(NON_CONTACT_CONTRACT);
         list.add(SLIED);
         list.add(RIOT_SHIELD);

@@ -52,6 +52,13 @@ public class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.TAR, 187).grist(GristTypes.DIAMOND, 60)
                 .build(msOutput);
 
+        CombinationRecipeBuilder.of(ESItems.LIGHT_SHIELD)
+                .input(ESItems.FLAME_SHIELD).and().input(Items.BEACON)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.LIGHT_SHIELD)
+                .grist(GristTypes.URANIUM, 444).grist(GristTypes.QUARTZ, 345).grist(GristTypes.DIAMOND, 246)
+                .build(msOutput);
+
         CombinationRecipeBuilder.of(ESItems.NON_CONTACT_CONTRACT)
                 .input(ESItems.WOODEN_SHIELD).and().input(Items.PAPER)
                 .build(msOutput);
