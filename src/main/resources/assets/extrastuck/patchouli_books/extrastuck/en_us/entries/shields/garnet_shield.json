@@ -10,7 +10,7 @@
             "item": {
                 "item": "extrastuck:garnet_shield"
             },
-            "text": "A powerful shield made of garnet (mostly).$(br2)$(3)$(l)Special:$() When held in off-hand, grants +10% attack speed."
+            "text": "A powerful shield made of garnet (mostly).$(br2)$(3)$(l)Special:$() When held in off-hand, grants +0.1 attack speed."
         },
         {
             "type": "patchouli:image",
