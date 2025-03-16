@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:gold_shield"
+  },
+  "input2": {
+    "tag": "c:storage_blocks/redstone"
+  },
+  "mode": "or",
+  "output": "extrastuck:flux_shield"
+}

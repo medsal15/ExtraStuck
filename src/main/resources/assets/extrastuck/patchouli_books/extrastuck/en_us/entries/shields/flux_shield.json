@@ -1,0 +1,23 @@
+{
+    "name": "Flux Shield",
+    "icon": "extrastuck:flux_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_gold_shield",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:flux_shield"
+            },
+            "text": "Finally, after the discovery of electricity, you can power your shield with it.$(br2)$(3)$(l)Special:$() Consumes RF instead of damage when charged."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/flux_shield_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:shields/gold_shield)gold shield$(/l) and a redstone block in a punch designix."
+        }
+    ]
+}

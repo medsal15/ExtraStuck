@@ -1,5 +1,7 @@
 package com.medsal15;
 
+import java.text.NumberFormat;
+
 import org.slf4j.Logger;
 
 import com.medsal15.data.ESLangProvider;
@@ -162,8 +164,8 @@ public class ExtraStuck {
             // Shield RF
             if (item instanceof FluxShield shield) {
                 event.getToolTip().add(i, Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
-                        stack.getOrDefault(ESItems.ENERGY, 0),
-                        shield.storage));
+                        NumberFormat.getInstance().format(stack.getOrDefault(ESItems.ENERGY, 0)),
+                        NumberFormat.getInstance().format(shield.storage)));
                 i++;
             }
 

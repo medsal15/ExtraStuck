@@ -14,10 +14,8 @@ Use attributes for EffectShield effect & duration, FlameShield duration, FluxShi
 
 See tree for full list
 
-Flux Shield: drains FE instead of durability
 Light Shield: burn melee attackers longer
 Eldritch Shield: charge on attack, deals damage, strength on block
-Return to Sender: reflects projectiles where the player looks at
 Captain Justice's Throwable Shield: has a throwable mode
 
 ## Textures ##

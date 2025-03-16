@@ -110,6 +110,13 @@ public class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GOLD, 253).grist(GristTypes.CAULK, 153)
                 .build(msOutput);
 
+        CombinationRecipeBuilder.of(ESItems.FLUX_SHIELD)
+                .input(ESItems.GOLD_SHIELD).or().input(Tags.Items.STORAGE_BLOCKS_REDSTONE)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.FLUX_SHIELD)
+                .grist(GristTypes.GOLD, 593).grist(GristTypes.GARNET, 231)
+                .build(msOutput);
+
         CombinationRecipeBuilder.of(ESItems.DIAMOND_SHIELD)
                 .input(ESItems.GOLD_SHIELD).or().input(Tags.Items.GEMS_DIAMOND)
                 .build(msOutput);

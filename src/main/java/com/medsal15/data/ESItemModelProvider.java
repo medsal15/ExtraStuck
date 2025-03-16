@@ -26,6 +26,7 @@ public class ESItemModelProvider extends ItemModelProvider {
         modelShield(ESItems.CAPITASHIELD);
         modelShield(ESItems.IRON_SHIELD);
         modelShield(ESItems.GOLD_SHIELD);
+        modelShield(ESItems.FLUX_SHIELD);
         modelShield(ESItems.DIAMOND_SHIELD);
         modelShield(ESItems.NETHERITE_SHIELD);
         modelShield(ESItems.GARNET_SHIELD);
