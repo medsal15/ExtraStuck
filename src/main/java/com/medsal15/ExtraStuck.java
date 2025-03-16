@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.shields.EffectShield;
+import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.IShieldBlock;
 import com.medsal15.items.shields.ThornShield;
 import com.mojang.logging.LogUtils;
@@ -28,6 +29,8 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
@@ -68,8 +71,10 @@ public class ExtraStuck {
         modEventBus.addListener(this::commonSetup);
 
         NeoForge.EVENT_BUS.addListener(this::onShieldBlock);
+        modEventBus.addListener(this::registerCapabilities);
 
         // Register the Deferred Register to the mod event bus so items get registered
+        ESItems.DATA_COMPONENTS.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
@@ -84,6 +89,13 @@ public class ExtraStuck {
         isMinestuckLoaded = ModList.get().isLoaded("minestuck");
         if (ServerConfig.warnNoMinestuck && !isMinestuckLoaded)
             LOGGER.info("Minestuck is not loaded!");
+    }
+
+    @SubscribeEvent
+    public void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerItem(Capabilities.EnergyStorage.ITEM,
+                (stack, unused) -> new FluxShield.StackEnergyStorage(stack),
+                ESItems.FLUX_SHIELD.get());
     }
 
     @SubscribeEvent
@@ -118,10 +130,11 @@ public class ExtraStuck {
         public static void addCustomTooltip(ItemTooltipEvent event) {
             int i = 1;
             ItemStack stack = event.getItemStack();
+            var item = stack.getItem();
 
             // Shield info
             if (ClientConfig.displayShieldInfo) {
-                if (stack.getItem() instanceof ThornShield shield) {
+                if (item instanceof ThornShield shield) {
                     event.getToolTip().add(i,
                             Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
                                     (int) shield.damage)
@@ -129,7 +142,7 @@ public class ExtraStuck {
                     i++;
                 }
 
-                if (stack.getItem() instanceof EffectShield shield) {
+                if (item instanceof EffectShield shield) {
                     // Dirty and ugly, but it works
                     var effectName = "effect."
                             + shield.effect.getRegisteredName().replace(':', '.');
@@ -144,6 +157,14 @@ public class ExtraStuck {
                             .withStyle(ChatFormatting.GRAY));
                     i++;
                 }
+            }
+
+            // Shield RF
+            if (item instanceof FluxShield shield) {
+                event.getToolTip().add(i, Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
+                        stack.getOrDefault(ESItems.ENERGY, 0),
+                        shield.storage));
+                i++;
             }
 
             // Fancy item descriptions

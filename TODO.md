@@ -6,6 +6,8 @@ Find a better way to include Minestuck without needing a local file
 
 Add a mod icon
 
+Use attributes for EffectShield effect & duration, FlameShield duration, FluxShield storage & mult, ThornShield damage
+
 ## Content ##
 
 ### Shields ###

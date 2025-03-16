@@ -2,6 +2,7 @@ package com.medsal15;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.function.Supplier;
 
 import com.medsal15.items.shields.BoondollarShield;
 import com.medsal15.items.shields.BounceShield;
@@ -9,10 +10,15 @@ import com.medsal15.items.shields.CandyShield;
 import com.medsal15.items.shields.ChangeShield;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.FlameShield;
+import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.HaltShield;
 import com.medsal15.items.shields.SbahjShield;
 import com.medsal15.items.shields.ThornShield;
+import com.mojang.serialization.Codec;
 
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -27,6 +33,11 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ESItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
+
+    public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister
+            .createDataComponents(Registries.DATA_COMPONENT_TYPE, ExtraStuck.MODID);
+    public static final Supplier<DataComponentType<Integer>> ENERGY = DATA_COMPONENTS.registerComponentType("energy",
+            builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
     // #region Shields
     public static final DeferredItem<Item> FLAME_SHIELD = ITEMS.registerItem("flame_shield",
@@ -89,6 +100,10 @@ public class ESItems {
             p -> new ThornShield(p, 6), new Item.Properties().durability(732));
     public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter", p -> new CandyShield(p, 8),
             new Item.Properties().durability(612));
+    // todo model, texture, recipe
+    public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
+            p -> new FluxShield(p, 10, 100000),
+            new Item.Properties().durability(490));
     // #endregion Shields
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -110,6 +125,7 @@ public class ESItems {
         list.add(SPIKES_ON_A_SLAB);
         list.add(JAWBITER);
         list.add(GOLD_SHIELD);
+        list.add(FLUX_SHIELD);
         list.add(DIAMOND_SHIELD);
         list.add(NETHERITE_SHIELD);
         list.add(GARNET_SHIELD);

@@ -17,6 +17,7 @@ public class ESLangProvider extends LanguageProvider {
     public static final String SHIELD_EFFECT_KEY = ExtraStuck.MODID + ".shield_effect";
     public static final String SHIELD_SELF_EFFECT_KEY = ExtraStuck.MODID + ".shield_self_effect";
     public static final String SLIED_DROP_KEY = ESItems.SLIED.get().getDescriptionId() + ".drop";
+    public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
 
     @Override
     protected void addTranslations() {
@@ -25,6 +26,7 @@ public class ESLangProvider extends LanguageProvider {
         add(SHIELD_DAMAGE_KEY, "Deals %s damage to melee attackers");
         add(SHIELD_EFFECT_KEY, "Applies %s (%s) to melee attackers");
         add(SHIELD_SELF_EFFECT_KEY, "Applies %s (%s) when attacked");
+        add(ENERGY_STORAGE_KEY, "%s / %s RF");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
@@ -47,6 +49,7 @@ public class ESLangProvider extends LanguageProvider {
         addItem(ESItems.SPIKES_ON_A_SLAB, "Spikes on a Slab");
         addItem(ESItems.JAWBITER, "Jawbiter");
         addItem(ESItems.GOLD_SHIELD, "Gold Shield");
+        addItem(ESItems.FLUX_SHIELD, "Flux Shield");
         addItem(ESItems.DIAMOND_SHIELD, "Diamond Shield");
         addItem(ESItems.NETHERITE_SHIELD, "Netherite Shield");
         addItem(ESItems.GARNET_SHIELD, "Garnet Shield");
