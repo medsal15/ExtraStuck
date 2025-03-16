@@ -10,6 +10,7 @@ import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.FlameShield;
 import com.medsal15.items.shields.HaltShield;
 import com.medsal15.items.shields.SbahjShield;
+import com.medsal15.items.shields.ThornShield;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
@@ -83,6 +84,8 @@ public class ESItems {
                     projectile.hasImpulse = true;
                 }
             }), new Item.Properties().durability(1353));
+    public static final DeferredItem<Item> SPIKES_ON_A_SLAB = ITEMS.registerItem("spikes_on_a_slab",
+            p -> new ThornShield(p, 6), new Item.Properties().durability(732));
     // #endregion Shields
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -101,6 +104,7 @@ public class ESItems {
         list.add(RIOT_SHIELD);
         list.add(CAPITASHIELD);
         list.add(IRON_SHIELD);
+        list.add(SPIKES_ON_A_SLAB);
         list.add(GOLD_SHIELD);
         list.add(DIAMOND_SHIELD);
         list.add(NETHERITE_SHIELD);

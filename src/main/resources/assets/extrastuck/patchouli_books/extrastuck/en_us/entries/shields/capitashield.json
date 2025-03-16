@@ -10,7 +10,7 @@
             "item": {
                 "item": "extrastuck:capitashield"
             },
-            "text": "This shield grants safety for just a $(t:You may find the definition of little on page 72 of your contract)little$(/t) money.$(br2)$(3)$(l)Special:$() Consumes $(t:if Minestuck is installed)boondollars$(/t) instead of damage, when possible."
+            "text": "This shield grants safety for just a $(t:You may find the definition of \"little\" on page 72 of your contract)$(n)little$(/t)$() money.$(br2)$(3)$(l)Special:$() Consumes $(t:if Minestuck is installed)boondollars$(/t) instead of damage, when possible."
         },
         {
             "type": "patchouli:image",

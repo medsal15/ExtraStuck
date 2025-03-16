@@ -1,0 +1,23 @@
+{
+    "name": "Spikes on a Slab",
+    "icon": "extrastuck:spikes_on_a_slab",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_iron_shield",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:spikes_on_a_slab"
+            },
+            "text": "This shield is covered in spikes, so don't hold it backwards.$(br2)$(3)$(l)Special:$() Deals 3 hearts of damage to melee enemies."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/spikes_on_a_slab_recipe.png"
+            ],
+            "text": "Combine an $(l:extrastuck:shields/iron_shield)iron shield$(/l) and spikes in a punch designix."
+        }
+    ]
+}
