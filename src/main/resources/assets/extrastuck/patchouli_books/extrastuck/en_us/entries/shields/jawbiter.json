@@ -1,0 +1,23 @@
+{
+    "name": "Jawbiter",
+    "icon": "extrastuck:jawbiter",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_spikes_on_a_slab",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:jawbiter"
+            },
+            "text": "Jawbreakers are not strong enough. This candy bites attackers instead.$(br2)$(3)$(l)Special:$() Deals 4 hearts of damage to melee attackers, and allows underlings to drop candy."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/jawbiter_recipe.png"
+            ],
+            "text": "Combine $(l:extrastuck:shields/spikes_on_a_slab)spikes on a slab$(/l) and some candy corn in a totem lathe."
+        }
+    ]
+}

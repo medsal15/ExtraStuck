@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:iodine": 52,
+    "minestuck:marble": 83
+  },
+  "ingredient": {
+    "item": "extrastuck:jawbiter"
+  }
+}

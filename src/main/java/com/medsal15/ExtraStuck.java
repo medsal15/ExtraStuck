@@ -119,6 +119,7 @@ public class ExtraStuck {
             int i = 1;
             ItemStack stack = event.getItemStack();
 
+            // Shield info
             if (ClientConfig.displayShieldInfo) {
                 if (stack.getItem() instanceof ThornShield shield) {
                     event.getToolTip().add(i,
@@ -149,9 +150,11 @@ public class ExtraStuck {
             final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
             if (itemId != null && itemId.getNamespace().equals(ExtraStuck.MODID)) {
                 String name = stack.getDescriptionId() + ".tooltip";
-                if (I18n.exists(name))
+                if (I18n.exists(name)) {
                     event.getToolTip().add(i,
                             Component.translatable(name).withStyle(ChatFormatting.GRAY));
+                    i++;
+                }
             }
         }
     }

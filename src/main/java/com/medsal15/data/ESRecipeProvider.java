@@ -96,6 +96,13 @@ public class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.RUST, 122).grist(GristTypes.GARNET, 21)
                 .build(msOutput);
 
+        CombinationRecipeBuilder.of(ESItems.JAWBITER)
+                .input(ESItems.SPIKES_ON_A_SLAB).and().input(MSItems.CANDY_CORN)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.JAWBITER)
+                .grist(GristTypes.MARBLE, 83).grist(GristTypes.IODINE, 52)
+                .build(msOutput);
+
         CombinationRecipeBuilder.of(ESItems.GOLD_SHIELD)
                 .input(ESItems.IRON_SHIELD).and().input(Tags.Items.INGOTS_GOLD)
                 .build(msOutput);

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:spikes_on_a_slab"
+  },
+  "input2": {
+    "item": "minestuck:candy_corn"
+  },
+  "mode": "and",
+  "output": "extrastuck:jawbiter"
+}

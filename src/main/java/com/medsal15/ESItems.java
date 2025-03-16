@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import com.medsal15.items.shields.BoondollarShield;
 import com.medsal15.items.shields.BounceShield;
+import com.medsal15.items.shields.CandyShield;
 import com.medsal15.items.shields.ChangeShield;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.FlameShield;
@@ -86,6 +87,8 @@ public class ESItems {
             }), new Item.Properties().durability(1353));
     public static final DeferredItem<Item> SPIKES_ON_A_SLAB = ITEMS.registerItem("spikes_on_a_slab",
             p -> new ThornShield(p, 6), new Item.Properties().durability(732));
+    public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter", p -> new CandyShield(p, 8),
+            new Item.Properties().durability(612));
     // #endregion Shields
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -105,6 +108,7 @@ public class ESItems {
         list.add(CAPITASHIELD);
         list.add(IRON_SHIELD);
         list.add(SPIKES_ON_A_SLAB);
+        list.add(JAWBITER);
         list.add(GOLD_SHIELD);
         list.add(DIAMOND_SHIELD);
         list.add(NETHERITE_SHIELD);
