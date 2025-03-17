@@ -66,7 +66,8 @@ public class FluxShield extends ESShield implements IShieldBlock {
 
     @Override
     public boolean onShieldBlock(LivingShieldBlockEvent event) {
-        if (!this.components().has(ESItems.ENERGY.get()) || mult <= 0)
+        var useItem = event.getEntity().getUseItem();
+        if (!useItem.has(ESItems.ENERGY.get()) || mult <= 0)
             return false;
 
         // Ensure the damage does not bypass shields
@@ -76,11 +77,9 @@ public class FluxShield extends ESShield implements IShieldBlock {
 
         // Drain energy
         var drain = (int) (event.getBlockedDamage() * mult);
-        var useItem = event.getEntity().getUseItem();
         if (!(useItem.getItem() instanceof FluxShield))
             return false;
 
-        // todo not working
         var extracted = extractEnergy(useItem, drain, false);
         if (extracted > 0) {
             event.setShieldDamage(0);

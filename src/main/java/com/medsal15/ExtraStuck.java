@@ -5,7 +5,6 @@ import java.text.NumberFormat;
 import org.slf4j.Logger;
 
 import com.medsal15.data.ESLangProvider;
-import com.medsal15.items.shields.EffectShield;
 import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.IShieldBlock;
 import com.medsal15.items.shields.ThornShield;
@@ -141,22 +140,6 @@ public class ExtraStuck {
                             Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
                                     (int) shield.damage)
                                     .withStyle(ChatFormatting.GRAY));
-                    i++;
-                }
-
-                if (item instanceof EffectShield shield) {
-                    // Dirty and ugly, but it works
-                    var effectName = "effect."
-                            + shield.effect.getRegisteredName().replace(':', '.');
-                    var key = shield.self ? ESLangProvider.SHIELD_SELF_EFFECT_KEY
-                            : ESLangProvider.SHIELD_EFFECT_KEY;
-                    event.getToolTip().add(i, Component
-                            .translatable(key, Component.translatable(effectName),
-                                    String.format("%02d:%02d",
-                                            (shield.duration / 20 / 60)
-                                                    % 60,
-                                            shield.duration / 20))
-                            .withStyle(ChatFormatting.GRAY));
                     i++;
                 }
             }

@@ -102,7 +102,7 @@ public class ESItems {
     public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter", p -> new CandyShield(p, 8),
             new Item.Properties().durability(612));
     public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
-            p -> new FluxShield(p, 10, 100000),
+            p -> new FluxShield(p, 100, 100000),
             new Item.Properties().durability(490));
     public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
             (properties) -> new FlameShield(properties, 600),
