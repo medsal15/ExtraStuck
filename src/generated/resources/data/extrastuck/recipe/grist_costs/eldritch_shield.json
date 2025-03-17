@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:chalk": 1666,
+    "minestuck:garnet": 999,
+    "minestuck:tar": 777
+  },
+  "ingredient": {
+    "item": "extrastuck:eldritch_shield"
+  }
+}

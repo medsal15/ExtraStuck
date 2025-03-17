@@ -1,0 +1,23 @@
+{
+    "name": "Eldritch Shield",
+    "icon": "extrastuck:eldritch_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_jawbiter",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:eldritch_shield"
+            },
+            "text": "A shield similar to an eldritch creature.$(br)Why does it look like an eye with teeth? What kind of creature looks like that?$(br2)$(3)$(l)Special:$() Blocking damage grants a short duration damage boost."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/eldritch_shield_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:shields/jawbiter)jawbiter$(/l) and a grimoire for summoning the zoologically dubious in a punch designix."
+        }
+    ]
+}

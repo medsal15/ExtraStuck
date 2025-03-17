@@ -12,6 +12,7 @@ import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.FlameShield;
 import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.HaltShield;
+import com.medsal15.items.shields.RushShield;
 import com.medsal15.items.shields.SbahjShield;
 import com.medsal15.items.shields.ThornShield;
 import com.mojang.serialization.Codec;
@@ -106,6 +107,9 @@ public class ESItems {
     public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
             (properties) -> new FlameShield(properties, 600),
             new Item.Properties().durability(888));
+    public static final DeferredItem<Item> ELDRITCH_SHIELD = ITEMS.registerItem("eldritch_shield",
+            (properties) -> new RushShield(properties, 10),
+            new Item.Properties().durability(1441));
     // #endregion Shields
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -127,6 +131,7 @@ public class ESItems {
         list.add(IRON_SHIELD);
         list.add(SPIKES_ON_A_SLAB);
         list.add(JAWBITER);
+        list.add(ELDRITCH_SHIELD);
         list.add(GOLD_SHIELD);
         list.add(FLUX_SHIELD);
         list.add(DIAMOND_SHIELD);
