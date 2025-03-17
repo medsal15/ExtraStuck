@@ -4,8 +4,8 @@ import java.util.concurrent.CompletableFuture;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.ESItems;
 import com.medsal15.ExtraStuck;
+import com.medsal15.items.ESItems;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;

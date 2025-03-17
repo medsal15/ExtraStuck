@@ -5,7 +5,9 @@ import java.text.NumberFormat;
 import org.slf4j.Logger;
 
 import com.medsal15.data.ESLangProvider;
+import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.items.ESItems;
 import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.IShieldBlock;
 import com.medsal15.items.shields.ThornShield;

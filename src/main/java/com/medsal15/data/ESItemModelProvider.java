@@ -1,7 +1,7 @@
 package com.medsal15.data;
 
-import com.medsal15.ESItems;
 import com.medsal15.ExtraStuck;
+import com.medsal15.items.ESItems;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

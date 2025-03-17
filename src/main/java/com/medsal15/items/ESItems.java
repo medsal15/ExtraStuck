@@ -1,9 +1,10 @@
-package com.medsal15;
+package com.medsal15.items;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Supplier;
 
+import com.medsal15.ExtraStuck;
 import com.medsal15.items.shields.BoondollarShield;
 import com.medsal15.items.shields.BounceShield;
 import com.medsal15.items.shields.CandyShield;

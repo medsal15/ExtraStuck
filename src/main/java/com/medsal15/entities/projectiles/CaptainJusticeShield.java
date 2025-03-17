@@ -2,9 +2,9 @@ package com.medsal15.entities.projectiles;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.ESEntities;
-import com.medsal15.ESItems;
 import com.medsal15.ExtraStuck;
+import com.medsal15.entities.ESEntities;
+import com.medsal15.items.ESItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;

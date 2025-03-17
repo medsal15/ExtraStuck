@@ -2,7 +2,7 @@ package com.medsal15.data;
 
 import java.util.concurrent.CompletableFuture;
 
-import com.medsal15.ESItems;
+import com.medsal15.items.ESItems;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

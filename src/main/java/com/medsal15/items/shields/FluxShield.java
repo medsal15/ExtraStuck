@@ -2,7 +2,7 @@ package com.medsal15.items.shields;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.ESItems;
+import com.medsal15.items.ESItems;
 
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.item.ItemStack;

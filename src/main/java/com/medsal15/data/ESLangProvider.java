@@ -1,8 +1,9 @@
 package com.medsal15.data;
 
-import com.medsal15.ESEntities;
-import com.medsal15.ESItems;
 import com.medsal15.ExtraStuck;
+import com.medsal15.entities.ESEntities;
+import com.medsal15.items.ESItems;
+
 import java.util.function.Supplier;
 import net.minecraft.world.item.Item;
 

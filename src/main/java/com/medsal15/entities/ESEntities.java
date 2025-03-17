@@ -1,7 +1,8 @@
-package com.medsal15;
+package com.medsal15.entities;
 
 import java.util.function.Supplier;
 
+import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 
 import net.minecraft.core.registries.BuiltInRegistries;
