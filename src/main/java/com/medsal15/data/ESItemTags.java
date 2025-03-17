@@ -30,7 +30,17 @@ public class ESItemTags extends ItemTagsProvider {
             tagShield(shield);
         }
 
+        tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
+
         tag(ItemTags.PIGLIN_LOVED).add(ESItems.GOLD_SHIELD.get());
+
+        tag(Tags.Items.TOOLS_SPEAR).add(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD.get(),
+                ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
+        tag(Tags.Items.RANGED_WEAPON_TOOLS).add(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD.get(),
+                ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
+        tag(ItemTags.TRIDENT_ENCHANTABLE).add(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD.get(),
+                ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
+        tag(ItemTags.BREAKS_DECORATED_POTS).add(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
     }
 
     private void tagShield(DeferredItem<Item> item) {

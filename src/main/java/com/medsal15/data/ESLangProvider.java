@@ -1,5 +1,6 @@
 package com.medsal15.data;
 
+import com.medsal15.ESEntities;
 import com.medsal15.ESItems;
 import com.medsal15.ExtraStuck;
 import java.util.function.Supplier;
@@ -44,6 +45,11 @@ public class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.SLIED, "Can this even block damage?");
         add(SLIED_DROP_KEY, "Expectedly, it could not");
         addItem(ESItems.RIOT_SHIELD, "Riot Shield");
+        addItem(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE, "Captain Justice's Shield Throwable");
+        addItemTooltip(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE, "Straight from a comic book and ready to throw down!");
+        addItem(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD, "Captain Justice's Throwable Shield");
+        addItemTooltip(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD, "Straight from a comic book and ready to protect!");
+        addEntityType(ESEntities.CAPTAIN_JUSTICE_SHIELD, "Captain Justice Shield");
         addItem(ESItems.CAPITASHIELD, "Capitashield");
         addItemTooltip(ESItems.CAPITASHIELD, "Protects you, at a cost");
         addItem(ESItems.IRON_SHIELD, "Iron Shield");

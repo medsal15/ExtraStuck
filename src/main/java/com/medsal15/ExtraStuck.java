@@ -5,6 +5,7 @@ import java.text.NumberFormat;
 import org.slf4j.Logger;
 
 import com.medsal15.data.ESLangProvider;
+import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.IShieldBlock;
 import com.medsal15.items.shields.ThornShield;
@@ -32,6 +33,8 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
@@ -73,10 +76,13 @@ public class ExtraStuck {
 
         NeoForge.EVENT_BUS.addListener(this::onShieldBlock);
         modEventBus.addListener(this::registerCapabilities);
+        modEventBus.addListener(this::registerEntityRenderers);
+        modEventBus.addListener(this::registerEntityLayers);
 
         // Register the Deferred Register to the mod event bus so items get registered
         ESItems.DATA_COMPONENTS.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
+        ESEntities.ENTITIES.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 
@@ -90,6 +96,18 @@ public class ExtraStuck {
         isMinestuckLoaded = ModList.get().isLoaded("minestuck");
         if (ServerConfig.warnNoMinestuck && !isMinestuckLoaded)
             LOGGER.info("Minestuck is not loaded!");
+    }
+
+    @SubscribeEvent
+    public void registerEntityRenderers(RegisterRenderers event) {
+        event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
+                CaptainJusticeShield.CJSRenderer::new);
+    }
+
+    @SubscribeEvent
+    public void registerEntityLayers(RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(CaptainJusticeShield.CJSModel.LAYER_LOCATION,
+                CaptainJusticeShield.CJSModel::createLayer);
     }
 
     @SubscribeEvent

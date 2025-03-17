@@ -1,0 +1,21 @@
+{
+    "name": "Captain Justice's Throwable Shield",
+    "icon": "extrastuck:captain_justice_throwable_shield",
+    "category": "extrastuck:shields",
+    "advancement": "extrastuck:patchouli_books/has_riot_shield",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:captain_justice_throwable_shield,extrastuck:captain_justice_shield_throwable",
+            "text": "A shield that doubles as a ranged weapon.$(br2)$(3)$(l)Special:$() Shift-right click to toggle between shield and ranged weapon modes.$(br2)$(n)Tip:$() The last word in the shield's name tells you what it can do."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/captain_justice_throwable_shield_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:shields/riot_shield)riot shield$(/l) and a trident in a totem lathe."
+        }
+    ]
+}

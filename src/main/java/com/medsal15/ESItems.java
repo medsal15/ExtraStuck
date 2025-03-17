@@ -14,7 +14,9 @@ import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.HaltShield;
 import com.medsal15.items.shields.RushShield;
 import com.medsal15.items.shields.SbahjShield;
+import com.medsal15.items.shields.SwapShield;
 import com.medsal15.items.shields.ThornShield;
+import com.medsal15.items.throwables.SwapTrident;
 import com.mojang.serialization.Codec;
 
 import net.minecraft.core.component.DataComponentType;
@@ -110,11 +112,26 @@ public class ESItems {
     public static final DeferredItem<Item> ELDRITCH_SHIELD = ITEMS.registerItem("eldritch_shield",
             (properties) -> new RushShield(properties, 10),
             new Item.Properties().durability(1441));
+    /** Shield variant */
+    public static final DeferredItem<Item> CAPTAIN_JUSTICE_THROWABLE_SHIELD = ITEMS.registerItem(
+            "captain_justice_throwable_shield",
+            (properties) -> new SwapShield(properties, null),
+            new Item.Properties().durability(789));
     // #endregion Shields
 
+    /** Throwable variant */
+    public static final DeferredItem<Item> CAPTAIN_JUSTICE_SHIELD_THROWABLE = ITEMS.registerItem(
+            "captain_justice_shield_throwable", p -> new SwapTrident(p, CAPTAIN_JUSTICE_THROWABLE_SHIELD),
+            new Item.Properties().durability(789));
+
     public static Collection<DeferredItem<Item>> getItems() {
+        if (((SwapShield) CAPTAIN_JUSTICE_THROWABLE_SHIELD.get()).next == null) {
+            ((SwapShield) CAPTAIN_JUSTICE_THROWABLE_SHIELD.get()).next = CAPTAIN_JUSTICE_SHIELD_THROWABLE;
+        }
+
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.addAll(getShields());
+        list.add(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
         return list;
     }
 
@@ -127,6 +144,7 @@ public class ESItems {
         list.add(NON_CONTACT_CONTRACT);
         list.add(SLIED);
         list.add(RIOT_SHIELD);
+        list.add(CAPTAIN_JUSTICE_THROWABLE_SHIELD);
         list.add(CAPITASHIELD);
         list.add(IRON_SHIELD);
         list.add(SPIKES_ON_A_SLAB);

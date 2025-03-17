@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:riot_shield"
+  },
+  "input2": {
+    "item": "minecraft:trident"
+  },
+  "mode": "and",
+  "output": "extrastuck:captain_justice_throwable_shield"
+}

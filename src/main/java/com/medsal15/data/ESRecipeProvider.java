@@ -82,6 +82,14 @@ public class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.TAR, 197).grist(GristTypes.RUST, 228)
                 .build(msOutput);
 
+        CombinationRecipeBuilder.of(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD)
+                .input(ESItems.RIOT_SHIELD).and().input(Items.TRIDENT)
+                .build(msOutput);
+        GristCostRecipeBuilder
+                .of(Ingredient.of(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD, ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE))
+                .grist(GristTypes.COBALT, 827).grist(GristTypes.BUILD, 256).grist(GristTypes.GOLD, 433)
+                .build(msOutput);
+
         CombinationRecipeBuilder.of(ESItems.CAPITASHIELD)
                 .input(ESItems.GOLD_SHIELD).and().input(ESItems.NON_CONTACT_CONTRACT)
                 .build(msOutput);
