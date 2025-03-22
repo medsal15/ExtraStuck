@@ -10,11 +10,7 @@ Use attributes for EffectShield effect & duration, FlameShield duration, FluxShi
 
 ## Content ##
 
-### Shields ###
-
-See tree for full list
-
-Captain Justice's Throwable Shield: has a throwable mode
+Custom death messages on kill for jawbiter, eldritch shield, captain justice shield throwable
 
 ## Textures ##
 
