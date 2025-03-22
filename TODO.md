@@ -10,8 +10,6 @@ Use attributes for EffectShield effect & duration, FlameShield duration, FluxShi
 
 ## Content ##
 
-Custom death messages on kill for jawbiter, eldritch shield, captain justice shield throwable
-
 ## Textures ##
 
 Improve all shields' models and textures

@@ -1,4 +1,8 @@
 {
+  "death.attack.extrastuck:captain_justice_projectile": "%1$s was shot by %2$s",
+  "death.attack.extrastuck:captain_justice_projectile.item": "%1$s was shot by %2$s with %3$s",
+  "death.attack.extrastuck:thorn_shield": "%1$s struck %2$s's shield too hard",
+  "death.attack.extrastuck:thorn_shield.item": "%1$s struck %2$s's %3$s too hard",
   "entity.extrastuck.captain_justice_shield": "Captain Justice Shield",
   "extrastuck.energy_storage": "%s / %s RF",
   "extrastuck.shield_damage": "Deals %s damage to melee attackers",

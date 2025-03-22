@@ -153,6 +153,17 @@ public class ExtraStuck {
             ItemStack stack = event.getItemStack();
             var item = stack.getItem();
 
+            // Fancy item descriptions
+            final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
+            if (itemId != null && itemId.getNamespace().equals(ExtraStuck.MODID)) {
+                String name = stack.getDescriptionId() + ".tooltip";
+                if (I18n.exists(name)) {
+                    event.getToolTip().add(i,
+                            Component.translatable(name).withStyle(ChatFormatting.GRAY));
+                    i++;
+                }
+            }
+
             // Shield info
             if (ClientConfig.displayShieldInfo) {
                 if (item instanceof ThornShield shield) {
@@ -170,17 +181,6 @@ public class ExtraStuck {
                         NumberFormat.getInstance().format(stack.getOrDefault(ESItems.ENERGY, 0)),
                         NumberFormat.getInstance().format(shield.storage)));
                 i++;
-            }
-
-            // Fancy item descriptions
-            final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
-            if (itemId != null && itemId.getNamespace().equals(ExtraStuck.MODID)) {
-                String name = stack.getDescriptionId() + ".tooltip";
-                if (I18n.exists(name)) {
-                    event.getToolTip().add(i,
-                            Component.translatable(name).withStyle(ChatFormatting.GRAY));
-                    i++;
-                }
             }
         }
     }

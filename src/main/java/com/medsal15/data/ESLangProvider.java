@@ -1,13 +1,17 @@
 package com.medsal15.data;
 
+import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
 import java.util.function.Supplier;
+
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.Item;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class ESLangProvider extends LanguageProvider {
@@ -66,9 +70,19 @@ public class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.POGO_SHIELD, "The shield that bounces back!");
         addItem(ESItems.RETURN_TO_SENDER, "Return to Sender");
         addItemTooltip(ESItems.RETURN_TO_SENDER, "The shield that shoots back!");
+
+        addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
+                "%1$s was shot by %2$s with %3$s");
+        addDeathMessages(ESDamageTypes.THORN_SHIELD, "%1$s struck %2$s's shield too hard",
+                "%1$s struck %2$s's %3$s too hard");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {
         add(((Item) (key.get())).getDescriptionId() + ".tooltip", text);
+    }
+
+    protected void addDeathMessages(ResourceKey<DamageType> damage, String generic, String namedItem) {
+        add("death.attack." + damage.location().toString(), generic);
+        add("death.attack." + damage.location().toString() + ".item", namedItem);
     }
 }

@@ -1,9 +1,10 @@
 package com.medsal15.items.shields;
 
+import com.medsal15.ESDamageTypes;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 
@@ -38,7 +39,7 @@ public class ThornShield extends ESShield implements IShieldBlock {
         // This will crash at some point due to a null or whatever, no clue when or why
         var level = event.getEntity().level();
         var type = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
-                .getHolderOrThrow(DamageTypes.THORNS);
+                .getHolderOrThrow(ESDamageTypes.THORN_SHIELD);
         var retSource = new DamageSource(type, event.getEntity());
         livingEntity.hurt(retSource, this.damage);
         return true;
