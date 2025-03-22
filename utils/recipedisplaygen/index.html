@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Patchouli Recipe Display Generator</title>
+    <style>
+        body {
+            background-color: #aaa;
+        }
+
+        .column {
+            float: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #result {
+            width: 512px;
+            height: 512px;
+            border: 1px solid;
+            border-color: gray black black gray;
+            background: white;
+        }
+
+        .item-display {
+            width: 256px;
+            height: 256px;
+            border: 1px solid;
+            border-color: lightgray gray gray lightgray;
+            background-color: white;
+        }
+
+        .stack {
+            display: inline-flex;
+            flex-direction: column;
+        }
+
+        #grist-list {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        .grist-display {
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="column">
+        <canvas id="result" width="256" height="256"></canvas>
+        <br />
+        <div>
+            <div class="stack">
+                <label for="item-left">Left Item</label>
+                <input type="file" id="item-left" style="max-width: 256px;" />
+                <canvas id="item-left-display" class="item-display" width="128" height="128"></canvas>
+            </div>
+            <div class="stack">
+                <label for="item-right">Right Item</label>
+                <input type="file" id="item-right" style="max-width: 256px;" />
+                <canvas id="item-right-display" class="item-display" width="128" height="128"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div>
+            <label for="mode">Mode</label>
+            <input type="text" id="mode" maxlength="2" />
+        </div>
+        <div>
+            Grist
+            <button id="clear">Clear</button>
+            <div id="grist-list"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    'use strict';
+
+    /** @type {HTMLCanvasElement} */
+    const canvas = document.getElementById('result'),
+        ctx = canvas.getContext('2d'),
+        result_bg = new Image,
+        grist_list = ['build', 'amber', 'caulk', 'chalk',
+            'iodine', 'shale', 'tar', 'cobalt',
+            'marble', 'mercury', 'quartz', 'sulfur',
+            'amethyst', 'garnet', 'ruby', 'rust',
+            'diamond', 'gold', 'uranium', 'artifact',
+            'zillium'];
+    result_bg.addEventListener('load', e => {
+        ctx.drawImage(result_bg, 0, 0, canvas.width, canvas.height);
+    });
+    result_bg.src = './assets/base_comb.png';
+
+    let left_img = new Image,
+        right_img = new Image;
+    left_img.addEventListener('load', e => {
+        /** @type {HTMLCanvasElement} */
+        const canvasl = document.getElementById('item-left-display');
+        const ctxl = canvasl.getContext('2d');
+
+        canvasl.width = canvasl.width;
+        canvasl.height = canvasl.height;
+        ctx.imageSmoothingEnabled = false;
+        ctxl.drawImage(left_img, 0, 0, canvasl.width, canvasl.height);
+        if (left_img.width > 67) left_img.width = 67;
+        if (left_img.height > 72) left_img.height = 72;
+
+        ctx.drawImage(result_bg, 11, 13, 67, 72, 11, 13, 67, 72);
+        ctx.drawImage(left_img, 11, 13, left_img.width, left_img.height);
+    });
+    right_img.addEventListener('load', e => {
+        /** @type {HTMLCanvasElement} */
+        const canvasr = document.getElementById('item-right-display');
+        const ctxr = canvasr.getContext('2d');
+
+        canvasr.width = canvasr.width;
+        canvasr.height = canvasr.height;
+        ctx.imageSmoothingEnabled = false;
+        ctxr.drawImage(right_img, 0, 0, canvasr.width, canvasr.height);
+        if (right_img.width > 67) right_img.width = 67;
+        if (right_img.height > 72) right_img.height = 72;
+
+        ctx.drawImage(result_bg, 122, 13, 67, 72, 122, 13, 67, 72);
+        ctx.drawImage(right_img, 122, 13, right_img.width, right_img.height);
+    });
+
+    document.getElementById('item-right').addEventListener('change', e => {
+        /** @type {HTMLInputElement|null} */
+        const input = e.srcElement;
+        if (!input || !input.files.length) return;
+
+        const img_file = input.files[0];
+        if (!/^image\/.+/.exec(img_file.type)) return;
+
+        if (right_img.src) URL.revokeObjectURL(right_img.src);
+
+        right_img.src = URL.createObjectURL(img_file);
+    });
+    document.getElementById('item-left').addEventListener('change', e => {
+        /** @type {HTMLInputElement|null} */
+        const input = e.srcElement;
+        if (!input || !input.files.length) return;
+
+        const img_file = input.files[0];
+        if (!/^image\/.+/.exec(img_file.type)) return;
+
+        if (left_img.src) URL.revokeObjectURL(left_img.src);
+
+        left_img.src = URL.createObjectURL(img_file);
+    });
+    document.getElementById('mode').addEventListener('change', e => {
+        /** @type {HTMLInputElement|null} */
+        const input = e.srcElement;
+        if (!input) return;
+
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(result_bg, 80, 33, 40, 31, 80, 33, 40, 31);
+        const fontsize = 24.5;
+        ctx.fillStyle = '#1AB3F1';
+        ctx.font = fontsize + 'px Verdana';
+        ctx.textAlign = 'center';
+        ctx.fillText(input.value, 100, 33 + fontsize, 40);
+    });
+    document.getElementById('clear').addEventListener('click', e => {
+        Array.from(document.getElementsByClassName('input-grist')).forEach(input => {
+            input.value = 0;
+        });
+        redraw_grist();
+    });
+
+    function load_grist() {
+        const container = document.getElementById('grist-list');
+        if (!container) return;
+        container.textContent = '';
+        grist_list.forEach(grist => {
+            const box = document.createElement('div'),
+                imgbox = document.createElement('div'),
+                img = new Image,
+                inbox = document.createElement('div'),
+                label = document.createElement('label'),
+                input = document.createElement('input');
+
+            box.classList.add('grist-display');
+
+            imgbox.style.width = '32px';
+            imgbox.style.height = '32px';
+            imgbox.classList.add('column');
+
+            img.src = './assets/grist/' + grist + '.png';
+            img.id = 'img-grist-' + grist;
+
+            inbox.classList.add('stack', 'column');
+
+            label.textContent = grist[0].toUpperCase() + grist.slice(1);
+            label.htmlFor = 'grist-' + grist;
+
+            input.type = 'number';
+            input.step = 1;
+            input.id = 'grist-' + grist;
+            input.value = 0;
+            input.addEventListener('change', e => redraw_grist());
+            input.classList.add('input-grist');
+
+            imgbox.appendChild(img);
+            inbox.appendChild(label);
+            inbox.appendChild(input);
+            box.appendChild(imgbox);
+            box.appendChild(inbox);
+            container.appendChild(box);
+        });
+    }
+
+    function redraw_grist() {
+        /** @type {[string, number][]} */
+        const grist = grist_list.map(grist => {
+            /** @type {HTMLInputElement|null} */
+            const input = document.getElementById('grist-' + grist);
+            if (!input) return;
+
+            return [grist, +input.value];
+        }).filter(([, v]) => v != 0).reverse();
+
+        ctx.drawImage(result_bg, 4, 107, 192, 88, 4, 107, 192, 88);
+
+        if (grist.length) {
+            const fontsize = 21.85,
+                maxx = 192,
+                maxy = 88,
+                margin = 5,
+                /** @type {[string, number][][]} */
+                rows = [[]],
+                /** @type {number[]} */
+                row_sums = [0];
+            ctx.fillStyle = '#1AB3F1';
+            ctx.font = fontsize + 'px Verdana';
+            ctx.textAlign = 'left';
+
+            grist.forEach(([grist, amount]) => {
+                if (grist == 'artifact') {
+                    ctx.font = fontsize + 'px "Comic Sans"';
+                }
+                /** @type {HTMLImageElement} */
+                let img = document.getElementById('img-grist-' + grist);
+                if (img.height > 28) {
+                    let r = new Image;
+                    r.src = img.src;
+                    const mult = r.height / 28;
+                    r.height = 28;
+                    r.width /= mult;
+                    img = r;
+                }
+                const width = img.width + ctx.measureText(amount).width + margin * 2;
+
+                for (let i = 0; i < rows.length; i++) {
+                    if (row_sums[i] + width <= maxx) {
+                        rows[i].push(([grist, amount]));
+                        row_sums[i] += width;
+                        return;
+                    }
+                }
+
+                rows.push([[grist, amount]]);
+                row_sums.push(width);
+            });
+
+            rows.forEach((row, i) => {
+                // Margin is counted twice per entry, so remove it once for the end of the line
+                const sum = row_sums[i] - 5;
+                let x = (maxx - sum) / 2,
+                    y = 28 * i;
+                row.forEach(([grist, amount]) => {
+                    if (grist == 'artifact') {
+                        ctx.font = fontsize + 'px "Comic Sans"';
+                    }
+
+                    /** @type {HTMLImageElement} */
+                    let img = document.getElementById('img-grist-' + grist);
+                    if (img.height > 28) {
+                        let r = new Image;
+                        r.src = img.src;
+                        const mult = r.height / 28;
+                        r.height = 28;
+                        r.width /= mult;
+                        img = r;
+                    }
+
+                    ctx.drawImage(img, x + 4, maxy - y - img.height + 103);
+                    x += img.width + margin;
+                    ctx.fillText(amount, x + 4, maxy - y + 107 - img.height / 4);
+                    x += ctx.measureText(amount).width + margin;
+
+                    ctx.font = fontsize + 'px Verdana';
+                });
+            });
+        }
+    }
+
+    load_grist();
+</script>
+
+</html>

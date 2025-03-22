@@ -17,5 +17,3 @@ Improve all shields' models and textures
 Add custom handles where it makes sense
 
 Make the halt shield look more like Halt, from Doors
-
-Make a simple tool to generate the recipe displays for Patchouli
