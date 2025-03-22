@@ -108,14 +108,47 @@ public class CaptainJusticeShield extends AbstractArrow {
             this.root = root;
         }
 
-        // todo support transparency
         public static LayerDefinition createLayer() {
             MeshDefinition mesh = new MeshDefinition();
             PartDefinition root = mesh.getRoot();
-            // do not touch the main part, it's good
             PartDefinition shield = root.addOrReplaceChild("main",
                     CubeListBuilder.create().texOffs(0, 0).addBox(-6F, 0F, -6F, 12F, 1F, 12F), PartPose.ZERO);
-            // todo add spikes
+            shield.addOrReplaceChild("spike_d1",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(-.5F, -0.05F, -9F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) (Math.PI * -.25), 0));
+            shield.addOrReplaceChild("spike_d2",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(-.5F, -0.05F, -9F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) (Math.PI * .25), 0));
+            shield.addOrReplaceChild("spike_d3",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(-.5F, -0.05F, -9F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) (Math.PI * .75), 0));
+            shield.addOrReplaceChild("spike_d4",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(-.5F, -0.05F, -9F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) (Math.PI * -.75), 0));
+            shield.addOrReplaceChild("spike_1",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -0.05F, -7F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, 0, 0));
+            shield.addOrReplaceChild("spike_2",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(1.5F, -0.05F, -7F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, 0, 0));
+            shield.addOrReplaceChild("spike_3",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -0.05F, -7F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) (Math.PI / 2), 0));
+            shield.addOrReplaceChild("spike_4",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(1.5F, -0.05F, -7F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) (Math.PI / 2), 0));
+            shield.addOrReplaceChild("spike_5",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -0.05F, -7F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) Math.PI, 0));
+            shield.addOrReplaceChild("spike_6",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(1.5F, -0.05F, -7F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) Math.PI, 0));
+            shield.addOrReplaceChild("spike_7",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -0.05F, -7F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) -(Math.PI / 2), 0));
+            shield.addOrReplaceChild("spike_8",
+                    CubeListBuilder.create().texOffs(0, 0).addBox(1.5F, -0.05F, -7F, 1.1F, 1.1F, 2F),
+                    PartPose.rotation(0, (float) -(Math.PI / 2), 0));
 
             return LayerDefinition.create(mesh, 48, 13);
         }

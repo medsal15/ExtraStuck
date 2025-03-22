@@ -18,6 +18,6 @@ public class ESEntities {
     public static final Supplier<EntityType<CaptainJusticeShield>> CAPTAIN_JUSTICE_SHIELD = ENTITIES.register(
             "captain_justice_shield",
             () -> EntityType.Builder.<CaptainJusticeShield>of(CaptainJusticeShield::new, MobCategory.MISC)
-                    .sized(1F, .25F).setTrackingRange(2).setUpdateInterval(10)
+                    .sized(1F, .25F).setTrackingRange(1).setUpdateInterval(10)
                     .build(ExtraStuck.MODID + ":captain_justice_shield"));
 }

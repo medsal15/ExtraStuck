@@ -8,7 +8,6 @@
     "extrastuck:slied",
     "extrastuck:riot_shield",
     "extrastuck:captain_justice_throwable_shield",
-    "extrastuck:captain_justice_shield_throwable",
     "extrastuck:capitashield",
     "extrastuck:iron_shield",
     "extrastuck:spikes_on_a_slab",
@@ -20,6 +19,7 @@
     "extrastuck:netherite_shield",
     "extrastuck:garnet_shield",
     "extrastuck:pogo_shield",
-    "extrastuck:return_to_sender"
+    "extrastuck:return_to_sender",
+    "extrastuck:captain_justice_shield_throwable"
   ]
 }
