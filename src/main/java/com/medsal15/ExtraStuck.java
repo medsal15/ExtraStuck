@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
@@ -108,10 +109,11 @@ public class ExtraStuck {
     public void registerEntityRenderers(RegisterRenderers event) {
         event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
                 CaptainJusticeShield.CJSRenderer::new);
-        event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), FlameArrow.FARenderer::new);
-        event.registerEntityRenderer(ESEntities.NETHER_ARROW.get(), NetherArrow.NARenderer::new);
-        event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), CardboardArrow.CARenderer::new);
-        event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), MissedArrow.MARenderer::new);
+        event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), FlameArrow.Renderer::new);
+        event.registerEntityRenderer(ESEntities.NETHER_ARROW.get(), NetherArrow.Renderer::new);
+        event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), CardboardArrow.Renderer::new);
+        event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), MissedArrow.Renderer::new);
+        event.registerEntityRenderer(ESEntities.CANDY_ARROW.get(), CandyArrow.Renderer::new);
     }
 
     @SubscribeEvent

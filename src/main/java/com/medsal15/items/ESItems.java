@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
@@ -140,6 +141,8 @@ public class ESItems {
             p -> new ESArrowItem(p, CardboardArrow::new, CardboardArrow::new));
     public static final DeferredItem<Item> MISSED_YOU = ITEMS.registerItem("missed_you",
             p -> new ESArrowItem(p, MissedArrow::new, MissedArrow::new));
+    public static final DeferredItem<Item> SWEET_TOOTH = ITEMS.registerItem("sweet_tooth",
+            p -> new ESArrowItem(p, CandyArrow::new, CandyArrow::new));
     // #endregion Arrows
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -185,6 +188,7 @@ public class ESItems {
         list.add(FLAME_ARROW);
         list.add(CARDBOARD_ARROW);
         list.add(MISSED_YOU);
+        list.add(SWEET_TOOTH);
         return list;
     }
 }

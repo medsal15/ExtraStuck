@@ -94,11 +94,11 @@ public class FlameArrow extends AbstractArrow {
         }
     }
 
-    public static class FARenderer extends ArrowRenderer<FlameArrow> {
+    public static class Renderer extends ArrowRenderer<FlameArrow> {
         public static final ResourceLocation TEXTURE = ResourceLocation
                 .fromNamespaceAndPath(ExtraStuck.MODID, "textures/entity/flame_arrow.png");
 
-        public FARenderer(EntityRendererProvider.Context context) {
+        public Renderer(EntityRendererProvider.Context context) {
             super(context);
         }
 

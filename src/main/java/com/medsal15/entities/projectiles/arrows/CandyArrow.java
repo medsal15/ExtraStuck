@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
+import com.mraof.minestuck.entity.underling.UnderlingEntity;
 
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -16,46 +17,46 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 
-public class NetherArrow extends AbstractArrow {
-    public NetherArrow(EntityType<? extends NetherArrow> entityType, Level level) {
+public class CandyArrow extends AbstractArrow {
+    public CandyArrow(EntityType<? extends CandyArrow> entityType, Level level) {
         super(entityType, level);
     }
 
-    public NetherArrow(Level level, ItemStack pickup, LivingEntity shooter, ItemStack weapon) {
-        super(ESEntities.NETHER_ARROW.get(), shooter, level, pickup, weapon);
+    public CandyArrow(Level level, ItemStack pickup, LivingEntity shooter, ItemStack weapon) {
+        super(ESEntities.CARDBOARD_ARROW.get(), shooter, level, pickup, weapon);
     }
 
-    public NetherArrow(Level level, double x, double y, double z, ItemStack pickup, ItemStack weapon) {
-        super(ESEntities.NETHER_ARROW.get(), x, y, z, level, pickup, weapon);
+    public CandyArrow(Level level, double x, double y, double z, ItemStack pickup, ItemStack weapon) {
+        super(ESEntities.CARDBOARD_ARROW.get(), x, y, z, level, pickup, weapon);
     }
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return new ItemStack(ESItems.NETHER_ARROW.get());
+        return ESItems.SWEET_TOOTH.toStack();
     }
 
     @Override
     protected void onHitEntity(@Nonnull EntityHitResult result) {
-        var entity = result.getEntity();
-        var baseDamage = getBaseDamage();
-        if (entity.getRemainingFireTicks() > 0) {
-            setBaseDamage(baseDamage * 1.5);
+        if (ExtraStuck.isMinestuckLoaded) {
+
+            var entity = result.getEntity();
+            if (!(entity instanceof UnderlingEntity underling))
+                return;
+            underling.dropCandy = true;
         }
         super.onHitEntity(result);
-
-        setBaseDamage(baseDamage);
     }
 
-    public static class Renderer extends ArrowRenderer<NetherArrow> {
+    public static class Renderer extends ArrowRenderer<CandyArrow> {
         public static final ResourceLocation TEXTURE = ResourceLocation
-                .fromNamespaceAndPath(ExtraStuck.MODID, "textures/entity/nether_arrow.png");
+                .fromNamespaceAndPath(ExtraStuck.MODID, "textures/entity/candy_arrow.png");
 
         public Renderer(EntityRendererProvider.Context context) {
             super(context);
         }
 
         @Override
-        public ResourceLocation getTextureLocation(@Nonnull NetherArrow entity) {
+        public ResourceLocation getTextureLocation(@Nonnull CandyArrow entity) {
             return TEXTURE;
         }
     }

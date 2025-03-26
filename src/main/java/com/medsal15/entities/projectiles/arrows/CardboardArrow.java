@@ -36,11 +36,11 @@ public class CardboardArrow extends AbstractArrow {
         return new ItemStack(ESItems.CARDBOARD_ARROW.get());
     }
 
-    public static class CARenderer extends ArrowRenderer<CardboardArrow> {
+    public static class Renderer extends ArrowRenderer<CardboardArrow> {
         public static final ResourceLocation TEXTURE = ResourceLocation
                 .fromNamespaceAndPath(ExtraStuck.MODID, "textures/entity/cardboard_arrow.png");
 
-        public CARenderer(EntityRendererProvider.Context context) {
+        public Renderer(EntityRendererProvider.Context context) {
             super(context);
         }
 

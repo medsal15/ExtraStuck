@@ -39,11 +39,11 @@ public class MissedArrow extends AbstractArrow {
         return;
     }
 
-    public static class MARenderer extends ArrowRenderer<MissedArrow> {
+    public static class Renderer extends ArrowRenderer<MissedArrow> {
         public static final ResourceLocation TEXTURE = ResourceLocation
                 .fromNamespaceAndPath(ExtraStuck.MODID, "textures/entity/missed_arrow.png");
 
-        public MARenderer(EntityRendererProvider.Context context) {
+        public Renderer(EntityRendererProvider.Context context) {
             super(context);
         }
 

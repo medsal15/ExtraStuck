@@ -1,0 +1,22 @@
+{
+    "name": "Sweet Tooth",
+    "icon": "extrastuck:sweet_tooth",
+    "category": "extrastuck:arrows",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:sweet_tooth"
+            },
+            "text": "An arrow made of candy.$(br)The tip is caramel, the body is twizzlers, and the fletching is cotton candy.$(br2)$(3)$(l)Special:$() Allows underlings to drop candy."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/sweet_tooth_recipe.png"
+            ],
+            "text": "Combine a bone and candy corn in a totem lathe."
+        }
+    ]
+}

@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
@@ -39,4 +40,8 @@ public class ESEntities {
             () -> EntityType.Builder.<MissedArrow>of(MissedArrow::new, MobCategory.MISC)
                     .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
                     .build(ExtraStuck.MODID + ":missed_arrow"));
+    public static final Supplier<EntityType<CandyArrow>> CANDY_ARROW = ENTITIES.register("candy_arrow",
+            () -> EntityType.Builder.<CandyArrow>of(CandyArrow::new, MobCategory.MISC)
+                    .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
+                    .build(ExtraStuck.MODID + ":candy_arrow"));
 }
