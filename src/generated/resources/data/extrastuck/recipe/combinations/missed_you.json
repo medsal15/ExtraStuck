@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:cardboard_arrow"
+  },
+  "input2": {
+    "item": "minestuck:sbahj_poster"
+  },
+  "mode": "or",
+  "output": "extrastuck:missed_you"
+}

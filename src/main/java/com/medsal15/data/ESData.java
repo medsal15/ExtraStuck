@@ -55,5 +55,6 @@ public final class ESData {
         gen.addProvider(event.includeServer(),
                 new ESItemTags(output, lookupProvider, blocktags.contentsGetter(), fileHelper));
         gen.addProvider(event.includeServer(), new DataMapGenerator(output, lookupProvider));
+        gen.addProvider(event.includeServer(), new ESEntityTypeTags(output, lookupProvider, fileHelper));
     }
 }

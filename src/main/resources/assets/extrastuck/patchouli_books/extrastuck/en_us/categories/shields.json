@@ -2,5 +2,5 @@
     "name": "Shields",
     "sortnum": 1,
     "description": "Getting and using shields",
-    "icon": "extrastuck:wooden_shield"
+    "icon": "minecraft:shield"
 }

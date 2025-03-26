@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:sulfur": 8,
+    "minestuck:tar": 4
+  },
+  "ingredient": {
+    "item": "extrastuck:flame_arrow"
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Nether Arrow",
+    "icon": "extrastuck:nether_arrow",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:nether_arrow"
+            },
+            "text": "An improved arrow straight from the Nether.$(br2)$(3)$(l)Special:$() Deals 50% more damage to burning enemies."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/nether_arrow_recipe.png"
+            ],
+            "text": "Combine an arrow and netherrack in a totem lathe."
+        }
+    ]
+}

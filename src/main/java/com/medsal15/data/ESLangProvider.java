@@ -71,6 +71,17 @@ public class ESLangProvider extends LanguageProvider {
         addItem(ESItems.RETURN_TO_SENDER, "Return to Sender");
         addItemTooltip(ESItems.RETURN_TO_SENDER, "The shield that shoots back!");
 
+        addItem(ESItems.NETHER_ARROW, "Nether Arrow");
+        addItemTooltip(ESItems.NETHER_ARROW, "Likes the heat");
+        addEntityType(ESEntities.NETHER_ARROW, "Nether Arrow");
+        addItem(ESItems.FLAME_ARROW, "Flame Arrow");
+        addItemTooltip(ESItems.FLAME_ARROW, "Extra hot");
+        addEntityType(ESEntities.FLAME_ARROW, "Flame Arrow");
+        addItem(ESItems.CARDBOARD_ARROW, "Cardboard Arrow");
+        addEntityType(ESEntities.CARDBOARD_ARROW, "Cardboard Arrow");
+        addItem(ESItems.MISSED_YOU, "Missed You");
+        addEntityType(ESEntities.MISSED_ARROW, "Missed Arrow");
+
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
         addDeathMessages(ESDamageTypes.THORN_SHIELD, "%1$s struck %2$s's shield too hard",

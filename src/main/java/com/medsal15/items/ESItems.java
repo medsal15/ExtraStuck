@@ -5,6 +5,11 @@ import java.util.Collection;
 import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.entities.projectiles.arrows.CardboardArrow;
+import com.medsal15.entities.projectiles.arrows.FlameArrow;
+import com.medsal15.entities.projectiles.arrows.MissedArrow;
+import com.medsal15.entities.projectiles.arrows.NetherArrow;
+import com.medsal15.items.arrows.ESArrowItem;
 import com.medsal15.items.shields.BoondollarShield;
 import com.medsal15.items.shields.BounceShield;
 import com.medsal15.items.shields.CandyShield;
@@ -40,7 +45,8 @@ public class ESItems {
 
     public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister
             .createDataComponents(Registries.DATA_COMPONENT_TYPE, ExtraStuck.MODID);
-    public static final Supplier<DataComponentType<Integer>> ENERGY = DATA_COMPONENTS.registerComponentType("energy",
+    public static final Supplier<DataComponentType<Integer>> ENERGY = DATA_COMPONENTS.registerComponentType(
+            "energy",
             builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
     // #region Shields
@@ -125,6 +131,17 @@ public class ESItems {
             "captain_justice_shield_throwable", p -> new SwapTrident(p, CAPTAIN_JUSTICE_THROWABLE_SHIELD),
             new Item.Properties().durability(789));
 
+    // #region Arrows
+    public static final DeferredItem<Item> NETHER_ARROW = ITEMS.registerItem("nether_arrow",
+            p -> new ESArrowItem(p, NetherArrow::new, NetherArrow::new));
+    public static final DeferredItem<Item> FLAME_ARROW = ITEMS.registerItem("flame_arrow",
+            p -> new ESArrowItem(p, FlameArrow::new, FlameArrow::new));
+    public static final DeferredItem<Item> CARDBOARD_ARROW = ITEMS.registerItem("cardboard_arrow",
+            p -> new ESArrowItem(p, CardboardArrow::new, CardboardArrow::new));
+    public static final DeferredItem<Item> MISSED_YOU = ITEMS.registerItem("missed_you",
+            p -> new ESArrowItem(p, MissedArrow::new, MissedArrow::new));
+    // #endregion Arrows
+
     public static Collection<DeferredItem<Item>> getItems() {
         if (((SwapShield) CAPTAIN_JUSTICE_THROWABLE_SHIELD.get()).next == null) {
             ((SwapShield) CAPTAIN_JUSTICE_THROWABLE_SHIELD.get()).next = CAPTAIN_JUSTICE_SHIELD_THROWABLE;
@@ -133,6 +150,7 @@ public class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.addAll(getShields());
         list.add(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
+        list.addAll(getArrows());
         return list;
     }
 
@@ -158,6 +176,15 @@ public class ESItems {
         list.add(GARNET_SHIELD);
         list.add(POGO_SHIELD);
         list.add(RETURN_TO_SENDER);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getArrows() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(NETHER_ARROW);
+        list.add(FLAME_ARROW);
+        list.add(CARDBOARD_ARROW);
+        list.add(MISSED_YOU);
         return list;
     }
 }

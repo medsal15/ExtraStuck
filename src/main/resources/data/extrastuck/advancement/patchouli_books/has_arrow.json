@@ -1,0 +1,19 @@
+{
+    "criteria": {
+        "has_arrow": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "minecraft:arrow"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    },
+    "requirements": [
+        [
+            "has_arrow"
+        ]
+    ]
+}

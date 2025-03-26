@@ -1,0 +1,22 @@
+{
+    "name": "Cardboard Arrow",
+    "icon": "extrastuck:cardboard_arrow",
+    "category": "extrastuck:arrows",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:cardboard_arrow"
+            },
+            "text": "Literally the worst arrow available.$(br)Even if you're desperate, this is the lowest you can go."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/cardboard_arrow_recipe.png"
+            ],
+            "text": "Combine a cardboard tube and flint in a totem lathe."
+        }
+    ]
+}

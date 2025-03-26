@@ -1,0 +1,23 @@
+{
+    "name": "Flame Arrow",
+    "icon": "extrastuck:flame_arrow",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_nether_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:flame_arrow"
+            },
+            "text": "This burning arrow deals low damage, but its burning touch makes up for it.$(br2)$(3)$(l)Special:$() Burns enemies for at least 10 seconds, and sets the block it lands on on fire."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/flame_arrow_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:arrows/nether_arrow)nether arrow$(/l) and a blaze rod (powder accepted) in a totem lathe."
+        }
+    ]
+}

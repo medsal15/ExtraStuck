@@ -35,6 +35,11 @@ public class ESItemModelProvider extends ItemModelProvider {
         modelShield(ESItems.GARNET_SHIELD);
         modelShield(ESItems.POGO_SHIELD);
         modelShield(ESItems.RETURN_TO_SENDER);
+
+        basicItem(ESItems.FLAME_ARROW.get());
+        basicItem(ESItems.NETHER_ARROW.get());
+        basicItem(ESItems.CARDBOARD_ARROW.get());
+        basicItem(ESItems.MISSED_YOU.get());
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base) {

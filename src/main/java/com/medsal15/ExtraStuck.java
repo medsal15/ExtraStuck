@@ -7,6 +7,10 @@ import org.slf4j.Logger;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.entities.projectiles.arrows.CardboardArrow;
+import com.medsal15.entities.projectiles.arrows.FlameArrow;
+import com.medsal15.entities.projectiles.arrows.MissedArrow;
+import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.IShieldBlock;
@@ -104,6 +108,10 @@ public class ExtraStuck {
     public void registerEntityRenderers(RegisterRenderers event) {
         event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
                 CaptainJusticeShield.CJSRenderer::new);
+        event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), FlameArrow.FARenderer::new);
+        event.registerEntityRenderer(ESEntities.NETHER_ARROW.get(), NetherArrow.NARenderer::new);
+        event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), CardboardArrow.CARenderer::new);
+        event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), MissedArrow.MARenderer::new);
     }
 
     @SubscribeEvent

@@ -1,0 +1,23 @@
+{
+    "name": "Missed You",
+    "icon": "extrastuck:missed_you",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_cardboard_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:missed_you"
+            },
+            "text": "What is the purpose of an arrow that can't hit?$(br2)$(3)$(l)Special:$() Physically incapable of hitting enemies."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/missed_you_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:arrows/cardboard_arrow)cardboard arrow$(/l) and a sbahj poster in a punch designix."
+        }
+    ]
+}

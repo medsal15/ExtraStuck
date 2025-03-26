@@ -4,6 +4,10 @@ import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.entities.projectiles.arrows.CardboardArrow;
+import com.medsal15.entities.projectiles.arrows.FlameArrow;
+import com.medsal15.entities.projectiles.arrows.MissedArrow;
+import com.medsal15.entities.projectiles.arrows.NetherArrow;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -19,4 +23,20 @@ public class ESEntities {
             () -> EntityType.Builder.<CaptainJusticeShield>of(CaptainJusticeShield::new, MobCategory.MISC)
                     .sized(1F, .25F).setTrackingRange(1).setUpdateInterval(10)
                     .build(ExtraStuck.MODID + ":captain_justice_shield"));
+    public static final Supplier<EntityType<FlameArrow>> FLAME_ARROW = ENTITIES.register("flame_arrow",
+            () -> EntityType.Builder.<FlameArrow>of(FlameArrow::new, MobCategory.MISC)
+                    .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
+                    .build(ExtraStuck.MODID + ":flame_arrow"));
+    public static final Supplier<EntityType<NetherArrow>> NETHER_ARROW = ENTITIES.register("nether_arrow",
+            () -> EntityType.Builder.<NetherArrow>of(NetherArrow::new, MobCategory.MISC)
+                    .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
+                    .build(ExtraStuck.MODID + ":nether_arrow"));
+    public static final Supplier<EntityType<CardboardArrow>> CARDBOARD_ARROW = ENTITIES.register("cardboard_arrow",
+            () -> EntityType.Builder.<CardboardArrow>of(CardboardArrow::new, MobCategory.MISC)
+                    .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
+                    .build(ExtraStuck.MODID + ":cardboard_arrow"));
+    public static final Supplier<EntityType<MissedArrow>> MISSED_ARROW = ENTITIES.register("missed_arrow",
+            () -> EntityType.Builder.<MissedArrow>of(MissedArrow::new, MobCategory.MISC)
+                    .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
+                    .build(ExtraStuck.MODID + ":missed_arrow"));
 }

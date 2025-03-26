@@ -30,6 +30,10 @@ public class ESItemTags extends ItemTagsProvider {
             tagShield(shield);
         }
 
+        for (var arrow : ESItems.getArrows()) {
+            tag(ItemTags.ARROWS).add(arrow.get());
+        }
+
         tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 
         tag(ItemTags.PIGLIN_LOVED).add(ESItems.GOLD_SHIELD.get());
