@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:sweet_tooth"
             },
-            "text": "An arrow made of candy.$(br)The tip is caramel, the body is twizzlers, and the fletching is cotton candy.$(br2)$(3)$(l)Special:$() Allows underlings to drop candy."
+            "text": "An arrow made of candy.$(br)The tip is caramel, the body is twizzlers, and the fletching is cotton candy.$(br2)$(3)$(l)Special:$() Can be eaten, and allows underlings to drop candy."
         },
         {
             "type": "patchouli:image",

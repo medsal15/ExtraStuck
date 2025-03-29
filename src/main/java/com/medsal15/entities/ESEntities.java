@@ -7,6 +7,7 @@ import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
+import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
 
@@ -44,4 +45,8 @@ public class ESEntities {
             () -> EntityType.Builder.<CandyArrow>of(CandyArrow::new, MobCategory.MISC)
                     .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
                     .build(ExtraStuck.MODID + ":candy_arrow"));
+    public static final Supplier<EntityType<LightningArrow>> LIGHTNING_ARROW = ENTITIES.register("lightning_arrow",
+            () -> EntityType.Builder.<LightningArrow>of(LightningArrow::new, MobCategory.MISC)
+                    .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
+                    .build(ExtraStuck.MODID + ":lightning_arrow"));
 }

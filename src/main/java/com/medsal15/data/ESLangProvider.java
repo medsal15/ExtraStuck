@@ -82,7 +82,10 @@ public class ESLangProvider extends LanguageProvider {
         addItem(ESItems.MISSED_YOU, "Missed You");
         addEntityType(ESEntities.MISSED_ARROW, "Missed Arrow");
         addItem(ESItems.SWEET_TOOTH, "Sweet Tooth");
+        addItemTooltip(ESItems.SWEET_TOOTH, "Delicious and dangerous!");
         addEntityType(ESEntities.CANDY_ARROW, "Sweet Tooth");
+        addItem(ESItems.LIGHTNING_ARROW, "Lightning Bolt");
+        addEntityType(ESEntities.LIGHTNING_ARROW, "Lighting Arrow");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");

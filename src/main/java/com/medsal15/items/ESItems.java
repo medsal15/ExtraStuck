@@ -8,6 +8,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
+import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.items.arrows.ESArrowItem;
@@ -35,6 +36,7 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.phys.Vec3;
@@ -142,7 +144,11 @@ public class ESItems {
     public static final DeferredItem<Item> MISSED_YOU = ITEMS.registerItem("missed_you",
             p -> new ESArrowItem(p, MissedArrow::new, MissedArrow::new));
     public static final DeferredItem<Item> SWEET_TOOTH = ITEMS.registerItem("sweet_tooth",
-            p -> new ESArrowItem(p, CandyArrow::new, CandyArrow::new));
+            p -> new ESArrowItem(p, CandyArrow::new, CandyArrow::new),
+            new Item.Properties()
+                    .food(new FoodProperties.Builder().fast().nutrition(1).saturationModifier(.5F).build()));
+    public static final DeferredItem<Item> LIGHTNING_ARROW = ITEMS.registerItem("lightning_arrow",
+            p -> new ESArrowItem(p, LightningArrow::new, LightningArrow::new));
     // #endregion Arrows
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -189,6 +195,7 @@ public class ESItems {
         list.add(CARDBOARD_ARROW);
         list.add(MISSED_YOU);
         list.add(SWEET_TOOTH);
+        list.add(LIGHTNING_ARROW);
         return list;
     }
 }

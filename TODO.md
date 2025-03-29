@@ -10,7 +10,7 @@ Use attributes for EffectShield effect & duration, FlameShield duration, FluxShi
 
 Put patchouli guidebook at the start of the creative tab
 
-Simplify arrow classes to use one entity class
+Simplify arrow/shield classes to use one entity class
 
 ## Content ##
 

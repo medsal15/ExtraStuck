@@ -212,5 +212,12 @@ public class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.SWEET_TOOTH)
                 .grist(GristTypes.SHALE, 1).grist(GristTypes.IODINE, 6)
                 .build(msOutput);
+
+        CombinationRecipeBuilder.of(ESItems.LIGHTNING_ARROW)
+                .input(Items.LIGHTNING_ROD).or().input(MSItems.BATTERY)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.LIGHTNING_ARROW)
+                .grist(GristTypes.GOLD, 25).grist(GristTypes.RUST, 25)
+                .build(msOutput);
     }
 }

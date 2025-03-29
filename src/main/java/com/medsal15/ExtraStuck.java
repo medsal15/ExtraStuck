@@ -10,6 +10,7 @@ import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
+import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.items.ESItems;
@@ -114,6 +115,7 @@ public class ExtraStuck {
         event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), CardboardArrow.Renderer::new);
         event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), MissedArrow.Renderer::new);
         event.registerEntityRenderer(ESEntities.CANDY_ARROW.get(), CandyArrow.Renderer::new);
+        event.registerEntityRenderer(ESEntities.LIGHTNING_ARROW.get(), LightningArrow.Renderer::new);
     }
 
     @SubscribeEvent

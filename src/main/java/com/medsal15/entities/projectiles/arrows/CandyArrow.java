@@ -38,7 +38,6 @@ public class CandyArrow extends AbstractArrow {
     @Override
     protected void onHitEntity(@Nonnull EntityHitResult result) {
         if (ExtraStuck.isMinestuckLoaded) {
-
             var entity = result.getEntity();
             if (!(entity instanceof UnderlingEntity underling))
                 return;

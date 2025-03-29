@@ -41,6 +41,7 @@ public class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.CARDBOARD_ARROW.get());
         basicItem(ESItems.MISSED_YOU.get());
         basicItem(ESItems.SWEET_TOOTH.get());
+        basicItem(ESItems.LIGHTNING_ARROW.get());
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base) {

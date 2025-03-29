@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:lightning_rod"
+  },
+  "input2": {
+    "item": "minestuck:battery"
+  },
+  "mode": "or",
+  "output": "extrastuck:lightning_arrow"
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Lightning Bolt",
+    "icon": "extrastuck:lightning_arrow",
+    "category": "extrastuck:arrows",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:lightning_arrow"
+            },
+            "text": "Are you sure combining a battery and a lightning rod is a good idea?$(br2)$(3)$(l)Special:$() Summons thunder wherever it lands."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/lightning_arrow_recipe.png"
+            ],
+            "text": "Combine a lightning rod and a battery in a punch designix."
+        }
+    ]
+}
