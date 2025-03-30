@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:iron_arrow"
+  },
+  "input2": {
+    "tag": "c:gems/quartz"
+  },
+  "mode": "or",
+  "output": "extrastuck:quartz_arrow"
+}

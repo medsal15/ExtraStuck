@@ -90,6 +90,14 @@ public class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.EXPLOSIVE_ARROW, "Explosive Arrow");
         addItem(ESItems.IRON_ARROW, "Iron Arrow");
         addEntityType(ESEntities.IRON_ARROW, "Iron Arrow");
+        addItem(ESItems.QUARTZ_ARROW, "Quartz Arrow");
+        addEntityType(ESEntities.QUARTZ_ARROW, "Quartz Arrow");
+        addItem(ESItems.PRISMARINE_ARROW, "Prismarine Arrow");
+        addItemTooltip(ESItems.PRISMARINE_ARROW, "Best swimmer in class");
+        addEntityType(ESEntities.PRISMARINE_ARROW, "Prismarine Arrow");
+        addItem(ESItems.GLASS_ARROW, "Glass Arrow");
+        addItemTooltip(ESItems.GLASS_ARROW, "Fragile");
+        addEntityType(ESEntities.GLASS_ARROW, "Glass Arrow");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");

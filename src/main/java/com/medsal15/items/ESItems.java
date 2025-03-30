@@ -9,10 +9,13 @@ import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
+import com.medsal15.entities.projectiles.arrows.GlassArrow;
 import com.medsal15.entities.projectiles.arrows.IronArrow;
 import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
+import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
+import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.items.arrows.ESArrowItem;
 import com.medsal15.items.shields.BoondollarShield;
 import com.medsal15.items.shields.BounceShield;
@@ -154,6 +157,12 @@ public class ESItems {
             p -> new ESArrowItem(p, ExplosiveArrow::new, ExplosiveArrow::new));
     public static final DeferredItem<Item> IRON_ARROW = ITEMS.registerItem("iron_arrow",
             p -> new ESArrowItem(p, IronArrow::new, IronArrow::new));
+    public static final DeferredItem<Item> QUARTZ_ARROW = ITEMS.registerItem("quartz_arrow",
+            p -> new ESArrowItem(p, QuartzArrow::new, QuartzArrow::new));
+    public static final DeferredItem<Item> PRISMARINE_ARROW = ITEMS.registerItem("prismarine_arrow",
+            p -> new ESArrowItem(p, PrismarineArrow::new, PrismarineArrow::new));
+    public static final DeferredItem<Item> GLASS_ARROW = ITEMS.registerItem("glass_arrow",
+            p -> new ESArrowItem(p, GlassArrow::new, GlassArrow::new));
     // #endregion Arrows
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -203,6 +212,9 @@ public class ESItems {
         list.add(LIGHTNING_ARROW);
         list.add(EXPLOSIVE_ARROW);
         list.add(IRON_ARROW);
+        list.add(QUARTZ_ARROW);
+        list.add(PRISMARINE_ARROW);
+        list.add(GLASS_ARROW);
         return list;
     }
 }

@@ -1,0 +1,23 @@
+{
+    "name": "Prismarine Arrow",
+    "icon": "extrastuck:prismarine_arrow",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_quartz_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:prismarine_arrow"
+            },
+            "text": "An arrow made of prismarine. You know, the underwater stuff.$(br2)$(3)$(l)Special:$() Flies through water as if it were air."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/prismarine_arrow_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:arrows/quartz_arrow)quartz arrow$(/l) and a prismarine shard in a totem lathe."
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Glass Arrow",
+    "icon": "extrastuck:glass_arrow",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_quartz_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:glass_arrow"
+            },
+            "text": "This arrow's tip is made of glass, making it very fragile.$(br)Make every shot count.$(br2)$(3)$(l)Special:$() Breaks after use."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/glass_arrow_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:arrows/quartz_arrow)quartz arrow$(/l) and glass in a totem lathe."
+        }
+    ]
+}

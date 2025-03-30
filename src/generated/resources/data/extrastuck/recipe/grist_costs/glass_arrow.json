@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:marble": 5,
+    "minestuck:quartz": 25
+  },
+  "ingredient": {
+    "item": "extrastuck:glass_arrow"
+  }
+}

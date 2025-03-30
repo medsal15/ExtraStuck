@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 1,
+    "minestuck:cobalt": 7,
+    "minestuck:diamond": 1
+  },
+  "ingredient": {
+    "item": "extrastuck:prismarine_arrow"
+  }
+}

@@ -17,7 +17,7 @@
             "images": [
                 "extrastuck:textures/patchouli_books/slied_recipe.png"
             ],
-            "text": "Combine a $(l:extrastuck:shields/non_contact_contract)non-contact contract(/l) and a SBAHJ poster in a totem lathe."
+            "text": "Combine a $(l:extrastuck:shields/non_contact_contract)non-contact contract$(/l) and a SBAHJ poster in a totem lathe."
         }
     ]
 }

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:quartz_arrow"
+  },
+  "input2": {
+    "tag": "c:glass_blocks"
+  },
+  "mode": "and",
+  "output": "extrastuck:glass_arrow"
+}

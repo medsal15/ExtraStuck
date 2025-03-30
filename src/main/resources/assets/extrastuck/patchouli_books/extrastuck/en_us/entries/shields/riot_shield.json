@@ -17,7 +17,7 @@
             "images": [
                 "extrastuck:textures/patchouli_books/riot_shield_recipe.png"
             ],
-            "text": "Combine a $(l:extrastuck:shields/non_contact_contract)non-contact contract(/l) and Rockefeller's walking bladecane in a punch designix."
+            "text": "Combine a $(l:extrastuck:shields/non_contact_contract)non-contact contract$(/l) and Rockefeller's walking bladecane in a punch designix."
         }
     ]
 }

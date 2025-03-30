@@ -17,7 +17,7 @@
             "images": [
                 "extrastuck:textures/patchouli_books/non_contact_contract_recipe.png"
             ],
-            "text": "Combine a $(l:extrastuck:shields/wooden_shield)wooden shield(/l) and paper in a totem lathe."
+            "text": "Combine a $(l:extrastuck:shields/wooden_shield)wooden shield$(/l) and paper in a totem lathe."
         }
     ]
 }

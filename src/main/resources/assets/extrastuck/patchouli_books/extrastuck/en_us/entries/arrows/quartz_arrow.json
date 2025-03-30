@@ -1,0 +1,23 @@
+{
+    "name": "Quartz Arrow",
+    "icon": "extrastuck:quartz_arrow",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_iron_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:quartz_arrow"
+            },
+            "text": "An upgraded iron arrow, now featuring materials from the Nether.$(br2)$(3)$(l)Special:$() Pierces through an extra enemy."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/quartz_arrow_recipe.png"
+            ],
+            "text": "Combine an $(l:extrastuck:arrows/iron_arrow)iron arrow$(/l) and quartz in a punch designix."
+        }
+    ]
+}

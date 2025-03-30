@@ -236,6 +236,27 @@ public class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.IRON_ARROW)
                 .grist(GristTypes.BUILD, 2).grist(GristTypes.RUST, 4)
                 .build(msOutput);
+
+        CombinationRecipeBuilder.of(ESItems.QUARTZ_ARROW)
+                .input(ESItems.IRON_ARROW).or().input(Tags.Items.GEMS_QUARTZ)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.QUARTZ_ARROW)
+                .grist(GristTypes.QUARTZ, 12).grist(GristTypes.BUILD, 4)
+                .build(msOutput);
+
+        CombinationRecipeBuilder.of(ESItems.PRISMARINE_ARROW)
+                .input(ESItems.QUARTZ_ARROW).and().input(Items.PRISMARINE_SHARD)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.PRISMARINE_ARROW)
+                .grist(GristTypes.DIAMOND, 1).grist(GristTypes.COBALT, 7).grist(GristTypes.BUILD, 1)
+                .build(msOutput);
+
+        CombinationRecipeBuilder.of(ESItems.GLASS_ARROW)
+                .input(ESItems.QUARTZ_ARROW).and().input(Tags.Items.GLASS_BLOCKS)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.GLASS_ARROW)
+                .grist(GristTypes.QUARTZ, 25).grist(GristTypes.MARBLE, 5)
+                .build(msOutput);
         // #endregion Arrows
     }
 }
