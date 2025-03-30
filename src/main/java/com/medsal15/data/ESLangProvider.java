@@ -86,6 +86,8 @@ public class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.CANDY_ARROW, "Sweet Tooth");
         addItem(ESItems.LIGHTNING_ARROW, "Lightning Bolt");
         addEntityType(ESEntities.LIGHTNING_ARROW, "Lighting Arrow");
+        addItem(ESItems.EXPLOSIVE_ARROW, "Explosive Arrow");
+        addEntityType(ESEntities.EXPLOSIVE_ARROW, "Explosive Arrow");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");

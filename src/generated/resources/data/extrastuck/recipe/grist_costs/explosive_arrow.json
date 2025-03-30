@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:chalk": 12,
+    "minestuck:sulfur": 21,
+    "minestuck:tar": 7
+  },
+  "ingredient": {
+    "item": "extrastuck:explosive_arrow"
+  }
+}

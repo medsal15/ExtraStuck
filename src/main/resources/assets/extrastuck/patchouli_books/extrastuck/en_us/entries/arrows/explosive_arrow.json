@@ -1,0 +1,23 @@
+{
+    "name": "Explosive Arrow",
+    "icon": "extrastuck:explosive_arrow",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/show_explosive_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:explosive_arrow"
+            },
+            "text": "Turns out combining fire and electricity creates a rather... volatile result.$(br2)$(3)$(l)Special:$() Creates a small explosion on hit."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/explosive_arrow_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:arrows/flame_arrow)flame arrow$(/l) and a $(l:extrastuck:arrows/lightning_arrow)lightning bolt$(/l) in a punch designix."
+        }
+    ]
+}

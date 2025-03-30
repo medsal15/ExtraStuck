@@ -6,6 +6,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
+import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
@@ -49,4 +50,8 @@ public class ESEntities {
             () -> EntityType.Builder.<LightningArrow>of(LightningArrow::new, MobCategory.MISC)
                     .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
                     .build(ExtraStuck.MODID + ":lightning_arrow"));
+    public static final Supplier<EntityType<ExplosiveArrow>> EXPLOSIVE_ARROW = ENTITIES.register("explosive_arrow",
+            () -> EntityType.Builder.<ExplosiveArrow>of(ExplosiveArrow::new, MobCategory.MISC)
+                    .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20)
+                    .build(ExtraStuck.MODID + ":explosive_arrow"));
 }

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:flame_arrow"
+  },
+  "input2": {
+    "item": "extrastuck:lightning_arrow"
+  },
+  "mode": "or",
+  "output": "extrastuck:explosive_arrow"
+}

@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
+import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
@@ -127,12 +128,11 @@ public class ESItems {
             "captain_justice_throwable_shield",
             (properties) -> new SwapShield(properties, null),
             new Item.Properties().durability(789));
-    // #endregion Shields
-
     /** Throwable variant */
     public static final DeferredItem<Item> CAPTAIN_JUSTICE_SHIELD_THROWABLE = ITEMS.registerItem(
             "captain_justice_shield_throwable", p -> new SwapTrident(p, CAPTAIN_JUSTICE_THROWABLE_SHIELD),
             new Item.Properties().durability(789));
+    // #endregion Shields
 
     // #region Arrows
     public static final DeferredItem<Item> NETHER_ARROW = ITEMS.registerItem("nether_arrow",
@@ -149,6 +149,8 @@ public class ESItems {
                     .food(new FoodProperties.Builder().fast().nutrition(1).saturationModifier(.5F).build()));
     public static final DeferredItem<Item> LIGHTNING_ARROW = ITEMS.registerItem("lightning_arrow",
             p -> new ESArrowItem(p, LightningArrow::new, LightningArrow::new));
+    public static final DeferredItem<Item> EXPLOSIVE_ARROW = ITEMS.registerItem("explosive_arrow",
+            p -> new ESArrowItem(p, ExplosiveArrow::new, ExplosiveArrow::new));
     // #endregion Arrows
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -196,6 +198,7 @@ public class ESItems {
         list.add(MISSED_YOU);
         list.add(SWEET_TOOTH);
         list.add(LIGHTNING_ARROW);
+        list.add(EXPLOSIVE_ARROW);
         return list;
     }
 }

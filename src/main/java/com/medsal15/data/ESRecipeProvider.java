@@ -34,6 +34,7 @@ public class ESRecipeProvider extends RecipeProvider {
     protected void buildRecipes(@Nonnull RecipeOutput output) {
         RecipeOutput msOutput = output.withConditions(new ICondition[] { new ModLoadedCondition("minestuck") });
 
+        // #region Shields
         CombinationRecipeBuilder.of(ESItems.WOODEN_SHIELD)
                 .input(Tags.Items.RODS_WOODEN).and().input(ItemTags.WOODEN_PRESSURE_PLATES)
                 .build(msOutput);
@@ -177,7 +178,9 @@ public class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.RETURN_TO_SENDER)
                 .grist(GristTypes.MARBLE, 868).grist(GristTypes.CAULK, 133)
                 .build(msOutput);
+        // #endregion Shields
 
+        // #region Arrows
         CombinationRecipeBuilder.of(ESItems.NETHER_ARROW)
                 .input(Items.ARROW).and().input(Items.NETHERRACK)
                 .build(msOutput);
@@ -219,5 +222,13 @@ public class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.LIGHTNING_ARROW)
                 .grist(GristTypes.GOLD, 25).grist(GristTypes.RUST, 25)
                 .build(msOutput);
+
+        CombinationRecipeBuilder.of(ESItems.EXPLOSIVE_ARROW)
+                .input(ESItems.FLAME_ARROW).or().input(ESItems.LIGHTNING_ARROW)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.EXPLOSIVE_ARROW)
+                .grist(GristTypes.SULFUR, 21).grist(GristTypes.TAR, 7).grist(GristTypes.CHALK, 12)
+                .build(msOutput);
+        // #endregion Arrows
     }
 }

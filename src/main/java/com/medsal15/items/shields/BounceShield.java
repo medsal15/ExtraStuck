@@ -26,11 +26,6 @@ public class BounceShield extends ESShield implements IShieldBlock {
         if (attacker == null || !(attacker instanceof Projectile projectile))
             return false;
 
-        // todo these do not work well
-        // AIM_DEFLECT works as expected
-        // MOMENTUM_DEFLECT does not work
-        // REVERSE works too well
-        // NONE works too well, but needs positive
         projectile.deflect(deflection, event.getEntity(), damageSource.getEntity(),
                 event.getEntity() instanceof Player);
         return true;

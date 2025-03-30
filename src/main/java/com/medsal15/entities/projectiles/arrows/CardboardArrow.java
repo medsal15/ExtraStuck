@@ -1,14 +1,8 @@
 package com.medsal15.entities.projectiles.arrows;
 
-import javax.annotation.Nonnull;
-
-import com.medsal15.ExtraStuck;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
-import net.minecraft.client.renderer.entity.ArrowRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -34,19 +28,5 @@ public class CardboardArrow extends AbstractArrow {
     @Override
     protected ItemStack getDefaultPickupItem() {
         return new ItemStack(ESItems.CARDBOARD_ARROW.get());
-    }
-
-    public static class Renderer extends ArrowRenderer<CardboardArrow> {
-        public static final ResourceLocation TEXTURE = ResourceLocation
-                .fromNamespaceAndPath(ExtraStuck.MODID, "textures/entity/cardboard_arrow.png");
-
-        public Renderer(EntityRendererProvider.Context context) {
-            super(context);
-        }
-
-        @Override
-        public ResourceLocation getTextureLocation(@Nonnull CardboardArrow entity) {
-            return TEXTURE;
-        }
     }
 }

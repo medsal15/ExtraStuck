@@ -7,9 +7,6 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.entity.underling.UnderlingEntity;
 
-import net.minecraft.client.renderer.entity.ArrowRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -44,19 +41,5 @@ public class CandyArrow extends AbstractArrow {
             underling.dropCandy = true;
         }
         super.onHitEntity(result);
-    }
-
-    public static class Renderer extends ArrowRenderer<CandyArrow> {
-        public static final ResourceLocation TEXTURE = ResourceLocation
-                .fromNamespaceAndPath(ExtraStuck.MODID, "textures/entity/candy_arrow.png");
-
-        public Renderer(EntityRendererProvider.Context context) {
-            super(context);
-        }
-
-        @Override
-        public ResourceLocation getTextureLocation(@Nonnull CandyArrow entity) {
-            return TEXTURE;
-        }
     }
 }

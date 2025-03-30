@@ -5,14 +5,9 @@ import java.text.NumberFormat;
 import org.slf4j.Logger;
 
 import com.medsal15.data.ESLangProvider;
+import com.medsal15.entities.ESArrowRenderer;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
-import com.medsal15.entities.projectiles.arrows.CandyArrow;
-import com.medsal15.entities.projectiles.arrows.CardboardArrow;
-import com.medsal15.entities.projectiles.arrows.FlameArrow;
-import com.medsal15.entities.projectiles.arrows.LightningArrow;
-import com.medsal15.entities.projectiles.arrows.MissedArrow;
-import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.IShieldBlock;
@@ -110,12 +105,20 @@ public class ExtraStuck {
     public void registerEntityRenderers(RegisterRenderers event) {
         event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
                 CaptainJusticeShield.CJSRenderer::new);
-        event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), FlameArrow.Renderer::new);
-        event.registerEntityRenderer(ESEntities.NETHER_ARROW.get(), NetherArrow.Renderer::new);
-        event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), CardboardArrow.Renderer::new);
-        event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), MissedArrow.Renderer::new);
-        event.registerEntityRenderer(ESEntities.CANDY_ARROW.get(), CandyArrow.Renderer::new);
-        event.registerEntityRenderer(ESEntities.LIGHTNING_ARROW.get(), LightningArrow.Renderer::new);
+        event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), c -> new ESArrowRenderer(c,
+                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/flame_arrow.png")));
+        event.registerEntityRenderer(ESEntities.NETHER_ARROW.get(), c -> new ESArrowRenderer(c,
+                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/nether_arrow.png")));
+        event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), c -> new ESArrowRenderer(c,
+                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/cardboard_arrow.png")));
+        event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), c -> new ESArrowRenderer(c,
+                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/missed_arrow.png")));
+        event.registerEntityRenderer(ESEntities.CANDY_ARROW.get(), c -> new ESArrowRenderer(c,
+                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/candy_arrow.png")));
+        event.registerEntityRenderer(ESEntities.LIGHTNING_ARROW.get(), c -> new ESArrowRenderer(c,
+                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/lightning_arrow.png")));
+        event.registerEntityRenderer(ESEntities.EXPLOSIVE_ARROW.get(), c -> new ESArrowRenderer(c,
+                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/explosive_arrow.png")));
     }
 
     @SubscribeEvent

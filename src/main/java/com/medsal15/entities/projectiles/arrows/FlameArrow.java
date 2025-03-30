@@ -2,13 +2,9 @@ package com.medsal15.entities.projectiles.arrows;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.ExtraStuck;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
-import net.minecraft.client.renderer.entity.ArrowRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -91,20 +87,6 @@ public class FlameArrow extends AbstractArrow {
             if (FireBlock.canBePlacedAt(level(), target, getDirection())) {
                 level().setBlock(target, BaseFireBlock.getState(level(), target), 11);
             }
-        }
-    }
-
-    public static class Renderer extends ArrowRenderer<FlameArrow> {
-        public static final ResourceLocation TEXTURE = ResourceLocation
-                .fromNamespaceAndPath(ExtraStuck.MODID, "textures/entity/flame_arrow.png");
-
-        public Renderer(EntityRendererProvider.Context context) {
-            super(context);
-        }
-
-        @Override
-        public ResourceLocation getTextureLocation(@Nonnull FlameArrow entity) {
-            return TEXTURE;
         }
     }
 }

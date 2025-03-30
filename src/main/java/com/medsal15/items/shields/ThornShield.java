@@ -8,7 +8,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 
-//todo? use a component
 /**
  * Shield that deals damage to melee attackers
  */
