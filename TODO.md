@@ -19,9 +19,7 @@ Simplify arrow/shield classes to use one entity class
 End Arrow: extra damage to flying targets
 Telerrow: teleports to landing spot
 Healing Arrow: heals target
-Lightning Arrow: summons lightning on target, more around when stormy
 Projecdrill: mines blocks as an iron pickaxe
-Explosive Arrow: explodes
 Dragon Arrow: spawns dragon breath on the ground
 Glass Arrow: breaks on hit
 Prismarine Arrow: faster in water

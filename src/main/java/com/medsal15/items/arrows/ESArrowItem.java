@@ -11,6 +11,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DispenserBlock;
 
 public class ESArrowItem extends ArrowItem {
     private CreaArro create;
@@ -20,6 +21,7 @@ public class ESArrowItem extends ArrowItem {
         super(properties);
         this.create = create;
         this.projectile = projectile;
+        DispenserBlock.registerProjectileBehavior(this);
     }
 
     @Override
@@ -31,7 +33,7 @@ public class ESArrowItem extends ArrowItem {
     @Override
     public Projectile asProjectile(@Nonnull Level level, @Nonnull Position pos, @Nonnull ItemStack stack,
             @Nonnull Direction direction) {
-        var proj = projectile.asProj(level, pos.x(), pos.y(), pos.z(), stack, null);
+        var proj = projectile.asProj(level, pos.x(), pos.y(), pos.z(), stack.copyWithCount(1), null);
         proj.pickup = AbstractArrow.Pickup.ALLOWED;
         return proj;
     }
