@@ -9,6 +9,7 @@ import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
+import com.medsal15.entities.projectiles.arrows.IronArrow;
 import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
@@ -151,6 +152,8 @@ public class ESItems {
             p -> new ESArrowItem(p, LightningArrow::new, LightningArrow::new));
     public static final DeferredItem<Item> EXPLOSIVE_ARROW = ITEMS.registerItem("explosive_arrow",
             p -> new ESArrowItem(p, ExplosiveArrow::new, ExplosiveArrow::new));
+    public static final DeferredItem<Item> IRON_ARROW = ITEMS.registerItem("iron_arrow",
+            p -> new ESArrowItem(p, IronArrow::new, IronArrow::new));
     // #endregion Arrows
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -199,6 +202,7 @@ public class ESItems {
         list.add(SWEET_TOOTH);
         list.add(LIGHTNING_ARROW);
         list.add(EXPLOSIVE_ARROW);
+        list.add(IRON_ARROW);
         return list;
     }
 }

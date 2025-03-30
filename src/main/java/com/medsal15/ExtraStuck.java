@@ -119,6 +119,8 @@ public class ExtraStuck {
                 ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/lightning_arrow.png")));
         event.registerEntityRenderer(ESEntities.EXPLOSIVE_ARROW.get(), c -> new ESArrowRenderer(c,
                 ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/explosive_arrow.png")));
+        event.registerEntityRenderer(ESEntities.IRON_ARROW.get(), c -> new ESArrowRenderer(c,
+                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/iron_arrow.png")));
     }
 
     @SubscribeEvent
