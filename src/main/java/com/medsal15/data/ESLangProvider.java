@@ -98,6 +98,8 @@ public class ESLangProvider extends LanguageProvider {
         addItem(ESItems.GLASS_ARROW, "Glass Arrow");
         addItemTooltip(ESItems.GLASS_ARROW, "Fragile");
         addEntityType(ESEntities.GLASS_ARROW, "Glass Arrow");
+        addItem(ESItems.AMETHYST_ARROW, "Amethyst Arrow");
+        addEntityType(ESEntities.AMETHYST_ARROW, "Amethyst Arrow");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
@@ -163,6 +164,8 @@ public class ESItems {
             p -> new ESArrowItem(p, PrismarineArrow::new, PrismarineArrow::new));
     public static final DeferredItem<Item> GLASS_ARROW = ITEMS.registerItem("glass_arrow",
             p -> new ESArrowItem(p, GlassArrow::new, GlassArrow::new));
+    public static final DeferredItem<Item> AMETHYST_ARROW = ITEMS.registerItem("amethyst_arrow",
+            p -> new ESArrowItem(p, AmethystArrow::new, AmethystArrow::new));
     // #endregion Arrows
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -215,6 +218,7 @@ public class ESItems {
         list.add(QUARTZ_ARROW);
         list.add(PRISMARINE_ARROW);
         list.add(GLASS_ARROW);
+        list.add(AMETHYST_ARROW);
         return list;
     }
 }

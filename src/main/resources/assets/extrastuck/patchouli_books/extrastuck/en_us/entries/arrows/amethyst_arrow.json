@@ -1,0 +1,23 @@
+{
+    "name": "Amethyst Arrow",
+    "icon": "extrastuck:amethyst_arrow",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_glass_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:amethyst_arrow"
+            },
+            "text": "A fancy arrow with an amethyst tip.$(br2)$(3)$(l)Special:$() Pierces 2 extra enemies."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/amethyst_arrow_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:arrows/glass_arrow)glass arrow$(/l) and an amethyst shard in a punch designix."
+        }
+    ]
+}

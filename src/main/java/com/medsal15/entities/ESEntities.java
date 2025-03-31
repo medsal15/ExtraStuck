@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
@@ -50,6 +51,8 @@ public class ESEntities {
     public static final Supplier<EntityType<PrismarineArrow>> PRISMARINE_ARROW = registerArrow("prismarine_arrow",
             PrismarineArrow::new);
     public static final Supplier<EntityType<GlassArrow>> GLASS_ARROW = registerArrow("glass_arrow", GlassArrow::new);
+    public static final Supplier<EntityType<AmethystArrow>> AMETHYST_ARROW = registerArrow("amethyst_arrow",
+            AmethystArrow::new);
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
         return ENTITIES.register(name, () -> EntityType.Builder.<T>of(fac, MobCategory.MISC)

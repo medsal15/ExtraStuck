@@ -21,8 +21,6 @@ Telerrow: teleports to landing spot
 Healing Arrow: heals target
 Projecdrill: mines blocks as an iron pickaxe
 Dragon Arrow: spawns dragon breath on the ground
-Glass Arrow: breaks on hit
-Prismarine Arrow: faster in water
 
 ## Textures ##
 
