@@ -1,5 +1,7 @@
 package com.medsal15.entities;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
@@ -12,6 +14,7 @@ import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.GlassArrow;
 import com.medsal15.entities.projectiles.arrows.IronArrow;
 import com.medsal15.entities.projectiles.arrows.LightningArrow;
+import com.medsal15.entities.projectiles.arrows.MiningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
@@ -33,6 +36,8 @@ public class ESEntities {
             () -> EntityType.Builder.<CaptainJusticeShield>of(CaptainJusticeShield::new, MobCategory.MISC)
                     .sized(1F, .25F).setTrackingRange(1).setUpdateInterval(10)
                     .build(ExtraStuck.MODID + ":captain_justice_shield"));
+
+    // #region Arrows
     public static final Supplier<EntityType<FlameArrow>> FLAME_ARROW = registerArrow("flame_arrow", FlameArrow::new);
     public static final Supplier<EntityType<NetherArrow>> NETHER_ARROW = registerArrow("nether_arrow",
             NetherArrow::new);
@@ -53,9 +58,30 @@ public class ESEntities {
     public static final Supplier<EntityType<GlassArrow>> GLASS_ARROW = registerArrow("glass_arrow", GlassArrow::new);
     public static final Supplier<EntityType<AmethystArrow>> AMETHYST_ARROW = registerArrow("amethyst_arrow",
             AmethystArrow::new);
+    public static final Supplier<EntityType<MiningArrow>> MINING_ARROW = registerArrow("mining_arrow",
+            MiningArrow::new);
+    // #endregion Arrows
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
         return ENTITIES.register(name, () -> EntityType.Builder.<T>of(fac, MobCategory.MISC)
                 .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20).build(ExtraStuck.MODID + ":" + name));
+    }
+
+    public static Collection<EntityType<? extends AbstractArrow>> getArrows() {
+        ArrayList<EntityType<? extends AbstractArrow>> list = new ArrayList<>();
+        list.add(FLAME_ARROW.get());
+        list.add(NETHER_ARROW.get());
+        list.add(CARDBOARD_ARROW.get());
+        list.add(MISSED_ARROW.get());
+        list.add(CANDY_ARROW.get());
+        list.add(LIGHTNING_ARROW.get());
+        list.add(EXPLOSIVE_ARROW.get());
+        list.add(IRON_ARROW.get());
+        list.add(QUARTZ_ARROW.get());
+        list.add(PRISMARINE_ARROW.get());
+        list.add(GLASS_ARROW.get());
+        list.add(AMETHYST_ARROW.get());
+        list.add(MINING_ARROW.get());
+        return list;
     }
 }

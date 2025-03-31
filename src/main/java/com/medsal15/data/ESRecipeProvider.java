@@ -264,6 +264,13 @@ public class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.AMETHYST_ARROW)
                 .grist(GristTypes.DIAMOND, 4).grist(GristTypes.AMETHYST, 19)
                 .build(msOutput);
+
+        CombinationRecipeBuilder.of(ESItems.PROJECDRILL)
+                .input(ESItems.IRON_ARROW).and().input(Items.IRON_PICKAXE)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.PROJECDRILL)
+                .grist(GristTypes.RUST, 32).grist(GristTypes.MERCURY, 8)
+                .build(msOutput);
         // #endregion Arrows
     }
 }

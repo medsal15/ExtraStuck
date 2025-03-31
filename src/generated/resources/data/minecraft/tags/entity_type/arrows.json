@@ -1,6 +1,17 @@
 {
   "values": [
     "extrastuck:flame_arrow",
-    "extrastuck:nether_arrow"
+    "extrastuck:nether_arrow",
+    "extrastuck:cardboard_arrow",
+    "extrastuck:missed_arrow",
+    "extrastuck:candy_arrow",
+    "extrastuck:lightning_arrow",
+    "extrastuck:explosive_arrow",
+    "extrastuck:iron_arrow",
+    "extrastuck:quartz_arrow",
+    "extrastuck:prismarine_arrow",
+    "extrastuck:glass_arrow",
+    "extrastuck:amethyst_arrow",
+    "extrastuck:mining_arrow"
   ]
 }

@@ -1,0 +1,23 @@
+{
+    "name": "Projecdrill",
+    "icon": "extrastuck:projecdrill",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_iron_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:projecdrill"
+            },
+            "text": "An upgrade to the iron arrow that can also damage blocks!$(br2)$(3)$(l)Special:$() Can mine whatever an iron pickaxe can."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/projecdrill_recipe.png"
+            ],
+            "text": "Combine an $(l:extrastuck:arrows/iron_arrow)iron arrow$(/l) and an iron pickaxe in a totem lathe."
+        }
+    ]
+}

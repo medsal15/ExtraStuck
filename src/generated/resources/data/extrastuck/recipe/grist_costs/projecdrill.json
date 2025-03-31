@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:mercury": 8,
+    "minestuck:rust": 32
+  },
+  "ingredient": {
+    "item": "extrastuck:projecdrill"
+  }
+}

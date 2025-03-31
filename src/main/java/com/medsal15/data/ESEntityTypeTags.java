@@ -22,6 +22,8 @@ public class ESEntityTypeTags extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
-        tag(EntityTypeTags.ARROWS).add(ESEntities.FLAME_ARROW.get(), ESEntities.NETHER_ARROW.get());
+        for (var arrow : ESEntities.getArrows()) {
+            tag(EntityTypeTags.ARROWS).add(arrow);
+        }
     }
 }
