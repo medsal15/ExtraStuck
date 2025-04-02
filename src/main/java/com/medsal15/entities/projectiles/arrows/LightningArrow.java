@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -43,5 +44,17 @@ public class LightningArrow extends AbstractArrow {
             }
             landed = true;
         }
+    }
+
+    @Override
+    public void addAdditionalSaveData(@Nonnull CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putBoolean("extrastuck:landed", landed);
+    }
+
+    @Override
+    public void readAdditionalSaveData(@Nonnull CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        landed = compound.getBoolean("extrastuck:landed");
     }
 }

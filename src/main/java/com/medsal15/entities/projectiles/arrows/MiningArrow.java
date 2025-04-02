@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
@@ -52,5 +53,17 @@ public class MiningArrow extends AbstractArrow {
                 level().destroyBlock(pos, true, getOwner());
             }
         }
+    }
+
+    @Override
+    public void addAdditionalSaveData(@Nonnull CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putBoolean("extrastuck:mined", mined);
+    }
+
+    @Override
+    public void readAdditionalSaveData(@Nonnull CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        mined = compound.getBoolean("extrastuck:mined");
     }
 }
