@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:garnet": 5,
+    "minestuck:gold": 9
+  },
+  "ingredient": {
+    "item": "extrastuck:crusader_crossbolt"
+  }
+}

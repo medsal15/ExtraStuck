@@ -1,0 +1,23 @@
+{
+    "name": "Crusader's Crossbolt",
+    "icon": "extrastuck:crusader_crossbolt",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:crusader_crossbolt"
+            },
+            "text": "This weak arrow barely deals any damage.$(br2)$(3)$(l)Special:$() Heals 5 damage. Only applies to teammates and pets if you're on a team."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/crusader_crossbolt_recipe.png"
+            ],
+            "text": "Combine an arrow and a golden carrot or glistering melon slice in a punch designix."
+        }
+    ]
+}

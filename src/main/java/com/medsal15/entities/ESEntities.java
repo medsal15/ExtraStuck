@@ -12,6 +12,7 @@ import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.GlassArrow;
+import com.medsal15.entities.projectiles.arrows.HealingArrow;
 import com.medsal15.entities.projectiles.arrows.IronArrow;
 import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MiningArrow;
@@ -60,6 +61,8 @@ public class ESEntities {
             AmethystArrow::new);
     public static final Supplier<EntityType<MiningArrow>> MINING_ARROW = registerArrow("mining_arrow",
             MiningArrow::new);
+    public static final Supplier<EntityType<HealingArrow>> HEALING_ARROW = registerArrow("healing_arrow",
+            HealingArrow::new);
     // #endregion Arrows
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
@@ -82,6 +85,7 @@ public class ESEntities {
         list.add(GLASS_ARROW.get());
         list.add(AMETHYST_ARROW.get());
         list.add(MINING_ARROW.get());
+        list.add(HEALING_ARROW.get());
         return list;
     }
 }

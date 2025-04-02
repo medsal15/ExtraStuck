@@ -11,6 +11,7 @@ import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.GlassArrow;
+import com.medsal15.entities.projectiles.arrows.HealingArrow;
 import com.medsal15.entities.projectiles.arrows.IronArrow;
 import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MiningArrow;
@@ -169,6 +170,8 @@ public class ESItems {
             p -> new ESArrowItem(p, AmethystArrow::new, AmethystArrow::new));
     public static final DeferredItem<Item> PROJECDRILL = ITEMS.registerItem("projecdrill",
             p -> new ESArrowItem(p, MiningArrow::new, MiningArrow::new));
+    public static final DeferredItem<Item> CRUSADER_CROSSBOLT = ITEMS.registerItem("crusader_crossbolt",
+            p -> new ESArrowItem(p, HealingArrow::new, HealingArrow::new));
     // #endregion Arrows
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -223,6 +226,7 @@ public class ESItems {
         list.add(GLASS_ARROW);
         list.add(AMETHYST_ARROW);
         list.add(PROJECDRILL);
+        list.add(CRUSADER_CROSSBOLT);
         return list;
     }
 }

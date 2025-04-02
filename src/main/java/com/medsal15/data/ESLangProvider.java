@@ -102,6 +102,10 @@ public class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.AMETHYST_ARROW, "Amethyst Arrow");
         addItem(ESItems.PROJECDRILL, "Projecdrill");
         addEntityType(ESEntities.MINING_ARROW, "Mining Arrow");
+        addItem(ESItems.CRUSADER_CROSSBOLT, "Crusader's Crossbolt");
+        addItemTooltip(ESItems.CRUSADER_CROSSBOLT, "After nine years in development, " +
+                "hopefully it will have been worth the wait...");
+        addEntityType(ESEntities.HEALING_ARROW, "Healing Arrow");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
