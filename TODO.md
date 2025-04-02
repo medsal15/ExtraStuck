@@ -16,7 +16,6 @@ Simplify arrow/shield classes to use one entity class
 
 ### Arrows ###
 
-End Arrow: extra damage to flying targets
 Telerrow: teleports to landing spot
 Dragon Arrow: spawns dragon breath on the ground
 

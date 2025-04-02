@@ -39,4 +39,6 @@ public class ChangeShield extends ESShield implements IShieldBlock {
         entity.setItemInHand(hand, new ItemStack(next.get()));
         return true;
     }
+
+    // TODO use createEntity with a custom itementity to allow shield transformation
 }

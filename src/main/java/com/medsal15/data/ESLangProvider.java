@@ -106,6 +106,8 @@ public class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.CRUSADER_CROSSBOLT, "After nine years in development, " +
                 "hopefully it will have been worth the wait...");
         addEntityType(ESEntities.HEALING_ARROW, "Healing Arrow");
+        addItem(ESItems.END_ARROW, "End Arrow");
+        addEntityType(ESEntities.END_ARROW, "End Arrow");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");

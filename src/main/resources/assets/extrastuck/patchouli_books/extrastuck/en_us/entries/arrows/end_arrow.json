@@ -1,0 +1,30 @@
+{
+    "name": "End Arrow",
+    "icon": "extrastuck:end_arrow",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_arrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:end_arrow"
+            },
+            "text": "An improved arrow straight from the End.$(br2)$(3)$(l)Special:$() Deals 50% more damage to airborne enemies."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/end_arrow_recipe.png"
+            ],
+            "text": "Combine an arrow and end stone in a punch designix."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/end_arrow_recipe_2.png"
+            ],
+            "text": "Alternatively combine an end rod and flint in a totem lathe."
+        }
+    ]
+}
