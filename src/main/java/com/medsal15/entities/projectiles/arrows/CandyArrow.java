@@ -20,11 +20,11 @@ public class CandyArrow extends AbstractArrow {
     }
 
     public CandyArrow(Level level, ItemStack pickup, LivingEntity shooter, ItemStack weapon) {
-        super(ESEntities.CARDBOARD_ARROW.get(), shooter, level, pickup, weapon);
+        super(ESEntities.CANDY_ARROW.get(), shooter, level, pickup, weapon);
     }
 
     public CandyArrow(Level level, double x, double y, double z, ItemStack pickup, ItemStack weapon) {
-        super(ESEntities.CARDBOARD_ARROW.get(), x, y, z, level, pickup, weapon);
+        super(ESEntities.CANDY_ARROW.get(), x, y, z, level, pickup, weapon);
     }
 
     @Override
