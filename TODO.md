@@ -14,9 +14,7 @@ Simplify arrow/shield classes to use one entity class
 
 ## Content ##
 
-### Arrows ###
-
-Dragon Arrow: spawns dragon breath on the ground
+Allow change shields (wooden shield) to also transform when dropped
 
 ## Textures ##
 

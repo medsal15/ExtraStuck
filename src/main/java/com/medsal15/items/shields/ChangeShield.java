@@ -39,6 +39,4 @@ public class ChangeShield extends ESShield implements IShieldBlock {
         entity.setItemInHand(hand, new ItemStack(next.get()));
         return true;
     }
-
-    // todo allow entity version to also transform
 }

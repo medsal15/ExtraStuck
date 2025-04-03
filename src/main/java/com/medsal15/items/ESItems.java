@@ -114,7 +114,6 @@ public class ESItems {
     public static final DeferredItem<Item> RETURN_TO_SENDER = ITEMS.registerItem("return_to_sender",
             (properties) -> new BounceShield(properties, (projectile, entity, random) -> {
                 if (entity != null) {
-                    // todo? should these be higher?
                     Vec3 vec3 = entity.getLookAngle().normalize().multiply(-4, -4, -4);
                     projectile.setDeltaMovement(vec3);
                     projectile.hasImpulse = true;
