@@ -108,6 +108,9 @@ public class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.HEALING_ARROW, "Healing Arrow");
         addItem(ESItems.END_ARROW, "End Arrow");
         addEntityType(ESEntities.END_ARROW, "End Arrow");
+        addItem(ESItems.TELERROW, "Telerrow");
+        addItemTooltip(ESItems.TELERROW, "Now you're over there");
+        addEntityType(ESEntities.TELEPORT_ARROW, "Teleport Arrow");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");

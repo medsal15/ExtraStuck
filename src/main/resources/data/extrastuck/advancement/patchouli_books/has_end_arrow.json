@@ -1,0 +1,19 @@
+{
+    "criteria": {
+        "has_end_arrow": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "extrastuck:end_arrow"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    },
+    "requirements": [
+        [
+            "has_end_arrow"
+        ]
+    ]
+}

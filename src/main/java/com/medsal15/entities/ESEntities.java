@@ -20,6 +20,7 @@ import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
+import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.arrows.EndArrow;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -64,8 +65,10 @@ public class ESEntities {
             MiningArrow::new);
     public static final Supplier<EntityType<HealingArrow>> HEALING_ARROW = registerArrow("healing_arrow",
             HealingArrow::new);
-    public static final Supplier<EntityType<EndArrow>> END_ARROW = registerArrow("teleport_arrow",
+    public static final Supplier<EntityType<EndArrow>> END_ARROW = registerArrow("end_arrow",
             EndArrow::new);
+    public static final Supplier<EntityType<TeleportArrow>> TELEPORT_ARROW = registerArrow("teleport_arrow",
+            TeleportArrow::new);
     // #endregion Arrows
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
@@ -90,6 +93,7 @@ public class ESEntities {
         list.add(MINING_ARROW.get());
         list.add(HEALING_ARROW.get());
         list.add(END_ARROW.get());
+        list.add(TELEPORT_ARROW.get());
         return list;
     }
 }

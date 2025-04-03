@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:diamond": 8,
+    "minestuck:mercury": 12,
+    "minestuck:uranium": 23
+  },
+  "ingredient": {
+    "item": "extrastuck:telerrow"
+  }
+}

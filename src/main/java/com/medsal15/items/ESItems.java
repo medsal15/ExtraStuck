@@ -19,6 +19,7 @@ import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
+import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.arrows.EndArrow;
 import com.medsal15.items.arrows.ESArrowItem;
 import com.medsal15.items.shields.BoondollarShield;
@@ -175,6 +176,8 @@ public class ESItems {
             p -> new ESArrowItem(p, HealingArrow::new, HealingArrow::new));
     public static final DeferredItem<Item> END_ARROW = ITEMS.registerItem("end_arrow",
             p -> new ESArrowItem(p, EndArrow::new, EndArrow::new));
+    public static final DeferredItem<Item> TELERROW = ITEMS.registerItem("telerrow",
+            p -> new ESArrowItem(p, TeleportArrow::new, TeleportArrow::new));
     // #endregion Arrows
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -231,6 +234,7 @@ public class ESItems {
         list.add(PROJECDRILL);
         list.add(CRUSADER_CROSSBOLT);
         list.add(END_ARROW);
+        list.add(TELERROW);
         return list;
     }
 }

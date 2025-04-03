@@ -51,6 +51,7 @@ public class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.PROJECDRILL.get());
         basicItem(ESItems.CRUSADER_CROSSBOLT.get());
         basicItem(ESItems.END_ARROW.get());
+        basicItem(ESItems.TELERROW.get());
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base) {
