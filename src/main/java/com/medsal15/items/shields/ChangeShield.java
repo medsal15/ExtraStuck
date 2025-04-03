@@ -40,5 +40,5 @@ public class ChangeShield extends ESShield implements IShieldBlock {
         return true;
     }
 
-    // TODO use createEntity with a custom itementity to allow shield transformation
+    // todo allow entity version to also transform
 }
