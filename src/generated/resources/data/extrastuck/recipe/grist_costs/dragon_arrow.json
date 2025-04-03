@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:ruby": 4,
+    "minestuck:uranium": 15
+  },
+  "ingredient": {
+    "item": "extrastuck:dragon_arrow"
+  }
+}

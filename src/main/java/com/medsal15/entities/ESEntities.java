@@ -9,6 +9,7 @@ import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
+import com.medsal15.entities.projectiles.arrows.DragonArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.GlassArrow;
@@ -69,6 +70,8 @@ public class ESEntities {
             EndArrow::new);
     public static final Supplier<EntityType<TeleportArrow>> TELEPORT_ARROW = registerArrow("teleport_arrow",
             TeleportArrow::new);
+    public static final Supplier<EntityType<DragonArrow>> DRAGON_ARROW = registerArrow("dragon_arrow",
+            DragonArrow::new);
     // #endregion Arrows
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
@@ -94,6 +97,7 @@ public class ESEntities {
         list.add(HEALING_ARROW.get());
         list.add(END_ARROW.get());
         list.add(TELEPORT_ARROW.get());
+        list.add(DRAGON_ARROW.get());
         return list;
     }
 }

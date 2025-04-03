@@ -10,7 +10,7 @@
             "item": {
                 "item": "extrastuck:telerrow"
             },
-            "text": "Sticking an ender pearl at the tip of an arrow makes it less safe to use.$(br2)$(3)$(l)Special:$() Teleports you at the target location. Enemies hit will also teleport to your position.$(br2)$(4)$(l)Important: Due to reports of endermites spawning on use, usage of this arrow is not recommended."
+            "text": "Sticking an ender pearl at the tip of an arrow makes it less safe to use and more fragile.$(br2)$(3)$(l)Special:$() Teleports you at the target location. Enemies hit will also teleport to your position.$(br2)$(4)$(l)Important: Due to reports of endermites spawning on use, usage of this arrow is not recommended."
         },
         {
             "type": "patchouli:image",

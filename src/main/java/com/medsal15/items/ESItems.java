@@ -8,6 +8,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
+import com.medsal15.entities.projectiles.arrows.DragonArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.GlassArrow;
@@ -178,6 +179,8 @@ public class ESItems {
             p -> new ESArrowItem(p, EndArrow::new, EndArrow::new));
     public static final DeferredItem<Item> TELERROW = ITEMS.registerItem("telerrow",
             p -> new ESArrowItem(p, TeleportArrow::new, TeleportArrow::new));
+    public static final DeferredItem<Item> DRAGON_ARROW = ITEMS.registerItem("dragon_arrow",
+            p -> new ESArrowItem(p, DragonArrow::new, DragonArrow::new));
     // #endregion Arrows
 
     public static Collection<DeferredItem<Item>> getItems() {
@@ -235,6 +238,7 @@ public class ESItems {
         list.add(CRUSADER_CROSSBOLT);
         list.add(END_ARROW);
         list.add(TELERROW);
+        list.add(DRAGON_ARROW);
         return list;
     }
 }

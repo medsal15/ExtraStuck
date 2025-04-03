@@ -1,0 +1,23 @@
+{
+    "name": "Dragon Arrow",
+    "icon": "extrastuck:dragon_arrow",
+    "category": "extrastuck:arrows",
+    "advancement": "extrastuck:patchouli_books/has_telerrow",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:dragon_arrow"
+            },
+            "text": "Coating telerrows with dragon breath will allow it to also use it.$(br2)$(3)$(l)Special:$() Summons dragon breath on hit."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/dragon_arrow_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:arrows/telerrow)telerrow$(/l) and dragon breath in a punch designix."
+        }
+    ]
+}

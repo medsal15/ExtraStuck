@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:telerrow"
+  },
+  "input2": {
+    "item": "minecraft:dragon_breath"
+  },
+  "mode": "and",
+  "output": "extrastuck:dragon_arrow"
+}
