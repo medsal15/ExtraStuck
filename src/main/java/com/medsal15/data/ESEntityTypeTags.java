@@ -14,7 +14,7 @@ import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.tags.EntityTypeTags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class ESEntityTypeTags extends EntityTypeTagsProvider {
+public final class ESEntityTypeTags extends EntityTypeTagsProvider {
     public ESEntityTypeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
             ExistingFileHelper fileHelper) {
         super(output, lookupProvider, ExtraStuck.MODID, fileHelper);

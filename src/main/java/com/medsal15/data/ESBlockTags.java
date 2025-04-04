@@ -12,7 +12,7 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class ESBlockTags extends BlockTagsProvider {
+public final class ESBlockTags extends BlockTagsProvider {
     public ESBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
             ExistingFileHelper fileHelper) {
         super(output, lookupProvider, ExtraStuck.MODID, fileHelper);

@@ -14,7 +14,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class ESLangProvider extends LanguageProvider {
+public final class ESLangProvider extends LanguageProvider {
     public ESLangProvider(PackOutput output) {
         super(output, ExtraStuck.MODID, "en_us");
     }

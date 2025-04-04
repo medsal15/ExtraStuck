@@ -10,7 +10,7 @@ import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
-public class DataMapGenerator extends DataMapProvider {
+public final class DataMapGenerator extends DataMapProvider {
     public DataMapGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
         super(output, provider);
     }

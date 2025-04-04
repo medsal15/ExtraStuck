@@ -14,7 +14,7 @@ import net.minecraft.data.tags.DamageTypeTagsProvider;
 import net.minecraft.tags.DamageTypeTags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class ESDamageTypeTags extends DamageTypeTagsProvider {
+public final class ESDamageTypeTags extends DamageTypeTagsProvider {
     public ESDamageTypeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
             ExistingFileHelper fileHelper) {
         super(output, lookupProvider, ExtraStuck.MODID, fileHelper);

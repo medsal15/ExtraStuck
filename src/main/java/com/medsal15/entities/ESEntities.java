@@ -31,7 +31,7 @@ import net.minecraft.world.entity.EntityType.EntityFactory;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class ESEntities {
+public final class ESEntities {
     public static DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE,
             ExtraStuck.MODID);
 

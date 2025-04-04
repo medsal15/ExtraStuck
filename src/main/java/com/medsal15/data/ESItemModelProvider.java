@@ -10,7 +10,7 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
 
-public class ESItemModelProvider extends ItemModelProvider {
+public final class ESItemModelProvider extends ItemModelProvider {
     public ESItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, ExtraStuck.MODID, existingFileHelper);
     }
