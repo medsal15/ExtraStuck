@@ -2,6 +2,7 @@ package com.medsal15.data;
 
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
+import com.medsal15.blocks.ESBlocks;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
@@ -37,6 +38,17 @@ public final class ESLangProvider extends LanguageProvider {
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
 
+        addShields();
+        addArrows();
+        addBlocks();
+
+        addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
+                "%1$s was shot by %2$s with %3$s");
+        addDeathMessages(ESDamageTypes.THORN_SHIELD, "%1$s struck %2$s's shield too hard",
+                "%1$s struck %2$s's %3$s too hard");
+    }
+
+    private void addShields() {
         addItem(ESItems.WOODEN_SHIELD, "Wooden Shield");
         addItemTooltip(ESItems.WOODEN_SHIELD, "This cheap shield is 100% fire-ready");
         addItem(ESItems.FLAME_SHIELD, "Flame Shield");
@@ -70,7 +82,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.POGO_SHIELD, "The shield that bounces back!");
         addItem(ESItems.RETURN_TO_SENDER, "Return to Sender");
         addItemTooltip(ESItems.RETURN_TO_SENDER, "The shield that shoots back!");
+    }
 
+    private void addArrows() {
         addItem(ESItems.NETHER_ARROW, "Nether Arrow");
         addItemTooltip(ESItems.NETHER_ARROW, "Likes the heat");
         addEntityType(ESEntities.NETHER_ARROW, "Nether Arrow");
@@ -113,11 +127,13 @@ public final class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.TELEPORT_ARROW, "Teleport Arrow");
         addItem(ESItems.DRAGON_ARROW, "Dragon Arrow");
         addEntityType(ESEntities.DRAGON_ARROW, "Dragon Arrow");
+    }
 
-        addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
-                "%1$s was shot by %2$s with %3$s");
-        addDeathMessages(ESDamageTypes.THORN_SHIELD, "%1$s struck %2$s's shield too hard",
-                "%1$s struck %2$s's %3$s too hard");
+    private void addBlocks() {
+        addBlock(ESBlocks.GARNET_BRICKS, "Garnet Bricks");
+        addBlock(ESBlocks.GARNET_BRICK_STAIRS, "Garnet Brick Stairs");
+        addBlock(ESBlocks.GARNET_BRICK_SLAB, "Garnet Brick Slab");
+        addBlock(ESBlocks.GARNET_BRICK_WALL, "Garnet Brick Wall");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {

@@ -4,6 +4,7 @@ import java.text.NumberFormat;
 
 import org.slf4j.Logger;
 
+import com.medsal15.blocks.ESBlocks;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESArrowRenderer;
 import com.medsal15.entities.ESEntities;
@@ -84,6 +85,7 @@ public class ExtraStuck {
 
         // Register the Deferred Register to the mod event bus so items get registered
         ESItems.DATA_COMPONENTS.register(modEventBus);
+        ESBlocks.BLOCKS.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered

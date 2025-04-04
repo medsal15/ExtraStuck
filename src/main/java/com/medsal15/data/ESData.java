@@ -1,20 +1,26 @@
 package com.medsal15.data;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
+import com.medsal15.data.loot_tables.ESBlockLootProvider;
+import com.medsal15.data.loot_tables.ESLootTableProvider;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider.SubProviderEntry;
 import net.minecraft.world.damagesource.DamageEffects;
 import net.minecraft.world.damagesource.DamageScaling;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DeathMessageType;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
@@ -31,6 +37,7 @@ public final class ESData {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         gen.addProvider(event.includeClient(), new ESLangProvider(output));
+        gen.addProvider(event.includeClient(), new ESBlockStateProvider(output, fileHelper));
         gen.addProvider(event.includeClient(), new ESItemModelProvider(output, fileHelper));
 
         gen.addProvider(
@@ -56,5 +63,8 @@ public final class ESData {
                 new ESItemTags(output, lookupProvider, blocktags.contentsGetter(), fileHelper));
         gen.addProvider(event.includeServer(), new DataMapGenerator(output, lookupProvider));
         gen.addProvider(event.includeServer(), new ESEntityTypeTags(output, lookupProvider, fileHelper));
+        gen.addProvider(event.includeServer(),
+                (DataProvider.Factory<ESLootTableProvider>) (o -> new ESLootTableProvider(o, lookupProvider,
+                        List.of(new SubProviderEntry(ESBlockLootProvider::new, LootContextParamSets.BLOCK)))));
     }
 }

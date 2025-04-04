@@ -17,6 +17,12 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        registerShields();
+        registerArrows();
+        registerBlocks();
+    }
+
+    private void registerShields() {
         modelShield(ESItems.WOODEN_SHIELD);
         modelThinShield(ESItems.FLAME_SHIELD);
         modelShield(ESItems.LIGHT_SHIELD);
@@ -35,24 +41,6 @@ public final class ESItemModelProvider extends ItemModelProvider {
         modelShield(ESItems.GARNET_SHIELD);
         modelShield(ESItems.POGO_SHIELD);
         modelShield(ESItems.RETURN_TO_SENDER);
-
-        basicItem(ESItems.FLAME_ARROW.get());
-        basicItem(ESItems.NETHER_ARROW.get());
-        basicItem(ESItems.CARDBOARD_ARROW.get());
-        basicItem(ESItems.MISSED_YOU.get());
-        basicItem(ESItems.SWEET_TOOTH.get());
-        basicItem(ESItems.LIGHTNING_ARROW.get());
-        basicItem(ESItems.EXPLOSIVE_ARROW.get());
-        basicItem(ESItems.IRON_ARROW.get());
-        basicItem(ESItems.QUARTZ_ARROW.get());
-        basicItem(ESItems.PRISMARINE_ARROW.get());
-        basicItem(ESItems.GLASS_ARROW.get());
-        basicItem(ESItems.AMETHYST_ARROW.get());
-        basicItem(ESItems.PROJECDRILL.get());
-        basicItem(ESItems.CRUSADER_CROSSBOLT.get());
-        basicItem(ESItems.END_ARROW.get());
-        basicItem(ESItems.TELERROW.get());
-        basicItem(ESItems.DRAGON_ARROW.get());
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base) {
@@ -88,5 +76,32 @@ public final class ESItemModelProvider extends ItemModelProvider {
     private void modelRoundShield(DeferredItem<Item> shield) {
         var path = shield.getId().getPath().toString();
         modelShield(shield, "item/" + path, "round_shield");
+    }
+
+    private void registerArrows() {
+        basicItem(ESItems.FLAME_ARROW.get());
+        basicItem(ESItems.NETHER_ARROW.get());
+        basicItem(ESItems.CARDBOARD_ARROW.get());
+        basicItem(ESItems.MISSED_YOU.get());
+        basicItem(ESItems.SWEET_TOOTH.get());
+        basicItem(ESItems.LIGHTNING_ARROW.get());
+        basicItem(ESItems.EXPLOSIVE_ARROW.get());
+        basicItem(ESItems.IRON_ARROW.get());
+        basicItem(ESItems.QUARTZ_ARROW.get());
+        basicItem(ESItems.PRISMARINE_ARROW.get());
+        basicItem(ESItems.GLASS_ARROW.get());
+        basicItem(ESItems.AMETHYST_ARROW.get());
+        basicItem(ESItems.PROJECDRILL.get());
+        basicItem(ESItems.CRUSADER_CROSSBOLT.get());
+        basicItem(ESItems.END_ARROW.get());
+        basicItem(ESItems.TELERROW.get());
+        basicItem(ESItems.DRAGON_ARROW.get());
+    }
+
+    private void registerBlocks() {
+        withExistingParent(ESItems.GARNET_BRICKS.getId().toString(), modLoc("block/garnet_bricks"));
+        withExistingParent(ESItems.GARNET_BRICK_STAIRS.getId().toString(), modLoc("block/garnet_brick_stairs"));
+        withExistingParent(ESItems.GARNET_BRICK_SLAB.getId().toString(), modLoc("block/garnet_brick_slab"));
+        wallInventory(ESItems.GARNET_BRICK_WALL.getId().toString(), modLoc("block/garnet_bricks"));
     }
 }

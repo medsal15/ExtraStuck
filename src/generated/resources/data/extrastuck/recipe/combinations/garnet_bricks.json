@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:cruxite_bricks"
+  },
+  "input2": {
+    "tag": "c:dyes/red"
+  },
+  "mode": "and",
+  "output": "extrastuck:garnet_bricks"
+}

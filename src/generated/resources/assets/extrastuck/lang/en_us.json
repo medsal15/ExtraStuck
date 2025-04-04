@@ -1,4 +1,8 @@
 {
+  "block.extrastuck.garnet_brick_slab": "Garnet Brick Slab",
+  "block.extrastuck.garnet_brick_stairs": "Garnet Brick Stairs",
+  "block.extrastuck.garnet_brick_wall": "Garnet Brick Wall",
+  "block.extrastuck.garnet_bricks": "Garnet Bricks",
   "death.attack.extrastuck:captain_justice_projectile": "%1$s was shot by %2$s",
   "death.attack.extrastuck:captain_justice_projectile.item": "%1$s was shot by %2$s with %3$s",
   "death.attack.extrastuck:thorn_shield": "%1$s struck %2$s's shield too hard",

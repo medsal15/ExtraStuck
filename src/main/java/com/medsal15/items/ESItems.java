@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.blocks.ESBlocks;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
@@ -48,6 +49,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.phys.Vec3;
@@ -182,15 +184,26 @@ public final class ESItems {
             p -> new ESArrowItem(p, DragonArrow::new, DragonArrow::new));
     // #endregion Arrows
 
-    public static Collection<DeferredItem<Item>> getItems() {
+    // #region Blocks
+    public static final DeferredItem<BlockItem> GARNET_BRICKS = ITEMS.registerSimpleBlockItem(ESBlocks.GARNET_BRICKS);
+    public static final DeferredItem<BlockItem> GARNET_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> GARNET_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> GARNET_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_WALL);
+    // #endregion Blocks
+
+    public static Collection<DeferredItem<? extends Item>> getItems() {
         if (((SwapShield) CAPTAIN_JUSTICE_THROWABLE_SHIELD.get()).next == null) {
             ((SwapShield) CAPTAIN_JUSTICE_THROWABLE_SHIELD.get()).next = CAPTAIN_JUSTICE_SHIELD_THROWABLE;
         }
 
-        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        ArrayList<DeferredItem<? extends Item>> list = new ArrayList<>();
         list.addAll(getShields());
         list.add(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
         list.addAll(getArrows());
+        list.addAll(getBlocks());
         return list;
     }
 
@@ -238,6 +251,15 @@ public final class ESItems {
         list.add(END_ARROW);
         list.add(TELERROW);
         list.add(DRAGON_ARROW);
+        return list;
+    }
+
+    public static Collection<DeferredItem<BlockItem>> getBlocks() {
+        ArrayList<DeferredItem<BlockItem>> list = new ArrayList<>();
+        list.add(GARNET_BRICKS);
+        list.add(GARNET_BRICK_STAIRS);
+        list.add(GARNET_BRICK_SLAB);
+        list.add(GARNET_BRICK_WALL);
         return list;
     }
 }

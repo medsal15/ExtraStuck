@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "extrastuck:garnet_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "extrastuck:garnet_brick_wall"
+  }
+}
