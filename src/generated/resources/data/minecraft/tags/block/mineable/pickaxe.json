@@ -8,6 +8,15 @@
     "extrastuck:garnet_brick_stairs",
     "extrastuck:garnet_brick_slab",
     "extrastuck:garnet_brick_wall",
-    "extrastuck:chiseled_garnet_bricks"
+    "extrastuck:chiseled_garnet_bricks",
+    "extrastuck:cut_ruby",
+    "extrastuck:cut_ruby_stairs",
+    "extrastuck:cut_garnet_slab",
+    "extrastuck:cut_garnet_wall",
+    "extrastuck:ruby_bricks",
+    "extrastuck:ruby_brick_stairs",
+    "extrastuck:ruby_brick_slab",
+    "extrastuck:ruby_brick_wall",
+    "extrastuck:chiseled_ruby_bricks"
   ]
 }

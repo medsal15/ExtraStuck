@@ -139,6 +139,16 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.GARNET_BRICK_SLAB, "Garnet Brick Slab");
         addBlock(ESBlocks.GARNET_BRICK_WALL, "Garnet Brick Wall");
         addBlock(ESBlocks.CHISELED_GARNET_BRICKS, "Chiseled Garnet Bricks");
+
+        addBlock(ESBlocks.CUT_RUBY, "Cut Ruby");
+        addBlock(ESBlocks.CUT_RUBY_STAIRS, "Cut Ruby Stairs");
+        addBlock(ESBlocks.CUT_RUBY_SLAB, "Cut Ruby Slab");
+        addBlock(ESBlocks.CUT_RUBY_WALL, "Cut Ruby Wall");
+        addBlock(ESBlocks.RUBY_BRICKS, "Ruby Bricks");
+        addBlock(ESBlocks.RUBY_BRICK_STAIRS, "Ruby Brick Stairs");
+        addBlock(ESBlocks.RUBY_BRICK_SLAB, "Ruby Brick Slab");
+        addBlock(ESBlocks.RUBY_BRICK_WALL, "Ruby Brick Wall");
+        addBlock(ESBlocks.CHISELED_RUBY_BRICKS, "Chiseled Ruby Bricks");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {

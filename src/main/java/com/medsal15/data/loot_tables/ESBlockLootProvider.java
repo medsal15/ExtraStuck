@@ -35,5 +35,15 @@ public class ESBlockLootProvider extends BlockLootSubProvider {
         dropSelf(ESBlocks.GARNET_BRICK_SLAB.get());
         dropSelf(ESBlocks.GARNET_BRICK_WALL.get());
         dropSelf(ESBlocks.CHISELED_GARNET_BRICKS.get());
+
+        dropSelf(ESBlocks.CUT_RUBY.get());
+        dropSelf(ESBlocks.CUT_RUBY_STAIRS.get());
+        dropSelf(ESBlocks.CUT_RUBY_SLAB.get());
+        dropSelf(ESBlocks.CUT_RUBY_WALL.get());
+        dropSelf(ESBlocks.RUBY_BRICKS.get());
+        dropSelf(ESBlocks.RUBY_BRICK_STAIRS.get());
+        dropSelf(ESBlocks.RUBY_BRICK_SLAB.get());
+        dropSelf(ESBlocks.RUBY_BRICK_WALL.get());
+        dropSelf(ESBlocks.CHISELED_RUBY_BRICKS.get());
     }
 }

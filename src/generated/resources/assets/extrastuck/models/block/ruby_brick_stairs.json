@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "extrastuck:block/ruby_bricks",
+    "side": "extrastuck:block/ruby_bricks",
+    "top": "extrastuck:block/ruby_bricks"
+  }
+}

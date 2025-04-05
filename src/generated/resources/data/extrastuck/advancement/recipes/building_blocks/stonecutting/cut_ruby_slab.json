@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cut_ruby": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:cut_ruby"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extrastuck:stonecutting/cut_ruby_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cut_ruby"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extrastuck:stonecutting/cut_ruby_slab"
+    ]
+  }
+}

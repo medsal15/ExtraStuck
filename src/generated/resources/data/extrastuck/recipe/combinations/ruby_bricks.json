@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:garnet_bricks"
+  },
+  "input2": {
+    "tag": "c:dusts/glowstone"
+  },
+  "mode": "and",
+  "output": "extrastuck:ruby_bricks"
+}

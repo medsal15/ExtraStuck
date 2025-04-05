@@ -188,6 +188,22 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_WALL);
     public static final DeferredItem<BlockItem> CHISELED_GARNET_BRICKS = ITEMS
             .registerSimpleBlockItem(ESBlocks.CHISELED_GARNET_BRICKS);
+    public static final DeferredItem<BlockItem> CUT_RUBY = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_RUBY);
+    public static final DeferredItem<BlockItem> CUT_RUBY_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.CUT_RUBY_STAIRS);
+    public static final DeferredItem<BlockItem> CUT_RUBY_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.CUT_RUBY_SLAB);
+    public static final DeferredItem<BlockItem> CUT_RUBY_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.CUT_RUBY_WALL);
+    public static final DeferredItem<BlockItem> RUBY_BRICKS = ITEMS.registerSimpleBlockItem(ESBlocks.RUBY_BRICKS);
+    public static final DeferredItem<BlockItem> RUBY_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.RUBY_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> RUBY_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.RUBY_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> RUBY_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.RUBY_BRICK_WALL);
+    public static final DeferredItem<BlockItem> CHISELED_RUBY_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.CHISELED_RUBY_BRICKS);
     // #endregion Blocks
 
     public static Collection<DeferredItem<? extends Item>> getItems() {
@@ -262,6 +278,16 @@ public final class ESItems {
         list.add(GARNET_BRICK_SLAB);
         list.add(GARNET_BRICK_WALL);
         list.add(CHISELED_GARNET_BRICKS);
+
+        list.add(CUT_RUBY);
+        list.add(CUT_RUBY_STAIRS);
+        list.add(CUT_RUBY_SLAB);
+        list.add(CUT_RUBY_WALL);
+        list.add(RUBY_BRICKS);
+        list.add(RUBY_BRICK_STAIRS);
+        list.add(RUBY_BRICK_SLAB);
+        list.add(RUBY_BRICK_WALL);
+        list.add(CHISELED_RUBY_BRICKS);
 
         return list;
     }

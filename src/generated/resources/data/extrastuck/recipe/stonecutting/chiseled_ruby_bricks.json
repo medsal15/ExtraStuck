@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": [
+    {
+      "item": "extrastuck:ruby_bricks"
+    },
+    {
+      "item": "extrastuck:cut_ruby"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:chiseled_ruby_bricks"
+  }
+}

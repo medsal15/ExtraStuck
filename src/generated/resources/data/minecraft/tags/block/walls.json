@@ -1,6 +1,8 @@
 {
   "values": [
     "extrastuck:cut_garnet_wall",
-    "extrastuck:garnet_brick_wall"
+    "extrastuck:garnet_brick_wall",
+    "extrastuck:cut_ruby_wall",
+    "extrastuck:ruby_brick_wall"
   ]
 }

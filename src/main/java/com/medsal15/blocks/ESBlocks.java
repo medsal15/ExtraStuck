@@ -35,4 +35,24 @@ public final class ESBlocks {
             () -> new WallBlock(ofFullCopy(CUT_GARNET.get())));
     public static final DeferredBlock<Block> CHISELED_GARNET_BRICKS = BLOCKS.register("chiseled_garnet_bricks",
             () -> new Block(ofFullCopy(CUT_GARNET.get())));
+
+    public static final DeferredBlock<Block> CUT_RUBY = BLOCKS.registerBlock("cut_ruby", Block::new,
+            Block.Properties.of().mapColor(MapColor.COLOR_RED).strength(1.5F).sound(SoundType.AMETHYST)
+                    .requiresCorrectToolForDrops());
+    public static final DeferredBlock<StairBlock> CUT_RUBY_STAIRS = BLOCKS.register("cut_ruby_stairs",
+            () -> new StairBlock(CUT_RUBY.get().defaultBlockState(), ofFullCopy(CUT_RUBY.get())));
+    public static final DeferredBlock<SlabBlock> CUT_RUBY_SLAB = BLOCKS.register("cut_ruby_slab",
+            () -> new SlabBlock(ofFullCopy(CUT_RUBY.get())));
+    public static final DeferredBlock<WallBlock> CUT_RUBY_WALL = BLOCKS.register("cut_ruby_wall",
+            () -> new WallBlock(ofFullCopy(CUT_RUBY.get())));
+    public static final DeferredBlock<Block> RUBY_BRICKS = BLOCKS.register("ruby_bricks",
+            () -> new Block(ofFullCopy(CUT_RUBY.get())));
+    public static final DeferredBlock<StairBlock> RUBY_BRICK_STAIRS = BLOCKS.register("ruby_brick_stairs",
+            () -> new StairBlock(RUBY_BRICKS.get().defaultBlockState(), ofFullCopy(CUT_RUBY.get())));
+    public static final DeferredBlock<SlabBlock> RUBY_BRICK_SLAB = BLOCKS.register("ruby_brick_slab",
+            () -> new SlabBlock(ofFullCopy(CUT_RUBY.get())));
+    public static final DeferredBlock<WallBlock> RUBY_BRICK_WALL = BLOCKS.register("ruby_brick_wall",
+            () -> new WallBlock(ofFullCopy(CUT_RUBY.get())));
+    public static final DeferredBlock<Block> CHISELED_RUBY_BRICKS = BLOCKS.register("chiseled_ruby_bricks",
+            () -> new Block(ofFullCopy(CUT_RUBY.get())));
 }

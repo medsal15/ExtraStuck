@@ -307,6 +307,7 @@ public final class ESRecipeProvider extends RecipeProvider {
         // #endregion Arrows
 
         // #region Blocks
+        // #region Garnet
         CombinationRecipeBuilder.of(ESItems.CUT_GARNET)
                 .input(Items.AMETHYST_BLOCK).or().input(Tags.Items.DYES_RED)
                 .build(msOutput);
@@ -411,6 +412,113 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .define('G', ESItems.GARNET_BRICK_SLAB)
                 .unlockedBy("has_garnet_brick_slab", has(ESItems.GARNET_BRICK_SLAB))
                 .save(output, modLoc("shaped/chiseled_garnet_bricks"));
+        // #endregion Garnet
+        // #region Ruby
+        CombinationRecipeBuilder.of(ESItems.CUT_RUBY)
+                .input(ESItems.CUT_GARNET).and().input(Tags.Items.DUSTS_GLOWSTONE)
+                .build(msOutput);
+        GristCostRecipeBuilder.of(ESItems.CUT_RUBY)
+                .grist(GristTypes.RUBY, 4)
+                .build(msOutput);
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.CUT_RUBY_STAIRS)
+                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
+                .save(output, modLoc("stonecutting/cut_ruby_stairs"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CUT_RUBY_STAIRS.toStack(4))
+                .pattern("G  ")
+                .pattern("GG ")
+                .pattern("GGG")
+                .define('G', ESItems.CUT_RUBY)
+                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
+                .save(output, modLoc("shaped/cut_ruby_stairs"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.CUT_RUBY_SLAB, 2)
+                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
+                .save(output, modLoc("stonecutting/cut_ruby_slab"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CUT_RUBY_SLAB.toStack(6))
+                .pattern("GGG")
+                .define('G', ESItems.CUT_RUBY)
+                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
+                .save(output, modLoc("shaped/cut_ruby_slab"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.CUT_RUBY_WALL)
+                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
+                .save(output, modLoc("stonecutting/cut_ruby_wall"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CUT_RUBY_WALL.toStack(6))
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', ESItems.CUT_RUBY)
+                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
+                .save(output, modLoc("shaped/cut_ruby_wall"));
+
+        CombinationRecipeBuilder.of(ESItems.RUBY_BRICKS)
+                .input(ESItems.GARNET_BRICKS).and().input(Tags.Items.DUSTS_GLOWSTONE)
+                .build(msOutput);
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICKS)
+                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
+                .save(output, modLoc("stonecutting/ruby_bricks"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICKS.toStack(4))
+                .pattern("GG")
+                .pattern("GG")
+                .define('G', ESItems.CUT_RUBY)
+                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
+                .save(output, modLoc("shaped/ruby_bricks"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.RUBY_BRICK_STAIRS)
+                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
+                .save(output, modLoc("stonecutting/ruby_brick_stairs"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICK_STAIRS.toStack(4))
+                .pattern("G  ")
+                .pattern("GG ")
+                .pattern("GGG")
+                .define('G', ESItems.RUBY_BRICKS)
+                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
+                .save(output, modLoc("shaped/ruby_brick_stairs"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.RUBY_BRICK_SLAB, 2)
+                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
+                .save(output, modLoc("stonecutting/ruby_brick_slab"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICK_SLAB.toStack(6))
+                .pattern("GGG")
+                .define('G', ESItems.RUBY_BRICKS)
+                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
+                .save(output, modLoc("shaped/ruby_brick_slab"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.RUBY_BRICK_WALL)
+                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
+                .save(output, modLoc("stonecutting/ruby_brick_wall"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICK_WALL.toStack(6))
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', ESItems.RUBY_BRICKS)
+                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
+                .save(output, modLoc("shaped/ruby_brick_wall"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.CHISELED_RUBY_BRICKS)
+                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
+                .save(output, modLoc("stonecutting/chiseled_ruby_bricks"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CHISELED_RUBY_BRICKS.toStack(1))
+                .pattern("G")
+                .pattern("G")
+                .define('G', ESItems.RUBY_BRICK_SLAB)
+                .unlockedBy("has_ruby_brick_slab", has(ESItems.RUBY_BRICK_SLAB))
+                .save(output, modLoc("shaped/chiseled_ruby_bricks"));
+        // #endregion Ruby
         // #endregion Blocks
     }
 

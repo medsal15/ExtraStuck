@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extrastuck:block/cut_ruby_slab"
+    },
+    "type=double": {
+      "model": "extrastuck:block/cut_ruby"
+    },
+    "type=top": {
+      "model": "extrastuck:block/cut_ruby_slab_top"
+    }
+  }
+}

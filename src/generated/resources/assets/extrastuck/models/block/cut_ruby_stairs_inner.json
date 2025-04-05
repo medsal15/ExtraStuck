@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "extrastuck:block/cut_ruby",
+    "side": "extrastuck:block/cut_ruby",
+    "top": "extrastuck:block/cut_ruby"
+  }
+}
