@@ -11,9 +11,9 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
-import com.medsal15.items.shields.FluxShield;
-import com.medsal15.items.shields.IShieldBlock;
-import com.medsal15.items.shields.ThornShield;
+import com.medsal15.items.IESEnergyStorage;
+import com.medsal15.items.shields.ESShield;
+import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.ChatFormatting;
@@ -153,7 +153,7 @@ public class ExtraStuck {
     @SubscribeEvent
     public void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerItem(Capabilities.EnergyStorage.ITEM,
-                (stack, unused) -> new FluxShield.StackEnergyStorage(stack),
+                (stack, u) -> new IESEnergyStorage.StackEnergyStorage(stack),
                 ESItems.FLUX_SHIELD.get());
     }
 
@@ -161,7 +161,7 @@ public class ExtraStuck {
     public void onShieldBlock(LivingShieldBlockEvent event) {
         // Ensure we're using a thorn shield
         var item = event.getEntity().getUseItem().getItem();
-        if (item instanceof IShieldBlock shield) {
+        if (item instanceof ESShield shield) {
             shield.onShieldBlock(event);
             return;
         }
@@ -204,17 +204,18 @@ public class ExtraStuck {
 
             // Shield info
             if (ClientConfig.displayShieldInfo) {
-                if (item instanceof ThornShield) {
+                if (item instanceof ESShield shield && shield.hasOnBlock(BlockFuncs.DAMAGE)) {
                     event.getToolTip().add(i,
                             Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
-                                    stack.get(ESDataComponents.SHIELD_DAMAGE).intValue())
+                                    stack.get(ESDataComponents.SHIELD_DAMAGE)
+                                            .intValue())
                                     .withStyle(ChatFormatting.GRAY));
                     i++;
                 }
             }
 
             // Shield RF
-            if (item instanceof FluxShield shield) {
+            if (item instanceof ESShield shield && shield.hasOnBlock(BlockFuncs.USE_POWER)) {
                 event.getToolTip().add(i, Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
                         NumberFormat.getInstance().format(shield.getEnergyStored(stack)),
                         NumberFormat.getInstance().format(shield.getMaxEnergyStored(stack))));

@@ -8,7 +8,7 @@ Add a mod icon
 
 Put patchouli guidebook at the start of the creative tab
 
-Simplify arrow/shield classes to use one entity class
+Simplify arrow classes to use one class
 
 ## Content ##
 

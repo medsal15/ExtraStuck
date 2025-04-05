@@ -23,22 +23,13 @@ import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.arrows.EndArrow;
 import com.medsal15.items.arrows.ESArrowItem;
-import com.medsal15.items.shields.BoondollarShield;
-import com.medsal15.items.shields.BounceShield;
-import com.medsal15.items.shields.CandyShield;
-import com.medsal15.items.shields.ChangeShield;
 import com.medsal15.items.shields.ESShield;
-import com.medsal15.items.shields.FlameShield;
-import com.medsal15.items.shields.FluxShield;
-import com.medsal15.items.shields.HaltShield;
-import com.medsal15.items.shields.RushShield;
-import com.medsal15.items.shields.SbahjShield;
-import com.medsal15.items.shields.SwapShield;
-import com.medsal15.items.shields.ThornShield;
+import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.SwapTrident;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -56,20 +47,19 @@ public final class ESItems {
 
     // #region Shields
     public static final DeferredItem<Item> FLAME_SHIELD = ITEMS.registerItem("flame_shield",
-            p -> new FlameShield(p.durability(80).component(ESDataComponents.BURN_DURATION, 100)));
+            p -> new ESShield(p.durability(80).component(ESDataComponents.BURN_DURATION, 100), BlockFuncs::burn));
     public static final DeferredItem<Item> WOODEN_SHIELD = ITEMS.registerItem("wooden_shield",
-            properties -> new ChangeShield(properties, FLAME_SHIELD, DamageTypeTags.IS_FIRE),
-            new Item.Properties().durability(80));
-    public static final DeferredItem<Item> HALT_SHIELD = ITEMS.registerItem("halt_shield", HaltShield::new,
-            new Item.Properties().durability(243));
+            p -> new ESShield(p.durability(80), BlockFuncs.replace(ESItems.FLAME_SHIELD, DamageTypeTags.IS_FIRE)));
+    public static final DeferredItem<Item> HALT_SHIELD = ITEMS.registerItem("halt_shield",
+            p -> new ESShield(p.durability(243), BlockFuncs::strongerKnockback, BlockFuncs.turn(180)));
     public static final DeferredItem<Item> NON_CONTACT_CONTRACT = ITEMS.registerItem("non_contact_contract",
             ESShield::new, new Item.Properties().durability(328));
     public static final DeferredItem<Item> SLIED = ITEMS.registerItem("slied",
-            SbahjShield::new, new Item.Properties().durability(59));
+            p -> new ESShield(p.durability(59), BlockFuncs.dropChance(.25F)));
     public static final DeferredItem<Item> RIOT_SHIELD = ITEMS.registerItem("riot_shield",
             ESShield::new, new Item.Properties().durability(328));
     public static final DeferredItem<Item> CAPITASHIELD = ITEMS.registerItem("capitashield",
-            BoondollarShield::new, new Item.Properties().durability(130));
+            p -> new ESShield(p.durability(130), BlockFuncs::consumeBoondollars));
     public static final DeferredItem<Item> IRON_SHIELD = ITEMS.registerItem("iron_shield", ESShield::new,
             new Item.Properties().durability(480));
     public static final DeferredItem<Item> GOLD_SHIELD = ITEMS.registerItem("gold_shield", ESShield::new,
@@ -92,44 +82,44 @@ public final class ESItems {
                                     Operation.ADD_VALUE),
                             EquipmentSlotGroup.OFFHAND).build()));
     public static final DeferredItem<Item> POGO_SHIELD = ITEMS.registerItem("pogo_shield",
-            (properties) -> new BounceShield(properties, (projectile, entity, random) -> {
+            p -> new ESShield(p.durability(450), BlockFuncs.bounceProjectiles((projectile, entity, random) -> {
                 // randomly multiply by 1 / 5 - 5
                 var mx = random.nextDouble() * 4D + 1D;
                 var fx = random.nextBoolean() ? mx : 1 / mx;
                 var mz = random.nextDouble() * 4D + 1D;
                 var fz = random.nextBoolean() ? mz : 1 / mz;
                 projectile.setDeltaMovement(projectile.getDeltaMovement().multiply(fx, 1, fz));
-            }),
-            new Item.Properties().durability(450));
+            })));
     public static final DeferredItem<Item> RETURN_TO_SENDER = ITEMS.registerItem("return_to_sender",
-            (properties) -> new BounceShield(properties, (projectile, entity, random) -> {
+            p -> new ESShield(p.durability(1353), BlockFuncs.bounceProjectiles((projectile, entity, random) -> {
                 if (entity != null) {
                     Vec3 vec3 = entity.getLookAngle().normalize().multiply(-4, -4, -4);
                     projectile.setDeltaMovement(vec3);
                     projectile.hasImpulse = true;
                 }
-            }), new Item.Properties().durability(1353));
+            })));
     public static final DeferredItem<Item> SPIKES_ON_A_SLAB = ITEMS.registerItem("spikes_on_a_slab",
-            p -> new ThornShield(p.durability(732).component(ESDataComponents.SHIELD_DAMAGE, 6F)));
+            p -> new ESShield(p.durability(732).component(ESDataComponents.SHIELD_DAMAGE, 6F), BlockFuncs.DAMAGE));
     public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter",
-            p -> new CandyShield(p.durability(612).component(ESDataComponents.SHIELD_DAMAGE, 8F)));
+            p -> new ESShield(p.durability(612).component(ESDataComponents.SHIELD_DAMAGE, 8F), BlockFuncs.DAMAGE,
+                    BlockFuncs::dropCandy));
     public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
-            p -> new FluxShield(p.durability(490).component(ESDataComponents.ENERGY, 0)
+            p -> new ESShield(p.durability(490).component(ESDataComponents.ENERGY, 0)
                     .component(ESDataComponents.ENERGY_STORAGE, 100000)
-                    .component(ESDataComponents.FLUX_MULTIPLIER, 100)));
+                    .component(ESDataComponents.FLUX_MULTIPLIER, 100), BlockFuncs.USE_POWER));
     public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
-            p -> new FlameShield(p.durability(80).component(ESDataComponents.BURN_DURATION, 600)));
+            p -> new ESShield(p.durability(880).component(ESDataComponents.BURN_DURATION, 600), BlockFuncs::burn));
     public static final DeferredItem<Item> ELDRITCH_SHIELD = ITEMS.registerItem("eldritch_shield",
-            p -> new RushShield(p.durability(1441).component(ESDataComponents.SHIELD_DAMAGE, 10F)));
+            p -> new ESShield(p.durability(1441).component(ESDataComponents.SHIELD_DAMAGE, 10F), BlockFuncs.DAMAGE,
+                    BlockFuncs.gainEffect(MobEffects.DAMAGE_BOOST, 100)));
     /** Shield variant */
     public static final DeferredItem<Item> CAPTAIN_JUSTICE_THROWABLE_SHIELD = ITEMS.registerItem(
             "captain_justice_throwable_shield",
-            (properties) -> new SwapShield(properties, null),
-            new Item.Properties().durability(789));
+            p -> new ESShield(p.durability(789), ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE));
     /** Throwable variant */
     public static final DeferredItem<Item> CAPTAIN_JUSTICE_SHIELD_THROWABLE = ITEMS.registerItem(
-            "captain_justice_shield_throwable", p -> new SwapTrident(p, CAPTAIN_JUSTICE_THROWABLE_SHIELD),
-            new Item.Properties().durability(789));
+            "captain_justice_shield_throwable",
+            p -> new SwapTrident(p.durability(789), CAPTAIN_JUSTICE_THROWABLE_SHIELD));
     // #endregion Shields
 
     // #region Arrows
@@ -207,10 +197,6 @@ public final class ESItems {
     // #endregion Blocks
 
     public static Collection<DeferredItem<? extends Item>> getItems() {
-        if (((SwapShield) CAPTAIN_JUSTICE_THROWABLE_SHIELD.get()).next == null) {
-            ((SwapShield) CAPTAIN_JUSTICE_THROWABLE_SHIELD.get()).next = CAPTAIN_JUSTICE_SHIELD_THROWABLE;
-        }
-
         ArrayList<DeferredItem<? extends Item>> list = new ArrayList<>();
         list.addAll(getShields());
         list.add(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
