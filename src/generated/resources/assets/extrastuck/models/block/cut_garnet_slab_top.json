@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "extrastuck:block/cut_garnet",
+    "side": "extrastuck:block/cut_garnet",
+    "top": "extrastuck:block/cut_garnet"
+  }
+}

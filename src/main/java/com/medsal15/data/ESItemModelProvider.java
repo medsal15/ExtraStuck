@@ -99,6 +99,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
     }
 
     private void registerBlocks() {
+        withExistingParent(ESItems.CUT_GARNET.getId().toString(), modLoc("block/cut_garnet"));
+        withExistingParent(ESItems.CUT_GARNET_STAIRS.getId().toString(), modLoc("block/cut_garnet_stairs"));
+        withExistingParent(ESItems.CUT_GARNET_SLAB.getId().toString(), modLoc("block/cut_garnet_slab"));
+        wallInventory(ESItems.CUT_GARNET_WALL.getId().toString(), modLoc("block/cut_garnet"));
         withExistingParent(ESItems.GARNET_BRICKS.getId().toString(), modLoc("block/garnet_bricks"));
         withExistingParent(ESItems.GARNET_BRICK_STAIRS.getId().toString(), modLoc("block/garnet_brick_stairs"));
         withExistingParent(ESItems.GARNET_BRICK_SLAB.getId().toString(), modLoc("block/garnet_brick_slab"));

@@ -22,8 +22,10 @@ public final class ESBlockTags extends BlockTagsProvider {
 
     @Override
     protected void addTags(@Nonnull Provider arg0) {
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ESBlocks.GARNET_BRICKS.get(), ESBlocks.GARNET_BRICK_STAIRS.get(),
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ESBlocks.CUT_GARNET.get(), ESBlocks.CUT_GARNET_STAIRS.get(),
+                ESBlocks.CUT_GARNET_SLAB.get(), ESBlocks.CUT_GARNET_WALL.get(),
+                ESBlocks.GARNET_BRICKS.get(), ESBlocks.GARNET_BRICK_STAIRS.get(),
                 ESBlocks.GARNET_BRICK_SLAB.get(), ESBlocks.GARNET_BRICK_WALL.get());
-        tag(BlockTags.WALLS).add(ESBlocks.GARNET_BRICK_WALL.get());
+        tag(BlockTags.WALLS).add(ESBlocks.CUT_GARNET_WALL.get(), ESBlocks.GARNET_BRICK_WALL.get());
     }
 }

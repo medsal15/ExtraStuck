@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minestuck"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:amethyst_block"
+  },
+  "input2": {
+    "tag": "c:dyes/red"
+  },
+  "mode": "or",
+  "output": "extrastuck:cut_garnet"
+}

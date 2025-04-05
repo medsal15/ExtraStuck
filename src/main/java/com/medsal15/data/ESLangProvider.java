@@ -130,6 +130,10 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     private void addBlocks() {
+        addBlock(ESBlocks.CUT_GARNET, "Cut Garnet");
+        addBlock(ESBlocks.CUT_GARNET_STAIRS, "Cut Garnet Stairs");
+        addBlock(ESBlocks.CUT_GARNET_SLAB, "Cut Garnet Slab");
+        addBlock(ESBlocks.CUT_GARNET_WALL, "Cut Garnet Wall");
         addBlock(ESBlocks.GARNET_BRICKS, "Garnet Bricks");
         addBlock(ESBlocks.GARNET_BRICK_STAIRS, "Garnet Brick Stairs");
         addBlock(ESBlocks.GARNET_BRICK_SLAB, "Garnet Brick Slab");

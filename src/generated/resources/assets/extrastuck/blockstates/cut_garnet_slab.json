@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extrastuck:block/cut_garnet_slab"
+    },
+    "type=double": {
+      "model": "extrastuck:block/cut_garnet"
+    },
+    "type=top": {
+      "model": "extrastuck:block/cut_garnet_slab_top"
+    }
+  }
+}

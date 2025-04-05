@@ -185,6 +185,14 @@ public final class ESItems {
     // #endregion Arrows
 
     // #region Blocks
+    public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
+    public static final DeferredItem<BlockItem> CUT_GARNET_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.CUT_GARNET_STAIRS);
+    public static final DeferredItem<BlockItem> CUT_GARNET_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.CUT_GARNET_SLAB);
+    public static final DeferredItem<BlockItem> CUT_GARNET_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.CUT_GARNET_WALL);
+
     public static final DeferredItem<BlockItem> GARNET_BRICKS = ITEMS.registerSimpleBlockItem(ESBlocks.GARNET_BRICKS);
     public static final DeferredItem<BlockItem> GARNET_BRICK_STAIRS = ITEMS
             .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_STAIRS);
@@ -256,10 +264,16 @@ public final class ESItems {
 
     public static Collection<DeferredItem<BlockItem>> getBlocks() {
         ArrayList<DeferredItem<BlockItem>> list = new ArrayList<>();
+
+        list.add(CUT_GARNET);
+        list.add(CUT_GARNET_STAIRS);
+        list.add(CUT_GARNET_SLAB);
+        list.add(CUT_GARNET_WALL);
         list.add(GARNET_BRICKS);
         list.add(GARNET_BRICK_STAIRS);
         list.add(GARNET_BRICK_SLAB);
         list.add(GARNET_BRICK_WALL);
+
         return list;
     }
 }

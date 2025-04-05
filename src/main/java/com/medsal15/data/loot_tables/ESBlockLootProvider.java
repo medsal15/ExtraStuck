@@ -26,6 +26,10 @@ public class ESBlockLootProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        dropSelf(ESBlocks.CUT_GARNET.get());
+        dropSelf(ESBlocks.CUT_GARNET_STAIRS.get());
+        dropSelf(ESBlocks.CUT_GARNET_SLAB.get());
+        dropSelf(ESBlocks.CUT_GARNET_WALL.get());
         dropSelf(ESBlocks.GARNET_BRICKS.get());
         dropSelf(ESBlocks.GARNET_BRICK_STAIRS.get());
         dropSelf(ESBlocks.GARNET_BRICK_SLAB.get());

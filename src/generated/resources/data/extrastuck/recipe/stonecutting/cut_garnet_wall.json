@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "extrastuck:cut_garnet"
+  },
+  "result": {
+    "count": 1,
+    "id": "extrastuck:cut_garnet_wall"
+  }
+}
