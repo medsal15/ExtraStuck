@@ -16,7 +16,6 @@ Allow change shields (wooden shield) to also transform when dropped
 
 ### Grist-based blocks ###
 
-Chiseled garnet with ruby decoration
 Ruby variants of garnet blocks
 Cobalt block, bars, door, trapdoor, pressure plate
 Sulfurous stone, flammable, bricks, smooth (stairs, slabs, walls)

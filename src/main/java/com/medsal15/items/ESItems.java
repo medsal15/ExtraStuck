@@ -179,7 +179,6 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.CUT_GARNET_SLAB);
     public static final DeferredItem<BlockItem> CUT_GARNET_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.CUT_GARNET_WALL);
-
     public static final DeferredItem<BlockItem> GARNET_BRICKS = ITEMS.registerSimpleBlockItem(ESBlocks.GARNET_BRICKS);
     public static final DeferredItem<BlockItem> GARNET_BRICK_STAIRS = ITEMS
             .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_STAIRS);
@@ -187,6 +186,8 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_SLAB);
     public static final DeferredItem<BlockItem> GARNET_BRICK_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_WALL);
+    public static final DeferredItem<BlockItem> CHISELED_GARNET_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.CHISELED_GARNET_BRICKS);
     // #endregion Blocks
 
     public static Collection<DeferredItem<? extends Item>> getItems() {
@@ -260,6 +261,7 @@ public final class ESItems {
         list.add(GARNET_BRICK_STAIRS);
         list.add(GARNET_BRICK_SLAB);
         list.add(GARNET_BRICK_WALL);
+        list.add(CHISELED_GARNET_BRICKS);
 
         return list;
     }

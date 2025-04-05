@@ -365,7 +365,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/garnet_bricks"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
                         ESItems.GARNET_BRICK_STAIRS)
                 .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
                 .save(output, modLoc("stonecutting/garnet_brick_stairs"));
@@ -378,7 +378,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/garnet_brick_stairs"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
                         ESItems.GARNET_BRICK_SLAB, 2)
                 .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
                 .save(output, modLoc("stonecutting/garnet_brick_slab"));
@@ -389,7 +389,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/garnet_brick_slab"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
                         ESItems.GARNET_BRICK_WALL)
                 .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
                 .save(output, modLoc("stonecutting/garnet_brick_wall"));
@@ -399,6 +399,18 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .define('G', ESItems.GARNET_BRICKS)
                 .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
                 .save(output, modLoc("shaped/garnet_brick_wall"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.CHISELED_GARNET_BRICKS)
+                .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
+                .save(output, modLoc("stonecutting/chiseled_garnet_bricks"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CHISELED_GARNET_BRICKS.toStack(1))
+                .pattern("G")
+                .pattern("G")
+                .define('G', ESItems.GARNET_BRICK_SLAB)
+                .unlockedBy("has_garnet_brick_slab", has(ESItems.GARNET_BRICK_SLAB))
+                .save(output, modLoc("shaped/chiseled_garnet_bricks"));
         // #endregion Blocks
     }
 

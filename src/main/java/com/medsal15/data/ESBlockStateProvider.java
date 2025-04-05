@@ -22,5 +22,6 @@ public class ESBlockStateProvider extends BlockStateProvider {
         stairsBlock(ESBlocks.GARNET_BRICK_STAIRS.get(), modLoc("block/garnet_bricks"));
         slabBlock(ESBlocks.GARNET_BRICK_SLAB.get(), modLoc("block/garnet_bricks"), modLoc("block/garnet_bricks"));
         wallBlock(ESBlocks.GARNET_BRICK_WALL.get(), modLoc("block/garnet_bricks"));
+        simpleBlock(ESBlocks.CHISELED_GARNET_BRICKS.get());
     }
 }

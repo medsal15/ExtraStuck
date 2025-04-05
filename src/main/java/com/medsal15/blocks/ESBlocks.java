@@ -25,14 +25,14 @@ public final class ESBlocks {
             () -> new SlabBlock(ofFullCopy(CUT_GARNET.get())));
     public static final DeferredBlock<WallBlock> CUT_GARNET_WALL = BLOCKS.register("cut_garnet_wall",
             () -> new WallBlock(ofFullCopy(CUT_GARNET.get())));
-
-    public static final DeferredBlock<Block> GARNET_BRICKS = BLOCKS.registerBlock("garnet_bricks", Block::new,
-            Block.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(1.5F).sound(SoundType.AMETHYST)
-                    .requiresCorrectToolForDrops());
+    public static final DeferredBlock<Block> GARNET_BRICKS = BLOCKS.register("garnet_bricks",
+            () -> new Block(ofFullCopy(CUT_GARNET.get())));
     public static final DeferredBlock<StairBlock> GARNET_BRICK_STAIRS = BLOCKS.register("garnet_brick_stairs",
-            () -> new StairBlock(GARNET_BRICKS.get().defaultBlockState(), ofFullCopy(GARNET_BRICKS.get())));
+            () -> new StairBlock(GARNET_BRICKS.get().defaultBlockState(), ofFullCopy(CUT_GARNET.get())));
     public static final DeferredBlock<SlabBlock> GARNET_BRICK_SLAB = BLOCKS.register("garnet_brick_slab",
-            () -> new SlabBlock(ofFullCopy(GARNET_BRICKS.get())));
+            () -> new SlabBlock(ofFullCopy(CUT_GARNET.get())));
     public static final DeferredBlock<WallBlock> GARNET_BRICK_WALL = BLOCKS.register("garnet_brick_wall",
-            () -> new WallBlock(ofFullCopy(GARNET_BRICKS.get())));
+            () -> new WallBlock(ofFullCopy(CUT_GARNET.get())));
+    public static final DeferredBlock<Block> CHISELED_GARNET_BRICKS = BLOCKS.register("chiseled_garnet_bricks",
+            () -> new Block(ofFullCopy(CUT_GARNET.get())));
 }

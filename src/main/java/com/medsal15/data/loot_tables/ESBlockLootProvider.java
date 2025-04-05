@@ -34,5 +34,6 @@ public class ESBlockLootProvider extends BlockLootSubProvider {
         dropSelf(ESBlocks.GARNET_BRICK_STAIRS.get());
         dropSelf(ESBlocks.GARNET_BRICK_SLAB.get());
         dropSelf(ESBlocks.GARNET_BRICK_WALL.get());
+        dropSelf(ESBlocks.CHISELED_GARNET_BRICKS.get());
     }
 }

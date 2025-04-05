@@ -107,5 +107,6 @@ public final class ESItemModelProvider extends ItemModelProvider {
         withExistingParent(ESItems.GARNET_BRICK_STAIRS.getId().toString(), modLoc("block/garnet_brick_stairs"));
         withExistingParent(ESItems.GARNET_BRICK_SLAB.getId().toString(), modLoc("block/garnet_brick_slab"));
         wallInventory(ESItems.GARNET_BRICK_WALL.getId().toString(), modLoc("block/garnet_bricks"));
+        withExistingParent(ESItems.CHISELED_GARNET_BRICKS.getId().toString(), modLoc("block/chiseled_garnet_bricks"));
     }
 }

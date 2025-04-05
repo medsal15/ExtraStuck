@@ -138,6 +138,7 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.GARNET_BRICK_STAIRS, "Garnet Brick Stairs");
         addBlock(ESBlocks.GARNET_BRICK_SLAB, "Garnet Brick Slab");
         addBlock(ESBlocks.GARNET_BRICK_WALL, "Garnet Brick Wall");
+        addBlock(ESBlocks.CHISELED_GARNET_BRICKS, "Chiseled Garnet Bricks");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {

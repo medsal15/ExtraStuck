@@ -1,8 +1,13 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "extrastuck:garnet_bricks"
-  },
+  "ingredient": [
+    {
+      "item": "extrastuck:garnet_bricks"
+    },
+    {
+      "item": "extrastuck:cut_garnet"
+    }
+  ],
   "result": {
     "count": 2,
     "id": "extrastuck:garnet_brick_slab"
