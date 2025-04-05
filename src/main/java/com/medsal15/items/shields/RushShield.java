@@ -7,8 +7,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 
 public class RushShield extends ThornShield {
-    public RushShield(Properties properties, float damage) {
-        super(properties, damage);
+    public RushShield(Properties properties) {
+        super(properties);
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.medsal15.items.shields;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.items.ESItems;
+import com.medsal15.items.ESDataComponents;
 
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.item.ItemStack;
@@ -12,53 +12,59 @@ import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 
 public class FluxShield extends ESShield implements IShieldBlock {
     /** Multiplier from damage to flux */
+    @Deprecated
     public int mult;
-    public int storage;
 
+    @Deprecated
     public FluxShield(Properties properties, int mult, int storage) {
         super(properties);
         this.mult = mult;
-        this.storage = storage;
+    }
+
+    public FluxShield(Properties properties) {
+        super(properties);
     }
 
     public int getMaxEnergyStored(ItemStack stack) {
-        return storage;
+        return stack.get(ESDataComponents.ENERGY_STORAGE);
     }
 
     public int getEnergyStored(ItemStack stack) {
-        return stack.getOrDefault(ESItems.ENERGY, 0);
+        return stack.get(ESDataComponents.ENERGY);
     }
 
     public boolean canExtract(ItemStack stack) {
-        var stored = stack.getOrDefault(ESItems.ENERGY, 0);
+        var stored = stack.get(ESDataComponents.ENERGY);
         return stored > 0;
     }
 
     public boolean canReceive(ItemStack stack) {
-        var stored = stack.getOrDefault(ESItems.ENERGY, 0);
+        var stored = stack.get(ESDataComponents.ENERGY);
+        var storage = stack.get(ESDataComponents.ENERGY_STORAGE);
         var diff = storage - stored;
         return diff > 0;
     }
 
     public int extractEnergy(ItemStack stack, int toExtract, boolean simulate) {
-        var stored = stack.getOrDefault(ESItems.ENERGY, 0);
+        var stored = stack.get(ESDataComponents.ENERGY);
         if (toExtract > stored)
             toExtract = stored;
 
         if (!simulate) {
-            stack.set(ESItems.ENERGY, stored - toExtract);
+            stack.set(ESDataComponents.ENERGY, stored - toExtract);
         }
 
         return toExtract;
     }
 
     public int receiveEnergy(ItemStack stack, int toReceive, boolean simulate) {
-        var stored = stack.getOrDefault(ESItems.ENERGY, 0);
+        var stored = stack.get(ESDataComponents.ENERGY);
+        var storage = stack.get(ESDataComponents.ENERGY_STORAGE);
         if (toReceive + stored > storage)
             toReceive = storage - stored;
 
         if (!simulate) {
-            stack.set(ESItems.ENERGY, stored + toReceive);
+            stack.set(ESDataComponents.ENERGY, stored + toReceive);
         }
 
         return toReceive;
@@ -67,8 +73,12 @@ public class FluxShield extends ESShield implements IShieldBlock {
     @Override
     public boolean onShieldBlock(LivingShieldBlockEvent event) {
         var useItem = event.getEntity().getUseItem();
-        if (!useItem.has(ESItems.ENERGY.get()) || mult <= 0)
+        if (!useItem.has(ESDataComponents.ENERGY) || !useItem.has(ESDataComponents.FLUX_MULTIPLIER))
             return false;
+
+        var mult = useItem.get(ESDataComponents.FLUX_MULTIPLIER);
+        if (mult < 0)
+            mult = 0;
 
         // Ensure the damage does not bypass shields
         var damageSource = event.getDamageSource();
@@ -77,9 +87,6 @@ public class FluxShield extends ESShield implements IShieldBlock {
 
         // Drain energy
         var drain = (int) (event.getBlockedDamage() * mult);
-        if (!(useItem.getItem() instanceof FluxShield))
-            return false;
-
         var extracted = extractEnergy(useItem, drain, false);
         if (extracted > 0) {
             event.setShieldDamage(0);

@@ -1,5 +1,7 @@
 package com.medsal15.items.shields;
 
+import com.medsal15.items.ESDataComponents;
+
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
@@ -8,18 +10,16 @@ import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
  * Shield that applies an effect to melee attackers
  */
 public class FlameShield extends ESShield implements IShieldBlock {
-    /**
-     * Duration in ticks
-     */
-    public int duration;
-
-    public FlameShield(Properties properties, int duration) {
+    public FlameShield(Properties properties) {
         super(properties);
-        this.duration = duration;
     }
 
     public boolean onShieldBlock(LivingShieldBlockEvent event) {
-        if (this.duration <= 0)
+        var useItem = event.getEntity().getUseItem();
+        if (!useItem.has(ESDataComponents.BURN_DURATION.get()))
+            return false;
+        var duration = useItem.get(ESDataComponents.BURN_DURATION);
+        if (duration <= 0)
             return false;
 
         // Ensure the damage is melee and does not bypass shields
@@ -32,7 +32,7 @@ public class FlameShield extends ESShield implements IShieldBlock {
         if (attacker == null || !(attacker instanceof LivingEntity target))
             return false;
 
-        target.setRemainingFireTicks(this.duration);
+        target.setRemainingFireTicks(duration);
         return true;
     }
 }

@@ -2,7 +2,6 @@ package com.medsal15.items;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
@@ -37,11 +36,7 @@ import com.medsal15.items.shields.SbahjShield;
 import com.medsal15.items.shields.SwapShield;
 import com.medsal15.items.shields.ThornShield;
 import com.medsal15.items.throwables.SwapTrident;
-import com.mojang.serialization.Codec;
 
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -59,18 +54,11 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ESItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
 
-    public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister
-            .createDataComponents(Registries.DATA_COMPONENT_TYPE, ExtraStuck.MODID);
-    public static final Supplier<DataComponentType<Integer>> ENERGY = DATA_COMPONENTS.registerComponentType(
-            "energy",
-            builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
-
     // #region Shields
     public static final DeferredItem<Item> FLAME_SHIELD = ITEMS.registerItem("flame_shield",
-            (properties) -> new FlameShield(properties, 100),
-            new Item.Properties().durability(80));
+            p -> new FlameShield(p.durability(80).component(ESDataComponents.BURN_DURATION, 100)));
     public static final DeferredItem<Item> WOODEN_SHIELD = ITEMS.registerItem("wooden_shield",
-            (properties) -> new ChangeShield(properties, FLAME_SHIELD, DamageTypeTags.IS_FIRE),
+            properties -> new ChangeShield(properties, FLAME_SHIELD, DamageTypeTags.IS_FIRE),
             new Item.Properties().durability(80));
     public static final DeferredItem<Item> HALT_SHIELD = ITEMS.registerItem("halt_shield", HaltShield::new,
             new Item.Properties().durability(243));
@@ -122,18 +110,17 @@ public final class ESItems {
                 }
             }), new Item.Properties().durability(1353));
     public static final DeferredItem<Item> SPIKES_ON_A_SLAB = ITEMS.registerItem("spikes_on_a_slab",
-            p -> new ThornShield(p, 6), new Item.Properties().durability(732));
-    public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter", p -> new CandyShield(p, 8),
-            new Item.Properties().durability(612));
+            p -> new ThornShield(p.durability(732).component(ESDataComponents.SHIELD_DAMAGE, 6F)));
+    public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter",
+            p -> new CandyShield(p.durability(612).component(ESDataComponents.SHIELD_DAMAGE, 8F)));
     public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
-            p -> new FluxShield(p, 100, 100000),
-            new Item.Properties().durability(490));
+            p -> new FluxShield(p.durability(490).component(ESDataComponents.ENERGY, 0)
+                    .component(ESDataComponents.ENERGY_STORAGE, 100000)
+                    .component(ESDataComponents.FLUX_MULTIPLIER, 100)));
     public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
-            (properties) -> new FlameShield(properties, 600),
-            new Item.Properties().durability(888));
+            p -> new FlameShield(p.durability(80).component(ESDataComponents.BURN_DURATION, 600)));
     public static final DeferredItem<Item> ELDRITCH_SHIELD = ITEMS.registerItem("eldritch_shield",
-            (properties) -> new RushShield(properties, 10),
-            new Item.Properties().durability(1441));
+            p -> new RushShield(p.durability(1441).component(ESDataComponents.SHIELD_DAMAGE, 10F)));
     /** Shield variant */
     public static final DeferredItem<Item> CAPTAIN_JUSTICE_THROWABLE_SHIELD = ITEMS.registerItem(
             "captain_justice_throwable_shield",

@@ -7,8 +7,8 @@ import net.minecraft.tags.DamageTypeTags;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 
 public class CandyShield extends ThornShield {
-    public CandyShield(Properties properties, float damage) {
-        super(properties, damage);
+    public CandyShield(Properties properties) {
+        super(properties);
     }
 
     @Override

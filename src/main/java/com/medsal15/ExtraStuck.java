@@ -9,6 +9,7 @@ import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESArrowRenderer;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.shields.FluxShield;
 import com.medsal15.items.shields.IShieldBlock;
@@ -84,7 +85,7 @@ public class ExtraStuck {
         modEventBus.addListener(this::registerEntityLayers);
 
         // Register the Deferred Register to the mod event bus so items get registered
-        ESItems.DATA_COMPONENTS.register(modEventBus);
+        ESDataComponents.DATA_COMPONENTS.register(modEventBus);
         ESBlocks.BLOCKS.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
@@ -203,10 +204,10 @@ public class ExtraStuck {
 
             // Shield info
             if (ClientConfig.displayShieldInfo) {
-                if (item instanceof ThornShield shield) {
+                if (item instanceof ThornShield) {
                     event.getToolTip().add(i,
                             Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
-                                    (int) shield.damage)
+                                    stack.get(ESDataComponents.SHIELD_DAMAGE).intValue())
                                     .withStyle(ChatFormatting.GRAY));
                     i++;
                 }
@@ -215,8 +216,8 @@ public class ExtraStuck {
             // Shield RF
             if (item instanceof FluxShield shield) {
                 event.getToolTip().add(i, Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
-                        NumberFormat.getInstance().format(stack.getOrDefault(ESItems.ENERGY, 0)),
-                        NumberFormat.getInstance().format(shield.storage)));
+                        NumberFormat.getInstance().format(shield.getEnergyStored(stack)),
+                        NumberFormat.getInstance().format(shield.getMaxEnergyStored(stack))));
                 i++;
             }
         }
