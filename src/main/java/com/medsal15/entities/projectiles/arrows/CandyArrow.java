@@ -2,7 +2,6 @@ package com.medsal15.entities.projectiles.arrows;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.ExtraStuck;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.entity.underling.UnderlingEntity;
@@ -34,12 +33,11 @@ public class CandyArrow extends AbstractArrow {
 
     @Override
     protected void onHitEntity(@Nonnull EntityHitResult result) {
-        if (ExtraStuck.isMinestuckLoaded) {
-            var entity = result.getEntity();
-            if (!(entity instanceof UnderlingEntity underling))
-                return;
-            underling.dropCandy = true;
-        }
+        var entity = result.getEntity();
+        if (!(entity instanceof UnderlingEntity underling))
+            return;
+        underling.dropCandy = true;
+
         super.onHitEntity(result);
     }
 }

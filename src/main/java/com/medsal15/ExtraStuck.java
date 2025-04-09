@@ -30,7 +30,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -69,8 +68,6 @@ public class ExtraStuck {
                         }
                     }).build());
 
-    public static boolean isMinestuckLoaded = false;
-
     // The constructor for the mod class is the first code that is run when your mod
     // is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and
@@ -99,9 +96,6 @@ public class ExtraStuck {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        isMinestuckLoaded = ModList.get().isLoaded("minestuck");
-        if (ServerConfig.warnNoMinestuck && !isMinestuckLoaded)
-            LOGGER.info("Minestuck is not loaded!");
     }
 
     @SubscribeEvent

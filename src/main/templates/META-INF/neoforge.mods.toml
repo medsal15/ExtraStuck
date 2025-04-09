@@ -87,7 +87,7 @@ description='''${mod_description}'''
 
 [[dependencies.${mod_id}]]
     modId="minestuck"
-    type="optional"
+    type="required"
     versionRange="1.21.1-1.12.2.0"
     ordering="AFTER"
     side="BOTH"

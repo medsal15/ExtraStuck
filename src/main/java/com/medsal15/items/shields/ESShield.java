@@ -7,7 +7,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.medsal15.ESDamageTypes;
-import com.medsal15.ExtraStuck;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.IESEnergyStorage;
@@ -220,10 +219,6 @@ public class ESShield extends ShieldItem implements IESEnergyStorage {
         // #endregion USE_POWER
 
         public static boolean consumeBoondollars(LivingShieldBlockEvent event) {
-            // Nothing to do here
-            if (!ExtraStuck.isMinestuckLoaded)
-                return false;
-
             var user = event.getEntity();
             // Only players get boondollars
             if (!(user instanceof ServerPlayer player))
@@ -263,9 +258,6 @@ public class ESShield extends ShieldItem implements IESEnergyStorage {
         }
 
         public static boolean dropCandy(LivingShieldBlockEvent event) {
-            if (!ExtraStuck.isMinestuckLoaded)
-                return false;
-
             // Ensure the damage is melee and does not bypass shields
             var damageSource = event.getDamageSource();
             if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD) || !damageSource.isDirect())
