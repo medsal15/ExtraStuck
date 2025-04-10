@@ -47,6 +47,9 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(ItemTags.BREAKS_DECORATED_POTS).add(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
 
         tag(Tags.Items.FOODS).add(ESItems.SWEET_TOOTH.get());
+
+        tag(ItemTags.DOORS).add(ESItems.COBALT_DOOR.get());
+        tag(ItemTags.TRAPDOORS).add(ESItems.COBALT_TRAPDOOR.get());
     }
 
     private void tagShield(DeferredItem<Item> item) {

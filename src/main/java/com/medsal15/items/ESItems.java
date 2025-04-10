@@ -178,6 +178,7 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_WALL);
     public static final DeferredItem<BlockItem> CHISELED_GARNET_BRICKS = ITEMS
             .registerSimpleBlockItem(ESBlocks.CHISELED_GARNET_BRICKS);
+
     public static final DeferredItem<BlockItem> CUT_RUBY = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_RUBY);
     public static final DeferredItem<BlockItem> CUT_RUBY_STAIRS = ITEMS
             .registerSimpleBlockItem(ESBlocks.CUT_RUBY_STAIRS);
@@ -194,6 +195,14 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.RUBY_BRICK_WALL);
     public static final DeferredItem<BlockItem> CHISELED_RUBY_BRICKS = ITEMS
             .registerSimpleBlockItem(ESBlocks.CHISELED_RUBY_BRICKS);
+
+    public static final DeferredItem<BlockItem> COBALT_BLOCK = ITEMS.registerSimpleBlockItem(ESBlocks.COBALT_BLOCK);
+    public static final DeferredItem<BlockItem> COBALT_BARS = ITEMS.registerSimpleBlockItem(ESBlocks.COBALT_BARS);
+    public static final DeferredItem<BlockItem> COBALT_DOOR = ITEMS.registerSimpleBlockItem(ESBlocks.COBALT_DOOR);
+    public static final DeferredItem<BlockItem> COBALT_TRAPDOOR = ITEMS
+            .registerSimpleBlockItem(ESBlocks.COBALT_TRAPDOOR);
+    public static final DeferredItem<BlockItem> COBALT_PRESSURE_PLATE = ITEMS
+            .registerSimpleBlockItem(ESBlocks.COBALT_PRESSURE_PLATE);
     // #endregion Blocks
 
     public static Collection<DeferredItem<? extends Item>> getItems() {
@@ -274,6 +283,12 @@ public final class ESItems {
         list.add(RUBY_BRICK_SLAB);
         list.add(RUBY_BRICK_WALL);
         list.add(CHISELED_RUBY_BRICKS);
+
+        list.add(COBALT_BLOCK);
+        list.add(COBALT_BARS);
+        list.add(COBALT_DOOR);
+        list.add(COBALT_TRAPDOOR);
+        list.add(COBALT_PRESSURE_PLATE);
 
         return list;
     }

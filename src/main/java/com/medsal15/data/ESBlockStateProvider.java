@@ -33,5 +33,11 @@ public class ESBlockStateProvider extends BlockStateProvider {
         slabBlock(ESBlocks.RUBY_BRICK_SLAB.get(), modLoc("block/ruby_bricks"), modLoc("block/ruby_bricks"));
         wallBlock(ESBlocks.RUBY_BRICK_WALL.get(), modLoc("block/ruby_bricks"));
         simpleBlock(ESBlocks.CHISELED_RUBY_BRICKS.get());
+
+        simpleBlock(ESBlocks.COBALT_BLOCK.get());
+        paneBlock(ESBlocks.COBALT_BARS.get(), modLoc("block/cobalt_bars"), modLoc("block/cobalt_bars"));
+        doorBlock(ESBlocks.COBALT_DOOR.get(), modLoc("block/cobalt_door_bottom"), modLoc("block/cobalt_door_top"));
+        trapdoorBlock(ESBlocks.COBALT_TRAPDOOR.get(), modLoc("block/cobalt_trapdoor"), true);
+        pressurePlateBlock(ESBlocks.COBALT_PRESSURE_PLATE.get(), modLoc("block/cobalt_block"));
     }
 }

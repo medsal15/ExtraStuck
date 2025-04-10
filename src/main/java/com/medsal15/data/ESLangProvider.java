@@ -93,7 +93,7 @@ public final class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.FLAME_ARROW, "Flame Arrow");
         addItem(ESItems.CARDBOARD_ARROW, "Cardboard Arrow");
         addEntityType(ESEntities.CARDBOARD_ARROW, "Cardboard Arrow");
-        addItem(ESItems.MISSED_YOU, "Missed You");
+        addItem(ESItems.MISSED_YOU, "missed you");
         addEntityType(ESEntities.MISSED_ARROW, "Missed Arrow");
         addItem(ESItems.SWEET_TOOTH, "Sweet Tooth");
         addItemTooltip(ESItems.SWEET_TOOTH, "Delicious and dangerous!");
@@ -149,6 +149,12 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.RUBY_BRICK_SLAB, "Ruby Brick Slab");
         addBlock(ESBlocks.RUBY_BRICK_WALL, "Ruby Brick Wall");
         addBlock(ESBlocks.CHISELED_RUBY_BRICKS, "Chiseled Ruby Bricks");
+
+        addBlock(ESBlocks.COBALT_BLOCK, "Cobalt Block");
+        addBlock(ESBlocks.COBALT_BARS, "Cobalt Bars");
+        addBlock(ESBlocks.COBALT_DOOR, "Cobalt Door");
+        addBlock(ESBlocks.COBALT_TRAPDOOR, "Cobalt Trapdoor");
+        addBlock(ESBlocks.COBALT_PRESSURE_PLATE, "Cobalt Pressure Plate");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {

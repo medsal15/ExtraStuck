@@ -17,6 +17,11 @@
     "extrastuck:ruby_brick_stairs",
     "extrastuck:ruby_brick_slab",
     "extrastuck:ruby_brick_wall",
-    "extrastuck:chiseled_ruby_bricks"
+    "extrastuck:chiseled_ruby_bricks",
+    "extrastuck:cobalt_block",
+    "extrastuck:cobalt_bars",
+    "extrastuck:cobalt_door",
+    "extrastuck:cobalt_trapdoor",
+    "extrastuck:cobalt_pressure_plate"
   ]
 }

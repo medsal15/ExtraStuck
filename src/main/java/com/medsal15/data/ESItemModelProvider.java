@@ -118,5 +118,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
         withExistingParent(ESItems.RUBY_BRICK_SLAB.getId().toString(), modLoc("block/ruby_brick_slab"));
         wallInventory(ESItems.RUBY_BRICK_WALL.getId().toString(), modLoc("block/ruby_bricks"));
         withExistingParent(ESItems.CHISELED_RUBY_BRICKS.getId().toString(), modLoc("block/chiseled_ruby_bricks"));
+
+        withExistingParent(ESItems.COBALT_BLOCK.getId().toString(), modLoc("block/cobalt_block"));
+        basicItem(ESItems.COBALT_DOOR.get());
+        trapdoorBottom(ESItems.COBALT_TRAPDOOR.getId().toString(), modLoc("block/cobalt_trapdoor"));
+        pressurePlate(ESItems.COBALT_PRESSURE_PLATE.getId().toString(), modLoc("block/cobalt_block"));
     }
 }

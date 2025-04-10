@@ -16,7 +16,6 @@ Allow change shields (wooden shield) to also transform when dropped
 
 ### Grist-based blocks ###
 
-Cobalt block, bars, door, trapdoor, pressure plate
 Sulfurous stone, flammable, bricks, smooth (stairs, slabs, walls)
 Marble stone, bricks, polished (stairs, slabs, walls)
 Artifact "cube"

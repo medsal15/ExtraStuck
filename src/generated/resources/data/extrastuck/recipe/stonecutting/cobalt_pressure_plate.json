@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "extrastuck:cobalt_block"
+  },
+  "result": {
+    "count": 4,
+    "id": "extrastuck:cobalt_pressure_plate"
+  }
+}

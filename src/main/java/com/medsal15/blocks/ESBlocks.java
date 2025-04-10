@@ -5,11 +5,18 @@ import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.of
 import com.medsal15.ExtraStuck;
 
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -55,4 +62,20 @@ public final class ESBlocks {
             () -> new WallBlock(ofFullCopy(CUT_RUBY.get())));
     public static final DeferredBlock<Block> CHISELED_RUBY_BRICKS = BLOCKS.register("chiseled_ruby_bricks",
             () -> new Block(ofFullCopy(CUT_RUBY.get())));
+
+    public static final DeferredBlock<Block> COBALT_BLOCK = BLOCKS.registerBlock("cobalt_block", Block::new,
+            Block.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(5F, 6F).sound(SoundType.METAL)
+                    .requiresCorrectToolForDrops());
+    public static final DeferredBlock<IronBarsBlock> COBALT_BARS = BLOCKS.register("cobalt_bars",
+            () -> new IronBarsBlock(ofFullCopy(COBALT_BLOCK.get()).noOcclusion()));
+    public static final DeferredBlock<DoorBlock> COBALT_DOOR = BLOCKS.register("cobalt_door",
+            () -> new DoorBlock(BlockSetType.COPPER, ofFullCopy(COBALT_BLOCK.get()).noOcclusion()
+                    .pushReaction(PushReaction.DESTROY).explosionResistance(0)));
+    public static final DeferredBlock<TrapDoorBlock> COBALT_TRAPDOOR = BLOCKS.register("cobalt_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.COPPER,
+                    ofFullCopy(COBALT_BLOCK.get()).isValidSpawn(Blocks::never).explosionResistance(0).noOcclusion()));
+    public static final DeferredBlock<PressurePlateBlock> COBALT_PRESSURE_PLATE = BLOCKS.register(
+            "cobalt_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.COPPER, ofFullCopy(COBALT_BLOCK.get())
+                    .noCollission().pushReaction(PushReaction.DESTROY).explosionResistance(0)));
 }

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "tag": "c:storage_blocks/iron"
+  },
+  "input2": {
+    "tag": "c:dyes/blue"
+  },
+  "mode": "and",
+  "output": "extrastuck:cobalt_block"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 45
+  },
+  "ingredient": {
+    "item": "extrastuck:cobalt_block"
+  }
+}

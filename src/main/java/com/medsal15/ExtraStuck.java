@@ -17,6 +17,8 @@ import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -34,7 +36,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
@@ -74,7 +75,8 @@ public class ExtraStuck {
     // pass them in automatically.
     public ExtraStuck(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
-        modEventBus.addListener(this::commonSetup);
+        // modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::clientSetup);
 
         NeoForge.EVENT_BUS.addListener(this::onShieldBlock);
         modEventBus.addListener(this::registerCapabilities);
@@ -95,7 +97,13 @@ public class ExtraStuck {
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    // private void commonSetup(final FMLCommonSetupEvent event) {}
+
+    @SuppressWarnings("deprecation")
+    public void clientSetup(final FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(ESBlocks.COBALT_BARS.get(), RenderType.TRANSLUCENT);
+        ItemBlockRenderTypes.setRenderLayer(ESBlocks.COBALT_DOOR.get(), RenderType.TRANSLUCENT);
+        ItemBlockRenderTypes.setRenderLayer(ESBlocks.COBALT_TRAPDOOR.get(), RenderType.TRANSLUCENT);
     }
 
     @SubscribeEvent
