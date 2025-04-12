@@ -17,8 +17,6 @@ import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -76,7 +74,6 @@ public class ExtraStuck {
     public ExtraStuck(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         // modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::clientSetup);
 
         NeoForge.EVENT_BUS.addListener(this::onShieldBlock);
         modEventBus.addListener(this::registerCapabilities);
@@ -98,13 +95,6 @@ public class ExtraStuck {
     }
 
     // private void commonSetup(final FMLCommonSetupEvent event) {}
-
-    @SuppressWarnings("deprecation")
-    public void clientSetup(final FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(ESBlocks.COBALT_BARS.get(), RenderType.TRANSLUCENT);
-        ItemBlockRenderTypes.setRenderLayer(ESBlocks.COBALT_DOOR.get(), RenderType.TRANSLUCENT);
-        ItemBlockRenderTypes.setRenderLayer(ESBlocks.COBALT_TRAPDOOR.get(), RenderType.TRANSLUCENT);
-    }
 
     @SubscribeEvent
     public void registerEntityRenderers(RegisterRenderers event) {

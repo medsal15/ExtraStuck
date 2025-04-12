@@ -23,6 +23,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ESBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ExtraStuck.MODID);
 
+    // #region Garnet
     public static final DeferredBlock<Block> CUT_GARNET = BLOCKS.registerBlock("cut_garnet", Block::new,
             Block.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(1.5F).sound(SoundType.AMETHYST)
                     .requiresCorrectToolForDrops());
@@ -42,7 +43,9 @@ public final class ESBlocks {
             () -> new WallBlock(ofFullCopy(CUT_GARNET.get())));
     public static final DeferredBlock<Block> CHISELED_GARNET_BRICKS = BLOCKS.register("chiseled_garnet_bricks",
             () -> new Block(ofFullCopy(CUT_GARNET.get())));
+    // #endregion Garnet
 
+    // #region Ruby
     public static final DeferredBlock<Block> CUT_RUBY = BLOCKS.registerBlock("cut_ruby", Block::new,
             Block.Properties.of().mapColor(MapColor.COLOR_RED).strength(1.5F).sound(SoundType.AMETHYST)
                     .requiresCorrectToolForDrops());
@@ -62,7 +65,9 @@ public final class ESBlocks {
             () -> new WallBlock(ofFullCopy(CUT_RUBY.get())));
     public static final DeferredBlock<Block> CHISELED_RUBY_BRICKS = BLOCKS.register("chiseled_ruby_bricks",
             () -> new Block(ofFullCopy(CUT_RUBY.get())));
+    // #endregion Ruby
 
+    // #region Cobalt
     public static final DeferredBlock<Block> COBALT_BLOCK = BLOCKS.registerBlock("cobalt_block", Block::new,
             Block.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(5F, 6F).sound(SoundType.METAL)
                     .requiresCorrectToolForDrops());
@@ -78,4 +83,5 @@ public final class ESBlocks {
             "cobalt_pressure_plate",
             () -> new PressurePlateBlock(BlockSetType.COPPER, ofFullCopy(COBALT_BLOCK.get())
                     .noCollission().pushReaction(PushReaction.DESTROY).explosionResistance(0)));
+    // #endregion Cobalt
 }

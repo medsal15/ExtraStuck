@@ -4,8 +4,13 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class ESBlockStateProvider extends BlockStateProvider {
     public ESBlockStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -35,9 +40,55 @@ public class ESBlockStateProvider extends BlockStateProvider {
         simpleBlock(ESBlocks.CHISELED_RUBY_BRICKS.get());
 
         simpleBlock(ESBlocks.COBALT_BLOCK.get());
-        paneBlock(ESBlocks.COBALT_BARS.get(), modLoc("block/cobalt_bars"), modLoc("block/cobalt_bars"));
-        doorBlock(ESBlocks.COBALT_DOOR.get(), modLoc("block/cobalt_door_bottom"), modLoc("block/cobalt_door_top"));
-        trapdoorBlock(ESBlocks.COBALT_TRAPDOOR.get(), modLoc("block/cobalt_trapdoor"), true);
+        paneBlock(ESBlocks.COBALT_BARS, modLoc("block/cobalt_bars"), modLoc("block/cobalt_bars"));
+        doorBlock(ESBlocks.COBALT_DOOR, modLoc("block/cobalt_door_bottom"), modLoc("block/cobalt_door_top"));
+        trapdoorBlock(ESBlocks.COBALT_TRAPDOOR, modLoc("block/cobalt_trapdoor"), true);
         pressurePlateBlock(ESBlocks.COBALT_PRESSURE_PLATE.get(), modLoc("block/cobalt_block"));
+    }
+
+    // Replacement for paneBlock that marks the models as transparent
+    public void paneBlock(DeferredBlock<IronBarsBlock> block, ResourceLocation pane, ResourceLocation edge) {
+        var baseName = block.getId().toString();
+        var post = models().panePost(baseName + "_post", pane, edge).renderType("translucent");
+        var side = this.models().paneSide(baseName + "_side", pane, edge).renderType("translucent");
+        var sideAlt = this.models().paneSideAlt(baseName + "_side_alt", pane, edge).renderType("translucent");
+        var noSide = this.models().paneNoSide(baseName + "_noside", pane).renderType("translucent");
+        var noSideAlt = this.models().paneNoSideAlt(baseName + "_noside_alt", pane).renderType("translucent");
+        paneBlock(block.get(), post, side, sideAlt, noSide, noSideAlt);
+    }
+
+    // Replacement for doorBlock that marks the models as transparent
+    public void doorBlock(DeferredBlock<DoorBlock> block, ResourceLocation bottom, ResourceLocation top) {
+        var baseName = block.getId().toString();
+        var bottomLeft = this.models().doorBottomLeft(baseName + "_bottom_left", bottom, top).renderType("translucent");
+        var bottomLeftOpen = this.models().doorBottomLeftOpen(baseName + "_bottom_left_open", bottom, top)
+                .renderType("translucent");
+        var bottomRight = this.models().doorBottomRight(baseName + "_bottom_right", bottom, top)
+                .renderType("translucent");
+        var bottomRightOpen = this.models().doorBottomRightOpen(baseName + "_bottom_right_open", bottom, top)
+                .renderType("translucent");
+        var topLeft = this.models().doorTopLeft(baseName + "_top_left", bottom, top).renderType("translucent");
+        var topLeftOpen = this.models().doorTopLeftOpen(baseName + "_top_left_open", bottom, top)
+                .renderType("translucent");
+        var topRight = this.models().doorTopRight(baseName + "_top_right", bottom, top).renderType("translucent");
+        var topRightOpen = this.models().doorTopRightOpen(baseName + "_top_right_open", bottom, top)
+                .renderType("translucent");
+        doorBlock(block.get(), bottomLeft, bottomLeftOpen, bottomRight, bottomRightOpen, topLeft, topLeftOpen, topRight,
+                topRightOpen);
+    }
+
+    // Replacement for trapdoorBlock that marks the models as transparent
+    public void trapdoorBlock(DeferredBlock<TrapDoorBlock> block, ResourceLocation texture, boolean orientable) {
+        var baseName = block.getId().toString();
+        var bottom = orientable
+                ? this.models().trapdoorOrientableBottom(baseName + "_bottom", texture).renderType("translucent")
+                : this.models().trapdoorBottom(baseName + "_bottom", texture).renderType("translucent");
+        var top = orientable
+                ? this.models().trapdoorOrientableTop(baseName + "_top", texture).renderType("translucent")
+                : this.models().trapdoorTop(baseName + "_top", texture).renderType("translucent");
+        var open = orientable
+                ? this.models().trapdoorOrientableOpen(baseName + "_open", texture).renderType("translucent")
+                : this.models().trapdoorOpen(baseName + "_open", texture).renderType("translucent");
+        trapdoorBlock(block.get(), bottom, top, open, orientable);
     }
 }
