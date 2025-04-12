@@ -17,12 +17,15 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CampfireCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.neoforged.neoforge.common.Tags;
 
 public final class ESRecipeProvider extends RecipeProvider {
@@ -39,6 +42,10 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.WOODEN_SHIELD)
                 .grist(GristTypes.BUILD, 6)
                 .build(output);
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ESItems.WOODEN_SHIELD), RecipeCategory.COMBAT,
+                ESItems.FLAME_SHIELD, 0, 600)
+                .unlockedBy("has_wooden_shield", has(ESItems.WOODEN_SHIELD))
+                .save(output, "campfire/flame_shield");
 
         GristCostRecipeBuilder.of(ESItems.FLAME_SHIELD)
                 .grist(GristTypes.TAR, 34).grist(GristTypes.SULFUR, 13)
