@@ -1,0 +1,27 @@
+{
+    "name": "Ruby Blocks",
+    "icon": "extrastuck:cut_ruby",
+    "category": "extrastuck:blocks",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:cut_ruby",
+            "text": "Garnet is too dark for you? Try these fancier ruby blocks."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/ruby_bricks_recipe.png"
+            ],
+            "text": "Combine garnet bricks and glowstone dust in a punch designix."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/cut_ruby_recipe.png"
+            ],
+            "text": "You may also combine cut garnet and glowstone dust in a punch designix."
+        }
+    ]
+}

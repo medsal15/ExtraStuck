@@ -1,0 +1,27 @@
+{
+    "name": "Garnet Blocks",
+    "icon": "extrastuck:cut_garnet",
+    "category": "extrastuck:blocks",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:cut_garnet",
+            "text": "These shiny garnet blocks provide a much-needed touch of red."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/garnet_bricks_recipe.png"
+            ],
+            "text": "Combine cruxite bricks and blue dye in a totem lathe."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/cut_garnet_recipe.png"
+            ],
+            "text": "You may also combine a block of amethyst and red dye in a punch designix."
+        }
+    ]
+}

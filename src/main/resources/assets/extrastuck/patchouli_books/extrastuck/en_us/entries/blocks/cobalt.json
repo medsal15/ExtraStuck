@@ -1,0 +1,20 @@
+{
+    "name": "Cobalt Blocks",
+    "icon": "extrastuck:cobalt_block",
+    "category": "extrastuck:blocks",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:cobalt_block",
+            "text": "This very blue block comes in a variety of variants. These are obtained with a stonecutter.$(br)You have bars, doors, trapdoors and even a pressure plate!"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/cobalt_block_recipe.png"
+            ],
+            "text": "Combine a block of iron and blue dye in a punch designix."
+        }
+    ]
+}
