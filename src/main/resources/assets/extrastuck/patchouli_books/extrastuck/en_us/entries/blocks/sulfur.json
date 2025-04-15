@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "patchouli:spotlight",
-            "item": "extrastuck:cobalt_block",
+            "item": "extrastuck:sulfurous_stone",
             "text": "These yellow blocks hold trace amounts of sulfur, allowing them to sustain fire for as long as you need."
         },
         {
