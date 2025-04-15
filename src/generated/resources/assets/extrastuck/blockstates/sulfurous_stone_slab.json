@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extrastuck:block/sulfurous_stone_slab"
+    },
+    "type=double": {
+      "model": "extrastuck:block/sulfurous_stone"
+    },
+    "type=top": {
+      "model": "extrastuck:block/sulfurous_stone_slab_top"
+    }
+  }
+}

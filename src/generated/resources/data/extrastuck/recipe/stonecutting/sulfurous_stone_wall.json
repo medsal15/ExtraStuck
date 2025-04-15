@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "extrastuck:sulfurous_stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "extrastuck:sulfurous_stone_wall"
+  }
+}

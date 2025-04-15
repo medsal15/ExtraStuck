@@ -551,6 +551,50 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_cobalt_block", has(ESItems.COBALT_BLOCK))
                 .save(output, modLoc("stonecutting/cobalt_pressure_plate"));
         // #endregion Cobalt
+        // #region Sulfur
+        CombinationRecipeBuilder.of(ESItems.SULFUROUS_STONE)
+                .input(Items.NETHERRACK).and().input(Tags.Items.DYES_YELLOW)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SULFUROUS_STONE)
+                .grist(GristTypes.BUILD, 2).grist(GristTypes.SULFUR, 4)
+                .build(output);
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.SULFUROUS_STONE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.SULFUROUS_STONE_STAIRS)
+                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
+                .save(output, modLoc("stonecutting/sulfurous_stone_stairs"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.SULFUROUS_STONE_STAIRS.toStack(4))
+                .pattern("G  ")
+                .pattern("GG ")
+                .pattern("GGG")
+                .define('G', ESItems.SULFUROUS_STONE)
+                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
+                .save(output, modLoc("shaped/sulfurous_stone_stairs"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.SULFUROUS_STONE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.SULFUROUS_STONE_SLAB, 2)
+                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
+                .save(output, modLoc("stonecutting/sulfurous_stone_slab"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.SULFUROUS_STONE_SLAB.toStack(6))
+                .pattern("GGG")
+                .define('G', ESItems.SULFUROUS_STONE)
+                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
+                .save(output, modLoc("shaped/sulfurous_stone_slab"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.SULFUROUS_STONE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.SULFUROUS_STONE_WALL)
+                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
+                .save(output, modLoc("stonecutting/sulfurous_stone_wall"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.SULFUROUS_STONE_WALL.toStack(6))
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', ESItems.SULFUROUS_STONE)
+                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
+                .save(output, modLoc("shaped/sulfurous_stone_wall"));
+        // #endregion Sulfur
         // #endregion Blocks
     }
 

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "G": {
+      "item": "extrastuck:sulfurous_stone"
+    }
+  },
+  "pattern": [
+    "GGG"
+  ],
+  "result": {
+    "count": 6,
+    "id": "extrastuck:sulfurous_stone_slab"
+  }
+}

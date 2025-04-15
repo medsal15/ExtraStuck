@@ -203,6 +203,15 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.COBALT_TRAPDOOR);
     public static final DeferredItem<BlockItem> COBALT_PRESSURE_PLATE = ITEMS
             .registerSimpleBlockItem(ESBlocks.COBALT_PRESSURE_PLATE);
+
+    public static final DeferredItem<BlockItem> SULFUROUS_STONE = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SULFUROUS_STONE);
+    public static final DeferredItem<BlockItem> SULFUROUS_STONE_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SULFUROUS_STONE_STAIRS);
+    public static final DeferredItem<BlockItem> SULFUROUS_STONE_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SULFUROUS_STONE_SLAB);
+    public static final DeferredItem<BlockItem> SULFUROUS_STONE_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SULFUROUS_STONE_WALL);
     // #endregion Blocks
 
     public static Collection<DeferredItem<? extends Item>> getItems() {
@@ -289,6 +298,11 @@ public final class ESItems {
         list.add(COBALT_DOOR);
         list.add(COBALT_TRAPDOOR);
         list.add(COBALT_PRESSURE_PLATE);
+
+        list.add(SULFUROUS_STONE);
+        list.add(SULFUROUS_STONE_STAIRS);
+        list.add(SULFUROUS_STONE_SLAB);
+        list.add(SULFUROUS_STONE_WALL);
 
         return list;
     }

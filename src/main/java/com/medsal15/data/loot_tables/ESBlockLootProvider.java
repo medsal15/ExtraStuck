@@ -27,21 +27,21 @@ public class ESBlockLootProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ESBlocks.CUT_GARNET.get());
         dropSelf(ESBlocks.CUT_GARNET_STAIRS.get());
-        dropSelf(ESBlocks.CUT_GARNET_SLAB.get());
+        this.add(ESBlocks.CUT_GARNET_SLAB.get(), createSlabItemTable(ESBlocks.CUT_GARNET_SLAB.get()));
         dropSelf(ESBlocks.CUT_GARNET_WALL.get());
         dropSelf(ESBlocks.GARNET_BRICKS.get());
         dropSelf(ESBlocks.GARNET_BRICK_STAIRS.get());
-        dropSelf(ESBlocks.GARNET_BRICK_SLAB.get());
+        this.add(ESBlocks.GARNET_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.GARNET_BRICK_SLAB.get()));
         dropSelf(ESBlocks.GARNET_BRICK_WALL.get());
         dropSelf(ESBlocks.CHISELED_GARNET_BRICKS.get());
 
         dropSelf(ESBlocks.CUT_RUBY.get());
         dropSelf(ESBlocks.CUT_RUBY_STAIRS.get());
-        dropSelf(ESBlocks.CUT_RUBY_SLAB.get());
+        this.add(ESBlocks.CUT_RUBY_SLAB.get(), createSlabItemTable(ESBlocks.CUT_RUBY_SLAB.get()));
         dropSelf(ESBlocks.CUT_RUBY_WALL.get());
         dropSelf(ESBlocks.RUBY_BRICKS.get());
         dropSelf(ESBlocks.RUBY_BRICK_STAIRS.get());
-        dropSelf(ESBlocks.RUBY_BRICK_SLAB.get());
+        this.add(ESBlocks.RUBY_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.RUBY_BRICK_SLAB.get()));
         dropSelf(ESBlocks.RUBY_BRICK_WALL.get());
         dropSelf(ESBlocks.CHISELED_RUBY_BRICKS.get());
 
@@ -50,5 +50,10 @@ public class ESBlockLootProvider extends BlockLootSubProvider {
         add(ESBlocks.COBALT_DOOR.get(), this::createDoorTable);
         dropSelf(ESBlocks.COBALT_TRAPDOOR.get());
         dropSelf(ESBlocks.COBALT_PRESSURE_PLATE.get());
+
+        dropSelf(ESBlocks.SULFUROUS_STONE.get());
+        dropSelf(ESBlocks.SULFUROUS_STONE_STAIRS.get());
+        this.add(ESBlocks.SULFUROUS_STONE_SLAB.get(), createSlabItemTable(ESBlocks.SULFUROUS_STONE_SLAB.get()));
+        dropSelf(ESBlocks.SULFUROUS_STONE_WALL.get());
     }
 }

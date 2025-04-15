@@ -123,5 +123,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.COBALT_DOOR.get());
         trapdoorBottom(ESItems.COBALT_TRAPDOOR.getId().toString(), modLoc("block/cobalt_trapdoor"));
         pressurePlate(ESItems.COBALT_PRESSURE_PLATE.getId().toString(), modLoc("block/cobalt_block"));
+
+        withExistingParent(ESItems.SULFUROUS_STONE.getId().toString(), modLoc("block/sulfurous_stone"));
+        withExistingParent(ESItems.SULFUROUS_STONE_STAIRS.getId().toString(), modLoc("block/sulfurous_stone_stairs"));
+        withExistingParent(ESItems.SULFUROUS_STONE_SLAB.getId().toString(), modLoc("block/sulfurous_stone_slab"));
+        wallInventory(ESItems.SULFUROUS_STONE_WALL.getId().toString(), modLoc("block/sulfurous_stone"));
     }
 }

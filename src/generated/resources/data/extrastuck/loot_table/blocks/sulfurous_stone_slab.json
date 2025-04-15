@@ -11,7 +11,7 @@
               "add": false,
               "conditions": [
                 {
-                  "block": "extrastuck:cut_garnet_slab",
+                  "block": "extrastuck:sulfurous_stone_slab",
                   "condition": "minecraft:block_state_property",
                   "properties": {
                     "type": "double"
@@ -25,11 +25,11 @@
               "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "extrastuck:cut_garnet_slab"
+          "name": "extrastuck:sulfurous_stone_slab"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "extrastuck:blocks/cut_garnet_slab"
+  "random_sequence": "extrastuck:blocks/sulfurous_stone_slab"
 }

@@ -30,10 +30,18 @@ public final class ESBlockTags extends BlockTagsProvider {
                 ESBlocks.CUT_GARNET_SLAB.get(), ESBlocks.CUT_GARNET_WALL.get(), ESBlocks.RUBY_BRICKS.get(),
                 ESBlocks.RUBY_BRICK_STAIRS.get(), ESBlocks.RUBY_BRICK_SLAB.get(), ESBlocks.RUBY_BRICK_WALL.get(),
                 ESBlocks.CHISELED_RUBY_BRICKS.get(), ESBlocks.COBALT_BLOCK.get(), ESBlocks.COBALT_BARS.get(),
-                ESBlocks.COBALT_DOOR.get(), ESBlocks.COBALT_TRAPDOOR.get(), ESBlocks.COBALT_PRESSURE_PLATE.get());
+                ESBlocks.COBALT_DOOR.get(), ESBlocks.COBALT_TRAPDOOR.get(), ESBlocks.COBALT_PRESSURE_PLATE.get(),
+                ESBlocks.SULFUROUS_STONE.get(), ESBlocks.SULFUROUS_STONE_STAIRS.get(),
+                ESBlocks.SULFUROUS_STONE_SLAB.get(), ESBlocks.SULFUROUS_STONE_WALL.get());
         tag(BlockTags.WALLS).add(ESBlocks.CUT_GARNET_WALL.get(), ESBlocks.GARNET_BRICK_WALL.get(),
-                ESBlocks.CUT_RUBY_WALL.get(), ESBlocks.RUBY_BRICK_WALL.get());
+                ESBlocks.CUT_RUBY_WALL.get(), ESBlocks.RUBY_BRICK_WALL.get(), ESBlocks.SULFUROUS_STONE_WALL.get());
         tag(BlockTags.DOORS).add(ESBlocks.COBALT_DOOR.get());
         tag(BlockTags.TRAPDOORS).add(ESBlocks.COBALT_TRAPDOOR.get());
+        tag(BlockTags.INFINIBURN_OVERWORLD).add(ESBlocks.SULFUROUS_STONE.get(), ESBlocks.SULFUROUS_STONE_STAIRS.get(),
+                ESBlocks.SULFUROUS_STONE_SLAB.get(), ESBlocks.SULFUROUS_STONE_WALL.get());
+        tag(BlockTags.INFINIBURN_NETHER).add(ESBlocks.SULFUROUS_STONE.get(), ESBlocks.SULFUROUS_STONE_STAIRS.get(),
+                ESBlocks.SULFUROUS_STONE_SLAB.get(), ESBlocks.SULFUROUS_STONE_WALL.get());
+        tag(BlockTags.INFINIBURN_END).add(ESBlocks.SULFUROUS_STONE.get(), ESBlocks.SULFUROUS_STONE_STAIRS.get(),
+                ESBlocks.SULFUROUS_STONE_SLAB.get(), ESBlocks.SULFUROUS_STONE_WALL.get());
     }
 }

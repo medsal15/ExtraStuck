@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.Item;
-
+import net.minecraft.world.level.block.Block;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -155,10 +155,19 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.COBALT_DOOR, "Cobalt Door");
         addBlock(ESBlocks.COBALT_TRAPDOOR, "Cobalt Trapdoor");
         addBlock(ESBlocks.COBALT_PRESSURE_PLATE, "Cobalt Pressure Plate");
+
+        addBlock(ESBlocks.SULFUROUS_STONE, "Sulfurous Stone");
+        addBlock(ESBlocks.SULFUROUS_STONE_STAIRS, "Sulfurous Stone Stairs");
+        addBlock(ESBlocks.SULFUROUS_STONE_SLAB, "Sulfurous Stone Slab");
+        addBlock(ESBlocks.SULFUROUS_STONE_WALL, "Sulfurous Stone Wall");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {
         add(((Item) (key.get())).getDescriptionId() + ".tooltip", text);
+    }
+
+    protected void addBlockTooltip(Supplier<? extends Block> key, String text) {
+        add(((Block) (key.get())).getDescriptionId() + ".tooltip", text);
     }
 
     protected void addDeathMessages(ResourceKey<DamageType> damage, String generic, String namedItem) {

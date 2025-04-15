@@ -84,4 +84,16 @@ public final class ESBlocks {
             () -> new PressurePlateBlock(BlockSetType.COPPER, ofFullCopy(COBALT_BLOCK.get())
                     .noCollission().pushReaction(PushReaction.DESTROY).explosionResistance(0)));
     // #endregion Cobalt
+
+    // #region Sulfur
+    public static final DeferredBlock<Block> SULFUROUS_STONE = BLOCKS.registerBlock("sulfurous_stone", Block::new,
+            Block.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).strength(1.5F, 6.0F)
+                    .requiresCorrectToolForDrops());
+    public static final DeferredBlock<StairBlock> SULFUROUS_STONE_STAIRS = BLOCKS.register("sulfurous_stone_stairs",
+            () -> new StairBlock(SULFUROUS_STONE.get().defaultBlockState(), ofFullCopy(SULFUROUS_STONE.get())));
+    public static final DeferredBlock<SlabBlock> SULFUROUS_STONE_SLAB = BLOCKS.register("sulfurous_stone_slab",
+            () -> new SlabBlock(ofFullCopy(SULFUROUS_STONE.get())));
+    public static final DeferredBlock<WallBlock> SULFUROUS_STONE_WALL = BLOCKS.register("sulfurous_stone_wall",
+            () -> new WallBlock(ofFullCopy(SULFUROUS_STONE.get())));
+    // #endregion Sulfur
 }

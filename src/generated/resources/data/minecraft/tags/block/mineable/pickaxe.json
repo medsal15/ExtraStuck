@@ -22,6 +22,10 @@
     "extrastuck:cobalt_bars",
     "extrastuck:cobalt_door",
     "extrastuck:cobalt_trapdoor",
-    "extrastuck:cobalt_pressure_plate"
+    "extrastuck:cobalt_pressure_plate",
+    "extrastuck:sulfurous_stone",
+    "extrastuck:sulfurous_stone_stairs",
+    "extrastuck:sulfurous_stone_slab",
+    "extrastuck:sulfurous_stone_wall"
   ]
 }

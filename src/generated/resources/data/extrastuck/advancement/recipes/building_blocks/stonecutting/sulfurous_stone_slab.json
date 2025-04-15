@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sulfurous_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:sulfurous_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extrastuck:stonecutting/sulfurous_stone_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sulfurous_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extrastuck:stonecutting/sulfurous_stone_slab"
+    ]
+  }
+}

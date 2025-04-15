@@ -44,6 +44,12 @@ public class ESBlockStateProvider extends BlockStateProvider {
         doorBlock(ESBlocks.COBALT_DOOR, modLoc("block/cobalt_door_bottom"), modLoc("block/cobalt_door_top"));
         trapdoorBlock(ESBlocks.COBALT_TRAPDOOR, modLoc("block/cobalt_trapdoor"), true);
         pressurePlateBlock(ESBlocks.COBALT_PRESSURE_PLATE.get(), modLoc("block/cobalt_block"));
+
+        simpleBlock(ESBlocks.SULFUROUS_STONE.get());
+        stairsBlock(ESBlocks.SULFUROUS_STONE_STAIRS.get(), modLoc("block/sulfurous_stone"));
+        slabBlock(ESBlocks.SULFUROUS_STONE_SLAB.get(), modLoc("block/sulfurous_stone"),
+                modLoc("block/sulfurous_stone"));
+        wallBlock(ESBlocks.SULFUROUS_STONE_WALL.get(), modLoc("block/sulfurous_stone"));
     }
 
     // Replacement for paneBlock that marks the models as transparent

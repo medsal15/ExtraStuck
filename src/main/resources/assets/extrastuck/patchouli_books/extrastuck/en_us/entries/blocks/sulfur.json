@@ -1,0 +1,20 @@
+{
+    "name": "Sulfur Blocks",
+    "icon": "extrastuck:sulfurous_stone",
+    "category": "extrastuck:blocks",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:cobalt_block",
+            "text": "These yellow blocks hold trace amounts of sulfur, allowing them to sustain fire for as long as you need."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/sulfurous_stone_recipe.png"
+            ],
+            "text": "Combine netherrack and yellow dye in a punch designix."
+        }
+    ]
+}
