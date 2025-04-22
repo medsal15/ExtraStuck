@@ -160,6 +160,19 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.SULFUROUS_STONE_STAIRS, "Sulfurous Stone Stairs");
         addBlock(ESBlocks.SULFUROUS_STONE_SLAB, "Sulfurous Stone Slab");
         addBlock(ESBlocks.SULFUROUS_STONE_WALL, "Sulfurous Stone Wall");
+
+        addBlock(ESBlocks.MARBLE, "Marble");
+        addBlock(ESBlocks.MARBLE_STAIRS, "Marble Stairs");
+        addBlock(ESBlocks.MARBLE_SLAB, "Marble Slab");
+        addBlock(ESBlocks.MARBLE_WALL, "Marble Wall");
+        addBlock(ESBlocks.POLISHED_MARBLE, "Polished Marble");
+        addBlock(ESBlocks.POLISHED_MARBLE_STAIRS, "Polished Marble Stairs");
+        addBlock(ESBlocks.POLISHED_MARBLE_SLAB, "Polished Marble Slab");
+        addBlock(ESBlocks.POLISHED_MARBLE_WALL, "Polished Marble Wall");
+        addBlock(ESBlocks.MARBLE_BRICKS, "Marble Bricks");
+        addBlock(ESBlocks.MARBLE_BRICK_STAIRS, "Marble Brick Stairs");
+        addBlock(ESBlocks.MARBLE_BRICK_SLAB, "Marble Brick Slab");
+        addBlock(ESBlocks.MARBLE_BRICK_WALL, "Marble Brick Wall");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {

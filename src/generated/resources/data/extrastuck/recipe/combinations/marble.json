@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:chalk"
+  },
+  "input2": {
+    "tag": "c:dyes/pink"
+  },
+  "mode": "and",
+  "output": "extrastuck:marble"
+}

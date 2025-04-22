@@ -212,6 +212,31 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.SULFUROUS_STONE_SLAB);
     public static final DeferredItem<BlockItem> SULFUROUS_STONE_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.SULFUROUS_STONE_WALL);
+
+    public static final DeferredItem<BlockItem> MARBLE = ITEMS
+            .registerSimpleBlockItem(ESBlocks.MARBLE);
+    public static final DeferredItem<BlockItem> MARBLE_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.MARBLE_STAIRS);
+    public static final DeferredItem<BlockItem> MARBLE_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.MARBLE_SLAB);
+    public static final DeferredItem<BlockItem> MARBLE_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.MARBLE_WALL);
+    public static final DeferredItem<BlockItem> POLISHED_MARBLE = ITEMS
+            .registerSimpleBlockItem(ESBlocks.POLISHED_MARBLE);
+    public static final DeferredItem<BlockItem> POLISHED_MARBLE_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.POLISHED_MARBLE_STAIRS);
+    public static final DeferredItem<BlockItem> POLISHED_MARBLE_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.POLISHED_MARBLE_SLAB);
+    public static final DeferredItem<BlockItem> POLISHED_MARBLE_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.POLISHED_MARBLE_WALL);
+    public static final DeferredItem<BlockItem> MARBLE_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.MARBLE_BRICKS);
+    public static final DeferredItem<BlockItem> MARBLE_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.MARBLE_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> MARBLE_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.MARBLE_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> MARBLE_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.MARBLE_BRICK_WALL);
     // #endregion Blocks
 
     public static Collection<DeferredItem<? extends Item>> getItems() {
@@ -303,6 +328,19 @@ public final class ESItems {
         list.add(SULFUROUS_STONE_STAIRS);
         list.add(SULFUROUS_STONE_SLAB);
         list.add(SULFUROUS_STONE_WALL);
+
+        list.add(MARBLE);
+        list.add(MARBLE_STAIRS);
+        list.add(MARBLE_SLAB);
+        list.add(MARBLE_WALL);
+        list.add(POLISHED_MARBLE);
+        list.add(POLISHED_MARBLE_STAIRS);
+        list.add(POLISHED_MARBLE_SLAB);
+        list.add(POLISHED_MARBLE_WALL);
+        list.add(MARBLE_BRICKS);
+        list.add(MARBLE_BRICK_STAIRS);
+        list.add(MARBLE_BRICK_SLAB);
+        list.add(MARBLE_BRICK_WALL);
 
         return list;
     }

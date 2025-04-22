@@ -50,6 +50,20 @@ public class ESBlockStateProvider extends BlockStateProvider {
         slabBlock(ESBlocks.SULFUROUS_STONE_SLAB.get(), modLoc("block/sulfurous_stone"),
                 modLoc("block/sulfurous_stone"));
         wallBlock(ESBlocks.SULFUROUS_STONE_WALL.get(), modLoc("block/sulfurous_stone"));
+
+        simpleBlock(ESBlocks.MARBLE.get());
+        stairsBlock(ESBlocks.MARBLE_STAIRS.get(), modLoc("block/marble"));
+        slabBlock(ESBlocks.MARBLE_SLAB.get(), modLoc("block/marble"), modLoc("block/marble"));
+        wallBlock(ESBlocks.MARBLE_WALL.get(), modLoc("block/marble"));
+        simpleBlock(ESBlocks.POLISHED_MARBLE.get());
+        stairsBlock(ESBlocks.POLISHED_MARBLE_STAIRS.get(), modLoc("block/polished_marble"));
+        slabBlock(ESBlocks.POLISHED_MARBLE_SLAB.get(), modLoc("block/polished_marble"),
+                modLoc("block/polished_marble"));
+        wallBlock(ESBlocks.POLISHED_MARBLE_WALL.get(), modLoc("block/polished_marble"));
+        simpleBlock(ESBlocks.MARBLE_BRICKS.get());
+        stairsBlock(ESBlocks.MARBLE_BRICK_STAIRS.get(), modLoc("block/marble_bricks"));
+        slabBlock(ESBlocks.MARBLE_BRICK_SLAB.get(), modLoc("block/marble_bricks"), modLoc("block/marble_bricks"));
+        wallBlock(ESBlocks.MARBLE_BRICK_WALL.get(), modLoc("block/marble_bricks"));
     }
 
     // Replacement for paneBlock that marks the models as transparent

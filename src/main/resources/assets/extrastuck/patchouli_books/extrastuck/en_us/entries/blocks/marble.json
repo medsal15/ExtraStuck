@@ -1,0 +1,20 @@
+{
+    "name": "Marble Blocks",
+    "icon": "extrastuck:marble",
+    "category": "extrastuck:blocks",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:marble",
+            "text": "Fancy white blocks with a pink streak. Come in multiple variants, including polished and bricks!"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/marble_recipe.png"
+            ],
+            "text": "Combine chalk and pink dye in a punch designix."
+        }
+    ]
+}

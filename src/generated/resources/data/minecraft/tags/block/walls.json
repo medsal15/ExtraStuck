@@ -4,6 +4,9 @@
     "extrastuck:garnet_brick_wall",
     "extrastuck:cut_ruby_wall",
     "extrastuck:ruby_brick_wall",
-    "extrastuck:sulfurous_stone_wall"
+    "extrastuck:sulfurous_stone_wall",
+    "extrastuck:marble_wall",
+    "extrastuck:polished_marble_wall",
+    "extrastuck:marble_brick_wall"
   ]
 }

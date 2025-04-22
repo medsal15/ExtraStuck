@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extrastuck:block/marble_slab"
+    },
+    "type=double": {
+      "model": "extrastuck:block/marble"
+    },
+    "type=top": {
+      "model": "extrastuck:block/marble_slab_top"
+    }
+  }
+}

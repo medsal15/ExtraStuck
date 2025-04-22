@@ -595,6 +595,146 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
                 .save(output, modLoc("shaped/sulfurous_stone_wall"));
         // #endregion Sulfur
+        // #region Marble
+        CombinationRecipeBuilder.of(ESItems.MARBLE)
+                .input(MSItems.CHALK).and().input(Tags.Items.DYES_PINK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.MARBLE)
+                .grist(GristTypes.MARBLE, 4)
+                .build(output);
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.MARBLE_STAIRS)
+                .unlockedBy("has_marble", has(ESItems.MARBLE))
+                .save(output, modLoc("stonecutting/marble_stairs"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_STAIRS.toStack(4))
+                .pattern("G  ")
+                .pattern("GG ")
+                .pattern("GGG")
+                .define('G', ESItems.MARBLE)
+                .unlockedBy("has_marble", has(ESItems.MARBLE))
+                .save(output, modLoc("shaped/marble_stairs"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.MARBLE_SLAB, 2)
+                .unlockedBy("has_marble", has(ESItems.MARBLE))
+                .save(output, modLoc("stonecutting/marble_slab"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_SLAB.toStack(6))
+                .pattern("GGG")
+                .define('G', ESItems.MARBLE)
+                .unlockedBy("has_marble", has(ESItems.MARBLE))
+                .save(output, modLoc("shaped/marble_slab"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.MARBLE_WALL)
+                .unlockedBy("has_marble", has(ESItems.MARBLE))
+                .save(output, modLoc("stonecutting/marble_wall"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_WALL.toStack(6))
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', ESItems.MARBLE)
+                .unlockedBy("has_marble", has(ESItems.MARBLE))
+                .save(output, modLoc("shaped/marble_wall"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.POLISHED_MARBLE)
+                .unlockedBy("has_marble", has(ESItems.MARBLE))
+                .save(output, modLoc("stonecutting/polished_marble"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.POLISHED_MARBLE.toStack(4))
+                .pattern("GG")
+                .pattern("GG")
+                .define('G', ESItems.MARBLE)
+                .unlockedBy("has_marble", has(ESItems.MARBLE))
+                .save(output, modLoc("shaped/polished_marble"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.POLISHED_MARBLE_STAIRS)
+                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
+                .save(output, modLoc("stonecutting/polished_marble_stairs"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.POLISHED_MARBLE_STAIRS.toStack(4))
+                .pattern("G  ")
+                .pattern("GG ")
+                .pattern("GGG")
+                .define('G', ESItems.POLISHED_MARBLE)
+                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
+                .save(output, modLoc("shaped/polished_marble_stairs"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.POLISHED_MARBLE_SLAB, 2)
+                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
+                .save(output, modLoc("stonecutting/polished_marble_slab"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.POLISHED_MARBLE_SLAB.toStack(6))
+                .pattern("GGG")
+                .define('G', ESItems.POLISHED_MARBLE)
+                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
+                .save(output, modLoc("shaped/polished_marble_slab"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.POLISHED_MARBLE_WALL)
+                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
+                .save(output, modLoc("stonecutting/polished_marble_wall"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.POLISHED_MARBLE_WALL.toStack(6))
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', ESItems.POLISHED_MARBLE)
+                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
+                .save(output, modLoc("shaped/polished_marble_wall"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.MARBLE_BRICKS)
+                .unlockedBy("has_marble", has(ESItems.MARBLE_BRICKS))
+                .save(output, modLoc("stonecutting/marble_bricks"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_BRICKS.toStack(4))
+                .pattern("GG")
+                .pattern("GG")
+                .define('G', ESItems.POLISHED_MARBLE)
+                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
+                .save(output, modLoc("shaped/marble_bricks"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.MARBLE_BRICKS), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.MARBLE_BRICK_STAIRS)
+                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
+                .save(output, modLoc("stonecutting/marble_bricks_stairs"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_BRICK_STAIRS.toStack(4))
+                .pattern("G  ")
+                .pattern("GG ")
+                .pattern("GGG")
+                .define('G', ESItems.MARBLE_BRICKS)
+                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
+                .save(output, modLoc("shaped/marble_bricks_stairs"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.MARBLE_BRICKS), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.MARBLE_BRICK_SLAB, 2)
+                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
+                .save(output, modLoc("stonecutting/marble_bricks_slab"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_BRICK_SLAB.toStack(6))
+                .pattern("GGG")
+                .define('G', ESItems.MARBLE_BRICKS)
+                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
+                .save(output, modLoc("shaped/marble_bricks_slab"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.MARBLE_BRICKS), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.MARBLE_BRICK_WALL)
+                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
+                .save(output, modLoc("stonecutting/marble_bricks_wall"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_BRICK_WALL.toStack(6))
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', ESItems.MARBLE_BRICKS)
+                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
+                .save(output, modLoc("shaped/marble_bricks_wall"));
+        // #endregion Marble
         // #endregion Blocks
     }
 

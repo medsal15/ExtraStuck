@@ -96,4 +96,31 @@ public final class ESBlocks {
     public static final DeferredBlock<WallBlock> SULFUROUS_STONE_WALL = BLOCKS.register("sulfurous_stone_wall",
             () -> new WallBlock(ofFullCopy(SULFUROUS_STONE.get())));
     // #endregion Sulfur
+
+    // #region Marble
+    public static final DeferredBlock<Block> MARBLE = BLOCKS.registerBlock("marble", Block::new,
+            Block.Properties.of().mapColor(MapColor.COLOR_PINK).strength(1.5F, 6F).requiresCorrectToolForDrops());
+    public static final DeferredBlock<StairBlock> MARBLE_STAIRS = BLOCKS.register("marble_stairs",
+            () -> new StairBlock(MARBLE.get().defaultBlockState(), ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<SlabBlock> MARBLE_SLAB = BLOCKS.register("marble_slab",
+            () -> new SlabBlock(ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<WallBlock> MARBLE_WALL = BLOCKS.register("marble_wall",
+            () -> new WallBlock(ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<Block> POLISHED_MARBLE = BLOCKS.register("polished_marble",
+            () -> new Block(ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<StairBlock> POLISHED_MARBLE_STAIRS = BLOCKS.register("polished_marble_stairs",
+            () -> new StairBlock(MARBLE.get().defaultBlockState(), ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<SlabBlock> POLISHED_MARBLE_SLAB = BLOCKS.register("polished_marble_slab",
+            () -> new SlabBlock(ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<WallBlock> POLISHED_MARBLE_WALL = BLOCKS.register("polished_marble_wall",
+            () -> new WallBlock(ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<Block> MARBLE_BRICKS = BLOCKS.register("marble_bricks",
+            () -> new Block(ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<StairBlock> MARBLE_BRICK_STAIRS = BLOCKS.register("marble_brick_stairs",
+            () -> new StairBlock(MARBLE.get().defaultBlockState(), ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<SlabBlock> MARBLE_BRICK_SLAB = BLOCKS.register("marble_brick_slab",
+            () -> new SlabBlock(ofFullCopy(MARBLE.get())));
+    public static final DeferredBlock<WallBlock> MARBLE_BRICK_WALL = BLOCKS.register("marble_brick_wall",
+            () -> new WallBlock(ofFullCopy(MARBLE.get())));
+    // #endregion Marble
 }

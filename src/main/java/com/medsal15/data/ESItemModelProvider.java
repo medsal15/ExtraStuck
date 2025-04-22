@@ -128,5 +128,18 @@ public final class ESItemModelProvider extends ItemModelProvider {
         withExistingParent(ESItems.SULFUROUS_STONE_STAIRS.getId().toString(), modLoc("block/sulfurous_stone_stairs"));
         withExistingParent(ESItems.SULFUROUS_STONE_SLAB.getId().toString(), modLoc("block/sulfurous_stone_slab"));
         wallInventory(ESItems.SULFUROUS_STONE_WALL.getId().toString(), modLoc("block/sulfurous_stone"));
+
+        withExistingParent(ESItems.MARBLE.getId().toString(), modLoc("block/marble"));
+        withExistingParent(ESItems.MARBLE_STAIRS.getId().toString(), modLoc("block/marble_stairs"));
+        withExistingParent(ESItems.MARBLE_SLAB.getId().toString(), modLoc("block/marble_slab"));
+        wallInventory(ESItems.MARBLE_WALL.getId().toString(), modLoc("block/marble"));
+        withExistingParent(ESItems.POLISHED_MARBLE.getId().toString(), modLoc("block/polished_marble"));
+        withExistingParent(ESItems.POLISHED_MARBLE_STAIRS.getId().toString(), modLoc("block/polished_marble_stairs"));
+        withExistingParent(ESItems.POLISHED_MARBLE_SLAB.getId().toString(), modLoc("block/polished_marble_slab"));
+        wallInventory(ESItems.POLISHED_MARBLE_WALL.getId().toString(), modLoc("block/polished_marble"));
+        withExistingParent(ESItems.MARBLE_BRICKS.getId().toString(), modLoc("block/marble_bricks"));
+        withExistingParent(ESItems.MARBLE_BRICK_STAIRS.getId().toString(), modLoc("block/marble_brick_stairs"));
+        withExistingParent(ESItems.MARBLE_BRICK_SLAB.getId().toString(), modLoc("block/marble_brick_slab"));
+        wallInventory(ESItems.MARBLE_BRICK_WALL.getId().toString(), modLoc("block/marble_bricks"));
     }
 }
