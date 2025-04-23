@@ -30,6 +30,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -44,6 +45,7 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import vazkii.patchouli.common.item.ItemModBook;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ExtraStuck.MODID)
@@ -62,6 +64,10 @@ public class ExtraStuck {
                     .title(Component.translatable("itemGroup.extrastuck"))
                     .icon(() -> ESItems.WOODEN_SHIELD.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
+                        if (ModList.get().isLoaded("patchouli")) {
+                            output.accept(ItemModBook
+                                    .forBook(ResourceLocation.fromNamespaceAndPath(ExtraStuck.MODID, "extrastuck")));
+                        }
                         for (var item : ESItems.getItems()) {
                             output.accept(item.get());
                         }

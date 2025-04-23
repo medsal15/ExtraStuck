@@ -6,8 +6,6 @@ Find a better way to include Minestuck without needing a local file
 
 Add a mod icon
 
-Put patchouli guidebook at the start of the creative tab
-
 Simplify arrow classes to use one class
 
 Improve mod page with fancy graphic

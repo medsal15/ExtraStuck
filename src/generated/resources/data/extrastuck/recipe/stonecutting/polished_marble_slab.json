@@ -1,8 +1,13 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "extrastuck:polished_marble"
-  },
+  "ingredient": [
+    {
+      "item": "extrastuck:marble"
+    },
+    {
+      "item": "extrastuck:polished_marble"
+    }
+  ],
   "result": {
     "count": 2,
     "id": "extrastuck:polished_marble_slab"

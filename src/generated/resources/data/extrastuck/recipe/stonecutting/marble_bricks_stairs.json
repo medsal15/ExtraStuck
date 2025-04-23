@@ -1,8 +1,16 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "extrastuck:marble_bricks"
-  },
+  "ingredient": [
+    {
+      "item": "extrastuck:marble"
+    },
+    {
+      "item": "extrastuck:polished_marble"
+    },
+    {
+      "item": "extrastuck:marble_bricks"
+    }
+  ],
   "result": {
     "count": 1,
     "id": "extrastuck:marble_brick_stairs"

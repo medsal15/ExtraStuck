@@ -652,7 +652,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/polished_marble"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
                         ESItems.POLISHED_MARBLE_STAIRS)
                 .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
                 .save(output, modLoc("stonecutting/polished_marble_stairs"));
@@ -665,7 +665,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/polished_marble_stairs"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
                         ESItems.POLISHED_MARBLE_SLAB, 2)
                 .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
                 .save(output, modLoc("stonecutting/polished_marble_slab"));
@@ -676,7 +676,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/polished_marble_slab"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
                         ESItems.POLISHED_MARBLE_WALL)
                 .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
                 .save(output, modLoc("stonecutting/polished_marble_wall"));
@@ -688,7 +688,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/polished_marble_wall"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
                         ESItems.MARBLE_BRICKS)
                 .unlockedBy("has_marble", has(ESItems.MARBLE_BRICKS))
                 .save(output, modLoc("stonecutting/marble_bricks"));
@@ -700,7 +700,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/marble_bricks"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE_BRICKS), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE, ESItems.MARBLE_BRICKS),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.MARBLE_BRICK_STAIRS)
                 .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
                 .save(output, modLoc("stonecutting/marble_bricks_stairs"));
@@ -713,7 +714,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/marble_bricks_stairs"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE_BRICKS), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE, ESItems.MARBLE_BRICKS),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.MARBLE_BRICK_SLAB, 2)
                 .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
                 .save(output, modLoc("stonecutting/marble_bricks_slab"));
@@ -724,7 +726,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/marble_bricks_slab"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE_BRICKS), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE, ESItems.MARBLE_BRICKS),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.MARBLE_BRICK_WALL)
                 .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
                 .save(output, modLoc("stonecutting/marble_bricks_wall"));

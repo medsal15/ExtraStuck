@@ -24,6 +24,7 @@ repositories {
         // maven that contains infiniverse
         url "https://commoble.net/maven/"
     }
+    maven { url 'https://maven.blamejared.com' }
 }
 
 base {
@@ -141,6 +142,7 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    implementation "vazkii.patchouli:Patchouli:${mc_patchouli_version}"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
