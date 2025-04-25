@@ -2,7 +2,6 @@
     "name": "Non-Contact Contract",
     "icon": "extrastuck:non_contact_contract",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_wooden_shield",
     "sortnum": 1,
     "pages": [
         {

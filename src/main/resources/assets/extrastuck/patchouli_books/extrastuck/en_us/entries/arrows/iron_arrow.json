@@ -2,7 +2,6 @@
     "name": "Iron Arrow",
     "icon": "extrastuck:iron_arrow",
     "category": "extrastuck:arrows",
-    "advancement": "extrastuck:patchouli_books/has_arrow",
     "sortnum": 1,
     "pages": [
         {

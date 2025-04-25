@@ -2,7 +2,6 @@
     "name": "Quartz Arrow",
     "icon": "extrastuck:quartz_arrow",
     "category": "extrastuck:arrows",
-    "advancement": "extrastuck:patchouli_books/has_iron_arrow",
     "sortnum": 1,
     "pages": [
         {

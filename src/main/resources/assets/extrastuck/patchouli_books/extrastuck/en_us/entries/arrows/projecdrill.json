@@ -2,7 +2,6 @@
     "name": "Projecdrill",
     "icon": "extrastuck:projecdrill",
     "category": "extrastuck:arrows",
-    "advancement": "extrastuck:patchouli_books/has_iron_arrow",
     "sortnum": 1,
     "pages": [
         {

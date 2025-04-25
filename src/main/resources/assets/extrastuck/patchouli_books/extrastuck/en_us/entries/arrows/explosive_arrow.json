@@ -2,7 +2,6 @@
     "name": "Explosive Arrow",
     "icon": "extrastuck:explosive_arrow",
     "category": "extrastuck:arrows",
-    "advancement": "extrastuck:patchouli_books/show_explosive_arrow",
     "sortnum": 1,
     "pages": [
         {

@@ -2,7 +2,6 @@
     "name": "Captain Justice's Throwable Shield",
     "icon": "extrastuck:captain_justice_throwable_shield",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_riot_shield",
     "sortnum": 1,
     "pages": [
         {

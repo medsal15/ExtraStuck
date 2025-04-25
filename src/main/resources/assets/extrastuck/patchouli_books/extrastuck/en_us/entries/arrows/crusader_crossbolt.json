@@ -2,7 +2,6 @@
     "name": "Crusader's Crossbolt",
     "icon": "extrastuck:crusader_crossbolt",
     "category": "extrastuck:arrows",
-    "advancement": "extrastuck:patchouli_books/has_arrow",
     "sortnum": 1,
     "pages": [
         {

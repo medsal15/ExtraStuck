@@ -2,7 +2,6 @@
     "name": "Telerrow",
     "icon": "extrastuck:telerrow",
     "category": "extrastuck:arrows",
-    "advancement": "extrastuck:patchouli_books/has_end_arrow",
     "sortnum": 1,
     "pages": [
         {

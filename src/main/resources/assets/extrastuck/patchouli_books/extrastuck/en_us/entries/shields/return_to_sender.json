@@ -2,7 +2,6 @@
     "name": "Return to Sender",
     "icon": "extrastuck:return_to_sender",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_pogo_shield",
     "sortnum": 1,
     "pages": [
         {

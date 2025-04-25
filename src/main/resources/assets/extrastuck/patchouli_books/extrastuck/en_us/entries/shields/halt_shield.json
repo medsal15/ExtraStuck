@@ -2,7 +2,6 @@
     "name": "Halt Shield",
     "icon": "extrastuck:halt_shield",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_flame_shield",
     "sortnum": 1,
     "pages": [
         {

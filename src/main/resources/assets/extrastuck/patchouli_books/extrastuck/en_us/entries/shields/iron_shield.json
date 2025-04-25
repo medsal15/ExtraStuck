@@ -2,7 +2,6 @@
     "name": "Iron Shield",
     "icon": "extrastuck:iron_shield",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_vanilla_shield",
     "sortnum": 1,
     "pages": [
         {

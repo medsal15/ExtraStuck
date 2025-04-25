@@ -2,7 +2,6 @@
     "name": "Spikes on a Slab",
     "icon": "extrastuck:spikes_on_a_slab",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_iron_shield",
     "sortnum": 1,
     "pages": [
         {

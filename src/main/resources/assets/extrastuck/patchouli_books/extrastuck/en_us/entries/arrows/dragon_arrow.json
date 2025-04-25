@@ -2,7 +2,6 @@
     "name": "Dragon Arrow",
     "icon": "extrastuck:dragon_arrow",
     "category": "extrastuck:arrows",
-    "advancement": "extrastuck:patchouli_books/has_telerrow",
     "sortnum": 1,
     "pages": [
         {

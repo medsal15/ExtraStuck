@@ -2,7 +2,6 @@
     "name": "Riot Shield",
     "icon": "extrastuck:riot_shield",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_non_contact_contract",
     "sortnum": 1,
     "pages": [
         {

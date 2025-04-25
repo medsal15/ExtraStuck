@@ -2,7 +2,6 @@
     "name": "Flux Shield",
     "icon": "extrastuck:flux_shield",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_gold_shield",
     "sortnum": 1,
     "pages": [
         {

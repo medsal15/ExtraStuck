@@ -2,7 +2,6 @@
     "name": "Amethyst Arrow",
     "icon": "extrastuck:amethyst_arrow",
     "category": "extrastuck:arrows",
-    "advancement": "extrastuck:patchouli_books/has_glass_arrow",
     "sortnum": 1,
     "pages": [
         {

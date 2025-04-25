@@ -2,7 +2,6 @@
     "name": "Jawbiter",
     "icon": "extrastuck:jawbiter",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/has_spikes_on_a_slab",
     "sortnum": 1,
     "pages": [
         {

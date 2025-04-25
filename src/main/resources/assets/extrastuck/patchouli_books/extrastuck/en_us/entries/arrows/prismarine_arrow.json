@@ -2,7 +2,6 @@
     "name": "Prismarine Arrow",
     "icon": "extrastuck:prismarine_arrow",
     "category": "extrastuck:arrows",
-    "advancement": "extrastuck:patchouli_books/has_quartz_arrow",
     "sortnum": 1,
     "pages": [
         {

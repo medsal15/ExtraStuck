@@ -2,7 +2,6 @@
     "name": "Capitashield",
     "icon": "extrastuck:capitashield",
     "category": "extrastuck:shields",
-    "advancement": "extrastuck:patchouli_books/show_capitashield",
     "sortnum": 1,
     "pages": [
         {
