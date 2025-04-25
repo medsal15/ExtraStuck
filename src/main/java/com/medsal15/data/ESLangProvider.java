@@ -173,6 +173,11 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.MARBLE_BRICK_STAIRS, "Marble Brick Stairs");
         addBlock(ESBlocks.MARBLE_BRICK_SLAB, "Marble Brick Slab");
         addBlock(ESBlocks.MARBLE_BRICK_WALL, "Marble Brick Wall");
+
+        addBlock(ESBlocks.ZILLIUM_BRICKS, "Zillium Bricks");
+        addBlock(ESBlocks.ZILLIUM_BRICK_STAIRS, "Zillium Brick Stairs");
+        addBlock(ESBlocks.ZILLIUM_BRICK_SLAB, "Zillium Brick Slab");
+        addBlock(ESBlocks.ZILLIUM_BRICK_WALL, "Zillium Brick Wall");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {

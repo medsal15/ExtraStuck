@@ -68,5 +68,10 @@ public class ESBlockLootProvider extends BlockLootSubProvider {
         dropSelf(ESBlocks.MARBLE_BRICK_STAIRS.get());
         this.add(ESBlocks.MARBLE_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.MARBLE_BRICK_SLAB.get()));
         dropSelf(ESBlocks.MARBLE_BRICK_WALL.get());
+
+        dropSelf(ESBlocks.ZILLIUM_BRICKS.get());
+        dropSelf(ESBlocks.ZILLIUM_BRICK_STAIRS.get());
+        this.add(ESBlocks.ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.ZILLIUM_BRICK_SLAB.get()));
+        dropSelf(ESBlocks.ZILLIUM_BRICK_WALL.get());
     }
 }

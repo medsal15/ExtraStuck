@@ -1,0 +1,20 @@
+{
+    "name": "Zillium Bricks",
+    "icon": "extrastuck:zillium_bricks",
+    "category": "extrastuck:blocks",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:zillium_bricks",
+            "text": "Alright new zillionnaire, it's clear you're above the economy. So here are these blocks which are made of pure zillium."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/zillium_bricks_recipe.png"
+            ],
+            "text": "Combine stone bricks and zillium skittles in a punch designix."
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "G": {
+      "item": "extrastuck:zillium_bricks"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "GGG"
+  ],
+  "result": {
+    "count": 6,
+    "id": "extrastuck:zillium_brick_wall"
+  }
+}

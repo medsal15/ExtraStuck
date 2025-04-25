@@ -38,6 +38,10 @@
     "extrastuck:marble_bricks",
     "extrastuck:marble_brick_stairs",
     "extrastuck:marble_brick_slab",
-    "extrastuck:marble_brick_wall"
+    "extrastuck:marble_brick_wall",
+    "extrastuck:zillium_bricks",
+    "extrastuck:zillium_brick_stairs",
+    "extrastuck:zillium_brick_slab",
+    "extrastuck:zillium_brick_wall"
   ]
 }

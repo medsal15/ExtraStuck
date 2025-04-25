@@ -738,6 +738,53 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
                 .save(output, modLoc("shaped/marble_bricks_wall"));
         // #endregion Marble
+        // #region Zillium
+        CombinationRecipeBuilder.of(ESItems.ZILLIUM_BRICKS)
+                .input(Items.STONE_BRICKS).and().input(MSItems.ZILLIUM_SKITTLES)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.ZILLIUM_BRICKS)
+                .grist(GristTypes.ZILLIUM, 4)
+                .build(output);
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.ZILLIUM_BRICKS),
+                        RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.ZILLIUM_BRICK_STAIRS)
+                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
+                .save(output, modLoc("stonecutting/zillium_bricks_stairs"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.ZILLIUM_BRICK_STAIRS.toStack(4))
+                .pattern("G  ")
+                .pattern("GG ")
+                .pattern("GGG")
+                .define('G', ESItems.ZILLIUM_BRICKS)
+                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
+                .save(output, modLoc("shaped/zillium_bricks_stairs"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.ZILLIUM_BRICKS),
+                        RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.ZILLIUM_BRICK_SLAB, 2)
+                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
+                .save(output, modLoc("stonecutting/zillium_bricks_slab"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.ZILLIUM_BRICK_SLAB.toStack(6))
+                .pattern("GGG")
+                .define('G', ESItems.ZILLIUM_BRICKS)
+                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
+                .save(output, modLoc("shaped/zillium_bricks_slab"));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(ESItems.ZILLIUM_BRICKS),
+                        RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.ZILLIUM_BRICK_WALL)
+                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
+                .save(output, modLoc("stonecutting/zillium_bricks_wall"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.ZILLIUM_BRICK_WALL.toStack(6))
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', ESItems.ZILLIUM_BRICKS)
+                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
+                .save(output, modLoc("shaped/zillium_bricks_wall"));
+        // #endregion Zillium
         // #endregion Blocks
     }
 

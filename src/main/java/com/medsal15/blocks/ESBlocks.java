@@ -123,4 +123,16 @@ public final class ESBlocks {
     public static final DeferredBlock<WallBlock> MARBLE_BRICK_WALL = BLOCKS.register("marble_brick_wall",
             () -> new WallBlock(ofFullCopy(MARBLE.get())));
     // #endregion Marble
+
+    // #region Zillium
+    public static final DeferredBlock<Block> ZILLIUM_BRICKS = BLOCKS.registerBlock("zillium_bricks", Block::new,
+            Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(2.5F, 10F)
+                    .requiresCorrectToolForDrops());
+    public static final DeferredBlock<StairBlock> ZILLIUM_BRICK_STAIRS = BLOCKS.register("zillium_brick_stairs",
+            () -> new StairBlock(ZILLIUM_BRICKS.get().defaultBlockState(), ofFullCopy(ZILLIUM_BRICKS.get())));
+    public static final DeferredBlock<SlabBlock> ZILLIUM_BRICK_SLAB = BLOCKS.register("zillium_brick_slab",
+            () -> new SlabBlock(ofFullCopy(ZILLIUM_BRICKS.get())));
+    public static final DeferredBlock<WallBlock> ZILLIUM_BRICK_WALL = BLOCKS.register("zillium_brick_wall",
+            () -> new WallBlock(ofFullCopy(ZILLIUM_BRICKS.get())));
+    // #endregion Zillium
 }

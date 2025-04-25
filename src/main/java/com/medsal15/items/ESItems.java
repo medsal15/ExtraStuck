@@ -237,6 +237,15 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.MARBLE_BRICK_SLAB);
     public static final DeferredItem<BlockItem> MARBLE_BRICK_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.MARBLE_BRICK_WALL);
+
+    public static final DeferredItem<BlockItem> ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_WALL);
     // #endregion Blocks
 
     public static Collection<DeferredItem<? extends Item>> getItems() {
@@ -341,6 +350,11 @@ public final class ESItems {
         list.add(MARBLE_BRICK_STAIRS);
         list.add(MARBLE_BRICK_SLAB);
         list.add(MARBLE_BRICK_WALL);
+
+        list.add(ZILLIUM_BRICKS);
+        list.add(ZILLIUM_BRICK_STAIRS);
+        list.add(ZILLIUM_BRICK_SLAB);
+        list.add(ZILLIUM_BRICK_WALL);
 
         return list;
     }
