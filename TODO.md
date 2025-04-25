@@ -18,7 +18,7 @@ Create a pair of custom renders for combination/grist recipes in patchouli (so i
 
 ### Loot tables ###
 
-Add arrows/shields to relevant loot tables, see [here](https://docs.neoforged.net/docs/1.21.1/resources/server/loottables/glm#builtin-loot-modifiers) for how
+Add arrows/shields to relevant loot tables
 
 ### Machines ###
 

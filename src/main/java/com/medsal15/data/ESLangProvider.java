@@ -121,6 +121,7 @@ public final class ESLangProvider extends LanguageProvider {
                 "hopefully it will have been worth the wait...");
         addEntityType(ESEntities.HEALING_ARROW, "Healing Arrow");
         addItem(ESItems.END_ARROW, "End Arrow");
+        addItemTooltip(ESItems.END_ARROW, "Hates flying");
         addEntityType(ESEntities.END_ARROW, "End Arrow");
         addItem(ESItems.TELERROW, "Telerrow");
         addItemTooltip(ESItems.TELERROW, "Now you're over there");
