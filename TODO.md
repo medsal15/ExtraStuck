@@ -16,13 +16,12 @@ Allow change shields (wooden shield) to also transform when dropped
 
 Create a pair of custom renders for combination/grist recipes in patchouli (so i can put a grist cost on its own)
 
-### Loot tables ###
-
-Add arrows/shields to relevant loot tables
-
 ### Machines ###
 
 Atheneum add-on loader: adds extra items in the atheneum
+\> It's possible to add/remove items during runtime, though there may be race conditions, prevent these from happening
+\> TODO: find a way to hold a player's data in a way compatible with SburbPlayerData
+\> Use additionnal player data to hold block positions & items added (instead of binding per block) -> prevents removing all copies when duplicate add-ons are loaded
 Grist printer: alchemizes items from a totem, while powered by redstone
 Grist detector: reveals current location grists
 Grist location: reveals current location grists, allows searching for specifc grist

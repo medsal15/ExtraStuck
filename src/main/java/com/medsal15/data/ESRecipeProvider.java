@@ -40,11 +40,11 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.WOODEN_SHIELD)
                 .grist(GristTypes.BUILD, 6)
                 .build(output);
+
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ESItems.WOODEN_SHIELD), RecipeCategory.COMBAT,
                 ESItems.FLAME_SHIELD, 0, 600)
                 .unlockedBy("has_wooden_shield", has(ESItems.WOODEN_SHIELD))
                 .save(output, "campfire/flame_shield");
-
         GristCostRecipeBuilder.of(ESItems.FLAME_SHIELD)
                 .grist(GristTypes.TAR, 34).grist(GristTypes.SULFUR, 13)
                 .build(output);

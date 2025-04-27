@@ -1,5 +1,7 @@
 package com.medsal15.items;
 
+import static com.medsal15.ExtraStuck.modid;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -36,11 +38,14 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import vazkii.patchouli.common.item.ItemModBook;
 
 public final class ESItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
@@ -248,13 +253,22 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_WALL);
     // #endregion Blocks
 
-    public static Collection<DeferredItem<? extends Item>> getItems() {
-        ArrayList<DeferredItem<? extends Item>> list = new ArrayList<>();
-        list.addAll(getShields());
-        list.add(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
-        list.addAll(getArrows());
-        list.addAll(getBlocks());
-        return list;
+    public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
+            CreativeModeTab.Output output) {
+        if (ModList.get().isLoaded("patchouli")) {
+            output.accept(ItemModBook
+                    .forBook(modid("extrastuck")));
+        }
+        for (var item : ESItems.getShields()) {
+            output.accept(item.get());
+        }
+        output.accept(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
+        for (var item : ESItems.getArrows()) {
+            output.accept(item.get());
+        }
+        for (var item : ESItems.getBlocks()) {
+            output.accept(item.get());
+        }
     }
 
     public static Collection<DeferredItem<Item>> getShields() {

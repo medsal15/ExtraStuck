@@ -1,0 +1,11 @@
+{
+  "entries": [
+    "extrastuck:medium_frost",
+    "extrastuck:medium_rock",
+    "extrastuck:medium_rain",
+    "extrastuck:medium_end",
+    "extrastuck:medium_heat",
+    "extrastuck:medium_thunder"
+  ],
+  "replace": false
+}
