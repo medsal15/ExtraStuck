@@ -64,7 +64,7 @@
   "entity.extrastuck.prismarine_arrow": "Prismarine Arrow",
   "entity.extrastuck.quartz_arrow": "Quartz Arrow",
   "entity.extrastuck.teleport_arrow": "Teleport Arrow",
-  "extrastuck.energy_storage": "%s / %s RF",
+  "extrastuck.energy_storage": "%s / %s FE",
   "extrastuck.shield_damage": "Deals %s damage to melee attackers",
   "extrastuck.shield_effect": "Applies %s (%s) to melee attackers",
   "extrastuck.shield_self_effect": "Applies %s (%s) when attacked",

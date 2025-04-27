@@ -1,0 +1,7 @@
+{
+  "type": "extrastuck:terrain_loot_modifier",
+  "conditions": [],
+  "inject": "extrastuck:chests/inject/medium_end",
+  "target": "minestuck:chests/medium_basic",
+  "terrain": "minestuck:end"
+}

@@ -6,7 +6,9 @@ import java.util.concurrent.CompletableFuture;
 
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
-import com.medsal15.data.loot_tables.ESBlockLootProvider;
+import com.medsal15.data.loot_tables.ESBlockLootSubProvider;
+import com.medsal15.data.loot_tables.ESGLMProvider;
+import com.medsal15.data.loot_tables.ESLootSubProvider;
 import com.medsal15.data.loot_tables.ESLootTableProvider;
 
 import net.minecraft.core.HolderLookup;
@@ -45,26 +47,32 @@ public final class ESData {
                 new DatapackBuiltinEntriesProvider(output, lookupProvider,
                         new RegistrySetBuilder().add(Registries.DAMAGE_TYPE, bootstrap -> {
                             bootstrap.register(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE,
-                                    new DamageType(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE.location().toString(),
+                                    new DamageType(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE
+                                            .location().toString(),
                                             DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER,
                                             .1F,
                                             DamageEffects.HURT,
                                             DeathMessageType.DEFAULT));
                             bootstrap.register(ESDamageTypes.THORN_SHIELD,
-                                    new DamageType(ESDamageTypes.THORN_SHIELD.location().toString(),
+                                    new DamageType(ESDamageTypes.THORN_SHIELD
+                                            .location().toString(),
                                             DamageScaling.NEVER,
                                             .1F,
                                             DamageEffects.THORNS,
                                             DeathMessageType.DEFAULT));
                         }), Set.of(ExtraStuck.MODID)));
-        var blocktags = gen.addProvider(event.includeServer(), new ESBlockTags(output, lookupProvider, fileHelper));
+        var blocktags = gen.addProvider(event.includeServer(),
+                new ESBlockTags(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(), new ESRecipeProvider(output, lookupProvider));
         gen.addProvider(event.includeServer(),
                 new ESItemTags(output, lookupProvider, blocktags.contentsGetter(), fileHelper));
         gen.addProvider(event.includeServer(), new DataMapGenerator(output, lookupProvider));
         gen.addProvider(event.includeServer(), new ESEntityTypeTags(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(),
-                (DataProvider.Factory<ESLootTableProvider>) (o -> new ESLootTableProvider(o, lookupProvider,
-                        List.of(new SubProviderEntry(ESBlockLootProvider::new, LootContextParamSets.BLOCK)))));
+                (DataProvider.Factory<ESLootTableProvider>) (o -> new ESLootTableProvider(o,
+                        lookupProvider,
+                        List.of(new SubProviderEntry(ESBlockLootSubProvider::new, LootContextParamSets.BLOCK),
+                                new SubProviderEntry(ESLootSubProvider::new, LootContextParamSets.CHEST)))));
+        gen.addProvider(event.includeServer(), new ESGLMProvider(output, lookupProvider));
     }
 }

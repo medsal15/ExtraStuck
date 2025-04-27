@@ -8,8 +8,8 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
 
-public class ESBlockLootProvider extends BlockLootSubProvider {
-    public ESBlockLootProvider(HolderLookup.Provider lookupProvider) {
+public class ESBlockLootSubProvider extends BlockLootSubProvider {
+    public ESBlockLootSubProvider(HolderLookup.Provider lookupProvider) {
         super(Set.of(), FeatureFlags.DEFAULT_FLAGS, lookupProvider);
     }
 

@@ -33,7 +33,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(SHIELD_DAMAGE_KEY, "Deals %s damage to melee attackers");
         add(SHIELD_EFFECT_KEY, "Applies %s (%s) to melee attackers");
         add(SHIELD_SELF_EFFECT_KEY, "Applies %s (%s) when attacked");
-        add(ENERGY_STORAGE_KEY, "%s / %s RF");
+        add(ENERGY_STORAGE_KEY, "%s / %s FE");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");

@@ -14,6 +14,7 @@ import com.medsal15.items.ESItems;
 import com.medsal15.items.IESEnergyStorage;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
+import com.medsal15.loot_modifiers.ESLootModifiers;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.ChatFormatting;
@@ -30,7 +31,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -45,7 +45,6 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import vazkii.patchouli.common.item.ItemModBook;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ExtraStuck.MODID)
@@ -63,15 +62,11 @@ public class ExtraStuck {
                     // The language key for the title of your CreativeModeTab
                     .title(Component.translatable("itemGroup.extrastuck"))
                     .icon(() -> ESItems.WOODEN_SHIELD.get().getDefaultInstance())
-                    .displayItems((parameters, output) -> {
-                        if (ModList.get().isLoaded("patchouli")) {
-                            output.accept(ItemModBook
-                                    .forBook(ResourceLocation.fromNamespaceAndPath(ExtraStuck.MODID, "extrastuck")));
-                        }
-                        for (var item : ESItems.getItems()) {
-                            output.accept(item.get());
-                        }
-                    }).build());
+                    .displayItems(ESItems::addToCreativeTab).build());
+
+    public static ResourceLocation modid(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
 
     // The constructor for the mod class is the first code that is run when your mod
     // is loaded.
@@ -91,6 +86,7 @@ public class ExtraStuck {
         ESBlocks.BLOCKS.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
+        ESLootModifiers.GLM_SERIALIZERS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 
@@ -107,39 +103,39 @@ public class ExtraStuck {
         event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
                 CaptainJusticeShield.CJSRenderer::new);
         event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/flame_arrow.png")));
+                modid("textures/entity/flame_arrow.png")));
         event.registerEntityRenderer(ESEntities.NETHER_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/nether_arrow.png")));
+                modid("textures/entity/nether_arrow.png")));
         event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/cardboard_arrow.png")));
+                modid("textures/entity/cardboard_arrow.png")));
         event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/missed_arrow.png")));
+                modid("textures/entity/missed_arrow.png")));
         event.registerEntityRenderer(ESEntities.CANDY_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/candy_arrow.png")));
+                modid("textures/entity/candy_arrow.png")));
         event.registerEntityRenderer(ESEntities.LIGHTNING_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/lightning_arrow.png")));
+                modid("textures/entity/lightning_arrow.png")));
         event.registerEntityRenderer(ESEntities.EXPLOSIVE_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/explosive_arrow.png")));
+                modid("textures/entity/explosive_arrow.png")));
         event.registerEntityRenderer(ESEntities.IRON_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/iron_arrow.png")));
+                modid("textures/entity/iron_arrow.png")));
         event.registerEntityRenderer(ESEntities.QUARTZ_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/quartz_arrow.png")));
+                modid("textures/entity/quartz_arrow.png")));
         event.registerEntityRenderer(ESEntities.PRISMARINE_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/prismarine_arrow.png")));
+                modid("textures/entity/prismarine_arrow.png")));
         event.registerEntityRenderer(ESEntities.GLASS_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/glass_arrow.png")));
+                modid("textures/entity/glass_arrow.png")));
         event.registerEntityRenderer(ESEntities.AMETHYST_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/amethyst_arrow.png")));
+                modid("textures/entity/amethyst_arrow.png")));
         event.registerEntityRenderer(ESEntities.MINING_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/mining_arrow.png")));
+                modid("textures/entity/mining_arrow.png")));
         event.registerEntityRenderer(ESEntities.HEALING_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/healing_arrow.png")));
+                modid("textures/entity/healing_arrow.png")));
         event.registerEntityRenderer(ESEntities.END_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/end_arrow.png")));
+                modid("textures/entity/end_arrow.png")));
         event.registerEntityRenderer(ESEntities.TELEPORT_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/teleport_arrow.png")));
+                modid("textures/entity/teleport_arrow.png")));
         event.registerEntityRenderer(ESEntities.DRAGON_ARROW.get(), c -> new ESArrowRenderer(c,
-                ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/dragon_arrow.png")));
+                modid("textures/entity/dragon_arrow.png")));
     }
 
     @SubscribeEvent
