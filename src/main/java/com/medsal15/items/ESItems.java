@@ -255,17 +255,21 @@ public final class ESItems {
 
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
+
         if (ModList.get().isLoaded("patchouli")) {
             output.accept(ItemModBook
                     .forBook(modid("extrastuck")));
         }
+
         for (var item : ESItems.getShields()) {
             output.accept(item.get());
         }
         output.accept(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
+
         for (var item : ESItems.getArrows()) {
             output.accept(item.get());
         }
+
         for (var item : ESItems.getBlocks()) {
             output.accept(item.get());
         }
