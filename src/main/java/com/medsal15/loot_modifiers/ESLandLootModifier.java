@@ -1,5 +1,7 @@
 package com.medsal15.loot_modifiers;
 
+import java.util.Optional;
+
 import javax.annotation.Nonnull;
 
 import com.mojang.serialization.MapCodec;
@@ -18,21 +20,26 @@ import net.neoforged.neoforge.common.loot.LootModifier;
 
 /**
  * Special modifier that checks both terrain and title
+ *
+ * Only rolls the loot table to inject if terrain is blank or matches the land's
+ * terrain, and same with title
+ *
+ * Effectively means that an empty terrain and title will always be rolled
  */
 public class ESLandLootModifier extends ESLootModifier {
     /** Location of the table to inject */
     private final ResourceLocation inject;
     /** Location of the table to watch */
     private final ResourceLocation target;
-    private final TerrainLandType terrain;
-    private final TitleLandType title;
+    private final Optional<TerrainLandType> terrain;
+    private final Optional<TitleLandType> title;
 
     public static final MapCodec<ESLandLootModifier> CODEC = RecordCodecBuilder
             .mapCodec(inst -> LootModifier.codecStart(inst).and(inst.group(
                     ResourceLocation.CODEC.fieldOf("inject").forGetter(e -> e.inject),
                     ResourceLocation.CODEC.fieldOf("target").forGetter(e -> e.target),
-                    LandTypes.TERRAIN_REGISTRY.byNameCodec().fieldOf("terrain").forGetter(e -> e.terrain),
-                    LandTypes.TITLE_REGISTRY.byNameCodec().fieldOf("title").forGetter(e -> e.title)))
+                    LandTypes.TERRAIN_REGISTRY.byNameCodec().optionalFieldOf("terrain").forGetter(e -> e.terrain),
+                    LandTypes.TITLE_REGISTRY.byNameCodec().optionalFieldOf("title").forGetter(e -> e.title)))
                     .apply(inst, ESLandLootModifier::new));
 
     /**
@@ -43,7 +50,7 @@ public class ESLandLootModifier extends ESLootModifier {
      * @param terrain    Terrain of the land
      */
     public ESLandLootModifier(LootItemCondition[] conditions, ResourceLocation inject, ResourceLocation target,
-            TerrainLandType terrain, TitleLandType title) {
+            Optional<TerrainLandType> terrain, Optional<TitleLandType> title) {
         super(conditions);
         this.inject = inject;
         this.target = target;
@@ -56,7 +63,9 @@ public class ESLandLootModifier extends ESLootModifier {
             @Nonnull LootContext context) {
         var title = getTitle(context);
         var terrain = getTerrain(context);
-        if (title == this.title && terrain == this.terrain && context.getQueriedLootTableId().equals(target)) {
+        var title_correct = this.title.isEmpty() || this.title.get() == title;
+        var terrain_correct = this.terrain.isEmpty() || this.terrain.get() == terrain;
+        if (title_correct && terrain_correct && context.getQueriedLootTableId().equals(target)) {
             generatedLoot.addAll(runTable(context.getLevel(), inject));
         }
         return generatedLoot;

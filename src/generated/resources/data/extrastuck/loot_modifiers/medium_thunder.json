@@ -1,5 +1,5 @@
 {
-  "type": "extrastuck:title_loot_modifier",
+  "type": "extrastuck:land_loot_modifier",
   "conditions": [],
   "inject": "extrastuck:chests/inject/medium_thunder",
   "target": "minestuck:chests/medium_basic",
