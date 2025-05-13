@@ -16,6 +16,19 @@ Allow change shields (wooden shield) to also transform when dropped
 
 Create a pair of custom renders for combination/grist recipes in patchouli (so i can put a grist cost on its own)
 
+### World ###
+
+Add structure jigsaw sub-type that checks land title and terrain for placement
+
+Crashed pods
+
+Consort camps
+
+Boss arenas, different based on the terrain/title
+Implement boss summon block
+
+Extra structures based on terrain/title
+
 ### Machines ###
 
 Atheneum add-on loader: adds extra items in the atheneum
