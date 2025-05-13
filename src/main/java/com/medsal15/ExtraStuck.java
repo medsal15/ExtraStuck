@@ -15,6 +15,7 @@ import com.medsal15.items.IESEnergyStorage;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.loot_modifiers.ESLootModifiers;
+import com.medsal15.structures.processors.ESProcessors;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.ChatFormatting;
@@ -87,6 +88,7 @@ public class ExtraStuck {
         ESItems.ITEMS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
         ESLootModifiers.GLM_SERIALIZERS.register(modEventBus);
+        ESProcessors.PROCESSORS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 
