@@ -29,7 +29,6 @@ import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.SwapTrident;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -75,15 +74,13 @@ public final class ESItems {
             new Item.Properties().durability(1561).fireResistant()
                     .attributes(ItemAttributeModifiers.builder().add(
                             Attributes.KNOCKBACK_RESISTANCE,
-                            new AttributeModifier(ResourceLocation.fromNamespaceAndPath(
-                                    ExtraStuck.MODID, "netherite_shield"), 0.1,
+                            new AttributeModifier(ExtraStuck.modid("netherite_shield"), 0.1,
                                     Operation.ADD_VALUE),
                             EquipmentSlotGroup.OFFHAND).build()));
     public static final DeferredItem<Item> GARNET_SHIELD = ITEMS.registerItem("garnet_shield", ESShield::new,
             new Item.Properties().durability(2560)
                     .attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_SPEED,
-                            new AttributeModifier(ResourceLocation.fromNamespaceAndPath(
-                                    ExtraStuck.MODID, "garnet_shield"), 0.1,
+                            new AttributeModifier(ExtraStuck.modid("garnet_shield"), 0.1,
                                     Operation.ADD_VALUE),
                             EquipmentSlotGroup.OFFHAND).build()));
     public static final DeferredItem<Item> POGO_SHIELD = ITEMS.registerItem("pogo_shield",
