@@ -54,13 +54,14 @@ public final class PlaceConsortProcessor extends StructureProcessor {
             if (consort != null) {
                 // TODO they run fast for some reason
                 consort.setPos(entityInfo.pos);
+                consort.finalizeSpawn(accessor, accessor.getCurrentDifficultyAt(seedPos), MobSpawnType.STRUCTURE, null);
                 if (merchant.isPresent()) {
                     consort.merchantType = merchant.get();
-                    consort.restrictTo(entityInfo.blockPos, 0);
+                    if (consort.merchantType != MerchantType.NONE)
+                        consort.restrictTo(entityInfo.blockPos, 0);
                 } else {
                     consort.merchantType = MerchantType.NONE;
                 }
-                consort.finalizeSpawn(accessor, accessor.getCurrentDifficultyAt(seedPos), MobSpawnType.STRUCTURE, null);
 
                 var nbt = entityInfo.nbt;
                 if (consort.save(nbt))
