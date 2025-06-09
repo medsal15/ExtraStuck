@@ -49,7 +49,8 @@ public class MiningArrow extends AbstractArrow {
         if (level() instanceof ServerLevel) {
             mined = true;
             var pos = result.getBlockPos();
-            if (!level().getBlockState(pos).is(BlockTags.INCORRECT_FOR_IRON_TOOL)) {
+            var blockState = level().getBlockState(pos);
+            if (!blockState.is(BlockTags.INCORRECT_FOR_IRON_TOOL) && blockState.getDestroySpeed(level(), pos) != -1) {
                 level().destroyBlock(pos, true, getOwner());
             }
         }
