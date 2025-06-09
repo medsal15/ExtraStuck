@@ -24,6 +24,13 @@ public class ESArrowItem extends ArrowItem {
         DispenserBlock.registerProjectileBehavior(this);
     }
 
+    public ESArrowItem(Properties properties, ToEntity toEntity) {
+        super(properties);
+        this.create = toEntity;
+        this.projectile = toEntity;
+        DispenserBlock.registerProjectileBehavior(this);
+    }
+
     @Override
     public AbstractArrow createArrow(@Nonnull Level level, @Nonnull ItemStack ammo, @Nonnull LivingEntity shooter,
             @Nullable ItemStack weapon) {
@@ -46,5 +53,8 @@ public class ESArrowItem extends ArrowItem {
     public static interface AsProj {
         AbstractArrow asProj(@Nonnull Level level, double x, double y, double z, @Nonnull ItemStack stack,
                 @Nullable ItemStack weapon);
+    }
+
+    public static interface ToEntity extends CreaArro, AsProj {
     }
 }

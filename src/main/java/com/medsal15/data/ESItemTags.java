@@ -34,6 +34,10 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(ItemTags.ARROWS).add(arrow.get());
         }
 
+        for (var weapon : ESItems.getWeapons()) {
+            tagWeapon(weapon);
+        }
+
         tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 
         tag(ItemTags.PIGLIN_LOVED).add(ESItems.GOLD_SHIELD.get());
@@ -56,5 +60,13 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(ItemTags.DURABILITY_ENCHANTABLE).add(item.get());
         tag(ItemTags.VANISHING_ENCHANTABLE).add(item.get());
         tag(Tags.Items.TOOLS_SHIELD).add(item.get());
+    }
+
+    private void tagWeapon(DeferredItem<Item> item) {
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(item.get());
+        tag(ItemTags.VANISHING_ENCHANTABLE).add(item.get());
+        tag(ItemTags.SWORD_ENCHANTABLE).add(item.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(item.get());
+        tag(Tags.Items.MELEE_WEAPON_TOOLS).add(item.get());
     }
 }

@@ -181,6 +181,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.RETURN_TO_SENDER)
                 .grist(GristTypes.MARBLE, 868).grist(GristTypes.CAULK, 133)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.GIFT_OF_PROTECTION)
+                .input(ESItems.GIFT).or().input(ESItems.NON_CONTACT_CONTRACT)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.GIFT_OF_PROTECTION)
+                .grist(GristTypes.AMBER, 1225).grist(GristTypes.IODINE, 606)
+                .build(output);
         // #endregion Shields
 
         // #region Arrows
@@ -306,6 +313,32 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.URANIUM, 15).grist(GristTypes.RUBY, 4)
                 .build(output);
         // #endregion Arrows
+
+        // #region Weapons
+        CombinationRecipeBuilder.of(ESItems.SILVER_BAT)
+                .input(MSItems.METAL_BAT).and().input(Items.GLASS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SILVER_BAT)
+                .grist(GristTypes.MERCURY, 35).grist(GristTypes.RUST, 70)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.KEY_OF_TRIALS)
+                .input(MSItems.HOUSE_KEY).and().input(Items.TRIAL_KEY)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.KEY_OF_TRIALS)
+                .grist(GristTypes.SHALE, 13).grist(GristTypes.RUST, 7)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
+                .input(ESItems.KEY_OF_TRIALS).and().input(Items.OMINOUS_TRIAL_KEY)
+                .build(output);
+        CombinationRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
+                .input(ESItems.KEY_OF_TRIALS).and().input(Items.OMINOUS_BOTTLE)
+                .build(output, ExtraStuck.modid("combinations/key_of_ominous_trials_alt"));
+        GristCostRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
+                .grist(GristTypes.GARNET, 6).grist(GristTypes.SHALE, 43)
+                .build(output);
+        // #endregion Weapons
 
         // #region Blocks
         // #region Garnet
@@ -786,6 +819,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/zillium_bricks_wall"));
         // #endregion Zillium
         // #endregion Blocks
+
+        CombinationRecipeBuilder.of(ESItems.GIFT)
+                .input(Items.PAPER).and().input(MSItems.SURPRISE_EMBRYO)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.GIFT)
+                .grist(GristTypes.GARNET, 2).grist(GristTypes.GOLD, 12)
+                .build(output);
     }
 
     private ResourceLocation modLoc(String text) {

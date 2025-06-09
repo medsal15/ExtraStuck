@@ -18,16 +18,7 @@ Create a pair of custom renders for combination/grist recipes in patchouli (so i
 
 ### World ###
 
-Add structure jigsaw sub-type that checks land title and terrain for placement
-
-Crashed pods
-
-Consort camps
-
-Boss arenas, different based on the terrain/title
-Implement boss summon block
-
-Extra structures based on terrain/title
+Add a way to load a structure by land terrain/title
 
 ### Machines ###
 

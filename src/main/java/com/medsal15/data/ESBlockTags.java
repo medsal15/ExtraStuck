@@ -11,6 +11,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -20,8 +22,13 @@ public final class ESBlockTags extends BlockTagsProvider {
         super(output, lookupProvider, ExtraStuck.MODID, fileHelper);
     }
 
+    public static final TagKey<Block> INCORRECT_FOR_COPPER_TIER = BlockTags
+            .create(ExtraStuck.modid("incorrect_for_copper_tier"));
+
     @Override
     protected void addTags(@Nonnull Provider arg0) {
+        tag(INCORRECT_FOR_COPPER_TIER).addTag(BlockTags.INCORRECT_FOR_STONE_TOOL);
+
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 ESBlocks.CUT_GARNET.get(), ESBlocks.CUT_GARNET_STAIRS.get(), ESBlocks.CUT_GARNET_SLAB.get(),
                 ESBlocks.CUT_GARNET_WALL.get(), ESBlocks.GARNET_BRICKS.get(), ESBlocks.GARNET_BRICK_STAIRS.get(),

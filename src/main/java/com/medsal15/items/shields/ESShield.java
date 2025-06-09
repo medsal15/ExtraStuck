@@ -2,12 +2,12 @@ package com.medsal15.items.shields;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.medsal15.ESDamageTypes;
-import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.IESEnergyStorage;
 import com.mraof.minestuck.entity.underling.UnderlingEntity;
@@ -360,7 +360,7 @@ public class ESShield extends ShieldItem implements IESEnergyStorage {
             };
         }
 
-        public static ESShield.IBlock dropChance(float chance) {
+        public static ESShield.IBlock selfDropChance(float chance, Supplier<String> message) {
             return event -> {
                 var user = event.getEntity();
                 // Copied from minestuck
@@ -373,7 +373,23 @@ public class ESShield extends ShieldItem implements IESEnergyStorage {
                 shield.setPickUpDelay(40);
                 user.level().addFreshEntity(shield);
                 stack.shrink(1);
-                user.sendSystemMessage(Component.translatable(ESLangProvider.SLIED_DROP_KEY));
+                user.sendSystemMessage(Component.translatable(message.get()));
+
+                return true;
+            };
+        }
+
+        public static ESShield.IBlock itemDropChance(Supplier<ItemStack> stack, float chance,
+                Supplier<String> message) {
+            return event -> {
+                var user = event.getEntity();
+                if (user.getCommandSenderWorld().isClientSide || user.getRandom().nextFloat() >= chance)
+                    return false;
+
+                ItemEntity item = new ItemEntity(user.level(), user.getX(), user.getY(), user.getZ(),
+                        stack.get().copy());
+                user.level().addFreshEntity(item);
+                user.sendSystemMessage(Component.translatable(message.get()));
 
                 return true;
             };

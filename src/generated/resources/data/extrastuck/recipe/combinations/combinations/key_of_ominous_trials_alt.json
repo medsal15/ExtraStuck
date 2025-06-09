@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:key_of_trials"
+  },
+  "input2": {
+    "item": "minecraft:ominous_bottle"
+  },
+  "mode": "and",
+  "output": "extrastuck:key_of_ominous_trials"
+}

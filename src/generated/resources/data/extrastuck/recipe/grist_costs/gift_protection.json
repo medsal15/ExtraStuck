@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 1225,
+    "minestuck:iodine": 606
+  },
+  "ingredient": {
+    "item": "extrastuck:gift_protection"
+  }
+}
