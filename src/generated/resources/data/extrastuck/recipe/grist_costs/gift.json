@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:garnet": 2,
+    "minestuck:gold": 12
+  },
+  "ingredient": {
+    "item": "extrastuck:gift"
+  }
+}

@@ -5,6 +5,7 @@
     "extrastuck:halt_shield",
     "extrastuck:light_shield",
     "extrastuck:non_contact_contract",
+    "extrastuck:gift_protection",
     "extrastuck:slied",
     "extrastuck:riot_shield",
     "extrastuck:captain_justice_throwable_shield",
@@ -20,6 +21,9 @@
     "extrastuck:garnet_shield",
     "extrastuck:pogo_shield",
     "extrastuck:return_to_sender",
+    "extrastuck:silver_bat",
+    "extrastuck:key_of_trials",
+    "extrastuck:key_of_ominous_trials",
     "extrastuck:captain_justice_shield_throwable"
   ]
 }

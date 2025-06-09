@@ -4,9 +4,11 @@ import static com.medsal15.ExtraStuck.modid;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
@@ -28,6 +30,9 @@ import com.medsal15.items.arrows.ESArrowItem;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.SwapTrident;
+import com.mraof.minestuck.item.MSItemTypes;
+import com.mraof.minestuck.item.loot.MSLootTables;
+import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffects;
@@ -39,7 +44,9 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -59,7 +66,7 @@ public final class ESItems {
     public static final DeferredItem<Item> NON_CONTACT_CONTRACT = ITEMS.registerItem("non_contact_contract",
             ESShield::new, new Item.Properties().durability(328));
     public static final DeferredItem<Item> SLIED = ITEMS.registerItem("slied",
-            p -> new ESShield(p.durability(59), BlockFuncs.dropChance(.25F)));
+            p -> new ESShield(p.durability(59), BlockFuncs.selfDropChance(.25F, () -> ESLangProvider.SLIED_DROP_KEY)));
     public static final DeferredItem<Item> RIOT_SHIELD = ITEMS.registerItem("riot_shield",
             ESShield::new, new Item.Properties().durability(328));
     public static final DeferredItem<Item> CAPITASHIELD = ITEMS.registerItem("capitashield",
@@ -122,6 +129,10 @@ public final class ESItems {
     public static final DeferredItem<Item> CAPTAIN_JUSTICE_SHIELD_THROWABLE = ITEMS.registerItem(
             "captain_justice_shield_throwable",
             p -> new SwapTrident(p.durability(789), CAPTAIN_JUSTICE_THROWABLE_SHIELD));
+    public static final DeferredItem<Item> GIFT_OF_PROTECTION = ITEMS.registerItem("gift_protection",
+            p -> new ESShield(p.durability(624),
+                    BlockFuncs.itemDropChance(() -> ESItems.GIFT.toStack(), .1f,
+                            () -> ESLangProvider.GIFT_PROTECTION_GIFT_KEY)));
     // #endregion Shields
 
     // #region Arrows
@@ -162,6 +173,25 @@ public final class ESItems {
     public static final DeferredItem<Item> DRAGON_ARROW = ITEMS.registerItem("dragon_arrow",
             p -> new ESArrowItem(p, DragonArrow::new, DragonArrow::new));
     // #endregion Arrows
+
+    // #region Weapons
+    // Clubs
+    public static final DeferredItem<Item> SILVER_BAT = ITEMS.register("silver_bat",
+            () -> new InnateEnchantsWeapon(
+                    new WeaponItem.Builder(Tiers.IRON, 4, -2.8f).efficiency(2f).set(MSItemTypes.CLUB_TOOL),
+                    new Item.Properties().durability(500), Map.of(Enchantments.SMITE, 1)));
+
+    // Keys
+    public static final DeferredItem<Item> KEY_OF_TRIALS = ITEMS.register("key_of_trials",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(ESItemTiers.COPPER_TIER, 0, -1F).efficiency(1.5F).set(MSItemTypes.KEY_TOOL),
+                    new Item.Properties()));
+    public static final DeferredItem<Item> KEY_OF_OMINOUS_TRIALS = ITEMS.register("key_of_ominous_trials",
+            () -> new InnateEnchantsWeapon(
+                    new WeaponItem.Builder(Tiers.DIAMOND, 0, -1F).efficiency(2F).set(MSItemTypes.KEY_TOOL)
+                            .add(ESHitEffects::stealLuck),
+                    new Item.Properties().durability(500), Map.of(Enchantments.LOOTING, 1)));
+    // #endregion Weapons
 
     // #region Blocks
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
@@ -250,6 +280,9 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_WALL);
     // #endregion Blocks
 
+    public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
+            (p) -> new GiftItem(p.component(ESDataComponents.GIFT_TABLE, MSLootTables.KUNDLER_SUPRISES)));
+
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
 
@@ -262,8 +295,13 @@ public final class ESItems {
             output.accept(item.get());
         }
         output.accept(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
+        output.accept(GIFT);
 
         for (var item : ESItems.getArrows()) {
+            output.accept(item.get());
+        }
+
+        for (var item : ESItems.getWeapons()) {
             output.accept(item.get());
         }
 
@@ -279,6 +317,7 @@ public final class ESItems {
         list.add(HALT_SHIELD);
         list.add(LIGHT_SHIELD);
         list.add(NON_CONTACT_CONTRACT);
+        list.add(GIFT_OF_PROTECTION);
         list.add(SLIED);
         list.add(RIOT_SHIELD);
         list.add(CAPTAIN_JUSTICE_THROWABLE_SHIELD);
@@ -316,6 +355,14 @@ public final class ESItems {
         list.add(END_ARROW);
         list.add(TELERROW);
         list.add(DRAGON_ARROW);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getWeapons() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(SILVER_BAT);
+        list.add(KEY_OF_TRIALS);
+        list.add(KEY_OF_OMINOUS_TRIALS);
         return list;
     }
 

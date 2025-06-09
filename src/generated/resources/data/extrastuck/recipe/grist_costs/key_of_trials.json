@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:rust": 7,
+    "minestuck:shale": 13
+  },
+  "ingredient": {
+    "item": "extrastuck:key_of_trials"
+  }
+}

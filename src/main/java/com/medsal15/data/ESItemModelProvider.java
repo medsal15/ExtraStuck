@@ -19,6 +19,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         registerShields();
         registerArrows();
+        registerWeapons();
         registerBlocks();
     }
 
@@ -96,6 +97,12 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.END_ARROW.get());
         basicItem(ESItems.TELERROW.get());
         basicItem(ESItems.DRAGON_ARROW.get());
+    }
+
+    private void registerWeapons() {
+        handheldItem(ESItems.SILVER_BAT.get());
+        handheldItem(ESItems.KEY_OF_TRIALS.get());
+        handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
     }
 
     private void registerBlocks() {

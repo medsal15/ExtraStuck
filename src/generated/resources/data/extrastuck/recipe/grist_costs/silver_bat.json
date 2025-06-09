@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:mercury": 35,
+    "minestuck:rust": 70
+  },
+  "ingredient": {
+    "item": "extrastuck:silver_bat"
+  }
+}

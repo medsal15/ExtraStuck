@@ -24,7 +24,11 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String SHIELD_EFFECT_KEY = ExtraStuck.MODID + ".shield_effect";
     public static final String SHIELD_SELF_EFFECT_KEY = ExtraStuck.MODID + ".shield_self_effect";
     public static final String SLIED_DROP_KEY = ESItems.SLIED.get().getDescriptionId() + ".drop";
+    public static final String GIFT_PROTECTION_GIFT_KEY = ESItems.GIFT_OF_PROTECTION.get().getDescriptionId()
+            + ".gift_drop";
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
+    public static final String INNATE_ENCHANT_KEY = ExtraStuck.MODID + ".innate_enchant";
+    public static final String INNATE_ENCHANTS_KEY = ExtraStuck.MODID + ".innate_enchants";
 
     @Override
     protected void addTranslations() {
@@ -34,13 +38,19 @@ public final class ESLangProvider extends LanguageProvider {
         add(SHIELD_EFFECT_KEY, "Applies %s (%s) to melee attackers");
         add(SHIELD_SELF_EFFECT_KEY, "Applies %s (%s) when attacked");
         add(ENERGY_STORAGE_KEY, "%s / %s FE");
+        add(INNATE_ENCHANT_KEY, "+1 level to %2$s");
+        add(INNATE_ENCHANTS_KEY, "+%1$s levels to %2$s");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
 
         addShields();
         addArrows();
+        addWeapons();
         addBlocks();
+
+        addItem(ESItems.GIFT, "Gift");
+        addItemTooltip(ESItems.GIFT, "\"For you\"");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -58,6 +68,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.LIGHT_SHIELD, "Light Shield");
         addItem(ESItems.NON_CONTACT_CONTRACT, "Non-Contact Contract");
         addItemTooltip(ESItems.NON_CONTACT_CONTRACT, "This piece of paper has the ability to prevent contact with you");
+        addItem(ESItems.GIFT_OF_PROTECTION, "Gift of Protection");
+        add(GIFT_PROTECTION_GIFT_KEY, "You found a gift!");
         addItem(ESItems.SLIED, "slied");
         addItemTooltip(ESItems.SLIED, "Can this even block damage?");
         add(SLIED_DROP_KEY, "Expectedly, it could not");
@@ -128,6 +140,14 @@ public final class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.TELEPORT_ARROW, "Teleport Arrow");
         addItem(ESItems.DRAGON_ARROW, "Dragon Arrow");
         addEntityType(ESEntities.DRAGON_ARROW, "Dragon Arrow");
+    }
+
+    private void addWeapons() {
+        addItem(ESItems.SILVER_BAT, "Silver Bat");
+        addItemTooltip(ESItems.SILVER_BAT, "Purify all your enemies");
+        addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
+        addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
+        addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");
     }
 
     private void addBlocks() {

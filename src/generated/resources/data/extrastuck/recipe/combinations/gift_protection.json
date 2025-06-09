@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:gift"
+  },
+  "input2": {
+    "item": "extrastuck:non_contact_contract"
+  },
+  "mode": "or",
+  "output": "extrastuck:gift_protection"
+}
