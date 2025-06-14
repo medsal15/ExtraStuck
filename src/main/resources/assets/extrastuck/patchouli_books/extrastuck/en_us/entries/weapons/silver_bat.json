@@ -1,0 +1,22 @@
+{
+    "name": "Silver Bat",
+    "icon": "extrastuck:silver_bat",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:silver_bat"
+            },
+            "text": "A pure white bat meant to fight undeads.$(br2)$(3)$(l)Special:$()Has an extra level of Smite."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/silver_bat_recipe.png"
+            ],
+            "text": "Combine a metal bat and glass in a totem lathe."
+        }
+    ]
+}

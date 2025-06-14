@@ -10,6 +10,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
 public final class ESHitEffects {
+    /**
+     * Attacks will apply unluck to targets and luck to attackers when done by a
+     * thief/light player
+     */
     public static void stealLuck(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (attacker instanceof ServerPlayer player) {
             var title = Title.getTitle(player);

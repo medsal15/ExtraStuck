@@ -1,0 +1,22 @@
+{
+    "name": "Key of Ominous Trials",
+    "icon": "extrastuck:key_of_ominous_trials",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:key_of_ominous_trials"
+            },
+            "text": "A large teal key, similar to those you find in difficult trial chambers.$(br2)$(3)$(l)Special:$() Has an extra level of Looting. Light and Thief players will also steal some luck from their opponents."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/key_of_ominous_trials_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:weapons/key_of_trials)key of trials$(/l) and an ominous trial key or an ominous bottle in a totem lathe."
+        }
+    ]
+}

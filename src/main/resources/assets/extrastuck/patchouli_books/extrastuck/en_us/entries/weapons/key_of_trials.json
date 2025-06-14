@@ -1,0 +1,22 @@
+{
+    "name": "Key of Trials",
+    "icon": "extrastuck:key_of_trials",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:key_of_trials"
+            },
+            "text": "A large orange key, similar to those you find in trial chambers."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/key_of_trials_recipe.png"
+            ],
+            "text": "Combine a house key and a trial key in a totem lathe."
+        }
+    ]
+}
