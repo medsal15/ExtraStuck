@@ -6,23 +6,30 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.items.ESItems;
+import com.mraof.minestuck.item.MSItems;
+import com.mraof.minestuck.util.MSTags;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.LootTable.Builder;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.TagEntry;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemDamageFunction;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 public class ESLootSubProvider implements LootTableSubProvider {
     public ESLootSubProvider(HolderLookup.Provider provider) {
     }
+
+    public static ResourceKey<LootTable> GIFT_LOOT_TABLE = key("gameplay/gift");
 
     @Override
     public void generate(@Nonnull BiConsumer<ResourceKey<LootTable>, Builder> consumer) {
@@ -51,6 +58,24 @@ public class ESLootSubProvider implements LootTableSubProvider {
                 LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0, 1))
                         .add(LootItem.lootTableItem(ESItems.LIGHTNING_ARROW).setQuality(1).apply(rangeAmount(0, 8)))));
         // #endregion Land Titles
+
+        // Gift
+        consumer.accept(GIFT_LOOT_TABLE,
+                LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.PAPER).setQuality(-1).setWeight(20))
+                        .add(LootItem.lootTableItem(Items.STRING).setQuality(-1).setWeight(15))
+                        .add(LootItem.lootTableItem(MSItems.GAMEBRO_MAGAZINE).setWeight(10))
+                        .add(LootItem.lootTableItem(MSItems.GAMEGRL_MAGAZINE).setWeight(10))
+                        .add(LootItem.lootTableItem(MSItems.ICE_SHARD).setQuality(-1).setWeight(10))
+                        .add(LootItem.lootTableItem(MSItems.SURPRISE_EMBRYO).setWeight(5))
+                        .add(LootItem.lootTableItem(MSItems.STRAWBERRY).setQuality(1).setWeight(10))
+                        .add(LootItem.lootTableItem(Items.MELON).setQuality(1).setWeight(10))
+                        .add(LootItem.lootTableItem(Items.PUMPKIN).setQuality(1).setWeight(10))
+                        .add(LootItem.lootTableItem(Items.GOLD_INGOT).setQuality(2).setWeight(5)
+                                .apply(rangeAmount(1, 85)))
+                        .add(LootItem.lootTableItem(Items.REDSTONE).setQuality(2).setWeight(5).apply(rangeAmount(1, 8)))
+                        .add(TagEntry.expandTag(MSTags.Items.FAYGO).setWeight(6))
+                        .add(TagEntry.expandTag(MSTags.Items.GRIST_CANDY).setQuality(1).setWeight(3))));
     }
 
     public static ResourceKey<LootTable> key(String path) {
