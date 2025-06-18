@@ -1,0 +1,110 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "quality": -1,
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:string",
+          "quality": -1,
+          "weight": 15
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:gamebro_magazine",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:gamegrl_magazine",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:ice_shard",
+          "quality": -1,
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:surprise_embryo",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:strawberry",
+          "quality": 1,
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:melon",
+          "quality": 1,
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pumpkin",
+          "quality": 1,
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 85.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:gold_ingot",
+          "quality": 2,
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 8.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:redstone",
+          "quality": 2,
+          "weight": 5
+        },
+        {
+          "type": "minecraft:tag",
+          "expand": true,
+          "name": "minestuck:faygo",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:tag",
+          "expand": true,
+          "name": "minestuck:grist_candy",
+          "quality": 1,
+          "weight": 3
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "extrastuck:gameplay/gift"
+}

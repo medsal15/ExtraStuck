@@ -9,6 +9,7 @@ import java.util.Map;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.data.ESLangProvider;
+import com.medsal15.data.loot_tables.ESLootSubProvider;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
@@ -31,7 +32,6 @@ import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.SwapTrident;
 import com.mraof.minestuck.item.MSItemTypes;
-import com.mraof.minestuck.item.loot.MSLootTables;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.tags.DamageTypeTags;
@@ -281,7 +281,7 @@ public final class ESItems {
     // #endregion Blocks
 
     public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
-            (p) -> new GiftItem(p.component(ESDataComponents.GIFT_TABLE, MSLootTables.KUNDLER_SUPRISES)));
+            (p) -> new GiftItem(p.component(ESDataComponents.GIFT_TABLE, ESLootSubProvider.GIFT_LOOT_TABLE)));
 
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
