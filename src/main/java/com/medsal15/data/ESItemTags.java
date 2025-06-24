@@ -12,6 +12,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
@@ -24,6 +25,9 @@ public final class ESItemTags extends ItemTagsProvider {
         super(output, lookupProvider, blockTags, ExtraStuck.MODID, fileHelper);
     }
 
+    public static final TagKey<Item> AMMO = ItemTags.create(ExtraStuck.modid("ammo"));
+    public static final TagKey<Item> AMMO_HANDGUN = ItemTags.create(ExtraStuck.modid("ammo/handgun"));
+
     @Override
     protected void addTags(@Nonnull Provider provider) {
         for (var shield : ESItems.getShields()) {
@@ -34,9 +38,12 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(ItemTags.ARROWS).add(arrow.get());
         }
 
-        for (var weapon : ESItems.getWeapons()) {
+        for (var weapon : ESItems.getMeleeWeapons()) {
             tagWeapon(weapon);
         }
+
+        tag(AMMO).addTag(AMMO_HANDGUN);
+        tag(AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get());
 
         tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 

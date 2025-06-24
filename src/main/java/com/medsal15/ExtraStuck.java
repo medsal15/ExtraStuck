@@ -11,6 +11,7 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.FilterContainer;
 import com.medsal15.items.IESEnergyStorage;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
@@ -151,6 +152,9 @@ public class ExtraStuck {
         event.registerItem(Capabilities.EnergyStorage.ITEM,
                 (stack, u) -> new IESEnergyStorage.StackEnergyStorage(stack),
                 ESItems.FLUX_SHIELD.get());
+        event.registerItem(Capabilities.ItemHandler.ITEM,
+                (stack, u) -> new FilterContainer(1, stack),
+                ESItems.HANDGUN.get());
     }
 
     @SubscribeEvent

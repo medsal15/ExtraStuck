@@ -18,8 +18,9 @@ public final class ESItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         registerShields();
-        registerArrows();
-        registerWeapons();
+        registerMeleeWeapons();
+        registerRangedWeapons();
+        registerAmmo();
         registerBlocks();
     }
 
@@ -79,7 +80,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         modelShield(shield, "item/" + path, "round_shield");
     }
 
-    private void registerArrows() {
+    private void registerAmmo() {
         basicItem(ESItems.FLAME_ARROW.get());
         basicItem(ESItems.NETHER_ARROW.get());
         basicItem(ESItems.CARDBOARD_ARROW.get());
@@ -97,12 +98,18 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.END_ARROW.get());
         basicItem(ESItems.TELERROW.get());
         basicItem(ESItems.DRAGON_ARROW.get());
+
+        basicItem(ESItems.HANDGUN_BULLET.get());
     }
 
-    private void registerWeapons() {
+    private void registerMeleeWeapons() {
         handheldItem(ESItems.SILVER_BAT.get());
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
+    }
+
+    private void registerRangedWeapons() {
+        handheldItem(ESItems.HANDGUN.get());
     }
 
     private void registerBlocks() {
