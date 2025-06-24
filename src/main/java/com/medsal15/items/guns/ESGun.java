@@ -1,4 +1,4 @@
-package com.medsal15.items;
+package com.medsal15.items.guns;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
@@ -21,21 +21,32 @@ import static com.medsal15.data.ESLangProvider.GUN_EMPTY_KEY;
 import java.util.List;
 import javax.annotation.Nonnull;
 
-public class GunItem extends Item implements FilterContainer.Filter {
-    private TagKey<Item> ammo;
+public class ESGun extends Item implements GunContainer.Filter {
+    private TagKey<Item> ammo = AMMO;
+    private int maxBullets = DEFAULT_MAX_STACK_SIZE;
 
-    public GunItem(Properties properties) {
+    public ESGun(Properties properties) {
         super(properties);
-        this.ammo = AMMO;
     }
 
-    public GunItem(Properties properties, TagKey<Item> ammo) {
+    public ESGun(Properties properties, TagKey<Item> ammo) {
         super(properties);
         this.ammo = ammo;
     }
 
+    public ESGun(Properties properties, TagKey<Item> ammo, int maxBullets) {
+        super(properties);
+        this.ammo = ammo;
+        this.maxBullets = maxBullets;
+    }
+
     public boolean accepts(ItemStack stack) {
         return stack.is(ammo);
+    }
+
+    /** Maximum amount of bullets held */
+    public int getMaxBullets() {
+        return maxBullets;
     }
 
     @Override
