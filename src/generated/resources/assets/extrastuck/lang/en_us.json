@@ -65,6 +65,8 @@
   "entity.extrastuck.quartz_arrow": "Quartz Arrow",
   "entity.extrastuck.teleport_arrow": "Teleport Arrow",
   "extrastuck.energy_storage": "%s / %s FE",
+  "extrastuck.gun_content": "Loaded with %1$s %2$s",
+  "extrastuck.gun_empty": "Unloaded",
   "extrastuck.innate_enchant": "+1 level to %2$s",
   "extrastuck.innate_enchants": "+%1$s levels to %2$s",
   "extrastuck.shield_damage": "Deals %s damage to melee attackers",
@@ -101,6 +103,8 @@
   "item.extrastuck.gold_shield": "Gold Shield",
   "item.extrastuck.halt_shield": "Halt Shield",
   "item.extrastuck.halt_shield.tooltip": "Forces your enemies to turn back",
+  "item.extrastuck.handgun": "Handgun",
+  "item.extrastuck.handgun_bullet": "Handgun Bullet",
   "item.extrastuck.iron_arrow": "Iron Arrow",
   "item.extrastuck.iron_shield": "Iron Shield",
   "item.extrastuck.jawbiter": "Jawbiter",
@@ -138,5 +142,7 @@
   "item.extrastuck.wooden_shield.tooltip": "This cheap shield is 100% fire-ready",
   "itemGroup.extrastuck": "ExtraStuck",
   "patchouli.extrastuck.landing": "Unofficial ExtraStuck Walkthrough (100%% official)",
-  "patchouli.extrastuck.title": "ExtraStuck Guide"
+  "patchouli.extrastuck.title": "ExtraStuck Guide",
+  "tag.item.extrastuck.ammo": "Ammunition",
+  "tag.item.extrastuck.ammo.handgun": "Handgun Ammunition"
 }

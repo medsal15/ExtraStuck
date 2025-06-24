@@ -34,6 +34,7 @@ import com.medsal15.items.throwables.SwapTrident;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -45,7 +46,9 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
@@ -191,6 +194,15 @@ public final class ESItems {
                     new WeaponItem.Builder(Tiers.DIAMOND, 0, -1F).efficiency(2F).set(MSItemTypes.KEY_TOOL)
                             .add(ESHitEffects::stealLuck),
                     new Item.Properties().durability(500), Map.of(Enchantments.LOOTING, 1)));
+
+    // Guns
+    public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
+            () -> new GunItem(
+                    new Properties().stacksTo(1).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)));
+
+    // Ammo
+    public static final DeferredItem<Item> HANDGUN_BULLET = ITEMS.registerItem("handgun_bullet",
+            (p) -> new Item(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 1f)));
     // #endregion Weapons
 
     // #region Blocks
@@ -297,11 +309,17 @@ public final class ESItems {
         output.accept(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
         output.accept(GIFT);
 
-        for (var item : ESItems.getArrows()) {
+        for (var item : ESItems.getMeleeWeapons()) {
+            output.accept(item.get());
+        }
+        for (var item : ESItems.getRangedWeapons()) {
             output.accept(item.get());
         }
 
-        for (var item : ESItems.getWeapons()) {
+        for (var item : ESItems.getArrows()) {
+            output.accept(item.get());
+        }
+        for (var item : ESItems.getAmmo()) {
             output.accept(item.get());
         }
 
@@ -358,11 +376,23 @@ public final class ESItems {
         return list;
     }
 
-    public static Collection<DeferredItem<Item>> getWeapons() {
+    public static Collection<DeferredItem<Item>> getMeleeWeapons() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(SILVER_BAT);
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getRangedWeapons() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(HANDGUN);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getAmmo() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(HANDGUN_BULLET);
         return list;
     }
 

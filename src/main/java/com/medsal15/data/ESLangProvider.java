@@ -26,7 +26,12 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String SLIED_DROP_KEY = ESItems.SLIED.get().getDescriptionId() + ".drop";
     public static final String GIFT_PROTECTION_GIFT_KEY = ESItems.GIFT_OF_PROTECTION.get().getDescriptionId()
             + ".gift_drop";
+
+    public static final String GUN_CONTENT_KEY = ExtraStuck.MODID + ".gun_content";
+    public static final String GUN_EMPTY_KEY = ExtraStuck.MODID + ".gun_empty";
+
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
+
     public static final String INNATE_ENCHANT_KEY = ExtraStuck.MODID + ".innate_enchant";
     public static final String INNATE_ENCHANTS_KEY = ExtraStuck.MODID + ".innate_enchants";
 
@@ -40,6 +45,8 @@ public final class ESLangProvider extends LanguageProvider {
         add(ENERGY_STORAGE_KEY, "%s / %s FE");
         add(INNATE_ENCHANT_KEY, "+1 level to %2$s");
         add(INNATE_ENCHANTS_KEY, "+%1$s levels to %2$s");
+        add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
+        add(GUN_EMPTY_KEY, "Unloaded");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
@@ -48,6 +55,7 @@ public final class ESLangProvider extends LanguageProvider {
         addArrows();
         addWeapons();
         addBlocks();
+        addTags();
 
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
@@ -148,6 +156,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
         addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");
+
+        addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
+        addItem(ESItems.HANDGUN, "Handgun");
     }
 
     private void addBlocks() {
@@ -199,6 +210,11 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.ZILLIUM_BRICK_STAIRS, "Zillium Brick Stairs");
         addBlock(ESBlocks.ZILLIUM_BRICK_SLAB, "Zillium Brick Slab");
         addBlock(ESBlocks.ZILLIUM_BRICK_WALL, "Zillium Brick Wall");
+    }
+
+    private void addTags() {
+        add(ESItemTags.AMMO, "Ammunition");
+        add(ESItemTags.AMMO_HANDGUN, "Handgun Ammunition");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {
