@@ -338,7 +338,33 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
                 .grist(GristTypes.GARNET, 6).grist(GristTypes.SHALE, 43)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.OFFICE_KEY)
+                .input(MSItems.HOUSE_KEY).or().input(Items.IRON_DOOR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.OFFICE_KEY)
+                .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.HANDGUN)
+                .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
+                .build(output);
         // #endregion Weapons
+
+        // #region Ammo
+        CombinationRecipeBuilder.of(ESItems.HANDGUN_BULLET)
+                .input(Items.GUNPOWDER).and().input(Items.IRON_NUGGET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.HANDGUN_BULLET)
+                .grist(GristTypes.CHALK, 3).grist(GristTypes.TAR, 1)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.HEAVY_HANDGUN_BULLET)
+                .input(ESItems.HANDGUN_BULLET).and().input(Items.IRON_INGOT)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.HEAVY_HANDGUN_BULLET)
+                .grist(GristTypes.RUST, 5).grist(GristTypes.TAR, 2)
+                .build(output);
+        // #endregion Ammo
 
         // #region Blocks
         // #region Garnet

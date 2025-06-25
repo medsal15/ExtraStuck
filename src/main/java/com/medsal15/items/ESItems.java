@@ -1,7 +1,6 @@
 package com.medsal15.items;
 
 import static com.medsal15.ExtraStuck.modid;
-import static com.medsal15.data.ESItemTags.AMMO_HANDGUN;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,10 +10,12 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
+import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.DragonArrow;
+import com.medsal15.entities.projectiles.arrows.EndArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.GlassArrow;
@@ -27,13 +28,17 @@ import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
-import com.medsal15.entities.projectiles.arrows.EndArrow;
-import com.medsal15.items.arrows.ESArrowItem;
-import com.medsal15.items.guns.ESGun;
+import com.medsal15.entities.projectiles.bullets.ESBullet;
+import com.medsal15.items.guns.Handgun;
+import com.medsal15.items.melee.AltGunWeapon;
+import com.medsal15.items.melee.InnateEnchantsWeapon;
+import com.medsal15.items.projectiles.ESArrowItem;
+import com.medsal15.items.projectiles.ESBulletItem;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.SwapTrident;
 import com.mraof.minestuck.item.MSItemTypes;
+import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.core.component.DataComponents;
@@ -41,14 +46,14 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.Item.Properties;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -196,16 +201,27 @@ public final class ESItems {
                     new WeaponItem.Builder(Tiers.DIAMOND, 0, -1F).efficiency(2F).set(MSItemTypes.KEY_TOOL)
                             .add(ESHitEffects::stealLuck),
                     new Item.Properties().durability(500), Map.of(Enchantments.LOOTING, 1)));
+    public static final DeferredItem<Item> OFFICE_KEY = ITEMS.register("office_key",
+            () -> new AltGunWeapon(new WeaponItem.Builder(Tiers.IRON, 0, -1F).efficiency(1F).set(MSItemTypes.KEY_TOOL)
+                    .set(ItemRightClickEffect.switchTo(ESItems.HANDGUN)),
+                    new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)));
 
     // Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
-            () -> new ESGun(
-                    new Properties().stacksTo(1).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY),
-                    AMMO_HANDGUN, 6));
+            () -> new Handgun(
+                    new Properties().stacksTo(1).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)
+                            .durability(250))
+                    .setNext(ESItems.OFFICE_KEY));
 
     // Ammo
     public static final DeferredItem<Item> HANDGUN_BULLET = ITEMS.registerItem("handgun_bullet",
-            (p) -> new Item(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 1f)));
+            (p) -> new ESBulletItem(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 2f),
+                    ESBullet.createArrow(ESEntities.HANDGUN_BULLET.get()),
+                    ESBullet.asProjectile(ESEntities.HANDGUN_BULLET.get())));
+    public static final DeferredItem<Item> HEAVY_HANDGUN_BULLET = ITEMS.registerItem("heavy_handgun_bullet",
+            (p) -> new ESBulletItem(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 4f),
+                    ESBullet.createArrow(ESEntities.HEAVY_HANDGUN_BULLET.get()),
+                    ESBullet.asProjectile(ESEntities.HEAVY_HANDGUN_BULLET.get())));
     // #endregion Weapons
 
     // #region Blocks
@@ -384,6 +400,7 @@ public final class ESItems {
         list.add(SILVER_BAT);
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
+        list.add(OFFICE_KEY);
         return list;
     }
 
@@ -396,6 +413,7 @@ public final class ESItems {
     public static Collection<DeferredItem<Item>> getAmmo() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(HANDGUN_BULLET);
+        list.add(HEAVY_HANDGUN_BULLET);
         return list;
     }
 

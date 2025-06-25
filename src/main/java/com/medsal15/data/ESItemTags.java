@@ -43,7 +43,7 @@ public final class ESItemTags extends ItemTagsProvider {
         }
 
         tag(AMMO).addTag(AMMO_HANDGUN);
-        tag(AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get());
+        tag(AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
 
         tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 
