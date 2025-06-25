@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:handgun_bullet"
+  },
+  "input2": {
+    "item": "minecraft:iron_ingot"
+  },
+  "mode": "and",
+  "output": "extrastuck:heavy_handgun_bullet"
+}

@@ -1,18 +1,18 @@
 package com.medsal15.data;
 
+import java.util.function.Supplier;
+
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
-import java.util.function.Supplier;
-
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public final class ESLangProvider extends LanguageProvider {
@@ -29,6 +29,8 @@ public final class ESLangProvider extends LanguageProvider {
 
     public static final String GUN_CONTENT_KEY = ExtraStuck.MODID + ".gun_content";
     public static final String GUN_EMPTY_KEY = ExtraStuck.MODID + ".gun_empty";
+    public static final String ALT_GUN_EMPTY_KEY = ExtraStuck.MODID + ".office_key.empty";
+    public static final String ALT_GUN_HEAVY_KEY = ExtraStuck.MODID + ".office_key.heavy";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
 
@@ -47,6 +49,8 @@ public final class ESLangProvider extends LanguageProvider {
         add(INNATE_ENCHANTS_KEY, "+%1$s levels to %2$s");
         add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
         add(GUN_EMPTY_KEY, "Unloaded");
+        add(ALT_GUN_EMPTY_KEY, "It feels strangely hollow...");
+        add(ALT_GUN_HEAVY_KEY, "It feels weirdly heavy...");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
@@ -156,9 +160,13 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
         addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");
+        addItem(ESItems.OFFICE_KEY, "Office Key");
 
-        addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
         addItem(ESItems.HANDGUN, "Handgun");
+        addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
+        addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");
+        addItem(ESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
+        addEntityType(ESEntities.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
     }
 
     private void addBlocks() {

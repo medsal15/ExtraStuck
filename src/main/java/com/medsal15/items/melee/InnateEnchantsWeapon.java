@@ -1,4 +1,4 @@
-package com.medsal15.items;
+package com.medsal15.items.melee;
 
 import java.util.List;
 import java.util.Map;

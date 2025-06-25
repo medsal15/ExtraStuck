@@ -10,6 +10,7 @@ import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
 import com.medsal15.entities.projectiles.arrows.DragonArrow;
+import com.medsal15.entities.projectiles.arrows.EndArrow;
 import com.medsal15.entities.projectiles.arrows.ExplosiveArrow;
 import com.medsal15.entities.projectiles.arrows.FlameArrow;
 import com.medsal15.entities.projectiles.arrows.GlassArrow;
@@ -22,12 +23,12 @@ import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
-import com.medsal15.entities.projectiles.arrows.EndArrow;
+import com.medsal15.entities.projectiles.bullets.ESBullet;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType.EntityFactory;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -66,13 +67,18 @@ public final class ESEntities {
             MiningArrow::new);
     public static final Supplier<EntityType<HealingArrow>> HEALING_ARROW = registerArrow("healing_arrow",
             HealingArrow::new);
-    public static final Supplier<EntityType<EndArrow>> END_ARROW = registerArrow("end_arrow",
-            EndArrow::new);
+    public static final Supplier<EntityType<EndArrow>> END_ARROW = registerArrow("end_arrow", EndArrow::new);
     public static final Supplier<EntityType<TeleportArrow>> TELEPORT_ARROW = registerArrow("teleport_arrow",
             TeleportArrow::new);
     public static final Supplier<EntityType<DragonArrow>> DRAGON_ARROW = registerArrow("dragon_arrow",
             DragonArrow::new);
     // #endregion Arrows
+
+    // #region Bullets
+    public static final Supplier<EntityType<ESBullet>> HANDGUN_BULLET = registerArrow("handgun_bullet", ESBullet::new);
+    public static final Supplier<EntityType<ESBullet>> HEAVY_HANDGUN_BULLET = registerArrow("heavy_handgun_bullet",
+            ESBullet::new);
+    // #endregion Bullets
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
         return ENTITIES.register(name, () -> EntityType.Builder.<T>of(fac, MobCategory.MISC)

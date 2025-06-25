@@ -100,12 +100,14 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.DRAGON_ARROW.get());
 
         basicItem(ESItems.HANDGUN_BULLET.get());
+        basicItem(ESItems.HEAVY_HANDGUN_BULLET.get());
     }
 
     private void registerMeleeWeapons() {
         handheldItem(ESItems.SILVER_BAT.get());
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
+        handheldItem(ESItems.OFFICE_KEY.get());
     }
 
     private void registerRangedWeapons() {

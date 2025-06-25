@@ -1,29 +1,44 @@
 package com.medsal15.items.guns;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ClickAction;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.ItemContainerContents;
-import net.neoforged.neoforge.capabilities.Capabilities;
-
 import static com.medsal15.data.ESItemTags.AMMO;
 import static com.medsal15.data.ESLangProvider.GUN_CONTENT_KEY;
 import static com.medsal15.data.ESLangProvider.GUN_EMPTY_KEY;
 
 import java.util.List;
-import javax.annotation.Nonnull;
+import java.util.function.Predicate;
 
-public class ESGun extends Item implements GunContainer.Filter {
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import com.medsal15.items.ESItems;
+import com.medsal15.items.projectiles.ESBulletItem;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.SlotAccess;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.component.ItemContainerContents;
+import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.registries.DeferredItem;
+
+public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
     private TagKey<Item> ammo = AMMO;
-    private int maxBullets = DEFAULT_MAX_STACK_SIZE;
+    private DeferredItem<Item> next;
 
     public ESGun(Properties properties) {
         super(properties);
@@ -34,10 +49,9 @@ public class ESGun extends Item implements GunContainer.Filter {
         this.ammo = ammo;
     }
 
-    public ESGun(Properties properties, TagKey<Item> ammo, int maxBullets) {
-        super(properties);
-        this.ammo = ammo;
-        this.maxBullets = maxBullets;
+    public ESGun setNext(DeferredItem<Item> next) {
+        this.next = next;
+        return this;
     }
 
     public boolean accepts(ItemStack stack) {
@@ -46,7 +60,27 @@ public class ESGun extends Item implements GunContainer.Filter {
 
     /** Maximum amount of bullets held */
     public int getMaxBullets() {
-        return maxBullets;
+        return DEFAULT_MAX_STACK_SIZE;
+    }
+
+    public float getZoom() {
+        return 1F;
+    }
+
+    @Override
+    public int getDefaultProjectileRange() {
+        return 5;
+    }
+
+    @Override
+    public Predicate<ItemStack> getAllSupportedProjectiles() {
+        return s -> s.is(ammo);
+    }
+
+    @Override
+    protected void shootProjectile(@Nonnull LivingEntity shooter, @Nonnull Projectile projectile, int index,
+            float velocity, float inaccuracy, float angle, @Nullable LivingEntity target) {
+        projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot() + angle, 0.0F, velocity, inaccuracy);
     }
 
     @Override
@@ -128,9 +162,63 @@ public class ESGun extends Item implements GunContainer.Filter {
         }
     }
 
-    // TODO use to zoom
+    @Override
+    public int getUseDuration(@Nonnull ItemStack stack, @Nonnull LivingEntity entity) {
+        return 72000;
+    }
 
-    // TODO attack to shoot (and damage if applicable)
+    @Override
+    public UseAnim getUseAnimation(@Nonnull ItemStack stack) {
+        return UseAnim.NONE;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(@Nonnull Level level, @Nonnull Player player,
+            @Nonnull InteractionHand hand) {
+        var stack = player.getItemInHand(hand);
+        if (player.isCrouching() && this.next != null) {
+            ItemStack swap = new ItemStack(next.getDelegate(), stack.getCount(), stack.getComponentsPatch());
+
+            return InteractionResultHolder.success(swap);
+        }
+
+        var contents = stack.get(DataComponents.CONTAINER);
+        if (contents == null || contents.equals(ItemContainerContents.EMPTY))
+            return InteractionResultHolder.fail(stack);
+
+        player.startUsingItem(hand);
+        return InteractionResultHolder.consume(stack);
+    }
+
+    @Override
+    public void releaseUsing(@Nonnull ItemStack stack, @Nonnull Level level, @Nonnull LivingEntity entity,
+            int timeCharged) {
+        if (entity instanceof Player player) {
+            var contents = stack.get(DataComponents.CONTAINER);
+            if (contents == null)
+                return;
+
+            @SuppressWarnings("null")
+            var handler = Capabilities.ItemHandler.ITEM.getCapability(stack, null);
+            var ammo = handler.extractItem(0, 1, false);
+            if (ammo.isEmpty())
+                return;
+
+            if (level instanceof ServerLevel serverLevel) {
+                this.shoot(serverLevel, player, player.getUsedItemHand(), stack, List.of(ammo), 10, 0f, false, null);
+            }
+        }
+    }
+
+    @Override
+    protected Projectile createProjectile(@Nonnull Level level, @Nonnull LivingEntity shooter,
+            @Nonnull ItemStack weapon, @Nonnull ItemStack ammo, boolean isCrit) {
+        var bulletItem = ammo.getItem() instanceof ESBulletItem b ? b
+                : (ESBulletItem) ESItems.HANDGUN_BULLET.get();
+        var bullet = bulletItem.createBullet(level, ammo, shooter, weapon);
+
+        return bullet;
+    }
 
     // TODO add sounds for unloading/loading ammo, shooting (or failing)
 }
