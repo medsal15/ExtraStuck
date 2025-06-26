@@ -6,6 +6,8 @@ import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.projectiles.IAsProjectile;
 import com.medsal15.items.projectiles.ICreateArrow;
 
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -67,5 +69,10 @@ public class ESBullet extends AbstractArrow {
     @Override
     protected void onHitBlock(@Nonnull BlockHitResult result) {
         this.discard();
+    }
+
+    @Override
+    protected SoundEvent getDefaultHitGroundSoundEvent() {
+        return SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON;
     }
 }
