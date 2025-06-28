@@ -28,7 +28,7 @@ public class GunContainer extends ItemStackHandler {
     }
 
     private void setStacks(@Nonnull ItemStack stack) {
-        var contents = stack.get(DataComponents.CONTAINER);
+        ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
         if (contents != null) {
             setStackInSlot(0, contents.copyOne());
         }

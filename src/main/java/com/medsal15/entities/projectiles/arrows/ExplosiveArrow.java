@@ -39,7 +39,7 @@ public class ExplosiveArrow extends AbstractArrow {
     protected void onHit(@Nonnull HitResult result) {
         super.onHit(result);
         if (!landed) {
-            var exp = new Explosion(level(), this, this.getX(), this.getY(), this.getZ(), 2F, wasOnFire,
+            Explosion exp = new Explosion(level(), this, this.getX(), this.getY(), this.getZ(), 2F, wasOnFire,
                     BlockInteraction.KEEP);
             exp.explode();
             exp.finalizeExplosion(true);

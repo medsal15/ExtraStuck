@@ -103,10 +103,10 @@ public final class ESItems {
     public static final DeferredItem<Item> POGO_SHIELD = ITEMS.registerItem("pogo_shield",
             p -> new ESShield(p.durability(450), BlockFuncs.bounceProjectiles((projectile, entity, random) -> {
                 // randomly multiply by 1 / 5 - 5
-                var mx = random.nextDouble() * 4D + 1D;
-                var fx = random.nextBoolean() ? mx : 1 / mx;
-                var mz = random.nextDouble() * 4D + 1D;
-                var fz = random.nextBoolean() ? mz : 1 / mz;
+                double mx = random.nextDouble() * 4D + 1D;
+                double fx = random.nextBoolean() ? mx : 1 / mx;
+                double mz = random.nextDouble() * 4D + 1D;
+                double fz = random.nextBoolean() ? mz : 1 / mz;
                 projectile.setDeltaMovement(projectile.getDeltaMovement().multiply(fx, 1, fz));
             })));
     public static final DeferredItem<Item> RETURN_TO_SENDER = ITEMS.registerItem("return_to_sender",
@@ -322,27 +322,27 @@ public final class ESItems {
                     .forBook(modid("extrastuck")));
         }
 
-        for (var item : ESItems.getShields()) {
+        for (DeferredItem<Item> item : ESItems.getShields()) {
             output.accept(item.get());
         }
         output.accept(CAPTAIN_JUSTICE_SHIELD_THROWABLE);
         output.accept(GIFT);
 
-        for (var item : ESItems.getMeleeWeapons()) {
+        for (DeferredItem<Item> item : ESItems.getMeleeWeapons()) {
             output.accept(item.get());
         }
-        for (var item : ESItems.getRangedWeapons()) {
-            output.accept(item.get());
-        }
-
-        for (var item : ESItems.getArrows()) {
-            output.accept(item.get());
-        }
-        for (var item : ESItems.getAmmo()) {
+        for (DeferredItem<Item> item : ESItems.getRangedWeapons()) {
             output.accept(item.get());
         }
 
-        for (var item : ESItems.getBlocks()) {
+        for (DeferredItem<Item> item : ESItems.getArrows()) {
+            output.accept(item.get());
+        }
+        for (DeferredItem<Item> item : ESItems.getAmmo()) {
+            output.accept(item.get());
+        }
+
+        for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
             output.accept(item.get());
         }
     }

@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -32,8 +33,8 @@ public class NetherArrow extends AbstractArrow {
 
     @Override
     protected void onHitEntity(@Nonnull EntityHitResult result) {
-        var entity = result.getEntity();
-        var baseDamage = getBaseDamage();
+        Entity entity = result.getEntity();
+        double baseDamage = getBaseDamage();
         if (entity.getRemainingFireTicks() > 0) {
             setBaseDamage(baseDamage * 1.5);
         }

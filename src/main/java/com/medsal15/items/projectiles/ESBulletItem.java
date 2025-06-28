@@ -33,7 +33,7 @@ public class ESBulletItem extends Item implements ProjectileItem {
     @Override
     public Projectile asProjectile(@Nonnull Level level, @Nonnull Position pos, @Nonnull ItemStack stack,
             @Nonnull Direction direction) {
-        var proj = asProj.asProjectile(level, pos.x(), pos.y(), pos.z(), stack.copyWithCount(1), null);
+        AbstractArrow proj = asProj.asProjectile(level, pos.x(), pos.y(), pos.z(), stack.copyWithCount(1), null);
         proj.pickup = AbstractArrow.Pickup.ALLOWED;
         return proj;
     }

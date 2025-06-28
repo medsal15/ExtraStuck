@@ -32,7 +32,7 @@ public class AltGunWeapon extends WeaponItem {
             @Nonnull List<Component> tooltipComponents, @Nonnull TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
-        var contents = stack.get(DataComponents.CONTAINER);
+        ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
         if (contents == null || contents.equals(ItemContainerContents.EMPTY)) {
             tooltipComponents.add(Component.translatable(ALT_GUN_EMPTY_KEY).withStyle(ChatFormatting.GRAY));
         } else {
@@ -42,9 +42,9 @@ public class AltGunWeapon extends WeaponItem {
 
     @Override
     public ItemAttributeModifiers getDefaultAttributeModifiers(@Nonnull ItemStack stack) {
-        var modifiers = super.getDefaultAttributeModifiers(stack);
+        ItemAttributeModifiers modifiers = super.getDefaultAttributeModifiers(stack);
 
-        var contents = stack.get(DataComponents.CONTAINER);
+        ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
         if (contents != null && !contents.equals(ItemContainerContents.EMPTY)) {
             modifiers = modifiers.withModifierAdded(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(ExtraStuck.modid("alt_gun"), 1, Operation.ADD_VALUE),

@@ -61,7 +61,7 @@ public final class ESData {
                                             DamageEffects.THORNS,
                                             DeathMessageType.DEFAULT));
                         }), Set.of(ExtraStuck.MODID)));
-        var blocktags = gen.addProvider(event.includeServer(),
+        ESBlockTags blocktags = gen.addProvider(event.includeServer(),
                 new ESBlockTags(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(), new ESRecipeProvider(output, lookupProvider));
         gen.addProvider(event.includeServer(),

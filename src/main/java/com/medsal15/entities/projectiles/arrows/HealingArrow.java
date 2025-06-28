@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
@@ -38,11 +39,11 @@ public class HealingArrow extends AbstractArrow {
     protected void onHitEntity(@Nonnull EntityHitResult result) {
         super.onHitEntity(result);
 
-        var ent = result.getEntity();
+        Entity ent = result.getEntity();
         if (!(ent instanceof LivingEntity entity))
             return;
 
-        var owner = getOwner();
+        Entity owner = getOwner();
         /**
          * Allow healing if, in order,
          * there is no owner (like dispensers),

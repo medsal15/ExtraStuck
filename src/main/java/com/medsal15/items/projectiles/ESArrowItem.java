@@ -33,7 +33,7 @@ public class ESArrowItem extends ArrowItem implements ICreateArrow {
     @Override
     public Projectile asProjectile(@Nonnull Level level, @Nonnull Position pos, @Nonnull ItemStack stack,
             @Nonnull Direction direction) {
-        var proj = projectile.asProjectile(level, pos.x(), pos.y(), pos.z(), stack.copyWithCount(1), null);
+        AbstractArrow proj = projectile.asProjectile(level, pos.x(), pos.y(), pos.z(), stack.copyWithCount(1), null);
         proj.pickup = AbstractArrow.Pickup.ALLOWED;
         return proj;
     }

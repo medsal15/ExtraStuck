@@ -6,6 +6,7 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -43,7 +44,7 @@ public class FlameArrow extends AbstractArrow {
     @Override
     protected void onHitEntity(@Nonnull EntityHitResult result) {
         super.onHitEntity(result);
-        var entity = result.getEntity();
+        Entity entity = result.getEntity();
         if (!(entity instanceof LivingEntity living))
             return;
         int duration = 200;

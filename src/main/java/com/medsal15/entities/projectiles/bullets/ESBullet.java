@@ -55,7 +55,7 @@ public class ESBullet extends AbstractArrow {
 
     @Override
     protected void onHitEntity(@Nonnull EntityHitResult result) {
-        var damage = getBaseDamage();
+        double damage = getBaseDamage();
         setBaseDamage(damage / this.getDeltaMovement().length());
         super.onHitEntity(result);
         setBaseDamage(damage);

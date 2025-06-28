@@ -5,10 +5,12 @@ import javax.annotation.Nonnull;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
+import net.minecraft.core.Holder.Reference;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -44,8 +46,8 @@ public class TeleportArrow extends AbstractArrow {
     @Override
     protected void onHitBlock(@Nonnull BlockHitResult result) {
         super.onHitBlock(result);
-        var owner = getOwner();
-        var level = level();
+        Entity owner = getOwner();
+        Level level = level();
         if (!hit && owner != null && canTeleport(owner, level) && level instanceof ServerLevel serverLevel) {
             owner.teleportTo(getX(), getY(), getZ());
 
@@ -57,7 +59,7 @@ public class TeleportArrow extends AbstractArrow {
                 }
             }
 
-            var type = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
+            Reference<DamageType> type = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
                     .getHolderOrThrow(DamageTypes.FALL);
             owner.hurt(new DamageSource(type), 5F);
 
@@ -69,14 +71,14 @@ public class TeleportArrow extends AbstractArrow {
     @Override
     protected void onHitEntity(@Nonnull EntityHitResult result) {
         super.onHitEntity(result);
-        var owner = getOwner();
-        var target = result.getEntity();
-        var level = level();
+        Entity owner = getOwner();
+        Entity target = result.getEntity();
+        Level level = level();
         if (!hit && owner != null && canTeleport(owner, level) && canTeleport(target, level)
                 && level instanceof ServerLevel serverLevel) {
-            var x = target.getX();
-            var y = target.getY();
-            var z = target.getZ();
+            double x = target.getX();
+            double y = target.getY();
+            double z = target.getZ();
 
             target.teleportTo(owner.getX(), owner.getY(), owner.getZ());
             owner.teleportTo(x, y, z);
@@ -89,7 +91,7 @@ public class TeleportArrow extends AbstractArrow {
                 }
             }
 
-            var type = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
+            Reference<DamageType> type = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
                     .getHolderOrThrow(DamageTypes.FALL);
             owner.hurt(new DamageSource(type), 5F);
             target.hurt(new DamageSource(type), 5F);

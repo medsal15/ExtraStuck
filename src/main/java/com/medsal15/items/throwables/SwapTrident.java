@@ -39,7 +39,7 @@ public class SwapTrident extends TridentItem {
     @Override
     public InteractionResultHolder<ItemStack> use(@Nonnull Level level, @Nonnull Player player,
             @Nonnull InteractionHand hand) {
-        var stack = player.getItemInHand(hand);
+        ItemStack stack = player.getItemInHand(hand);
         if (player.isShiftKeyDown() && next != null) {
             ItemStack swap = new ItemStack(next.getDelegate(), stack.getCount(), stack.getComponentsPatch());
 
@@ -62,7 +62,7 @@ public class SwapTrident extends TridentItem {
                     if (!level.isClientSide) {
                         stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(entity.getUsedItemHand()));
                         if (f == 0F) {
-                            var shield = new CaptainJusticeShield(level, player, stack);
+                            CaptainJusticeShield shield = new CaptainJusticeShield(level, player, stack);
                             shield.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, 2.5F, 1F);
                             if (player.hasInfiniteMaterials()) {
                                 shield.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
@@ -103,7 +103,7 @@ public class SwapTrident extends TridentItem {
     @Override
     public Projectile asProjectile(@Nonnull Level level, @Nonnull Position pos, @Nonnull ItemStack stack,
             @Nonnull Direction direction) {
-        var thrown = new CaptainJusticeShield(level, pos.x(), pos.y(), pos.z(),
+        CaptainJusticeShield thrown = new CaptainJusticeShield(level, pos.x(), pos.y(), pos.z(),
                 stack.copyWithCount(1));
         thrown.pickup = AbstractArrow.Pickup.ALLOWED;
         return thrown;

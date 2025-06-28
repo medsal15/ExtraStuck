@@ -27,6 +27,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -169,7 +170,7 @@ public class ExtraStuck {
     @SubscribeEvent
     public void onShieldBlock(LivingShieldBlockEvent event) {
         // Ensure we're using a thorn shield
-        var item = event.getEntity().getUseItem().getItem();
+        Item item = event.getEntity().getUseItem().getItem();
         if (item instanceof ESShield shield) {
             shield.onShieldBlock(event);
             return;
@@ -178,9 +179,9 @@ public class ExtraStuck {
 
     @SubscribeEvent
     public void modifyFov(ComputeFovModifierEvent event) {
-        var player = event.getPlayer();
+        Player player = event.getPlayer();
 
-        var stack = player.getUseItem();
+        ItemStack stack = player.getUseItem();
         float zoom = 1F;
 
         if (!stack.isEmpty() && stack.getItem() instanceof ESGun gun) {
@@ -195,7 +196,7 @@ public class ExtraStuck {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            for (var shield : ESItems.getShields()) {
+            for (DeferredItem<Item> shield : ESItems.getShields()) {
                 addBlocking(shield);
             }
         }
@@ -213,7 +214,7 @@ public class ExtraStuck {
         public static void addCustomTooltip(ItemTooltipEvent event) {
             int i = 1;
             ItemStack stack = event.getItemStack();
-            var item = stack.getItem();
+            Item item = stack.getItem();
 
             // Fancy item descriptions
             final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());

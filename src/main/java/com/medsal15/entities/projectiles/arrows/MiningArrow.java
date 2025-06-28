@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
@@ -48,8 +50,8 @@ public class MiningArrow extends AbstractArrow {
 
         if (level() instanceof ServerLevel) {
             mined = true;
-            var pos = result.getBlockPos();
-            var blockState = level().getBlockState(pos);
+            BlockPos pos = result.getBlockPos();
+            BlockState blockState = level().getBlockState(pos);
             if (!blockState.is(BlockTags.INCORRECT_FOR_IRON_TOOL) && blockState.getDestroySpeed(level(), pos) != -1) {
                 level().destroyBlock(pos, true, getOwner());
             }

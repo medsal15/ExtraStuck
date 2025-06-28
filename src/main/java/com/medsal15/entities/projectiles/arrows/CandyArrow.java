@@ -6,6 +6,7 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.entity.underling.UnderlingEntity;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -33,7 +34,7 @@ public class CandyArrow extends AbstractArrow {
 
     @Override
     protected void onHitEntity(@Nonnull EntityHitResult result) {
-        var entity = result.getEntity();
+        Entity entity = result.getEntity();
         if (!(entity instanceof UnderlingEntity underling))
             return;
         underling.dropCandy = true;
