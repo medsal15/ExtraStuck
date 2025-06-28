@@ -2,6 +2,7 @@ package com.medsal15.items.melee;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.annotation.Nonnull;
 
@@ -10,9 +11,12 @@ import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Holder.Reference;
 import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -40,12 +44,12 @@ public class InnateEnchantsWeapon extends WeaponItem {
 
     @Override
     public ItemEnchantments getAllEnchantments(@Nonnull ItemStack stack, @Nonnull RegistryLookup<Enchantment> lookup) {
-        var list = super.getAllEnchantments(stack, lookup);
-        var mutable = new ItemEnchantments.Mutable(list);
+        ItemEnchantments list = super.getAllEnchantments(stack, lookup);
+        ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(list);
 
-        for (var key : innate.keySet()) {
-            var extra = innate.get(key);
-            var enchant = lookup.get(key);
+        for (ResourceKey<Enchantment> key : innate.keySet()) {
+            int extra = innate.get(key);
+            Optional<Reference<Enchantment>> enchant = lookup.get(key);
             if (enchant.isPresent())
                 mutable.upgrade(enchant.get(), extra);
         }
@@ -58,9 +62,9 @@ public class InnateEnchantsWeapon extends WeaponItem {
             @Nonnull List<Component> tooltipComponents, @Nonnull TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
-        for (var key : innate.keySet()) {
-            var extra = innate.get(key);
-            var ench = Component.translatable(getEnchantmentKey(key));
+        for (ResourceKey<Enchantment> key : innate.keySet()) {
+            int extra = innate.get(key);
+            MutableComponent ench = Component.translatable(getEnchantmentKey(key));
             if (extra == 1) {
                 tooltipComponents.add(Component.translatable(ESLangProvider.INNATE_ENCHANT_KEY, 1, ench)
                         .withStyle(ChatFormatting.GRAY));
@@ -72,7 +76,7 @@ public class InnateEnchantsWeapon extends WeaponItem {
     }
 
     private static String getEnchantmentKey(ResourceKey<Enchantment> enchantment) {
-        var location = enchantment.location();
+        ResourceLocation location = enchantment.location();
         return "enchantment." + location.getNamespace() + "." + location.getPath();
     }
 }

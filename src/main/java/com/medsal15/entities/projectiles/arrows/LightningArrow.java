@@ -7,6 +7,7 @@ import com.medsal15.items.ESItems;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
@@ -37,7 +38,7 @@ public class LightningArrow extends AbstractArrow {
     protected void onHit(@Nonnull HitResult result) {
         super.onHit(result);
         if (!landed) {
-            var bolt = EntityType.LIGHTNING_BOLT.create(level());
+            LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(level());
             if (bolt != null) {
                 bolt.moveTo(this.getX(), this.getY(), this.getZ());
                 level().addFreshEntity(bolt);

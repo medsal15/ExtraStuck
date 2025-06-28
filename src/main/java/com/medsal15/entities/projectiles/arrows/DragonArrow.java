@@ -40,7 +40,7 @@ public class DragonArrow extends AbstractArrow {
 
         // Me? Copy DragonFireball$onHit? Yup
         if (!level().isClientSide) {
-            var area = new AreaEffectCloud(level(), getX(), getY(), getZ());
+            AreaEffectCloud area = new AreaEffectCloud(level(), getX(), getY(), getZ());
             if (getOwner() instanceof LivingEntity owner) {
                 area.setOwner(owner);
             }

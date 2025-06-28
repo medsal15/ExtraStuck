@@ -12,6 +12,7 @@ import com.mraof.minestuck.entity.consort.EnumConsort.MerchantType;
 import com.mraof.minestuck.world.lands.LandTypePair;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.LevelReader;
@@ -38,13 +39,13 @@ public final class PlaceConsortProcessor extends StructureProcessor {
     public StructureEntityInfo processEntity(@Nonnull LevelReader world, @Nonnull BlockPos seedPos,
             @Nonnull StructureEntityInfo rawEntityInfo, @Nonnull StructureEntityInfo entityInfo,
             @Nonnull StructurePlaceSettings placementSettings, @Nonnull StructureTemplate template) {
-        var id = rawEntityInfo.nbt.getString("id");
+        String id = rawEntityInfo.nbt.getString("id");
         if (world instanceof ServerLevelAccessor && "minecraft:armor_stand".equals(id)) {
-            var accessor = (ServerLevelAccessor) world;
-            var oPair = LandTypePair.getTypes(accessor.getLevel());
+            ServerLevelAccessor accessor = (ServerLevelAccessor) world;
+            Optional<LandTypePair> oPair = LandTypePair.getTypes(accessor.getLevel());
             EntityType<? extends ConsortEntity> type;
             if (oPair.isPresent()) {
-                var pair = oPair.get();
+                LandTypePair pair = oPair.get();
                 type = pair.getTerrain().getConsortType();
             } else {
                 type = MSEntityTypes.SALAMANDER.get();
@@ -63,7 +64,7 @@ public final class PlaceConsortProcessor extends StructureProcessor {
                     consort.merchantType = MerchantType.NONE;
                 }
 
-                var nbt = entityInfo.nbt;
+                CompoundTag nbt = entityInfo.nbt;
                 if (consort.save(nbt))
                     return new StructureEntityInfo(entityInfo.pos, entityInfo.blockPos, nbt);
             }

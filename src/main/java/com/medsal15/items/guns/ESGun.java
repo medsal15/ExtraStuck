@@ -23,6 +23,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
@@ -34,6 +35,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
@@ -96,16 +98,16 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
             } else {
                 ItemStack other = slot.getItem();
                 @SuppressWarnings("null")
-                var handler = Capabilities.ItemHandler.ITEM.getCapability(stack, null);
+                IItemHandler handler = Capabilities.ItemHandler.ITEM.getCapability(stack, null);
 
                 if (other.isEmpty()) {
-                    var itemStack = handler.extractItem(0, ABSOLUTE_MAX_STACK_SIZE, false);
+                    ItemStack itemStack = handler.extractItem(0, ABSOLUTE_MAX_STACK_SIZE, false);
                     if (!itemStack.isEmpty()) {
-                        var otherStack = slot.safeInsert(itemStack);
+                        ItemStack otherStack = slot.safeInsert(itemStack);
                         handler.insertItem(0, otherStack, false);
                     }
                 } else if (handler.isItemValid(0, other)) {
-                    var res = handler.insertItem(0, other, false);
+                    ItemStack res = handler.insertItem(0, other, false);
                     slot.setByPlayer(res);
                 }
 
@@ -127,15 +129,15 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
                 return false;
             } else {
                 @SuppressWarnings("null")
-                var handler = Capabilities.ItemHandler.ITEM.getCapability(stack, null);
+                IItemHandler handler = Capabilities.ItemHandler.ITEM.getCapability(stack, null);
 
                 if (other.isEmpty()) {
-                    var itemStack = handler.extractItem(0, ABSOLUTE_MAX_STACK_SIZE, false);
+                    ItemStack itemStack = handler.extractItem(0, ABSOLUTE_MAX_STACK_SIZE, false);
                     if (!itemStack.isEmpty()) {
                         access.set(itemStack);
                     }
                 } else {
-                    var itemStack = handler.insertItem(0, other, false);
+                    ItemStack itemStack = handler.insertItem(0, other, false);
                     access.set(itemStack);
                 }
 
@@ -151,11 +153,11 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
             @Nonnull List<Component> tooltipComponents, @Nonnull TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
-        var contents = stack.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        ItemContainerContents contents = stack.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
         if (contents.equals(ItemContainerContents.EMPTY)) {
             tooltipComponents.add(Component.translatable(GUN_EMPTY_KEY).withStyle(ChatFormatting.GRAY));
         } else {
-            var itemStack = contents.copyOne();
+            ItemStack itemStack = contents.copyOne();
             tooltipComponents
                     .add(Component.translatable(GUN_CONTENT_KEY, itemStack.getCount(), itemStack.getDisplayName())
                             .withStyle(ChatFormatting.GRAY));
@@ -175,14 +177,14 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
     @Override
     public InteractionResultHolder<ItemStack> use(@Nonnull Level level, @Nonnull Player player,
             @Nonnull InteractionHand hand) {
-        var stack = player.getItemInHand(hand);
+        ItemStack stack = player.getItemInHand(hand);
         if (player.isCrouching() && this.next != null) {
             ItemStack swap = new ItemStack(next.getDelegate(), stack.getCount(), stack.getComponentsPatch());
 
             return InteractionResultHolder.success(swap);
         }
 
-        var contents = stack.get(DataComponents.CONTAINER);
+        ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
         if (contents == null || contents.equals(ItemContainerContents.EMPTY))
             return InteractionResultHolder.fail(stack);
 
@@ -194,13 +196,13 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
     public void releaseUsing(@Nonnull ItemStack stack, @Nonnull Level level, @Nonnull LivingEntity entity,
             int timeCharged) {
         if (entity instanceof Player player) {
-            var contents = stack.get(DataComponents.CONTAINER);
+            ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
             if (contents == null)
                 return;
 
             @SuppressWarnings("null")
-            var handler = Capabilities.ItemHandler.ITEM.getCapability(stack, null);
-            var ammo = handler.extractItem(0, 1, false);
+            IItemHandler handler = Capabilities.ItemHandler.ITEM.getCapability(stack, null);
+            ItemStack ammo = handler.extractItem(0, 1, false);
             if (ammo.isEmpty())
                 return;
 
@@ -213,9 +215,9 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
     @Override
     protected Projectile createProjectile(@Nonnull Level level, @Nonnull LivingEntity shooter,
             @Nonnull ItemStack weapon, @Nonnull ItemStack ammo, boolean isCrit) {
-        var bulletItem = ammo.getItem() instanceof ESBulletItem b ? b
+        ESBulletItem bulletItem = ammo.getItem() instanceof ESBulletItem b ? b
                 : (ESBulletItem) ESItems.HANDGUN_BULLET.get();
-        var bullet = bulletItem.createBullet(level, ammo, shooter, weapon);
+        AbstractArrow bullet = bulletItem.createBullet(level, ammo, shooter, weapon);
 
         return bullet;
     }

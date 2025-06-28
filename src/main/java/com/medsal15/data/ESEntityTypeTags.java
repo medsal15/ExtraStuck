@@ -12,6 +12,8 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public final class ESEntityTypeTags extends EntityTypeTagsProvider {
@@ -22,7 +24,7 @@ public final class ESEntityTypeTags extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
-        for (var arrow : ESEntities.getArrows()) {
+        for (EntityType<? extends AbstractArrow> arrow : ESEntities.getArrows()) {
             tag(EntityTypeTags.ARROWS).add(arrow);
         }
     }

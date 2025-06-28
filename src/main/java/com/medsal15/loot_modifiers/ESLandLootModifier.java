@@ -20,6 +20,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootParams.Builder;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
@@ -68,10 +70,10 @@ public class ESLandLootModifier extends LootModifier {
     @Override
     protected ObjectArrayList<ItemStack> doApply(@Nonnull ObjectArrayList<ItemStack> generatedLoot,
             @Nonnull LootContext context) {
-        var title = getTitle(context);
-        var terrain = getTerrain(context);
-        var title_correct = this.title.isEmpty() || this.title.get() == title;
-        var terrain_correct = this.terrain.isEmpty() || this.terrain.get() == terrain;
+        TitleLandType title = getTitle(context);
+        TerrainLandType terrain = getTerrain(context);
+        boolean title_correct = this.title.isEmpty() || this.title.get() == title;
+        boolean terrain_correct = this.terrain.isEmpty() || this.terrain.get() == terrain;
         if (title_correct && terrain_correct && context.getQueriedLootTableId().equals(target)) {
             generatedLoot.addAll(runTable(context.getLevel(), inject));
         }
@@ -100,11 +102,11 @@ public class ESLandLootModifier extends LootModifier {
     }
 
     public static ObjectArrayList<ItemStack> runTable(ServerLevel level, ResourceLocation loot_table) {
-        var key = ResourceKey.create(Registries.LOOT_TABLE, loot_table);
-        var table = level.getServer().reloadableRegistries().getLootTable(key);
-        var builder = new LootParams.Builder(level);
-        var params = builder.create(LootContextParamSet.builder().build());
-        var rewards = table.getRandomItems(params);
+        ResourceKey<LootTable> key = ResourceKey.create(Registries.LOOT_TABLE, loot_table);
+        LootTable table = level.getServer().reloadableRegistries().getLootTable(key);
+        Builder builder = new LootParams.Builder(level);
+        LootParams params = builder.create(LootContextParamSet.builder().build());
+        ObjectArrayList<ItemStack> rewards = table.getRandomItems(params);
         return rewards;
     }
 }

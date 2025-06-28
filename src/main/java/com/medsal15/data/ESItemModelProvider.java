@@ -6,6 +6,7 @@ import com.medsal15.items.ESItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -46,8 +47,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base) {
-        var id = shield.getId().toString();
-        var blocking = withExistingParent(id + "_blocking", modLoc(base + "_blocking"))
+        String id = shield.getId().toString();
+        ItemModelBuilder blocking = withExistingParent(id + "_blocking", modLoc(base + "_blocking"))
                 .texture("0", modLoc(texture))
                 .texture("particle", modLoc(texture));
         withExistingParent(id, modLoc(base))
@@ -61,22 +62,22 @@ public final class ESItemModelProvider extends ItemModelProvider {
     }
 
     private void modelShield(DeferredItem<Item> shield) {
-        var path = shield.getId().getPath().toString();
+        String path = shield.getId().getPath().toString();
         modelShield(shield, "item/" + path);
     }
 
     private void modelThinShield(DeferredItem<Item> shield) {
-        var path = shield.getId().getPath().toString();
+        String path = shield.getId().getPath().toString();
         modelShield(shield, "item/" + path, "thin_shield");
     }
 
     private void modelLargeShield(DeferredItem<Item> shield) {
-        var path = shield.getId().getPath().toString();
+        String path = shield.getId().getPath().toString();
         modelShield(shield, "item/" + path, "large_shield");
     }
 
     private void modelRoundShield(DeferredItem<Item> shield) {
-        var path = shield.getId().getPath().toString();
+        String path = shield.getId().getPath().toString();
         modelShield(shield, "item/" + path, "round_shield");
     }
 

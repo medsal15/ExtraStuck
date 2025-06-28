@@ -30,15 +30,15 @@ public final class ESItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
-        for (var shield : ESItems.getShields()) {
+        for (DeferredItem<Item> shield : ESItems.getShields()) {
             tagShield(shield);
         }
 
-        for (var arrow : ESItems.getArrows()) {
+        for (DeferredItem<Item> arrow : ESItems.getArrows()) {
             tag(ItemTags.ARROWS).add(arrow.get());
         }
 
-        for (var weapon : ESItems.getMeleeWeapons()) {
+        for (DeferredItem<Item> weapon : ESItems.getMeleeWeapons()) {
             tagWeapon(weapon);
         }
 
