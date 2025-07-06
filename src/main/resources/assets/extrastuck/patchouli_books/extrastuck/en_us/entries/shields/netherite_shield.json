@@ -12,7 +12,7 @@
             "text": "An upgraded diamond shield. Now fire-proof!$(br2)$(3)$(l)Special:$() When held in off-hand, grants +10% knockback resistance."
         },
         {
-            "type": "patchouli:crafting",
+            "type": "patchouli:smithing",
             "recipe": "extrastuck:smithing/netherite_shield",
             "text": "Upgrade your diamond shield like any other diamond tool in a smithing table."
         }
