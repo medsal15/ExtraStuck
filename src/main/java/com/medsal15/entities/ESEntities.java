@@ -24,6 +24,7 @@ import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
+import com.medsal15.entities.projectiles.bullets.ItemBullet;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -78,6 +79,9 @@ public final class ESEntities {
     public static final Supplier<EntityType<ESBullet>> HANDGUN_BULLET = registerArrow("handgun_bullet", ESBullet::new);
     public static final Supplier<EntityType<ESBullet>> HEAVY_HANDGUN_BULLET = registerArrow("heavy_handgun_bullet",
             ESBullet::new);
+    public static final Supplier<EntityType<ItemBullet>> ITEM_BULLET = ENTITIES.register("item_bullet",
+            () -> EntityType.Builder.<ItemBullet>of(ItemBullet::new, MobCategory.MISC).sized(.5F, .5F)
+                    .clientTrackingRange(4).setUpdateInterval(10).build(ExtraStuck.MODID + ":item_bullet"));
     // #endregion Bullets
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {

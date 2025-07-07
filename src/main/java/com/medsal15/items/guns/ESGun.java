@@ -10,7 +10,8 @@ import java.util.function.Predicate;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.medsal15.items.ESItems;
+import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.projectiles.ESBulletItem;
 
 import net.minecraft.ChatFormatting;
@@ -57,7 +58,7 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
     }
 
     public boolean accepts(ItemStack stack) {
-        return stack.is(ammo);
+        return stack.is(ammo) && stack.has(ESDataComponents.AMMO_DAMAGE);
     }
 
     /** Maximum amount of bullets held */
@@ -76,7 +77,7 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
 
     @Override
     public Predicate<ItemStack> getAllSupportedProjectiles() {
-        return s -> s.is(ammo);
+        return s -> accepts(s);
     }
 
     @Override
@@ -215,9 +216,12 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
     @Override
     protected Projectile createProjectile(@Nonnull Level level, @Nonnull LivingEntity shooter,
             @Nonnull ItemStack weapon, @Nonnull ItemStack ammo, boolean isCrit) {
-        ESBulletItem bulletItem = ammo.getItem() instanceof ESBulletItem b ? b
-                : (ESBulletItem) ESItems.HANDGUN_BULLET.get();
-        AbstractArrow bullet = bulletItem.createBullet(level, ammo, shooter, weapon);
+        AbstractArrow bullet;
+        if (ammo.getItem() instanceof ESBulletItem bulletItem) {
+            bullet = bulletItem.createBullet(level, ammo, shooter, weapon);
+        } else {
+            bullet = new ItemBullet(level, ammo, shooter, weapon);
+        }
 
         return bullet;
     }
