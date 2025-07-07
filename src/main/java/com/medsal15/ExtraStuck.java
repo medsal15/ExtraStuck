@@ -9,6 +9,7 @@ import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESArrowRenderer;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.entities.projectiles.bullets.ItemBullet;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.IESEnergyStorage;
@@ -21,6 +22,7 @@ import com.medsal15.structures.processors.ESProcessors;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -149,6 +151,13 @@ public class ExtraStuck {
                 modid("textures/entity/bullet/handgun.png")));
         event.registerEntityRenderer(ESEntities.HEAVY_HANDGUN_BULLET.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/bullet/heavy_handgun.png")));
+        /**
+         * TODO figure out why the item isn't rendering
+         *
+         * It seems I need to somehow pass the actual entity instead of the default one,
+         * but idk how
+         */
+        event.registerEntityRenderer(ESEntities.ITEM_BULLET.get(), c -> new ThrownItemRenderer<ItemBullet>(c));
     }
 
     @SubscribeEvent

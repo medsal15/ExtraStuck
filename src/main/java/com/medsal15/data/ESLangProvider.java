@@ -167,6 +167,7 @@ public final class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");
         addItem(ESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
+        addEntityType(ESEntities.ITEM_BULLET, "Item Bullet");
     }
 
     private void addBlocks() {
