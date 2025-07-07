@@ -1,0 +1,29 @@
+{
+    "name": "Office Key",
+    "icon": "extrastuck:office_key",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:office_key"
+            },
+            "text": "A strange white key, originally meant to open a blocked door.$(br2)$(3)$(l)Special:$()Can be switched to a gun with shift right-clicking."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/office_key_recipe.png"
+            ],
+            "text": "Combine a house key and an iron door in a totem lathe."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:handgun"
+            },
+            "text": "A real gun! Reload by right-clicking bullets on it.$(br2)$(3)$(l)Special:$()Can be switched back to an office key with shift right-clicking."
+        }
+    ]
+}
