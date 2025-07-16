@@ -155,6 +155,7 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     private void addWeapons() {
+        addItem(ESItems.GEM_BREAKER, "Gem Breaker");
         addItem(ESItems.SILVER_BAT, "Silver Bat");
         addItemTooltip(ESItems.SILVER_BAT, "Purify all your enemies");
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");

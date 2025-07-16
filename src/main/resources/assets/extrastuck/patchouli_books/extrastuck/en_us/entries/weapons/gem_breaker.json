@@ -1,0 +1,22 @@
+{
+    "name": "Gem Breaker",
+    "icon": "extrastuck:gem_breaker",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:gem_breaker"
+            },
+            "text": "Finally, a hammer meant to break blocks instead of enemies.$(br2)$(3)$(l)Special:$()Has an extra level of Fortune."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/gem_breaker_recipe.png"
+            ],
+            "text": "Combine a regi hammer and a diamond or emerald block in the punch designix."
+        }
+    ]
+}

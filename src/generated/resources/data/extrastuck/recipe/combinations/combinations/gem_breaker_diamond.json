@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:regi_hammer"
+  },
+  "input2": {
+    "item": "minecraft:diamond_block"
+  },
+  "mode": "or",
+  "output": "extrastuck:gem_breaker"
+}
