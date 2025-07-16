@@ -50,8 +50,9 @@ public class InnateEnchantsWeapon extends WeaponItem {
         for (ResourceKey<Enchantment> key : innate.keySet()) {
             int extra = innate.get(key);
             Optional<Reference<Enchantment>> enchant = lookup.get(key);
-            if (enchant.isPresent())
+            if (enchant.isPresent()) {
                 mutable.upgrade(enchant.get(), extra);
+            }
         }
 
         return mutable.toImmutable();

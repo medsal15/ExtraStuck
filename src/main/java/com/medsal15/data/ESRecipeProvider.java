@@ -315,6 +315,16 @@ public final class ESRecipeProvider extends RecipeProvider {
         // #endregion Arrows
 
         // #region Weapons
+        CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
+                .input(MSItems.REGI_HAMMER).or().input(Items.EMERALD_BLOCK)
+                .build(output, modLoc("combinations/gem_breaker_emerald"));
+        CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
+                .input(MSItems.REGI_HAMMER).or().input(Items.DIAMOND_BLOCK)
+                .build(output, modLoc("combinations/gem_breaker_diamond"));
+        GristCostRecipeBuilder.of(ESItems.GEM_BREAKER)
+                .grist(GristTypes.AMETHYST, 63).grist(GristTypes.RUBY, 63).grist(GristTypes.MARBLE, 127)
+                .build(output);
+
         CombinationRecipeBuilder.of(ESItems.SILVER_BAT)
                 .input(MSItems.METAL_BAT).and().input(Items.GLASS)
                 .build(output);

@@ -105,6 +105,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
     }
 
     private void registerMeleeWeapons() {
+        handheldItem(ESItems.GEM_BREAKER.get());
         handheldItem(ESItems.SILVER_BAT.get());
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());

@@ -42,6 +42,11 @@ public final class ESItemTags extends ItemTagsProvider {
             tagWeapon(weapon);
         }
 
+        for (DeferredItem<Item> tool : ESItems.getMiningTools()) {
+            tag(ItemTags.MINING_ENCHANTABLE).add(tool.get());
+            tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(tool.get());
+        }
+
         tag(AMMO).addTag(AMMO_HANDGUN);
         tag(AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
 

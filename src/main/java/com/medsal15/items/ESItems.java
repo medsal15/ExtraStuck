@@ -185,6 +185,13 @@ public final class ESItems {
     // #endregion Arrows
 
     // #region Weapons
+    // Hammers
+    public static final DeferredItem<Item> GEM_BREAKER = ITEMS.register("gem_breaker",
+            () -> new InnateEnchantsWeapon(
+                    new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 7, -3.2F).efficiency(7.0F)
+                            .set(MSItemTypes.HAMMER_TOOL),
+                    new Item.Properties().durability(1250), Map.of(Enchantments.FORTUNE, 1)));
+
     // Clubs
     public static final DeferredItem<Item> SILVER_BAT = ITEMS.register("silver_bat",
             () -> new InnateEnchantsWeapon(
@@ -397,10 +404,17 @@ public final class ESItems {
 
     public static Collection<DeferredItem<Item>> getMeleeWeapons() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(GEM_BREAKER);
         list.add(SILVER_BAT);
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
         list.add(OFFICE_KEY);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getMiningTools() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(GEM_BREAKER);
         return list;
     }
 

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amethyst": 63,
+    "minestuck:marble": 127,
+    "minestuck:ruby": 63
+  },
+  "ingredient": {
+    "item": "extrastuck:gem_breaker"
+  }
+}
