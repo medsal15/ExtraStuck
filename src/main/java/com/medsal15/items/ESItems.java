@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
+import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.data.ESLangProvider;
@@ -39,6 +40,7 @@ import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.SwapTrident;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
+import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.core.component.DataComponents;
@@ -197,6 +199,11 @@ public final class ESItems {
             () -> new InnateEnchantsWeapon(
                     new WeaponItem.Builder(Tiers.IRON, 4, -2.8f).efficiency(2f).set(MSItemTypes.CLUB_TOOL),
                     new Item.Properties().durability(500), Map.of(Enchantments.SMITE, 1)));
+    public static final DeferredItem<Item> GOLDEN_PAN = ITEMS.register("golden_pan",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.GOLD, 3, -2.8F).set(MSItemTypes.CLUB_TOOL)
+                            .add(OnHitEffect.playSound(ESSounds.GOLDEN_PAN_HIT)).add(OnHitEffect.enemyKnockback(1F)),
+                    new Item.Properties().durability(500)));
 
     // Keys
     public static final DeferredItem<Item> KEY_OF_TRIALS = ITEMS.register("key_of_trials",
@@ -406,6 +413,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(GEM_BREAKER);
         list.add(SILVER_BAT);
+        list.add(GOLDEN_PAN);
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
         list.add(OFFICE_KEY);

@@ -75,7 +75,8 @@ public class ESLootSubProvider implements LootTableSubProvider {
                                 .apply(rangeAmount(1, 85)))
                         .add(LootItem.lootTableItem(Items.REDSTONE).setQuality(2).setWeight(5).apply(rangeAmount(1, 8)))
                         .add(TagEntry.expandTag(MSTags.Items.FAYGO).setWeight(6))
-                        .add(TagEntry.expandTag(MSTags.Items.GRIST_CANDY).setQuality(1).setWeight(3))));
+                        .add(TagEntry.expandTag(MSTags.Items.GRIST_CANDY).setQuality(1).setWeight(3))
+                        .add(LootItem.lootTableItem(ESItems.GOLDEN_PAN).setQuality(5))));
     }
 
     public static ResourceKey<LootTable> key(String path) {

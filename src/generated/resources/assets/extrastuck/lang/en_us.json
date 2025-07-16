@@ -107,6 +107,8 @@
   "item.extrastuck.glass_arrow": "Glass Arrow",
   "item.extrastuck.glass_arrow.tooltip": "Fragile",
   "item.extrastuck.gold_shield": "Gold Shield",
+  "item.extrastuck.golden_pan": "Golden Pan",
+  "item.extrastuck.golden_pan.tooltip": "A valuable frying pan, extremely rarely found in lootbo- gifts.",
   "item.extrastuck.halt_shield": "Halt Shield",
   "item.extrastuck.halt_shield.tooltip": "Forces your enemies to turn back",
   "item.extrastuck.handgun": "Handgun",
@@ -151,6 +153,7 @@
   "itemGroup.extrastuck": "ExtraStuck",
   "patchouli.extrastuck.landing": "Unofficial ExtraStuck Walkthrough (100%% official)",
   "patchouli.extrastuck.title": "ExtraStuck Guide",
+  "sound.extrastuck.golden_pan_hit": "Golden Pan Strike",
   "tag.item.extrastuck.ammo": "Ammunition",
   "tag.item.extrastuck.ammo.handgun": "Handgun Ammunition"
 }

@@ -332,6 +332,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.MERCURY, 35).grist(GristTypes.RUST, 70)
                 .build(output);
 
+        GristCostRecipeBuilder.of(ESItems.GOLDEN_PAN)
+                .grist(GristTypes.GOLD, 150).grist(GristTypes.RUST, 44)
+                .build(output);
+
         CombinationRecipeBuilder.of(ESItems.KEY_OF_TRIALS)
                 .input(MSItems.HOUSE_KEY).and().input(Items.TRIAL_KEY)
                 .build(output);

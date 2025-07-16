@@ -91,6 +91,7 @@ public class ExtraStuck {
 
         // Register the Deferred Register to the mod event bus so items get registered
         ESDataComponents.DATA_COMPONENTS.register(modEventBus);
+        ESSounds.SOUND_EVENTS.register(modEventBus);
         ESBlocks.BLOCKS.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
