@@ -41,6 +41,7 @@ public final class ESData {
         gen.addProvider(event.includeClient(), new ESLangProvider(output));
         gen.addProvider(event.includeClient(), new ESBlockStateProvider(output, fileHelper));
         gen.addProvider(event.includeClient(), new ESItemModelProvider(output, fileHelper));
+        gen.addProvider(event.includeClient(), new ESSoundDefinitions(output, fileHelper));
 
         gen.addProvider(
                 event.includeServer(),

@@ -1,0 +1,10 @@
+{
+  "golden_pan_hit": {
+    "sounds": [
+      {
+        "name": "extrastuck:golden_pan_hit",
+        "volume": 0.7
+      }
+    ]
+  }
+}

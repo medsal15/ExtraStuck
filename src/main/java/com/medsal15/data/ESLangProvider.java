@@ -27,6 +27,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String GIFT_PROTECTION_GIFT_KEY = ESItems.GIFT_OF_PROTECTION.get().getDescriptionId()
             + ".gift_drop";
 
+    public static final String GOLDEN_PAN_HIT = "sound." + ExtraStuck.MODID + ".golden_pan_hit";
     public static final String GUN_CONTENT_KEY = ExtraStuck.MODID + ".gun_content";
     public static final String GUN_EMPTY_KEY = ExtraStuck.MODID + ".gun_empty";
     public static final String ALT_GUN_EMPTY_KEY = ExtraStuck.MODID + ".office_key.empty";
@@ -51,6 +52,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(GUN_EMPTY_KEY, "Unloaded");
         add(ALT_GUN_EMPTY_KEY, "It feels strangely hollow...");
         add(ALT_GUN_HEAVY_KEY, "It feels weirdly heavy...");
+        add(GOLDEN_PAN_HIT, "Golden Pan Strike");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
@@ -158,6 +160,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.GEM_BREAKER, "Gem Breaker");
         addItem(ESItems.SILVER_BAT, "Silver Bat");
         addItemTooltip(ESItems.SILVER_BAT, "Purify all your enemies");
+        addItem(ESItems.GOLDEN_PAN, "Golden Pan");
+        addItemTooltip(ESItems.GOLDEN_PAN, "A valuable frying pan, extremely rarely found in lootbo- gifts.");
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
         addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");

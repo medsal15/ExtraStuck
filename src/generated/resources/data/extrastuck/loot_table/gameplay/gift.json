@@ -101,6 +101,11 @@
           "name": "minestuck:grist_candy",
           "quality": 1,
           "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "extrastuck:golden_pan",
+          "quality": 5
         }
       ],
       "rolls": 1.0
