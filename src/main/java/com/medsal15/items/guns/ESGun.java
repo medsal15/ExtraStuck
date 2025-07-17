@@ -42,19 +42,17 @@ import net.neoforged.neoforge.registries.DeferredItem;
 public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
     private TagKey<Item> ammo = AMMO;
     private DeferredItem<Item> next;
+    private float zoom = 1F;
+    private int maxBullets = DEFAULT_MAX_STACK_SIZE;
 
-    public ESGun(Properties properties) {
-        super(properties);
-    }
+    public ESGun(Builder builder, Properties properties) {
+        super(properties.stacksTo(1).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY));
 
-    public ESGun(Properties properties, TagKey<Item> ammo) {
-        super(properties);
-        this.ammo = ammo;
-    }
-
-    public ESGun setNext(DeferredItem<Item> next) {
-        this.next = next;
-        return this;
+        ammo = builder.ammo;
+        zoom = builder.zoom;
+        maxBullets = builder.maxBullets;
+        if (builder.next != null)
+            this.next = builder.next;
     }
 
     public boolean accepts(ItemStack stack) {
@@ -63,11 +61,11 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
 
     /** Maximum amount of bullets held */
     public int getMaxBullets() {
-        return DEFAULT_MAX_STACK_SIZE;
+        return maxBullets;
     }
 
     public float getZoom() {
-        return 1F;
+        return zoom;
     }
 
     @Override
@@ -227,4 +225,32 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
     }
 
     // TODO add sounds for unloading/loading ammo, shooting (or failing)
+
+    public static class Builder {
+        private float zoom = 1F;
+        private TagKey<Item> ammo = AMMO;
+        private int maxBullets = DEFAULT_MAX_STACK_SIZE;
+        @Nullable
+        private DeferredItem<Item> next = null;
+
+        public Builder zoom(float zoom) {
+            this.zoom = zoom;
+            return this;
+        }
+
+        public Builder ammo(TagKey<Item> ammo) {
+            this.ammo = ammo;
+            return this;
+        }
+
+        public Builder maxBullets(int max) {
+            this.maxBullets = max;
+            return this;
+        }
+
+        public Builder switchTo(DeferredItem<Item> other) {
+            this.next = other;
+            return this;
+        }
+    }
 }

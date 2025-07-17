@@ -1,6 +1,7 @@
 package com.medsal15.items;
 
 import static com.medsal15.ExtraStuck.modid;
+import static com.medsal15.data.ESItemTags.AMMO_HANDGUN;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,7 +31,7 @@ import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
-import com.medsal15.items.guns.Handgun;
+import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
 import com.medsal15.items.projectiles.ESArrowItem;
@@ -222,10 +223,9 @@ public final class ESItems {
 
     // Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
-            () -> new Handgun(
-                    new Properties().stacksTo(1).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)
-                            .durability(250))
-                    .setNext(ESItems.OFFICE_KEY));
+            () -> new ESGun(
+                    new ESGun.Builder().ammo(AMMO_HANDGUN).maxBullets(6).zoom(.8F).switchTo(ESItems.OFFICE_KEY),
+                    new Properties().durability(250)));
 
     // Ammo
     public static final DeferredItem<Item> HANDGUN_BULLET = ITEMS.registerItem("handgun_bullet",
