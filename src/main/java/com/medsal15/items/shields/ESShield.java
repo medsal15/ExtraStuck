@@ -389,10 +389,10 @@ public class ESShield extends ShieldItem implements IESEnergyStorage {
                 if (user.getCommandSenderWorld().isClientSide || user.getRandom().nextFloat() >= chance)
                     return false;
 
-                ItemEntity item = new ItemEntity(user.level(), user.getX(), user.getY(), user.getZ(),
-                        stack.get().copy());
+                ItemStack itemStack = stack.get().copy();
+                ItemEntity item = new ItemEntity(user.level(), user.getX(), user.getY(), user.getZ(), itemStack);
                 user.level().addFreshEntity(item);
-                user.sendSystemMessage(Component.translatable(message.get()));
+                user.sendSystemMessage(Component.translatable(message.get(), itemStack));
 
                 return true;
             };

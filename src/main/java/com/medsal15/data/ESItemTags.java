@@ -52,7 +52,7 @@ public final class ESItemTags extends ItemTagsProvider {
 
         tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 
-        tag(ItemTags.PIGLIN_LOVED).add(ESItems.GOLD_SHIELD.get());
+        tag(ItemTags.PIGLIN_LOVED).add(ESItems.GOLD_SHIELD.get(), ESItems.GOLDEN_PAN.get(), ESItems.GOLD_COIN.get());
 
         tag(Tags.Items.TOOLS_SPEAR).add(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD.get(),
                 ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());

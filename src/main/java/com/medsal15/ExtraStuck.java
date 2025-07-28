@@ -18,10 +18,13 @@ import com.medsal15.items.guns.GunContainer;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.loot_modifiers.ESLootModifiers;
+import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.structures.processors.ESProcessors;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.language.I18n;
@@ -29,6 +32,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -47,6 +53,7 @@ import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -84,6 +91,7 @@ public class ExtraStuck {
         // modEventBus.addListener(this::commonSetup);
 
         NeoForge.EVENT_BUS.addListener(this::onShieldBlock);
+        NeoForge.EVENT_BUS.addListener(this::onDamage);
         NeoForge.EVENT_BUS.addListener(this::modifyFov);
         modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(this::registerEntityRenderers);
@@ -95,6 +103,7 @@ public class ExtraStuck {
         ESBlocks.BLOCKS.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
+        ESMobEffects.MOB_EFFECTS.register(modEventBus);
         ESLootModifiers.GLM_SERIALIZERS.register(modEventBus);
         ESProcessors.PROCESSORS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
@@ -185,6 +194,32 @@ public class ExtraStuck {
             shield.onShieldBlock(event);
             return;
         }
+    }
+
+    @SubscribeEvent
+    public void onDamage(LivingIncomingDamageEvent event) {
+        LivingEntity entity = event.getEntity();
+        if (entity.getHealth() > event.getAmount())
+            return;
+
+        InteractionHand hand;
+        if (entity.getMainHandItem().is(ESItems.ANTI_DIE)) {
+            hand = InteractionHand.MAIN_HAND;
+        } else if (entity.getOffhandItem().is(ESItems.ANTI_DIE)) {
+            hand = InteractionHand.OFF_HAND;
+        } else {
+            // Not holding anti die
+            return;
+        }
+
+        // Prevent death and consume anti die
+        // Sound does not play for some reason
+        entity.playSound(SoundEvents.TOTEM_USE);
+        Minecraft minecraft = Minecraft.getInstance();
+        GameRenderer renderer = minecraft.gameRenderer;
+        renderer.displayItemActivation(ESItems.ANTI_DIE.toStack());
+        event.setCanceled(true);
+        entity.setItemInHand(hand, ItemStack.EMPTY);
     }
 
     @SubscribeEvent

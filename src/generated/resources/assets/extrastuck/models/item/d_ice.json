@@ -1,0 +1,11 @@
+{
+  "parent": "extrastuck:item/base_die",
+  "textures": {
+    "1": "extrastuck:item/dice/ice/one",
+    "2": "extrastuck:item/dice/ice/two",
+    "3": "extrastuck:item/dice/ice/three",
+    "4": "extrastuck:item/dice/ice/four",
+    "5": "extrastuck:item/dice/ice/five",
+    "6": "extrastuck:item/dice/ice/six"
+  }
+}

@@ -46,6 +46,7 @@ public class AltGunWeapon extends WeaponItem {
 
         ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
         if (contents != null && !contents.equals(ItemContainerContents.EMPTY)) {
+            // does not work
             modifiers = modifiers.withModifierAdded(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(ExtraStuck.modid("alt_gun"), 1, Operation.ADD_VALUE),
                     EquipmentSlotGroup.MAINHAND);

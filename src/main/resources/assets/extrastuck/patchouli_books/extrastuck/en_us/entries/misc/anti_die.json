@@ -1,0 +1,22 @@
+{
+    "name": "Anti Die",
+    "icon": "extrastuck:anti_die",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:anti_die"
+            },
+            "text": "A strange die that clearly looks out of place. Rolls from integers -6 to -1.$(br2)$(3)$(l)Special:$() Prevents death when held. $(4)Does not heal!"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/anti_die_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:weapons/sticky_die)sticky die$(/l) and a mirror in a totem lathe."
+        }
+    ]
+}

@@ -23,6 +23,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         registerRangedWeapons();
         registerAmmo();
         registerBlocks();
+
+        basicItem(ESItems.LUCK_TOKEN.get());
     }
 
     private void registerShields() {
@@ -104,10 +106,38 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.HEAVY_HANDGUN_BULLET.get());
     }
 
+    private void modelDie(DeferredItem<Item> die, String path) {
+        String id = die.getId().toString();
+        if (!path.endsWith("/"))
+            path += "/";
+        withExistingParent(id, modLoc("base_die"))
+                .texture("1", path + "one")
+                .texture("2", path + "two")
+                .texture("3", path + "three")
+                .texture("4", path + "four")
+                .texture("5", path + "five")
+                .texture("6", path + "six");
+    }
+
+    private void knifeWeapon(DeferredItem<Item> knife) {
+        String path = knife.getId().getPath().toString();
+        withExistingParent(path, ExtraStuck.modid("item/knife_weapon"))
+                .texture("layer0", ExtraStuck.modid("item/" + path));
+    }
+
     private void registerMeleeWeapons() {
         handheldItem(ESItems.GEM_BREAKER.get());
+
+        handheldItem(ESItems.GOLD_COIN.get());
+        modelDie(ESItems.D_ICE, "item/dice/ice");
+        handheldItem(ESItems.TOKEN_TETRAHEDRON.get());
+        knifeWeapon(ESItems.SLICE_AND_DICE);
+        handheldItem(ESItems.DONE.get());
+        handheldItem(ESItems.D10.get());
+
         handheldItem(ESItems.SILVER_BAT.get());
         handheldItem(ESItems.GOLDEN_PAN.get());
+
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
         handheldItem(ESItems.OFFICE_KEY.get());

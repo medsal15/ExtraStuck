@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:silver_bat"
             },
-            "text": "A pure white bat meant to fight undeads.$(br2)$(3)$(l)Special:$()Has an extra level of Smite."
+            "text": "A pure white bat meant to fight undeads.$(br2)$(3)$(l)Special:$() Has an extra level of Smite."
         },
         {
             "type": "patchouli:image",

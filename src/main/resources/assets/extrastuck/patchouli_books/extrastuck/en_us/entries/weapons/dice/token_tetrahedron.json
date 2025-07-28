@@ -1,0 +1,22 @@
+{
+    "name": "Token Tetrahedron",
+    "icon": "extrastuck:token_tetrahedron",
+    "category": "extrastuck:dice",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:token_tetrahedron"
+            },
+            "text": "A four-sided die made of emerald. The fact that it doesn't break is surprising.$(br2)$(3)$(l)Special:$() Deals up to 4 extra damage, and has a 5% chance to drop a $(l:extrastuck:misc/luck_token)luck token$(/l) on hit."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/token_tetrahedron_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:weapons/gold_coin)gold coin$(/l) and a dice in the totem lathe."
+        }
+    ]
+}

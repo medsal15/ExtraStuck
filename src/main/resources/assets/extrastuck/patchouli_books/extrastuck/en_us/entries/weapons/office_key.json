@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:office_key"
             },
-            "text": "A strange white key, originally meant to open a blocked door.$(br2)$(3)$(l)Special:$()Can be switched to a gun with shift right-clicking."
+            "text": "A strange white key, originally meant to open a blocked door.$(br2)$(3)$(l)Special:$() Can be switched to a gun with shift right-clicking."
         },
         {
             "type": "patchouli:image",
@@ -23,7 +23,7 @@
             "item": {
                 "item": "extrastuck:handgun"
             },
-            "text": "A real gun! Reload by right-clicking bullets on it.$(br2)$(3)$(l)Special:$()Can be switched back to an office key with shift right-clicking."
+            "text": "A real gun! Reload by right-clicking bullets on it.$(br2)$(3)$(l)Special:$() Can be switched back to an office key with shift right-clicking."
         }
     ]
 }

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:sticky_die"
+  },
+  "input2": {
+    "item": "minestuck:mirror"
+  },
+  "mode": "and",
+  "output": "extrastuck:anti_die"
+}

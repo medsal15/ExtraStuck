@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:dagger"
+  },
+  "input2": {
+    "item": "minestuck:dice"
+  },
+  "mode": "or",
+  "output": "extrastuck:slice_and_dice"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    " N ",
+    "NIN",
+    " N "
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:gold_coin"
+  }
+}

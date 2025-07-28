@@ -199,7 +199,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.FLAME_ARROW)
-                .input(ESItems.NETHER_ARROW).and().input(Ingredient.of(Items.BLAZE_ROD, Items.BLAZE_POWDER))
+                .input(ESItems.NETHER_ARROW).and()
+                .input(Ingredient.of(Items.BLAZE_ROD, Items.BLAZE_POWDER))
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.FLAME_ARROW)
                 .grist(GristTypes.SULFUR, 8).grist(GristTypes.TAR, 4)
@@ -220,7 +221,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.SWEET_TOOTH)
-                .input(Ingredient.of(ESItems.CARDBOARD_ARROW, Items.BONE)).and().input(MSItems.CANDY_CORN)
+                .input(Ingredient.of(ESItems.CARDBOARD_ARROW, Items.BONE)).and()
+                .input(MSItems.CANDY_CORN)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.SWEET_TOOTH)
                 .grist(GristTypes.SHALE, 1).grist(GristTypes.IODINE, 6)
@@ -283,7 +285,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.CRUSADER_CROSSBOLT)
-                .input(Items.ARROW).and().input(Ingredient.of(Items.GLISTERING_MELON_SLICE, Items.GOLDEN_CARROT))
+                .input(Items.ARROW).and()
+                .input(Ingredient.of(Items.GLISTERING_MELON_SLICE, Items.GOLDEN_CARROT))
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.CRUSADER_CROSSBOLT)
                 .grist(GristTypes.GOLD, 9).grist(GristTypes.GARNET, 5)
@@ -303,7 +306,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(ESItems.END_ARROW).or().input(Items.ENDER_PEARL)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.TELERROW)
-                .grist(GristTypes.URANIUM, 23).grist(GristTypes.MERCURY, 12).grist(GristTypes.DIAMOND, 8)
+                .grist(GristTypes.URANIUM, 23).grist(GristTypes.MERCURY, 12)
+                .grist(GristTypes.DIAMOND, 8)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.DRAGON_ARROW)
@@ -315,6 +319,7 @@ public final class ESRecipeProvider extends RecipeProvider {
         // #endregion Arrows
 
         // #region Weapons
+        // #region Hammers
         CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
                 .input(MSItems.REGI_HAMMER).or().input(Items.EMERALD_BLOCK)
                 .build(output, modLoc("combinations/gem_breaker_emerald"));
@@ -324,7 +329,71 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.GEM_BREAKER)
                 .grist(GristTypes.AMETHYST, 63).grist(GristTypes.RUBY, 63).grist(GristTypes.MARBLE, 127)
                 .build(output);
+        // #endregion Hammers
 
+        // #region Dice
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.GOLD_COIN.toStack())
+                .pattern(" N ")
+                .pattern("NIN")
+                .pattern(" N ")
+                .define('N', Items.GOLD_NUGGET)
+                .define('I', Items.GOLD_INGOT)
+                .unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT))
+                .save(output, modLoc("shaped/gold_coin"));
+
+        CombinationRecipeBuilder.of(ESItems.STICKY_DIE)
+                .input(MSItems.DICE).or().input(Items.SLIME_BALL)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.STICKY_DIE)
+                .grist(GristTypes.CAULK, 33).grist(GristTypes.TAR, 3)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.ANTI_DIE)
+                .input(ESItems.STICKY_DIE).and().input(MSItems.MIRROR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.ANTI_DIE)
+                .grist(GristTypes.URANIUM, 166).grist(GristTypes.MERCURY, 333)
+                .grist(GristTypes.AMETHYST, 139)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.TOKEN_TETRAHEDRON)
+                .input(ESItems.GOLD_COIN).and().input(MSItems.DICE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TOKEN_TETRAHEDRON)
+                .grist(GristTypes.RUBY, 244).grist(GristTypes.DIAMOND, 244).grist(GristTypes.GOLD, 444)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.D_ICE)
+                .input(ESItems.STICKY_DIE).and()
+                .input(Ingredient.of(Items.ICE, Items.PACKED_ICE, Items.BLUE_ICE, MSItems.ICE_SHARD))
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.D_ICE)
+                .grist(GristTypes.COBALT, 66).grist(GristTypes.BUILD, 55)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SLICE_AND_DICE)
+                .input(MSItems.DAGGER).or().input(MSItems.DICE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SLICE_AND_DICE)
+                .grist(GristTypes.CHALK, 66).grist(GristTypes.TAR, 33)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.DONE)
+                .input(MSItems.SBAHJ_POSTER).or().input(ESItems.D_ICE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.DONE)
+                .grist(GristTypes.ARTIFACT, -6)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.D10)
+                .input(ESItems.TOKEN_TETRAHEDRON).and().input(Items.CLOCK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.D10)
+                .grist(GristTypes.DIAMOND, 1331).grist(GristTypes.GOLD, 10).grist(GristTypes.GARNET, 999)
+                .build(output);
+        // #endregion Dice
+
+        // #region Clubs
         CombinationRecipeBuilder.of(ESItems.SILVER_BAT)
                 .input(MSItems.METAL_BAT).and().input(Items.GLASS)
                 .build(output);
@@ -335,7 +404,9 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.GOLDEN_PAN)
                 .grist(GristTypes.GOLD, 150).grist(GristTypes.RUST, 44)
                 .build(output);
+        // #endregion Clubs
 
+        // #region Keys
         CombinationRecipeBuilder.of(ESItems.KEY_OF_TRIALS)
                 .input(MSItems.HOUSE_KEY).and().input(Items.TRIAL_KEY)
                 .build(output);
@@ -359,6 +430,8 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.OFFICE_KEY)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
+        // #endregion Keys
+
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
@@ -429,7 +502,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(MSItems.CRUXITE_BRICKS).and().input(Tags.Items.DYES_RED)
                 .build(output);
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS, ESItems.GARNET_BRICKS)
+                .stonecutting(Ingredient.of(ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.GARNET_BRICKS)
                 .unlockedBy("has_cut_garnet", has(ESItems.CUT_GARNET))
                 .save(output, modLoc("stonecutting/garnet_bricks"));
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.GARNET_BRICKS.toStack(4))
@@ -440,7 +514,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/garnet_bricks"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.GARNET_BRICK_STAIRS)
                 .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
                 .save(output, modLoc("stonecutting/garnet_brick_stairs"));
@@ -453,7 +528,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/garnet_brick_stairs"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.GARNET_BRICK_SLAB, 2)
                 .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
                 .save(output, modLoc("stonecutting/garnet_brick_slab"));
@@ -464,7 +540,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/garnet_brick_slab"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.GARNET_BRICK_WALL)
                 .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
                 .save(output, modLoc("stonecutting/garnet_brick_wall"));
@@ -476,7 +553,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/garnet_brick_wall"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.CHISELED_GARNET_BRICKS)
                 .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
                 .save(output, modLoc("stonecutting/chiseled_garnet_bricks"));
@@ -535,7 +613,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(ESItems.GARNET_BRICKS).and().input(Tags.Items.DUSTS_GLOWSTONE)
                 .build(output);
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICKS)
+                .stonecutting(Ingredient.of(ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.RUBY_BRICKS)
                 .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
                 .save(output, modLoc("stonecutting/ruby_bricks"));
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICKS.toStack(4))
@@ -546,7 +625,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/ruby_bricks"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.RUBY_BRICK_STAIRS)
                 .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
                 .save(output, modLoc("stonecutting/ruby_brick_stairs"));
@@ -559,7 +639,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/ruby_brick_stairs"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.RUBY_BRICK_SLAB, 2)
                 .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
                 .save(output, modLoc("stonecutting/ruby_brick_slab"));
@@ -570,7 +651,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/ruby_brick_slab"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.RUBY_BRICK_WALL)
                 .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
                 .save(output, modLoc("stonecutting/ruby_brick_wall"));
@@ -582,7 +664,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/ruby_brick_wall"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.CHISELED_RUBY_BRICKS)
                 .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
                 .save(output, modLoc("stonecutting/chiseled_ruby_bricks"));
@@ -602,12 +685,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.COBALT_BLOCK), RecipeCategory.BUILDING_BLOCKS, ESItems.COBALT_BARS,
+                .stonecutting(Ingredient.of(ESItems.COBALT_BLOCK), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.COBALT_BARS,
                         24)
                 .unlockedBy("has_cobalt_block", has(ESItems.COBALT_BLOCK))
                 .save(output, modLoc("stonecutting/cobalt_bars"));
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.COBALT_BLOCK), RecipeCategory.BUILDING_BLOCKS, ESItems.COBALT_DOOR,
+                .stonecutting(Ingredient.of(ESItems.COBALT_BLOCK), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.COBALT_DOOR,
                         4)
                 .unlockedBy("has_cobalt_block", has(ESItems.COBALT_BLOCK))
                 .save(output, modLoc("stonecutting/cobalt_door"));
@@ -725,7 +810,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/polished_marble"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.POLISHED_MARBLE_STAIRS)
                 .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
                 .save(output, modLoc("stonecutting/polished_marble_stairs"));
@@ -738,7 +824,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/polished_marble_stairs"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.POLISHED_MARBLE_SLAB, 2)
                 .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
                 .save(output, modLoc("stonecutting/polished_marble_slab"));
@@ -749,7 +836,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/polished_marble_slab"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.POLISHED_MARBLE_WALL)
                 .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
                 .save(output, modLoc("stonecutting/polished_marble_wall"));
@@ -761,7 +849,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/polished_marble_wall"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE), RecipeCategory.BUILDING_BLOCKS,
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE),
+                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.MARBLE_BRICKS)
                 .unlockedBy("has_marble", has(ESItems.MARBLE_BRICKS))
                 .save(output, modLoc("stonecutting/marble_bricks"));
@@ -773,7 +862,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/marble_bricks"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE, ESItems.MARBLE_BRICKS),
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE,
+                        ESItems.MARBLE_BRICKS),
                         RecipeCategory.BUILDING_BLOCKS,
                         ESItems.MARBLE_BRICK_STAIRS)
                 .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
@@ -787,7 +877,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/marble_bricks_stairs"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE, ESItems.MARBLE_BRICKS),
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE,
+                        ESItems.MARBLE_BRICKS),
                         RecipeCategory.BUILDING_BLOCKS,
                         ESItems.MARBLE_BRICK_SLAB, 2)
                 .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
@@ -799,7 +890,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("shaped/marble_bricks_slab"));
 
         SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE, ESItems.MARBLE_BRICKS),
+                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE,
+                        ESItems.MARBLE_BRICKS),
                         RecipeCategory.BUILDING_BLOCKS,
                         ESItems.MARBLE_BRICK_WALL)
                 .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
