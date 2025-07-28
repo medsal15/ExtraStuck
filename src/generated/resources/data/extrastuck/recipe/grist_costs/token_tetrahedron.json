@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:diamond": 244,
+    "minestuck:gold": 444,
+    "minestuck:ruby": 244
+  },
+  "ingredient": {
+    "item": "extrastuck:token_tetrahedron"
+  }
+}

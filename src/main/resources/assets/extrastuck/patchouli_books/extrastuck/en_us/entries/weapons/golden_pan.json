@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:golden_pan"
             },
-            "text": "A rare and valuable yellow pan made of pure gold.$(br2)$(3)$(l)Special:$()Has extra knockback and makes a unique sound on hit.$(br2)Rarely found in $(l:extrastuck:misc/gift)gifts$(/l)"
+            "text": "A rare and valuable yellow pan made of pure gold.$(br2)$(3)$(l)Special:$() Has extra knockback and makes a unique sound on hit.$(br2)Rarely found in $(l:extrastuck:misc/gift)gifts$(/l)"
         }
     ]
 }

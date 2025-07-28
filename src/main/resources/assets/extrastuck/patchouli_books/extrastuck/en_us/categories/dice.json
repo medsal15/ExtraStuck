@@ -1,0 +1,7 @@
+{
+    "name": "Dice",
+    "sortnum": 1,
+    "description": "Fights getting dicey? Get some of these",
+    "icon": "minestuck:dice",
+    "parent": "extrastuck:weapons"
+}

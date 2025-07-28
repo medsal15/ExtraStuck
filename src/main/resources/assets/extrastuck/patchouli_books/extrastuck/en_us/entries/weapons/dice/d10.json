@@ -1,0 +1,20 @@
+{
+    "name": "D10",
+    "icon": "extrastuck:d10",
+    "category": "extrastuck:dice",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:d10"
+            },
+            "text": "10 faces and a golden shine, what more could you ask for?$(br2)$(3)$(l)Special:$() Deals up to 10 extra damage, and freezes enemies for 5 seconds (15 for Time players)."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["extrastuck:textures/patchouli_books/d10_recipe.png"],
+            "text": "Combine a $(l:extrastuck:weapons/token_tetrahedron)token tetrahedron$(/l) and a clock in a totem lathe."
+        }
+    ]
+}

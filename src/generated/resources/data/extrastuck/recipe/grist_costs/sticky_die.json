@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:caulk": 33,
+    "minestuck:tar": 3
+  },
+  "ingredient": {
+    "item": "extrastuck:sticky_die"
+  }
+}

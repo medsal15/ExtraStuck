@@ -1,0 +1,22 @@
+{
+    "name": "Rainbow D7",
+    "icon": "extrastuck:rainbow_d7",
+    "category": "extrastuck:dice",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:rainbow_d7"
+            },
+            "text": "A seven-sided die in the colors of the rainbow.$(br2)$(3)$(l)Special:$() Deals up to 7 extra damage, applies a random effect from the following list to both the attacker and the target for 2.5 seconds.$(li)Strength$(/li)$(li)Resistance$(/li)$(li)Unluck$(/li)$(li)Luck$(/li)$(li)Speed$(/li)$(li)Slowness$(/li)$(li)Levitation$(/li)"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/rainbow_d7_recipe.png"
+            ],
+            "text": "Combine ??? and a bucket of paint in a totem lathe."
+        }
+    ]
+}

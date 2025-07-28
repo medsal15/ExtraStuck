@@ -1,0 +1,20 @@
+{
+    "name": "Gold Coin",
+    "icon": "extrastuck:gold_coin",
+    "category": "extrastuck:dice",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:gold_coin"
+            },
+            "text": "A coin made of gold.$(br2)$(3)$(l)Special:$() Has a chance to deal up to 2 extra damage."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shaped/gold_coin",
+            "text": "Combine 4 gold nuggets and a gold ingot."
+        }
+    ]
+}

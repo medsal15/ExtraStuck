@@ -1,0 +1,20 @@
+{
+    "name": "D1",
+    "icon": "extrastuck:done",
+    "category": "extrastuck:dice",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:done"
+            },
+            "text": "Despite having 6 faces, they're all 1s.$(br2)$(3)$(l)Special:$() Has a 25% chance to drop itself on attack."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["extrastuck:textures/patchouli_books/done_recipe.png"],
+            "text": "Combine a $(l:extrastuck:weapons/d_iice)d-ice$(/l) and a sbahj poster in a punch designix."
+        }
+    ]
+}

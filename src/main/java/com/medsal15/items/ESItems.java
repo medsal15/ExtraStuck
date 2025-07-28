@@ -39,6 +39,7 @@ import com.medsal15.items.projectiles.ESBulletItem;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.SwapTrident;
+import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
@@ -46,6 +47,7 @@ import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -55,7 +57,6 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.ItemContainerContents;
@@ -193,18 +194,85 @@ public final class ESItems {
             () -> new InnateEnchantsWeapon(
                     new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 7, -3.2F).efficiency(7.0F)
                             .set(MSItemTypes.HAMMER_TOOL),
-                    new Item.Properties().durability(1250), Map.of(Enchantments.FORTUNE, 1)));
+                    new MSItemProperties().durability(1250), Map.of(Enchantments.FORTUNE, 1)));
+
+    // Dice
+    public static final DeferredItem<Item> GOLD_COIN = ITEMS.register("gold_coin",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.GOLD, 1, -3F).efficiency(1F)
+                            .set(ESItemTypes.DICE_TOOL)
+                            .add(ESHitEffects.randomDamage(2)),
+                    new MSItemProperties().durability(128)));
+    public static final DeferredItem<Item> STICKY_DIE = ITEMS.register("sticky_die",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -3F).efficiency(1F)
+                            .set(ESItemTypes.DICE_TOOL)
+                            .add(OnHitEffect
+                                    .enemyPotionEffect(
+                                            () -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 2)))
+                            .add(ESHitEffects.randomDamage(3)),
+                    new MSItemProperties().durability(333)));
+    public static final DeferredItem<Item> ANTI_DIE = ITEMS.registerItem("anti_die", p -> new Item(p.stacksTo(1)));
+    public static final DeferredItem<Item> TOKEN_TETRAHEDRON = ITEMS.register("token_tetrahedron",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 1, -3F).efficiency(2F)
+                            .set(ESItemTypes.DICE_TOOL)
+                            .add(ESHitEffects.chanceDrop(() -> ESItems.LUCK_TOKEN.toStack(1), .05F,
+                                    () -> ESLangProvider.TOKEN_TETRAHEDRON_TOKEN_KEY))
+                            .add(ESHitEffects.randomDamage(4)),
+                    new MSItemProperties().durability(444)));
+    public static final DeferredItem<Item> D_ICE = ITEMS.register("d_ice",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.ICE_TIER, 1, -3F).efficiency(1F)
+                            .set(ESItemTypes.DICE_TOOL)
+                            .add(OnHitEffect.ICE_SHARD)
+                            .add(ESHitEffects.randomDamage(6)),
+                    new MSItemProperties().durability(260)));
+    public static final DeferredItem<Item> SLICE_AND_DICE = ITEMS.register("slice_and_dice",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.IRON, 2, -2F).efficiency(1F)
+                            .set(ESItemTypes.DICE_TOOL, MSItemTypes.KNIFE_TOOL)
+                            .add(ESHitEffects.randomDamage(6)),
+                    new MSItemProperties().durability(333)));
+    public static final DeferredItem<Item> DONE = ITEMS.register("done",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.SBAHJ_TIER, 1, -3F).efficiency(1F)
+                            .set(ESItemTypes.DICE_TOOL)
+                            .add(OnHitEffect.SORD_DROP),
+                    new Item.Properties()));
+    public static final DeferredItem<Item> D10 = ITEMS.register("d10",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.DIAMOND, 1, -3F)
+                            .set(ESItemTypes.DICE_TOOL)
+                            .add(ESHitEffects::timeStop)
+                            .add(ESHitEffects.randomDamage(10)),
+                    new MSItemProperties().durability(1010)));
+    // TODO texture & recipe (w weapon page) & (maybe) durability
+    public static final DeferredItem<Item> RAINBOW_D7 = ITEMS.register("rainbow_d7",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.PRISMARINE_TIER, 0, 0)
+                            .set(ESItemTypes.DICE_TOOL)
+                            .add(ESHitEffects.randomDamage(7))
+                            .add(ESHitEffects::rainbowEffect),
+                    new Item.Properties()));
+    // TODO safebow d7, only applies good effects to attacker
+    // TODO painbow d7, only applies bad effects to target
+    // TODO d8 night
+    // TODO d8 knight armor, each piece has a random effect on damage
+    // TODO can-die, candy d?
+    // TODO infinidie, damage between 1 and entity max health, legendary &
+    // > uncraftable
 
     // Clubs
     public static final DeferredItem<Item> SILVER_BAT = ITEMS.register("silver_bat",
             () -> new InnateEnchantsWeapon(
                     new WeaponItem.Builder(Tiers.IRON, 4, -2.8f).efficiency(2f).set(MSItemTypes.CLUB_TOOL),
-                    new Item.Properties().durability(500), Map.of(Enchantments.SMITE, 1)));
+                    new MSItemProperties().durability(500), Map.of(Enchantments.SMITE, 1)));
     public static final DeferredItem<Item> GOLDEN_PAN = ITEMS.register("golden_pan",
             () -> new WeaponItem(
                     new WeaponItem.Builder(Tiers.GOLD, 3, -2.8F).set(MSItemTypes.CLUB_TOOL)
                             .add(OnHitEffect.playSound(ESSounds.GOLDEN_PAN_HIT)).add(OnHitEffect.enemyKnockback(1F)),
-                    new Item.Properties().durability(500)));
+                    new MSItemProperties().durability(500)));
 
     // Keys
     public static final DeferredItem<Item> KEY_OF_TRIALS = ITEMS.register("key_of_trials",
@@ -215,7 +283,7 @@ public final class ESItems {
             () -> new InnateEnchantsWeapon(
                     new WeaponItem.Builder(Tiers.DIAMOND, 0, -1F).efficiency(2F).set(MSItemTypes.KEY_TOOL)
                             .add(ESHitEffects::stealLuck),
-                    new Item.Properties().durability(500), Map.of(Enchantments.LOOTING, 1)));
+                    new MSItemProperties().durability(500), Map.of(Enchantments.LOOTING, 1)));
     public static final DeferredItem<Item> OFFICE_KEY = ITEMS.register("office_key",
             () -> new AltGunWeapon(new WeaponItem.Builder(Tiers.IRON, 0, -1F).efficiency(1F).set(MSItemTypes.KEY_TOOL)
                     .set(ItemRightClickEffect.switchTo(ESItems.HANDGUN)),
@@ -225,7 +293,7 @@ public final class ESItems {
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
             () -> new ESGun(
                     new ESGun.Builder().ammo(AMMO_HANDGUN).maxBullets(6).zoom(.8F).switchTo(ESItems.OFFICE_KEY),
-                    new Properties().durability(250)));
+                    new MSItemProperties().durability(250)));
 
     // Ammo
     public static final DeferredItem<Item> HANDGUN_BULLET = ITEMS.registerItem("handgun_bullet",
@@ -327,10 +395,10 @@ public final class ESItems {
 
     public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
             (p) -> new GiftItem(p.component(ESDataComponents.GIFT_TABLE, ESLootSubProvider.GIFT_LOOT_TABLE)));
+    public static final DeferredItem<Item> LUCK_TOKEN = ITEMS.registerItem("luck_token", p -> new Tokenitem(p));
 
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
-
         if (ModList.get().isLoaded("patchouli")) {
             output.accept(ItemModBook
                     .forBook(modid("extrastuck")));
@@ -345,6 +413,9 @@ public final class ESItems {
         for (DeferredItem<Item> item : ESItems.getMeleeWeapons()) {
             output.accept(item.get());
         }
+        output.accept(ANTI_DIE);
+        output.accept(LUCK_TOKEN);
+
         for (DeferredItem<Item> item : ESItems.getRangedWeapons()) {
             output.accept(item.get());
         }
@@ -411,9 +482,21 @@ public final class ESItems {
 
     public static Collection<DeferredItem<Item>> getMeleeWeapons() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        // Hammers
         list.add(GEM_BREAKER);
+        // Dice
+        list.add(GOLD_COIN);
+        list.add(STICKY_DIE);
+        list.add(TOKEN_TETRAHEDRON);
+        list.add(D_ICE);
+        list.add(SLICE_AND_DICE);
+        list.add(DONE);
+        list.add(D10);
+        list.add(RAINBOW_D7);
+        // Clubs
         list.add(SILVER_BAT);
         list.add(GOLDEN_PAN);
+        // Keys
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
         list.add(OFFICE_KEY);

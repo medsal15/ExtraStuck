@@ -7,10 +7,12 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
+import com.medsal15.mobeffects.ESMobEffects;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -24,8 +26,12 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String SHIELD_EFFECT_KEY = ExtraStuck.MODID + ".shield_effect";
     public static final String SHIELD_SELF_EFFECT_KEY = ExtraStuck.MODID + ".shield_self_effect";
     public static final String SLIED_DROP_KEY = ESItems.SLIED.get().getDescriptionId() + ".drop";
+    public static final String DONE_DROP_KEY = ESItems.DONE.get().getDescriptionId() + ".drop_message";
     public static final String GIFT_PROTECTION_GIFT_KEY = ESItems.GIFT_OF_PROTECTION.get().getDescriptionId()
             + ".gift_drop";
+
+    public static final String TOKEN_TETRAHEDRON_TOKEN_KEY = ESItems.TOKEN_TETRAHEDRON.get().getDescriptionId()
+            + ".token_drop";
 
     public static final String GOLDEN_PAN_HIT = "sound." + ExtraStuck.MODID + ".golden_pan_hit";
     public static final String GUN_CONTENT_KEY = ExtraStuck.MODID + ".gun_content";
@@ -63,8 +69,14 @@ public final class ESLangProvider extends LanguageProvider {
         addBlocks();
         addTags();
 
+        addEffect(ESMobEffects.TIME_STOP, "Time Stop");
+        addEffectDescription(ESMobEffects.TIME_STOP, "Prevents most movement");
+
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
+        addItem(ESItems.ANTI_DIE, "Anti Die");
+        addItem(ESItems.LUCK_TOKEN, "Luck Token");
+        addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -158,10 +170,26 @@ public final class ESLangProvider extends LanguageProvider {
 
     private void addWeapons() {
         addItem(ESItems.GEM_BREAKER, "Gem Breaker");
+
+        addItem(ESItems.GOLD_COIN, "Gold Coin");
+        addItem(ESItems.STICKY_DIE, "Sticky Die");
+        addItem(ESItems.TOKEN_TETRAHEDRON, "Token Tetrahedron");
+        addItemTooltip(ESItems.TOKEN_TETRAHEDRON, "Jackpot");
+        add(TOKEN_TETRAHEDRON_TOKEN_KEY, "The enemy droped a token!");
+        addItem(ESItems.D_ICE, "D-Ice");
+        addItemTooltip(ESItems.D_ICE, "Only for the coolest rollers");
+        addItem(ESItems.SLICE_AND_DICE, "Slice and Dice");
+        addItem(ESItems.DONE, "D1");
+        addItemExtra(ESItems.DONE, "drop_message", "You dropped down your d1");
+        addItem(ESItems.D10, "D10");
+        addItemTooltip(ESItems.D10, "The power of the World, in a die");
+        addItem(ESItems.RAINBOW_D7, "Rainbow D7");
+
         addItem(ESItems.SILVER_BAT, "Silver Bat");
         addItemTooltip(ESItems.SILVER_BAT, "Purify all your enemies");
         addItem(ESItems.GOLDEN_PAN, "Golden Pan");
         addItemTooltip(ESItems.GOLDEN_PAN, "A valuable frying pan, extremely rarely found in lootbo- gifts.");
+
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
         addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");
@@ -232,7 +260,11 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {
-        add(((Item) (key.get())).getDescriptionId() + ".tooltip", text);
+        addItemExtra(key, "tooltip", text);
+    }
+
+    protected void addItemExtra(Supplier<? extends Item> key, String extra, String text) {
+        add(((Item) (key.get())).getDescriptionId() + "." + extra, text);
     }
 
     protected void addBlockTooltip(Supplier<? extends Block> key, String text) {
@@ -242,5 +274,9 @@ public final class ESLangProvider extends LanguageProvider {
     protected void addDeathMessages(ResourceKey<DamageType> damage, String generic, String namedItem) {
         add("death.attack." + damage.location().toString(), generic);
         add("death.attack." + damage.location().toString() + ".item", namedItem);
+    }
+
+    private void addEffectDescription(Supplier<? extends MobEffect> effect, String desc) {
+        add(((MobEffect) effect.get()).getDescriptionId() + ".description", desc);
     }
 }

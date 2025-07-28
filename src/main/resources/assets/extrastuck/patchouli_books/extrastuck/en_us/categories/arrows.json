@@ -2,5 +2,6 @@
     "name": "Arrows",
     "sortnum": 1,
     "description": "Shooting for the stars (with fancy arrows)",
-    "icon": "minecraft:arrow"
+    "icon": "minecraft:arrow",
+    "parent": "extrastuck:armory"
 }

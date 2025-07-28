@@ -34,8 +34,8 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class ESEntities {
-    public static DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE,
-            ExtraStuck.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(
+            BuiltInRegistries.ENTITY_TYPE, ExtraStuck.MODID);
 
     public static final Supplier<EntityType<CaptainJusticeShield>> CAPTAIN_JUSTICE_SHIELD = ENTITIES.register(
             "captain_justice_shield",

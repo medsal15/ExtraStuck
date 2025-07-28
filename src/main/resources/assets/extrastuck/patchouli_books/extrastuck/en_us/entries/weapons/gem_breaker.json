@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:gem_breaker"
             },
-            "text": "Finally, a hammer meant to break blocks instead of enemies.$(br2)$(3)$(l)Special:$()Has an extra level of Fortune."
+            "text": "Finally, a hammer meant to break blocks instead of enemies.$(br2)$(3)$(l)Special:$() Has an extra level of Fortune."
         },
         {
             "type": "patchouli:image",

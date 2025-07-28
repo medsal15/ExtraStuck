@@ -1,0 +1,22 @@
+{
+    "name": "Sticky Die",
+    "icon": "extrastuck:sticky_die",
+    "category": "extrastuck:dice",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:sticky_die"
+            },
+            "text": "A die covered in slime. Somehow cannot roll any higher than 3.$(br2)$(3)$(l)Special:$() Applies Slowness III for 3 seconds and has a chance to deal up to 3 extra damage."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/sticky_die_recipe.png"
+            ],
+            "text": "Combine a dice and a slime ball in a punch designix."
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+{
+    "format_version": "1.21.6",
+    "credit": "Made with Blockbench",
+    "textures": {
+        "1": "extrastuck:item/dice/anti/five",
+        "2": "extrastuck:item/dice/anti/four",
+        "3": "extrastuck:item/dice/anti/one",
+        "4": "extrastuck:item/dice/anti/six",
+        "5": "extrastuck:item/dice/anti/three",
+        "6": "extrastuck:item/dice/anti/two",
+        "particle": "extrastuck:item/dice/anti/five"
+    },
+    "elements": [
+        {
+            "from": [4, 4, 4],
+            "to": [12, 12, 12],
+            "faces": {
+                "north": {
+                    "uv": [0, 0, 16, 16],
+                    "texture": "#1"
+                },
+                "east": {
+                    "uv": [0, 0, 16, 16],
+                    "texture": "#2"
+                },
+                "south": {
+                    "uv": [0, 0, 16, 16],
+                    "texture": "#6"
+                },
+                "west": {
+                    "uv": [0, 0, 16, 16],
+                    "texture": "#5"
+                },
+                "up": {
+                    "uv": [0, 0, 16, 16],
+                    "texture": "#3"
+                },
+                "down": {
+                    "uv": [0, 0, 16, 16],
+                    "texture": "#4"
+                }
+            }
+        }
+    ],
+    "display": {
+        "thirdperson_righthand": {
+            "translation": [0, 1, 1],
+            "scale": [0.5, 0.5, 0.5]
+        },
+        "thirdperson_lefthand": {
+            "translation": [0, 1, 1],
+            "scale": [0.5, 0.5, 0.5]
+        },
+        "ground": {
+            "scale": [0.5, 0.5, 0.5]
+        },
+        "gui": {
+            "rotation": [22.5, 45, -180]
+        }
+    }
+}

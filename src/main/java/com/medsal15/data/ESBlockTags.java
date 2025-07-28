@@ -24,6 +24,7 @@ public final class ESBlockTags extends BlockTagsProvider {
 
     public static final TagKey<Block> INCORRECT_FOR_COPPER_TIER = BlockTags
             .create(ExtraStuck.modid("incorrect_for_copper_tier"));
+    public static final TagKey<Block> MINEABLE_WITH_DICE = BlockTags.create(ExtraStuck.modid("mineable_with_dice"));
 
     @Override
     protected void addTags(@Nonnull Provider arg0) {

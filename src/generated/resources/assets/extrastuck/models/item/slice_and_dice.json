@@ -1,0 +1,6 @@
+{
+  "parent": "extrastuck:item/knife_weapon",
+  "textures": {
+    "layer0": "extrastuck:item/slice_and_dice"
+  }
+}

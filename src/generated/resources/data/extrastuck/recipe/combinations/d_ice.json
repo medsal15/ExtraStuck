@@ -1,0 +1,22 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:sticky_die"
+  },
+  "input2": [
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "minecraft:packed_ice"
+    },
+    {
+      "item": "minecraft:blue_ice"
+    },
+    {
+      "item": "minestuck:ice_shard"
+    }
+  ],
+  "mode": "and",
+  "output": "extrastuck:d_ice"
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Luck Token",
+    "icon": "extrastuck:luck_token",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:luck_token"
+            },
+            "text": "A shiny green token.$(br2)$(3)$(l)Special:$() Can be used to get Luck for 1 minute. Stacks up to Luck V."
+        }
+    ]
+}
