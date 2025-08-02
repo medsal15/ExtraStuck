@@ -184,6 +184,10 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.D10, "D10");
         addItemTooltip(ESItems.D10, "The power of the World, in a die");
         addItem(ESItems.RAINBOW_D7, "Rainbow D7");
+        addItem(ESItems.D8_NIGHT, "D8 Night");
+        addItem(ESItems.CAN_DIE, "Can-Die");
+        addItem(ESItems.INFINI_DIE, "Infini-Die");
+        addItemTooltip(ESItems.INFINI_DIE, "Theorically infinite damage output");
 
         addItem(ESItems.SILVER_BAT, "Silver Bat");
         addItemTooltip(ESItems.SILVER_BAT, "Purify all your enemies");

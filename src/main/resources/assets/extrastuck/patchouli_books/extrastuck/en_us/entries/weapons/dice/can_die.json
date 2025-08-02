@@ -1,0 +1,22 @@
+{
+    "name": "Can-Die",
+    "icon": "extrastuck:can_die",
+    "category": "extrastuck:dice",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:can_die"
+            },
+            "text": "A large jawbreaker shaped like a 12 sided die.$(br2)$(3)$(l)Special:$() Deals up to 6 extra damage, allows underlings to drop candy."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/can_die_recipe.png"
+            ],
+            "text": "Combine a dice and candy corn in a punch designix."
+        }
+    ]
+}

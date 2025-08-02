@@ -27,6 +27,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.Level;
 
 public final class ESHitEffects {
     /**
@@ -67,9 +68,9 @@ public final class ESHitEffects {
                 source = attacker.damageSources().mobAttack(attacker);
             }
 
-            // Only deals damage if the number is bigger than the default damage
             float rng = (float) (attacker.getRandom().nextInt(maxDamage) + 1);
 
+            // Only deals damage if the number is bigger than the default damage
             if (stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) {
                 ItemAttributeModifiers modifiers = stack.getAttributeModifiers();
                 for (ItemAttributeModifiers.Entry entry : modifiers.modifiers()) {
@@ -140,8 +141,39 @@ public final class ESHitEffects {
         }
 
         if (effect != null) {
-            target.addEffect(new MobEffectInstance(effect, 50));
-            attacker.addEffect(new MobEffectInstance(effect, 50));
+            target.addEffect(new MobEffectInstance(effect, 77));
+            attacker.addEffect(new MobEffectInstance(effect, 77));
         }
+    }
+
+    /**
+     * Does a given effect during day/night time (based on skylight)
+     */
+    public static OnHitEffect dayNightEffect(OnHitEffect day, OnHitEffect night) {
+        return (stack, target, attacker) -> {
+            Level level = target.level();
+            long time = level.getDayTime();
+            if (time >= 6000 && time < 18000) {
+                day.onHit(stack, target, attacker);
+            } else {
+                day.onHit(stack, target, attacker);
+            }
+        };
+    }
+
+    public static void randomMaxDamage(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        DamageSource source;
+        if (attacker instanceof Player player) {
+            source = attacker.damageSources().playerAttack(player);
+        } else {
+            source = attacker.damageSources().mobAttack(attacker);
+        }
+
+        float rng = 0;
+        if (!Float.isInfinite(target.getMaxHealth())) {
+            rng = attacker.getRandom().nextFloat() * target.getHealth();
+        }
+
+        target.hurt(source, rng);
     }
 }

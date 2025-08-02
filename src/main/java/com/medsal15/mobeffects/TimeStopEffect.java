@@ -17,6 +17,7 @@ public class TimeStopEffect extends MobEffect {
     private static final ResourceLocation ID_FLY_SPEED = ExtraStuck.modid("time_stop_fly");
     private static final ResourceLocation ID_SWIM_SPEED = ExtraStuck.modid("time_stop_swim");
     private static final ResourceLocation ID_KB_RESIST = ExtraStuck.modid("time_stop_knockback");
+    private static final ResourceLocation ID_ATTACK_SPEED = ExtraStuck.modid("time_stop_attack");
 
     public TimeStopEffect(MobEffectCategory category, int color) {
         super(category, color);
@@ -24,6 +25,7 @@ public class TimeStopEffect extends MobEffect {
         addAttributeModifier(Attributes.FLYING_SPEED, ID_FLY_SPEED, -1F, Operation.ADD_MULTIPLIED_TOTAL);
         addAttributeModifier(NeoForgeMod.SWIM_SPEED, ID_SWIM_SPEED, -1F, Operation.ADD_MULTIPLIED_TOTAL);
         addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, ID_KB_RESIST, 1F, Operation.ADD_VALUE);
+        addAttributeModifier(Attributes.ATTACK_SPEED, ID_ATTACK_SPEED, -1F, Operation.ADD_MULTIPLIED_TOTAL);
     }
 
     @Override

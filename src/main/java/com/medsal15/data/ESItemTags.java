@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.items.ESItems;
+import com.mraof.minestuck.util.MSTags;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
@@ -66,6 +67,9 @@ public final class ESItemTags extends ItemTagsProvider {
 
         tag(ItemTags.DOORS).add(ESItems.COBALT_DOOR.get());
         tag(ItemTags.TRAPDOORS).add(ESItems.COBALT_TRAPDOOR.get());
+
+        tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get());
+        tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get());
     }
 
     private void tagShield(DeferredItem<Item> item) {

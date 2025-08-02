@@ -391,6 +391,33 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.D10)
                 .grist(GristTypes.DIAMOND, 1331).grist(GristTypes.GOLD, 10).grist(GristTypes.GARNET, 999)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.RAINBOW_D7)
+                .input(MSItems.DICE).and().input(MSItems.WATER_COLORS_BUCKET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.RAINBOW_D7)
+                .grist(GristTypes.GOLD, 777).grist(GristTypes.DIAMOND, 777)
+                .grist(GristTypes.COBALT, 777).grist(GristTypes.URANIUM, 77)
+                .build(output);
+
+        CombinationRecipeBuilder.of(MSItems.FLUORITE_OCTET)
+                .input(ESItems.RAINBOW_D7).and().input(MSItems.FLARP_MANUAL)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.D8_NIGHT)
+                .input(ESItems.RAINBOW_D7).or().input(MSItems.NIGHTSTICK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.D8_NIGHT)
+                .grist(GristTypes.COBALT, 1888).grist(GristTypes.DIAMOND, 888)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.CAN_DIE)
+                .input(MSItems.DICE).or().input(MSItems.CANDY_CORN)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CAN_DIE)
+                .grist(GristTypes.MARBLE, 12).grist(GristTypes.CHALK, 36)
+                .grist(GristTypes.AMBER, 12)
+                .build(output);
         // #endregion Dice
 
         // #region Clubs
