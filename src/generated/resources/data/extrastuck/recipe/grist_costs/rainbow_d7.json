@@ -1,0 +1,12 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 777,
+    "minestuck:diamond": 777,
+    "minestuck:gold": 777,
+    "minestuck:uranium": 77
+  },
+  "ingredient": {
+    "item": "extrastuck:rainbow_d7"
+  }
+}

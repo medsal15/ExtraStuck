@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:dice"
+  },
+  "input2": {
+    "item": "minestuck:water_colors_bucket"
+  },
+  "mode": "and",
+  "output": "extrastuck:rainbow_d7"
+}

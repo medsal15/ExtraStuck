@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 1888,
+    "minestuck:diamond": 888
+  },
+  "ingredient": {
+    "item": "extrastuck:d8_night"
+  }
+}

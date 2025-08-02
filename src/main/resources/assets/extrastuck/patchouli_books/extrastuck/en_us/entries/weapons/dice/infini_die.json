@@ -1,0 +1,15 @@
+{
+    "name": "Infini-Die",
+    "icon": "extrastuck:infini_die",
+    "category": "extrastuck:dice",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:infini_die"
+            },
+            "text": "Infinite faces, somehow fitting on a single polyhedron. How high does it go?$(br2)$(3)$(l)Special:$() Deals up to the enemy's health extra damage."
+        }
+    ]
+}

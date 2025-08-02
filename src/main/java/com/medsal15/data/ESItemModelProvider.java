@@ -134,6 +134,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
         knifeWeapon(ESItems.SLICE_AND_DICE);
         handheldItem(ESItems.DONE.get());
         handheldItem(ESItems.D10.get());
+        handheldItem(ESItems.RAINBOW_D7.get());
+        handheldItem(ESItems.D8_NIGHT.get());
+        handheldItem(ESItems.CAN_DIE.get());
+        handheldItem(ESItems.INFINI_DIE.get());
 
         handheldItem(ESItems.SILVER_BAT.get());
         handheldItem(ESItems.GOLDEN_PAN.get());
