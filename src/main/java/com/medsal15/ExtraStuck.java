@@ -94,8 +94,6 @@ public class ExtraStuck {
         NeoForge.EVENT_BUS.addListener(this::onDamage);
         NeoForge.EVENT_BUS.addListener(this::modifyFov);
         modEventBus.addListener(this::registerCapabilities);
-        modEventBus.addListener(this::registerEntityRenderers);
-        modEventBus.addListener(this::registerEntityLayers);
 
         // Register the Deferred Register to the mod event bus so items get registered
         ESDataComponents.DATA_COMPONENTS.register(modEventBus);
@@ -116,65 +114,6 @@ public class ExtraStuck {
     }
 
     // private void commonSetup(final FMLCommonSetupEvent event) {}
-
-    @SubscribeEvent
-    public void registerEntityRenderers(RegisterRenderers event) {
-        event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
-                CaptainJusticeShield.CJSRenderer::new);
-
-        event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/flame.png")));
-        event.registerEntityRenderer(ESEntities.NETHER_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/nether.png")));
-        event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/cardboard.png")));
-        event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/missed.png")));
-        event.registerEntityRenderer(ESEntities.CANDY_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/candy.png")));
-        event.registerEntityRenderer(ESEntities.LIGHTNING_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/lightning.png")));
-        event.registerEntityRenderer(ESEntities.EXPLOSIVE_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/explosive.png")));
-        event.registerEntityRenderer(ESEntities.IRON_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/iron.png")));
-        event.registerEntityRenderer(ESEntities.QUARTZ_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/quartz.png")));
-        event.registerEntityRenderer(ESEntities.PRISMARINE_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/prismarine.png")));
-        event.registerEntityRenderer(ESEntities.GLASS_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/glass.png")));
-        event.registerEntityRenderer(ESEntities.AMETHYST_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/amethyst.png")));
-        event.registerEntityRenderer(ESEntities.MINING_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/mining.png")));
-        event.registerEntityRenderer(ESEntities.HEALING_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/healing.png")));
-        event.registerEntityRenderer(ESEntities.END_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/end.png")));
-        event.registerEntityRenderer(ESEntities.TELEPORT_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/teleport.png")));
-        event.registerEntityRenderer(ESEntities.DRAGON_ARROW.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/arrow/dragon.png")));
-
-        event.registerEntityRenderer(ESEntities.HANDGUN_BULLET.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/bullet/handgun.png")));
-        event.registerEntityRenderer(ESEntities.HEAVY_HANDGUN_BULLET.get(), c -> new ESArrowRenderer(c,
-                modid("textures/entity/bullet/heavy_handgun.png")));
-        /**
-         * TODO figure out why the item isn't rendering
-         *
-         * It seems I need to somehow pass the actual entity instead of the default one,
-         * but idk how
-         */
-        event.registerEntityRenderer(ESEntities.ITEM_BULLET.get(), c -> new ThrownItemRenderer<ItemBullet>(c));
-    }
-
-    @SubscribeEvent
-    public void registerEntityLayers(RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(CaptainJusticeShield.CJSModel.LAYER_LOCATION,
-                CaptainJusticeShield.CJSModel::createLayer);
-    }
 
     @SubscribeEvent
     public void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -250,6 +189,65 @@ public class ExtraStuck {
             ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("blocking"),
                     (stack, world, entity, integer) -> entity != null && entity.isUsingItem()
                             && entity.getUseItem() == stack ? 1.0F : 0.0F);
+        }
+
+        @SubscribeEvent
+        public static void registerEntityRenderers(RegisterRenderers event) {
+            event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
+                    CaptainJusticeShield.CJSRenderer::new);
+
+            event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/flame.png")));
+            event.registerEntityRenderer(ESEntities.NETHER_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/nether.png")));
+            event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/cardboard.png")));
+            event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/missed.png")));
+            event.registerEntityRenderer(ESEntities.CANDY_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/candy.png")));
+            event.registerEntityRenderer(ESEntities.LIGHTNING_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/lightning.png")));
+            event.registerEntityRenderer(ESEntities.EXPLOSIVE_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/explosive.png")));
+            event.registerEntityRenderer(ESEntities.IRON_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/iron.png")));
+            event.registerEntityRenderer(ESEntities.QUARTZ_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/quartz.png")));
+            event.registerEntityRenderer(ESEntities.PRISMARINE_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/prismarine.png")));
+            event.registerEntityRenderer(ESEntities.GLASS_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/glass.png")));
+            event.registerEntityRenderer(ESEntities.AMETHYST_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/amethyst.png")));
+            event.registerEntityRenderer(ESEntities.MINING_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/mining.png")));
+            event.registerEntityRenderer(ESEntities.HEALING_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/healing.png")));
+            event.registerEntityRenderer(ESEntities.END_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/end.png")));
+            event.registerEntityRenderer(ESEntities.TELEPORT_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/teleport.png")));
+            event.registerEntityRenderer(ESEntities.DRAGON_ARROW.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/arrow/dragon.png")));
+
+            event.registerEntityRenderer(ESEntities.HANDGUN_BULLET.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/bullet/handgun.png")));
+            event.registerEntityRenderer(ESEntities.HEAVY_HANDGUN_BULLET.get(), c -> new ESArrowRenderer(c,
+                    modid("textures/entity/bullet/heavy_handgun.png")));
+            /**
+             * TODO figure out why the item isn't rendering
+             *
+             * It seems I need to somehow pass the actual entity instead of the default one,
+             * but idk how
+             */
+            event.registerEntityRenderer(ESEntities.ITEM_BULLET.get(), c -> new ThrownItemRenderer<ItemBullet>(c));
+        }
+
+        @SubscribeEvent
+        public static void registerEntityLayers(RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(CaptainJusticeShield.CJSModel.LAYER_LOCATION,
+                    CaptainJusticeShield.CJSModel::createLayer);
         }
     }
 
