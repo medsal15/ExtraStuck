@@ -4,7 +4,7 @@
     "item": "extrastuck:gold_coin"
   },
   "input2": {
-    "item": "minestuck:dice"
+    "item": "minecraft:emerald"
   },
   "mode": "and",
   "output": "extrastuck:token_tetrahedron"

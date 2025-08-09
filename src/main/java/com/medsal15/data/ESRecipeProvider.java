@@ -38,7 +38,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(Tags.Items.RODS_WOODEN).and().input(ItemTags.WOODEN_PRESSURE_PLATES)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.WOODEN_SHIELD)
-                .grist(GristTypes.BUILD, 6)
+                .grist(GristTypes.BUILD, 26)
                 .build(output);
 
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ESItems.WOODEN_SHIELD), RecipeCategory.COMBAT,
@@ -46,7 +46,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_wooden_shield", has(ESItems.WOODEN_SHIELD))
                 .save(output, "campfire/flame_shield");
         GristCostRecipeBuilder.of(ESItems.FLAME_SHIELD)
-                .grist(GristTypes.TAR, 34).grist(GristTypes.SULFUR, 13)
+                .grist(GristTypes.TAR, 13).grist(GristTypes.SULFUR, 8)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.HALT_SHIELD)
@@ -357,7 +357,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.TOKEN_TETRAHEDRON)
-                .input(ESItems.GOLD_COIN).and().input(MSItems.DICE)
+                .input(ESItems.GOLD_COIN).and().input(Items.EMERALD)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.TOKEN_TETRAHEDRON)
                 .grist(GristTypes.RUBY, 244).grist(GristTypes.DIAMOND, 244).grist(GristTypes.GOLD, 444)
@@ -372,10 +372,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.SLICE_AND_DICE)
-                .input(MSItems.DAGGER).or().input(MSItems.DICE)
+                .input(MSItems.DAGGER).or().input(ESItems.GOLD_COIN)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.SLICE_AND_DICE)
-                .grist(GristTypes.CHALK, 66).grist(GristTypes.TAR, 33)
+                .grist(GristTypes.GOLD, 66).grist(GristTypes.CHALK, 33)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.DONE)
@@ -398,10 +398,6 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.RAINBOW_D7)
                 .grist(GristTypes.GOLD, 777).grist(GristTypes.DIAMOND, 777)
                 .grist(GristTypes.COBALT, 777).grist(GristTypes.URANIUM, 77)
-                .build(output);
-
-        CombinationRecipeBuilder.of(MSItems.FLUORITE_OCTET)
-                .input(ESItems.RAINBOW_D7).and().input(MSItems.FLARP_MANUAL)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.D8_NIGHT)

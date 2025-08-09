@@ -4,7 +4,7 @@
     "item": "minestuck:dagger"
   },
   "input2": {
-    "item": "minestuck:dice"
+    "item": "extrastuck:gold_coin"
   },
   "mode": "or",
   "output": "extrastuck:slice_and_dice"

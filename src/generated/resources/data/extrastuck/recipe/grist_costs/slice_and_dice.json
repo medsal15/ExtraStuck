@@ -1,8 +1,8 @@
 {
   "type": "minestuck:grist_cost",
   "grist_cost": {
-    "minestuck:chalk": 66,
-    "minestuck:tar": 33
+    "minestuck:chalk": 33,
+    "minestuck:gold": 66
   },
   "ingredient": {
     "item": "extrastuck:slice_and_dice"
