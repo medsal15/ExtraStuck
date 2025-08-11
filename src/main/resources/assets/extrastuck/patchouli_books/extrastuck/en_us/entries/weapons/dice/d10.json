@@ -14,7 +14,7 @@
         {
             "type": "patchouli:image",
             "images": ["extrastuck:textures/patchouli_books/d10_recipe.png"],
-            "text": "Combine a $(l:extrastuck:weapons/token_tetrahedron)token tetrahedron$(/l) and a clock in a totem lathe."
+            "text": "Combine a $(l:extrastuck:weapons/dice/token_tetrahedron)token tetrahedron$(/l) and a clock in a totem lathe."
         }
     ]
 }

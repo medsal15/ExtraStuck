@@ -1,0 +1,20 @@
+{
+    "name": "Rolling Pin",
+    "icon": "extrastuck:rolling_pin",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:rolling_pin"
+            },
+            "text": "Everybody knows a good cook uses a rolling pin. Not as weapons. Why is it $(o)here$(o), then?."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shaped/rolling_pin",
+            "text": "Put 2 sticks in opposite corners with a log in the middle."
+        }
+    ]
+}

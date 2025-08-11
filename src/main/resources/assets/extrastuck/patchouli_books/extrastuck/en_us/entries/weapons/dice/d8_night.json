@@ -16,7 +16,7 @@
             "images": [
                 "extrastuck:textures/patchouli_books/d8_night_recipe.png"
             ],
-            "text": "Combine a $(l:extrastuck:weapons/rainbow_d7)raindow d7$(/l) and a nightstick in a punch designix."
+            "text": "Combine a $(l:extrastuck:weapons/dice/rainbow_d7)raindow d7$(/l) and a nightstick in a punch designix."
         }
     ]
 }

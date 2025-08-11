@@ -22,6 +22,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         registerMeleeWeapons();
         registerRangedWeapons();
         registerAmmo();
+        registerArmors();
         registerBlocks();
 
         basicItem(ESItems.LUCK_TOKEN.get());
@@ -141,6 +142,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
         handheldItem(ESItems.SILVER_BAT.get());
         handheldItem(ESItems.GOLDEN_PAN.get());
+        handheldItem(ESItems.ROLLING_PIN.get());
 
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
@@ -149,6 +151,11 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
     private void registerRangedWeapons() {
         handheldItem(ESItems.HANDGUN.get());
+    }
+
+    private void registerArmors() {
+        basicItem(ESItems.CHEF_HAT.get());
+        basicItem(ESItems.CHEF_APRON.get());
     }
 
     private void registerBlocks() {

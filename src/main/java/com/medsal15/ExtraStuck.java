@@ -2,14 +2,18 @@ package com.medsal15;
 
 import java.text.NumberFormat;
 
+import javax.annotation.Nonnull;
+
 import org.slf4j.Logger;
 
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.client.model.armor.ChefArmorModel;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESArrowRenderer;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.items.ESArmorMaterials;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.IESEnergyStorage;
@@ -24,6 +28,7 @@ import com.mojang.logging.LogUtils;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -34,6 +39,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
@@ -52,6 +58,8 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
@@ -59,6 +67,7 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ExtraStuck.MODID)
@@ -99,6 +108,7 @@ public class ExtraStuck {
         ESDataComponents.DATA_COMPONENTS.register(modEventBus);
         ESSounds.SOUND_EVENTS.register(modEventBus);
         ESBlocks.BLOCKS.register(modEventBus);
+        ESArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
         ESMobEffects.MOB_EFFECTS.register(modEventBus);
@@ -248,6 +258,27 @@ public class ExtraStuck {
         public static void registerEntityLayers(RegisterLayerDefinitions event) {
             event.registerLayerDefinition(CaptainJusticeShield.CJSModel.LAYER_LOCATION,
                     CaptainJusticeShield.CJSModel::createLayer);
+        }
+
+        @SubscribeEvent
+        public static void registerExtensions(RegisterClientExtensionsEvent event) {
+            event.registerItem(new IClientItemExtensions() {
+                private GeoArmorRenderer<?> renderer;
+
+                @Override
+                public @Nonnull HumanoidModel<?> getHumanoidArmorModel(@Nonnull LivingEntity livingEntity,
+                        @Nonnull ItemStack itemStack, @Nonnull EquipmentSlot equipmentSlot,
+                        @Nonnull HumanoidModel<?> original) {
+                    if (renderer == null)
+                        renderer = new GeoArmorRenderer<>(new ChefArmorModel());
+
+                    Minecraft instance = Minecraft.getInstance();
+                    renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original,
+                            instance.renderBuffers().bufferSource(),
+                            instance.getTimer().getGameTimeDeltaPartialTick(true), 0F, 0F, 0F, 0F);
+                    return renderer;
+                }
+            }, ESItems.CHEF_HAT, ESItems.CHEF_APRON);
         }
     }
 

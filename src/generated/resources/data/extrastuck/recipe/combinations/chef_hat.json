@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:rolling_pin"
+  },
+  "input2": {
+    "item": "minecraft:leather_helmet"
+  },
+  "mode": "or",
+  "output": "extrastuck:chef_hat"
+}

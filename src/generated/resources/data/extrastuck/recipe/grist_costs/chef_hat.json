@@ -1,0 +1,9 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:chalk": 22
+  },
+  "ingredient": {
+    "item": "extrastuck:chef_hat"
+  }
+}

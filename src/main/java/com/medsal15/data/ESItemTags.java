@@ -12,6 +12,7 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -28,6 +29,8 @@ public final class ESItemTags extends ItemTagsProvider {
 
     public static final TagKey<Item> AMMO = ItemTags.create(ExtraStuck.modid("ammo"));
     public static final TagKey<Item> AMMO_HANDGUN = ItemTags.create(ExtraStuck.modid("ammo/handgun"));
+    public static final TagKey<Item> TOOLS_ROLLING_PIN = ItemTags
+            .create(ResourceLocation.fromNamespaceAndPath("c", "tools/rolling_pin"));
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
@@ -48,6 +51,16 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(tool.get());
         }
 
+        for (DeferredItem<Item> armor : ESItems.getArmor()) {
+            tag(ItemTags.ARMOR_ENCHANTABLE).add(armor.get());
+        }
+        for (DeferredItem<Item> helmet : ESItems.getHelmets()) {
+            tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(helmet.get());
+        }
+        for (DeferredItem<Item> helmet : ESItems.getChestplates()) {
+            tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(helmet.get());
+        }
+
         tag(AMMO).addTag(AMMO_HANDGUN);
         tag(AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
 
@@ -55,6 +68,8 @@ public final class ESItemTags extends ItemTagsProvider {
 
         tag(ItemTags.PIGLIN_LOVED).add(ESItems.GOLD_SHIELD.get(), ESItems.GOLDEN_PAN.get(), ESItems.GOLD_COIN.get());
 
+        tag(TOOLS_ROLLING_PIN).add(ESItems.ROLLING_PIN.get());
+        tag(Tags.Items.TOOLS).addTag(TOOLS_ROLLING_PIN);
         tag(Tags.Items.TOOLS_SPEAR).add(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD.get(),
                 ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
         tag(Tags.Items.RANGED_WEAPON_TOOLS).add(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD.get(),

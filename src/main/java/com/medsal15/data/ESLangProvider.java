@@ -66,6 +66,7 @@ public final class ESLangProvider extends LanguageProvider {
         addShields();
         addArrows();
         addWeapons();
+        addArmors();
         addBlocks();
         addTags();
 
@@ -193,6 +194,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.SILVER_BAT, "Purify all your enemies");
         addItem(ESItems.GOLDEN_PAN, "Golden Pan");
         addItemTooltip(ESItems.GOLDEN_PAN, "A valuable frying pan, extremely rarely found in lootbo- gifts.");
+        addItem(ESItems.ROLLING_PIN, "Rolling Pin");
 
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
@@ -205,6 +207,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.ITEM_BULLET, "Item Bullet");
+    }
+
+    private void addArmors() {
+        addItem(ESItems.CHEF_HAT, "Chef Hat");
+        addItem(ESItems.CHEF_APRON, "Chef Apron");
     }
 
     private void addBlocks() {

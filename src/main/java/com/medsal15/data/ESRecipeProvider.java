@@ -427,6 +427,15 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.GOLDEN_PAN)
                 .grist(GristTypes.GOLD, 150).grist(GristTypes.RUST, 44)
                 .build(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.ROLLING_PIN.toStack())
+                .pattern("  S")
+                .pattern(" L ")
+                .pattern("S  ")
+                .define('S', Tags.Items.RODS_WOODEN)
+                .define('L', ItemTags.LOGS)
+                .unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
+                .save(output, modLoc("shaped/rolling_pin"));
         // #endregion Clubs
 
         // #region Keys
@@ -475,6 +484,22 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.RUST, 5).grist(GristTypes.TAR, 2)
                 .build(output);
         // #endregion Ammo
+
+        // #region Armor
+        CombinationRecipeBuilder.of(ESItems.CHEF_HAT)
+                .input(ESItems.ROLLING_PIN).or().input(Items.LEATHER_HELMET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CHEF_HAT)
+                .grist(GristTypes.CHALK, 22)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.CHEF_APRON)
+                .input(ESItems.ROLLING_PIN).or().input(Items.LEATHER_CHESTPLATE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CHEF_APRON)
+                .grist(GristTypes.CHALK, 32)
+                .build(output);
+        // #endregion Armor
 
         // #region Blocks
         // #region Garnet

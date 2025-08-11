@@ -16,7 +16,7 @@
             "images": [
                 "extrastuck:textures/patchouli_books/token_tetrahedron_recipe.png"
             ],
-            "text": "Combine a $(l:extrastuck:weapons/gold_coin)gold coin$(/l) and a dice in the totem lathe."
+            "text": "Combine a $(l:extrastuck:weapons/dice/gold_coin)gold coin$(/l) and an emerald in the totem lathe."
         }
     ]
 }

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "  S",
+    " L ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:rolling_pin"
+  }
+}

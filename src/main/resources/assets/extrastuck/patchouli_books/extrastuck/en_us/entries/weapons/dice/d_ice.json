@@ -14,7 +14,7 @@
         {
             "type": "patchouli:image",
             "images": ["extrastuck:textures/patchouli_books/d_ice_recipe.png"],
-            "text": "Combine a $(l:extrastuck:weapons/sticky_die)sticky die$(/l) and ice in a totem lathe."
+            "text": "Combine a $(l:extrastuck:weapons/dice/sticky_die)sticky die$(/l) and ice in a totem lathe."
         }
     ]
 }

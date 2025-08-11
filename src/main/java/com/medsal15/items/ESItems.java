@@ -31,6 +31,7 @@ import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
+import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
@@ -54,6 +55,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -203,13 +205,13 @@ public final class ESItems {
     // #endregion Arrows
 
     // #region Weapons
-    // Hammers
+    // #region Hammers
     public static final DeferredItem<Item> GEM_BREAKER = ITEMS.register("gem_breaker",
             () -> new InnateEnchantsWeapon(
                     new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 7, -3.2F).efficiency(7.0F)
                             .set(MSItemTypes.HAMMER_TOOL),
                     new MSItemProperties().durability(1250), Map.of(Enchantments.FORTUNE, 1)));
-
+    // #endregion Hammers
     // #region Dice
     public static final DeferredItem<Item> GOLD_COIN = ITEMS.register("gold_coin",
             () -> new WeaponItem(
@@ -299,8 +301,7 @@ public final class ESItems {
                     new Item.Properties().component(DataComponents.UNBREAKABLE, new Unbreakable(true))
                             .rarity(Rarity.EPIC)));
     // #endregion Dice
-
-    // Clubs
+    // #region Clubs
     public static final DeferredItem<Item> SILVER_BAT = ITEMS.register("silver_bat",
             () -> new InnateEnchantsWeapon(
                     new WeaponItem.Builder(Tiers.IRON, 4, -2.8f).efficiency(2f)
@@ -312,8 +313,13 @@ public final class ESItems {
                             .add(OnHitEffect.playSound(ESSounds.GOLDEN_PAN_HIT))
                             .add(OnHitEffect.enemyKnockback(1F)),
                     new MSItemProperties().durability(500)));
-
-    // Keys
+    public static final DeferredItem<Item> ROLLING_PIN = ITEMS.register("rolling_pin",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.WOOD, 1, -2.8F).set(MSItemTypes.CLUB_TOOL)
+                            .add(OnHitEffect.enemyKnockback(.1F)),
+                    new Item.Properties()));
+    // #endregion Clubs
+    // #region Keys
     public static final DeferredItem<Item> KEY_OF_TRIALS = ITEMS.register("key_of_trials",
             () -> new WeaponItem(
                     new WeaponItem.Builder(ESItemTiers.COPPER_TIER, 0, -1F).efficiency(1.5F)
@@ -332,15 +338,15 @@ public final class ESItems {
                             .set(ItemRightClickEffect.switchTo(ESItems.HANDGUN)),
                     new Item.Properties().component(DataComponents.CONTAINER,
                             ItemContainerContents.EMPTY)));
-
-    // Guns
+    // #endregion Keys
+    // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
             () -> new ESGun(
                     new ESGun.Builder().ammo(AMMO_HANDGUN).maxBullets(6).zoom(.8F)
                             .switchTo(ESItems.OFFICE_KEY),
                     new MSItemProperties().durability(250)));
-
-    // Ammo
+    // #endregion Guns
+    // #region Ammo
     public static final DeferredItem<Item> HANDGUN_BULLET = ITEMS.registerItem("handgun_bullet",
             (p) -> new ESBulletItem(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 2f),
                     ESBullet.createArrow(ESEntities.HANDGUN_BULLET.get()),
@@ -349,11 +355,18 @@ public final class ESItems {
             (p) -> new ESBulletItem(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 4f),
                     ESBullet.createArrow(ESEntities.HEAVY_HANDGUN_BULLET.get()),
                     ESBullet.asProjectile(ESEntities.HEAVY_HANDGUN_BULLET.get())));
+    // #endregion Ammo
     // #endregion Weapons
 
-    // #region Armor
-    // TODO d8 knight armor, each piece has a random effect on damage
-    // #endregion Armor
+    // #region Armors
+    // TODO guide page
+    public static final DeferredItem<Item> CHEF_HAT = ITEMS.register("chef_hat",
+            () -> new ChefArmorItem(ESArmorMaterials.CHEF_ARMOR, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(10))));
+    public static final DeferredItem<Item> CHEF_APRON = ITEMS.register("chef_apron",
+            () -> new ChefArmorItem(ESArmorMaterials.CHEF_ARMOR, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(10))));
+    // #endregion Armors
 
     // #region Blocks
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
@@ -478,6 +491,10 @@ public final class ESItems {
             output.accept(item.get());
         }
 
+        for (DeferredItem<Item> item : ESItems.getArmor()) {
+            output.accept(item.get());
+        }
+
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
             output.accept(item.get());
         }
@@ -550,6 +567,7 @@ public final class ESItems {
         // Clubs
         list.add(SILVER_BAT);
         list.add(GOLDEN_PAN);
+        list.add(ROLLING_PIN);
         // Keys
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
@@ -573,6 +591,31 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(HANDGUN_BULLET);
         list.add(HEAVY_HANDGUN_BULLET);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getArmor() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(CHEF_HAT);
+        list.add(CHEF_APRON);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getHelmets() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(CHEF_HAT);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getChestplates() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(CHEF_APRON);
+
         return list;
     }
 

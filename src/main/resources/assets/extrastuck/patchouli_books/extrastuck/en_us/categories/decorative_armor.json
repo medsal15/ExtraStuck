@@ -1,0 +1,7 @@
+{
+    "name": "Decorative Armor",
+    "sortnum": 1,
+    "description": "Stylish armor for cosmetic people",
+    "icon": "minecraft:leather_chestplate",
+    "parent": "extrastuck:armory"
+}
