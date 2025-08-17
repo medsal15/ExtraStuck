@@ -1,5 +1,8 @@
 {
   "values": {
+    "extrastuck:rolling_pin": {
+      "burn_time": 200
+    },
     "extrastuck:wooden_shield": {
       "burn_time": 200
     }

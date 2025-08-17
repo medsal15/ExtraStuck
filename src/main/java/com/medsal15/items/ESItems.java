@@ -359,13 +359,17 @@ public final class ESItems {
     // #endregion Weapons
 
     // #region Armors
-    // TODO guide page
     public static final DeferredItem<Item> CHEF_HAT = ITEMS.register("chef_hat",
             () -> new ChefArmorItem(ESArmorMaterials.CHEF_ARMOR, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(10))));
     public static final DeferredItem<Item> CHEF_APRON = ITEMS.register("chef_apron",
             () -> new ChefArmorItem(ESArmorMaterials.CHEF_ARMOR, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(10))));
+    /**
+     * TODO axolotl armor
+     * * regen on damage
+     * * prismarine armor && axolotl bucket/ghast tear?
+     */
     // #endregion Armors
 
     // #region Blocks

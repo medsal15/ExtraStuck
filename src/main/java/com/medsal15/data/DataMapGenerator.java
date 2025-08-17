@@ -18,6 +18,7 @@ public final class DataMapGenerator extends DataMapProvider {
     @Override
     protected void gather() {
         builder(NeoForgeDataMaps.FURNACE_FUELS)
-                .add(ESItems.WOODEN_SHIELD, new FurnaceFuel(200), false);
+                .add(ESItems.WOODEN_SHIELD, new FurnaceFuel(200), false)
+                .add(ESItems.ROLLING_PIN, new FurnaceFuel(200), false);
     }
 }
