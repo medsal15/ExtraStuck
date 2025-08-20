@@ -372,6 +372,8 @@ public final class ESItems {
      */
     // #endregion Armors
 
+    public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
+
     // #region Blocks
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
     public static final DeferredItem<BlockItem> CUT_GARNET_STAIRS = ITEMS
@@ -499,6 +501,10 @@ public final class ESItems {
             output.accept(item.get());
         }
 
+        for (DeferredItem<? extends Item> item : ESItems.getFoods()) {
+            output.accept(item.get());
+        }
+
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
             output.accept(item.get());
         }
@@ -620,6 +626,12 @@ public final class ESItems {
 
         list.add(CHEF_APRON);
 
+        return list;
+    }
+
+    public static Collection<DeferredItem<? extends Item>> getFoods() {
+        ArrayList<DeferredItem<? extends Item>> list = new ArrayList<>();
+        list.add(PIZZA);
         return list;
     }
 

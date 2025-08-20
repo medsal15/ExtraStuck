@@ -1,0 +1,160 @@
+{
+    "multipart": [
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_1"
+            },
+            "when": {
+                "facing": "north",
+                "pizza_bites": "0|1|2"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_1",
+                "y": 90
+            },
+            "when": {
+                "facing": "east",
+                "pizza_bites": "0|1|2"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_1",
+                "y": 180
+            },
+            "when": {
+                "facing": "south",
+                "pizza_bites": "0|1|2"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_1",
+                "y": 270
+            },
+            "when": {
+                "facing": "west",
+                "pizza_bites": "0|1|2"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_2"
+            },
+            "when": {
+                "facing": "north",
+                "pizza_bites": "0"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_2",
+                "y": 90
+            },
+            "when": {
+                "facing": "east",
+                "pizza_bites": "0"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_2",
+                "y": 180
+            },
+            "when": {
+                "facing": "south",
+                "pizza_bites": "0"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_2",
+                "y": 270
+            },
+            "when": {
+                "facing": "west",
+                "pizza_bites": "0"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_3"
+            },
+            "when": {
+                "facing": "north",
+                "pizza_bites": "0|1"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_3",
+                "y": 90
+            },
+            "when": {
+                "facing": "east",
+                "pizza_bites": "0|1"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_3",
+                "y": 180
+            },
+            "when": {
+                "facing": "south",
+                "pizza_bites": "0|1"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_3",
+                "y": 270
+            },
+            "when": {
+                "facing": "west",
+                "pizza_bites": "0|1"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_4"
+            },
+            "when": {
+                "facing": "north",
+                "pizza_bites": "0|1|2|3"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_4",
+                "y": 90
+            },
+            "when": {
+                "facing": "east",
+                "pizza_bites": "0|1|2|3"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_4",
+                "y": 180
+            },
+            "when": {
+                "facing": "south",
+                "pizza_bites": "0|1|2|3"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/pizza_4",
+                "y": 270
+            },
+            "when": {
+                "facing": "west",
+                "pizza_bites": "0|1|2|3"
+            }
+        }
+    ]
+}

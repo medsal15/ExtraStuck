@@ -26,6 +26,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         registerBlocks();
 
         basicItem(ESItems.LUCK_TOKEN.get());
+        basicItem(ESItems.PIZZA.get());
     }
 
     private void registerShields() {

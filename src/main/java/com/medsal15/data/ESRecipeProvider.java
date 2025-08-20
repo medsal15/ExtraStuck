@@ -33,7 +33,29 @@ public final class ESRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(@Nonnull RecipeOutput output) {
-        // #region Shields
+        shieldRecipes(output);
+        weaponRecipes(output);
+        arrowRecipes(output);
+        ammoRecipes(output);
+        armorRecipes(output);
+        blockRecipes(output);
+
+        CombinationRecipeBuilder.of(ESItems.GIFT)
+                .input(Items.PAPER).and().input(MSItems.SURPRISE_EMBRYO)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.GIFT)
+                .grist(GristTypes.GARNET, 2).grist(GristTypes.GOLD, 12)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.PIZZA)
+                .input(Items.BREAD).or().input(Items.BEETROOT)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.PIZZA)
+                .grist(GristTypes.AMBER, 6).grist(GristTypes.RUST, 1)
+                .build(output);
+    }
+
+    private void shieldRecipes(@Nonnull RecipeOutput output) {
         CombinationRecipeBuilder.of(ESItems.WOODEN_SHIELD)
                 .input(Tags.Items.RODS_WOODEN).and().input(ItemTags.WOODEN_PRESSURE_PLATES)
                 .build(output);
@@ -188,9 +210,158 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.GIFT_OF_PROTECTION)
                 .grist(GristTypes.AMBER, 1225).grist(GristTypes.IODINE, 606)
                 .build(output);
-        // #endregion Shields
+    }
 
-        // #region Arrows
+    private void weaponRecipes(@Nonnull RecipeOutput output) {
+        // #region Hammers
+        CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
+                .input(MSItems.REGI_HAMMER).or().input(Items.EMERALD_BLOCK)
+                .build(output, modLoc("combinations/gem_breaker_emerald"));
+        CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
+                .input(MSItems.REGI_HAMMER).or().input(Items.DIAMOND_BLOCK)
+                .build(output, modLoc("combinations/gem_breaker_diamond"));
+        GristCostRecipeBuilder.of(ESItems.GEM_BREAKER)
+                .grist(GristTypes.AMETHYST, 63).grist(GristTypes.RUBY, 63).grist(GristTypes.MARBLE, 127)
+                .build(output);
+        // #endregion Hammers
+
+        // #region Dice
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.GOLD_COIN.toStack())
+                .pattern(" N ")
+                .pattern("NIN")
+                .pattern(" N ")
+                .define('N', Items.GOLD_NUGGET)
+                .define('I', Items.GOLD_INGOT)
+                .unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT))
+                .save(output, modLoc("shaped/gold_coin"));
+
+        CombinationRecipeBuilder.of(ESItems.STICKY_DIE)
+                .input(MSItems.DICE).or().input(Items.SLIME_BALL)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.STICKY_DIE)
+                .grist(GristTypes.CAULK, 33).grist(GristTypes.TAR, 3)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.ANTI_DIE)
+                .input(ESItems.STICKY_DIE).and().input(MSItems.MIRROR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.ANTI_DIE)
+                .grist(GristTypes.URANIUM, 166).grist(GristTypes.MERCURY, 333)
+                .grist(GristTypes.AMETHYST, 139)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.TOKEN_TETRAHEDRON)
+                .input(ESItems.GOLD_COIN).and().input(Items.EMERALD)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TOKEN_TETRAHEDRON)
+                .grist(GristTypes.RUBY, 244).grist(GristTypes.DIAMOND, 244).grist(GristTypes.GOLD, 444)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.D_ICE)
+                .input(ESItems.STICKY_DIE).and()
+                .input(Ingredient.of(Items.ICE, Items.PACKED_ICE, Items.BLUE_ICE, MSItems.ICE_SHARD))
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.D_ICE)
+                .grist(GristTypes.COBALT, 66).grist(GristTypes.BUILD, 55)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SLICE_AND_DICE)
+                .input(MSItems.DAGGER).or().input(ESItems.GOLD_COIN)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SLICE_AND_DICE)
+                .grist(GristTypes.GOLD, 66).grist(GristTypes.CHALK, 33)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.DONE)
+                .input(MSItems.SBAHJ_POSTER).or().input(ESItems.D_ICE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.DONE)
+                .grist(GristTypes.ARTIFACT, -6)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.D10)
+                .input(ESItems.TOKEN_TETRAHEDRON).and().input(Items.CLOCK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.D10)
+                .grist(GristTypes.DIAMOND, 1331).grist(GristTypes.GOLD, 10).grist(GristTypes.GARNET, 999)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.RAINBOW_D7)
+                .input(MSItems.DICE).and().input(MSItems.WATER_COLORS_BUCKET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.RAINBOW_D7)
+                .grist(GristTypes.GOLD, 777).grist(GristTypes.DIAMOND, 777)
+                .grist(GristTypes.COBALT, 777).grist(GristTypes.URANIUM, 77)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.D8_NIGHT)
+                .input(ESItems.RAINBOW_D7).or().input(MSItems.NIGHTSTICK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.D8_NIGHT)
+                .grist(GristTypes.COBALT, 1888).grist(GristTypes.DIAMOND, 888)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.CAN_DIE)
+                .input(MSItems.DICE).or().input(MSItems.CANDY_CORN)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CAN_DIE)
+                .grist(GristTypes.MARBLE, 12).grist(GristTypes.CHALK, 36)
+                .grist(GristTypes.AMBER, 12)
+                .build(output);
+        // #endregion Dice
+
+        // #region Clubs
+        CombinationRecipeBuilder.of(ESItems.SILVER_BAT)
+                .input(MSItems.METAL_BAT).and().input(Items.GLASS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SILVER_BAT)
+                .grist(GristTypes.MERCURY, 35).grist(GristTypes.RUST, 70)
+                .build(output);
+
+        GristCostRecipeBuilder.of(ESItems.GOLDEN_PAN)
+                .grist(GristTypes.GOLD, 150).grist(GristTypes.RUST, 44)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.ROLLING_PIN)
+                .input(MSItems.DEUCE_CLUB).and().input(ESItems.PIZZA)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.ROLLING_PIN)
+                .grist(GristTypes.BUILD, 12)
+                .build(output);
+        // #endregion Clubs
+
+        // #region Keys
+        CombinationRecipeBuilder.of(ESItems.KEY_OF_TRIALS)
+                .input(MSItems.HOUSE_KEY).and().input(Items.TRIAL_KEY)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.KEY_OF_TRIALS)
+                .grist(GristTypes.SHALE, 13).grist(GristTypes.RUST, 7)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
+                .input(ESItems.KEY_OF_TRIALS).and().input(Items.OMINOUS_TRIAL_KEY)
+                .build(output);
+        CombinationRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
+                .input(ESItems.KEY_OF_TRIALS).and().input(Items.OMINOUS_BOTTLE)
+                .build(output, ExtraStuck.modid("combinations/key_of_ominous_trials_alt"));
+        GristCostRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
+                .grist(GristTypes.GARNET, 6).grist(GristTypes.SHALE, 43)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.OFFICE_KEY)
+                .input(MSItems.HOUSE_KEY).or().input(Items.IRON_DOOR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.OFFICE_KEY)
+                .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
+                .build(output);
+        // #endregion Keys
+
+        GristCostRecipeBuilder.of(ESItems.HANDGUN)
+                .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
+                .build(output);
+    }
+
+    private void arrowRecipes(@Nonnull RecipeOutput output) {
         CombinationRecipeBuilder.of(ESItems.NETHER_ARROW)
                 .input(Items.ARROW).and().input(Items.NETHERRACK)
                 .build(output);
@@ -316,160 +487,9 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.DRAGON_ARROW)
                 .grist(GristTypes.URANIUM, 15).grist(GristTypes.RUBY, 4)
                 .build(output);
-        // #endregion Arrows
+    }
 
-        // #region Weapons
-        // #region Hammers
-        CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
-                .input(MSItems.REGI_HAMMER).or().input(Items.EMERALD_BLOCK)
-                .build(output, modLoc("combinations/gem_breaker_emerald"));
-        CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
-                .input(MSItems.REGI_HAMMER).or().input(Items.DIAMOND_BLOCK)
-                .build(output, modLoc("combinations/gem_breaker_diamond"));
-        GristCostRecipeBuilder.of(ESItems.GEM_BREAKER)
-                .grist(GristTypes.AMETHYST, 63).grist(GristTypes.RUBY, 63).grist(GristTypes.MARBLE, 127)
-                .build(output);
-        // #endregion Hammers
-
-        // #region Dice
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.GOLD_COIN.toStack())
-                .pattern(" N ")
-                .pattern("NIN")
-                .pattern(" N ")
-                .define('N', Items.GOLD_NUGGET)
-                .define('I', Items.GOLD_INGOT)
-                .unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT))
-                .save(output, modLoc("shaped/gold_coin"));
-
-        CombinationRecipeBuilder.of(ESItems.STICKY_DIE)
-                .input(MSItems.DICE).or().input(Items.SLIME_BALL)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.STICKY_DIE)
-                .grist(GristTypes.CAULK, 33).grist(GristTypes.TAR, 3)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.ANTI_DIE)
-                .input(ESItems.STICKY_DIE).and().input(MSItems.MIRROR)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.ANTI_DIE)
-                .grist(GristTypes.URANIUM, 166).grist(GristTypes.MERCURY, 333)
-                .grist(GristTypes.AMETHYST, 139)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.TOKEN_TETRAHEDRON)
-                .input(ESItems.GOLD_COIN).and().input(Items.EMERALD)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.TOKEN_TETRAHEDRON)
-                .grist(GristTypes.RUBY, 244).grist(GristTypes.DIAMOND, 244).grist(GristTypes.GOLD, 444)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.D_ICE)
-                .input(ESItems.STICKY_DIE).and()
-                .input(Ingredient.of(Items.ICE, Items.PACKED_ICE, Items.BLUE_ICE, MSItems.ICE_SHARD))
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.D_ICE)
-                .grist(GristTypes.COBALT, 66).grist(GristTypes.BUILD, 55)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.SLICE_AND_DICE)
-                .input(MSItems.DAGGER).or().input(ESItems.GOLD_COIN)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.SLICE_AND_DICE)
-                .grist(GristTypes.GOLD, 66).grist(GristTypes.CHALK, 33)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.DONE)
-                .input(MSItems.SBAHJ_POSTER).or().input(ESItems.D_ICE)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.DONE)
-                .grist(GristTypes.ARTIFACT, -6)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.D10)
-                .input(ESItems.TOKEN_TETRAHEDRON).and().input(Items.CLOCK)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.D10)
-                .grist(GristTypes.DIAMOND, 1331).grist(GristTypes.GOLD, 10).grist(GristTypes.GARNET, 999)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.RAINBOW_D7)
-                .input(MSItems.DICE).and().input(MSItems.WATER_COLORS_BUCKET)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.RAINBOW_D7)
-                .grist(GristTypes.GOLD, 777).grist(GristTypes.DIAMOND, 777)
-                .grist(GristTypes.COBALT, 777).grist(GristTypes.URANIUM, 77)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.D8_NIGHT)
-                .input(ESItems.RAINBOW_D7).or().input(MSItems.NIGHTSTICK)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.D8_NIGHT)
-                .grist(GristTypes.COBALT, 1888).grist(GristTypes.DIAMOND, 888)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.CAN_DIE)
-                .input(MSItems.DICE).or().input(MSItems.CANDY_CORN)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.CAN_DIE)
-                .grist(GristTypes.MARBLE, 12).grist(GristTypes.CHALK, 36)
-                .grist(GristTypes.AMBER, 12)
-                .build(output);
-        // #endregion Dice
-
-        // #region Clubs
-        CombinationRecipeBuilder.of(ESItems.SILVER_BAT)
-                .input(MSItems.METAL_BAT).and().input(Items.GLASS)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.SILVER_BAT)
-                .grist(GristTypes.MERCURY, 35).grist(GristTypes.RUST, 70)
-                .build(output);
-
-        GristCostRecipeBuilder.of(ESItems.GOLDEN_PAN)
-                .grist(GristTypes.GOLD, 150).grist(GristTypes.RUST, 44)
-                .build(output);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.ROLLING_PIN.toStack())
-                .pattern("  S")
-                .pattern(" L ")
-                .pattern("S  ")
-                .define('S', Tags.Items.RODS_WOODEN)
-                .define('L', ItemTags.LOGS)
-                .unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
-                .save(output, modLoc("shaped/rolling_pin"));
-        // #endregion Clubs
-
-        // #region Keys
-        CombinationRecipeBuilder.of(ESItems.KEY_OF_TRIALS)
-                .input(MSItems.HOUSE_KEY).and().input(Items.TRIAL_KEY)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.KEY_OF_TRIALS)
-                .grist(GristTypes.SHALE, 13).grist(GristTypes.RUST, 7)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
-                .input(ESItems.KEY_OF_TRIALS).and().input(Items.OMINOUS_TRIAL_KEY)
-                .build(output);
-        CombinationRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
-                .input(ESItems.KEY_OF_TRIALS).and().input(Items.OMINOUS_BOTTLE)
-                .build(output, ExtraStuck.modid("combinations/key_of_ominous_trials_alt"));
-        GristCostRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
-                .grist(GristTypes.GARNET, 6).grist(GristTypes.SHALE, 43)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.OFFICE_KEY)
-                .input(MSItems.HOUSE_KEY).or().input(Items.IRON_DOOR)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.OFFICE_KEY)
-                .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
-                .build(output);
-        // #endregion Keys
-
-        GristCostRecipeBuilder.of(ESItems.HANDGUN)
-                .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
-                .build(output);
-        // #endregion Weapons
-
-        // #region Ammo
+    private void ammoRecipes(@Nonnull RecipeOutput output) {
         CombinationRecipeBuilder.of(ESItems.HANDGUN_BULLET)
                 .input(Items.GUNPOWDER).and().input(Items.IRON_NUGGET)
                 .build(output);
@@ -483,25 +503,25 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.HEAVY_HANDGUN_BULLET)
                 .grist(GristTypes.RUST, 5).grist(GristTypes.TAR, 2)
                 .build(output);
-        // #endregion Ammo
+    }
 
-        // #region Armor
+    private void armorRecipes(@Nonnull RecipeOutput output) {
         CombinationRecipeBuilder.of(ESItems.CHEF_HAT)
-                .input(ESItems.ROLLING_PIN).or().input(Items.LEATHER_HELMET)
+                .input(ESItems.PIZZA).or().input(Items.LEATHER_HELMET)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.CHEF_HAT)
                 .grist(GristTypes.CHALK, 22)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.CHEF_APRON)
-                .input(ESItems.ROLLING_PIN).or().input(Items.LEATHER_CHESTPLATE)
+                .input(ESItems.PIZZA).or().input(Items.LEATHER_CHESTPLATE)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.CHEF_APRON)
                 .grist(GristTypes.CHALK, 32)
                 .build(output);
-        // #endregion Armor
+    }
 
-        // #region Blocks
+    private void blockRecipes(@Nonnull RecipeOutput output) {
         // #region Garnet
         CombinationRecipeBuilder.of(ESItems.CUT_GARNET)
                 .input(Items.AMETHYST_BLOCK).or().input(Tags.Items.DYES_RED)
@@ -613,6 +633,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_garnet_brick_slab", has(ESItems.GARNET_BRICK_SLAB))
                 .save(output, modLoc("shaped/chiseled_garnet_bricks"));
         // #endregion Garnet
+
         // #region Ruby
         CombinationRecipeBuilder.of(ESItems.CUT_RUBY)
                 .input(ESItems.CUT_GARNET).and().input(Tags.Items.DUSTS_GLOWSTONE)
@@ -724,6 +745,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_ruby_brick_slab", has(ESItems.RUBY_BRICK_SLAB))
                 .save(output, modLoc("shaped/chiseled_ruby_bricks"));
         // #endregion Ruby
+
         // #region Cobalt
         CombinationRecipeBuilder.of(ESItems.COBALT_BLOCK)
                 .input(Tags.Items.STORAGE_BLOCKS_IRON).and().input(Tags.Items.DYES_BLUE)
@@ -757,6 +779,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_cobalt_block", has(ESItems.COBALT_BLOCK))
                 .save(output, modLoc("stonecutting/cobalt_pressure_plate"));
         // #endregion Cobalt
+
         // #region Sulfur
         CombinationRecipeBuilder.of(ESItems.SULFUROUS_STONE)
                 .input(Items.NETHERRACK).and().input(Tags.Items.DYES_YELLOW)
@@ -801,6 +824,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
                 .save(output, modLoc("shaped/sulfurous_stone_wall"));
         // #endregion Sulfur
+
         // #region Marble
         CombinationRecipeBuilder.of(ESItems.MARBLE)
                 .input(MSItems.CHALK).and().input(Tags.Items.DYES_PINK)
@@ -951,6 +975,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
                 .save(output, modLoc("shaped/marble_bricks_wall"));
         // #endregion Marble
+
         // #region Zillium
         CombinationRecipeBuilder.of(ESItems.ZILLIUM_BRICKS)
                 .input(Items.STONE_BRICKS).and().input(MSItems.ZILLIUM_SKITTLES)
@@ -998,14 +1023,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
                 .save(output, modLoc("shaped/zillium_bricks_wall"));
         // #endregion Zillium
-        // #endregion Blocks
-
-        CombinationRecipeBuilder.of(ESItems.GIFT)
-                .input(Items.PAPER).and().input(MSItems.SURPRISE_EMBRYO)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.GIFT)
-                .grist(GristTypes.GARNET, 2).grist(GristTypes.GOLD, 12)
-                .build(output);
     }
 
     private ResourceLocation modLoc(String text) {

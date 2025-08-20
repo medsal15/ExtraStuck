@@ -1,0 +1,20 @@
+{
+    "name": "Pizza",
+    "icon": "extrastuck:pizza",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:pizza"
+            },
+            "text": "A famous dish from a foreign country."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["extrastuck:textures/patchouli_books/pizza_recipe.png"],
+            "text": "Combine bread and beetroot in a punch designix."
+        }
+    ]
+}

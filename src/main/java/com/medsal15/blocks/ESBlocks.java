@@ -23,6 +23,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ESBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ExtraStuck.MODID);
 
+    public static final DeferredBlock<Block> PIZZA = BLOCKS.registerBlock("pizza", PizzaBlock::new,
+            Block.Properties.of().mapColor(MapColor.COLOR_YELLOW).sound(SoundType.WOOL).noCollission()
+                    .noOcclusion().pushReaction(PushReaction.DESTROY));
+
     // #region Garnet
     public static final DeferredBlock<Block> CUT_GARNET = BLOCKS.registerBlock("cut_garnet", Block::new,
             Block.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(1.5F).sound(SoundType.AMETHYST)

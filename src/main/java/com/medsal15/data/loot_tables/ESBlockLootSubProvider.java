@@ -27,21 +27,21 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ESBlocks.CUT_GARNET.get());
         dropSelf(ESBlocks.CUT_GARNET_STAIRS.get());
-        this.add(ESBlocks.CUT_GARNET_SLAB.get(), createSlabItemTable(ESBlocks.CUT_GARNET_SLAB.get()));
+        add(ESBlocks.CUT_GARNET_SLAB.get(), createSlabItemTable(ESBlocks.CUT_GARNET_SLAB.get()));
         dropSelf(ESBlocks.CUT_GARNET_WALL.get());
         dropSelf(ESBlocks.GARNET_BRICKS.get());
         dropSelf(ESBlocks.GARNET_BRICK_STAIRS.get());
-        this.add(ESBlocks.GARNET_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.GARNET_BRICK_SLAB.get()));
+        add(ESBlocks.GARNET_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.GARNET_BRICK_SLAB.get()));
         dropSelf(ESBlocks.GARNET_BRICK_WALL.get());
         dropSelf(ESBlocks.CHISELED_GARNET_BRICKS.get());
 
         dropSelf(ESBlocks.CUT_RUBY.get());
         dropSelf(ESBlocks.CUT_RUBY_STAIRS.get());
-        this.add(ESBlocks.CUT_RUBY_SLAB.get(), createSlabItemTable(ESBlocks.CUT_RUBY_SLAB.get()));
+        add(ESBlocks.CUT_RUBY_SLAB.get(), createSlabItemTable(ESBlocks.CUT_RUBY_SLAB.get()));
         dropSelf(ESBlocks.CUT_RUBY_WALL.get());
         dropSelf(ESBlocks.RUBY_BRICKS.get());
         dropSelf(ESBlocks.RUBY_BRICK_STAIRS.get());
-        this.add(ESBlocks.RUBY_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.RUBY_BRICK_SLAB.get()));
+        add(ESBlocks.RUBY_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.RUBY_BRICK_SLAB.get()));
         dropSelf(ESBlocks.RUBY_BRICK_WALL.get());
         dropSelf(ESBlocks.CHISELED_RUBY_BRICKS.get());
 
@@ -53,25 +53,27 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
 
         dropSelf(ESBlocks.SULFUROUS_STONE.get());
         dropSelf(ESBlocks.SULFUROUS_STONE_STAIRS.get());
-        this.add(ESBlocks.SULFUROUS_STONE_SLAB.get(), createSlabItemTable(ESBlocks.SULFUROUS_STONE_SLAB.get()));
+        add(ESBlocks.SULFUROUS_STONE_SLAB.get(), createSlabItemTable(ESBlocks.SULFUROUS_STONE_SLAB.get()));
         dropSelf(ESBlocks.SULFUROUS_STONE_WALL.get());
 
         dropSelf(ESBlocks.MARBLE.get());
         dropSelf(ESBlocks.MARBLE_STAIRS.get());
-        this.add(ESBlocks.MARBLE_SLAB.get(), createSlabItemTable(ESBlocks.MARBLE_SLAB.get()));
+        add(ESBlocks.MARBLE_SLAB.get(), createSlabItemTable(ESBlocks.MARBLE_SLAB.get()));
         dropSelf(ESBlocks.MARBLE_WALL.get());
         dropSelf(ESBlocks.POLISHED_MARBLE.get());
         dropSelf(ESBlocks.POLISHED_MARBLE_STAIRS.get());
-        this.add(ESBlocks.POLISHED_MARBLE_SLAB.get(), createSlabItemTable(ESBlocks.POLISHED_MARBLE_SLAB.get()));
+        add(ESBlocks.POLISHED_MARBLE_SLAB.get(), createSlabItemTable(ESBlocks.POLISHED_MARBLE_SLAB.get()));
         dropSelf(ESBlocks.POLISHED_MARBLE_WALL.get());
         dropSelf(ESBlocks.MARBLE_BRICKS.get());
         dropSelf(ESBlocks.MARBLE_BRICK_STAIRS.get());
-        this.add(ESBlocks.MARBLE_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.MARBLE_BRICK_SLAB.get()));
+        add(ESBlocks.MARBLE_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.MARBLE_BRICK_SLAB.get()));
         dropSelf(ESBlocks.MARBLE_BRICK_WALL.get());
 
         dropSelf(ESBlocks.ZILLIUM_BRICKS.get());
         dropSelf(ESBlocks.ZILLIUM_BRICK_STAIRS.get());
-        this.add(ESBlocks.ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.ZILLIUM_BRICK_SLAB.get()));
+        add(ESBlocks.ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.ZILLIUM_BRICK_SLAB.get()));
         dropSelf(ESBlocks.ZILLIUM_BRICK_WALL.get());
+
+        add(ESBlocks.PIZZA.get(), noDrop());
     }
 }

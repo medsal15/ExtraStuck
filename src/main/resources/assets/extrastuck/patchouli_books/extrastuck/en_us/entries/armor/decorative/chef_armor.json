@@ -14,14 +14,14 @@
             "images": [
                 "extrastuck:textures/patchouli_books/chef_hat_recipe.png"
             ],
-            "text": "Combine a $(l:extrastuck:weapons/rolling_pin)rolling pin$(/l) and a leather cap in a punch designix."
+            "text": "Combine a $(l:extrastuck:misc/pizza)pizza$(/l) and a leather cap in a punch designix."
         },
         {
             "type": "patchouli:image",
             "images": [
                 "extrastuck:textures/patchouli_books/chef_apron_recipe.png"
             ],
-            "text": "Combine a $(l:extrastuck:weapons/rolling_pin)rolling pin$(/l) and a leather tunic in a punch designix."
+            "text": "Combine a $(l:extrastuck:misc/pizza)pizza$(/l) and a leather tunic in a punch designix."
         }
     ]
 }

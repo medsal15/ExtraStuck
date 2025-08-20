@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 6,
+    "minestuck:rust": 1
+  },
+  "ingredient": {
+    "item": "extrastuck:pizza"
+  }
+}

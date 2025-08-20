@@ -61,6 +61,10 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(helmet.get());
         }
 
+        for (DeferredItem<? extends Item> food : ESItems.getFoods()) {
+            tag(Tags.Items.FOODS).add(food.get());
+        }
+
         tag(AMMO).addTag(AMMO_HANDGUN);
         tag(AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
 
@@ -79,6 +83,7 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(ItemTags.BREAKS_DECORATED_POTS).add(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
 
         tag(Tags.Items.FOODS).add(ESItems.SWEET_TOOTH.get());
+        tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED).add(ESItems.PIZZA.get());
 
         tag(ItemTags.DOORS).add(ESItems.COBALT_DOOR.get());
         tag(ItemTags.TRAPDOORS).add(ESItems.COBALT_TRAPDOOR.get());
