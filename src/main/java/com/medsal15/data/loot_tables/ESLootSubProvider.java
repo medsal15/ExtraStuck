@@ -72,7 +72,7 @@ public class ESLootSubProvider implements LootTableSubProvider {
                         .add(LootItem.lootTableItem(Items.MELON).setQuality(1).setWeight(10))
                         .add(LootItem.lootTableItem(Items.PUMPKIN).setQuality(1).setWeight(10))
                         .add(LootItem.lootTableItem(Items.GOLD_INGOT).setQuality(2).setWeight(5)
-                                .apply(rangeAmount(1, 85)))
+                                .apply(rangeAmount(1, 8)))
                         .add(LootItem.lootTableItem(Items.REDSTONE).setQuality(2).setWeight(5).apply(rangeAmount(1, 8)))
                         .add(TagEntry.expandTag(MSTags.Items.FAYGO).setWeight(6))
                         .add(TagEntry.expandTag(MSTags.Items.GRIST_CANDY).setQuality(1).setWeight(3))

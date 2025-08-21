@@ -19,12 +19,14 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.ItemContainerContents;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 
 public class AltGunWeapon extends WeaponItem {
     public AltGunWeapon(WeaponItem.Builder builder, Properties properties) {
         super(builder, properties);
+        NeoForge.EVENT_BUS.addListener(this::adjustDamge);
     }
 
     @Override
@@ -40,18 +42,16 @@ public class AltGunWeapon extends WeaponItem {
         }
     }
 
-    @Override
-    public ItemAttributeModifiers getDefaultAttributeModifiers(@Nonnull ItemStack stack) {
-        ItemAttributeModifiers modifiers = super.getDefaultAttributeModifiers(stack);
+    private void adjustDamge(ItemAttributeModifierEvent event) {
+        ItemStack stack = event.getItemStack();
+        if (!(stack.getItem() instanceof AltGunWeapon))
+            return;
 
         ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
         if (contents != null && !contents.equals(ItemContainerContents.EMPTY)) {
-            // does not work
-            modifiers = modifiers.withModifierAdded(Attributes.ATTACK_DAMAGE,
+            event.addModifier(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(ExtraStuck.modid("alt_gun"), 1, Operation.ADD_VALUE),
                     EquipmentSlotGroup.MAINHAND);
         }
-
-        return modifiers;
     }
 }

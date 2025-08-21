@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:pizza"
             },
-            "text": "A famous dish from a foreign country."
+            "text": "A famous dish from a foreign country. Can be placed and eaten in 4 slices that refill 2 hunger."
         },
         {
             "type": "patchouli:image",

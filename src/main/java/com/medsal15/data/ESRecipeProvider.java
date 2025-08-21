@@ -319,7 +319,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
 
         GristCostRecipeBuilder.of(ESItems.GOLDEN_PAN)
-                .grist(GristTypes.GOLD, 150).grist(GristTypes.RUST, 44)
+                .grist(GristTypes.GOLD, 250).grist(GristTypes.RUST, 44)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.ROLLING_PIN)

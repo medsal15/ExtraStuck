@@ -1,7 +1,7 @@
 {
   "type": "minestuck:grist_cost",
   "grist_cost": {
-    "minestuck:gold": 150,
+    "minestuck:gold": 250,
     "minestuck:rust": 44
   },
   "ingredient": {

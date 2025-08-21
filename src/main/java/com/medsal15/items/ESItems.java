@@ -312,7 +312,7 @@ public final class ESItems {
                     new WeaponItem.Builder(Tiers.GOLD, 3, -2.8F).set(MSItemTypes.CLUB_TOOL)
                             .add(OnHitEffect.playSound(ESSounds.GOLDEN_PAN_HIT))
                             .add(OnHitEffect.enemyKnockback(1F)),
-                    new MSItemProperties().durability(500)));
+                    new MSItemProperties().durability(500).rarity(Rarity.RARE)));
     public static final DeferredItem<Item> ROLLING_PIN = ITEMS.register("rolling_pin",
             () -> new WeaponItem(
                     new WeaponItem.Builder(Tiers.WOOD, 1, -2.8F).set(MSItemTypes.CLUB_TOOL)
