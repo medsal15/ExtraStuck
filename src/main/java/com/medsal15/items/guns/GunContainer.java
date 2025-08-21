@@ -8,11 +8,12 @@ import net.minecraft.world.item.component.ItemContainerContents;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 public class GunContainer extends ItemStackHandler {
+    /** Accepted ammunition */
     public static interface Filter {
         public boolean accepts(ItemStack stack);
     }
 
-    /** Accepted ammunition */
+    /** Gun */
     private ItemStack stack;
 
     public GunContainer(@Nonnull ItemStack stack) {
