@@ -66,7 +66,7 @@ public final class ESRecipeProvider extends RecipeProvider {
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ESItems.WOODEN_SHIELD), RecipeCategory.COMBAT,
                 ESItems.FLAME_SHIELD, 0, 600)
                 .unlockedBy("has_wooden_shield", has(ESItems.WOODEN_SHIELD))
-                .save(output, "campfire/flame_shield");
+                .save(output, modLoc("campfire/flame_shield"));
         GristCostRecipeBuilder.of(ESItems.FLAME_SHIELD)
                 .grist(GristTypes.TAR, 13).grist(GristTypes.SULFUR, 8)
                 .build(output);
@@ -179,8 +179,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 RecipeCategory.COMBAT,
                 ESItems.NETHERITE_SHIELD.get())
                 .unlocks("netherite_shield", has(ESItems.DIAMOND_SHIELD))
-                .save(output, ResourceLocation.fromNamespaceAndPath(ExtraStuck.MODID,
-                        "smithing/netherite_shield"));
+                .save(output, modLoc("smithing/netherite_shield"));
 
         CombinationRecipeBuilder.of(ESItems.GARNET_SHIELD)
                 .input(ESItems.DIAMOND_SHIELD).and().input(MSItems.FROG)
@@ -468,7 +467,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         CombinationRecipeBuilder.of(ESItems.END_ARROW)
                 .input(Items.END_ROD).and().input(Items.FLINT)
-                .build(output, ResourceLocation.fromNamespaceAndPath(ExtraStuck.MODID, "end_arrow_2"));
+                .build(output, modLoc("end_arrow_2"));
         GristCostRecipeBuilder.of(ESItems.END_ARROW)
                 .grist(GristTypes.URANIUM, 3).grist(GristTypes.CAULK, 7)
                 .build(output);
