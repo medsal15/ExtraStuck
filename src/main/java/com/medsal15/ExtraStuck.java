@@ -10,6 +10,7 @@ import com.medsal15.entities.ESArrowRenderer;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.interpreters.ESInterpretertypes;
 import com.medsal15.items.ESArmorMaterials;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
@@ -97,15 +98,16 @@ public class ExtraStuck {
         modEventBus.addListener(this::registerCapabilities);
 
         // Register the Deferred Register to the mod event bus so items get registered
-        ESDataComponents.DATA_COMPONENTS.register(modEventBus);
-        ESSounds.SOUND_EVENTS.register(modEventBus);
-        ESBlocks.BLOCKS.register(modEventBus);
         ESArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
-        ESItems.ITEMS.register(modEventBus);
+        ESBlocks.BLOCKS.register(modEventBus);
+        ESDataComponents.DATA_COMPONENTS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
-        ESMobEffects.MOB_EFFECTS.register(modEventBus);
+        ESInterpretertypes.INTERPRETER_TYPES.register(modEventBus);
+        ESItems.ITEMS.register(modEventBus);
         ESLootModifiers.GLM_SERIALIZERS.register(modEventBus);
+        ESMobEffects.MOB_EFFECTS.register(modEventBus);
         ESProcessors.PROCESSORS.register(modEventBus);
+        ESSounds.SOUND_EVENTS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 

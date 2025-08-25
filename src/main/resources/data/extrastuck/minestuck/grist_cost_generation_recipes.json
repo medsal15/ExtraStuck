@@ -1,0 +1,122 @@
+[
+    {
+        "__comment": "Default basic create interpreter",
+        "__comment_2": "Does not support recipe that have fluids as inputs/outputs",
+        "interpreter": {
+            "type": "extrastuck:create_basic"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:pressing"
+        }
+    },
+    {
+        "__comment": "Also supports an (optional) extra process_cost, added to recipes",
+        "interpreter": {
+            "type": "extrastuck:create_basic",
+            "process_cost": {
+                "minestuck:cobalt": 1
+            }
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:splashing"
+        }
+    },
+    {
+        "__comment": "Specific to item_application and deploying, as the held item can be kept even afterwards",
+        "__comment_2": "See waxing recipes for examples",
+        "interpreter": {
+            "type": "extrastuck:create_item_application"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:item_application"
+        }
+    },
+    {
+        "__comment": "Generic special recipe, in case you're sure the recipe only has 1 output",
+        "__comment_2": "Not specific to create either ;)",
+        "interpreter": {
+            "type": "extrastuck:special_recipe"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:mechanical_crafting"
+        }
+    },
+    {
+        "__comment": "Specific to sequenced_assembly, as it combines multiple recipe types",
+        "__comment_2": "Hopefully, nothing was missed",
+        "interpreter": {
+            "type": "extrastuck:create_sequenced_assembly"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:sequenced_assembly"
+        }
+    },
+    {
+        "interpreter": {
+            "type": "extrastuck:create_basic"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:crushing"
+        }
+    },
+    {
+        "interpreter": {
+            "type": "extrastuck:create_basic"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:milling"
+        }
+    },
+    {
+        "interpreter": {
+            "type": "extrastuck:create_basic"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:compacting"
+        }
+    },
+    {
+        "interpreter": {
+            "type": "extrastuck:create_basic"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:mixing"
+        }
+    },
+    {
+        "interpreter": {
+            "type": "extrastuck:create_basic"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:sandpaper_polishing"
+        }
+    },
+    {
+        "interpreter": {
+            "type": "extrastuck:create_basic"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:cutting"
+        }
+    },
+    {
+        "interpreter": {
+            "type": "extrastuck:create_item_application"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "create:deploying"
+        }
+    }
+]
