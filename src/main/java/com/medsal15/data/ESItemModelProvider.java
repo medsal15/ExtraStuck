@@ -148,6 +148,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
         handheldItem(ESItems.OFFICE_KEY.get());
+
+        handheldItem(ESItems.BAGUETTE_MAGIQUE.get());
     }
 
     private void registerRangedWeapons() {

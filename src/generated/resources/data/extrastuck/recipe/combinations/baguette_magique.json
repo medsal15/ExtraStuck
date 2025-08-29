@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:stale_baguette"
+  },
+  "input2": {
+    "item": "minestuck:wand"
+  },
+  "mode": "and",
+  "output": "extrastuck:baguette_magique"
+}

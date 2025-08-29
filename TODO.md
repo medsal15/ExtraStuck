@@ -2,8 +2,6 @@
 
 ## Important ##
 
-Find a better way to include Minestuck without needing a local file
-
 Add a mod icon
 
 Simplify arrow classes to use one class
@@ -15,10 +13,6 @@ Improve mod page with fancy graphic
 Allow change shields (wooden shield) to also transform when dropped
 
 Create a pair of custom renders for combination/grist recipes in patchouli (so i can put a grist cost on its own)
-
-### World ###
-
-Add a way to load a structure by land terrain/title
 
 ### Machines ###
 

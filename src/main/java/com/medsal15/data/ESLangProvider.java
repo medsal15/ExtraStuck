@@ -202,6 +202,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");
         addItem(ESItems.OFFICE_KEY, "Office Key");
 
+        addItem(ESItems.BAGUETTE_MAGIQUE, "Baguette Magique");
+        addItemTooltip(ESItems.BAGUETTE_MAGIQUE, "Un morceau de pain utilisé par les magiciens");
+
         addItem(ESItems.HANDGUN, "Handgun");
         addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
         addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");

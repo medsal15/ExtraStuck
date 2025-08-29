@@ -355,6 +355,15 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Keys
 
+        // #region Wands
+        CombinationRecipeBuilder.of(ESItems.BAGUETTE_MAGIQUE)
+                .input(MSItems.STALE_BAGUETTE).and().input(MSItems.WAND)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BAGUETTE_MAGIQUE)
+                .grist(GristTypes.AMBER, 12).grist(GristTypes.IODINE, 18).grist(GristTypes.SULFUR, 6)
+                .build(output);
+        // #endregion Wands
+
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);

@@ -43,6 +43,7 @@ import com.medsal15.items.throwables.SwapTrident;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
+import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
@@ -339,6 +340,13 @@ public final class ESItems {
                     new Item.Properties().component(DataComponents.CONTAINER,
                             ItemContainerContents.EMPTY)));
     // #endregion Keys
+    // #region Wands
+    public static final DeferredItem<Item> BAGUETTE_MAGIQUE = ITEMS.register("baguette_magique",
+            () -> new WeaponItem(new WeaponItem.Builder(MSItemTypes.ORGANIC_TIER, 1, -1F).efficiency(1F)
+                    .set(MSItemTypes.WAND_TOOL).set(MagicRangedRightClickEffect.STANDARD_MAGIC)
+                    .add(OnHitEffect.SPAWN_BREADCRUMBS),
+                    new Item.Properties()));
+    // #endregion Wands
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
             () -> new ESGun(
@@ -582,6 +590,8 @@ public final class ESItems {
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
         list.add(OFFICE_KEY);
+        // Wands
+        list.add(BAGUETTE_MAGIQUE);
         return list;
     }
 

@@ -82,6 +82,8 @@
   "extrastuck.shield_self_effect": "Applies %s (%s) when attacked",
   "item.extrastuck.amethyst_arrow": "Amethyst Arrow",
   "item.extrastuck.anti_die": "Anti Die",
+  "item.extrastuck.baguette_magique": "Baguette Magique",
+  "item.extrastuck.baguette_magique.tooltip": "Un morceau de pain utilisé par les magiciens",
   "item.extrastuck.can_die": "Can-Die",
   "item.extrastuck.capitashield": "Capitashield",
   "item.extrastuck.capitashield.tooltip": "Protects you, at a cost",
