@@ -32,6 +32,7 @@ import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.items.armor.ChefArmorItem;
+import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
@@ -42,6 +43,7 @@ import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.SwapTrident;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
+import com.mraof.minestuck.item.armor.MSArmorItem;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
@@ -57,6 +59,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -373,6 +376,32 @@ public final class ESItems {
     public static final DeferredItem<Item> CHEF_APRON = ITEMS.register("chef_apron",
             () -> new ChefArmorItem(ESArmorMaterials.CHEF_ARMOR, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(10))));
+    public static final DeferredItem<Item> HEAVY_BOOTS = ITEMS.register("heavy_boots",
+            () -> new MSArmorItem(ArmorMaterials.IRON, ArmorItem.Type.BOOTS, new Item.Properties()
+                    .durability(ArmorItem.Type.CHESTPLATE.getDurability(17))
+                    .attributes(ItemAttributeModifiers.builder()
+                            .add(Attributes.GRAVITY,
+                                    new AttributeModifier(ExtraStuck.modid("heavy_boots_gravity"), 1F,
+                                            Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.FEET)
+                            .add(Attributes.ARMOR,
+                                    new AttributeModifier(ExtraStuck.modid("heavy_boots_armor"), 3F,
+                                            Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.FEET)
+                            .build())));
+    public static final DeferredItem<Item> PROPELLER_HAT = ITEMS.register("propeller_hat",
+            () -> new PropellerHatItem(ESArmorMaterials.PROPELLER_HAT, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(17))
+                            .attributes(ItemAttributeModifiers.builder()
+                                    .add(Attributes.GRAVITY,
+                                            new AttributeModifier(ExtraStuck.modid("propeller_hat_gravity"), -.5F,
+                                                    Operation.ADD_MULTIPLIED_TOTAL),
+                                            EquipmentSlotGroup.HEAD)
+                                    .add(Attributes.ARMOR,
+                                            new AttributeModifier(ExtraStuck.modid("propeller_hat_armor"), 1F,
+                                                    Operation.ADD_VALUE),
+                                            EquipmentSlotGroup.HEAD)
+                                    .build())));
     /**
      * TODO axolotl armor
      * * regen on damage
@@ -620,6 +649,9 @@ public final class ESItems {
         list.add(CHEF_HAT);
         list.add(CHEF_APRON);
 
+        list.add(PROPELLER_HAT);
+        list.add(HEAVY_BOOTS);
+
         return list;
     }
 
@@ -627,6 +659,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(CHEF_HAT);
+        list.add(PROPELLER_HAT);
 
         return list;
     }
@@ -635,6 +668,14 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(CHEF_APRON);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getBoots() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(HEAVY_BOOTS);
 
         return list;
     }

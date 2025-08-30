@@ -1,0 +1,7 @@
+{
+    "name": "Armor",
+    "sortnum": 1,
+    "description": "Solid armor for damage-averse people",
+    "icon": "minecraft:iron_chestplate",
+    "parent": "extrastuck:armory"
+}

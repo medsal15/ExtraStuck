@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:rust": 54,
+    "minestuck:tar": 27
+  },
+  "ingredient": {
+    "item": "extrastuck:heavy_boots"
+  }
+}

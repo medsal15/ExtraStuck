@@ -1,0 +1,20 @@
+{
+    "name": "Propeller Hat",
+    "icon": "extrastuck:propeller_hat",
+    "category": "extrastuck:armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:propeller_hat",
+            "text": "A fancy rainbow hat with a non-functional propeller on top.$(br2)$(3)$(l)Special:$() Halves gravity."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/propeller_hat_recipe.png"
+            ],
+            "text": "Combine an iron helmet and a feather in a totem lathe."
+        }
+    ]
+}

@@ -527,6 +527,24 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.CHEF_APRON)
                 .grist(GristTypes.CHALK, 32)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.HEAVY_BOOTS)
+                .input(Items.IRON_BOOTS).and().input(Items.ANVIL)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.HEAVY_BOOTS)
+                .grist(GristTypes.RUST, 54).grist(GristTypes.TAR, 27)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.PROPELLER_HAT)
+                .input(Items.IRON_HELMET).and().input(Items.FEATHER)
+                .build(output);
+        CombinationRecipeBuilder.of(ESItems.PROPELLER_HAT)
+                .input(Items.IRON_HELMET).and().input(Items.WIND_CHARGE)
+                .build(output, modLoc("propeller_hat_alt"));
+        GristCostRecipeBuilder.of(ESItems.PROPELLER_HAT)
+                .grist(GristTypes.RUST, 90).grist(GristTypes.GARNET, 17)
+                .grist(GristTypes.AMBER, 17).grist(GristTypes.COBALT, 17)
+                .build(output);
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

@@ -1,0 +1,12 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 17,
+    "minestuck:cobalt": 17,
+    "minestuck:garnet": 17,
+    "minestuck:rust": 90
+  },
+  "ingredient": {
+    "item": "extrastuck:propeller_hat"
+  }
+}

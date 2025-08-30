@@ -159,6 +159,9 @@ public final class ESItemModelProvider extends ItemModelProvider {
     private void registerArmors() {
         basicItem(ESItems.CHEF_HAT.get());
         basicItem(ESItems.CHEF_APRON.get());
+
+        basicItem(ESItems.HEAVY_BOOTS.get());
+        basicItem(ESItems.PROPELLER_HAT.get());
     }
 
     private void registerBlocks() {

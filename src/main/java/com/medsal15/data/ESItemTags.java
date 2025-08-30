@@ -55,10 +55,13 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(ItemTags.ARMOR_ENCHANTABLE).add(armor.get());
         }
         for (DeferredItem<Item> helmet : ESItems.getHelmets()) {
-            tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(helmet.get());
+            tag(ItemTags.HEAD_ARMOR).add(helmet.get());
         }
-        for (DeferredItem<Item> helmet : ESItems.getChestplates()) {
-            tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(helmet.get());
+        for (DeferredItem<Item> chestplate : ESItems.getChestplates()) {
+            tag(ItemTags.CHEST_ARMOR).add(chestplate.get());
+        }
+        for (DeferredItem<Item> boot : ESItems.getBoots()) {
+            tag(ItemTags.FOOT_ARMOR).add(boot.get());
         }
 
         for (DeferredItem<? extends Item> food : ESItems.getFoods()) {

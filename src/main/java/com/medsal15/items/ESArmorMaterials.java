@@ -13,6 +13,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.Tags;
 
 public final class ESArmorMaterials {
     public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister
@@ -22,4 +23,8 @@ public final class ESArmorMaterials {
             () -> new ArmorMaterial(Map.of(ArmorItem.Type.CHESTPLATE, 2, ArmorItem.Type.HELMET, 1), 5,
                     SoundEvents.ARMOR_EQUIP_LEATHER, () -> Ingredient.of(ItemTags.WOOL),
                     List.of(new ArmorMaterial.Layer(ExtraStuck.modid("chef_armor"))), 0, 0));
+    public static final Holder<ArmorMaterial> PROPELLER_HAT = ARMOR_MATERIALS.register("propeller_hat",
+            () -> new ArmorMaterial(Map.of(ArmorItem.Type.HELMET, 1), 5,
+                    SoundEvents.ARMOR_EQUIP_LEATHER, () -> Ingredient.of(Tags.Items.INGOTS_IRON),
+                    List.of(new ArmorMaterial.Layer(ExtraStuck.modid("propeller_hat"))), 0, 0));
 }

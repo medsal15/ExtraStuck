@@ -1,0 +1,20 @@
+{
+    "name": "Heavy Boots",
+    "icon": "extrastuck:heavy_boots",
+    "category": "extrastuck:armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:heavy_boots",
+            "text": "A pair of boots reinforced with an anvil. Better than iron boots.$(br2)$(3)$(l)Special:$() Doubles gravity."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/heavy_boots_recipe.png"
+            ],
+            "text": "Combine iron boots and an anvil in a totem lathe."
+        }
+    ]
+}

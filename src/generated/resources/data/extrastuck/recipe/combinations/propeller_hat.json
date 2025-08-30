@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:iron_helmet"
+  },
+  "input2": {
+    "item": "minecraft:feather"
+  },
+  "mode": "and",
+  "output": "extrastuck:propeller_hat"
+}

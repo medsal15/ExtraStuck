@@ -216,6 +216,9 @@ public final class ESLangProvider extends LanguageProvider {
     private void addArmors() {
         addItem(ESItems.CHEF_HAT, "Chef Hat");
         addItem(ESItems.CHEF_APRON, "Chef Apron");
+
+        addItem(ESItems.HEAVY_BOOTS, "Heavy Boots");
+        addItem(ESItems.PROPELLER_HAT, "Propeller Hat");
     }
 
     private void addBlocks() {
