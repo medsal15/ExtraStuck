@@ -68,6 +68,10 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(Tags.Items.FOODS).add(food.get());
         }
 
+        for (DeferredItem<Item> card : ESItems.getModusCards()) {
+            tag(MSTags.Items.MODUS_CARD).add(card.get());
+        }
+
         tag(AMMO).addTag(AMMO_HANDGUN);
         tag(AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
 

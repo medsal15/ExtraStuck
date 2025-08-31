@@ -10,6 +10,7 @@ import com.mraof.minestuck.api.alchemy.GristTypes;
 import com.mraof.minestuck.api.alchemy.recipe.GristCostRecipeBuilder;
 import com.mraof.minestuck.api.alchemy.recipe.combination.CombinationRecipeBuilder;
 import com.mraof.minestuck.item.MSItems;
+import com.mraof.minestuck.util.MSTags;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -38,6 +39,7 @@ public final class ESRecipeProvider extends RecipeProvider {
         arrowRecipes(output);
         ammoRecipes(output);
         armorRecipes(output);
+        modusRecipes(output);
         blockRecipes(output);
 
         CombinationRecipeBuilder.of(ESItems.GIFT)
@@ -544,6 +546,15 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.PROPELLER_HAT)
                 .grist(GristTypes.RUST, 90).grist(GristTypes.GARNET, 17)
                 .grist(GristTypes.AMBER, 17).grist(GristTypes.COBALT, 17)
+                .build(output);
+    }
+
+    private void modusRecipes(@Nonnull RecipeOutput output) {
+        CombinationRecipeBuilder.of(ESItems.PILE_MODUS_CARD)
+                .input(MSTags.Items.MODUS_CARD).and().input(Items.BRICK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.PILE_MODUS_CARD)
+                .grist(GristTypes.BUILD, 234).grist(GristTypes.GARNET, 34)
                 .build(output);
     }
 

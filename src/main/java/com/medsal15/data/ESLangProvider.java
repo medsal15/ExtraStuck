@@ -80,6 +80,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
         addItem(ESItems.PIZZA, "Pizza");
 
+        addItem(ESItems.PILE_MODUS_CARD, "Pile Modus");
+
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
         addDeathMessages(ESDamageTypes.THORN_SHIELD, "%1$s struck %2$s's shield too hard",

@@ -24,6 +24,7 @@ import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.loot_modifiers.ESLootModifiers;
 import com.medsal15.mobeffects.ESMobEffects;
+import com.medsal15.modus.ESModus;
 import com.medsal15.structures.processors.ESProcessors;
 import com.mojang.logging.LogUtils;
 
@@ -113,6 +114,7 @@ public class ExtraStuck {
         ESItems.ITEMS.register(modEventBus);
         ESLootModifiers.GLM_SERIALIZERS.register(modEventBus);
         ESMobEffects.MOB_EFFECTS.register(modEventBus);
+        ESModus.MODUSES.register(modEventBus);
         ESProcessors.PROCESSORS.register(modEventBus);
         ESSounds.SOUND_EVENTS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered

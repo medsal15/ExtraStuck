@@ -411,6 +411,9 @@ public final class ESItems {
 
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
 
+    public static final DeferredItem<Item> PILE_MODUS_CARD = ITEMS.registerItem("pile_modus_card", Item::new,
+            new Item.Properties().stacksTo(1));
+
     // #region Blocks
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
     public static final DeferredItem<BlockItem> CUT_GARNET_STAIRS = ITEMS
@@ -540,6 +543,10 @@ public final class ESItems {
 
         for (DeferredItem<? extends Item> item : ESItems.getFoods()) {
             output.accept(item.get());
+        }
+
+        for (DeferredItem<Item> card : ESItems.getModusCards()) {
+            output.accept(card.get());
         }
 
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
@@ -683,6 +690,12 @@ public final class ESItems {
     public static Collection<DeferredItem<? extends Item>> getFoods() {
         ArrayList<DeferredItem<? extends Item>> list = new ArrayList<>();
         list.add(PIZZA);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getModusCards() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(PILE_MODUS_CARD);
         return list;
     }
 

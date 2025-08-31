@@ -1,0 +1,22 @@
+{
+    "name": "Pile Modus",
+    "icon": "extrastuck:pile_modus_card",
+    "category": "extrastuck:modus_cards",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:pile_modus_card"
+            },
+            "text": "A modus that allows a denser method of storage. Note that retrieving an item will make those above fall."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/pile_modus_card_recipe.png"
+            ],
+            "text": "Combine any modus card and a brick in a totem lathe."
+        }
+    ]
+}
