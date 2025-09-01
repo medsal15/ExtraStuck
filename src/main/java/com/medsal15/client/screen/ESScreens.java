@@ -2,6 +2,7 @@ package com.medsal15.client.screen;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.client.screen.modus.FortuneModusScreen;
+import com.medsal15.client.screen.modus.OreModusScreen;
 import com.medsal15.client.screen.modus.PileModusScreen;
 import com.medsal15.modus.ESModus;
 
@@ -18,5 +19,6 @@ public final class ESScreens {
     public static void registerScreenFactories(RegisterMenuScreensEvent event) {
         registerSylladexFactory(ESModus.PILE_MODUS, PileModusScreen::new);
         registerSylladexFactory(ESModus.FORTUNE_MODUS, FortuneModusScreen::new);
+        registerSylladexFactory(ESModus.ORE_MODUS, OreModusScreen::new);
     }
 }

@@ -10,7 +10,7 @@ public class PileModusScreen extends BaseModusScreen {
     protected PileModus modus;
 
     public PileModusScreen(Modus modus) {
-        super();
+        super(modus);
         this.modus = (PileModus) modus;
         textureIndex = 0;
     }

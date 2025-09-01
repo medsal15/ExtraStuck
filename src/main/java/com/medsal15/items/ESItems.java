@@ -418,6 +418,10 @@ public final class ESItems {
             new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> FORTUNE_MODUS_CARD = ITEMS.registerItem("fortune_modus_card", Item::new,
             new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> ORE_MODUS_CARD = ITEMS.registerItem("ore_modus_card", Item::new,
+            new Item.Properties().stacksTo(1));
+
+    public static final DeferredItem<BlockItem> CARD_ORE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_ORE);
 
     // #region Blocks
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
@@ -703,6 +707,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(PILE_MODUS_CARD);
         list.add(FORTUNE_MODUS_CARD);
+        list.add(ORE_MODUS_CARD);
         return list;
     }
 
@@ -757,6 +762,8 @@ public final class ESItems {
         list.add(ZILLIUM_BRICK_STAIRS);
         list.add(ZILLIUM_BRICK_SLAB);
         list.add(ZILLIUM_BRICK_WALL);
+
+        list.add(CARD_ORE);
 
         return list;
     }

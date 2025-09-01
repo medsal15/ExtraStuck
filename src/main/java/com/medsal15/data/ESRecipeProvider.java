@@ -572,6 +572,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.FORTUNE_MODUS_CARD)
                 .grist(GristTypes.BUILD, 357).grist(GristTypes.IODINE, 28).grist(GristTypes.AMBER, 28)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.ORE_MODUS_CARD)
+                .input(MSTags.Items.MODUS_CARD).or().input(Items.IRON_PICKAXE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.ORE_MODUS_CARD)
+                .grist(GristTypes.BUILD, 320).grist(GristTypes.DIAMOND, 16)
+                .build(output);
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

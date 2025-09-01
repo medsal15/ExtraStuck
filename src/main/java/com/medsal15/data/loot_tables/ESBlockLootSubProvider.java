@@ -75,5 +75,6 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(ESBlocks.ZILLIUM_BRICK_WALL.get());
 
         add(ESBlocks.PIZZA.get(), noDrop());
+        add(ESBlocks.CARD_ORE.get(), noDrop());
     }
 }

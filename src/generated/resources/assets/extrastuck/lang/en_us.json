@@ -1,4 +1,5 @@
 {
+  "block.extrastuck.card_ore": "Card Ore",
   "block.extrastuck.chiseled_garnet_bricks": "Chiseled Garnet Bricks",
   "block.extrastuck.chiseled_ruby_bricks": "Chiseled Ruby Bricks",
   "block.extrastuck.cobalt_bars": "Cobalt Bars",
@@ -154,6 +155,8 @@
   "item.extrastuck.non_contact_contract": "Non-Contact Contract",
   "item.extrastuck.non_contact_contract.tooltip": "This piece of paper has the ability to prevent contact with you",
   "item.extrastuck.office_key": "Office Key",
+  "item.extrastuck.ore_modus_card": "Ore Modus",
+  "item.extrastuck.ore_modus_card.tooltip": "Perfect for mining lovers",
   "item.extrastuck.pile_modus_card": "Pile Modus",
   "item.extrastuck.pogo_shield": "Pogo Shield",
   "item.extrastuck.pogo_shield.tooltip": "The shield that bounces back!",

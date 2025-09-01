@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 
 import org.slf4j.Logger;
 
+import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.model.armor.HeavyBootsModel;
 import com.medsal15.data.ESLangProvider;
@@ -107,6 +108,7 @@ public class ExtraStuck {
 
         // Register the Deferred Register to the mod event bus so items get registered
         ESArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
+        ESBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ESBlocks.BLOCKS.register(modEventBus);
         ESDataComponents.DATA_COMPONENTS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
