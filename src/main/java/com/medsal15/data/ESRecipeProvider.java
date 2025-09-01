@@ -23,6 +23,7 @@ import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
@@ -235,6 +236,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .define('I', Items.GOLD_INGOT)
                 .unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT))
                 .save(output, modLoc("shaped/gold_coin"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ESItems.GOLD_COIN), RecipeCategory.MISC,
+                new ItemStack(Items.GOLD_NUGGET), 0.1F, 200)
+                .unlockedBy("has_gold_coin", has(ESItems.GOLD_COIN))
+                .save(output, modLoc("smelting/gold_coin"));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ESItems.GOLD_COIN), RecipeCategory.MISC,
+                new ItemStack(Items.GOLD_NUGGET), 0.1F, 100)
+                .unlockedBy("has_gold_coin", has(ESItems.GOLD_COIN))
+                .save(output, modLoc("blasting/gold_coin"));
 
         CombinationRecipeBuilder.of(ESItems.STICKY_DIE)
                 .input(MSItems.DICE).or().input(Items.SLIME_BALL)
@@ -555,6 +564,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.PILE_MODUS_CARD)
                 .grist(GristTypes.BUILD, 234).grist(GristTypes.GARNET, 34)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.FORTUNE_MODUS_CARD)
+                .input(MSTags.Items.MODUS_CARD).and().input(Items.COOKIE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.FORTUNE_MODUS_CARD)
+                .grist(GristTypes.BUILD, 357).grist(GristTypes.IODINE, 28).grist(GristTypes.AMBER, 28)
                 .build(output);
     }
 

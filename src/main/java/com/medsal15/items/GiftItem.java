@@ -8,7 +8,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,12 +34,10 @@ public class GiftItem extends Item {
                     LootParams.Builder builder = new LootParams.Builder(serverLevel).withLuck(player.getLuck());
                     LootParams params = builder.create(LootContextParamSet.builder().build());
                     ObjectArrayList<ItemStack> rewards = table.getRandomItems(params);
-                    double x = player.getX();
-                    double y = player.getY();
-                    double z = player.getZ();
                     for (ItemStack reward : rewards) {
-                        ItemEntity itemEntity = new ItemEntity(level, x, y, z, reward);
-                        level.addFreshEntity(itemEntity);
+                        if (!player.getInventory().add(reward)) {
+                            player.drop(reward, false);
+                        }
                     }
                     if (!player.isCreative())
                         stack.shrink(1);

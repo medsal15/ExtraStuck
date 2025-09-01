@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 28,
+    "minestuck:build": 357,
+    "minestuck:iodine": 28
+  },
+  "ingredient": {
+    "item": "extrastuck:fortune_modus_card"
+  }
+}

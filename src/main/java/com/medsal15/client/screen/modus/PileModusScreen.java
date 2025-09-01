@@ -15,6 +15,7 @@ public class PileModusScreen extends BaseModusScreen {
         textureIndex = 0;
     }
 
+    @Override
     public void updateContent() {
         NonNullList<ItemStack> stacks = modus.getItems();
         int width = modus.getWidth();

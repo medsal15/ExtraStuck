@@ -1,0 +1,22 @@
+{
+    "name": "Fortune Modus",
+    "icon": "extrastuck:fortune_modus_card",
+    "category": "extrastuck:modus_cards",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:fortune_modus_card"
+            },
+            "text": "A modus with luck for you. Crack open the fortune cookie to discover what the past held!"
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/fortune_modus_card_recipe.png"
+            ],
+            "text": "Combine any modus card and a cookie in a totem lathe."
+        }
+    ]
+}

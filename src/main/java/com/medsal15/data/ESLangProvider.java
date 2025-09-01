@@ -79,8 +79,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.LUCK_TOKEN, "Luck Token");
         addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
         addItem(ESItems.PIZZA, "Pizza");
+        addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
+        addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");
 
         addItem(ESItems.PILE_MODUS_CARD, "Pile Modus");
+        addItem(ESItems.FORTUNE_MODUS_CARD, "Fortune Modus");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");

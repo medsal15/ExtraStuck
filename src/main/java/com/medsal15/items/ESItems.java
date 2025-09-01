@@ -33,6 +33,7 @@ import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.PropellerHatItem;
+import com.medsal15.items.food.FortuneCookie;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
@@ -253,7 +254,7 @@ public final class ESItems {
                     new MSItemProperties().durability(260)));
     public static final DeferredItem<Item> SLICE_AND_DICE = ITEMS.register("slice_and_dice",
             () -> new WeaponItem(
-                    new WeaponItem.Builder(Tiers.IRON, 2, -2F).efficiency(1F)
+                    new WeaponItem.Builder(Tiers.GOLD, 2, -2F).efficiency(1F)
                             .set(ESItemTypes.DICE_TOOL, MSItemTypes.KNIFE_TOOL)
                             .add(ESHitEffects.randomDamage(6)),
                     new MSItemProperties().durability(333)));
@@ -410,8 +411,12 @@ public final class ESItems {
     // #endregion Armors
 
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
+    public static final DeferredItem<Item> FORTUNE_COOKIE = ITEMS.registerItem("fortune_cookie", FortuneCookie::new,
+            new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().build()));
 
     public static final DeferredItem<Item> PILE_MODUS_CARD = ITEMS.registerItem("pile_modus_card", Item::new,
+            new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> FORTUNE_MODUS_CARD = ITEMS.registerItem("fortune_modus_card", Item::new,
             new Item.Properties().stacksTo(1));
 
     // #region Blocks
@@ -690,12 +695,14 @@ public final class ESItems {
     public static Collection<DeferredItem<? extends Item>> getFoods() {
         ArrayList<DeferredItem<? extends Item>> list = new ArrayList<>();
         list.add(PIZZA);
+        list.add(FORTUNE_COOKIE);
         return list;
     }
 
     public static Collection<DeferredItem<Item>> getModusCards() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(PILE_MODUS_CARD);
+        list.add(FORTUNE_MODUS_CARD);
         return list;
     }
 

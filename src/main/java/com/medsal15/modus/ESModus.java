@@ -15,4 +15,6 @@ public final class ESModus {
 
     public static final Supplier<ModusType<PileModus>> PILE_MODUS = MODUSES.register("pile_modus",
             () -> new ModusType<>(PileModus::new, ESItems.PILE_MODUS_CARD));
+    public static final Supplier<ModusType<FortuneModus>> FORTUNE_MODUS = MODUSES.register("fortune_modus",
+            () -> new ModusType<>(FortuneModus::new, ESItems.FORTUNE_MODUS_CARD));
 }

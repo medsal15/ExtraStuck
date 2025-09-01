@@ -27,7 +27,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
         basicItem(ESItems.LUCK_TOKEN.get());
         basicItem(ESItems.PIZZA.get());
+        basicItem(ESItems.FORTUNE_COOKIE.get());
+
         basicItem(ESItems.PILE_MODUS_CARD.get());
+        basicItem(ESItems.FORTUNE_MODUS_CARD.get());
     }
 
     private void registerShields() {
