@@ -21,12 +21,10 @@ import net.neoforged.fml.ModList;
 /**
  * Generic interpreter for create recipes that works for most of them
  *
- * TODO Sequenced Assembly more often than not has a chance to produce
- * byproducts and may not use deployed items
- *
  * @see {ItemApplicationInterpreter} for item application (e.g. deployers), as
  *      it supports keepHeldItem
  * @see {SpecialInterpreter} for mechanical crafting
+ * @see {SequencedInterpreter} for sequenced assembly
  */
 public record CreateBasicInterpreter(GristSet.Immutable processCost) implements RecipeInterpreter {
     public static final MapCodec<CreateBasicInterpreter> CODEC = RecordCodecBuilder
