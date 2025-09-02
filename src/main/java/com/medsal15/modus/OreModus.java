@@ -1,6 +1,7 @@
 package com.medsal15.modus;
 
 import com.medsal15.blockentities.CardOreBlockEntity;
+import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.inventory.captchalogue.ModusType;
 
@@ -22,6 +23,7 @@ public class OreModus extends BaseModus {
         if (!item.isEmpty()) {
             ItemStack ore = ESItems.CARD_ORE.toStack();
             CompoundTag tag = new CompoundTag();
+            CardOreBlockEntity.addEntityType(tag, ESBlockEntities.CARD_ORE.get());
             tag.putString("id", "extrastuck:card_ore");
             tag.put(CardOreBlockEntity.ITEM_STORED, item.save(player.level().registryAccess()));
             ore.set(DataComponents.BLOCK_ENTITY_DATA, CustomData.of(tag));

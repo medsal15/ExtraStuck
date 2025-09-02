@@ -1,0 +1,20 @@
+{
+    "name": "Broom",
+    "icon": "extrastuck:broom",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:broom"
+            },
+            "text": "Sweep your foes with this boring, everyday tool!$(br2)$(3)$(l)Special:$() Has extra knockback and doubles as a brush."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["extrastuck:textures/patchouli_books/broom_recipe.png"],
+            "text": "Combine a brush and a hay bale in the totem lathe."
+        }
+    ]
+}

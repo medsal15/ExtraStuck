@@ -202,7 +202,7 @@ public class ExtraStuck {
 
         private static void addBlocking(DeferredItem<Item> item) {
             ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("blocking"),
-                    (stack, world, entity, integer) -> entity != null && entity.isUsingItem()
+                    (stack, world, entity, entityid) -> entity != null && entity.isUsingItem()
                             && entity.getUseItem() == stack ? 1.0F : 0.0F);
         }
 

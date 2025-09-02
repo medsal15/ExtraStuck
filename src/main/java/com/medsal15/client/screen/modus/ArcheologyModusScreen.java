@@ -5,10 +5,10 @@ import com.mraof.minestuck.inventory.captchalogue.Modus;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 
-public class FortuneModusScreen extends BaseModusScreen {
-    public FortuneModusScreen(Modus modus) {
+public class ArcheologyModusScreen extends BaseModusScreen {
+    public ArcheologyModusScreen(Modus modus) {
         super(modus);
-        textureIndex = 1;
+        textureIndex = 3;
     }
 
     @Override

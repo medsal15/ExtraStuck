@@ -151,6 +151,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.OFFICE_KEY.get());
 
         handheldItem(ESItems.BAGUETTE_MAGIQUE.get());
+
+        handheldItem(ESItems.BROOM.get());
     }
 
     private void registerRangedWeapons() {
@@ -169,6 +171,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.PILE_MODUS_CARD.get());
         basicItem(ESItems.FORTUNE_MODUS_CARD.get());
         basicItem(ESItems.ORE_MODUS_CARD.get());
+        basicItem(ESItems.ARCHEOLOGY_MODUS_CARD.get());
 
         basicItem(ESItems.FORTUNE_COOKIE.get());
         withExistingParent(ESItems.CARD_ORE.getId().toString(), modLoc("block/card_ore"));

@@ -19,4 +19,6 @@ public final class ESModus {
             () -> new ModusType<>(FortuneModus::new, ESItems.FORTUNE_MODUS_CARD));
     public static final Supplier<ModusType<OreModus>> ORE_MODUS = MODUSES.register("ore_modus",
             () -> new ModusType<>(OreModus::new, ESItems.ORE_MODUS_CARD));
+    public static final Supplier<ModusType<ArcheologyModus>> ARCHEOLOGY_MODUS = MODUSES.register("archeology_modus",
+            () -> new ModusType<>(ArcheologyModus::new, ESItems.ARCHEOLOGY_MODUS_CARD));
 }

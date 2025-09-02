@@ -80,6 +80,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.LUCK_TOKEN, "Luck Token");
         addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
         addItem(ESItems.PIZZA, "Pizza");
+        addItem(ESItems.OLD_BRUSH, "Old Brush");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -210,6 +211,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.BAGUETTE_MAGIQUE, "Baguette Magique");
         addItemTooltip(ESItems.BAGUETTE_MAGIQUE, "Un morceau de pain utilisé par les magiciens");
 
+        addItem(ESItems.BROOM, "Broom");
+        addItemTooltip(ESItems.BROOM, "Sweep sweep sweep");
+
         addItem(ESItems.HANDGUN, "Handgun");
         addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
         addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");
@@ -231,6 +235,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.FORTUNE_MODUS_CARD, "Fortune Modus");
         addItem(ESItems.ORE_MODUS_CARD, "Ore Modus");
         addItemTooltip(ESItems.ORE_MODUS_CARD, "Perfect for mining lovers");
+        addItem(ESItems.ARCHEOLOGY_MODUS_CARD, "Archeology Modus");
 
         addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
         addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");

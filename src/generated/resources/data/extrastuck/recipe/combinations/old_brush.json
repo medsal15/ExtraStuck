@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:brush"
+  },
+  "input2": {
+    "item": "minecraft:netherite_scrap"
+  },
+  "mode": "and",
+  "output": "extrastuck:old_brush"
+}

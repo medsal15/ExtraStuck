@@ -88,6 +88,10 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(ItemTags.TRIDENT_ENCHANTABLE).add(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD.get(),
                 ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
         tag(ItemTags.BREAKS_DECORATED_POTS).add(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
+        tag(Tags.Items.TOOLS_BRUSH).add(ESItems.OLD_BRUSH.get(), ESItems.BROOM.get());
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ESItems.OLD_BRUSH.get());
+        tag(ItemTags.VANISHING_ENCHANTABLE).add(ESItems.OLD_BRUSH.get());
+
         tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get());
 
         tag(Tags.Items.FOODS).add(ESItems.SWEET_TOOTH.get());

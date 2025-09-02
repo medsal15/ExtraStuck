@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:chalk": 39,
+    "minestuck:iodine": 50,
+    "minestuck:shale": 27
+  },
+  "ingredient": {
+    "item": "extrastuck:broom"
+  }
+}

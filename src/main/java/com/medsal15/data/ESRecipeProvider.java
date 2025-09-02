@@ -56,6 +56,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.PIZZA)
                 .grist(GristTypes.AMBER, 6).grist(GristTypes.RUST, 1)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.OLD_BRUSH)
+                .input(Items.BRUSH).and().input(Items.NETHERITE_SCRAP)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.OLD_BRUSH)
+                .grist(GristTypes.SHALE, 8).grist(GristTypes.RUST, 32).grist(GristTypes.CAULK, 15)
+                .build(output);
     }
 
     private void shieldRecipes(@Nonnull RecipeOutput output) {
@@ -389,6 +396,15 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Wands
 
+        // #region Canes
+        CombinationRecipeBuilder.of(ESItems.BROOM)
+                .input(Items.BRUSH).and().input(Items.HAY_BLOCK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BROOM)
+                .grist(GristTypes.CHALK, 39).grist(GristTypes.IODINE, 50).grist(GristTypes.SHALE, 27)
+                .build(output);
+        // #endregion Canes
+
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
@@ -592,6 +608,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.ORE_MODUS_CARD)
                 .grist(GristTypes.BUILD, 320).grist(GristTypes.DIAMOND, 16)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.ARCHEOLOGY_MODUS_CARD)
+                .input(MSTags.Items.MODUS_CARD).or().input(Items.BRUSH)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.ARCHEOLOGY_MODUS_CARD)
+                .grist(GristTypes.BUILD, 210).grist(GristTypes.SHALE, 25)
                 .build(output);
     }
 

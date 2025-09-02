@@ -36,6 +36,7 @@ import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.food.FortuneCookie;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
+import com.medsal15.items.melee.BrushWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
 import com.medsal15.items.projectiles.ESArrowItem;
 import com.medsal15.items.projectiles.ESBulletItem;
@@ -63,6 +64,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BrushItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -364,6 +366,14 @@ public final class ESItems {
                     .add(OnHitEffect.SPAWN_BREADCRUMBS),
                     new Item.Properties()));
     // #endregion Wands
+    // #region Canes
+    public static final DeferredItem<Item> BROOM = ITEMS.register("broom",
+            () -> new BrushWeapon(
+                    new WeaponItem.Builder(MSItemTypes.ORGANIC_TIER, 3, -2F).set(MSItemTypes.CANE_TOOL)
+                            .set(ESRightClickBlockEffects::brush)
+                            .add(OnHitEffect.enemyKnockback(1F)),
+                    new Item.Properties()));
+    // #endregion Canes
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
             () -> new ESGun(
@@ -416,12 +426,15 @@ public final class ESItems {
                                                     Operation.ADD_VALUE),
                                             EquipmentSlotGroup.HEAD)
                                     .build())));
-    /**
-     * TODO axolotl armor
-     * * regen on damage
-     * * prismarine armor && axolotl bucket/ghast tear?
+    /*
+     * //TODO axolotl armor
+     * regen on damage
+     * prismarine armor && axolotl bucket/ghast tear?
      */
     // #endregion Armors
+
+    public static final DeferredItem<Item> OLD_BRUSH = ITEMS.registerItem("old_brush", BrushItem::new,
+            new Item.Properties().stacksTo(1).durability(320));
 
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
 
@@ -432,6 +445,8 @@ public final class ESItems {
             new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> ORE_MODUS_CARD = ITEMS.registerItem("ore_modus_card", Item::new,
             new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> ARCHEOLOGY_MODUS_CARD = ITEMS.registerItem("archeology_modus_card",
+            Item::new, new Item.Properties().stacksTo(1));
 
     public static final DeferredItem<BlockItem> CARD_ORE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_ORE);
     public static final DeferredItem<Item> FORTUNE_COOKIE = ITEMS.registerItem("fortune_cookie", FortuneCookie::new,
@@ -538,6 +553,11 @@ public final class ESItems {
                     .forBook(modid("extrastuck")));
         }
 
+        for (DeferredItem<Item> card : ESItems.getModusCards()) {
+            output.accept(card.get());
+        }
+        output.accept(OLD_BRUSH);
+
         for (DeferredItem<Item> item : ESItems.getShields()) {
             output.accept(item.get());
         }
@@ -567,10 +587,6 @@ public final class ESItems {
 
         for (DeferredItem<? extends Item> item : ESItems.getFoods()) {
             output.accept(item.get());
-        }
-
-        for (DeferredItem<Item> card : ESItems.getModusCards()) {
-            output.accept(card.get());
         }
 
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
@@ -654,6 +670,8 @@ public final class ESItems {
         list.add(OFFICE_KEY);
         // Wands
         list.add(BAGUETTE_MAGIQUE);
+        // Canes
+        list.add(BROOM);
         return list;
     }
 
@@ -725,6 +743,7 @@ public final class ESItems {
         list.add(PILE_MODUS_CARD);
         list.add(FORTUNE_MODUS_CARD);
         list.add(ORE_MODUS_CARD);
+        list.add(ARCHEOLOGY_MODUS_CARD);
         return list;
     }
 

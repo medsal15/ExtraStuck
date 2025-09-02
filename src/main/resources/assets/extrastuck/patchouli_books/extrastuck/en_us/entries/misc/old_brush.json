@@ -1,0 +1,22 @@
+{
+    "name": "Old Brush",
+    "icon": "extrastuck:old_brush",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:old_brush"
+            },
+            "text": "An ancient brush with extra durability."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/old_brush_recipe.png"
+            ],
+            "text": "Combine netherite scrap and a brush in a totem lathe."
+        }
+    ]
+}
