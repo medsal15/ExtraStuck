@@ -173,6 +173,10 @@ public final class ESLangProvider extends LanguageProvider {
 
     private void addWeapons() {
         addItem(ESItems.GEM_BREAKER, "Gem Breaker");
+        addItem(ESItems.BELL_HAMMER, "Bell Hammer");
+        addItemTooltip(ESItems.BELL_HAMMER, "It rings with every strike");
+        addItem(ESItems.BLIND_HAMMER, "Blind Hammer");
+        addItemTooltip(ESItems.BLIND_HAMMER, "With you in the dark");
 
         addItem(ESItems.GOLD_COIN, "Gold Coin");
         addItem(ESItems.STICKY_DIE, "Sticky Die");

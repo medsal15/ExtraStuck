@@ -1,0 +1,22 @@
+{
+    "name": "Blind Hammer",
+    "icon": "extrastuck:blind_hammer",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:blind_hammer"
+            },
+            "text": "A terrible weapon that rings with every strike.$(br2)$(3)$(l)Special:$() Blinds the user and targets."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/blind_hammer_recipe.png"
+            ],
+            "text": "Combine a $(l:extrastuck:weapons/bell_hammer)bell hammer$(/l) and a sculk shrieker in the punch designix."
+        }
+    ]
+}

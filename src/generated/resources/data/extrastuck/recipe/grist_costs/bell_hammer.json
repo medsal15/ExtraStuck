@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:gold": 444,
+    "minestuck:mercury": 150,
+    "minestuck:rust": 300
+  },
+  "ingredient": {
+    "item": "extrastuck:bell_hammer"
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Bell Hammer",
+    "icon": "extrastuck:bell_hammer",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:bell_hammer"
+            },
+            "text": "A strong weapon that rings with every strike."
+        },
+        {
+            "type": "patchouli:image",
+            "images": [
+                "extrastuck:textures/patchouli_books/bell_hammer_recipe.png"
+            ],
+            "text": "Combine a lucerne hammer and a bell in the totem lathe."
+        }
+    ]
+}

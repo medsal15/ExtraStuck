@@ -23,16 +23,11 @@ public final class ESItemModelProvider extends ItemModelProvider {
         registerRangedWeapons();
         registerAmmo();
         registerArmors();
+        registerModus();
         registerBlocks();
 
         basicItem(ESItems.LUCK_TOKEN.get());
         basicItem(ESItems.PIZZA.get());
-        basicItem(ESItems.FORTUNE_COOKIE.get());
-        withExistingParent(ESItems.CARD_ORE.getId().toString(), modLoc("block/card_ore"));
-
-        basicItem(ESItems.PILE_MODUS_CARD.get());
-        basicItem(ESItems.FORTUNE_MODUS_CARD.get());
-        basicItem(ESItems.ORE_MODUS_CARD.get());
     }
 
     private void registerShields() {
@@ -168,6 +163,15 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
         basicItem(ESItems.HEAVY_BOOTS.get());
         basicItem(ESItems.PROPELLER_HAT.get());
+    }
+
+    private void registerModus() {
+        basicItem(ESItems.PILE_MODUS_CARD.get());
+        basicItem(ESItems.FORTUNE_MODUS_CARD.get());
+        basicItem(ESItems.ORE_MODUS_CARD.get());
+
+        basicItem(ESItems.FORTUNE_COOKIE.get());
+        withExistingParent(ESItems.CARD_ORE.getId().toString(), modLoc("block/card_ore"));
     }
 
     private void registerBlocks() {

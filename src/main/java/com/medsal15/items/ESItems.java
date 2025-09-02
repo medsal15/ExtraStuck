@@ -51,6 +51,7 @@ import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -216,6 +217,19 @@ public final class ESItems {
                     new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 7, -3.2F).efficiency(7.0F)
                             .set(MSItemTypes.HAMMER_TOOL),
                     new MSItemProperties().durability(1250), Map.of(Enchantments.FORTUNE, 1)));
+    // TODO guide pages
+    public static final DeferredItem<Item> BELL_HAMMER = ITEMS.register("bell_hammer",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.GOLD, 8, -3.2F).efficiency(12F)
+                            .add(OnHitEffect.playSound(() -> SoundEvents.BELL_BLOCK)),
+                    new MSItemProperties().durability(2500)));
+    public static final DeferredItem<Item> BLIND_HAMMER = ITEMS.register("blind_hammer",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.DENIZEN_TIER, 8, -3.2F).efficiency(15F)
+                            .add(OnHitEffect.playSound(() -> SoundEvents.BELL_BLOCK))
+                            .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 100)))
+                            .add(ESInventoryTickEffects::blind),
+                    new MSItemProperties().durability(2500)));
     // #endregion Hammers
     // #region Dice
     public static final DeferredItem<Item> GOLD_COIN = ITEMS.register("gold_coin",
@@ -411,9 +425,8 @@ public final class ESItems {
     // #endregion Armors
 
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
-    public static final DeferredItem<Item> FORTUNE_COOKIE = ITEMS.registerItem("fortune_cookie", FortuneCookie::new,
-            new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().build()));
 
+    // #region Modus
     public static final DeferredItem<Item> PILE_MODUS_CARD = ITEMS.registerItem("pile_modus_card", Item::new,
             new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> FORTUNE_MODUS_CARD = ITEMS.registerItem("fortune_modus_card", Item::new,
@@ -422,6 +435,9 @@ public final class ESItems {
             new Item.Properties().stacksTo(1));
 
     public static final DeferredItem<BlockItem> CARD_ORE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_ORE);
+    public static final DeferredItem<Item> FORTUNE_COOKIE = ITEMS.registerItem("fortune_cookie", FortuneCookie::new,
+            new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().build()));
+    // #endregion Modus
 
     // #region Blocks
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
@@ -615,6 +631,8 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         // Hammers
         list.add(GEM_BREAKER);
+        list.add(BELL_HAMMER);
+        list.add(BLIND_HAMMER);
         // Dice
         list.add(GOLD_COIN);
         list.add(STICKY_DIE);

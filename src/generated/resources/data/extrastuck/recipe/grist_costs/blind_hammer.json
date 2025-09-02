@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:diamond": 1250,
+    "minestuck:rust": 900,
+    "minestuck:tar": 3444
+  },
+  "ingredient": {
+    "item": "extrastuck:blind_hammer"
+  }
+}

@@ -225,6 +225,20 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.GEM_BREAKER)
                 .grist(GristTypes.AMETHYST, 63).grist(GristTypes.RUBY, 63).grist(GristTypes.MARBLE, 127)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BELL_HAMMER)
+                .input(MSItems.LUCERNE_HAMMER).and().input(Items.BELL)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BELL_HAMMER)
+                .grist(GristTypes.GOLD, 444).grist(GristTypes.MERCURY, 150).grist(GristTypes.RUST, 300)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BLIND_HAMMER)
+                .input(ESItems.BELL_HAMMER).or().input(Items.SCULK_SHRIEKER)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BLIND_HAMMER)
+                .grist(GristTypes.TAR, 3444).grist(GristTypes.DIAMOND, 1250).grist(GristTypes.RUST, 900)
+                .build(output);
         // #endregion Hammers
 
         // #region Dice

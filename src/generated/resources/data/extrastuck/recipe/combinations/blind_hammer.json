@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:bell_hammer"
+  },
+  "input2": {
+    "item": "minecraft:sculk_shrieker"
+  },
+  "mode": "or",
+  "output": "extrastuck:blind_hammer"
+}

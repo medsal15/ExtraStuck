@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:lucerne_hammer"
+  },
+  "input2": {
+    "item": "minecraft:bell"
+  },
+  "mode": "and",
+  "output": "extrastuck:bell_hammer"
+}
