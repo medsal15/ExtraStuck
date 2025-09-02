@@ -217,7 +217,6 @@ public final class ESItems {
                     new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 7, -3.2F).efficiency(7.0F)
                             .set(MSItemTypes.HAMMER_TOOL),
                     new MSItemProperties().durability(1250), Map.of(Enchantments.FORTUNE, 1)));
-    // TODO guide pages
     public static final DeferredItem<Item> BELL_HAMMER = ITEMS.register("bell_hammer",
             () -> new WeaponItem(
                     new WeaponItem.Builder(Tiers.GOLD, 8, -3.2F).efficiency(12F)

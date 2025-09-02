@@ -1,0 +1,57 @@
+{
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 2,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:big_tree/top/fight",
+                "projection": "rigid",
+                "processors": "minestuck:structure_block_registry"
+            }
+        },
+        {
+            "weight": 2,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:big_tree/top/maze",
+                "projection": "rigid",
+                "processors": "minestuck:structure_block_registry"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:big_tree/top/store",
+                "projection": "rigid",
+                "processors": [
+                    {
+                        "processor_type": "minestuck:block_registry"
+                    },
+                    {
+                        "processor_type": "extrastuck:place_consort",
+                        "merchant": "food"
+                    }
+                ]
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:big_tree/top/store",
+                "projection": "rigid",
+                "processors": [
+                    {
+                        "processor_type": "minestuck:block_registry"
+                    },
+                    {
+                        "processor_type": "extrastuck:place_consort",
+                        "merchant": "general"
+                    }
+                ]
+            }
+        }
+    ]
+}
