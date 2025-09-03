@@ -12,11 +12,12 @@
             "text": "A large piece of paper covered in legalese that boils down to \"You are not allowed to touch this person\"."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/non_contact_contract_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/wooden_shield)wooden shield$(/l) and paper in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Wooden Shield and Paper in a Totem Lathe.",
+            "left": "extrastuck:wooden_shield",
+            "mode": "&&",
+            "right": "minecraft:paper",
+            "result": "extrastuck:non_contact_contract"
         }
     ]
 }

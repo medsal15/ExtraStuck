@@ -12,11 +12,12 @@
             "text": "A powerful shield made of garnet (mostly).$(br2)$(3)$(l)Special:$() When held in off-hand, grants +0.1 attack speed."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/garnet_shield_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/diamond_shield)diamond shield$(/l) and a frog in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Diamond Shield and a Frog in a Totem Lathe.",
+            "left": "extrastuck:diamond_shield",
+            "mode": "&&",
+            "right": "minestuck:frog",
+            "result": "extrastuck:garnet_shield"
         }
     ]
 }

@@ -12,11 +12,12 @@
             "text": "A terrible weapon that rings with every strike.$(br2)$(3)$(l)Special:$() Blinds the user and targets."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/blind_hammer_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:weapons/bell_hammer)bell hammer$(/l) and a sculk shrieker in the punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Bell Hammer and a Sculk Shrieker in a Punch Designix.",
+            "left": "extrastuck:bell_hammer",
+            "mode": "&&",
+            "right": "minecraft:sculk_shrieker",
+            "result": "extrastuck:blind_hammer"
         }
     ]
 }

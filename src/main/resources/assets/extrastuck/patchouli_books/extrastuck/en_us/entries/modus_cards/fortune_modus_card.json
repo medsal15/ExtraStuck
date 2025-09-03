@@ -12,11 +12,12 @@
             "text": "A modus with luck for you. Crack open the fortune cookie to discover what the past held!"
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/fortune_modus_card_recipe.png"
-            ],
-            "text": "Combine any modus card and a cookie in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine any modus card and a Cookie in a Totem Lathe.",
+            "left": "tag:minestuck:modus_card",
+            "mode": "&&",
+            "right": "minecraft:cookie",
+            "result": "extrastuck:fortune_modus_card"
         }
     ]
 }

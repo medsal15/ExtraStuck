@@ -12,11 +12,12 @@
             "text": "A shield similar to an eldritch creature.$(br)Why does it look like an eye with teeth? What kind of creature looks like that?$(br2)$(3)$(l)Special:$() Blocking damage grants a short duration damage boost."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/eldritch_shield_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/jawbiter)jawbiter$(/l) and a grimoire for summoning the zoologically dubious in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Jawbiter and a Grimoire in a Punch Designix.",
+            "left": "extrastuck:jawbiter",
+            "mode": "||",
+            "right": "minestuck:grimoire",
+            "result": "extrastuck:eldritch_shield"
         }
     ]
 }

@@ -12,11 +12,12 @@
             "text": "This weak arrow barely deals any damage.$(br2)$(3)$(l)Special:$() Heals 5 damage. Only applies to teammates and pets if you're on a team."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/crusader_crossbolt_recipe.png"
-            ],
-            "text": "Combine an arrow and a golden carrot or glistering melon slice in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine an Arrow and a Golden Carrot/Glistering Melon Slice in a Punch Designix.",
+            "left": "minecraft:arrow",
+            "mode": "||",
+            "right": "minecraft:golden_carrot,minecraft:glistering_melon_slice",
+            "result": "extrastuck:crusader_crossbolt"
         }
     ]
 }

@@ -1,0 +1,9 @@
+{
+    "components": [
+        {
+            "type": "patchouli:custom",
+            "class": "com.medsal15.compat.patchouli.ComponentGristSet",
+            "item": "#item"
+        }
+    ]
+}

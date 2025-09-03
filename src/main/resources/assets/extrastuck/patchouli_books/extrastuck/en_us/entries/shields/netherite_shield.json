@@ -14,7 +14,7 @@
         {
             "type": "patchouli:smithing",
             "recipe": "extrastuck:smithing/netherite_shield",
-            "text": "Upgrade your diamond shield like any other diamond tool in a smithing table."
+            "text": "Upgrade your Diamond Shield like any other diamond tool in a smithing table."
         }
     ]
 }

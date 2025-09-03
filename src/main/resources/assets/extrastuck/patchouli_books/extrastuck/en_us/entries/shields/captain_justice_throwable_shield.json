@@ -10,11 +10,17 @@
             "text": "A shield that doubles as a ranged weapon.$(br2)$(3)$(l)Special:$() Shift-right click to toggle between shield and ranged weapon modes.$(br2)$(n)Tip:$() The last word in the shield's name tells you what it can do."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/captain_justice_throwable_shield_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/riot_shield)riot shield$(/l) and a trident in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Riot Shield and a Trident in a Totem Lathe.",
+            "left": "extrastuck:riot_shield",
+            "mode": "&&",
+            "right": "minecraft:trident",
+            "result": "extrastuck:captain_justice_throwable_shield"
+        },
+        {
+            "type": "extrastuck:grist_cost",
+            "text": "Throwable version. Make sure you don't mistake it with the shield!",
+            "item": "extrastuck:captain_justice_shield_throwable"
         }
     ]
 }

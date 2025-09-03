@@ -12,11 +12,12 @@
             "text": "An arrow made of prismarine. You know, the underwater stuff.$(br2)$(3)$(l)Special:$() Flies through water as if it were air."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/prismarine_arrow_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:arrows/quartz_arrow)quartz arrow$(/l) and a prismarine shard in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Quartz Arrow and a Prismarine Shard in a Totem Lathe.",
+            "left": "extrastuck:quartz_arrow",
+            "mode": "&&",
+            "right": "minecraft:prismarine_shard",
+            "result": "extrastuck:prismarine_arrow"
         }
     ]
 }

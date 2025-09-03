@@ -12,11 +12,12 @@
             "text": "An upgraded pogo shield, but you can aim where the projectiles go.$(br)$(br2)$(3)$(l)Special:$() Blocked projectiles bounce back."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/return_to_sender_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/pogo_shield)pogo shield$(/l) and a mailbox in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Pogo Shield and a Mailbox in a Punch Designix.",
+            "left": "extrastuck:pogo_shield",
+            "mode": "||",
+            "right": "minestuck:mailbox",
+            "result": "extrastuck:return_to_sender"
         }
     ]
 }

@@ -12,11 +12,12 @@
             "text": "Through the power of Santa, this shield gives extra gifts.$(br2)$(3)$(l)Special:$() Has a 10% chance to drop a gift on blocking."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/gift_protection_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/non_contact_contract)non-contact contract$(/l) and a $(l:extrastuck:misc/gift)gift$(/l) in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Non-Contact Contract and a Gift in a Punch Designix.",
+            "left": "extrastuck:non_contact_contract",
+            "mode": "||",
+            "right": "extrastuck:gift",
+            "result": "extrastuck:gift_protection"
         }
     ]
 }

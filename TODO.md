@@ -12,8 +12,6 @@ Improve mod page with fancy graphic
 
 Allow change shields (wooden shield) to also transform when dropped
 
-Create a pair of custom renders for combination/grist recipes in patchouli (so i can put a grist cost on its own)
-
 ### Machines ###
 
 Atheneum add-on loader: adds extra items in the atheneum

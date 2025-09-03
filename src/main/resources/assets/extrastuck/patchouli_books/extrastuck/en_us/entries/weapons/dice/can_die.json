@@ -12,11 +12,12 @@
             "text": "A large jawbreaker shaped like a 12 sided die.$(br2)$(3)$(l)Special:$() Deals up to 6 extra damage, allows underlings to drop candy."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/can_die_recipe.png"
-            ],
-            "text": "Combine a dice and candy corn in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Dice and Candy Corn in a Punch Designix.",
+            "left": "minestuck:dice",
+            "mode": "||",
+            "right": "minestuck:candy_corn",
+            "result": "extrastuck:can_die"
         }
     ]
 }

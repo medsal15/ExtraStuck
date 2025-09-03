@@ -12,11 +12,12 @@
             "text": "The unexpected pogo shield.$(br2)$(3)$(l)Special:$() Blocked projectiles bounce back. Don't expect good aim."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/pogo_shield_recipe.png"
-            ],
-            "text": "Combine an $(l:extrastuck:shields/iron_shield)iron shield$(/l) and a slime ball in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine an Iron Shield and a Slimeball in a Totem Lathe.",
+            "left": "extrastuck:iron_shield",
+            "mode": "&&",
+            "right": "minecraft:slime_ball",
+            "result": "extrastuck:pogo_shield"
         }
     ]
 }

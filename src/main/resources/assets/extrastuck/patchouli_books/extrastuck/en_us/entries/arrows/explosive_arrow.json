@@ -12,11 +12,12 @@
             "text": "Turns out combining fire and electricity creates a rather... volatile result.$(br2)$(3)$(l)Special:$() Creates a small explosion on hit."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/explosive_arrow_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:arrows/flame_arrow)flame arrow$(/l) and a $(l:extrastuck:arrows/lightning_arrow)lightning bolt$(/l) in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Flame Arrow and a Lightning Arrow in a Punch Designix.",
+            "left": "extrastuck:flame_arrow",
+            "mode": "||",
+            "right": "extrastuck:lightning_arrow",
+            "result": "extrastuck:explosive_arrow"
         }
     ]
 }

@@ -12,11 +12,12 @@
             "text": "A pure white bat meant to fight undeads.$(br2)$(3)$(l)Special:$() Has an extra level of Smite."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/silver_bat_recipe.png"
-            ],
-            "text": "Combine a metal bat and glass in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Metal Bat and Glass in a Totem Lathe.",
+            "left": "minestuck:metal_bat",
+            "mode": "&&",
+            "right": "minecraft:glass",
+            "result": "extrastuck:silver_bat"
         }
     ]
 }

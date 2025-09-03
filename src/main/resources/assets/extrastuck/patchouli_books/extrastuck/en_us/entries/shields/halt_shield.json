@@ -12,11 +12,12 @@
             "text": "A shield with the face of a powerful being on it.$(br2)$(3)$(l)Special:$() Knocks melee attackers back and turns them around."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/halt_shield_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/flame_shield)flame shield$(/l) and any wooden door in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Flame Shield and a wooden door in a Punch Designix.",
+            "left": "extrastuck:flame_shield",
+            "mode": "||",
+            "right": "tag:minecraft:wooden_doors",
+            "result": "extrastuck:halt_shield"
         }
     ]
 }

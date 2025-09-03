@@ -12,11 +12,12 @@
             "text": "Jawbreakers are not strong enough. This candy bites attackers instead.$(br2)$(3)$(l)Special:$() Deals 4 hearts of damage to melee attackers, and allows underlings to drop candy."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/jawbiter_recipe.png"
-            ],
-            "text": "Combine $(l:extrastuck:shields/spikes_on_a_slab)spikes on a slab$(/l) and some candy corn in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine Spikes on a Slab and Candy Corn in a Totem Lathe.",
+            "left": "extrastuck:spikes_on_a_slab",
+            "mode": "&&",
+            "right": "minestuck:candy_corn",
+            "result": "extrastuck:jawbiter"
         }
     ]
 }

@@ -12,9 +12,12 @@
             "text": "A famous dish from a foreign country. Can be placed and eaten in 4 slices that refill 2 hunger."
         },
         {
-            "type": "patchouli:image",
-            "images": ["extrastuck:textures/patchouli_books/pizza_recipe.png"],
-            "text": "Combine bread and beetroot in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine Bread and a Beetroot in a Punch Designix.",
+            "left": "minecraft:bread",
+            "mode": "||",
+            "right": "minecraft:beetroot",
+            "result": "extrastuck:pizza"
         }
     ]
 }

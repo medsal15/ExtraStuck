@@ -12,11 +12,12 @@
             "text": "This shield is covered in spikes, so don't hold it backwards.$(br2)$(3)$(l)Special:$() Deals 3 hearts of damage to melee enemies."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/spikes_on_a_slab_recipe.png"
-            ],
-            "text": "Combine an $(l:extrastuck:shields/iron_shield)iron shield$(/l) and spikes in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine an Iron Shield and Spikes in a Punch Designix.",
+            "left": "extrastuck:iron_shield",
+            "mode": "||",
+            "right": "minestuck:spikes",
+            "result": "extrastuck:spikes_on_a_slab"
         }
     ]
 }

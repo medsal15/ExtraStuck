@@ -12,11 +12,12 @@
             "text": "Finally, a hammer meant to break blocks instead of enemies.$(br2)$(3)$(l)Special:$() Has an extra level of Fortune."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/gem_breaker_recipe.png"
-            ],
-            "text": "Combine a regi hammer and a diamond or emerald block in the punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Regihammer and a Block of Diamond or Emerald in a Punch Designix.",
+            "left": "minestuck:regi_hammer",
+            "mode": "||",
+            "right": "minecraft:diamond_block,minecraft:emerald_block",
+            "result": "extrastuck:gem_breaker"
         }
     ]
 }

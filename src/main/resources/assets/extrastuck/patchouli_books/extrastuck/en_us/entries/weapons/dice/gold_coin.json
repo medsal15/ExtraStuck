@@ -14,7 +14,7 @@
         {
             "type": "patchouli:crafting",
             "recipe": "extrastuck:shaped/gold_coin",
-            "text": "Combine 4 gold nuggets and a gold ingot."
+            "text": "Combine 4 Gold Nuggets and a Gold Ingot."
         }
     ]
 }

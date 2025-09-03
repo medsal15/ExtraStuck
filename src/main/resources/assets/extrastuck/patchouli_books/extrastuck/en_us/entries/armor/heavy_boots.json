@@ -10,11 +10,12 @@
             "text": "A pair of boots reinforced with an anvil. Better than iron boots.$(br2)$(3)$(l)Special:$() Doubles gravity."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/heavy_boots_recipe.png"
-            ],
-            "text": "Combine iron boots and an anvil in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine Iron Boots and an Anvil in a Totem Lathe.",
+            "left": "minecraft:iron_boots",
+            "mode": "&&",
+            "right": "minecraft:anvil",
+            "result": "extrastuck:heavy_boots"
         }
     ]
 }

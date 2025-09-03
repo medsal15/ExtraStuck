@@ -10,18 +10,20 @@
             "text": "These shiny garnet blocks provide a much-needed touch of red."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/garnet_bricks_recipe.png"
-            ],
-            "text": "Combine cruxite bricks and blue dye in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine Cruxite Bricks and Red Dye in a Totem Lathe.",
+            "left": "minestuck:cruxite_bricks",
+            "mode": "&&",
+            "right": "minecraft:red_dye",
+            "result": "extrastuck:garnet_bricks"
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/cut_garnet_recipe.png"
-            ],
-            "text": "You may also combine a block of amethyst and red dye in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Alternatively, combine a Block of Amethyst and Red Dye in a Punch Designix.",
+            "left": "minecraft:amethyst_block",
+            "mode": "||",
+            "right": "minecraft:red_dye",
+            "result": "extrastuck:cut_garnet"
         }
     ]
 }

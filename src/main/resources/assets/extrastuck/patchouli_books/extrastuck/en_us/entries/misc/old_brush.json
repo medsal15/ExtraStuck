@@ -12,11 +12,12 @@
             "text": "An ancient brush with extra durability."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/old_brush_recipe.png"
-            ],
-            "text": "Combine netherite scrap and a brush in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Brush and Netherite Scrap in a Totem Lathe.",
+            "left": "minecraft:brush",
+            "mode": "&&",
+            "right": "minecraft:netherite_scrap",
+            "result": "extrastuck:old_brush"
         }
     ]
 }

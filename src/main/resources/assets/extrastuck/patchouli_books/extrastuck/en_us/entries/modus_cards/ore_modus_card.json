@@ -12,11 +12,12 @@
             "text": "Do you love mining? Then this is the perfect modus for you! Items and cards retrieved will be converted into ores!$(br)These do not drop experience."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/ore_modus_card_recipe.png"
-            ],
-            "text": "Combine any modus card and an iron pickaxe in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine any modus card and an Iron Pickaxe in a Punch Designix.",
+            "left": "tag:minestuck:modus_card",
+            "mode": "||",
+            "right": "minecraft:iron_pickaxe",
+            "result": "extrastuck:ore_modus_card"
         }
     ]
 }

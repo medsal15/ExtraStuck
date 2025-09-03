@@ -12,9 +12,12 @@
             "text": "A bright yellow box with a red ribbon. Commonly found under christmas trees near the end of December. Open it by using it!"
         },
         {
-            "type": "patchouli:image",
-            "images": ["extrastuck:textures/patchouli_books/gift_recipe.png"],
-            "text": "Combine paper and a kundler shelled surprise embryo in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Kundler Embryo and Paper in a Totem Lathe.",
+            "left": "minestuck:surprise_embryo",
+            "mode": "&&",
+            "right": "minecraft:paper",
+            "result": "extrastuck:gift"
         }
     ]
 }

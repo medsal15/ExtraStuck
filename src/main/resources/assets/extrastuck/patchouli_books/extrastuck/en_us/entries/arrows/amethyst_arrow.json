@@ -12,11 +12,12 @@
             "text": "A fancy arrow with an amethyst tip.$(br2)$(3)$(l)Special:$() Pierces 2 extra enemies."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/amethyst_arrow_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:arrows/glass_arrow)glass arrow$(/l) and an amethyst shard in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Glass Arrow and an Amethyst Shard in a Punch Designix.",
+            "left": "extrastuck:glass_arrow",
+            "mode": "||",
+            "right": "minecraft:amethyst_shard",
+            "result": "extrastuck:amethyst_arrow"
         }
     ]
 }

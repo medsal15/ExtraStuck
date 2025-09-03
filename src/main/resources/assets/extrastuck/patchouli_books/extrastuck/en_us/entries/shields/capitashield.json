@@ -12,11 +12,12 @@
             "text": "This shield grants safety for just a $(t:You may find the definition of \"little\" on page 72 of your contract)$(n)little$(/t)$() money.$(br2)$(3)$(l)Special:$() Consumes boondollars instead of damage, when possible."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/capitashield_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/gold_shield)gold shield$(/l) and a $(l:extrastuck:shields/non_contact_contract)non-contact contract$(/l) in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Gold Shield and a Non-Contact Contract in a Totem Lathe.",
+            "left": "extrastuck:gold_shield",
+            "mode": "&&",
+            "right": "extrastuck:non_contact_contract",
+            "result": "extrastuck:capitashield"
         }
     ]
 }

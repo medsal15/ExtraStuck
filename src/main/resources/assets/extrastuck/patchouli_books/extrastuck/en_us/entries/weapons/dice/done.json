@@ -12,9 +12,12 @@
             "text": "Despite having 6 faces, they're all 1s.$(br2)$(3)$(l)Special:$() Has a 25% chance to drop itself on attack."
         },
         {
-            "type": "patchouli:image",
-            "images": ["extrastuck:textures/patchouli_books/done_recipe.png"],
-            "text": "Combine a $(l:extrastuck:weapons/dice/d_ice)d-ice$(/l) and a sbahj poster in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a D-Ice and a SBaHJ Poster in a Punch Designix.",
+            "left": "extrastuck:d_ice",
+            "mode": "||",
+            "right": "minestuck:sbahj_poster",
+            "result": "extrastuck:done"
         }
     ]
 }

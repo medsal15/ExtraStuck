@@ -12,18 +12,20 @@
             "text": "An improved arrow straight from the End.$(br2)$(3)$(l)Special:$() Deals 50% more damage to airborne enemies."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/end_arrow_recipe.png"
-            ],
-            "text": "Combine an arrow and end stone in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine an Arrow and End Stone in a Punch Designix.",
+            "left": "minecraft:arrow",
+            "mode": "||",
+            "right": "minecraft:end_stone",
+            "result": "extrastuck:end_arrow"
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/end_arrow_recipe_2.png"
-            ],
-            "text": "Alternatively combine an end rod and flint in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Alternatively, combine an End Rod and Flint in a Totem Lathe.",
+            "left": "minecraft:end_rod",
+            "mode": "&&",
+            "right": "minecraft:flint",
+            "result": "extrastuck:end_arrow"
         }
     ]
 }

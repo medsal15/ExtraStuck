@@ -12,9 +12,12 @@
             "text": "Sweep your foes with this boring, everyday tool!$(br2)$(3)$(l)Special:$() Has extra knockback and doubles as a brush."
         },
         {
-            "type": "patchouli:image",
-            "images": ["extrastuck:textures/patchouli_books/broom_recipe.png"],
-            "text": "Combine a brush and a hay bale in the totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Brush and a Hay Bale in a Totem Lathe.",
+            "left": "minecraft:brush",
+            "mode": "&&",
+            "right": "minecraft:hay_block",
+            "result": "extrastuck:broom"
         }
     ]
 }

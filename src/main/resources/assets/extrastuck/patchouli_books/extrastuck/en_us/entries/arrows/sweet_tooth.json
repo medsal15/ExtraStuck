@@ -12,11 +12,12 @@
             "text": "An arrow made of candy.$(br)The tip is caramel, the body is twizzlers, and the fletching is cotton candy.$(br2)$(3)$(l)Special:$() Can be eaten, and allows underlings to drop candy."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/sweet_tooth_recipe.png"
-            ],
-            "text": "Combine a bone and candy corn in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Bone or a Cardboard Arrow and Candy Corn in a Totem Lathe.",
+            "left": "minecraft:bone,extrastuck:cardboard_arrow",
+            "mode": "&&",
+            "right": "minestuck:candy_corn",
+            "result": "extrastuck:sweet_tooth"
         }
     ]
 }

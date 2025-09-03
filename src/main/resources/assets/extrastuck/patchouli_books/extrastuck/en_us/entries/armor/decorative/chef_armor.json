@@ -10,18 +10,20 @@
             "text": "A fancy chef hat and assorted apron. Suspiciously clean."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/chef_hat_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:misc/pizza)pizza$(/l) and a leather cap in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Pizza and a Leather Cap in a Punch Designix.",
+            "left": "extrastuck:pizza",
+            "mode": "||",
+            "right": "minecraft:leather_helmet",
+            "result": "extrastuck:chef_hat"
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/chef_apron_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:misc/pizza)pizza$(/l) and a leather tunic in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Pizza and a Leather Tunic in a Punch Designix.",
+            "left": "extrastuck:pizza",
+            "mode": "||",
+            "right": "minecraft:leather_chestplate",
+            "result": "extrastuck:chef_apron"
         }
     ]
 }

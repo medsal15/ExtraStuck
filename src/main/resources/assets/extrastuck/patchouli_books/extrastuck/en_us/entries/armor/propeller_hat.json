@@ -10,11 +10,12 @@
             "text": "A fancy rainbow hat with a non-functional propeller on top.$(br2)$(3)$(l)Special:$() Halves gravity."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/propeller_hat_recipe.png"
-            ],
-            "text": "Combine an iron helmet and a feather in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine an Iron Helmet and a Feather in a Totem Lathe.",
+            "left": "minecraft:iron_helmet",
+            "mode": "&&",
+            "right": "minecraft:feather",
+            "result": "extrastuck:propeller_hat"
         }
     ]
 }

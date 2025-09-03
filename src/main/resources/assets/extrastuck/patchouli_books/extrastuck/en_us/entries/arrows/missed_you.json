@@ -12,11 +12,12 @@
             "text": "What is the purpose of an arrow that can't hit?$(br2)$(3)$(l)Special:$() Physically incapable of hitting enemies."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/missed_you_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:arrows/cardboard_arrow)cardboard arrow$(/l) and a sbahj poster in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Cardboard Arrow and a SBaHJ Poster in a Punch Designix.",
+            "left": "extrastuck:cardboard_arrow",
+            "mode": "||",
+            "right": "minestuck:sbahj_poster",
+            "result": "extrastuck:missed_you"
         }
     ]
 }

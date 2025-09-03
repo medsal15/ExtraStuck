@@ -12,11 +12,12 @@
             "text": "This large shield was made for defensive measures.$(br)It even has a glass viewport!"
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/riot_shield_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/non_contact_contract)non-contact contract$(/l) and Rockefeller's walking bladecane in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Non-Contact Contract and Rockefeller's Walking Bladecane in a Punch Designix.",
+            "left": "extrastuck:non_contact_contract",
+            "mode": "||",
+            "right": "minestuck:rockefellers_walking_bladecane",
+            "result": "extrastuck:riot_shield"
         }
     ]
 }

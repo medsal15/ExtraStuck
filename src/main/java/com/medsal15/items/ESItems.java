@@ -449,7 +449,6 @@ public final class ESItems {
             Item::new, new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> VOID_MODUS_CARD = ITEMS.registerItem("void_modus_card",
             Item::new, new Item.Properties().stacksTo(1));
-    // TODO void modus, deletes items in inventory and voids overflow
 
     public static final DeferredItem<BlockItem> CARD_ORE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_ORE);
     public static final DeferredItem<Item> FORTUNE_COOKIE = ITEMS.registerItem("fortune_cookie", FortuneCookie::new,

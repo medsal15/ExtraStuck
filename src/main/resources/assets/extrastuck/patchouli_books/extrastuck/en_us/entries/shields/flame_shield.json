@@ -12,10 +12,8 @@
             "text": "A more advanced shield, made of flames.$(br2)$(3)$(l)Special:$() Sets melee enemies on fire for 5 seconds."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/flame_shield_recipe.png"
-            ]
+            "type": "extrastuck:grist_cost",
+            "item": "extrastuck:flame_shield"
         }
     ]
 }

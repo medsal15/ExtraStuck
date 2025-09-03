@@ -12,9 +12,12 @@
             "text": "A die covered in slime. Somehow cannot roll any higher than 3.$(br2)$(3)$(l)Special:$() Applies Slowness III for 3 seconds and has a chance to deal up to 3 extra damage."
         },
         {
-            "type": "patchouli:image",
-            "images": ["extrastuck:textures/patchouli_books/d_ice_recipe.png"],
-            "text": "Combine a $(l:extrastuck:weapons/dice/sticky_die)sticky die$(/l) and ice in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Sticky Die and Ice in a Totem Lathe.",
+            "left": "extrastuck:sticky_die",
+            "mode": "&&",
+            "right": "minecraft:ice",
+            "result": "extrastuck:d_ice"
         }
     ]
 }

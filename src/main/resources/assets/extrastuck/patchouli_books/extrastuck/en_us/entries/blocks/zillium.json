@@ -10,11 +10,12 @@
             "text": "Alright new zillionnaire, it's clear you're above the economy. So here are these blocks which are made of pure zillium."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/zillium_bricks_recipe.png"
-            ],
-            "text": "Combine stone bricks and zillium skittles in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine Stone Bricks and Zillium Skittles in a Punch Designix.",
+            "left": "minecraft:stone_bricks",
+            "mode": "||",
+            "right": "minestuck:zillium_skittles",
+            "result": "extrastuck:zillium_bricks"
         }
     ]
 }

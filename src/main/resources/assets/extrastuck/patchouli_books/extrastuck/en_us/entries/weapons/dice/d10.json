@@ -12,9 +12,12 @@
             "text": "10 faces and a golden shine, what more could you ask for?$(br2)$(3)$(l)Special:$() Deals up to 10 extra damage, and freezes enemies for 5 seconds (15 for Time players)."
         },
         {
-            "type": "patchouli:image",
-            "images": ["extrastuck:textures/patchouli_books/d10_recipe.png"],
-            "text": "Combine a $(l:extrastuck:weapons/dice/token_tetrahedron)token tetrahedron$(/l) and a clock in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Token Tetrahedron and a Clock in a Totem Lathe.",
+            "left": "extrastuck:token_tetrahedron",
+            "mode": "&&",
+            "right": "minecraft:clock",
+            "result": "extrastuck:d10"
         }
     ]
 }

@@ -12,11 +12,12 @@
             "text": "A shield made of diamonds. A greatly valuable protection in your arsenal."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/diamond_shield_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/gold_shield)gold shield$(/l) and a diamond in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Gold Shield and a Diamond in a Punch Designix.",
+            "left": "extrastuck:gold_shield",
+            "mode": "||",
+            "right": "minecraft:diamond",
+            "result": "extrastuck:diamond_shield"
         }
     ]
 }

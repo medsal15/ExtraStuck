@@ -1,0 +1,55 @@
+{
+    "__comment": "Does not accept item objects for some reason 🙃",
+    "components": [
+        {
+            "type": "patchouli:text",
+            "text": "#text",
+            "y": 4
+        },
+        {
+            "type": "patchouli:item",
+            "item": "#left",
+            "x": 6,
+            "y": 34
+        },
+        {
+            "type": "patchouli:header",
+            "text": "#mode",
+            "x": 31,
+            "y": 38,
+            "color": "1AB3F1"
+        },
+        {
+            "type": "patchouli:item",
+            "item": "#right",
+            "x": 39,
+            "y": 34
+        },
+        {
+            "type": "patchouli:header",
+            "text": "==>",
+            "x": 67,
+            "y": 38,
+            "color": "1AB3F1"
+        },
+        {
+            "type": "patchouli:item",
+            "item": "#result",
+            "framed": true,
+            "link_recipe": true,
+            "x": 80,
+            "y": 34
+        }
+    ],
+    "include": [
+        {
+            "template": "extrastuck:grist_set",
+            "x": 6,
+            "y": 52,
+            "as": "grist",
+            "using": {
+                "item": "#result"
+            }
+        }
+    ]
+}

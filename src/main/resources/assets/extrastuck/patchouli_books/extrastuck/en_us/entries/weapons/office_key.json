@@ -12,18 +12,33 @@
             "text": "A strange white key, originally meant to open a blocked door.$(br2)$(3)$(l)Special:$() Can be switched to a gun with shift right-clicking."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/office_key_recipe.png"
-            ],
-            "text": "Combine a house key and an iron door in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a House Key and an Iron Door in a Totem Lathe.",
+            "left": "minestuck:house_key",
+            "mode": "&&",
+            "right": "minecraft:iron_door",
+            "result": "extrastuck:office_key"
         },
         {
-            "type": "patchouli:spotlight",
-            "item": {
-                "item": "extrastuck:handgun"
-            },
-            "text": "A real gun! Reload by right-clicking bullets on it.$(br2)$(3)$(l)Special:$() Can be switched back to an office key with shift right-clicking."
+            "type": "extrastuck:grist_cost",
+            "text": "A real gun! Reload by right-clicking bullets on it.",
+            "item": "extrastuck:handgun"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Arrow and Gunpowder in a Totem Lathe for basic ammunition.",
+            "left": "minecraft:arrow",
+            "mode": "&&",
+            "right": "minecraft:gunpowder",
+            "result": "extrastuck:handgun_bullet"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Handgun Bullet and an Iron Ingot in a Totem Lathe for better ammunition.",
+            "left": "extrastuck:handgun_bullet",
+            "mode": "&&",
+            "right": "minecraft:iron_ingot",
+            "result": "extrastuck:heavy_handgun_bullet"
         }
     ]
 }

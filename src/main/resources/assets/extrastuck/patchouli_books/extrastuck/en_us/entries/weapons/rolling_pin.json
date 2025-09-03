@@ -12,11 +12,12 @@
             "text": "Everybody knows a good cook uses a rolling pin. Not as weapons. Why is it $(o)here$(o), then?."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/rolling_pin_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:misc/pizza)pizza$(/l) and a deuce club in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Pizza and a Deuce Club in a Punch Designix.",
+            "left": "extrastuck:pizza",
+            "mode": "||",
+            "right": "minestuck:deuce_club",
+            "result": "extrastuck:rolling_pin"
         }
     ]
 }

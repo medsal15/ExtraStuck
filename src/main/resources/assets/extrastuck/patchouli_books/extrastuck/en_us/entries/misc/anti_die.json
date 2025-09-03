@@ -12,11 +12,12 @@
             "text": "A strange die that clearly looks out of place. Rolls from integers -6 to -1.$(br2)$(3)$(l)Special:$() Prevents death when held. $(4)Does not heal!"
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/anti_die_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:weapons/sticky_die)sticky die$(/l) and a mirror in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Sticky Die and an Mirror in a Totem Lathe.",
+            "left": "extrastuck:sticky_die",
+            "mode": "&&",
+            "right": "minestuck:mirror",
+            "result": "extrastuck:anti_die"
         }
     ]
 }

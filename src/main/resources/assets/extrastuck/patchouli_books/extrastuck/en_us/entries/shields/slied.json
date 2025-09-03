@@ -12,11 +12,12 @@
             "text": "A protective(?) piece of paper depicting a pair of people.$(br2)$(3)$(l)Special:$() Has a 25% to drop itself on block."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/slied_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:shields/non_contact_contract)non-contact contract$(/l) and a SBAHJ poster in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Non-Contact Contract and a SBaHJ Poster in a Totem Lathe.",
+            "left": "extrastuck:non_contact_contract",
+            "mode": "&&",
+            "right": "minestuck:sbahj_poster",
+            "result": "extrastuck:slied"
         }
     ]
 }

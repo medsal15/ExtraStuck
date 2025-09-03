@@ -12,11 +12,12 @@
             "text": "An upgrade to the iron arrow that can also damage blocks!$(br2)$(3)$(l)Special:$() Can mine whatever an iron pickaxe can."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/projecdrill_recipe.png"
-            ],
-            "text": "Combine an $(l:extrastuck:arrows/iron_arrow)iron arrow$(/l) and an iron pickaxe in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine an Iron Arrow and an Iron Pickaxe in a Totem Lathe.",
+            "left": "extrastuck:iron_arrow",
+            "mode": "&&",
+            "right": "minecraft:iron_pickaxe",
+            "result": "extrastuck:projecdrill"
         }
     ]
 }

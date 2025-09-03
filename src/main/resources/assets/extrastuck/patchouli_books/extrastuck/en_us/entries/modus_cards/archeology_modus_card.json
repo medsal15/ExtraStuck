@@ -12,11 +12,12 @@
             "text": "Do you love using your brush to get items? Then this is the modus for you!"
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/archeology_modus_card_recipe.png"
-            ],
-            "text": "Combine any modus card and a brush in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine any modus card and a Brush in a Punch Designix.",
+            "left": "tag:minestuck:modus_card",
+            "mode": "||",
+            "right": "minecraft:brush",
+            "result": "extrastuck:archeology_modus_card"
         }
     ]
 }

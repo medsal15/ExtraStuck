@@ -12,11 +12,12 @@
             "text": "Your most basic shield, made of wood.$(br)A critical component for some of the more powerful shields.$(br2)$(4)$(l)Important: Wooden shields are not fireproof. Do not use them to block fire."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/wooden_shield_recipe.png"
-            ],
-            "text": "Combine any wooden stick and any wooden pressure plate in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine any wooden stick and any wooden pressure plate in a Totem Lathe.",
+            "left": "tag:c:rods/wooden",
+            "mode": "&&",
+            "right": "tag:minecraft:wooden_pressure_plates",
+            "result": "extrastuck:wooden_shield"
         }
     ]
 }

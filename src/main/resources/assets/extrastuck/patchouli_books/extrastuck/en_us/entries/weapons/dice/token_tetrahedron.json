@@ -12,11 +12,12 @@
             "text": "A four-sided die made of emerald. The fact that it doesn't break is surprising.$(br2)$(3)$(l)Special:$() Deals up to 4 extra damage, and has a 5% chance to drop a $(l:extrastuck:misc/luck_token)luck token$(/l) on hit."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/token_tetrahedron_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:weapons/dice/gold_coin)gold coin$(/l) and an emerald in the totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a $(l:extrastuck:weapons/dice/gold_coin)gold coin$(/l) and an emerald in a Totem Lathe.",
+            "left": "extrastuck:gold_coin",
+            "mode": "&&",
+            "right": "minecraft:emerald",
+            "result": "extrastuck:token_tetrahedron"
         }
     ]
 }

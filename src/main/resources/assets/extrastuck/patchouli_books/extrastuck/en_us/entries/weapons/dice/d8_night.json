@@ -12,11 +12,12 @@
             "text": "A baton with a large d8 on its end.$(br2)$(3)$(l)Special:$() Deals up to 8 extra damage, applies darkness to enemies during the day, gain night vision during the night."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/d8_night_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:weapons/dice/rainbow_d7)raindow d7$(/l) and a nightstick in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Raindow D7 and a Nightstick in a Punch Designix.",
+            "left": "extrastuck:rainbow_d7",
+            "mode": "||",
+            "right": "minestuck:nightstick",
+            "result": "extrastuck:d8_night"
         }
     ]
 }

@@ -12,11 +12,12 @@
             "text": "A modus that allows a denser method of storage. Note that retrieving an item will make those above fall."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/pile_modus_card_recipe.png"
-            ],
-            "text": "Combine any modus card and a brick in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine any modus card and a Brick in a Punch Designix.",
+            "left": "tag:minestuck:modus_card",
+            "mode": "||",
+            "right": "minecraft:brick",
+            "result": "extrastuck:pile_modus_card"
         }
     ]
 }

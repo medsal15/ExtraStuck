@@ -12,11 +12,12 @@
             "text": "Coating telerrows with dragon breath will allow it to also use it.$(br2)$(3)$(l)Special:$() Summons dragon breath on hit."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/dragon_arrow_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:arrows/telerrow)telerrow$(/l) and dragon breath in a punch designix."
+            "type": "extrastuck:combination",
+            "text": "Combine a Telerrow and Dragon Breath in a Punch Designix.",
+            "left": "extrastuck:telerrow",
+            "mode": "||",
+            "right": "minecraft:dragon_breath",
+            "result": "extrastuck:dragon_arrow"
         }
     ]
 }

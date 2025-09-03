@@ -12,11 +12,12 @@
             "text": "Say goodbye to the days of throwing items in lava or cacti to destroy them, this modus will deal with that!$(br)Captchalogue an item to store it, and click it to delete all copies in your inventory!$(br)If the sylladex is full, items will be straight-up deleted. This also applies to items already in your sylladex."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/void_modus_card_recipe.png"
-            ],
-            "text": "Combine any modus card and a bucket of lava in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine any modus card and a Lava Bucket in a Totem Lathe.",
+            "left": "tag:minestuck:modus_card",
+            "mode": "&&",
+            "right": "minecraft:lava_bucket",
+            "result": "extrastuck:void_modus_card"
         }
     ]
 }

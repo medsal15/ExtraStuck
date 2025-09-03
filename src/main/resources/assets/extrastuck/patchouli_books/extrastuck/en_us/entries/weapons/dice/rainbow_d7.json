@@ -13,11 +13,12 @@
         },
         "$(li)Strength$(li)Resistance$(li)Unluck$(li)Luck$(li)Speed$(li)Slowness$(li)Levitation",
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/rainbow_d7_recipe.png"
-            ],
-            "text": "Combine a dice and a bucket of paint in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a dice and a bucket of paint in a Totem Lathe.",
+            "left": "minestuck:dice",
+            "mode": "&&",
+            "right": "minestuck:water_colors_bucket",
+            "result": "extrastuck:rainbow_d7"
         }
     ]
 }

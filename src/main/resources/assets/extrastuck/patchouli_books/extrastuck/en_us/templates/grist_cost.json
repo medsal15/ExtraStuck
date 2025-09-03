@@ -1,0 +1,28 @@
+{
+    "components": [
+        {
+            "type": "patchouli:text",
+            "text": "#text",
+            "y": 4
+        },
+        {
+            "type": "patchouli:item",
+            "item": "#item",
+            "x": 50,
+            "y": 29,
+            "framed": true,
+            "link_recipe": true
+        }
+    ],
+    "include": [
+        {
+            "template": "extrastuck:grist_set",
+            "x": 6,
+            "y": 50,
+            "as": "grist",
+            "using": {
+                "item": "#item"
+            }
+        }
+    ]
+}

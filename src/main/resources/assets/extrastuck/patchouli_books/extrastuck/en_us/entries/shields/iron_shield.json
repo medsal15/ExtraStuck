@@ -12,11 +12,12 @@
             "text": "A reinforced iron shield. That's it."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/iron_shield_recipe.png"
-            ],
-            "text": "Combine a shield and an iron ingot in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Shield and an Iron Ingot in a Totem Lathe.",
+            "left": "minecraft:shield",
+            "mode": "&&",
+            "right": "minecraft:iron_ingot",
+            "result": "extrastuck:iron_shield"
         }
     ]
 }

@@ -12,11 +12,12 @@
             "text": "This arrow's tip is made of glass, making it very fragile.$(br)Make every shot count.$(br2)$(3)$(l)Special:$() Breaks after use."
         },
         {
-            "type": "patchouli:image",
-            "images": [
-                "extrastuck:textures/patchouli_books/glass_arrow_recipe.png"
-            ],
-            "text": "Combine a $(l:extrastuck:arrows/quartz_arrow)quartz arrow$(/l) and glass in a totem lathe."
+            "type": "extrastuck:combination",
+            "text": "Combine a Quartz Arrow and Glass in a Totem Lathe.",
+            "left": "extrastuck:quartz_arrow",
+            "mode": "&&",
+            "right": "tag:c:glass_blocks",
+            "result": "extrastuck:glass_arrow"
         }
     ]
 }
