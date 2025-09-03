@@ -236,6 +236,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.ORE_MODUS_CARD, "Ore Modus");
         addItemTooltip(ESItems.ORE_MODUS_CARD, "Perfect for mining lovers");
         addItem(ESItems.ARCHEOLOGY_MODUS_CARD, "Archeology Modus");
+        addItem(ESItems.VOID_MODUS_CARD, "Void Modus");
+        addItemTooltip(ESItems.VOID_MODUS_CARD, "Too Many Items");
 
         addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
         addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");

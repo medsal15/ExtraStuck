@@ -616,6 +616,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.ARCHEOLOGY_MODUS_CARD)
                 .grist(GristTypes.BUILD, 210).grist(GristTypes.SHALE, 25)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.VOID_MODUS_CARD)
+                .input(MSTags.Items.MODUS_CARD).and().input(Items.LAVA_BUCKET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.VOID_MODUS_CARD)
+                .grist(GristTypes.BUILD, 410).grist(GristTypes.COBALT, 31).grist(GristTypes.TAR, 27)
+                .build(output);
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

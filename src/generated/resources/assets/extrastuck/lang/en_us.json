@@ -193,6 +193,8 @@
   "item.extrastuck.token_tetrahedron": "Token Tetrahedron",
   "item.extrastuck.token_tetrahedron.token_drop": "The enemy droped a token!",
   "item.extrastuck.token_tetrahedron.tooltip": "Jackpot",
+  "item.extrastuck.void_modus_card": "Void Modus",
+  "item.extrastuck.void_modus_card.tooltip": "Too Many Items",
   "item.extrastuck.wooden_shield": "Wooden Shield",
   "item.extrastuck.wooden_shield.tooltip": "This cheap shield is 100% fire-ready",
   "itemGroup.extrastuck": "ExtraStuck",

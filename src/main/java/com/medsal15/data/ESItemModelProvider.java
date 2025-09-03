@@ -172,6 +172,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.FORTUNE_MODUS_CARD.get());
         basicItem(ESItems.ORE_MODUS_CARD.get());
         basicItem(ESItems.ARCHEOLOGY_MODUS_CARD.get());
+        basicItem(ESItems.VOID_MODUS_CARD.get());
 
         basicItem(ESItems.FORTUNE_COOKIE.get());
         withExistingParent(ESItems.CARD_ORE.getId().toString(), modLoc("block/card_ore"));

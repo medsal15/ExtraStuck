@@ -5,6 +5,7 @@ import com.medsal15.client.screen.modus.ArcheologyModusScreen;
 import com.medsal15.client.screen.modus.FortuneModusScreen;
 import com.medsal15.client.screen.modus.OreModusScreen;
 import com.medsal15.client.screen.modus.PileModusScreen;
+import com.medsal15.client.screen.modus.VoidModusScreen;
 import com.medsal15.modus.ESModus;
 
 import net.neoforged.api.distmarker.Dist;
@@ -22,5 +23,6 @@ public final class ESScreens {
         registerSylladexFactory(ESModus.FORTUNE_MODUS, FortuneModusScreen::new);
         registerSylladexFactory(ESModus.ORE_MODUS, OreModusScreen::new);
         registerSylladexFactory(ESModus.ARCHEOLOGY_MODUS, ArcheologyModusScreen::new);
+        registerSylladexFactory(ESModus.VOID_MODUS, VoidModusScreen::new);
     }
 }
