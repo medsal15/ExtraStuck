@@ -7,6 +7,7 @@ import com.mraof.minestuck.inventory.captchalogue.ModusType;
 import com.mraof.minestuck.item.CaptchaCardItem;
 import com.mraof.minestuck.item.MSItems;
 
+import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.fml.LogicalSide;
@@ -14,6 +15,21 @@ import net.neoforged.fml.LogicalSide;
 public class PileModus extends BaseModus {
     public PileModus(ModusType<? extends PileModus> type, LogicalSide side) {
         super(type, side);
+    }
+
+    @Override
+    public NonNullList<ItemStack> getItems() {
+        if (side == LogicalSide.SERVER) {
+            // Used only when replacing the modus
+            NonNullList<ItemStack> items = NonNullList.copyOf(list);
+            return items;
+        }
+
+        if (changed) {
+            items = NonNullList.copyOf(list);
+        }
+
+        return items;
     }
 
     @Override
