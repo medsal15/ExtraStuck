@@ -1,0 +1,23 @@
+{
+    "name": "Magnefork",
+    "icon": "extrastuck:magnefork",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:magnefork"
+            },
+            "text": "A fork made of magnetic materials.$(br2)$(3)$(l)Special:$() Items and grist around enemies will be given to you."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Tuning Fork and a Magnet in a Totem Lathe.",
+            "left": "minestuck:tuning_fork",
+            "mode": "&&",
+            "right": "extrastuck:magnet",
+            "result": "extrastuck:magnefork"
+        }
+    ]
+}

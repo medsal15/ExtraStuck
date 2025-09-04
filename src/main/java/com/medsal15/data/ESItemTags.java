@@ -72,6 +72,12 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(MSTags.Items.MODUS_CARD).add(card.get());
         }
 
+        for (DeferredItem<Item> tool : ESItems.getTools()) {
+            tag(Tags.Items.TOOLS).add(tool.get());
+            tag(ItemTags.DURABILITY_ENCHANTABLE).add(tool.get());
+            tag(ItemTags.VANISHING_ENCHANTABLE).add(tool.get());
+        }
+
         tag(AMMO).addTag(AMMO_HANDGUN);
         tag(AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
 
@@ -89,8 +95,6 @@ public final class ESItemTags extends ItemTagsProvider {
                 ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
         tag(ItemTags.BREAKS_DECORATED_POTS).add(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
         tag(Tags.Items.TOOLS_BRUSH).add(ESItems.OLD_BRUSH.get(), ESItems.BROOM.get());
-        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ESItems.OLD_BRUSH.get());
-        tag(ItemTags.VANISHING_ENCHANTABLE).add(ESItems.OLD_BRUSH.get());
 
         tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get());
 

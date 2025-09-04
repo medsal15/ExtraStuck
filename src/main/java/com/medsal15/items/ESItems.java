@@ -50,6 +50,7 @@ import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
+import com.mraof.minestuck.util.MSSoundEvents;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
@@ -148,7 +149,7 @@ public final class ESItems {
                     BlockFuncs.DAMAGE,
                     BlockFuncs::dropCandy));
     public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
-            p -> new ESShield(p.durability(490).component(ESDataComponents.ENERGY, 0)
+            p -> new ESShield(p.durability(490)
                     .component(ESDataComponents.ENERGY_STORAGE, 100000)
                     .component(ESDataComponents.FLUX_MULTIPLIER, 100), BlockFuncs.USE_POWER));
     public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
@@ -374,6 +375,22 @@ public final class ESItems {
                             .add(OnHitEffect.enemyKnockback(1F)),
                     new Item.Properties()));
     // #endregion Canes
+    // #region Forks
+    public static final DeferredItem<Item> MAGNEFORK = ITEMS.register("magnefork",
+            () -> new WeaponItem(new WeaponItem.Builder(Tiers.IRON, 3, -2.6F).efficiency(1F).set(MSItemTypes.FORK_TOOL)
+                    .add(ESHitEffects.attractItemsGrist(5)), new MSItemProperties().durability(450)));
+    public static final DeferredItem<Item> OVERCHARGED_MAGNEFORK = ITEMS.register("overcharged_magnefork",
+            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(3F).set(MSItemTypes.FORK_TOOL)
+                    .add(ESHitEffects.requireCharge(300, ESHitEffects.attractItemsGrist(10)))
+                    .set(ItemRightClickEffect.switchTo(ESItems.UNDERCHARGED_MAGNEFORK))
+                    .add(OnHitEffect.playSound(MSSoundEvents.EVENT_ELECTRIC_SHOCK, 0.6F, 1.0F)),
+                    new MSItemProperties().durability(750).component(ESDataComponents.ENERGY_STORAGE, 30000)));
+    public static final DeferredItem<Item> UNDERCHARGED_MAGNEFORK = ITEMS.register("undercharged_magnefork",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(3F).set(MSItemTypes.FORK_TOOL)
+                            .set(ItemRightClickEffect.switchTo(ESItems.OVERCHARGED_MAGNEFORK)),
+                    new MSItemProperties().durability(750).component(ESDataComponents.ENERGY_STORAGE, 30000)));
+    // #endregion Forks
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
             () -> new ESGun(
@@ -435,6 +452,8 @@ public final class ESItems {
 
     public static final DeferredItem<Item> OLD_BRUSH = ITEMS.registerItem("old_brush", BrushItem::new,
             new Item.Properties().stacksTo(1).durability(320));
+    public static final DeferredItem<Item> MAGNET = ITEMS.registerItem("magnet", p -> new MagnetItem(Tiers.IRON, p),
+            new MSItemProperties().stacksTo(1).durability(160));
 
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
 
@@ -558,7 +577,9 @@ public final class ESItems {
         for (DeferredItem<Item> card : ESItems.getModusCards()) {
             output.accept(card.get());
         }
-        output.accept(OLD_BRUSH);
+        for (DeferredItem<Item> tool : ESItems.getTools()) {
+            output.accept(tool.get());
+        }
 
         for (DeferredItem<Item> item : ESItems.getShields()) {
             output.accept(item.get());
@@ -594,6 +615,23 @@ public final class ESItems {
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
             output.accept(item.get());
         }
+    }
+
+    public static Collection<DeferredItem<Item>> getModusCards() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(PILE_MODUS_CARD);
+        list.add(FORTUNE_MODUS_CARD);
+        list.add(ORE_MODUS_CARD);
+        list.add(ARCHEOLOGY_MODUS_CARD);
+        list.add(VOID_MODUS_CARD);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getTools() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(OLD_BRUSH);
+        list.add(MAGNET);
+        return list;
     }
 
     public static Collection<DeferredItem<Item>> getShields() {
@@ -674,6 +712,10 @@ public final class ESItems {
         list.add(BAGUETTE_MAGIQUE);
         // Canes
         list.add(BROOM);
+        // Forks
+        list.add(MAGNEFORK);
+        list.add(OVERCHARGED_MAGNEFORK);
+        list.add(UNDERCHARGED_MAGNEFORK);
         return list;
     }
 
@@ -737,16 +779,6 @@ public final class ESItems {
         ArrayList<DeferredItem<? extends Item>> list = new ArrayList<>();
         list.add(PIZZA);
         list.add(FORTUNE_COOKIE);
-        return list;
-    }
-
-    public static Collection<DeferredItem<Item>> getModusCards() {
-        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
-        list.add(PILE_MODUS_CARD);
-        list.add(FORTUNE_MODUS_CARD);
-        list.add(ORE_MODUS_CARD);
-        list.add(ARCHEOLOGY_MODUS_CARD);
-        list.add(VOID_MODUS_CARD);
         return list;
     }
 

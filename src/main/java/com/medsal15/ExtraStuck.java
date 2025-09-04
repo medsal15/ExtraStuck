@@ -17,8 +17,8 @@ import com.medsal15.entities.projectiles.bullets.ItemBullet;
 import com.medsal15.interpreters.ESInterpretertypes;
 import com.medsal15.items.ESArmorMaterials;
 import com.medsal15.items.ESDataComponents;
+import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
-import com.medsal15.items.IESEnergyStorage;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.guns.GunContainer;
 import com.medsal15.items.shields.ESShield;
@@ -64,6 +64,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderer
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
@@ -133,8 +134,9 @@ public class ExtraStuck {
     @SubscribeEvent
     public void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerItem(Capabilities.EnergyStorage.ITEM,
-                (stack, u) -> new IESEnergyStorage.StackEnergyStorage(stack),
-                ESItems.FLUX_SHIELD.get());
+                (stack, u) -> new ESEnergyStorage(stack),
+                ESItems.FLUX_SHIELD.get(), ESItems.OVERCHARGED_MAGNEFORK.get(), ESItems.UNDERCHARGED_MAGNEFORK.get());
+
         event.registerItem(Capabilities.ItemHandler.ITEM,
                 (stack, u) -> new GunContainer(1, stack),
                 ESItems.HANDGUN.get());
@@ -288,13 +290,14 @@ public class ExtraStuck {
 
             // Fancy item descriptions
             final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
-            if (itemId != null && itemId.getNamespace().equals(ExtraStuck.MODID)) {
-                String name = stack.getDescriptionId() + ".tooltip";
-                if (I18n.exists(name)) {
-                    event.getToolTip().add(i,
-                            Component.translatable(name).withStyle(ChatFormatting.GRAY));
-                    i++;
-                }
+            if (itemId == null || !itemId.getNamespace().equals(ExtraStuck.MODID))
+                return;
+
+            String tooltip_key = stack.getDescriptionId() + ".tooltip";
+            if (I18n.exists(tooltip_key)) {
+                event.getToolTip().add(i,
+                        Component.translatable(tooltip_key).withStyle(ChatFormatting.GRAY));
+                i++;
             }
 
             // Shield info
@@ -309,11 +312,13 @@ public class ExtraStuck {
                 }
             }
 
-            // Shield RF
-            if (item instanceof ESShield shield && shield.hasOnBlock(BlockFuncs.USE_POWER)) {
+            // RF
+            @SuppressWarnings("null")
+            IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
+            if (energyStorage != null) {
                 event.getToolTip().add(i, Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
-                        NumberFormat.getInstance().format(shield.getEnergyStored(stack)),
-                        NumberFormat.getInstance().format(shield.getMaxEnergyStored(stack))));
+                        NumberFormat.getInstance().format(energyStorage.getEnergyStored()),
+                        NumberFormat.getInstance().format(energyStorage.getMaxEnergyStored())));
                 i++;
             }
         }

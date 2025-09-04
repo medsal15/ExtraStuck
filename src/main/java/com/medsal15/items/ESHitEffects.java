@@ -1,12 +1,16 @@
 package com.medsal15.items;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.mobeffects.ESMobEffects;
+import com.mraof.minestuck.entity.item.GristEntity;
+import com.mraof.minestuck.entity.item.VitalityGelEntity;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.player.EnumAspect;
 import com.mraof.minestuck.player.EnumClass;
@@ -20,6 +24,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -28,6 +33,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 
 public final class ESHitEffects {
     /**
@@ -175,5 +183,79 @@ public final class ESHitEffects {
         }
 
         target.hurt(source, rng);
+    }
+
+    /**
+     * Attracts specific entities to the attacker in a range around the target
+     */
+    public static OnHitEffect attractItemsGrist(double range) {
+        return (stack, target, attacker) -> {
+            AABB box = new AABB(target.blockPosition()).inflate(range);
+            List<Entity> entities = attacker.level().getEntities(target, box,
+                    e -> e instanceof ItemEntity || e instanceof GristEntity || e instanceof VitalityGelEntity);
+            // Try to give to player, otherwise teleport entity to attacker
+            Consumer<Entity> apply = attacker instanceof Player player ? (e) -> {
+                if (!giveToPlayer(player, e)) {
+                    e.setPos(attacker.position());
+                }
+            } : (e) -> {
+                e.setPos(attacker.position());
+            };
+
+            for (Entity entity : entities) {
+                apply.accept(entity);
+            }
+        };
+    }
+
+    private static boolean giveToPlayer(Player player, Entity entity) {
+        if (entity instanceof ItemEntity item) {
+            boolean success = player.addItem(item.getItem());
+            if (success)
+                item.discard();
+            return success;
+        } else if (entity instanceof GristEntity grist) {
+            grist.playerTouch(player);
+            return true;
+        } else if (entity instanceof VitalityGelEntity gel) {
+            gel.playerTouch(player);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Gates an OnHitEffect behind an amount of FE stored in the stack
+     *
+     * The effect will not be called if there is no IEnergyStorage bound
+     *
+     * @param charge  amount of FE needed
+     * @param effect  effect to call when there's enough FE
+     * @param consume if true, FE will be consumed before the effect is called
+     */
+    public static OnHitEffect requireCharge(int charge, OnHitEffect effect, boolean consume) {
+        return (stack, target, attacker) -> {
+            @SuppressWarnings("null")
+            IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
+            if (energyStorage != null && energyStorage.getEnergyStored() >= charge) {
+                if (consume) {
+                    energyStorage.extractEnergy(charge, false);
+                }
+
+                effect.onHit(stack, target, attacker);
+            }
+        };
+    }
+
+    /**
+     * Gates an OnHitEffect behind consuming an amount of FE stored in the stack
+     *
+     * The effect will not be called if there is no IEnergyStorage bound
+     *
+     * @param charge amount of FE consumed
+     * @param effect effect to call when there's enough FE
+     */
+    public static OnHitEffect requireCharge(int charge, OnHitEffect effect) {
+        return requireCharge(charge, effect, true);
     }
 }

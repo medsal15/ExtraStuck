@@ -43,7 +43,11 @@
     "extrastuck:office_key",
     "extrastuck:baguette_magique",
     "extrastuck:broom",
-    "extrastuck:captain_justice_shield_throwable",
-    "extrastuck:old_brush"
+    "extrastuck:magnefork",
+    "extrastuck:overcharged_magnefork",
+    "extrastuck:undercharged_magnefork",
+    "extrastuck:old_brush",
+    "extrastuck:magnet",
+    "extrastuck:captain_justice_shield_throwable"
   ]
 }

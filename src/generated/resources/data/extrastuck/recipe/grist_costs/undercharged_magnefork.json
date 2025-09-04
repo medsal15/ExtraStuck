@@ -1,0 +1,12 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 20,
+    "minestuck:garnet": 20,
+    "minestuck:gold": 450,
+    "minestuck:uranium": 75
+  },
+  "ingredient": {
+    "item": "extrastuck:undercharged_magnefork"
+  }
+}

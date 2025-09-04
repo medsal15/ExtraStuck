@@ -1,0 +1,36 @@
+{
+    "name": "Overcharged Magnefork",
+    "icon": "extrastuck:overcharged_magnefork",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:overcharged_magnefork"
+            },
+            "text": "A golden fork made of magnetic materials.$(br)Wait a second, gold isn't magnetic!$(br2)$(3)$(l)Special:$() Items and grist in a large radius around enemies will be given to you at the cost of 300 FE, you can also turn the fork off by shift-right clicking it."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Magnefork and a Battery in a Punch Designix.",
+            "left": "extrastuck:magnefork",
+            "mode": "||",
+            "right": "minestuck:battery",
+            "result": "extrastuck:overcharged_magnefork"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Alternatively, combine Edison's Fury and a Magnet in a Totem Lathe.",
+            "left": "minestuck:edisons_fury",
+            "mode": "&&",
+            "right": "extrastuck:magnet",
+            "result": "extrastuck:overcharged_magnefork"
+        },
+        {
+            "type": "extrastuck:grist_cost",
+            "text": "Now turned off, it no longer consumes FE nor attracts things.",
+            "item": "extrastuck:undercharged_magnefork"
+        }
+    ]
+}

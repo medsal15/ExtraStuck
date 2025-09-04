@@ -41,6 +41,7 @@ public final class ESRecipeProvider extends RecipeProvider {
         ammoRecipes(output);
         armorRecipes(output);
         modusRecipes(output);
+        toolRecipes(output);
         blockRecipes(output);
 
         CombinationRecipeBuilder.of(ESItems.GIFT)
@@ -55,13 +56,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.PIZZA)
                 .grist(GristTypes.AMBER, 6).grist(GristTypes.RUST, 1)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.OLD_BRUSH)
-                .input(Items.BRUSH).and().input(Items.NETHERITE_SCRAP)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.OLD_BRUSH)
-                .grist(GristTypes.SHALE, 8).grist(GristTypes.RUST, 32).grist(GristTypes.CAULK, 15)
                 .build(output);
     }
 
@@ -405,6 +399,30 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Canes
 
+        // #region Forks
+        CombinationRecipeBuilder.of(ESItems.MAGNEFORK)
+                .input(MSItems.TUNING_FORK).and().input(ESItems.MAGNET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.MAGNEFORK)
+                .grist(GristTypes.RUST, 40).grist(GristTypes.GARNET, 5).grist(GristTypes.COBALT, 5)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.OVERCHARGED_MAGNEFORK)
+                .input(ESItems.MAGNEFORK).or().input(MSItems.BATTERY)
+                .build(output);
+        CombinationRecipeBuilder.of(ESItems.OVERCHARGED_MAGNEFORK)
+                .input(ESItems.MAGNET).and().input(MSItems.EDISONS_FURY)
+                .build(output, ExtraStuck.modid("combinations/overcharged_magnefork_alt"));
+        GristCostRecipeBuilder.of(ESItems.OVERCHARGED_MAGNEFORK)
+                .grist(GristTypes.GOLD, 450).grist(GristTypes.URANIUM, 75)
+                .grist(GristTypes.GARNET, 20).grist(GristTypes.COBALT, 20)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.UNDERCHARGED_MAGNEFORK)
+                .grist(GristTypes.GOLD, 450).grist(GristTypes.URANIUM, 75)
+                .grist(GristTypes.GARNET, 20).grist(GristTypes.COBALT, 20)
+                .build(output);
+        // #endregion Forks
+
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
@@ -622,6 +640,22 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.VOID_MODUS_CARD)
                 .grist(GristTypes.BUILD, 410).grist(GristTypes.COBALT, 31).grist(GristTypes.TAR, 27)
+                .build(output);
+    }
+
+    private void toolRecipes(@Nonnull RecipeOutput output) {
+        CombinationRecipeBuilder.of(ESItems.OLD_BRUSH)
+                .input(Items.BRUSH).and().input(Items.NETHERITE_SCRAP)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.OLD_BRUSH)
+                .grist(GristTypes.SHALE, 8).grist(GristTypes.RUST, 32).grist(GristTypes.CAULK, 15)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.MAGNET)
+                .input(MSItems.ITEM_MAGNET).or().input(Items.REDSTONE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.MAGNET)
+                .grist(GristTypes.CAULK, 36).grist(GristTypes.GARNET, 8).grist(GristTypes.COBALT, 8)
                 .build(output);
     }
 

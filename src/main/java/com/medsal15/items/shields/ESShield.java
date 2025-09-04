@@ -10,7 +10,6 @@ import javax.annotation.Nullable;
 
 import com.medsal15.ESDamageTypes;
 import com.medsal15.items.ESDataComponents;
-import com.medsal15.items.IESEnergyStorage;
 import com.mraof.minestuck.entity.underling.UnderlingEntity;
 import com.mraof.minestuck.player.PlayerBoondollars;
 import com.mraof.minestuck.player.PlayerData;
@@ -38,10 +37,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 
-public class ESShield extends ShieldItem implements IESEnergyStorage {
+public class ESShield extends ShieldItem {
     @Nullable
     private Collection<IBlock> onBlock;
     @Nullable
@@ -72,51 +73,6 @@ public class ESShield extends ShieldItem implements IESEnergyStorage {
 
     public boolean hasOnBlock(IBlock block) {
         return onBlock != null && onBlock.contains(block);
-    }
-
-    public int getMaxEnergyStored(ItemStack stack) {
-        return stack.get(ESDataComponents.ENERGY_STORAGE);
-    }
-
-    public int getEnergyStored(ItemStack stack) {
-        return stack.get(ESDataComponents.ENERGY);
-    }
-
-    public boolean canExtract(ItemStack stack) {
-        int stored = stack.get(ESDataComponents.ENERGY);
-        return stored > 0;
-    }
-
-    public boolean canReceive(ItemStack stack) {
-        int stored = stack.get(ESDataComponents.ENERGY);
-        int storage = stack.get(ESDataComponents.ENERGY_STORAGE);
-        int diff = storage - stored;
-        return diff > 0;
-    }
-
-    public int extractEnergy(ItemStack stack, int toExtract, boolean simulate) {
-        int stored = stack.get(ESDataComponents.ENERGY);
-        if (toExtract > stored)
-            toExtract = stored;
-
-        if (!simulate) {
-            stack.set(ESDataComponents.ENERGY, stored - toExtract);
-        }
-
-        return toExtract;
-    }
-
-    public int receiveEnergy(ItemStack stack, int toReceive, boolean simulate) {
-        int stored = stack.get(ESDataComponents.ENERGY);
-        int storage = stack.get(ESDataComponents.ENERGY_STORAGE);
-        if (toReceive + stored > storage)
-            toReceive = storage - stored;
-
-        if (!simulate) {
-            stack.set(ESDataComponents.ENERGY, stored + toReceive);
-        }
-
-        return toReceive;
     }
 
     @Override
@@ -193,17 +149,13 @@ public class ESShield extends ShieldItem implements IESEnergyStorage {
 
         // #region USE_POWER
         public static ESShield.IBlock USE_POWER = event -> {
-            ItemStack useItem = event.getEntity().getUseItem();
-            if (!useItem.has(ESDataComponents.ENERGY) || !useItem.has(ESDataComponents.FLUX_MULTIPLIER))
+            ItemStack item = event.getEntity().getUseItem();
+            if (!item.has(ESDataComponents.ENERGY) || !item.has(ESDataComponents.FLUX_MULTIPLIER))
                 return false;
 
-            Item item = useItem.getItem();
-            if (!(item instanceof ESShield shield))
-                return false;
-
-            int mult = useItem.get(ESDataComponents.FLUX_MULTIPLIER);
+            int mult = item.getOrDefault(ESDataComponents.FLUX_MULTIPLIER, 100);
             if (mult < 0)
-                mult = 0;
+                mult = 1;
 
             // Ensure the damage does not bypass shields
             DamageSource damageSource = event.getDamageSource();
@@ -211,8 +163,10 @@ public class ESShield extends ShieldItem implements IESEnergyStorage {
                 return false;
 
             // Drain energy
+            @SuppressWarnings("null")
+            IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(item, null);
             int drain = (int) (event.getBlockedDamage() * mult);
-            int extracted = shield.extractEnergy(useItem, drain, false);
+            int extracted = energyStorage.extractEnergy(drain, false);
             if (extracted > 0) {
                 event.setShieldDamage(0);
             }

@@ -24,6 +24,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         registerAmmo();
         registerArmors();
         registerModus();
+        registerTools();
         registerBlocks();
 
         basicItem(ESItems.LUCK_TOKEN.get());
@@ -153,6 +154,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.BAGUETTE_MAGIQUE.get());
 
         handheldItem(ESItems.BROOM.get());
+
+        handheldItem(ESItems.MAGNEFORK.get());
+        handheldItem(ESItems.OVERCHARGED_MAGNEFORK.get());
+        handheldItem(ESItems.UNDERCHARGED_MAGNEFORK.get());
     }
 
     private void registerRangedWeapons() {
@@ -176,6 +181,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
         basicItem(ESItems.FORTUNE_COOKIE.get());
         withExistingParent(ESItems.CARD_ORE.getId().toString(), modLoc("block/card_ore"));
+    }
+
+    private void registerTools() {
+        basicItem(ESItems.MAGNET.get());
     }
 
     private void registerBlocks() {

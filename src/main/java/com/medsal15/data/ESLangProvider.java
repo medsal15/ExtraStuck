@@ -69,6 +69,7 @@ public final class ESLangProvider extends LanguageProvider {
         addArmors();
         addModuses();
         addBlocks();
+        addTools();
         addTags();
 
         addEffect(ESMobEffects.TIME_STOP, "Time Stop");
@@ -80,7 +81,6 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.LUCK_TOKEN, "Luck Token");
         addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
         addItem(ESItems.PIZZA, "Pizza");
-        addItem(ESItems.OLD_BRUSH, "Old Brush");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -214,6 +214,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.BROOM, "Broom");
         addItemTooltip(ESItems.BROOM, "Sweep sweep sweep");
 
+        addItem(ESItems.MAGNEFORK, "Magnefork");
+        addItem(ESItems.OVERCHARGED_MAGNEFORK, "Overcharged Magnefork");
+        addItemTooltip(ESItems.OVERCHARGED_MAGNEFORK, "Batteries sold separately");
+        addItem(ESItems.UNDERCHARGED_MAGNEFORK, "Undercharged Magnefork");
+
         addItem(ESItems.HANDGUN, "Handgun");
         addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
         addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");
@@ -242,6 +247,12 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
         addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");
         addBlock(ESBlocks.CARD_ORE, "Card Ore");
+    }
+
+    private void addTools() {
+        addItem(ESItems.OLD_BRUSH, "Old Brush");
+        addItem(ESItems.MAGNET, "Magnet");
+        addItemTooltip(ESItems.MAGNET, "How do they work?");
     }
 
     private void addBlocks() {

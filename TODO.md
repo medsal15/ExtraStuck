@@ -12,6 +12,8 @@ Improve mod page with fancy graphic
 
 Allow change shields (wooden shield) to also transform when dropped
 
+Allow minestuck batteries to recharge items
+
 ### Machines ###
 
 Atheneum add-on loader: adds extra items in the atheneum

@@ -1,0 +1,23 @@
+{
+    "name": "Magnet",
+    "icon": "extrastuck:magnet",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:magnet"
+            },
+            "text": "A magnet that attracts nearby items and grist."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Item Magnet and Redstone in a Punch Designix.",
+            "left": "minestuck:item_magnet",
+            "mode": "||",
+            "right": "minecraft:redstone",
+            "result": "extrastuck:magnet"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:magnet"
+  },
+  "input2": {
+    "item": "minestuck:edisons_fury"
+  },
+  "mode": "and",
+  "output": "extrastuck:overcharged_magnefork"
+}
