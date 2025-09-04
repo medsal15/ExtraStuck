@@ -42,7 +42,10 @@ public enum SequencedInterpreter implements RecipeInterpreter {
 
         MutableGristSet totalCost = MutableGristSet.newDefault();
 
-        totalCost.add(callback.lookupCostFor(assembly.getIngredient()));
+        GristSet base = callback.lookupCostFor(assembly.getIngredient());
+        if (base == null)
+            return null;
+        totalCost.add(base);
 
         int loops = assembly.getLoops();
         Item transitional = assembly.getTransitionalItem().getItem();
