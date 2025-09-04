@@ -76,5 +76,6 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
 
         add(ESBlocks.PIZZA.get(), noDrop());
         add(ESBlocks.CARD_ORE.get(), noDrop());
+        dropSelf(ESBlocks.PRINTER.get());
     }
 }

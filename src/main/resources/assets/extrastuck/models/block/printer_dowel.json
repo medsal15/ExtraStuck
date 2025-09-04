@@ -1,0 +1,39 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+    "render_type": "cutout",
+	"textures": {
+		"0": "extrastuck:block/printer/dowel",
+		"particle": "extrastuck:block/printer/dowel"
+	},
+	"elements": [
+		{
+			"name": "side",
+			"from": [7, 12, 6],
+			"to": [9, 16, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [5, 4, 7, 8], "texture": "#0", "tintindex": 0},
+				"east": {"uv": [0, 4, 4, 8], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [13, 4, 15, 8], "texture": "#0", "tintindex": 0},
+				"west": {"uv": [8, 4, 12, 8], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [7, 4, 5, 0], "texture": "#0", "tintindex": 0},
+				"down": {"uv": [11, 0, 9, 4], "texture": "#0", "tintindex": 0}
+			}
+		},
+		{
+			"name": "front",
+			"from": [6, 12.01, 7],
+			"to": [10, 16.01, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [4, 4, 8, 8], "texture": "#0", "tintindex": 0},
+				"east": {"uv": [1, 4, 3, 8], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [12, 4, 16, 8], "texture": "#0", "tintindex": 0},
+				"west": {"uv": [9, 4, 11, 8], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [8, 3, 4, 1], "texture": "#0", "tintindex": 0},
+				"down": {"uv": [12, 1, 8, 3], "texture": "#0", "tintindex": 0}
+			}
+		}
+	]
+}

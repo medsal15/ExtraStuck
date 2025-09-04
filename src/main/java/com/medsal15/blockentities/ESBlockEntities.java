@@ -19,4 +19,8 @@ public final class ESBlockEntities {
                     () -> BlockEntityType.Builder
                             .<CardOreBlockEntity>of(CardOreBlockEntity::new, ESBlocks.CARD_ORE.get())
                             .build(null));
+    @SuppressWarnings("null")
+    public static final Supplier<BlockEntityType<PrinterBlockEntity>> PRINTER = BLOCK_ENTITY_TYPES.register("printer",
+            () -> BlockEntityType.Builder.<PrinterBlockEntity>of(PrinterBlockEntity::new, ESBlocks.PRINTER.get())
+                    .build(null));
 }

@@ -12,8 +12,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.IItemHandler;
 
 public class CardOreBlockEntity extends BlockEntity implements IItemHandler {
-    private ItemStack stored;
     public static final String ITEM_STORED = "stored";
+
+    private ItemStack stored;
 
     public CardOreBlockEntity(BlockPos pos, BlockState state) {
         super(ESBlockEntities.CARD_ORE.get(), pos, state);

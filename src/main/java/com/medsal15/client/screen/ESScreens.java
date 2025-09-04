@@ -6,6 +6,7 @@ import com.medsal15.client.screen.modus.FortuneModusScreen;
 import com.medsal15.client.screen.modus.OreModusScreen;
 import com.medsal15.client.screen.modus.PileModusScreen;
 import com.medsal15.client.screen.modus.VoidModusScreen;
+import com.medsal15.menus.ESMenuTypes;
 import com.medsal15.modus.ESModus;
 
 import net.neoforged.api.distmarker.Dist;
@@ -19,6 +20,9 @@ import static com.mraof.minestuck.client.gui.MSScreenFactories.registerSylladexF
 public final class ESScreens {
     @SubscribeEvent
     public static void registerScreenFactories(RegisterMenuScreensEvent event) {
+        event.register(ESMenuTypes.PRINTER.get(), PrinterScreen::new);
+
+        // Moduses
         registerSylladexFactory(ESModus.PILE_MODUS, PileModusScreen::new);
         registerSylladexFactory(ESModus.FORTUNE_MODUS, FortuneModusScreen::new);
         registerSylladexFactory(ESModus.ORE_MODUS, OreModusScreen::new);

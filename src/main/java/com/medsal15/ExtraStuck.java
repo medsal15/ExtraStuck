@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import org.slf4j.Logger;
 
 import com.medsal15.blockentities.ESBlockEntities;
+import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.model.armor.HeavyBootsModel;
 import com.medsal15.data.ESLangProvider;
@@ -24,6 +25,7 @@ import com.medsal15.items.guns.GunContainer;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.loot_modifiers.ESLootModifiers;
+import com.medsal15.menus.ESMenuTypes;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.modus.ESModus;
 import com.medsal15.structures.processors.ESProcessors;
@@ -48,6 +50,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -61,6 +64,7 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -116,6 +120,7 @@ public class ExtraStuck {
         ESInterpretertypes.INTERPRETER_TYPES.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
         ESLootModifiers.GLM_SERIALIZERS.register(modEventBus);
+        ESMenuTypes.MENU_TYPES.register(modEventBus);
         ESMobEffects.MOB_EFFECTS.register(modEventBus);
         ESModus.MODUSES.register(modEventBus);
         ESProcessors.PROCESSORS.register(modEventBus);
@@ -140,6 +145,8 @@ public class ExtraStuck {
         event.registerItem(Capabilities.ItemHandler.ITEM,
                 (stack, u) -> new GunContainer(1, stack),
                 ESItems.HANDGUN.get());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.PRINTER.get(),
+                PrinterBlockEntity::getItemHandler);
     }
 
     @SubscribeEvent
@@ -277,6 +284,23 @@ public class ExtraStuck {
                     return new HumanoidModel<>(HeavyBootsModel.createBodyLayer().bakeRoot());
                 }
             }, ESItems.HEAVY_BOOTS);
+        }
+
+        @SubscribeEvent
+        public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
+            event.register((state, level, pos, tintIndex) -> {
+                if (level != null && pos != null && tintIndex != -1) {
+                    BlockEntity be = level.getBlockEntity(pos);
+                    if (be instanceof PrinterBlockEntity printer) {
+                        // TODO for some reason, the input slot is considered empty
+                        // This means that the dowel has the default color
+                        // It's a lesser deal than pure white, but still
+                        return printer.getColor();
+                    }
+                }
+
+                return 0xFFFFFFFF;
+            }, ESBlocks.PRINTER.get());
         }
     }
 

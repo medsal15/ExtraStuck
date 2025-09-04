@@ -1,0 +1,47 @@
+{
+    "multipart": [
+        {
+            "apply": {
+                "model": "extrastuck:block/printer"
+            },
+            "when": {
+                "facing": "north"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/printer",
+                "y": 90
+            },
+            "when": {
+                "facing": "east"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/printer",
+                "y": 180
+            },
+            "when": {
+                "facing": "south"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/printer",
+                "y": 270
+            },
+            "when": {
+                "facing": "west"
+            }
+        },
+        {
+            "apply": {
+                "model": "extrastuck:block/printer_dowel"
+            },
+            "when": {
+                "has_dowel": "true"
+            }
+        }
+    ]
+}

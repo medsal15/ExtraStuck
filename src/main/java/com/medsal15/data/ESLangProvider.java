@@ -4,7 +4,9 @@ import java.util.function.Supplier;
 
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
+import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.client.gui.LoopButton;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.medsal15.mobeffects.ESMobEffects;
@@ -256,6 +258,10 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     private void addBlocks() {
+        addBlock(ESBlocks.PRINTER, "Printer");
+        add(PrinterBlockEntity.TITLE, "Printer");
+        add(LoopButton.LOOP, "LOOP");
+
         addBlock(ESBlocks.CUT_GARNET, "Cut Garnet");
         addBlock(ESBlocks.CUT_GARNET_STAIRS, "Cut Garnet Stairs");
         addBlock(ESBlocks.CUT_GARNET_SLAB, "Cut Garnet Slab");

@@ -25,6 +25,7 @@ public class CardOreBlock extends Block implements EntityBlock {
         return new CardOreBlockEntity(pos, state);
     }
 
+    // TODO this doesnt seem to be the right way, see CruxiteDowelBlock
     @Override
     protected void onRemove(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos,
             @Nonnull BlockState newState, boolean movedByPiston) {
