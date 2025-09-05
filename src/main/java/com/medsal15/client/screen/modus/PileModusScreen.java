@@ -22,10 +22,10 @@ public class PileModusScreen extends BaseModusScreen {
 
         this.cards.clear();
 
-        if (width > 0) {
-            this.maxWidth = Math.max(mapWidth, 10 + (width * CARD_WIDTH + (width - 1) * 5));
-            this.maxHeight = Math.max(mapHeight, 10 + (width * CARD_HEIGHT + (width - 1) * 5));
+        this.maxWidth = Math.max(mapWidth, 10 + (width * CARD_WIDTH + (width - 1) * 5));
+        this.maxHeight = Math.max(mapHeight, 10 + (width * CARD_HEIGHT + (width - 1) * 5));
 
+        if (width > 0) {
             int startx = Math.max(5, (mapWidth - (width * CARD_WIDTH + (width - 1) * 5)) / 2),
                     starty = (mapHeight + ((width - 2) * (CARD_HEIGHT + 5))) / 2;
             for (int i = 0; i < stacks.size(); i++) {
