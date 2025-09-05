@@ -73,7 +73,7 @@
   "entity.extrastuck.prismarine_arrow": "Prismarine Arrow",
   "entity.extrastuck.quartz_arrow": "Quartz Arrow",
   "entity.extrastuck.teleport_arrow": "Teleport Arrow",
-  "extrastuck.button.loop": "LOOP",
+  "extrastuck.button.loop": "START",
   "extrastuck.energy_storage": "%s / %s FE",
   "extrastuck.gun_content": "Loaded with %1$s %2$s",
   "extrastuck.gun_empty": "Unloaded",

@@ -1,20 +1,11 @@
 package com.medsal15;
 
-import java.text.NumberFormat;
-
-import javax.annotation.Nonnull;
-
 import org.slf4j.Logger;
 
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
-import com.medsal15.client.model.armor.HeavyBootsModel;
-import com.medsal15.data.ESLangProvider;
-import com.medsal15.entities.ESArrowRenderer;
 import com.medsal15.entities.ESEntities;
-import com.medsal15.entities.projectiles.CaptainJusticeShield;
-import com.medsal15.entities.projectiles.bullets.ItemBullet;
 import com.medsal15.interpreters.ESInterpretertypes;
 import com.medsal15.items.ESArmorMaterials;
 import com.medsal15.items.ESDataComponents;
@@ -23,7 +14,6 @@ import com.medsal15.items.ESItems;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.guns.GunContainer;
 import com.medsal15.items.shields.ESShield;
-import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.loot_modifiers.ESLootModifiers;
 import com.medsal15.menus.ESMenuTypes;
 import com.medsal15.mobeffects.ESMobEffects;
@@ -31,49 +21,30 @@ import com.medsal15.modus.ESModus;
 import com.medsal15.structures.processors.ESProcessors;
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
-import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
-import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -197,154 +168,6 @@ public class ExtraStuck {
         }
         if (zoom != 1f) {
             event.setNewFovModifier(zoom);
-        }
-    }
-
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            for (DeferredItem<Item> shield : ESItems.getShields()) {
-                addBlocking(shield);
-            }
-        }
-
-        private static void addBlocking(DeferredItem<Item> item) {
-            ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("blocking"),
-                    (stack, world, entity, entityid) -> entity != null && entity.isUsingItem()
-                            && entity.getUseItem() == stack ? 1.0F : 0.0F);
-        }
-
-        @SubscribeEvent
-        public static void registerEntityRenderers(RegisterRenderers event) {
-            event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
-                    CaptainJusticeShield.CJSRenderer::new);
-
-            event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/flame.png")));
-            event.registerEntityRenderer(ESEntities.NETHER_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/nether.png")));
-            event.registerEntityRenderer(ESEntities.CARDBOARD_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/cardboard.png")));
-            event.registerEntityRenderer(ESEntities.MISSED_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/missed.png")));
-            event.registerEntityRenderer(ESEntities.CANDY_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/candy.png")));
-            event.registerEntityRenderer(ESEntities.LIGHTNING_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/lightning.png")));
-            event.registerEntityRenderer(ESEntities.EXPLOSIVE_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/explosive.png")));
-            event.registerEntityRenderer(ESEntities.IRON_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/iron.png")));
-            event.registerEntityRenderer(ESEntities.QUARTZ_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/quartz.png")));
-            event.registerEntityRenderer(ESEntities.PRISMARINE_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/prismarine.png")));
-            event.registerEntityRenderer(ESEntities.GLASS_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/glass.png")));
-            event.registerEntityRenderer(ESEntities.AMETHYST_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/amethyst.png")));
-            event.registerEntityRenderer(ESEntities.MINING_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/mining.png")));
-            event.registerEntityRenderer(ESEntities.HEALING_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/healing.png")));
-            event.registerEntityRenderer(ESEntities.END_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/end.png")));
-            event.registerEntityRenderer(ESEntities.TELEPORT_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/teleport.png")));
-            event.registerEntityRenderer(ESEntities.DRAGON_ARROW.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/arrow/dragon.png")));
-
-            event.registerEntityRenderer(ESEntities.HANDGUN_BULLET.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/bullet/handgun.png")));
-            event.registerEntityRenderer(ESEntities.HEAVY_HANDGUN_BULLET.get(), c -> new ESArrowRenderer(c,
-                    modid("textures/entity/bullet/heavy_handgun.png")));
-            /**
-             * TODO figure out why the item isn't rendering
-             *
-             * It seems I need to somehow pass the actual entity instead of the default one,
-             * but idk how
-             */
-            event.registerEntityRenderer(ESEntities.ITEM_BULLET.get(), c -> new ThrownItemRenderer<ItemBullet>(c));
-        }
-
-        @SubscribeEvent
-        public static void registerEntityLayers(RegisterLayerDefinitions event) {
-            event.registerLayerDefinition(CaptainJusticeShield.CJSModel.LAYER_LOCATION,
-                    CaptainJusticeShield.CJSModel::createLayer);
-        }
-
-        @SubscribeEvent
-        public static void registerExtensions(RegisterClientExtensionsEvent event) {
-            event.registerItem(new IClientItemExtensions() {
-                @Override
-                public HumanoidModel<?> getHumanoidArmorModel(@Nonnull LivingEntity livingEntity,
-                        @Nonnull ItemStack itemStack, @Nonnull EquipmentSlot equipmentSlot,
-                        @Nonnull HumanoidModel<?> original) {
-                    return new HumanoidModel<>(HeavyBootsModel.createBodyLayer().bakeRoot());
-                }
-            }, ESItems.HEAVY_BOOTS);
-        }
-
-        @SubscribeEvent
-        public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
-            event.register((state, level, pos, tintIndex) -> {
-                if (level != null && pos != null && tintIndex != -1) {
-                    BlockEntity be = level.getBlockEntity(pos);
-                    if (be instanceof PrinterBlockEntity printer) {
-                        // TODO for some reason, the input slot is considered empty
-                        // This means that the dowel has the default color
-                        // It's a lesser deal than pure white, but still
-                        return printer.getColor();
-                    }
-                }
-
-                return 0xFFFFFFFF;
-            }, ESBlocks.PRINTER.get());
-        }
-    }
-
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
-    public static class ClientGameEvents {
-        @SubscribeEvent
-        public static void addCustomTooltip(ItemTooltipEvent event) {
-            int i = 1;
-            ItemStack stack = event.getItemStack();
-            Item item = stack.getItem();
-
-            // Fancy item descriptions
-            final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
-            if (itemId == null || !itemId.getNamespace().equals(ExtraStuck.MODID))
-                return;
-
-            String tooltip_key = stack.getDescriptionId() + ".tooltip";
-            if (I18n.exists(tooltip_key)) {
-                event.getToolTip().add(i,
-                        Component.translatable(tooltip_key).withStyle(ChatFormatting.GRAY));
-                i++;
-            }
-
-            // Shield info
-            if (ClientConfig.displayShieldInfo) {
-                if (item instanceof ESShield shield && shield.hasOnBlock(BlockFuncs.DAMAGE)) {
-                    event.getToolTip().add(i,
-                            Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
-                                    stack.get(ESDataComponents.SHIELD_DAMAGE)
-                                            .intValue())
-                                    .withStyle(ChatFormatting.GRAY));
-                    i++;
-                }
-            }
-
-            // RF
-            @SuppressWarnings("null")
-            IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
-            if (energyStorage != null) {
-                event.getToolTip().add(i, Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
-                        NumberFormat.getInstance().format(energyStorage.getEnergyStored()),
-                        NumberFormat.getInstance().format(energyStorage.getMaxEnergyStored())));
-                i++;
-            }
         }
     }
 }

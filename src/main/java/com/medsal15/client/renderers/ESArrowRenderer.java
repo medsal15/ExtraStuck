@@ -1,4 +1,4 @@
-package com.medsal15.entities;
+package com.medsal15.client.renderers;
 
 import javax.annotation.Nonnull;
 

@@ -71,6 +71,7 @@ public final class ESLangProvider extends LanguageProvider {
         addArmors();
         addModuses();
         addBlocks();
+        addBlockEntities();
         addTools();
         addTags();
 
@@ -257,11 +258,14 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.MAGNET, "How do they work?");
     }
 
-    private void addBlocks() {
+    private void addBlockEntities() {
+        // Printer
         addBlock(ESBlocks.PRINTER, "Printer");
         add(PrinterBlockEntity.TITLE, "Printer");
-        add(LoopButton.LOOP, "LOOP");
+        add(LoopButton.LOOP, "START");
+    }
 
+    private void addBlocks() {
         addBlock(ESBlocks.CUT_GARNET, "Cut Garnet");
         addBlock(ESBlocks.CUT_GARNET_STAIRS, "Cut Garnet Stairs");
         addBlock(ESBlocks.CUT_GARNET_SLAB, "Cut Garnet Slab");

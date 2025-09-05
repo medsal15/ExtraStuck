@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 
 import org.lwjgl.glfw.GLFW;
 
+import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.client.gui.LoopButton;
 import com.medsal15.menus.PrinterMenu;
@@ -30,19 +31,24 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class PrinterScreen extends MachineScreen<PrinterMenu> {
-    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Minestuck.MOD_ID,
-            "textures/gui/alchemiter.png");
-    private static final ResourceLocation PROGRESS_BAR_TEXTURE = ResourceLocation.fromNamespaceAndPath(Minestuck.MOD_ID,
-            "textures/gui/progress/alchemiter.png");
-    private static final int PROGRESS_BAR_X = 54;
-    private static final int PROGRESS_BAR_Y = 23;
-    private static final int PROGRESS_BAR_WIDTH = 71;
+    private static final ResourceLocation BACKGROUND_TEXTURE = ExtraStuck.modid("textures/gui/printer.png");
+    private static final ResourceLocation PROGRESS_BAR_TEXTURE = ExtraStuck.modid("textures/gui/printer_progress.png");
+    private static final ResourceLocation FUEL_BAR_TEXTURE = Minestuck.id("textures/gui/progress/uranium_level.png");
+    private static final int PROGRESS_BAR_X = 37;
+    private static final int PROGRESS_BAR_Y = 18;
+    private static final int PROGRESS_BAR_WIDTH = 36;
     private static final int PROGRESS_BAR_HEIGHT = 10;
-    private static final int BUTTON_X = 67;
+    private static final int FUEL_BAR_X = 104;
+    private static final int FUEL_BAR_Y = 4;
+    private static final int FUEL_BAR_WIDTH = 35;
+    private static final int FUEL_BAR_HEIGHT = 39;
+    private static final int BUTTON_X = 37;
     private static final int BUTTON_Y = 31;
 
     public PrinterScreen(PrinterMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
+        // Move label to not be on top of dowel slot
+        titleLabelX = 37;
     }
 
     // AbstractContainerScreen
@@ -50,7 +56,7 @@ public class PrinterScreen extends MachineScreen<PrinterMenu> {
     protected void init() {
         super.init();
 
-        goButton = addRenderableWidget(new LoopButton(leftPos + BUTTON_X, topPos + BUTTON_Y, 40, 12, menu));
+        goButton = addRenderableWidget(new LoopButton(leftPos + BUTTON_X, topPos + BUTTON_Y, 36, 12, menu));
     }
 
     @Override
@@ -91,11 +97,15 @@ public class PrinterScreen extends MachineScreen<PrinterMenu> {
     protected void renderBg(@Nonnull GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         RenderSystem.setShaderColor(1, 1, 1, 1);
 
-        guiGraphics.blit(BACKGROUND_TEXTURE, this.leftPos, this.topPos, 0, 0, imageWidth, imageHeight);
+        guiGraphics.blit(BACKGROUND_TEXTURE, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
-        int width = getScaledValue(menu.getProgress(), PrinterBlockEntity.MAX_PROGRESS, PROGRESS_BAR_WIDTH);
-        guiGraphics.blit(PROGRESS_BAR_TEXTURE, this.leftPos + PROGRESS_BAR_X, this.topPos + PROGRESS_BAR_Y,
-                0, 0, width, PROGRESS_BAR_HEIGHT, PROGRESS_BAR_WIDTH, PROGRESS_BAR_HEIGHT);
+        int bar_progress = getScaledValue(menu.getProgress(), PrinterBlockEntity.MAX_PROGRESS, PROGRESS_BAR_WIDTH);
+        guiGraphics.blit(PROGRESS_BAR_TEXTURE, leftPos + PROGRESS_BAR_X, topPos + PROGRESS_BAR_Y,
+                0, 0, bar_progress, PROGRESS_BAR_HEIGHT, PROGRESS_BAR_WIDTH, PROGRESS_BAR_HEIGHT);
+
+        int fuel_fill = getScaledValue(menu.getFuel(), PrinterBlockEntity.MAX_FUEL, FUEL_BAR_HEIGHT);
+        guiGraphics.blit(FUEL_BAR_TEXTURE, leftPos + FUEL_BAR_X, topPos + FUEL_BAR_Y + FUEL_BAR_HEIGHT - fuel_fill, 0,
+                FUEL_BAR_HEIGHT - fuel_fill, FUEL_BAR_WIDTH, fuel_fill, FUEL_BAR_WIDTH, FUEL_BAR_HEIGHT);
     }
 
     @SuppressWarnings("deprecation")

@@ -660,6 +660,16 @@ public final class ESRecipeProvider extends RecipeProvider {
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {
+        // #region Machines
+        CombinationRecipeBuilder.of(ESItems.PRINTER)
+                .input(Items.CRAFTER).and().input(MSItems.ALCHEMITER)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.PRINTER)
+                .grist(GristTypes.BUILD, 5000).grist(GristTypes.URANIUM, 175)
+                .grist(GristTypes.GARNET, 500).grist(GristTypes.DIAMOND, 250)
+                .build(output);
+        // #endregion Machines
+
         // #region Garnet
         CombinationRecipeBuilder.of(ESItems.CUT_GARNET)
                 .input(Items.AMETHYST_BLOCK).or().input(Tags.Items.DYES_RED)

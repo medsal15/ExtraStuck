@@ -475,6 +475,10 @@ public final class ESItems {
     // #endregion Modus
 
     // #region Blocks
+    // #region Machines
+    public static final DeferredItem<BlockItem> PRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.PRINTER);
+    // #endregion Machines
+    // #region Garnet
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
     public static final DeferredItem<BlockItem> CUT_GARNET_STAIRS = ITEMS
             .registerSimpleBlockItem(ESBlocks.CUT_GARNET_STAIRS);
@@ -492,7 +496,8 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.GARNET_BRICK_WALL);
     public static final DeferredItem<BlockItem> CHISELED_GARNET_BRICKS = ITEMS
             .registerSimpleBlockItem(ESBlocks.CHISELED_GARNET_BRICKS);
-
+    // #endregion Garnet
+    // #region Ruby
     public static final DeferredItem<BlockItem> CUT_RUBY = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_RUBY);
     public static final DeferredItem<BlockItem> CUT_RUBY_STAIRS = ITEMS
             .registerSimpleBlockItem(ESBlocks.CUT_RUBY_STAIRS);
@@ -509,7 +514,8 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.RUBY_BRICK_WALL);
     public static final DeferredItem<BlockItem> CHISELED_RUBY_BRICKS = ITEMS
             .registerSimpleBlockItem(ESBlocks.CHISELED_RUBY_BRICKS);
-
+    // #endregion Ruby
+    // #region Cobalt
     public static final DeferredItem<BlockItem> COBALT_BLOCK = ITEMS.registerSimpleBlockItem(ESBlocks.COBALT_BLOCK);
     public static final DeferredItem<BlockItem> COBALT_BARS = ITEMS.registerSimpleBlockItem(ESBlocks.COBALT_BARS);
     public static final DeferredItem<BlockItem> COBALT_DOOR = ITEMS.registerSimpleBlockItem(ESBlocks.COBALT_DOOR);
@@ -517,7 +523,8 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.COBALT_TRAPDOOR);
     public static final DeferredItem<BlockItem> COBALT_PRESSURE_PLATE = ITEMS
             .registerSimpleBlockItem(ESBlocks.COBALT_PRESSURE_PLATE);
-
+    // #endregion Cobalt
+    // #region Sulfur
     public static final DeferredItem<BlockItem> SULFUROUS_STONE = ITEMS
             .registerSimpleBlockItem(ESBlocks.SULFUROUS_STONE);
     public static final DeferredItem<BlockItem> SULFUROUS_STONE_STAIRS = ITEMS
@@ -526,7 +533,8 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.SULFUROUS_STONE_SLAB);
     public static final DeferredItem<BlockItem> SULFUROUS_STONE_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.SULFUROUS_STONE_WALL);
-
+    // #endregion Sulfur
+    // #region Marble
     public static final DeferredItem<BlockItem> MARBLE = ITEMS
             .registerSimpleBlockItem(ESBlocks.MARBLE);
     public static final DeferredItem<BlockItem> MARBLE_STAIRS = ITEMS
@@ -551,7 +559,8 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.MARBLE_BRICK_SLAB);
     public static final DeferredItem<BlockItem> MARBLE_BRICK_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.MARBLE_BRICK_WALL);
-
+    // #endregion Marble
+    // #region Zillium
     public static final DeferredItem<BlockItem> ZILLIUM_BRICKS = ITEMS
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICKS);
     public static final DeferredItem<BlockItem> ZILLIUM_BRICK_STAIRS = ITEMS
@@ -560,14 +569,13 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_SLAB);
     public static final DeferredItem<BlockItem> ZILLIUM_BRICK_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_WALL);
+    // #endregion Zillium
     // #endregion Blocks
 
     public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
             (p) -> new GiftItem(
                     p.component(ESDataComponents.GIFT_TABLE, ESLootSubProvider.GIFT_LOOT_TABLE)));
     public static final DeferredItem<Item> LUCK_TOKEN = ITEMS.registerItem("luck_token", p -> new Tokenitem(p));
-
-    public static final DeferredItem<BlockItem> PRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.PRINTER);
 
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
@@ -786,6 +794,7 @@ public final class ESItems {
 
     public static Collection<DeferredItem<BlockItem>> getBlocks() {
         ArrayList<DeferredItem<BlockItem>> list = new ArrayList<>();
+        list.add(PRINTER);
 
         list.add(CUT_GARNET);
         list.add(CUT_GARNET_STAIRS);
