@@ -1,11 +1,12 @@
 package com.medsal15.blockentities;
 
 import java.util.Objects;
-import java.util.function.BiPredicate;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.medsal15.blockentities.handlers.BEStackHandler;
+import com.medsal15.blockentities.handlers.FuellessWrapper;
 import com.medsal15.blocks.PrinterBlock;
 import com.medsal15.menus.PrinterMenu;
 import com.mraof.minestuck.alchemy.GristHelper;
@@ -49,7 +50,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 
@@ -124,7 +124,7 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
         if (side == Direction.UP)
             return new RangedWrapper(this.itemHandler, SLOT_IN, SLOT_IN + 1);
 
-        return new ExternalHandler(itemHandler, SLOT_OUT, SLOT_FUEL + 1);
+        return new FuellessWrapper(itemHandler, SLOT_OUT, SLOT_FUEL + 1, SLOT_FUEL);
     }
 
     public int comparatorValue() {
@@ -213,7 +213,7 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
 
     @Override
     protected ItemStackHandler createItemHandler() {
-        return new CustomHandler(3,
+        return new BEStackHandler(3,
                 (slot, stack) -> {
                     switch (slot) {
                         case SLOT_IN:
@@ -223,44 +223,7 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
                         default:
                             return false;
                     }
-                });
-    }
-
-    // Copy of minestuck's as it's not public
-    private class CustomHandler extends ItemStackHandler {
-        private final BiPredicate<Integer, ItemStack> isValidPredicate;
-
-        protected CustomHandler(int size, BiPredicate<Integer, ItemStack> isValidPredicate) {
-            super(size);
-            this.isValidPredicate = isValidPredicate;
-        }
-
-        @Override
-        public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-            return isValidPredicate.test(slot, stack);
-        }
-
-        @Override
-        protected void onContentsChanged(int slot) {
-            PrinterBlockEntity.this.setChanged();
-        }
-    }
-
-    // Prevents fuel extraction
-    private class ExternalHandler extends RangedWrapper {
-        private int min;
-
-        public ExternalHandler(IItemHandlerModifiable handler, int minSlot, int maxSlotExclusive) {
-            super(handler, minSlot, maxSlotExclusive);
-            min = minSlot;
-        }
-
-        @Override
-        public ItemStack extractItem(int slot, int amount, boolean simulate) {
-            if (slot + min == SLOT_FUEL)
-                return ItemStack.EMPTY;
-            return super.extractItem(slot, amount, simulate);
-        }
+                }, this);
     }
 
     // ProgressTracker

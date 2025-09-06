@@ -10,12 +10,12 @@
       ],
       "entries": [
         {
-          "type": "minecraft:dynamic",
-          "name": "extrastuck:item"
+          "type": "minecraft:item",
+          "name": "extrastuck:charger"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "extrastuck:blocks/card_ore"
+  "random_sequence": "extrastuck:blocks/charger"
 }

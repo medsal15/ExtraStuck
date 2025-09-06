@@ -2,11 +2,16 @@ package com.medsal15.data.loot_tables;
 
 import java.util.Set;
 
+import com.medsal15.blockentities.CardOreBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 public class ESBlockLootSubProvider extends BlockLootSubProvider {
     public ESBlockLootSubProvider(HolderLookup.Provider lookupProvider) {
@@ -75,7 +80,13 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(ESBlocks.ZILLIUM_BRICK_WALL.get());
 
         add(ESBlocks.PIZZA.get(), noDrop());
-        add(ESBlocks.CARD_ORE.get(), noDrop());
+        add(ESBlocks.CARD_ORE.get(), this::droppingWithOreItem);
         dropSelf(ESBlocks.PRINTER.get());
+        dropSelf(ESBlocks.CHARGER.get());
+    }
+
+    private LootTable.Builder droppingWithOreItem(Block block) {
+        return LootTable.lootTable().withPool(applyExplosionCondition(block, LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1)).add(DynamicLoot.dynamicEntry(CardOreBlockEntity.ITEM_DYNAMIC))));
     }
 }

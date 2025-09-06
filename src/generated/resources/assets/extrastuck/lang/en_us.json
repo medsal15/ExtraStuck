@@ -1,5 +1,6 @@
 {
   "block.extrastuck.card_ore": "Card Ore",
+  "block.extrastuck.charger": "Charger",
   "block.extrastuck.chiseled_garnet_bricks": "Chiseled Garnet Bricks",
   "block.extrastuck.chiseled_ruby_bricks": "Chiseled Ruby Bricks",
   "block.extrastuck.cobalt_bars": "Cobalt Bars",
@@ -45,6 +46,7 @@
   "block.extrastuck.zillium_brick_stairs": "Zillium Brick Stairs",
   "block.extrastuck.zillium_brick_wall": "Zillium Brick Wall",
   "block.extrastuck.zillium_bricks": "Zillium Bricks",
+  "container.extrastuck.charger": "Charger",
   "container.extrastuck.printer": "Printer",
   "death.attack.extrastuck:captain_justice_projectile": "%1$s was shot by %2$s",
   "death.attack.extrastuck:captain_justice_projectile.item": "%1$s was shot by %2$s with %3$s",

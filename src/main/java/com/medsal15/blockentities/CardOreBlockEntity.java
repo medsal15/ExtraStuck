@@ -2,9 +2,12 @@ package com.medsal15.blockentities;
 
 import javax.annotation.Nonnull;
 
+import com.medsal15.ExtraStuck;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -12,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.IItemHandler;
 
 public class CardOreBlockEntity extends BlockEntity implements IItemHandler {
+    public static final ResourceLocation ITEM_DYNAMIC = ExtraStuck.modid("item");
     public static final String ITEM_STORED = "stored";
 
     private ItemStack stored;

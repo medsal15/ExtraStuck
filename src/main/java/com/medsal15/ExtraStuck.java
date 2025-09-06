@@ -2,6 +2,7 @@ package com.medsal15;
 
 import org.slf4j.Logger;
 
+import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
@@ -116,8 +117,14 @@ public class ExtraStuck {
         event.registerItem(Capabilities.ItemHandler.ITEM,
                 (stack, u) -> new GunContainer(1, stack),
                 ESItems.HANDGUN.get());
+
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.PRINTER.get(),
                 PrinterBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.CHARGER.get(),
+                ChargerBlockEntity::getItemHandler);
+
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.CHARGER.get(),
+                ChargerBlockEntity::getEnergyHandler);
     }
 
     @SubscribeEvent

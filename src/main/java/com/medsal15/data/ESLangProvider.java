@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
+import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.gui.LoopButton;
@@ -263,6 +264,10 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.PRINTER, "Printer");
         add(PrinterBlockEntity.TITLE, "Printer");
         add(LoopButton.LOOP, "START");
+
+        // Charger
+        addBlock(ESBlocks.CHARGER, "Charger");
+        add(ChargerBlockEntity.TITLE, "Charger");
     }
 
     private void addBlocks() {

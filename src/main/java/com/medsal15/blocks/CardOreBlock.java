@@ -1,18 +1,20 @@
 package com.medsal15.blocks;
 
+import java.util.List;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.CardOreBlockEntity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams.Builder;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class CardOreBlock extends Block implements EntityBlock {
     public CardOreBlock(Properties properties) {
@@ -25,20 +27,11 @@ public class CardOreBlock extends Block implements EntityBlock {
         return new CardOreBlockEntity(pos, state);
     }
 
-    // TODO this doesnt seem to be the right way, see CruxiteDowelBlock
     @Override
-    protected void onRemove(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos,
-            @Nonnull BlockState newState, boolean movedByPiston) {
-        if (state.getBlock() != newState.getBlock()) {
-            if (level.getBlockEntity(pos) instanceof CardOreBlockEntity blockEntity) {
-                ItemStack stack = blockEntity.getStackInSlot(0);
-                if (!stack.isEmpty()) {
-                    ItemEntity entity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), stack);
-                    level.addFreshEntity(entity);
-                }
-            }
+    protected List<ItemStack> getDrops(@Nonnull BlockState state, @Nonnull Builder builder) {
+        if (builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY) instanceof CardOreBlockEntity ore) {
+            builder = builder.withDynamicDrop(CardOreBlockEntity.ITEM_DYNAMIC, c -> c.accept(ore.getStackInSlot(0)));
         }
-
-        super.onRemove(state, level, pos, newState, movedByPiston);
+        return super.getDrops(state, builder);
     }
 }

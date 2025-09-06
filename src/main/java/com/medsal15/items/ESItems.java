@@ -477,6 +477,7 @@ public final class ESItems {
     // #region Blocks
     // #region Machines
     public static final DeferredItem<BlockItem> PRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.PRINTER);
+    public static final DeferredItem<BlockItem> CHARGER = ITEMS.registerSimpleBlockItem(ESBlocks.CHARGER);
     // #endregion Machines
     // #region Garnet
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
@@ -795,6 +796,7 @@ public final class ESItems {
     public static Collection<DeferredItem<BlockItem>> getBlocks() {
         ArrayList<DeferredItem<BlockItem>> list = new ArrayList<>();
         list.add(PRINTER);
+        list.add(CHARGER);
 
         list.add(CUT_GARNET);
         list.add(CUT_GARNET_STAIRS);

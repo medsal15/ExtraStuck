@@ -98,14 +98,12 @@ public class PrinterMenu extends MachineContainerMenu {
             stack = original.copy();
             boolean result = false;
 
-            if (index == PrinterBlockEntity.SLOT_IN) {
-                result = moveItemStackTo(original, 3, all, false);
-            } else if (index == PrinterBlockEntity.SLOT_FUEL) {
+            if (index == PrinterBlockEntity.SLOT_IN
+                    || index == PrinterBlockEntity.SLOT_FUEL) {
                 result = moveItemStackTo(original, 3, all, false);
             } else if (index == PrinterBlockEntity.SLOT_OUT) {
                 if (original.getItem() == MSItems.RAW_URANIUM.get()) {
                     // go to fuel?
-                    // TODO test if this works
                     result = moveItemStackTo(original, 2, 3, false);
                 } else {
                     result = moveItemStackTo(original, 3, all, false);
@@ -116,7 +114,6 @@ public class PrinterMenu extends MachineContainerMenu {
                     result = moveItemStackTo(original, 0, 1, false);
                 } else if (original.getItem() == MSItems.RAW_URANIUM.asItem()) {
                     // send to fuel
-                    // TODO test if this works
                     result = moveItemStackTo(original, 2, 3, false);
                 }
             }

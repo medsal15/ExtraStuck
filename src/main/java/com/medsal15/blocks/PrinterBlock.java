@@ -87,15 +87,15 @@ public class PrinterBlock extends SmallMachineBlock<PrinterBlockEntity> {
         if (level.getBlockEntity(pos) instanceof PrinterBlockEntity printer
                 && hitResult.getDirection() == Direction.UP) {
             IItemHandler handler = printer.getItemHandler(null);
-            ItemStack dowel = handler.getStackInSlot(0);
+            ItemStack dowel = handler.getStackInSlot(PrinterBlockEntity.SLOT_IN);
             if (dowel.isEmpty() && stack.getItem() == MSBlocks.CRUXITE_DOWEL.asItem()) {
-                ItemStack remainder = handler.insertItem(0, stack, false);
+                ItemStack remainder = handler.insertItem(PrinterBlockEntity.SLOT_IN, stack, false);
                 if (!ItemStack.matches(stack, remainder)) {
                     player.setItemInHand(hand, remainder);
                     return ItemInteractionResult.CONSUME;
                 }
             } else if (!dowel.isEmpty() && stack.isEmpty() && player.isCrouching()) {
-                dowel = handler.extractItem(0, 16, false);
+                dowel = handler.extractItem(PrinterBlockEntity.SLOT_IN, 16, false);
                 player.setItemInHand(hand, dowel);
                 return ItemInteractionResult.CONSUME;
             }

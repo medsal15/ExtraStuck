@@ -11,6 +11,7 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.model.armor.HeavyBootsModel;
+import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
@@ -102,6 +103,8 @@ public final class ClientModEvents {
          * but idk how
          */
         event.registerEntityRenderer(ESEntities.ITEM_BULLET.get(), c -> new ThrownItemRenderer<ItemBullet>(c));
+
+        event.registerBlockEntityRenderer(ESBlockEntities.CHARGER.get(), ChargerBlockRenderer::new);
     }
 
     @SubscribeEvent

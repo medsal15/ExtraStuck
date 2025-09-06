@@ -30,9 +30,15 @@ public final class ESBlocks {
     public static final DeferredBlock<CardOreBlock> CARD_ORE = BLOCKS.registerBlock("card_ore", CardOreBlock::new,
             Block.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).sound(SoundType.STONE).strength(1.5F, 6.0F));
 
+    // #region Machines
     // Objectively worse than a miniature alchemiter
     public static final DeferredBlock<PrinterBlock> PRINTER = BLOCKS.registerBlock("printer", PrinterBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
+    // TODO test
+    // TODO recipe & guide page
+    public static final DeferredBlock<ChargerBlock> CHARGER = BLOCKS.registerBlock("charger", ChargerBlock::new,
+            Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
+    // #endregion Machines
 
     // #region Garnet
     public static final DeferredBlock<Block> CUT_GARNET = BLOCKS.registerBlock("cut_garnet", Block::new,

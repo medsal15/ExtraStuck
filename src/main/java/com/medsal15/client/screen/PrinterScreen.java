@@ -32,7 +32,7 @@ import net.minecraft.world.level.Level;
 
 public class PrinterScreen extends MachineScreen<PrinterMenu> {
     private static final ResourceLocation BACKGROUND_TEXTURE = ExtraStuck.modid("textures/gui/printer.png");
-    private static final ResourceLocation PROGRESS_BAR_TEXTURE = ExtraStuck.modid("textures/gui/printer_progress.png");
+    private static final ResourceLocation PROGRESS_BAR_TEXTURE = ExtraStuck.modid("textures/gui/progress/printer.png");
     private static final ResourceLocation FUEL_BAR_TEXTURE = Minestuck.id("textures/gui/progress/uranium_level.png");
     private static final int PROGRESS_BAR_X = 37;
     private static final int PROGRESS_BAR_Y = 18;

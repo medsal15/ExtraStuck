@@ -28,7 +28,7 @@ public final class ESBlockTags extends BlockTagsProvider {
     public static final TagKey<Block> MINEABLE_WITH_DICE = BlockTags.create(ExtraStuck.modid("mineable_with_dice"));
 
     @Override
-    protected void addTags(@Nonnull Provider arg0) {
+    protected void addTags(@Nonnull Provider provider) {
         tag(INCORRECT_FOR_COPPER_TIER).addTag(BlockTags.INCORRECT_FOR_STONE_TOOL);
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
@@ -49,8 +49,8 @@ public final class ESBlockTags extends BlockTagsProvider {
                 ESBlocks.MARBLE_BRICK_SLAB.get(), ESBlocks.MARBLE_BRICK_WALL.get(),
                 ESBlocks.ZILLIUM_BRICKS.get(), ESBlocks.ZILLIUM_BRICK_STAIRS.get(),
                 ESBlocks.ZILLIUM_BRICK_SLAB.get(), ESBlocks.ZILLIUM_BRICK_WALL.get(),
-                ESBlocks.CARD_ORE.get(), ESBlocks.PRINTER.get());
-        tag(Tags.Blocks.NEEDS_WOOD_TOOL).add(ESBlocks.PRINTER.get());
+                ESBlocks.CARD_ORE.get(), ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get());
+        tag(Tags.Blocks.NEEDS_WOOD_TOOL).add(ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get());
 
         tag(BlockTags.WALLS).add(ESBlocks.CUT_GARNET_WALL.get(), ESBlocks.GARNET_BRICK_WALL.get(),
                 ESBlocks.CUT_RUBY_WALL.get(), ESBlocks.RUBY_BRICK_WALL.get(), ESBlocks.SULFUROUS_STONE_WALL.get(),
