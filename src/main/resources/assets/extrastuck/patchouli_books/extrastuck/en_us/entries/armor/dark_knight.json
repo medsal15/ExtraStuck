@@ -1,0 +1,45 @@
+{
+    "name": "Dark Knight",
+    "icon": "extrastuck:dark_knight_helmet",
+    "category": "extrastuck:armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:dark_knight_helmet,extrastuck:dark_knight_chestplate,extrastuck:dark_knight_leggings,extrastuck:dark_knight_boots",
+            "text": "Armor copied from a powerful foe. It's not as good, and you're missing some sort of pitch-black weapon to go along, but it does the job.$(br)Or you could use those regi weapons..."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Netherite Helmet and Tinted Glass in a Totem Lathe.",
+            "left": "minecraft:netherite_helmet",
+            "mode": "&&",
+            "right": "minecraft:tinted_glass",
+            "result": "extrastuck:dark_knight_helmet"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Netherite Chestplate and Tinted Glass in a Totem Lathe.",
+            "left": "minecraft:netherite_chestplate",
+            "mode": "&&",
+            "right": "minecraft:tinted_glass",
+            "result": "extrastuck:dark_knight_chestplate"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Netherite Leggings and Tinted Glass in a Totem Lathe.",
+            "left": "minecraft:netherite_leggings",
+            "mode": "&&",
+            "right": "minecraft:tinted_glass",
+            "result": "extrastuck:dark_knight_leggings"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Netherite Boots and Tinted Glass in a Totem Lathe.",
+            "left": "minecraft:netherite_boots",
+            "mode": "&&",
+            "right": "minecraft:tinted_glass",
+            "result": "extrastuck:dark_knight_boots"
+        }
+    ]
+}

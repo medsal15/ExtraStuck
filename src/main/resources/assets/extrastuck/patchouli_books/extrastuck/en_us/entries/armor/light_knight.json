@@ -1,0 +1,45 @@
+{
+    "name": "Light Knight",
+    "icon": "extrastuck:light_knight_helmet",
+    "category": "extrastuck:armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:light_knight_helmet,extrastuck:light_knight_chestplate,extrastuck:light_knight_leggings,extrastuck:light_knight_boots",
+            "text": "Where darkness shines, lightness... shades?$(br)Look, those glowshards have to be useful at some point.$(br2)You don't happen to have a welsh weapon assorted, do you?"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Netherite Helmet and Glowstone in a Punch Designix.",
+            "left": "minecraft:netherite_helmet",
+            "mode": "||",
+            "right": "minecraft:glowstone",
+            "result": "extrastuck:light_knight_helmet"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Netherite Chestplate and Glowstone in a Punch Designix.",
+            "left": "minecraft:netherite_chestplate",
+            "mode": "||",
+            "right": "minecraft:glowstone",
+            "result": "extrastuck:light_knight_chestplate"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Netherite Leggings and Glowstone in a Punch Designix.",
+            "left": "minecraft:netherite_leggings",
+            "mode": "||",
+            "right": "minecraft:glowstone",
+            "result": "extrastuck:light_knight_leggings"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Netherite Boots and Glowstone in a Punch Designix.",
+            "left": "minecraft:netherite_boots",
+            "mode": "||",
+            "right": "minecraft:glowstone",
+            "result": "extrastuck:light_knight_boots"
+        }
+    ]
+}

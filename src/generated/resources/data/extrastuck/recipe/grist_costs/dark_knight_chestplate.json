@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amethyst": 3210,
+    "minestuck:shale": 6400,
+    "minestuck:tar": 7300
+  },
+  "ingredient": {
+    "item": "extrastuck:dark_knight_chestplate"
+  }
+}

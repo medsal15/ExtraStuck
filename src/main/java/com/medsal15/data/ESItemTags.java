@@ -60,6 +60,9 @@ public final class ESItemTags extends ItemTagsProvider {
         for (DeferredItem<Item> chestplate : ESItems.getChestplates()) {
             tag(ItemTags.CHEST_ARMOR).add(chestplate.get());
         }
+        for (DeferredItem<Item> leggings : ESItems.getLeggings()) {
+            tag(ItemTags.LEG_ARMOR).add(leggings.get());
+        }
         for (DeferredItem<Item> boot : ESItems.getBoots()) {
             tag(ItemTags.FOOT_ARMOR).add(boot.get());
         }
