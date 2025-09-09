@@ -83,6 +83,7 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
         add(ESBlocks.CARD_ORE.get(), this::droppingWithOreItem);
         dropSelf(ESBlocks.PRINTER.get());
         dropSelf(ESBlocks.CHARGER.get());
+        dropSelf(ESBlocks.REACTOR.get());
     }
 
     private LootTable.Builder droppingWithOreItem(Block block) {

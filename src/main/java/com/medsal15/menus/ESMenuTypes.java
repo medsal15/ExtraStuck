@@ -18,4 +18,6 @@ public final class ESMenuTypes {
             () -> new MenuType<>((IContainerFactory<PrinterMenu>) PrinterMenu::new, FeatureFlags.DEFAULT_FLAGS));
     public static final Supplier<MenuType<ChargerMenu>> CHARGER = MENU_TYPES.register("charger",
             () -> new MenuType<>((IContainerFactory<ChargerMenu>) ChargerMenu::new, FeatureFlags.DEFAULT_FLAGS));
+    public static final Supplier<MenuType<ReactorMenu>> REACTOR = MENU_TYPES.register("reactor",
+            () -> new MenuType<>((IContainerFactory<ReactorMenu>) ReactorMenu::new, FeatureFlags.DEFAULT_FLAGS));
 }

@@ -112,12 +112,14 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
     }
 
     private class EnergyStorage implements IEnergyStorage {
+        private final ChargerBlockEntity charger = ChargerBlockEntity.this;
+
         @Override
         public int receiveEnergy(int toReceive, boolean simulate) {
-            int missing = Math.min(MAX_CHARGE - ChargerBlockEntity.this.charge, toReceive);
+            int missing = Math.min(MAX_CHARGE - charger.charge, toReceive);
 
             if (!simulate) {
-                ChargerBlockEntity.this.charge += missing;
+                charger.charge += missing;
             }
 
             return missing;
@@ -125,10 +127,10 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int extractEnergy(int toExtract, boolean simulate) {
-            int extracted = Math.min(toExtract, ChargerBlockEntity.this.charge);
+            int extracted = Math.min(toExtract, charger.charge);
 
             if (!simulate) {
-                ChargerBlockEntity.this.charge -= extracted;
+                charger.charge -= extracted;
             }
 
             return extracted;
@@ -136,7 +138,7 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int getEnergyStored() {
-            return ChargerBlockEntity.this.charge;
+            return charger.charge;
         }
 
         @Override
@@ -146,12 +148,12 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public boolean canExtract() {
-            return ChargerBlockEntity.this.charge > 0;
+            return charger.charge > 0;
         }
 
         @Override
         public boolean canReceive() {
-            return ChargerBlockEntity.this.charge < MAX_CHARGE;
+            return charger.charge < MAX_CHARGE;
         }
     }
 

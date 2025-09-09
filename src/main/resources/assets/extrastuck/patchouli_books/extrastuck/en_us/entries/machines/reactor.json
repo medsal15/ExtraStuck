@@ -1,0 +1,23 @@
+{
+    "name": "Reactor",
+    "icon": "extrastuck:reactor",
+    "category": "extrastuck:machines",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:reactor",
+            "text": "A portable nuclear reactor that produces energy. Requires water (or similar fluids) and energy cores. Make sure you connect your machines to it."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Charger and a Block of Uranium in a Totem Lathe.",
+            "left": "extrastuck:charger",
+            "mode": "&&",
+            "right": "minestuck:uranium_block",
+            "result": "extrastuck:reactor"
+        },
+        "Consumes 10 mB of fluids every tick. Each Energy Core lasts 128 ticks. As long as either FE or uranium energies are not full, it will continue producing power.",
+        "Each Energy Core produces 640'000 FE and 128 nuclear energy. These are automatically transferred to neighbors if possible."
+    ]
+}

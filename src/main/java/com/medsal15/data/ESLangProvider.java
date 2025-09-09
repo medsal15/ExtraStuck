@@ -6,6 +6,7 @@ import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.PrinterBlockEntity;
+import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.gui.LoopButton;
 import com.medsal15.entities.ESEntities;
@@ -43,6 +44,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String ALT_GUN_HEAVY_KEY = ExtraStuck.MODID + ".office_key.heavy";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
+    public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
 
     public static final String INNATE_ENCHANT_KEY = ExtraStuck.MODID + ".innate_enchant";
     public static final String INNATE_ENCHANTS_KEY = ExtraStuck.MODID + ".innate_enchants";
@@ -51,10 +53,11 @@ public final class ESLangProvider extends LanguageProvider {
     protected void addTranslations() {
         add("itemGroup.extrastuck", "ExtraStuck");
 
-        add(SHIELD_DAMAGE_KEY, "Deals %s damage to melee attackers");
-        add(SHIELD_EFFECT_KEY, "Applies %s (%s) to melee attackers");
-        add(SHIELD_SELF_EFFECT_KEY, "Applies %s (%s) when attacked");
-        add(ENERGY_STORAGE_KEY, "%s / %s FE");
+        add(SHIELD_DAMAGE_KEY, "Deals %1$s damage to melee attackers");
+        add(SHIELD_EFFECT_KEY, "Applies %1$s (%2$s) to melee attackers");
+        add(SHIELD_SELF_EFFECT_KEY, "Applies %1$s (%2$s) when attacked");
+        add(ENERGY_STORAGE_KEY, "%1$s / %2$s FE");
+        add(FLUID_STORAGE_KEY, "%1$s mB / %2$s mB %3$s");
         add(INNATE_ENCHANT_KEY, "+1 level to %2$s");
         add(INNATE_ENCHANTS_KEY, "+%1$s levels to %2$s");
         add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
@@ -85,6 +88,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.LUCK_TOKEN, "Luck Token");
         addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
         addItem(ESItems.PIZZA, "Pizza");
+        addItem(ESItems.EMPTY_ENERGY_CORE, "Empty Energy Core");
+        addItemTooltip(ESItems.EMPTY_ENERGY_CORE, "You forgot the uranium");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -280,6 +285,11 @@ public final class ESLangProvider extends LanguageProvider {
         // Charger
         addBlock(ESBlocks.CHARGER, "Charger");
         add(ChargerBlockEntity.TITLE, "Charger");
+
+        // Reactor
+        addBlock(ESBlocks.REACTOR, "Nuclear Reactor");
+        add(ReactorBlockEntity.TITLE, "Nuclear Reactor");
+        add(ESFluidTags.REACTOR_FLUIDS, "Reactor Coolants");
     }
 
     private void addBlocks() {

@@ -1,10 +1,9 @@
-package com.medsal15.blocks;
+package com.medsal15.blocks.machine;
 
 import javax.annotation.Nonnull;
 
 import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
-import com.mraof.minestuck.block.CustomVoxelShape;
 import com.mraof.minestuck.block.machine.SmallMachineBlock;
 
 import net.minecraft.core.BlockPos;
@@ -21,12 +20,8 @@ import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 
 public class ChargerBlock extends SmallMachineBlock<ChargerBlockEntity> {
-    private static final CustomVoxelShape shape = new CustomVoxelShape(new double[][] {
-            { 0, 0, 0, 16, 8, 16 }
-    });
-
     public ChargerBlock(Properties properties) {
-        super(shape.createRotatedShapes(), ESBlockEntities.CHARGER, properties);
+        super(ESBlockShapes.CHARGER.createRotatedShapes(), ESBlockEntities.CHARGER, properties);
     }
 
     @Override

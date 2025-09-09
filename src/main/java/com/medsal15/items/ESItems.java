@@ -484,6 +484,7 @@ public final class ESItems {
             new Item.Properties().stacksTo(1).durability(320));
     public static final DeferredItem<Item> MAGNET = ITEMS.registerItem("magnet", p -> new MagnetItem(Tiers.IRON, p),
             new MSItemProperties().stacksTo(1).durability(160));
+    public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
 
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
 
@@ -508,6 +509,7 @@ public final class ESItems {
     // #region Machines
     public static final DeferredItem<BlockItem> PRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.PRINTER);
     public static final DeferredItem<BlockItem> CHARGER = ITEMS.registerSimpleBlockItem(ESBlocks.CHARGER);
+    public static final DeferredItem<BlockItem> REACTOR = ITEMS.registerSimpleBlockItem(ESBlocks.REACTOR);
     // #endregion Machines
     // #region Garnet
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
@@ -652,6 +654,8 @@ public final class ESItems {
         for (DeferredItem<? extends Item> item : ESItems.getFoods()) {
             output.accept(item.get());
         }
+
+        output.accept(EMPTY_ENERGY_CORE);
 
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
             output.accept(item.get());
@@ -854,6 +858,7 @@ public final class ESItems {
         ArrayList<DeferredItem<BlockItem>> list = new ArrayList<>();
         list.add(PRINTER);
         list.add(CHARGER);
+        list.add(REACTOR);
 
         list.add(CUT_GARNET);
         list.add(CUT_GARNET_STAIRS);

@@ -29,6 +29,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
         basicItem(ESItems.LUCK_TOKEN.get());
         basicItem(ESItems.PIZZA.get());
+        basicItem(ESItems.EMPTY_ENERGY_CORE.get());
     }
 
     private void registerShields() {
@@ -200,6 +201,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
     private void registerBlocks() {
         withExistingParent(ESItems.PRINTER.getId().toString(), modLoc("block/printer"));
         withExistingParent(ESItems.CHARGER.getId().toString(), modLoc("block/charger"));
+        withExistingParent(ESItems.REACTOR.getId().toString(), modLoc("block/reactor"));
 
         withExistingParent(ESItems.CUT_GARNET.getId().toString(), modLoc("block/cut_garnet"));
         withExistingParent(ESItems.CUT_GARNET_STAIRS.getId().toString(), modLoc("block/cut_garnet_stairs"));

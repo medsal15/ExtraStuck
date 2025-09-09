@@ -1,4 +1,4 @@
-package com.medsal15.blocks;
+package com.medsal15.blocks.machine;
 
 import java.util.Map;
 
@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
-import com.mraof.minestuck.block.CustomVoxelShape;
 import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.block.machine.SmallMachineBlock;
 
@@ -29,21 +28,14 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.items.IItemHandler;
 
 public class PrinterBlock extends SmallMachineBlock<PrinterBlockEntity> {
-    private static final CustomVoxelShape shape = new CustomVoxelShape(new double[][] {
-            { 0, 0, 0, 16, 12, 16 }
-    });
-    private static final CustomVoxelShape dowel = new CustomVoxelShape(new double[][] {
-            { 6, 12, 6, 10, 16, 10 }
-    });
-
     private static Map<Direction, VoxelShape> doweled = null;
 
     public static final BooleanProperty HAS_DOWEL = BooleanProperty.create("has_dowel");
 
     public PrinterBlock(Properties properties) {
-        super(shape.createRotatedShapes(), ESBlockEntities.PRINTER, properties);
+        super(ESBlockShapes.PRINTER.createRotatedShapes(), ESBlockEntities.PRINTER, properties);
         registerDefaultState(this.stateDefinition.any().setValue(HAS_DOWEL, false));
-        doweled = shape.merge(dowel).createRotatedShapes();
+        doweled = ESBlockShapes.PRINTER.merge(ESBlockShapes.PRINTER_DOWEL).createRotatedShapes();
     }
 
     @Override

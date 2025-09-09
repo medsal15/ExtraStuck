@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.handlers.BEStackHandler;
 import com.medsal15.blockentities.handlers.FuellessWrapper;
-import com.medsal15.blocks.PrinterBlock;
+import com.medsal15.blocks.machine.PrinterBlock;
 import com.medsal15.menus.PrinterMenu;
 import com.mraof.minestuck.alchemy.GristHelper;
 import com.mraof.minestuck.api.alchemy.GristSet;

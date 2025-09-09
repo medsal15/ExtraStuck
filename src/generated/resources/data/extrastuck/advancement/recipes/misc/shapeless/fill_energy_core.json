@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_empty_energy_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:empty_energy_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extrastuck:shapeless/fill_energy_core"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_empty_energy_core"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extrastuck:shapeless/fill_energy_core"
+    ]
+  }
+}

@@ -22,6 +22,7 @@ public final class ESScreens {
     public static void registerScreenFactories(RegisterMenuScreensEvent event) {
         event.register(ESMenuTypes.PRINTER.get(), PrinterScreen::new);
         event.register(ESMenuTypes.CHARGER.get(), ChargerScreen::new);
+        event.register(ESMenuTypes.REACTOR.get(), ReactorScreen::new);
 
         // Moduses
         registerSylladexFactory(ESModus.PILE_MODUS, PileModusScreen::new);

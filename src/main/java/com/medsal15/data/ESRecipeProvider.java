@@ -18,6 +18,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
@@ -57,6 +58,20 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.PIZZA)
                 .grist(GristTypes.AMBER, 6).grist(GristTypes.RUST, 1)
                 .build(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ESItems.EMPTY_ENERGY_CORE.toStack())
+                .pattern("G G")
+                .pattern("PGP")
+                .pattern("G G")
+                .define('G', MSItems.RAW_CRUXITE)
+                .define('P', Tags.Items.GLASS_PANES_COLORLESS)
+                .unlockedBy("has_raw_cruxite", has(MSItems.RAW_CRUXITE))
+                .save(output, modLoc("shaped/empty_energy_core"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MSItems.ENERGY_CORE.toStack())
+                .requires(ESItems.EMPTY_ENERGY_CORE)
+                .requires(MSItems.RAW_URANIUM, 4)
+                .unlockedBy("has_empty_energy_core", has(ESItems.EMPTY_ENERGY_CORE))
+                .save(output, modLoc("shapeless/fill_energy_core"));
     }
 
     private void shieldRecipes(@Nonnull RecipeOutput output) {
@@ -734,6 +749,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.CHARGER)
                 .grist(GristTypes.BUILD, 50).grist(GristTypes.GOLD, 15).grist(GristTypes.URANIUM, 25)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.REACTOR)
+                .input(ESItems.CHARGER).and().input(MSItems.URANIUM_BLOCK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.REACTOR)
+                .grist(GristTypes.BUILD, 250).grist(GristTypes.COBALT, 170).grist(GristTypes.URANIUM, 92)
                 .build(output);
         // #endregion Machines
 

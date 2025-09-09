@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 250,
+    "minestuck:cobalt": 170,
+    "minestuck:uranium": 92
+  },
+  "ingredient": {
+    "item": "extrastuck:reactor"
+  }
+}

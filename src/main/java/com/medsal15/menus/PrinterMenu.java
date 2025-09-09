@@ -103,7 +103,7 @@ public class PrinterMenu extends MachineContainerMenu {
                 result = moveItemStackTo(original, 3, all, false);
             } else if (index == PrinterBlockEntity.SLOT_OUT) {
                 if (original.getItem() == MSItems.RAW_URANIUM.get()) {
-                    // go to fuel?
+                    // go to fuel
                     result = moveItemStackTo(original, 2, 3, false);
                 } else {
                     result = moveItemStackTo(original, 3, all, false);

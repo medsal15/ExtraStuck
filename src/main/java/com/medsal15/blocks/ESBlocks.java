@@ -3,6 +3,9 @@ package com.medsal15.blocks;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.ofFullCopy;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.blocks.machine.ChargerBlock;
+import com.medsal15.blocks.machine.PrinterBlock;
+import com.medsal15.blocks.machine.ReactorBlock;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -34,9 +37,10 @@ public final class ESBlocks {
     // Objectively worse than a miniature alchemiter
     public static final DeferredBlock<PrinterBlock> PRINTER = BLOCKS.registerBlock("printer", PrinterBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
-    // TODO test
-    // TODO recipe & guide page
     public static final DeferredBlock<ChargerBlock> CHARGER = BLOCKS.registerBlock("charger", ChargerBlock::new,
+            Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
+    // Objectively better than a charger
+    public static final DeferredBlock<ReactorBlock> REACTOR = BLOCKS.registerBlock("reactor", ReactorBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
     // #endregion Machines
 
@@ -95,7 +99,8 @@ public final class ESBlocks {
                     .pushReaction(PushReaction.DESTROY).explosionResistance(0)));
     public static final DeferredBlock<TrapDoorBlock> COBALT_TRAPDOOR = BLOCKS.register("cobalt_trapdoor",
             () -> new TrapDoorBlock(BlockSetType.COPPER,
-                    ofFullCopy(COBALT_BLOCK.get()).isValidSpawn(Blocks::never).explosionResistance(0).noOcclusion()));
+                    ofFullCopy(COBALT_BLOCK.get()).isValidSpawn(Blocks::never)
+                            .explosionResistance(0).noOcclusion()));
     public static final DeferredBlock<PressurePlateBlock> COBALT_PRESSURE_PLATE = BLOCKS.register(
             "cobalt_pressure_plate",
             () -> new PressurePlateBlock(BlockSetType.COPPER, ofFullCopy(COBALT_BLOCK.get())
@@ -107,7 +112,8 @@ public final class ESBlocks {
             Block.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).strength(1.5F, 6.0F)
                     .requiresCorrectToolForDrops());
     public static final DeferredBlock<StairBlock> SULFUROUS_STONE_STAIRS = BLOCKS.register("sulfurous_stone_stairs",
-            () -> new StairBlock(SULFUROUS_STONE.get().defaultBlockState(), ofFullCopy(SULFUROUS_STONE.get())));
+            () -> new StairBlock(SULFUROUS_STONE.get().defaultBlockState(),
+                    ofFullCopy(SULFUROUS_STONE.get())));
     public static final DeferredBlock<SlabBlock> SULFUROUS_STONE_SLAB = BLOCKS.register("sulfurous_stone_slab",
             () -> new SlabBlock(ofFullCopy(SULFUROUS_STONE.get())));
     public static final DeferredBlock<WallBlock> SULFUROUS_STONE_WALL = BLOCKS.register("sulfurous_stone_wall",
@@ -116,7 +122,8 @@ public final class ESBlocks {
 
     // #region Marble
     public static final DeferredBlock<Block> MARBLE = BLOCKS.registerBlock("marble", Block::new,
-            Block.Properties.of().mapColor(MapColor.COLOR_PINK).strength(1.5F, 6F).requiresCorrectToolForDrops());
+            Block.Properties.of().mapColor(MapColor.COLOR_PINK).strength(1.5F, 6F)
+                    .requiresCorrectToolForDrops());
     public static final DeferredBlock<StairBlock> MARBLE_STAIRS = BLOCKS.register("marble_stairs",
             () -> new StairBlock(MARBLE.get().defaultBlockState(), ofFullCopy(MARBLE.get())));
     public static final DeferredBlock<SlabBlock> MARBLE_SLAB = BLOCKS.register("marble_slab",
@@ -146,7 +153,8 @@ public final class ESBlocks {
             Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(2.5F, 10F)
                     .requiresCorrectToolForDrops());
     public static final DeferredBlock<StairBlock> ZILLIUM_BRICK_STAIRS = BLOCKS.register("zillium_brick_stairs",
-            () -> new StairBlock(ZILLIUM_BRICKS.get().defaultBlockState(), ofFullCopy(ZILLIUM_BRICKS.get())));
+            () -> new StairBlock(ZILLIUM_BRICKS.get().defaultBlockState(),
+                    ofFullCopy(ZILLIUM_BRICKS.get())));
     public static final DeferredBlock<SlabBlock> ZILLIUM_BRICK_SLAB = BLOCKS.register("zillium_brick_slab",
             () -> new SlabBlock(ofFullCopy(ZILLIUM_BRICKS.get())));
     public static final DeferredBlock<WallBlock> ZILLIUM_BRICK_WALL = BLOCKS.register("zillium_brick_wall",

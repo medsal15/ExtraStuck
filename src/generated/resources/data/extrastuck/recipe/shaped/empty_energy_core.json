@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minestuck:raw_cruxite"
+    },
+    "P": {
+      "tag": "c:glass_panes/colorless"
+    }
+  },
+  "pattern": [
+    "G G",
+    "PGP",
+    "G G"
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:empty_energy_core"
+  }
+}

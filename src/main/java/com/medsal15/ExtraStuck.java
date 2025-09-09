@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
+import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.interpreters.ESInterpretertypes;
@@ -122,9 +123,16 @@ public class ExtraStuck {
                 PrinterBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.CHARGER.get(),
                 ChargerBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.REACTOR.get(),
+                ReactorBlockEntity::getItemHandler);
 
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.CHARGER.get(),
                 ChargerBlockEntity::getEnergyHandler);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.REACTOR.get(),
+                ReactorBlockEntity::getEnergyHandler);
+
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ESBlockEntities.REACTOR.get(),
+                ReactorBlockEntity::getFluidHandler);
     }
 
     @SubscribeEvent

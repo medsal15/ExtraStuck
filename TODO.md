@@ -24,7 +24,6 @@ Pacarder: takes an empty card and items and stores them in the card
 Unpacarder: takes a card with contents and extracts them, noop with punched cards
 Grist reader: allows create to see the amount of grist from a player
 Global grist reader: same as above but for session
-Nuclear reactor: consumes power cells and water, produces power & uranium
 Nuclear blaster: consumes uranium, poisons enemies in front of it
 Nuclear hyper-blaster: consumes uranium, shoots lasers
 

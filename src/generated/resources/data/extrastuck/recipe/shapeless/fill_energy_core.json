@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "extrastuck:empty_energy_core"
+    },
+    {
+      "item": "minestuck:raw_uranium"
+    },
+    {
+      "item": "minestuck:raw_uranium"
+    },
+    {
+      "item": "minestuck:raw_uranium"
+    },
+    {
+      "item": "minestuck:raw_uranium"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minestuck:energy_core"
+  }
+}

@@ -1,0 +1,63 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"0": "extrastuck:block/reactor/front",
+		"1": "extrastuck:block/reactor/side",
+		"3": "extrastuck:block/reactor/bottom",
+		"4": "extrastuck:block/reactor/top",
+		"5": "extrastuck:block/reactor/chimney_top",
+		"particle": "extrastuck:block/reactor/front"
+	},
+	"elements": [
+		{
+			"name": "base",
+			"from": [0, 0, 0],
+			"to": [16, 12, 16],
+			"faces": {
+				"north": {"uv": [0, 4, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 4, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 4, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 4, 16, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#4"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#3"}
+			}
+		},
+		{
+			"name": "weast",
+			"from": [3, 12, 4],
+			"to": [13, 16, 12],
+			"faces": {
+				"north": {"uv": [3, 7, 13, 11], "texture": "#1"},
+				"east": {"uv": [4, 7, 12, 11], "texture": "#1"},
+				"south": {"uv": [3, 7, 13, 11], "texture": "#1"},
+				"west": {"uv": [4, 7, 12, 11], "texture": "#1"},
+				"up": {"uv": [3, 4, 13, 12], "texture": "#5"},
+				"down": {"uv": [3, 4, 13, 12], "texture": "#5"}
+			}
+		},
+		{
+			"name": "nouth",
+			"from": [4, 12.01, 3],
+			"to": [12, 16.01, 13],
+			"faces": {
+				"north": {"uv": [4, 7, 12, 11], "texture": "#1"},
+				"east": {"uv": [3, 7, 13, 11], "texture": "#1"},
+				"south": {"uv": [4, 7, 12, 11], "texture": "#1"},
+				"west": {"uv": [3, 7, 13, 11], "texture": "#1"},
+				"up": {"uv": [4, 3, 12, 13], "texture": "#5"},
+				"down": {"uv": [4, 3, 12, 13], "texture": "#5"}
+			}
+		}
+	],
+	"groups": [
+		0,
+		{
+			"name": "chimney",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [1, 2]
+		}
+	]
+}
