@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.ReactorBlockEntity;
+import com.medsal15.config.ConfigCommon;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.menus.ReactorMenu;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -74,7 +75,7 @@ public class ReactorScreen extends MachineScreen<ReactorMenu> {
                 && y <= CHARGE_BAR_Y + CHARGE_BAR_HEIGHT) {
             Component tooltip = Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
                     NumberFormat.getInstance().format(menu.getCharge()),
-                    NumberFormat.getInstance().format(ReactorBlockEntity.MAX_CHARGE));
+                    NumberFormat.getInstance().format(ConfigCommon.REACTOR_FE_STORAGE.get()));
             guiGraphics.renderTooltip(font, tooltip, mouseX, mouseY);
         }
 
@@ -89,13 +90,13 @@ public class ReactorScreen extends MachineScreen<ReactorMenu> {
                 if (be instanceof ReactorBlockEntity reactor) {
                     tooltip = Component.translatable(ESLangProvider.FLUID_STORAGE_KEY,
                             NumberFormat.getInstance().format(menu.getFluidAmount()),
-                            NumberFormat.getInstance().format(ReactorBlockEntity.MAX_FLUID),
+                            NumberFormat.getInstance().format(ConfigCommon.REACTOR_FLUID_STORAGE.get()),
                             reactor.getFluid().getFluidType().getDescription());
                 }
             } else if (menu.getFluidAmount() <= 0) {
                 tooltip = Component.translatable(ESLangProvider.FLUID_STORAGE_KEY,
                         NumberFormat.getInstance().format(menu.getFluidAmount()),
-                        NumberFormat.getInstance().format(ReactorBlockEntity.MAX_FLUID),
+                        NumberFormat.getInstance().format(ConfigCommon.REACTOR_FLUID_STORAGE.get()),
                         Fluids.EMPTY.getFluidType().getDescription());
             }
 
@@ -111,12 +112,13 @@ public class ReactorScreen extends MachineScreen<ReactorMenu> {
 
         guiGraphics.blit(BACKGROUND_TEXTURE, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
-        int charge_fill = getScaledValue(menu.getCharge(), ReactorBlockEntity.MAX_CHARGE, CHARGE_BAR_HEIGHT);
+        int charge_fill = getScaledValue(menu.getCharge(), ConfigCommon.REACTOR_FE_STORAGE.get(), CHARGE_BAR_HEIGHT);
         guiGraphics.blit(CHARGE_BAR_TEXTURE, leftPos + CHARGE_BAR_X,
                 topPos + CHARGE_BAR_Y + CHARGE_BAR_HEIGHT - charge_fill, 0,
                 CHARGE_BAR_HEIGHT - charge_fill, CHARGE_BAR_WIDTH, charge_fill, CHARGE_BAR_WIDTH, CHARGE_BAR_HEIGHT);
 
-        int uranium_fill = getScaledValue(menu.getUranium(), ReactorBlockEntity.MAX_URANIUM, URANIUM_BAR_HEIGHT);
+        int uranium_fill = getScaledValue(menu.getUranium(), ConfigCommon.REACTOR_URANIUM_STORAGE.get(),
+                URANIUM_BAR_HEIGHT);
         guiGraphics.blit(URANIUM_BAR_TEXTURE, leftPos + URANIUM_BAR_X,
                 topPos + URANIUM_BAR_Y + URANIUM_BAR_HEIGHT - uranium_fill, 0, URANIUM_BAR_HEIGHT - uranium_fill,
                 URANIUM_BAR_WIDTH, uranium_fill, URANIUM_BAR_WIDTH, URANIUM_BAR_HEIGHT);
@@ -126,15 +128,18 @@ public class ReactorScreen extends MachineScreen<ReactorMenu> {
             @SuppressWarnings("deprecation")
             BlockEntity be = mc.player.level().getBlockEntity(menu.machinePos);
             if (be != null && be instanceof ReactorBlockEntity reactor) {
-                int fluid_fill = getScaledValue(menu.getFluidAmount(), ReactorBlockEntity.MAX_FLUID, FLUID_BAR_HEIGHT);
+                int fluid_fill = getScaledValue(menu.getFluidAmount(), ConfigCommon.REACTOR_FLUID_STORAGE.get(),
+                        FLUID_BAR_HEIGHT);
                 renderFluid(guiGraphics, leftPos + FLUID_BAR_X, topPos + FLUID_BAR_Y + FLUID_BAR_HEIGHT,
                         FLUID_BAR_WIDTH, fluid_fill, reactor.getFluidStack());
             }
         }
 
-        int fuel_fill = getScaledValue(menu.getFuel(), ReactorBlockEntity.FUEL_PER_CORES, FUEL_BAR_HEIGHT);
-        guiGraphics.blit(FUEL_BAR_TEXTURE, leftPos + FUEL_BAR_X, topPos + FUEL_BAR_Y + FUEL_BAR_HEIGHT - fuel_fill, 0,
-                FUEL_BAR_HEIGHT - fuel_fill, FUEL_BAR_WIDTH, fuel_fill, FUEL_BAR_WIDTH, FUEL_BAR_HEIGHT);
+        if (menu.getMaxFuel() > 0) {
+            int fuel_fill = getScaledValue(menu.getFuel(), menu.getMaxFuel(), FUEL_BAR_HEIGHT);
+            guiGraphics.blit(FUEL_BAR_TEXTURE, leftPos + FUEL_BAR_X, topPos + FUEL_BAR_Y + FUEL_BAR_HEIGHT - fuel_fill,
+                    0, FUEL_BAR_HEIGHT - fuel_fill, FUEL_BAR_WIDTH, fuel_fill, FUEL_BAR_WIDTH, FUEL_BAR_HEIGHT);
+        }
     }
 
     public void renderFluid(GuiGraphics guiGraphics, int x, int y, int width, int height, FluidStack fluidStack) {

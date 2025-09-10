@@ -7,6 +7,8 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.config.ConfigClient;
+import com.medsal15.config.ConfigCommon;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.interpreters.ESInterpretertypes;
 import com.medsal15.items.ESArmorMaterials;
@@ -103,8 +105,8 @@ public class ExtraStuck {
 
         // Register our mod's ModConfigSpec so that FML can create and load the config
         // file for us
-        modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
-        modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, ConfigCommon.SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, ConfigClient.SPEC);
     }
 
     // private void commonSetup(final FMLCommonSetupEvent event) {}

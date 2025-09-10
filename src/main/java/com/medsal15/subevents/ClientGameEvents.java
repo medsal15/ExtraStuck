@@ -2,8 +2,8 @@ package com.medsal15.subevents;
 
 import java.text.NumberFormat;
 
-import com.medsal15.ClientConfig;
 import com.medsal15.ExtraStuck;
+import com.medsal15.config.ConfigClient;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.shields.ESShield;
@@ -45,7 +45,7 @@ public final class ClientGameEvents {
         }
 
         // Shield info
-        if (ClientConfig.displayShieldInfo) {
+        if (ConfigClient.displayShieldInfo) {
             if (item instanceof ESShield shield && shield.hasOnBlock(BlockFuncs.DAMAGE)) {
                 event.getToolTip().add(i,
                         Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,

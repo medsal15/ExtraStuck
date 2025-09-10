@@ -5,8 +5,8 @@ import java.text.NumberFormat;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
-import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.client.gui.SwitchButton;
+import com.medsal15.config.ConfigCommon;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.menus.ChargerMenu;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -60,7 +60,7 @@ public class ChargerScreen extends MachineScreen<ChargerMenu> {
                 && y <= CHARGE_BAR_Y + CHARGE_BAR_HEIGHT) {
             Component tooltip = Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
                     NumberFormat.getInstance().format(menu.getCharge()),
-                    NumberFormat.getInstance().format(ChargerBlockEntity.MAX_CHARGE));
+                    NumberFormat.getInstance().format(ConfigCommon.CHARGER_FE_STORAGE.get()));
             guiGraphics.renderTooltip(font, tooltip, mouseX, mouseY);
         }
     }
@@ -71,12 +71,12 @@ public class ChargerScreen extends MachineScreen<ChargerMenu> {
 
         guiGraphics.blit(BACKGROUND_TEXTURE, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
-        int charge_fill = getScaledValue(menu.getCharge(), ChargerBlockEntity.MAX_CHARGE, CHARGE_BAR_HEIGHT);
+        int charge_fill = getScaledValue(menu.getCharge(), ConfigCommon.CHARGER_FE_STORAGE.get(), CHARGE_BAR_HEIGHT);
         guiGraphics.blit(CHARGE_BAR_TEXTURE, leftPos + CHARGE_BAR_X,
                 topPos + CHARGE_BAR_Y + CHARGE_BAR_HEIGHT - charge_fill, 0,
                 CHARGE_BAR_HEIGHT - charge_fill, CHARGE_BAR_WIDTH, charge_fill, CHARGE_BAR_WIDTH, CHARGE_BAR_HEIGHT);
 
-        int fuel_fill = getScaledValue(menu.getFuel(), ChargerBlockEntity.MAX_FUEL, FUEL_BAR_HEIGHT);
+        int fuel_fill = getScaledValue(menu.getFuel(), ConfigCommon.CHARGER_URANIUM_STORAGE.get(), FUEL_BAR_HEIGHT);
         guiGraphics.blit(FUEL_BAR_TEXTURE, leftPos + FUEL_BAR_X, topPos + FUEL_BAR_Y + FUEL_BAR_HEIGHT - fuel_fill, 0,
                 FUEL_BAR_HEIGHT - fuel_fill, FUEL_BAR_WIDTH, fuel_fill, FUEL_BAR_WIDTH, FUEL_BAR_HEIGHT);
     }

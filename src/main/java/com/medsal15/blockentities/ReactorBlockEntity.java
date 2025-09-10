@@ -7,7 +7,9 @@ import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.handlers.BEStackHandler;
 import com.medsal15.blockentities.handlers.FuellessWrapper;
+import com.medsal15.config.ConfigCommon;
 import com.medsal15.data.ESFluidTags;
+import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESItems;
 import com.medsal15.menus.ReactorMenu;
 import com.mraof.minestuck.blockentity.machine.MachineProcessBlockEntity;
@@ -16,6 +18,7 @@ import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -30,8 +33,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -46,19 +51,6 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 public class ReactorBlockEntity extends MachineProcessBlockEntity implements MenuProvider {
     public static final String TITLE = "container.extrastuck.reactor";
     public static final int SLOT_FUEL_IN = 0, SLOT_FUEL_OUT = 1;
-    /** Fuel gained per energy core, converted 1 to 1 to uranium */
-    public static final int FUEL_PER_CORES = 128;
-    public static final int MAX_URANIUM = FUEL_PER_CORES * 4;
-    /** Charge gained per fuel unit */
-    public static final int CHARGE_PER_FUEL = 5_000;
-    /** Max charge transferred to neighbors per tick */
-    public static final int CHARGE_PER_TICK = 10_000;
-    /** Max uranium transferred to neighbors per tick */
-    public static final short URANIUM_PER_TICK = 8;
-    public static final int MAX_CHARGE = FUEL_PER_CORES * CHARGE_PER_FUEL * 4;
-    public static final int MAX_FLUID = 1_000 * 4;
-    /** Fluid consumed each tick */
-    public static final int FLUID_PER_TICK = 10;
 
     private final DataSlot fuelHolder = new DataSlot() {
         public int get() {
@@ -67,6 +59,15 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
         public void set(int value) {
             fuel = value;
+        };
+    };
+    private final DataSlot maxFuelHolder = new DataSlot() {
+        public int get() {
+            return maxFuel;
+        };
+
+        public void set(int value) {
+            maxFuel = value;
         };
     };
     private final DataSlot uraniumHolder = new DataSlot() {
@@ -100,9 +101,12 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
     };
 
     private int fuel = 0;
+    private int maxFuel = 0;
     private int uranium = 0;
     private int charge = 0;
     private FluidStack fluid = FluidStack.EMPTY;
+    // Item to output at the end of the next cycle
+    private ItemStack output = ItemStack.EMPTY;
 
     @Nullable
     private EnergyStorage energyStorage = null;
@@ -114,17 +118,25 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
     }
 
     @Override
-    protected void loadAdditional(CompoundTag nbt, Provider pRegistries) {
-        super.loadAdditional(nbt, pRegistries);
+    protected void loadAdditional(CompoundTag nbt, Provider provider) {
+        super.loadAdditional(nbt, provider);
 
         fuel = nbt.getInt("fuel");
+        maxFuel = nbt.getInt("max_fuel");
         uranium = nbt.getInt("uranium");
         charge = nbt.getInt("charge");
         Tag fluidTag = nbt.get("fluid");
         if (fluidTag != null) {
-            Optional<FluidStack> fluid = FluidStack.parse(pRegistries, fluidTag);
+            Optional<FluidStack> fluid = FluidStack.parse(provider, fluidTag);
             if (fluid.isPresent()) {
                 this.fluid = fluid.get();
+            }
+        }
+        Tag outputTag = nbt.get("output");
+        if (outputTag != null) {
+            Optional<ItemStack> output = ItemStack.parse(provider, outputTag);
+            if (output.isPresent()) {
+                this.output = output.get();
             }
         }
     }
@@ -134,23 +146,32 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
         super.saveAdditional(nbt, provider);
 
         nbt.putInt("fuel", fuel);
+        nbt.putInt("max_fuel", maxFuel);
         nbt.putInt("uranium", uranium);
         nbt.putInt("charge", charge);
         if (!fluid.isEmpty()) {
             nbt.put("fluid", fluid.save(provider));
         }
+        if (!output.isEmpty()) {
+            nbt.put("output", output.save(provider));
+        }
     }
 
     public boolean canCharge() {
-        return charge + CHARGE_PER_FUEL <= MAX_CHARGE;
+        return charge + ConfigCommon.REACTOR_CHARGE_TICK.get() <= ConfigCommon.REACTOR_FE_STORAGE.get();
     }
 
     public boolean canUranium() {
-        return uranium + 1 <= MAX_URANIUM;
+        return uranium + ConfigCommon.REACTOR_URANIUM_TICK.get() <= ConfigCommon.REACTOR_URANIUM_STORAGE.get();
     }
 
     public boolean canDrain() {
-        return fluid.getAmount() >= FLUID_PER_TICK;
+        return fluid.getAmount() >= ConfigCommon.REACTOR_FLUID_TICK.get();
+    }
+
+    public boolean canOutput() {
+        ItemStack present = itemHandler.getStackInSlot(SLOT_FUEL_OUT);
+        return present.isEmpty() || ItemStack.isSameItemSameComponents(present, output);
     }
 
     public Fluid getFluid() {
@@ -223,7 +244,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int getTankCapacity(int tank) {
-            return MAX_FLUID;
+            return ConfigCommon.REACTOR_FLUID_STORAGE.get();
         }
 
         @Override
@@ -236,7 +257,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
             if (!reactor.fluid.isEmpty() && !FluidStack.isSameFluidSameComponents(reactor.fluid, resource))
                 return 0;
 
-            int missing = MAX_FLUID - reactor.fluid.getAmount();
+            int missing = ConfigCommon.REACTOR_FLUID_STORAGE.get() - reactor.fluid.getAmount();
             int filled = Math.min(missing, resource.getAmount());
 
             if (action == FluidAction.EXECUTE) {
@@ -287,7 +308,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int receiveEnergy(int toReceive, boolean simulate) {
-            int missing = Math.min(MAX_CHARGE - reactor.charge, toReceive);
+            int missing = Math.min(ConfigCommon.REACTOR_FE_STORAGE.get() - reactor.charge, toReceive);
 
             if (!simulate) {
                 reactor.charge += missing;
@@ -314,7 +335,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int getMaxEnergyStored() {
-            return MAX_CHARGE;
+            return ConfigCommon.REACTOR_FE_STORAGE.get();
         }
 
         @Override
@@ -336,21 +357,39 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
         Level l = level;
 
         // Refuel
-        if (fuel <= 0 && itemHandler.getStackInSlot(SLOT_FUEL_IN).is(MSItems.ENERGY_CORE)) {
-            fuel += FUEL_PER_CORES;
-            itemHandler.extractItem(SLOT_FUEL_IN, 1, false);
-            changed = true;
+        ItemStack fuelStack = itemHandler.getStackInSlot(SLOT_FUEL_IN);
+        if (fuel <= 0 && !fuelStack.isEmpty()) {
+            Holder<Item> holder = fuelStack.getItemHolder();
+            ReactorFuel data = holder.getData(ReactorFuel.REACTOR_MAP);
+            if (holder != null) {
+                itemHandler.extractItem(SLOT_FUEL_IN, 1, false);
+                fuel += data.duration();
+                maxFuel = data.duration();
+                if (!data.result().isEmpty()) {
+                    output = data.result().copy();
+                } else {
+                    output = ItemStack.EMPTY;
+                }
+                changed = true;
+            }
         }
 
         // Process
-        if (canDrain() && fuel > 0 && (canCharge() || canUranium())) {
+        if (fuel > 0 && canOutput() && (canCharge() || canUranium())
+                && (canDrain() || ConfigCommon.REACTOR_EXPLODE.getAsBoolean())) {
+            if (!canDrain() && l != null) {
+                // Kaboom
+                l.explode(null, worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), fuel / 10,
+                        ExplosionInteraction.BLOCK);
+                return;
+            }
             if (canUranium()) {
-                uranium++;
+                uranium += ConfigCommon.REACTOR_URANIUM_TICK.get();
             }
             if (canCharge()) {
-                charge += CHARGE_PER_FUEL;
+                charge += ConfigCommon.REACTOR_CHARGE_TICK.get();
             }
-            fluid.shrink(FLUID_PER_TICK);
+            fluid.shrink(ConfigCommon.REACTOR_FLUID_TICK.get());
             if (fuel == 1) {
                 // Add an empty core to the output
                 ItemStack present = itemHandler.getStackInSlot(SLOT_FUEL_OUT);
@@ -364,6 +403,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
             changed = true;
         }
 
+        // Transfer
         if ((uranium > 0 || charge > 0) && l != null) {
             Direction[] neighbors = Direction.values();
             for (int i = 0; i < neighbors.length && (uranium > 0 || charge > 0); i++) {
@@ -376,15 +416,17 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
                 // Send uranium power to neighbors
                 if (uranium > 0 && neighbe instanceof UraniumPowered powered && !powered.atMaxFuel()) {
-                    powered.addFuel((short) 1);
+                    powered.addFuel((short) Math.min(uranium, ConfigCommon.REACTOR_MAX_URANIUM_TRANSFER.get()));
                     uranium--;
                 }
 
                 // Send FE to neighbors
                 IEnergyStorage neighandler = Capabilities.EnergyStorage.BLOCK.getCapability(l, pos, neighstate, neighbe,
                         dir.getOpposite());
-                if (neighandler != null && neighandler.canReceive()) {
-                    int sent = neighandler.receiveEnergy(this.charge, false);
+                if (charge > 0 && neighandler != null && neighandler.canReceive()) {
+                    int sent = neighandler.receiveEnergy(
+                            Math.min(this.charge, ConfigCommon.REACTOR_MAX_FE_TRANSFER.get()),
+                            false);
                     charge -= sent;
                 }
             }
@@ -419,7 +461,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
         Level l = level;
         if (l == null)
             return null;
-        return new ReactorMenu(window, playerInventory, itemHandler, fuelHolder, uraniumHolder, chargeHolder,
-                fluidAmountHolder, ContainerLevelAccess.create(l, worldPosition), worldPosition);
+        return new ReactorMenu(window, playerInventory, itemHandler, fuelHolder, maxFuelHolder, uraniumHolder,
+                chargeHolder, fluidAmountHolder, ContainerLevelAccess.create(l, worldPosition), worldPosition);
     }
 }

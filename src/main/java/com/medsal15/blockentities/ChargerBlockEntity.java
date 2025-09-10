@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.handlers.BEStackHandler;
 import com.medsal15.blockentities.handlers.FuellessWrapper;
+import com.medsal15.config.ConfigCommon;
 import com.medsal15.menus.ChargerMenu;
 import com.mraof.minestuck.blockentity.machine.MachineProcessBlockEntity;
 import com.mraof.minestuck.blockentity.machine.UraniumPowered;
@@ -36,12 +37,6 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 public class ChargerBlockEntity extends MachineProcessBlockEntity implements MenuProvider, UraniumPowered {
     public static final String TITLE = "container.extrastuck.charger";
     public static final int SLOT_IN = 0, SLOT_FUEL = 1;
-    public static final short MAX_FUEL = 128;
-    /** Charge gained per fuel unit */
-    public static final int CHARGE_PER_FUEL = 500;
-    /** Maximum charge transferred per tick, makes charging fancier */
-    public static final int CHARGE_PER_TICK = 1_000;
-    public static final int MAX_CHARGE = MAX_FUEL * CHARGE_PER_FUEL;
 
     private final DataSlot fuelHolder = new DataSlot() {
         public int get() {
@@ -116,7 +111,7 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int receiveEnergy(int toReceive, boolean simulate) {
-            int missing = Math.min(MAX_CHARGE - charger.charge, toReceive);
+            int missing = Math.min(ConfigCommon.CHARGER_FE_STORAGE.get() - charger.charge, toReceive);
 
             if (!simulate) {
                 charger.charge += missing;
@@ -143,7 +138,7 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int getMaxEnergyStored() {
-            return MAX_CHARGE;
+            return ConfigCommon.CHARGER_FE_STORAGE.get();
         }
 
         @Override
@@ -153,24 +148,24 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public boolean canReceive() {
-            return charger.charge < MAX_CHARGE;
+            return charger.charge < ConfigCommon.CHARGER_FE_STORAGE.get();
         }
     }
 
     public boolean canRefuel() {
-        return fuel <= MAX_FUEL - FUEL_INCREASE;
+        return fuel <= ConfigCommon.CHARGER_URANIUM_STORAGE.get() - FUEL_INCREASE;
     }
 
     public boolean canRecharge() {
-        return charge <= MAX_CHARGE - CHARGE_PER_FUEL;
+        return charge <= ConfigCommon.CHARGER_FE_STORAGE.get() - ConfigCommon.CHARGER_CHARGE_TICK.get();
     }
 
     public int comparatorValue() {
         if (charge <= 0)
             return 0;
-        if (charge >= MAX_CHARGE)
+        if (charge >= ConfigCommon.CHARGER_FE_STORAGE.get())
             return 15;
-        return Math.floorDiv(charge * 14, MAX_CHARGE) + 1;
+        return Math.floorDiv(charge * 14, ConfigCommon.CHARGER_FE_STORAGE.get()) + 1;
     }
 
     // BlockEntity
@@ -221,7 +216,7 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
 
         // Recharge
         if (canRecharge() && fuel > 0) {
-            charge += CHARGE_PER_FUEL;
+            charge += ConfigCommon.CHARGER_CHARGE_TICK.get();
             fuel--;
             changed = true;
         }
@@ -234,11 +229,11 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
 
             if (handler != null) {
                 if (charging && handler.canReceive() && charge > 0) {
-                    charge -= handler.receiveEnergy(Math.min(charge, CHARGE_PER_TICK), false);
+                    charge -= handler.receiveEnergy(Math.min(charge, ConfigCommon.CHARGER_TRANSFER_TICK.get()), false);
                     changed = true;
-                } else if (!charging && handler.canExtract() && charge < MAX_CHARGE) {
-                    int missing = MAX_CHARGE - charge;
-                    charge += handler.extractEnergy(Math.min(missing, CHARGE_PER_TICK), false);
+                } else if (!charging && handler.canExtract() && charge < ConfigCommon.CHARGER_FE_STORAGE.get()) {
+                    int missing = ConfigCommon.CHARGER_FE_STORAGE.get() - charge;
+                    charge += handler.extractEnergy(Math.min(missing, ConfigCommon.CHARGER_TRANSFER_TICK.get()), false);
                     changed = true;
                 }
             }
@@ -285,7 +280,7 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
     // UraniumPowered
     @Override
     public boolean atMaxFuel() {
-        return fuel >= MAX_FUEL;
+        return fuel >= ConfigCommon.CHARGER_URANIUM_STORAGE.get();
     }
 
     @Override

@@ -14,6 +14,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class ESFluidTags extends FluidTagsProvider {
@@ -26,6 +27,7 @@ public class ESFluidTags extends FluidTagsProvider {
     @Override
     protected void addTags(@Nonnull Provider provider) {
         tag(REACTOR_FLUIDS).add(Fluids.WATER, MSFluids.BLOOD.get(), MSFluids.BRAIN_JUICE.get(), MSFluids.ENDER.get(),
-                MSFluids.LIGHT_WATER.get(), MSFluids.OIL.get(), MSFluids.WATER_COLORS.get());
+                MSFluids.LIGHT_WATER.get(), MSFluids.OIL.get(), MSFluids.WATER_COLORS.get(), MSFluids.CAULK.get())
+                .addTag(Tags.Fluids.WATER);
     }
 }

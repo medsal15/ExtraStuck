@@ -1,4 +1,6 @@
-package com.medsal15;
+package com.medsal15.config;
+
+import com.medsal15.ExtraStuck;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -7,7 +9,7 @@ import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 @EventBusSubscriber(modid = ExtraStuck.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class ClientConfig {
+public class ConfigClient {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     private static final ModConfigSpec.BooleanValue DISPLAY_SHIELD_INFO = BUILDER

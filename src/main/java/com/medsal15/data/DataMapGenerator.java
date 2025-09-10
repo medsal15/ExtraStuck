@@ -2,7 +2,9 @@ package com.medsal15.data;
 
 import java.util.concurrent.CompletableFuture;
 
+import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESItems;
+import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -20,5 +22,8 @@ public final class DataMapGenerator extends DataMapProvider {
         builder(NeoForgeDataMaps.FURNACE_FUELS)
                 .add(ESItems.WOODEN_SHIELD, new FurnaceFuel(200), false)
                 .add(ESItems.ROLLING_PIN, new FurnaceFuel(200), false);
+
+        builder(ReactorFuel.REACTOR_MAP).add(MSItems.ENERGY_CORE,
+                new ReactorFuel(128, ESItems.EMPTY_ENERGY_CORE.toStack()), false);
     }
 }

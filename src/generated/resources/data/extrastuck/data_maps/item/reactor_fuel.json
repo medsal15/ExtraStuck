@@ -1,0 +1,11 @@
+{
+  "values": {
+    "minestuck:energy_core": {
+      "duration": 128,
+      "result": {
+        "count": 1,
+        "id": "extrastuck:empty_energy_core"
+      }
+    }
+  }
+}
