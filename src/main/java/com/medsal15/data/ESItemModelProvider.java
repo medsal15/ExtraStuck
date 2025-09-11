@@ -196,6 +196,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
     private void registerTools() {
         basicItem(ESItems.MAGNET.get());
+        basicItem(ESItems.FIELD_CHARGER.get());
     }
 
     private void registerBlocks() {

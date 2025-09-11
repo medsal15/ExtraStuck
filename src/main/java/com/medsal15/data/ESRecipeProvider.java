@@ -732,6 +732,14 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.MAGNET)
                 .grist(GristTypes.CAULK, 36).grist(GristTypes.GARNET, 8).grist(GristTypes.COBALT, 8)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.FIELD_CHARGER)
+                .input(MSItems.BATTERY).and().input(Items.HONEYCOMB)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.FIELD_CHARGER)
+                .grist(GristTypes.AMBER, 50).grist(GristTypes.GOLD, 50).grist(GristTypes.MERCURY, 23)
+                .grist(GristTypes.AMETHYST, 9).grist(GristTypes.GARNET, 9)
+                .build(output);
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

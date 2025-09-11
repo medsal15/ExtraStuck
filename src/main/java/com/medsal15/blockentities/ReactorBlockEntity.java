@@ -397,6 +397,8 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
                 if (!present.isEmpty()) {
                     output.grow(present.getCount());
                 }
+                this.output = ItemStack.EMPTY;
+                maxFuel = 0;
                 itemHandler.setStackInSlot(SLOT_FUEL_OUT, output);
             }
             fuel--;

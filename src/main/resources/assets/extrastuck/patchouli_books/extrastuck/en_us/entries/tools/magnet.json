@@ -1,7 +1,7 @@
 {
     "name": "Magnet",
     "icon": "extrastuck:magnet",
-    "category": "extrastuck:misc",
+    "category": "extrastuck:tools",
     "sortnum": 1,
     "pages": [
         {

@@ -274,6 +274,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.OLD_BRUSH, "Old Brush");
         addItem(ESItems.MAGNET, "Magnet");
         addItemTooltip(ESItems.MAGNET, "How do they work?");
+        addItem(ESItems.FIELD_CHARGER, "Field Charger");
+        addItemTooltip(ESItems.FIELD_CHARGER, "Don't lick it");
     }
 
     private void addBlockEntities() {

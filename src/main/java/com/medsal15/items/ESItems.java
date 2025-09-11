@@ -152,7 +152,7 @@ public final class ESItems {
                     BlockFuncs::dropCandy));
     public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
             p -> new ESShield(p.durability(490)
-                    .component(ESDataComponents.ENERGY_STORAGE, 100000)
+                    .component(ESDataComponents.ENERGY_STORAGE, 100_000)
                     .component(ESDataComponents.FLUX_MULTIPLIER, 100), BlockFuncs.USE_POWER));
     public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
             p -> new ESShield(p.durability(880).component(ESDataComponents.BURN_DURATION, 600),
@@ -386,12 +386,12 @@ public final class ESItems {
                     .add(ESHitEffects.requireCharge(300, ESHitEffects.attractItemsGrist(10)))
                     .set(ItemRightClickEffect.switchTo(ESItems.UNDERCHARGED_MAGNEFORK))
                     .add(OnHitEffect.playSound(MSSoundEvents.EVENT_ELECTRIC_SHOCK, 0.6F, 1.0F)),
-                    new MSItemProperties().durability(750).component(ESDataComponents.ENERGY_STORAGE, 30000)));
+                    new MSItemProperties().durability(750).component(ESDataComponents.ENERGY_STORAGE, 30_000)));
     public static final DeferredItem<Item> UNDERCHARGED_MAGNEFORK = ITEMS.register("undercharged_magnefork",
             () -> new WeaponItem(
                     new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(3F).set(MSItemTypes.FORK_TOOL)
                             .set(ItemRightClickEffect.switchTo(ESItems.OVERCHARGED_MAGNEFORK)),
-                    new MSItemProperties().durability(750).component(ESDataComponents.ENERGY_STORAGE, 30000)));
+                    new MSItemProperties().durability(750).component(ESDataComponents.ENERGY_STORAGE, 30_000)));
     // #endregion Forks
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
@@ -485,6 +485,8 @@ public final class ESItems {
     public static final DeferredItem<Item> MAGNET = ITEMS.registerItem("magnet", p -> new MagnetItem(Tiers.IRON, p),
             new MSItemProperties().stacksTo(1).durability(160));
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
+    public static final DeferredItem<Item> FIELD_CHARGER = ITEMS.registerItem("field_charger",
+            p -> new ChargerItem(p.stacksTo(1).component(ESDataComponents.ENERGY_STORAGE, 50_000)));
 
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
 
@@ -676,6 +678,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(OLD_BRUSH);
         list.add(MAGNET);
+        list.add(FIELD_CHARGER);
         return list;
     }
 

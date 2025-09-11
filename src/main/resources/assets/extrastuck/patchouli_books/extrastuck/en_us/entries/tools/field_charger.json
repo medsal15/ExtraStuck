@@ -1,0 +1,23 @@
+{
+    "name": "Field Charger",
+    "icon": "extrastuck:field_charger",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:field_charger"
+            },
+            "text": "A portable battery that can hold a little power, as a last resort.$(br2)Hold on, this alchemizing recipe doesn't make any sense!"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Battery and a Honeycomb in a Totem Lathe.",
+            "left": "minestuck:battery",
+            "mode": "&&",
+            "right": "minecraft:honeycomb",
+            "result": "extrastuck:field_charger"
+        }
+    ]
+}

@@ -6,6 +6,8 @@
     "minestuck:ender",
     "minestuck:light_water",
     "minestuck:oil",
-    "minestuck:water_colors"
+    "minestuck:water_colors",
+    "minestuck:caulk",
+    "#c:water"
   ]
 }

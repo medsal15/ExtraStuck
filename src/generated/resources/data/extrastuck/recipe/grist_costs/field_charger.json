@@ -1,0 +1,13 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 50,
+    "minestuck:amethyst": 9,
+    "minestuck:garnet": 9,
+    "minestuck:gold": 50,
+    "minestuck:mercury": 23
+  },
+  "ingredient": {
+    "item": "extrastuck:field_charger"
+  }
+}

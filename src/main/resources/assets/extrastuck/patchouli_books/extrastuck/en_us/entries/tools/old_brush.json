@@ -1,7 +1,7 @@
 {
     "name": "Old Brush",
     "icon": "extrastuck:old_brush",
-    "category": "extrastuck:misc",
+    "category": "extrastuck:tools",
     "sortnum": 1,
     "pages": [
         {

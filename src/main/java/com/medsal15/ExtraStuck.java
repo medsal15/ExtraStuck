@@ -115,7 +115,8 @@ public class ExtraStuck {
     public void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerItem(Capabilities.EnergyStorage.ITEM,
                 (stack, u) -> new ESEnergyStorage(stack),
-                ESItems.FLUX_SHIELD.get(), ESItems.OVERCHARGED_MAGNEFORK.get(), ESItems.UNDERCHARGED_MAGNEFORK.get());
+                ESItems.FLUX_SHIELD.get(), ESItems.OVERCHARGED_MAGNEFORK.get(), ESItems.UNDERCHARGED_MAGNEFORK.get(),
+                ESItems.FIELD_CHARGER.get());
 
         event.registerItem(Capabilities.ItemHandler.ITEM,
                 (stack, u) -> new GunContainer(1, stack),
