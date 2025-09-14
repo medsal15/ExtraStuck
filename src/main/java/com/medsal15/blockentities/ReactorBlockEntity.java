@@ -10,7 +10,6 @@ import com.medsal15.blockentities.handlers.FuellessWrapper;
 import com.medsal15.config.ConfigCommon;
 import com.medsal15.data.ESFluidTags;
 import com.medsal15.datamaps.ReactorFuel;
-import com.medsal15.items.ESItems;
 import com.medsal15.menus.ReactorMenu;
 import com.mraof.minestuck.blockentity.machine.MachineProcessBlockEntity;
 import com.mraof.minestuck.blockentity.machine.UraniumPowered;
@@ -390,19 +389,21 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
                 charge += ConfigCommon.REACTOR_CHARGE_TICK.get();
             }
             fluid.shrink(ConfigCommon.REACTOR_FLUID_TICK.get());
-            if (fuel == 1) {
-                // Add an empty core to the output
-                ItemStack present = itemHandler.getStackInSlot(SLOT_FUEL_OUT);
-                ItemStack output = ESItems.EMPTY_ENERGY_CORE.toStack();
-                if (!present.isEmpty()) {
-                    output.grow(present.getCount());
-                }
-                this.output = ItemStack.EMPTY;
-                maxFuel = 0;
-                itemHandler.setStackInSlot(SLOT_FUEL_OUT, output);
-            }
             fuel--;
             changed = true;
+        }
+
+        // Output
+        if (fuel == 0 && !output.isEmpty()) {
+            // Add an empty core to the output
+            ItemStack present = itemHandler.getStackInSlot(SLOT_FUEL_OUT);
+            ItemStack output = this.output.copy();
+            if (!present.isEmpty()) {
+                output.grow(present.getCount());
+            }
+            this.output = ItemStack.EMPTY;
+            maxFuel = 0;
+            itemHandler.setStackInSlot(SLOT_FUEL_OUT, output);
         }
 
         // Transfer
