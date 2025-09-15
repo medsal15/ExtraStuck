@@ -251,5 +251,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         withExistingParent(ESItems.ZILLIUM_BRICK_STAIRS.getId().toString(), modLoc("block/zillium_brick_stairs"));
         withExistingParent(ESItems.ZILLIUM_BRICK_SLAB.getId().toString(), modLoc("block/zillium_brick_slab"));
         wallInventory(ESItems.ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/zillium_bricks"));
+
+        basicItem(ESItems.NORMAL_CAT_PLUSH.get());
     }
 }

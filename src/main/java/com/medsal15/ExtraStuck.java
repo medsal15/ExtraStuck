@@ -31,6 +31,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -165,8 +166,8 @@ public class ExtraStuck {
         }
 
         // Prevent death and consume anti die
-        // Sound does not play for some reason
-        entity.playSound(SoundEvents.TOTEM_USE);
+        entity.level().playSeededSound(null, (int) entity.getX(), (int) entity.getY(), (int) entity.getZ(),
+                SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1F, 1F, entity.level().random.nextLong());
         Minecraft minecraft = Minecraft.getInstance();
         GameRenderer renderer = minecraft.gameRenderer;
         renderer.displayItemActivation(ESItems.ANTI_DIE.toStack());

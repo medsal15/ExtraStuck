@@ -323,7 +323,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(ESItems.TOKEN_TETRAHEDRON).and().input(Items.CLOCK)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.D10)
-                .grist(GristTypes.DIAMOND, 1331).grist(GristTypes.GOLD, 10).grist(GristTypes.GARNET, 999)
+                .grist(GristTypes.DIAMOND, 1331).grist(GristTypes.GOLD, 10)
+                .grist(GristTypes.GARNET, 999)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.RAINBOW_D7)
@@ -625,28 +626,32 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(Items.NETHERITE_HELMET).and().input(Items.TINTED_GLASS)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.DARK_KNIGHT_HELMET)
-                .grist(GristTypes.TAR, 7300).grist(GristTypes.AMETHYST, 3210).grist(GristTypes.SHALE, 4400)
+                .grist(GristTypes.TAR, 7300).grist(GristTypes.AMETHYST, 3210)
+                .grist(GristTypes.SHALE, 4400)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.DARK_KNIGHT_CHESTPLATE)
                 .input(Items.NETHERITE_CHESTPLATE).and().input(Items.TINTED_GLASS)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.DARK_KNIGHT_CHESTPLATE)
-                .grist(GristTypes.TAR, 7300).grist(GristTypes.AMETHYST, 3210).grist(GristTypes.SHALE, 6400)
+                .grist(GristTypes.TAR, 7300).grist(GristTypes.AMETHYST, 3210)
+                .grist(GristTypes.SHALE, 6400)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.DARK_KNIGHT_LEGGINGS)
                 .input(Items.NETHERITE_LEGGINGS).and().input(Items.TINTED_GLASS)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.DARK_KNIGHT_LEGGINGS)
-                .grist(GristTypes.TAR, 7300).grist(GristTypes.AMETHYST, 3210).grist(GristTypes.SHALE, 6000)
+                .grist(GristTypes.TAR, 7300).grist(GristTypes.AMETHYST, 3210)
+                .grist(GristTypes.SHALE, 6000)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.DARK_KNIGHT_BOOTS)
                 .input(Items.NETHERITE_BOOTS).and().input(Items.TINTED_GLASS)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.DARK_KNIGHT_BOOTS)
-                .grist(GristTypes.TAR, 7300).grist(GristTypes.AMETHYST, 3210).grist(GristTypes.SHALE, 5200)
+                .grist(GristTypes.TAR, 7300).grist(GristTypes.AMETHYST, 3210)
+                .grist(GristTypes.SHALE, 5200)
                 .build(output);
         // #endregion Dark Knight
 
@@ -655,28 +660,32 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(Items.NETHERITE_HELMET).or().input(Items.GLOWSTONE)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.LIGHT_KNIGHT_HELMET)
-                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210).grist(GristTypes.MERCURY, 4400)
+                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210)
+                .grist(GristTypes.MERCURY, 4400)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.LIGHT_KNIGHT_CHESTPLATE)
                 .input(Items.NETHERITE_CHESTPLATE).or().input(Items.GLOWSTONE)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.LIGHT_KNIGHT_CHESTPLATE)
-                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210).grist(GristTypes.MERCURY, 6400)
+                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210)
+                .grist(GristTypes.MERCURY, 6400)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.LIGHT_KNIGHT_LEGGINGS)
                 .input(Items.NETHERITE_LEGGINGS).or().input(Items.GLOWSTONE)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.LIGHT_KNIGHT_LEGGINGS)
-                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210).grist(GristTypes.MERCURY, 6000)
+                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210)
+                .grist(GristTypes.MERCURY, 6000)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.LIGHT_KNIGHT_BOOTS)
                 .input(Items.NETHERITE_BOOTS).or().input(Items.GLOWSTONE)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.LIGHT_KNIGHT_BOOTS)
-                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210).grist(GristTypes.MERCURY, 5200)
+                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210)
+                .grist(GristTypes.MERCURY, 5200)
                 .build(output);
         // #endregion Light Knight
     }
@@ -763,7 +772,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(ESItems.CHARGER).and().input(MSItems.URANIUM_BLOCK)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.REACTOR)
-                .grist(GristTypes.BUILD, 250).grist(GristTypes.COBALT, 170).grist(GristTypes.URANIUM, 92)
+                .grist(GristTypes.BUILD, 250).grist(GristTypes.COBALT, 170)
+                .grist(GristTypes.URANIUM, 92)
                 .build(output);
         // #endregion Machines
 
@@ -1268,6 +1278,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
                 .save(output, modLoc("shaped/zillium_bricks_wall"));
         // #endregion Zillium
+
+        GristCostRecipeBuilder.of(ESItems.NORMAL_CAT_PLUSH)
+                .grist(GristTypes.BUILD, 1).grist(GristTypes.CHALK, 3)
+                .build(output);
     }
 
     private ResourceLocation modLoc(String text) {

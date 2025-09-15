@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "extrastuck:block/normal_cat_plush"
+        },
+        "facing=east": {
+            "model": "extrastuck:block/normal_cat_plush",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "extrastuck:block/normal_cat_plush",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "extrastuck:block/normal_cat_plush",
+            "y": 270
+        }
+    }
+}

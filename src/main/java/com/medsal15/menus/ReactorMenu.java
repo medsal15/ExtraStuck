@@ -11,7 +11,6 @@ import com.medsal15.menus.slot.FilteredInputSlot;
 import com.mraof.minestuck.inventory.ContainerHelper;
 import com.mraof.minestuck.inventory.MachineContainerMenu;
 import com.mraof.minestuck.inventory.slot.OutputSlot;
-import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -122,7 +121,7 @@ public class ReactorMenu extends MachineContainerMenu {
 
             if (index <= 2) {
                 result = moveItemStackTo(original, 2, all, false);
-            } else if (original.getItem() == MSItems.ENERGY_CORE.get()) {
+            } else if (original.getItemHolder().getData(ReactorFuel.REACTOR_MAP) != null) {
                 result = moveItemStackTo(original, 0, 1, false);
             }
 

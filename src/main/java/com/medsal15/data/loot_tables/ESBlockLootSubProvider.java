@@ -84,6 +84,8 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(ESBlocks.PRINTER.get());
         dropSelf(ESBlocks.CHARGER.get());
         dropSelf(ESBlocks.REACTOR.get());
+
+        dropSelf(ESBlocks.NORMAL_CAT_PLUSH.get());
     }
 
     private LootTable.Builder droppingWithOreItem(Block block) {

@@ -33,6 +33,10 @@ public final class ESBlocks {
     public static final DeferredBlock<CardOreBlock> CARD_ORE = BLOCKS.registerBlock("card_ore", CardOreBlock::new,
             Block.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).sound(SoundType.STONE).strength(1.5F, 6.0F));
 
+    public static final DeferredBlock<NormalCatBlock> NORMAL_CAT_PLUSH = BLOCKS.registerBlock("normal_cat_plush",
+            NormalCatBlock::new,
+            Block.Properties.of().mapColor(MapColor.SNOW).sound(SoundType.WOOL).strength(0.5F).noOcclusion());
+
     // #region Machines
     // Objectively worse than a miniature alchemiter
     public static final DeferredBlock<PrinterBlock> PRINTER = BLOCKS.registerBlock("printer", PrinterBlock::new,

@@ -6,6 +6,13 @@
         "count": 1,
         "id": "extrastuck:empty_energy_core"
       }
+    },
+    "minestuck:plush_mutated_cat": {
+      "duration": 0,
+      "result": {
+        "count": 1,
+        "id": "extrastuck:normal_cat_plush"
+      }
     }
   }
 }

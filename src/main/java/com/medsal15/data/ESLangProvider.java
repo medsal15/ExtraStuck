@@ -90,6 +90,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.PIZZA, "Pizza");
         addItem(ESItems.EMPTY_ENERGY_CORE, "Empty Energy Core");
         addItemTooltip(ESItems.EMPTY_ENERGY_CORE, "You forgot the uranium");
+        addBlock(ESBlocks.NORMAL_CAT_PLUSH, "Normal Cat Plush");
+        addBlockTooltip(ESBlocks.NORMAL_CAT_PLUSH, "In what world is that normal?");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");

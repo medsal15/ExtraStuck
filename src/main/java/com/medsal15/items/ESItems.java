@@ -231,7 +231,8 @@ public final class ESItems {
             () -> new WeaponItem(
                     new WeaponItem.Builder(MSItemTypes.DENIZEN_TIER, 8, -3.2F).efficiency(15F)
                             .add(OnHitEffect.playSound(() -> SoundEvents.BELL_BLOCK))
-                            .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 100)))
+                            .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(
+                                    MobEffects.BLINDNESS, 100)))
                             .add(ESInventoryTickEffects::blind),
                     new MSItemProperties().durability(2500)));
     // #endregion Hammers
@@ -321,7 +322,8 @@ public final class ESItems {
                     new WeaponItem.Builder(MSItemTypes.ZILLY_TIER, 0, -3F)
                             .set(ESItemTypes.DICE_TOOL)
                             .add(ESHitEffects::randomMaxDamage),
-                    new Item.Properties().component(DataComponents.UNBREAKABLE, new Unbreakable(true))
+                    new Item.Properties()
+                            .component(DataComponents.UNBREAKABLE, new Unbreakable(true))
                             .rarity(Rarity.EPIC)));
     // #endregion Dice
     // #region Clubs
@@ -372,26 +374,39 @@ public final class ESItems {
     // #region Canes
     public static final DeferredItem<Item> BROOM = ITEMS.register("broom",
             () -> new BrushWeapon(
-                    new WeaponItem.Builder(MSItemTypes.ORGANIC_TIER, 3, -2F).set(MSItemTypes.CANE_TOOL)
+                    new WeaponItem.Builder(MSItemTypes.ORGANIC_TIER, 3, -2F)
+                            .set(MSItemTypes.CANE_TOOL)
                             .set(ESRightClickBlockEffects::brush)
                             .add(OnHitEffect.enemyKnockback(1F)),
                     new Item.Properties()));
     // #endregion Canes
     // #region Forks
     public static final DeferredItem<Item> MAGNEFORK = ITEMS.register("magnefork",
-            () -> new WeaponItem(new WeaponItem.Builder(Tiers.IRON, 3, -2.6F).efficiency(1F).set(MSItemTypes.FORK_TOOL)
-                    .add(ESHitEffects.attractItemsGrist(5)), new MSItemProperties().durability(450)));
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.IRON, 3, -2.6F).efficiency(1F)
+                            .set(MSItemTypes.FORK_TOOL)
+                            .add(ESHitEffects.attractItemsGrist(5)),
+                    new MSItemProperties().durability(450)));
     public static final DeferredItem<Item> OVERCHARGED_MAGNEFORK = ITEMS.register("overcharged_magnefork",
-            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(3F).set(MSItemTypes.FORK_TOOL)
-                    .add(ESHitEffects.requireCharge(300, ESHitEffects.attractItemsGrist(10)))
-                    .set(ItemRightClickEffect.switchTo(ESItems.UNDERCHARGED_MAGNEFORK))
-                    .add(OnHitEffect.playSound(MSSoundEvents.EVENT_ELECTRIC_SHOCK, 0.6F, 1.0F)),
-                    new MSItemProperties().durability(750).component(ESDataComponents.ENERGY_STORAGE, 30_000)));
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(3F)
+                            .set(MSItemTypes.FORK_TOOL)
+                            .add(ESHitEffects.requireCharge(300,
+                                    ESHitEffects.attractItemsGrist(10)))
+                            .set(ItemRightClickEffect
+                                    .switchTo(ESItems.UNDERCHARGED_MAGNEFORK))
+                            .add(OnHitEffect.playSound(MSSoundEvents.EVENT_ELECTRIC_SHOCK,
+                                    0.6F, 1.0F)),
+                    new MSItemProperties().durability(750)
+                            .component(ESDataComponents.ENERGY_STORAGE, 30_000)));
     public static final DeferredItem<Item> UNDERCHARGED_MAGNEFORK = ITEMS.register("undercharged_magnefork",
             () -> new WeaponItem(
-                    new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(3F).set(MSItemTypes.FORK_TOOL)
-                            .set(ItemRightClickEffect.switchTo(ESItems.OVERCHARGED_MAGNEFORK)),
-                    new MSItemProperties().durability(750).component(ESDataComponents.ENERGY_STORAGE, 30_000)));
+                    new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(3F)
+                            .set(MSItemTypes.FORK_TOOL)
+                            .set(ItemRightClickEffect
+                                    .switchTo(ESItems.OVERCHARGED_MAGNEFORK)),
+                    new MSItemProperties().durability(750)
+                            .component(ESDataComponents.ENERGY_STORAGE, 30_000)));
     // #endregion Forks
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
@@ -424,11 +439,13 @@ public final class ESItems {
                     .durability(ArmorItem.Type.CHESTPLATE.getDurability(17))
                     .attributes(ItemAttributeModifiers.builder()
                             .add(Attributes.GRAVITY,
-                                    new AttributeModifier(ExtraStuck.modid("heavy_boots_gravity"), 1F,
+                                    new AttributeModifier(ExtraStuck.modid(
+                                            "heavy_boots_gravity"), 1F,
                                             Operation.ADD_MULTIPLIED_BASE),
                                     EquipmentSlotGroup.FEET)
                             .add(Attributes.ARMOR,
-                                    new AttributeModifier(ExtraStuck.modid("heavy_boots_armor"), 3F,
+                                    new AttributeModifier(ExtraStuck
+                                            .modid("heavy_boots_armor"), 3F,
                                             Operation.ADD_VALUE),
                                     EquipmentSlotGroup.FEET)
                             .build())));
@@ -437,11 +454,15 @@ public final class ESItems {
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(17))
                             .attributes(ItemAttributeModifiers.builder()
                                     .add(Attributes.GRAVITY,
-                                            new AttributeModifier(ExtraStuck.modid("propeller_hat_gravity"), -.5F,
+                                            new AttributeModifier(ExtraStuck
+                                                    .modid("propeller_hat_gravity"),
+                                                    -.5F,
                                                     Operation.ADD_MULTIPLIED_TOTAL),
                                             EquipmentSlotGroup.HEAD)
                                     .add(Attributes.ARMOR,
-                                            new AttributeModifier(ExtraStuck.modid("propeller_hat_armor"), 1F,
+                                            new AttributeModifier(ExtraStuck
+                                                    .modid("propeller_hat_armor"),
+                                                    1F,
                                                     Operation.ADD_VALUE),
                                             EquipmentSlotGroup.HEAD)
                                     .build())));
@@ -605,6 +626,8 @@ public final class ESItems {
     public static final DeferredItem<BlockItem> ZILLIUM_BRICK_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_WALL);
     // #endregion Zillium
+    public static final DeferredItem<BlockItem> NORMAL_CAT_PLUSH = ITEMS
+            .registerSimpleBlockItem(ESBlocks.NORMAL_CAT_PLUSH);
     // #endregion Blocks
 
     public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
