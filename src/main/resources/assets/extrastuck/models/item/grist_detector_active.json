@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "extrastuck:item/grist_detector",
+        "layer1": "extrastuck:item/grist_detector_overlay"
+    }
+}

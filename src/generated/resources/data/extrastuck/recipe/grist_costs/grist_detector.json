@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:mercury": 44,
+    "minestuck:quartz": 4
+  },
+  "ingredient": {
+    "item": "extrastuck:grist_detector"
+  }
+}

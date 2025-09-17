@@ -29,7 +29,6 @@ Nuclear hyper-blaster: consumes uranium, shoots lasers
 
 ### Tools ###
 
-Grist detector: reveals current location grists, allows switching between common/uncommon/any
 Grist location: reveals current location grists, allows searching for specifc grist and switching between common/uncommon/any
 Grist map: map that is colored based on location grists, variants between common/uncommon/any
 

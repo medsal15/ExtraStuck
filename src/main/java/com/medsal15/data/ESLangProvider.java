@@ -42,6 +42,11 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String GUN_EMPTY_KEY = ExtraStuck.MODID + ".gun_empty";
     public static final String ALT_GUN_EMPTY_KEY = ExtraStuck.MODID + ".office_key.empty";
     public static final String ALT_GUN_HEAVY_KEY = ExtraStuck.MODID + ".office_key.heavy";
+    public static final String GRIST_DETECTOR_LOCATED = ExtraStuck.MODID + ".grist_detector.located";
+    public static final String GRIST_DETECTOR_MODE = ExtraStuck.MODID + ".grist_detector.mode";
+    public static final String GRIST_DETECTOR_ANY = ExtraStuck.MODID + ".grist_detector.any";
+    public static final String GRIST_DETECTOR_COMMON = ExtraStuck.MODID + ".grist_detector.common";
+    public static final String GRIST_DETECTOR_UNCOMMON = ExtraStuck.MODID + ".grist_detector.uncommon";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
@@ -278,6 +283,12 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.MAGNET, "How do they work?");
         addItem(ESItems.FIELD_CHARGER, "Field Charger");
         addItemTooltip(ESItems.FIELD_CHARGER, "Don't lick it");
+        addItem(ESItems.GRIST_DETECTOR, "Grist Detector");
+        add(GRIST_DETECTOR_LOCATED, "Located %1$s");
+        add(GRIST_DETECTOR_MODE, "Currently showing %1$s grist");
+        add(GRIST_DETECTOR_ANY, "any");
+        add(GRIST_DETECTOR_COMMON, "common");
+        add(GRIST_DETECTOR_UNCOMMON, "uncommon");
     }
 
     private void addBlockEntities() {

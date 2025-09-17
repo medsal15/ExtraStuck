@@ -1,0 +1,14 @@
+{
+    "parent": "minecraft:item/generated",
+    "overrides": [
+        {
+            "model": "extrastuck:item/grist_detector_active",
+            "predicate": {
+                "extrastuck:found": 1.0
+            }
+        }
+    ],
+    "textures": {
+        "layer0": "extrastuck:item/grist_detector"
+    }
+}

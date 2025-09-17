@@ -1,0 +1,23 @@
+{
+    "name": "Grist Detector",
+    "icon": "extrastuck:grist_detector",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:grist_detector"
+            },
+            "text": "A fancy tool that constantly scans the surrounding for grist. Can be switched between common, uncommon, and any grist.$(br)The color of the detector will change based on the detected grist, but if you can't figure it out, it's also available when hovering."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Compass and any Grist Candy in a Punch Designix.",
+            "left": "minecraft:compass",
+            "mode": "||",
+            "right": "tag:minestuck:grist_candy",
+            "result": "extrastuck:grist_detector"
+        }
+    ]
+}

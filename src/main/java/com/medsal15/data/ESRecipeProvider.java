@@ -749,6 +749,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.AMBER, 50).grist(GristTypes.GOLD, 50).grist(GristTypes.MERCURY, 23)
                 .grist(GristTypes.AMETHYST, 9).grist(GristTypes.GARNET, 9)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.GRIST_DETECTOR)
+                .input(Items.COMPASS).or().input(MSTags.Items.GRIST_CANDY)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.GRIST_DETECTOR)
+                .grist(GristTypes.QUARTZ, 4).grist(GristTypes.MERCURY, 44)
+                .build(output);
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

@@ -31,6 +31,7 @@ import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
+import com.medsal15.items.ESDataComponents.GristLayer;
 import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.DarkKnightArmorItem;
 import com.medsal15.items.armor.LightKnightArmorItem;
@@ -501,14 +502,18 @@ public final class ESItems {
      */
     // #endregion Armors
 
+    // #region Tools
     public static final DeferredItem<Item> OLD_BRUSH = ITEMS.registerItem("old_brush", BrushItem::new,
             new Item.Properties().stacksTo(1).durability(320));
     public static final DeferredItem<Item> MAGNET = ITEMS.registerItem("magnet", p -> new MagnetItem(Tiers.IRON, p),
             new MSItemProperties().stacksTo(1).durability(160));
-    public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
     public static final DeferredItem<Item> FIELD_CHARGER = ITEMS.registerItem("field_charger",
             p -> new ChargerItem(p.stacksTo(1).component(ESDataComponents.ENERGY_STORAGE, 50_000)));
+    public static final DeferredItem<Item> GRIST_DETECTOR = ITEMS.registerItem("grist_detector",
+            p -> new GristDetectorItem(p.component(ESDataComponents.GRIST_LAYER, GristLayer.COMMON)));
+    // #endregion Tools
 
+    public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
 
     // #region Modus
@@ -648,6 +653,7 @@ public final class ESItems {
         for (DeferredItem<Item> tool : ESItems.getTools()) {
             output.accept(tool.get());
         }
+        output.accept(GRIST_DETECTOR);
 
         for (DeferredItem<Item> item : ESItems.getShields()) {
             output.accept(item.get());

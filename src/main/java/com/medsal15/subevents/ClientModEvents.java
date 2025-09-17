@@ -16,7 +16,9 @@ import com.medsal15.client.renderers.ESArrowRenderer;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
+import com.mraof.minestuck.api.alchemy.GristType;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -41,6 +43,9 @@ import net.neoforged.neoforge.registries.DeferredItem;
 public final class ClientModEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
+        ItemProperties.register(ESItems.GRIST_DETECTOR.get(), ExtraStuck.modid("found"),
+                (stack, world, entity, entityId) -> stack.has(ESDataComponents.GRIST_FOUND) ? 1F : 0F);
+
         for (DeferredItem<Item> shield : ESItems.getShields()) {
             addBlocking(shield);
         }
@@ -140,5 +145,16 @@ public final class ClientModEvents {
 
             return 0xFFFFFFFF;
         }, ESBlocks.PRINTER.get());
+    }
+
+    @SubscribeEvent
+    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
+        event.register((stack, index) -> {
+            if (stack.has(ESDataComponents.GRIST_FOUND) && index == 1) {
+                GristType type = stack.get(ESDataComponents.GRIST_FOUND);
+                return type.getUnderlingColor() | 0xFF000000;
+            }
+            return -1;
+        }, ESItems.GRIST_DETECTOR.get());
     }
 }
