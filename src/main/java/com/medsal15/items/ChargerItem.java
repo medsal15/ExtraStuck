@@ -6,6 +6,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -75,5 +77,33 @@ public class ChargerItem extends Item {
         }
 
         return super.use(level, player, hand);
+    }
+
+    @Override
+    public boolean overrideStackedOnOther(@Nonnull ItemStack stack, @Nonnull Slot slot, @Nonnull ClickAction action,
+            @Nonnull Player player) {
+        if (stack.getCount() != 1 || action != ClickAction.SECONDARY)
+            return false;
+
+        @SuppressWarnings("null")
+        IEnergyStorage self = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
+        if (self == null || !self.canExtract())
+            return false;
+
+        ItemStack otherStack = slot.getItem();
+        if (otherStack.isEmpty())
+            return false;
+
+        @SuppressWarnings("null")
+        IEnergyStorage other = Capabilities.EnergyStorage.ITEM.getCapability(otherStack, null);
+        if (other == null || !other.canReceive())
+            return false;
+
+        int sent = other.receiveEnergy(self.getEnergyStored(), false);
+        if (sent <= 0)
+            return false;
+
+        self.extractEnergy(sent, false);
+        return true;
     }
 }

@@ -303,6 +303,8 @@ public final class ESLangProvider extends LanguageProvider {
 
         // Reactor
         addBlock(ESBlocks.REACTOR, "Nuclear Reactor");
+        addBlockTooltip(ESBlocks.REACTOR,
+                "You don't think it's a good idea to contain so much power in such a small machine");
         add(ReactorBlockEntity.TITLE, "Nuclear Reactor");
         add(ESFluidTags.REACTOR_FLUIDS, "Reactor Coolants");
     }
