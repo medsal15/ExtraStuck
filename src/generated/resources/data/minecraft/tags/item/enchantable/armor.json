@@ -7,10 +7,6 @@
     "extrastuck:dark_knight_helmet",
     "extrastuck:dark_knight_chestplate",
     "extrastuck:dark_knight_leggings",
-    "extrastuck:dark_knight_boots",
-    "extrastuck:light_knight_helmet",
-    "extrastuck:light_knight_chestplate",
-    "extrastuck:light_knight_leggings",
-    "extrastuck:light_knight_boots"
+    "extrastuck:dark_knight_boots"
   ]
 }

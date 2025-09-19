@@ -255,12 +255,6 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.DARK_KNIGHT_CHESTPLATE, "Dark Knight Chestplate");
         addItem(ESItems.DARK_KNIGHT_LEGGINGS, "Dark Knight Leggings");
         addItem(ESItems.DARK_KNIGHT_BOOTS, "Dark Knight Boots");
-
-        addItem(ESItems.LIGHT_KNIGHT_HELMET, "Light Knight Helmet");
-        addItemTooltip(ESItems.LIGHT_KNIGHT_HELMET, "It's blindingly bright");
-        addItem(ESItems.LIGHT_KNIGHT_CHESTPLATE, "Light Knight Chestplate");
-        addItem(ESItems.LIGHT_KNIGHT_LEGGINGS, "Light Knight Leggings");
-        addItem(ESItems.LIGHT_KNIGHT_BOOTS, "Light Knight Boots");
     }
 
     private void addModuses() {

@@ -654,40 +654,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.SHALE, 5200)
                 .build(output);
         // #endregion Dark Knight
-
-        // #region Light Knight
-        CombinationRecipeBuilder.of(ESItems.LIGHT_KNIGHT_HELMET)
-                .input(Items.NETHERITE_HELMET).or().input(Items.GLOWSTONE)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.LIGHT_KNIGHT_HELMET)
-                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210)
-                .grist(GristTypes.MERCURY, 4400)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.LIGHT_KNIGHT_CHESTPLATE)
-                .input(Items.NETHERITE_CHESTPLATE).or().input(Items.GLOWSTONE)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.LIGHT_KNIGHT_CHESTPLATE)
-                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210)
-                .grist(GristTypes.MERCURY, 6400)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.LIGHT_KNIGHT_LEGGINGS)
-                .input(Items.NETHERITE_LEGGINGS).or().input(Items.GLOWSTONE)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.LIGHT_KNIGHT_LEGGINGS)
-                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210)
-                .grist(GristTypes.MERCURY, 6000)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.LIGHT_KNIGHT_BOOTS)
-                .input(Items.NETHERITE_BOOTS).or().input(Items.GLOWSTONE)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.LIGHT_KNIGHT_BOOTS)
-                .grist(GristTypes.CHALK, 7300).grist(GristTypes.QUARTZ, 3210)
-                .grist(GristTypes.MERCURY, 5200)
-                .build(output);
-        // #endregion Light Knight
     }
 
     private void modusRecipes(@Nonnull RecipeOutput output) {

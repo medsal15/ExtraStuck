@@ -34,7 +34,6 @@ import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.items.ESDataComponents.GristLayer;
 import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.DarkKnightArmorItem;
-import com.medsal15.items.armor.LightKnightArmorItem;
 import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.food.FortuneCookie;
 import com.medsal15.items.guns.ESGun;
@@ -481,20 +480,6 @@ public final class ESItems {
             () -> new DarkKnightArmorItem(ESArmorMaterials.DARK_KNIGHT, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(40))));
     // #endregion Dark Knight
-    // #region Light Knight
-    public static final DeferredItem<Item> LIGHT_KNIGHT_HELMET = ITEMS.register("light_knight_helmet",
-            () -> new LightKnightArmorItem(ESArmorMaterials.LIGHT_KNIGHT, ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(40))));
-    public static final DeferredItem<Item> LIGHT_KNIGHT_CHESTPLATE = ITEMS.register("light_knight_chestplate",
-            () -> new LightKnightArmorItem(ESArmorMaterials.LIGHT_KNIGHT, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
-    public static final DeferredItem<Item> LIGHT_KNIGHT_LEGGINGS = ITEMS.register("light_knight_leggings",
-            () -> new LightKnightArmorItem(ESArmorMaterials.LIGHT_KNIGHT, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
-    public static final DeferredItem<Item> LIGHT_KNIGHT_BOOTS = ITEMS.register("light_knight_boots",
-            () -> new LightKnightArmorItem(ESArmorMaterials.LIGHT_KNIGHT, ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(40))));
-    // #endregion Light Knight
     /*
      * //TODO axolotl armor
      * regen on damage
@@ -831,11 +816,6 @@ public final class ESItems {
         list.add(DARK_KNIGHT_LEGGINGS);
         list.add(DARK_KNIGHT_BOOTS);
 
-        list.add(LIGHT_KNIGHT_HELMET);
-        list.add(LIGHT_KNIGHT_CHESTPLATE);
-        list.add(LIGHT_KNIGHT_LEGGINGS);
-        list.add(LIGHT_KNIGHT_BOOTS);
-
         return list;
     }
 
@@ -845,7 +825,6 @@ public final class ESItems {
         list.add(CHEF_HAT);
         list.add(PROPELLER_HAT);
         list.add(DARK_KNIGHT_HELMET);
-        list.add(LIGHT_KNIGHT_HELMET);
 
         return list;
     }
@@ -855,7 +834,6 @@ public final class ESItems {
 
         list.add(CHEF_APRON);
         list.add(DARK_KNIGHT_CHESTPLATE);
-        list.add(LIGHT_KNIGHT_CHESTPLATE);
 
         return list;
     }
@@ -864,7 +842,6 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(DARK_KNIGHT_LEGGINGS);
-        list.add(LIGHT_KNIGHT_LEGGINGS);
 
         return list;
     }
@@ -874,7 +851,6 @@ public final class ESItems {
 
         list.add(HEAVY_BOOTS);
         list.add(DARK_KNIGHT_BOOTS);
-        list.add(LIGHT_KNIGHT_BOOTS);
 
         return list;
     }
