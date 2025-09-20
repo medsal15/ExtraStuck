@@ -14,7 +14,7 @@
             "text": "Combine a Yellow Stained Glass Pane and a Magenta Stained Glass Pane in a Totem Lathe.",
             "left": "minecraft:yellow_stained_glass_pane",
             "mode": "&&",
-            "right": "minecraft:purple_stained_glass_pane",
+            "right": "minecraft:magenta_stained_glass_pane",
             "result": "extrastuck:salesman_goggles"
         }
     ]
