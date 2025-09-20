@@ -2,18 +2,24 @@ package com.medsal15.subevents;
 
 import java.text.NumberFormat;
 
+import javax.annotation.Nullable;
+
 import com.medsal15.ExtraStuck;
 import com.medsal15.config.ConfigClient;
+import com.medsal15.data.ESItemTags;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
+import com.mraof.minestuck.entity.consort.BoondollarPrices;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
@@ -25,11 +31,39 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 @EventBusSubscriber(modid = ExtraStuck.MODID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public final class ClientGameEvents {
+    private static RandomSource random = RandomSource.create();
+    private static int lastValue = 0;
+    @Nullable
+    private static Item lastItem = null;
+
     @SubscribeEvent
     public static void addCustomTooltip(ItemTooltipEvent event) {
         int i = 1;
         ItemStack stack = event.getItemStack();
         Item item = stack.getItem();
+        Player player = event.getEntity();
+
+        if (player != null && !stack.isEmpty()) {
+            boolean show_value = false;
+            for (ItemStack armor : player.getInventory().armor) {
+                if (armor.is(ESItemTags.SHOW_VALUE)) {
+                    show_value = true;
+                    break;
+                }
+            }
+
+            if (show_value) {
+                if (item != lastItem) {
+                    lastItem = item;
+                    lastValue = BoondollarPrices.getInstance().findPrice(stack, random).orElse(0);
+                }
+                if (lastValue != 0) {
+                    event.getToolTip().add(i, Component.translatable(ESLangProvider.BOONDOLLAR_VALUE_KEY,
+                            NumberFormat.getInstance().format(lastValue)));
+                    i++;
+                }
+            }
+        }
 
         // Only for this mod
         final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());

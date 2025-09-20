@@ -19,6 +19,6 @@ public class DarkKnightArmorModel extends GeoModel<DarkKnightArmorItem> {
 
     @Override
     public ResourceLocation getAnimationResource(DarkKnightArmorItem animatable) {
-        return ExtraStuck.modid("animations/dr_knight.animation.json");
+        return ExtraStuck.modid("animations/none.animation.json");
     }
 }

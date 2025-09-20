@@ -234,10 +234,10 @@ public final class ESRecipeProvider extends RecipeProvider {
         // #region Hammers
         CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
                 .input(MSItems.REGI_HAMMER).or().input(Items.EMERALD_BLOCK)
-                .build(output, modLoc("combinations/gem_breaker_emerald"));
+                .build(output, modLoc("gem_breaker_emerald"));
         CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
                 .input(MSItems.REGI_HAMMER).or().input(Items.DIAMOND_BLOCK)
-                .build(output, modLoc("combinations/gem_breaker_diamond"));
+                .build(output, modLoc("gem_breaker_diamond"));
         GristCostRecipeBuilder.of(ESItems.GEM_BREAKER)
                 .grist(GristTypes.AMETHYST, 63).grist(GristTypes.RUBY, 63).grist(GristTypes.MARBLE, 127)
                 .build(output);
@@ -384,7 +384,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         CombinationRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
                 .input(ESItems.KEY_OF_TRIALS).and().input(Items.OMINOUS_BOTTLE)
-                .build(output, ExtraStuck.modid("combinations/key_of_ominous_trials_alt"));
+                .build(output, ExtraStuck.modid("key_of_ominous_trials_alt"));
         GristCostRecipeBuilder.of(ESItems.KEY_OF_OMINOUS_TRIALS)
                 .grist(GristTypes.GARNET, 6).grist(GristTypes.SHALE, 43)
                 .build(output);
@@ -428,7 +428,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         CombinationRecipeBuilder.of(ESItems.OVERCHARGED_MAGNEFORK)
                 .input(ESItems.MAGNET).and().input(MSItems.EDISONS_FURY)
-                .build(output, ExtraStuck.modid("combinations/overcharged_magnefork_alt"));
+                .build(output, ExtraStuck.modid("overcharged_magnefork_alt"));
         GristCostRecipeBuilder.of(ESItems.OVERCHARGED_MAGNEFORK)
                 .grist(GristTypes.GOLD, 450).grist(GristTypes.URANIUM, 75)
                 .grist(GristTypes.GARNET, 20).grist(GristTypes.COBALT, 20)
@@ -619,6 +619,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.PROPELLER_HAT)
                 .grist(GristTypes.RUST, 90).grist(GristTypes.GARNET, 17)
                 .grist(GristTypes.AMBER, 17).grist(GristTypes.COBALT, 17)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SALESMAN_GOGGLES)
+                .input(Items.YELLOW_STAINED_GLASS_PANE).and().input(Items.MAGENTA_STAINED_GLASS_PANE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SALESMAN_GOGGLES)
+                .grist(GristTypes.AMETHYST, 19).grist(GristTypes.GOLD, 19).grist(GristTypes.ARTIFACT, 97)
                 .build(output);
 
         // #region Dark Knight

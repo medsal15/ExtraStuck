@@ -27,6 +27,10 @@ public final class ESArmorMaterials {
             () -> new ArmorMaterial(Map.of(ArmorItem.Type.HELMET, 1), 5,
                     SoundEvents.ARMOR_EQUIP_LEATHER, () -> Ingredient.of(Tags.Items.INGOTS_IRON),
                     List.of(new ArmorMaterial.Layer(ExtraStuck.modid("propeller_hat"))), 0, 0));
+    public static final Holder<ArmorMaterial> SALESMAN_GLASSES = ARMOR_MATERIALS.register("salesman_glasses",
+            () -> new ArmorMaterial(Map.of(ArmorItem.Type.HELMET, 1), 7,
+                    SoundEvents.ARMOR_EQUIP_CHAIN, () -> Ingredient.of(Tags.Items.GLASS_PANES),
+                    List.of(new ArmorMaterial.Layer(ExtraStuck.modid("salesman_glasses"))), 0, 0));
     public static final Holder<ArmorMaterial> DARK_KNIGHT = ARMOR_MATERIALS.register("dark_knight",
             () -> new ArmorMaterial(Map.of(
                     ArmorItem.Type.HELMET, 4,

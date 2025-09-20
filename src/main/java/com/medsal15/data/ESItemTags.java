@@ -31,6 +31,7 @@ public final class ESItemTags extends ItemTagsProvider {
     public static final TagKey<Item> AMMO_HANDGUN = ItemTags.create(ExtraStuck.modid("ammo/handgun"));
     public static final TagKey<Item> TOOLS_ROLLING_PIN = ItemTags
             .create(ResourceLocation.fromNamespaceAndPath("c", "tools/rolling_pin"));
+    public static final TagKey<Item> SHOW_VALUE = ItemTags.create(ExtraStuck.modid("show_value"));
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
@@ -83,6 +84,7 @@ public final class ESItemTags extends ItemTagsProvider {
 
         tag(AMMO).addTag(AMMO_HANDGUN);
         tag(AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
+        tag(SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get());
 
         tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 

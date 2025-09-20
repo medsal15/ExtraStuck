@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amethyst": 19,
+    "minestuck:artifact": 97,
+    "minestuck:gold": 19
+  },
+  "ingredient": {
+    "item": "extrastuck:salesman_goggles"
+  }
+}

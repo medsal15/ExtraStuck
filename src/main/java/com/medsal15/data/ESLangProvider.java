@@ -50,6 +50,7 @@ public final class ESLangProvider extends LanguageProvider {
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
+    public static final String BOONDOLLAR_VALUE_KEY = ExtraStuck.MODID + ".boondollar_value";
 
     public static final String INNATE_ENCHANT_KEY = ExtraStuck.MODID + ".innate_enchant";
     public static final String INNATE_ENCHANTS_KEY = ExtraStuck.MODID + ".innate_enchants";
@@ -63,6 +64,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(SHIELD_SELF_EFFECT_KEY, "Applies %1$s (%2$s) when attacked");
         add(ENERGY_STORAGE_KEY, "%1$s / %2$s FE");
         add(FLUID_STORAGE_KEY, "%1$s mB / %2$s mB %3$s");
+        add(BOONDOLLAR_VALUE_KEY, "Value: %1$s ฿");
         add(INNATE_ENCHANT_KEY, "+1 level to %2$s");
         add(INNATE_ENCHANTS_KEY, "+%1$s levels to %2$s");
         add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
@@ -249,6 +251,8 @@ public final class ESLangProvider extends LanguageProvider {
 
         addItem(ESItems.HEAVY_BOOTS, "Heavy Boots");
         addItem(ESItems.PROPELLER_HAT, "Propeller Hat");
+        addItem(ESItems.SALESMAN_GOGGLES, "Salesman Goggles");
+        addItemTooltip(ESItems.SALESMAN_GOGGLES, "How valuable is it?");
 
         addItem(ESItems.DARK_KNIGHT_HELMET, "Dark Knight Helmet");
         addItemTooltip(ESItems.DARK_KNIGHT_HELMET, "You can't see out of it");
@@ -357,6 +361,7 @@ public final class ESLangProvider extends LanguageProvider {
     private void addTags() {
         add(ESItemTags.AMMO, "Ammunition");
         add(ESItemTags.AMMO_HANDGUN, "Handgun Ammunition");
+        add(ESItemTags.SHOW_VALUE, "Armors Displaying Value");
     }
 
     protected void addItemTooltip(Supplier<? extends Item> key, String text) {

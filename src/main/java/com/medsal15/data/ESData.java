@@ -78,5 +78,6 @@ public final class ESData {
                                 new SubProviderEntry(ESLootSubProvider::new,
                                         LootContextParamSets.CHEST)))));
         gen.addProvider(event.includeServer(), new ESGLMProvider(output, lookupProvider));
+        gen.addProvider(event.includeServer(), new ESPriceProvider(output));
     }
 }

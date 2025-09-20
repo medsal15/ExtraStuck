@@ -80,6 +80,7 @@
   "entity.extrastuck.prismarine_arrow": "Prismarine Arrow",
   "entity.extrastuck.quartz_arrow": "Quartz Arrow",
   "entity.extrastuck.teleport_arrow": "Teleport Arrow",
+  "extrastuck.boondollar_value": "Value: %1$s ฿",
   "extrastuck.button.loop": "START",
   "extrastuck.energy_storage": "%1$s / %2$s FE",
   "extrastuck.fluid_storage": "%1$s mB / %2$s mB %3$s",
@@ -209,6 +210,8 @@
   "item.extrastuck.return_to_sender.tooltip": "The shield that shoots back!",
   "item.extrastuck.riot_shield": "Riot Shield",
   "item.extrastuck.rolling_pin": "Rolling Pin",
+  "item.extrastuck.salesman_goggles": "Salesman Goggles",
+  "item.extrastuck.salesman_goggles.tooltip": "How valuable is it?",
   "item.extrastuck.silver_bat": "Silver Bat",
   "item.extrastuck.silver_bat.tooltip": "Purify all your enemies",
   "item.extrastuck.slice_and_dice": "Slice and Dice",
@@ -235,5 +238,6 @@
   "sound.extrastuck.golden_pan_hit": "Golden Pan Strike",
   "tag.fluid.extrastuck.reactor_fluids": "Reactor Coolants",
   "tag.item.extrastuck.ammo": "Ammunition",
-  "tag.item.extrastuck.ammo.handgun": "Handgun Ammunition"
+  "tag.item.extrastuck.ammo.handgun": "Handgun Ammunition",
+  "tag.item.extrastuck.show_value": "Armors Displaying Value"
 }

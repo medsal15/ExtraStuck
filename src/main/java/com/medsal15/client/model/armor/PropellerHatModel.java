@@ -19,6 +19,6 @@ public class PropellerHatModel extends GeoModel<PropellerHatItem> {
 
     @Override
     public ResourceLocation getAnimationResource(PropellerHatItem animatable) {
-        return ExtraStuck.modid("animations/propeller_hat.animation.json");
+        return ExtraStuck.modid("animations/none.animation.json");
     }
 }

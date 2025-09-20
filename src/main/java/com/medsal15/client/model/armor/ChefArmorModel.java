@@ -19,6 +19,6 @@ public class ChefArmorModel extends GeoModel<ChefArmorItem> {
 
     @Override
     public ResourceLocation getAnimationResource(ChefArmorItem animatable) {
-        return ExtraStuck.modid("animations/chef_armor.animation.json");
+        return ExtraStuck.modid("animations/none.animation.json");
     }
 }

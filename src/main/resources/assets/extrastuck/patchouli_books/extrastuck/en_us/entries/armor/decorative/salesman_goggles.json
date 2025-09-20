@@ -1,0 +1,21 @@
+{
+    "name": "Salesman Goggles",
+    "icon": "extrastuck:salesman_goggles",
+    "category": "extrastuck:decorative_armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:salesman_goggles",
+            "text": "An old pair of tinted glasses. Whoever wore these had a strange sense of style..."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Yellow Stained Glass Pane and a Magenta Stained Glass Pane in a Totem Lathe.",
+            "left": "minecraft:yellow_stained_glass_pane",
+            "mode": "&&",
+            "right": "minecraft:purple_stained_glass_pane",
+            "result": "extrastuck:salesman_goggles"
+        }
+    ]
+}

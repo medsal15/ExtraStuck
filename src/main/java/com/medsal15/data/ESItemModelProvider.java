@@ -171,6 +171,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
         basicItem(ESItems.HEAVY_BOOTS.get());
         basicItem(ESItems.PROPELLER_HAT.get());
+        basicItem(ESItems.SALESMAN_GOGGLES.get());
 
         basicItem(ESItems.DARK_KNIGHT_HELMET.get());
         basicItem(ESItems.DARK_KNIGHT_CHESTPLATE.get());
