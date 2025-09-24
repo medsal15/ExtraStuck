@@ -16,12 +16,14 @@ Allow minestuck batteries to recharge items
 
 ### Machines ###
 
+Autostorage Plate: puts inventory items in nearby storages
 Atheneum add-on loader: adds extra items in the atheneum
 \> It's possible to add/remove items during runtime, though there may be race conditions, prevent these from happening
 \> TODO: find a way to hold a player's data in a way compatible with SburbPlayerData
 \> Use additionnal player data to hold block positions & items added (instead of binding per block) -> prevents removing all copies when duplicate add-ons are loaded/unloaded
 Pacarder: takes an empty card and items and stores them in the card
 Unpacarder: takes a card with contents and extracts them, noop with punched cards
+Gristwidget 13000: redstone-activatable version of the Gristwidget 12000
 Grist reader: allows create to see the amount of grist from a player
 Global grist reader: same as above but for session
 Nuclear blaster: consumes uranium, poisons enemies in front of it

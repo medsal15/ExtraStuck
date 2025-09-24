@@ -13,8 +13,10 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.medsal15.mobeffects.ESMobEffects;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.Item;
@@ -91,10 +93,12 @@ public final class ESLangProvider extends LanguageProvider {
 
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
+        addItemBookDescription(ESItems.GIFT,
+                "Often found under trees in december, this cardboard box wrapped in colorful paper tends to contain something you desire.");
         addItem(ESItems.ANTI_DIE, "Anti Die");
         addItem(ESItems.LUCK_TOKEN, "Luck Token");
         addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
-        addItem(ESItems.PIZZA, "Pizza");
+        addBlock(ESBlocks.PIZZA, "Pizza");
         addItem(ESItems.EMPTY_ENERGY_CORE, "Empty Energy Core");
         addItemTooltip(ESItems.EMPTY_ENERGY_CORE, "You forgot the uranium");
         addBlock(ESBlocks.NORMAL_CAT_PLUSH, "Normal Cat Plush");
@@ -253,6 +257,10 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.PROPELLER_HAT, "Propeller Hat");
         addItem(ESItems.SALESMAN_GOGGLES, "Salesman Goggles");
         addItemTooltip(ESItems.SALESMAN_GOGGLES, "How valuable is it?");
+        addItemBookDescription(ESItems.SALESMAN_GOGGLES,
+                "ARE YOU SO BORED THAT YOU [[Browse catalogue]]?"
+                        + " THEN FEEL FREE TO USE THESE FOR THE BEST [[Specil Deal]]!"
+                        + " ALL YOU HAVE TO DO IS [[Hyperlink Blocked]]");
 
         addItem(ESItems.DARK_KNIGHT_HELMET, "Dark Knight Helmet");
         addItemTooltip(ESItems.DARK_KNIGHT_HELMET, "You can't see out of it");
@@ -263,16 +271,38 @@ public final class ESLangProvider extends LanguageProvider {
 
     private void addModuses() {
         addItem(ESItems.PILE_MODUS_CARD, "Pile Modus");
+        addItemBookDescription(ESItems.PILE_MODUS_CARD,
+                "The Pile Modus is a square modus."
+                        + " Unlike other moduses, cards will try to arrange themselves in a square."
+                        + " Taking an item will drop all those above. Hopefully, you're not near lava!");
         addItem(ESItems.FORTUNE_MODUS_CARD, "Fortune Modus");
+        addItemBookDescription(ESItems.FORTUNE_MODUS_CARD,
+                "The Fortune Modus gives fortune cookies."
+                        + " Just eat them to get your items back."
+                        + " Please do not put the fortune cookies back in the fortune modus, otherwise you'll have to eat them twice.");
         addItem(ESItems.ORE_MODUS_CARD, "Ore Modus");
+        addItemBookDescription(ESItems.ORE_MODUS_CARD,
+                "The Ore Modus is perfect if you have a lot of pickaxes, or want a cheap building material."
+                        + " Getting an item from it will give a Card Ore, which must be broken to get it back."
+                        + " (You can even use your bare hands!)");
         addItemTooltip(ESItems.ORE_MODUS_CARD, "Perfect for mining lovers");
         addItem(ESItems.ARCHEOLOGY_MODUS_CARD, "Archeology Modus");
+        addItemBookDescription(ESItems.ARCHEOLOGY_MODUS_CARD,
+                "The Archeology Modus is aimed at those who wish minecraft had more things to brush than a few select locations."
+                        + " Retrieved items will be stored in suspicious sand or suspicious gravel, requiring a brush to obtain."
+                        + " Just, don't forget to put them on a block.");
         addItem(ESItems.VOID_MODUS_CARD, "Void Modus");
         addItemTooltip(ESItems.VOID_MODUS_CARD, "Too Many Items");
+        addItemBookDescription(ESItems.VOID_MODUS_CARD,
+                "The Void Modus is a modus whose purpose is to delete items."
+                        + " Instead of giving items back, they will be removed from your inventory."
+                        + " It will also destroy any overflow. Primarily aimed at those who do not use their moduses as storage and often have a cluttered inventory.");
 
         addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
         addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");
         addBlock(ESBlocks.CARD_ORE, "Card Ore");
+        addBlockBookDescription(ESBlocks.CARD_ORE,
+                "Card ore is only obtainable from an Ore Modus. Breaking it will drop whatever is stored inside. Despite its name, it can be mined by hand.");
     }
 
     private void addTools() {
@@ -364,21 +394,33 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESItemTags.SHOW_VALUE, "Armors Displaying Value");
     }
 
-    protected void addItemTooltip(Supplier<? extends Item> key, String text) {
+    private void addItemTooltip(Supplier<? extends Item> key, String text) {
         addItemExtra(key, "tooltip", text);
     }
 
-    protected void addItemExtra(Supplier<? extends Item> key, String extra, String text) {
+    private void addItemExtra(Supplier<? extends Item> key, String extra, String text) {
         add(((Item) (key.get())).getDescriptionId() + "." + extra, text);
     }
 
-    protected void addBlockTooltip(Supplier<? extends Block> key, String text) {
+    private void addBlockTooltip(Supplier<? extends Block> key, String text) {
         add(((Block) (key.get())).getDescriptionId() + ".tooltip", text);
     }
 
-    protected void addDeathMessages(ResourceKey<DamageType> damage, String generic, String namedItem) {
+    private void addDeathMessages(ResourceKey<DamageType> damage, String generic, String namedItem) {
         add("death.attack." + damage.location().toString(), generic);
         add("death.attack." + damage.location().toString() + ".item", namedItem);
+    }
+
+    private void addItemBookDescription(Supplier<? extends Item> item, String text) {
+        addBookDescription(BuiltInRegistries.ITEM.getKey(item.get()), text);
+    }
+
+    private void addBlockBookDescription(Supplier<? extends Block> block, String text) {
+        addBookDescription(BuiltInRegistries.BLOCK.getKey(block.get()), text);
+    }
+
+    private void addBookDescription(ResourceLocation key, String text) {
+        add(key.toString() + ".book_desc", text);
     }
 
     private void addEffectDescription(Supplier<? extends MobEffect> effect, String desc) {
