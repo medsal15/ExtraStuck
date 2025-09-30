@@ -33,6 +33,7 @@ public final class ESItemTags extends ItemTagsProvider {
             .create(common("tools/rolling_pin"));
     public static final TagKey<Item> SHOW_VALUE = ItemTags.create(ExtraStuck.modid("show_value"));
     public static final TagKey<Item> URANIUM_RODS = ItemTags.create(common("rods/uranium"));
+    public static final TagKey<Item> BRASS_NUGGETS = ItemTags.create(common("nuggets/brass"));
 
     @Override
     protected void addTags(@Nonnull Provider provider) {

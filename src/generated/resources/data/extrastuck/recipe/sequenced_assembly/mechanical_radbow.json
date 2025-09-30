@@ -49,6 +49,22 @@
       ]
     },
     {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "extrastuck:incomplete_mechanical_radbow"
+        },
+        {
+          "tag": "c:nuggets/brass"
+        }
+      ],
+      "results": [
+        {
+          "id": "extrastuck:incomplete_mechanical_radbow"
+        }
+      ]
+    },
+    {
       "type": "create:pressing",
       "ingredients": [
         {

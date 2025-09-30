@@ -457,8 +457,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(ESItems.RADBOW).and().input(MSItems.COMPUTER_PARTS)
                 .build(output.withConditions(new NotCondition(new ModLoadedCondition("create"))));
         GristCostRecipeBuilder.of(ESItems.MECHANICAL_RADBOW)
-                .grist(GristTypes.MERCURY, 26).grist(GristTypes.URANIUM, 2).grist(GristTypes.CAULK, 9)
-                .grist(GristTypes.BUILD, 50).grist(GristTypes.RUST, 15).grist(GristTypes.GOLD, 5)
+                .grist(GristTypes.MERCURY, 36).grist(GristTypes.URANIUM, 2).grist(GristTypes.CAULK, 15)
+                .grist(GristTypes.BUILD, 50).grist(GristTypes.RUST, 25).grist(GristTypes.GOLD, 5)
                 .build(output.withConditions(new NotCondition(new ModLoadedCondition("create"))));
 
         new SequencedAssemblyRecipeBuilder(ExtraStuck.modid("mechanical_radbow"))
@@ -468,6 +468,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .loops(2)
                 .addStep(DeployerApplicationRecipe::new, sub -> sub.require(AllBlocks.LARGE_COGWHEEL))
                 .addStep(DeployerApplicationRecipe::new, sub -> sub.require(MSItems.COMPUTER_PARTS))
+                .addStep(DeployerApplicationRecipe::new, sub -> sub.require(ESItemTags.BRASS_NUGGETS))
                 .addStep(PressingRecipe::new, sub -> sub)
                 .build(output.withConditions(new ModLoadedCondition("create")));
         // #endregion Crossbows
