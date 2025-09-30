@@ -12,6 +12,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tiers;
 import net.neoforged.fml.ModList;
 
 public class MechanicalRadBowItem extends RadBowItem {
@@ -29,5 +30,10 @@ public class MechanicalRadBowItem extends RadBowItem {
                 return 0;
         }
         return super.damageItem(stack, amount, entity, onBroken);
+    }
+
+    @Override
+    public int getEnchantmentValue() {
+        return Tiers.GOLD.getEnchantmentValue();
     }
 }
