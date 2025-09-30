@@ -154,8 +154,6 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
         handheldItem(ESItems.BAGUETTE_MAGIQUE.get());
 
-        handheldItem(ESItems.BROOM.get());
-
         handheldItem(ESItems.MAGNEFORK.get());
         handheldItem(ESItems.OVERCHARGED_MAGNEFORK.get());
         handheldItem(ESItems.UNDERCHARGED_MAGNEFORK.get());

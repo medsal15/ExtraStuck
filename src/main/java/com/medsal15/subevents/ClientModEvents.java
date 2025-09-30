@@ -48,12 +48,8 @@ public final class ClientModEvents {
         ItemProperties.register(ESItems.GRIST_DETECTOR.get(), ExtraStuck.modid("found"),
                 (stack, world, entity, entityId) -> stack.has(ESDataComponents.GRIST_FOUND) ? 1F : 0F);
 
-        // TODO replicate for broom
-        ItemProperties.register(ESItems.OLD_BRUSH.get(), ResourceLocation.withDefaultNamespace("brushing"),
-                (stack, world,
-                        entity, entityId) -> entity != null && entity.getUseItem() == stack
-                                ? (float) (entity.getUseItemRemainingTicks() % 10) / 10F
-                                : 0F);
+        addBrush(ESItems.OLD_BRUSH);
+        addBrush(ESItems.BROOM);
 
         for (DeferredItem<Item> shield : ESItems.getShields()) {
             addBlocking(shield);
@@ -82,6 +78,14 @@ public final class ClientModEvents {
                 });
         ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"), (stack, world,
                 entity, entityId) -> RadBowItem.isCharged(stack) ? 1F : 0F);
+    }
+
+    private static void addBrush(DeferredItem<Item> item) {
+        ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("brushing"),
+                (stack, world,
+                        entity, entityId) -> entity != null && entity.getUseItem() == stack
+                                ? (float) (entity.getUseItemRemainingTicks() % 10) / 10F
+                                : 0F);
     }
 
     @SubscribeEvent
