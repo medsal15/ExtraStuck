@@ -1,0 +1,68 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "extrastuck:radbow"
+  },
+  "loops": 2,
+  "results": [
+    {
+      "id": "extrastuck:mechanical_radbow"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "extrastuck:incomplete_mechanical_radbow"
+        },
+        {
+          "item": "create:large_cogwheel"
+        }
+      ],
+      "results": [
+        {
+          "id": "extrastuck:incomplete_mechanical_radbow"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "extrastuck:incomplete_mechanical_radbow"
+        },
+        {
+          "item": "minestuck:computer_parts"
+        }
+      ],
+      "results": [
+        {
+          "id": "extrastuck:incomplete_mechanical_radbow"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "extrastuck:incomplete_mechanical_radbow"
+        }
+      ],
+      "results": [
+        {
+          "id": "extrastuck:incomplete_mechanical_radbow"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "extrastuck:incomplete_mechanical_radbow"
+  }
+}

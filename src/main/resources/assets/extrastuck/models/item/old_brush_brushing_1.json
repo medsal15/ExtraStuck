@@ -1,5 +1,5 @@
 {
-    "parent": "item/brush",
+    "parent": "item/generated",
     "textures": {
         "layer0": "extrastuck:item/old_brush"
     },
@@ -19,25 +19,5 @@
             "translation": [0, 4, 0],
             "scale": [0.9, 0.9, 0.9]
         }
-    },
-    "overrides": [
-        {
-            "predicate": {
-                "brushing": 0.25
-            },
-            "model": "extrastuck:item/old_brush_brushing_0"
-        },
-        {
-            "predicate": {
-                "brushing": 0.5
-            },
-            "model": "extrastuck:item/old_brush_brushing_1"
-        },
-        {
-            "predicate": {
-                "brushing": 0.75
-            },
-            "model": "extrastuck:item/old_brush_brushing_2"
-        }
-    ]
+    }
 }

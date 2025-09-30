@@ -1,0 +1,23 @@
+{
+    "name": "Mechanical Radbow",
+    "icon": "extrastuck:mechanical_radbow",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:mechanical_radbow"
+            },
+            "text": "An upgraded radbow with much more durability. Works the same way as the basic variant.$(br2)If Create is installed, the mechanical radbow will consume air from the backtank intead of durability."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Radbow and Computer Parts in a Totem Lathe (without Create).",
+            "left": "extrastuck:radbow",
+            "mode": "&&",
+            "right": "minestuck:computer_parts",
+            "result": "extrastuck:mechanical_radbow"
+        }
+    ]
+}

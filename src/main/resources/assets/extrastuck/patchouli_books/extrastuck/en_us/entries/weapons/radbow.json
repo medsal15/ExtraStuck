@@ -1,0 +1,23 @@
+{
+    "name": "Radbow",
+    "icon": "extrastuck:radbow",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:radbow"
+            },
+            "text": "A deadly crossbow, now modified to be loaded with uranium. Holds 10 charges per uranium rod loaded.$(br)Every shot deals 7 damage and inflicts Wither III for 5 seconds.$(br2)Unlike a normal crossbow, you can't get the shots back."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Crossbow and an Uranium-Powered Stick in a Totem Lathe.",
+            "left": "minecraft:crossbow",
+            "mode": "&&",
+            "right": "minestuck:uranium_powered_stick",
+            "result": "extrastuck:radbow"
+        }
+    ]
+}

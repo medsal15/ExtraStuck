@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.entities.projectiles.UraniumRod;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
@@ -73,6 +74,8 @@ public final class ESEntities {
             TeleportArrow::new);
     public static final Supplier<EntityType<DragonArrow>> DRAGON_ARROW = registerArrow("dragon_arrow",
             DragonArrow::new);
+    public static final Supplier<EntityType<UraniumRod>> URANIUM_ROD = registerArrow("uranium_rod",
+            UraniumRod::new);
     // #endregion Arrows
 
     // #region Bullets

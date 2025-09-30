@@ -11,6 +11,10 @@ import com.mraof.minestuck.api.alchemy.recipe.GristCostRecipeBuilder;
 import com.mraof.minestuck.api.alchemy.recipe.combination.CombinationRecipeBuilder;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
+import com.simibubi.create.content.kinetics.press.PressingRecipe;
+import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -28,6 +32,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
+import net.neoforged.neoforge.common.conditions.NotCondition;
 
 public final class ESRecipeProvider extends RecipeProvider {
     public ESRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
@@ -438,6 +444,33 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GARNET, 20).grist(GristTypes.COBALT, 20)
                 .build(output);
         // #endregion Forks
+
+        // #region Crossbows
+        CombinationRecipeBuilder.of(ESItems.RADBOW)
+                .input(Items.CROSSBOW).and().input(MSItems.URANIUM_POWERED_STICK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.RADBOW)
+                .grist(GristTypes.MERCURY, 26).grist(GristTypes.URANIUM, 1).grist(GristTypes.CAULK, 9)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.MECHANICAL_RADBOW)
+                .input(ESItems.RADBOW).and().input(MSItems.COMPUTER_PARTS)
+                .build(output.withConditions(new NotCondition(new ModLoadedCondition("create"))));
+        GristCostRecipeBuilder.of(ESItems.MECHANICAL_RADBOW)
+                .grist(GristTypes.MERCURY, 26).grist(GristTypes.URANIUM, 2).grist(GristTypes.CAULK, 9)
+                .grist(GristTypes.BUILD, 50).grist(GristTypes.RUST, 15).grist(GristTypes.GOLD, 5)
+                .build(output.withConditions(new NotCondition(new ModLoadedCondition("create"))));
+
+        new SequencedAssemblyRecipeBuilder(ExtraStuck.modid("mechanical_radbow"))
+                .require(ESItems.RADBOW)
+                .transitionTo(ESItems.INCOMPLETE_MECHANICAL_RADBOW)
+                .addOutput(ESItems.MECHANICAL_RADBOW, 1)
+                .loops(2)
+                .addStep(DeployerApplicationRecipe::new, sub -> sub.require(AllBlocks.LARGE_COGWHEEL))
+                .addStep(DeployerApplicationRecipe::new, sub -> sub.require(MSItems.COMPUTER_PARTS))
+                .addStep(PressingRecipe::new, sub -> sub)
+                .build(output.withConditions(new ModLoadedCondition("create")));
+        // #endregion Crossbows
 
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)

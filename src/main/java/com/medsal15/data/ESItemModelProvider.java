@@ -162,6 +162,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
     }
 
     private void registerRangedWeapons() {
+        handheldItem(ESItems.INCOMPLETE_MECHANICAL_RADBOW.get());
         handheldItem(ESItems.HANDGUN.get());
     }
 

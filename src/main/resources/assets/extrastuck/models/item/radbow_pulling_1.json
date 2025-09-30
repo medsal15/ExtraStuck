@@ -1,0 +1,6 @@
+{
+    "parent": "item/crossbow",
+    "textures": {
+        "layer0": "extrastuck:item/radbow_pulling_1"
+    }
+}

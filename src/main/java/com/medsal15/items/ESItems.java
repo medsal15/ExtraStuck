@@ -36,6 +36,8 @@ import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.DarkKnightArmorItem;
 import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.armor.SalesmanGogglesItem;
+import com.medsal15.items.crossbow.MechanicalRadBowItem;
+import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.food.FortuneCookie;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
@@ -73,6 +75,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.component.Unbreakable;
@@ -409,6 +412,12 @@ public final class ESItems {
                     new MSItemProperties().durability(750)
                             .component(ESDataComponents.ENERGY_STORAGE, 30_000)));
     // #endregion Forks
+    // #region Crossbows
+    public static final DeferredItem<Item> RADBOW = ITEMS.register("radbow",
+            () -> new RadBowItem(new Properties().durability(350).stacksTo(1)));
+    public static final DeferredItem<Item> MECHANICAL_RADBOW = ITEMS.register("mechanical_radbow",
+            () -> new MechanicalRadBowItem(new Properties().durability(933).stacksTo(1)));
+    // #endregion Crossbows
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
             () -> new ESGun(
@@ -504,6 +513,8 @@ public final class ESItems {
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
+    public static final DeferredItem<Item> INCOMPLETE_MECHANICAL_RADBOW = ITEMS
+            .registerItem("incomplete_mechanical_radbow", Item::new);
 
     // #region Modus
     public static final DeferredItem<Item> PILE_MODUS_CARD = ITEMS.registerItem("pile_modus_card", Item::new,
@@ -795,7 +806,16 @@ public final class ESItems {
 
     public static Collection<DeferredItem<Item>> getRangedWeapons() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(RADBOW);
+        list.add(MECHANICAL_RADBOW);
         list.add(HANDGUN);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getCrossbows() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(RADBOW);
+        list.add(MECHANICAL_RADBOW);
         return list;
     }
 

@@ -18,6 +18,7 @@ import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.crossbow.RadBowItem;
 import com.mraof.minestuck.api.alchemy.GristType;
 
 import net.minecraft.client.model.HumanoidModel;
@@ -26,6 +27,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
@@ -46,15 +48,40 @@ public final class ClientModEvents {
         ItemProperties.register(ESItems.GRIST_DETECTOR.get(), ExtraStuck.modid("found"),
                 (stack, world, entity, entityId) -> stack.has(ESDataComponents.GRIST_FOUND) ? 1F : 0F);
 
+        // TODO replicate for broom
+        ItemProperties.register(ESItems.OLD_BRUSH.get(), ResourceLocation.withDefaultNamespace("brushing"),
+                (stack, world,
+                        entity, entityId) -> entity != null && entity.getUseItem() == stack
+                                ? (float) (entity.getUseItemRemainingTicks() % 10) / 10F
+                                : 0F);
+
         for (DeferredItem<Item> shield : ESItems.getShields()) {
             addBlocking(shield);
+        }
+        for (DeferredItem<Item> crossbow : ESItems.getCrossbows()) {
+            addCrossbow(crossbow);
         }
     }
 
     private static void addBlocking(DeferredItem<Item> item) {
         ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("blocking"),
                 (stack, world, entity, entityid) -> entity != null && entity.isUsingItem()
-                        && entity.getUseItem() == stack ? 1.0F : 0.0F);
+                        && entity.getUseItem() == stack ? 1F : 0F);
+    }
+
+    private static void addCrossbow(DeferredItem<Item> item) {
+        ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("pulling"), (stack, world,
+                entity, entityId) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack
+                        && !RadBowItem.isCharged(stack) ? 1F : 0F);
+        ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("pull"),
+                (stack, world, entity, entityId) -> {
+                    if (entity == null || RadBowItem.isCharged(stack))
+                        return 0F;
+                    return (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks())
+                            / (float) (CrossbowItem.getChargeDuration(stack, entity));
+                });
+        ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"), (stack, world,
+                entity, entityId) -> RadBowItem.isCharged(stack) ? 1F : 0F);
     }
 
     @SubscribeEvent
@@ -96,6 +123,9 @@ public final class ClientModEvents {
                 modid("textures/entity/arrow/teleport.png")));
         event.registerEntityRenderer(ESEntities.DRAGON_ARROW.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/arrow/dragon.png")));
+
+        event.registerEntityRenderer(ESEntities.URANIUM_ROD.get(), c -> new ESArrowRenderer(c,
+                modid("textures/entity/uranium_rod.png")));
 
         event.registerEntityRenderer(ESEntities.HANDGUN_BULLET.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/bullet/handgun.png")));

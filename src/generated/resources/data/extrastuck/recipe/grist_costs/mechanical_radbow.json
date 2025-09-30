@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "create"
+      }
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 46,
+    "minestuck:caulk": 9,
+    "minestuck:gold": 2,
+    "minestuck:mercury": 26,
+    "minestuck:rust": 12,
+    "minestuck:uranium": 1
+  },
+  "ingredient": {
+    "item": "extrastuck:mechanical_radbow"
+  }
+}

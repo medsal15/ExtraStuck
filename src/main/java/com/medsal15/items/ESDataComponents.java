@@ -83,4 +83,7 @@ public final class ESDataComponents {
 
     public static final Supplier<DataComponentType<Float>> AMMO_DAMAGE = DATA_COMPONENTS.registerComponentType(
             "ammo_damage", builder -> builder.persistent(Codec.FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
+
+    public static final Supplier<DataComponentType<Integer>> URANIUM_CHARGE = DATA_COMPONENTS.registerComponentType(
+            "uranium_charge", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 }

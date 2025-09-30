@@ -54,5 +54,9 @@ public class ConfigCommon {
             .comment("How much FE is transferred between storage and item per tick", "Mostly to make charging fancier")
             .defineInRange("charge.fe_transfer", 1_000, 1, Integer.MAX_VALUE);
 
+    public static final ConfigValue<Integer> RADBOW_CHARGES = BUILDER
+            .comment("How many charges a radbow gets from an uranium rod")
+            .defineInRange("radbow_charge", 10, 1, Integer.MAX_VALUE);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 }

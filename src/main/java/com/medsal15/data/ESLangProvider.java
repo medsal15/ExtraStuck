@@ -44,6 +44,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String GUN_EMPTY_KEY = ExtraStuck.MODID + ".gun_empty";
     public static final String ALT_GUN_EMPTY_KEY = ExtraStuck.MODID + ".office_key.empty";
     public static final String ALT_GUN_HEAVY_KEY = ExtraStuck.MODID + ".office_key.heavy";
+    public static final String RADBOW_CHARGE = ExtraStuck.MODID + ".radbow.charge";
     public static final String GRIST_DETECTOR_LOCATED = ExtraStuck.MODID + ".grist_detector.located";
     public static final String GRIST_DETECTOR_MODE = ExtraStuck.MODID + ".grist_detector.mode";
     public static final String GRIST_DETECTOR_ANY = ExtraStuck.MODID + ".grist_detector.any";
@@ -74,6 +75,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(ALT_GUN_EMPTY_KEY, "It feels strangely hollow...");
         add(ALT_GUN_HEAVY_KEY, "It feels weirdly heavy...");
         add(GOLDEN_PAN_HIT, "Golden Pan Strike");
+        add(RADBOW_CHARGE, "Loaded with %1$s charges");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
@@ -240,6 +242,14 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.OVERCHARGED_MAGNEFORK, "Overcharged Magnefork");
         addItemTooltip(ESItems.OVERCHARGED_MAGNEFORK, "Batteries sold separately");
         addItem(ESItems.UNDERCHARGED_MAGNEFORK, "Undercharged Magnefork");
+
+        addItem(ESItems.RADBOW, "Radbow");
+        addItemTooltip(ESItems.RADBOW, "Silent, deadly, and quite radioactive!");
+        addEntityType(ESEntities.URANIUM_ROD, "Uranium Rod");
+        addItem(ESItems.INCOMPLETE_MECHANICAL_RADBOW, "Incomplete Mechanical Radbow");
+        addItemTooltip(ESItems.INCOMPLETE_MECHANICAL_RADBOW, "You can tell this is a great idea");
+        addItem(ESItems.MECHANICAL_RADBOW, "Mechanical Radbow");
+        addItemTooltip(ESItems.MECHANICAL_RADBOW, "An engineer's weapon of choice");
 
         addItem(ESItems.HANDGUN, "Handgun");
         addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");

@@ -30,8 +30,9 @@ public final class ESItemTags extends ItemTagsProvider {
     public static final TagKey<Item> AMMO = ItemTags.create(ExtraStuck.modid("ammo"));
     public static final TagKey<Item> AMMO_HANDGUN = ItemTags.create(ExtraStuck.modid("ammo/handgun"));
     public static final TagKey<Item> TOOLS_ROLLING_PIN = ItemTags
-            .create(ResourceLocation.fromNamespaceAndPath("c", "tools/rolling_pin"));
+            .create(common("tools/rolling_pin"));
     public static final TagKey<Item> SHOW_VALUE = ItemTags.create(ExtraStuck.modid("show_value"));
+    public static final TagKey<Item> URANIUM_RODS = ItemTags.create(common("rods/uranium"));
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
@@ -45,6 +46,13 @@ public final class ESItemTags extends ItemTagsProvider {
 
         for (DeferredItem<Item> weapon : ESItems.getMeleeWeapons()) {
             tagWeapon(weapon);
+        }
+
+        for (DeferredItem<Item> crossbow : ESItems.getCrossbows()) {
+            tag(Tags.Items.TOOLS_CROSSBOW).add(crossbow.get());
+            tag(ItemTags.CROSSBOW_ENCHANTABLE).add(crossbow.get());
+            tag(ItemTags.DURABILITY_ENCHANTABLE).add(crossbow.get());
+            tag(ItemTags.VANISHING_ENCHANTABLE).add(crossbow.get());
         }
 
         for (DeferredItem<Item> tool : ESItems.getMiningTools()) {
@@ -125,5 +133,9 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(ItemTags.SWORD_ENCHANTABLE).add(item.get());
         tag(ItemTags.WEAPON_ENCHANTABLE).add(item.get());
         tag(Tags.Items.MELEE_WEAPON_TOOLS).add(item.get());
+    }
+
+    private static ResourceLocation common(String path) {
+        return ResourceLocation.fromNamespaceAndPath("c", path);
     }
 }
