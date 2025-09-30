@@ -136,10 +136,7 @@ public final class ClientModEvents {
         event.registerEntityRenderer(ESEntities.HEAVY_HANDGUN_BULLET.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/bullet/heavy_handgun.png")));
         /**
-         * TODO figure out why the item isn't rendering
-         *
-         * It seems I need to somehow pass the actual entity instead of the default one,
-         * but idk how
+         * TODO figure out why the item disappears after an instant
          */
         event.registerEntityRenderer(ESEntities.ITEM_BULLET.get(), c -> new ThrownItemRenderer<ItemBullet>(c));
 
