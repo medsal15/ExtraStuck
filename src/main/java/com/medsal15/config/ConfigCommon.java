@@ -36,7 +36,7 @@ public class ConfigCommon {
                     "Meaning that if all 6 neighbors can receive uranium power, 6 times this amount will be sent every tick")
             .defineInRange("reactor.max_uranium_transfer", 8, 1, Short.MAX_VALUE);
     public static final ModConfigSpec.BooleanValue REACTOR_EXPLODE = BUILDER
-            .comment("Should reactors explode if they have fuel but no fluid")
+            .comment("If true, reactors explode if they have fuel but no fluid")
             .define("reactor.explode", false);
 
     public static final ConfigValue<Integer> CHARGER_URANIUM_STORAGE = BUILDER

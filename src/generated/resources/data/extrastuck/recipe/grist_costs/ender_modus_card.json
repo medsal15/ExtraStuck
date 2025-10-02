@@ -1,0 +1,12 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 480,
+    "minestuck:cobalt": 480,
+    "minestuck:tar": 1380,
+    "minestuck:uranium": 140
+  },
+  "ingredient": {
+    "item": "extrastuck:ender_modus_card"
+  }
+}

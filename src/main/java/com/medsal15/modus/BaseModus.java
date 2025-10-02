@@ -95,8 +95,8 @@ public class BaseModus extends Modus {
     }
 
     @Override
-    public ItemStack getItem(ServerPlayer player, int id, boolean asCard) {
-        if (id == CaptchaDeckHandler.EMPTY_CARD) {
+    public ItemStack getItem(ServerPlayer player, int slot, boolean asCard) {
+        if (slot == CaptchaDeckHandler.EMPTY_CARD) {
             if (list.size() < size) {
                 size--;
                 markDirty();
@@ -109,7 +109,7 @@ public class BaseModus extends Modus {
         if (list.isEmpty())
             return ItemStack.EMPTY;
 
-        if (id == CaptchaDeckHandler.EMPTY_SYLLADEX) {
+        if (slot == CaptchaDeckHandler.EMPTY_SYLLADEX) {
             for (ItemStack item : list) {
                 CaptchaDeckHandler.launchAnyItem(player, item);
             }
@@ -118,11 +118,11 @@ public class BaseModus extends Modus {
             return ItemStack.EMPTY;
         }
 
-        if (id < 0 || id >= list.size()) {
+        if (slot < 0 || slot >= list.size()) {
             return ItemStack.EMPTY;
         }
 
-        ItemStack item = list.remove(id);
+        ItemStack item = list.remove(slot);
         markDirty();
 
         if (asCard) {

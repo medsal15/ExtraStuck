@@ -1,0 +1,23 @@
+{
+    "name": "Ender Modus",
+    "icon": "extrastuck:ender_modus_card",
+    "category": "extrastuck:modus_cards",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:ender_modus_card"
+            },
+            "text": "For those out there who are sick and tired of having to place, use, and pick up (with Silk Touch) their Ender Chest, here's the latest invention!$(br)A modus that works with Ender Chests!"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine any modus card and an Eye of Ender in a Totem Lathe.",
+            "left": "tag:minestuck:modus_card",
+            "mode": "&&",
+            "right": "minecraft:ender_chest",
+            "result": "extrastuck:ender_modus_card"
+        }
+    ]
+}

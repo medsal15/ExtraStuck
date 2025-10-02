@@ -2,6 +2,7 @@ package com.medsal15.client.screen;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.client.screen.modus.ArcheologyModusScreen;
+import com.medsal15.client.screen.modus.EnderModusScreen;
 import com.medsal15.client.screen.modus.FortuneModusScreen;
 import com.medsal15.client.screen.modus.OreModusScreen;
 import com.medsal15.client.screen.modus.PileModusScreen;
@@ -30,5 +31,6 @@ public final class ESScreens {
         registerSylladexFactory(ESModus.ORE_MODUS, OreModusScreen::new);
         registerSylladexFactory(ESModus.ARCHEOLOGY_MODUS, ArcheologyModusScreen::new);
         registerSylladexFactory(ESModus.VOID_MODUS, VoidModusScreen::new);
+        registerSylladexFactory(ESModus.ENDER_MODUS, EnderModusScreen::new);
     }
 }

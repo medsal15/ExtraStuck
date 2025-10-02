@@ -118,7 +118,8 @@ public class RadBowItem extends CrossbowItem {
                 }
                 // Support for lower consumption enchants
                 int used = shooter.hasInfiniteMaterials() ? 0
-                        : EnchantmentHelper.processAmmoUse(serverLevel, weapon, ItemStack.EMPTY, 1);
+                        : EnchantmentHelper.processAmmoUse(serverLevel, weapon, MSItems.URANIUM_POWERED_STICK.toStack(),
+                                1);
                 weapon.set(ESDataComponents.URANIUM_CHARGE, charges - used);
 
                 shoot(serverLevel, shooter, hand, weapon, ammo, velocity,

@@ -307,6 +307,11 @@ public final class ESLangProvider extends LanguageProvider {
                 "The Void Modus is a modus whose purpose is to delete items."
                         + " Instead of giving items back, they will be removed from your inventory."
                         + " It will also destroy any overflow. Primarily aimed at those who do not use their moduses as storage and often have a cluttered inventory.");
+        addItem(ESItems.ENDER_MODUS_CARD, "Ender Modus");
+        addItemTooltip(ESItems.ENDER_MODUS_CARD, "Portable Version");
+        addItemBookDescription(ESItems.ENDER_MODUS_CARD,
+                "The Ender Modus is a modus with direct access to your ender chest."
+                        + " This means it's limited to 27 cards. Unfortunately, it also cannot get items as cards.");
 
         addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
         addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");

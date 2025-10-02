@@ -23,4 +23,6 @@ public final class ESModus {
             () -> new ModusType<>(ArcheologyModus::new, ESItems.ARCHEOLOGY_MODUS_CARD));
     public static final Supplier<ModusType<VoidModus>> VOID_MODUS = MODUSES.register("void_modus",
             () -> new ModusType<>(VoidModus::new, ESItems.VOID_MODUS_CARD));
+    public static final Supplier<ModusType<EnderModus>> ENDER_MODUS = MODUSES.register("ender_modus",
+            () -> new ModusType<>(EnderModus::new, ESItems.ENDER_MODUS_CARD));
 }
