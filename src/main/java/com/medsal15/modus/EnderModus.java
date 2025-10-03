@@ -1,8 +1,10 @@
 package com.medsal15.modus;
 
+import com.mraof.minestuck.MinestuckConfig;
 import com.mraof.minestuck.inventory.captchalogue.CaptchaDeckHandler;
 import com.mraof.minestuck.inventory.captchalogue.Modus;
 import com.mraof.minestuck.inventory.captchalogue.ModusType;
+import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
@@ -26,6 +28,8 @@ import net.neoforged.fml.LogicalSide;
 public class EnderModus extends Modus {
     /** Cards available */
     public static final int SIZE = 27;
+    /** Amount of cards stored */
+    protected int cards;
     protected NonNullList<ItemStack> list;
 
     // Client side
@@ -38,6 +42,7 @@ public class EnderModus extends Modus {
 
     @Override
     public void readFromNBT(CompoundTag nbt, Provider provider) {
+        cards = nbt.getInt("size");
         list = NonNullList.withSize(SIZE, ItemStack.EMPTY);
 
         for (int i = 0; i < SIZE; i++)
@@ -53,6 +58,7 @@ public class EnderModus extends Modus {
 
     @Override
     public CompoundTag writeToNBT(CompoundTag nbt, HolderLookup.Provider provider) {
+        nbt.putInt("size", cards);
         for (int i = 0; i < list.size() && i < SIZE; i++) {
             ItemStack stack = list.get(i);
             if (!stack.isEmpty()) {
@@ -70,6 +76,7 @@ public class EnderModus extends Modus {
 
     @Override
     public void initModus(ItemStack item, ServerPlayer player, NonNullList<ItemStack> prev, int size) {
+        this.cards = size;
         PlayerEnderChestContainer inventory = player.getEnderChestInventory();
         setList(inventory);
 
@@ -102,8 +109,17 @@ public class EnderModus extends Modus {
 
     @Override
     public ItemStack getItem(ServerPlayer player, int slot, boolean asCard) {
-        if (slot == CaptchaDeckHandler.EMPTY_CARD || slot == CaptchaDeckHandler.EMPTY_SYLLADEX || list.isEmpty())
+        if (slot == CaptchaDeckHandler.EMPTY_SYLLADEX || list.isEmpty())
             return ItemStack.EMPTY;
+
+        if (slot == CaptchaDeckHandler.EMPTY_CARD || asCard) {
+            if (cards > 0) {
+                cards--;
+                return MSItems.CAPTCHA_CARD.toStack();
+            } else if (slot == CaptchaDeckHandler.EMPTY_CARD) {
+                return ItemStack.EMPTY;
+            }
+        }
 
         PlayerEnderChestContainer inventory = player.getEnderChestInventory();
         ItemStack taken = inventory.removeItem(slot, Item.ABSOLUTE_MAX_STACK_SIZE);
@@ -126,7 +142,13 @@ public class EnderModus extends Modus {
 
     @Override
     public boolean increaseSize(ServerPlayer player) {
-        return false;
+        if (MinestuckConfig.SERVER.modusMaxSize.get() > 0 && cards >= MinestuckConfig.SERVER.modusMaxSize.get())
+            return false;
+
+        cards++;
+        markDirty();
+
+        return true;
     }
 
     @Override
@@ -136,6 +158,6 @@ public class EnderModus extends Modus {
 
     @Override
     public int getSize() {
-        return SIZE;
+        return cards;
     }
 }
