@@ -1,7 +1,5 @@
 package com.medsal15.modus;
 
-import javax.annotation.Nullable;
-
 import com.mraof.minestuck.inventory.captchalogue.CaptchaDeckHandler;
 import com.mraof.minestuck.inventory.captchalogue.Modus;
 import com.mraof.minestuck.inventory.captchalogue.ModusType;
@@ -12,7 +10,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.ContainerListener;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.PlayerEnderChestContainer;
 import net.minecraft.world.item.Item;
@@ -22,13 +19,14 @@ import net.neoforged.fml.LogicalSide;
 /**
  * FIXME after modifying an ender chest manually, items only update on
  * insert/extract
+ *
+ * Listeners do not work, as they're only added on the server side, but needed
+ * on the client side
  */
 public class EnderModus extends Modus {
     /** Cards available */
     public static final int SIZE = 27;
     protected NonNullList<ItemStack> list;
-    @Nullable
-    private ContainerListener listener = null;
 
     // Client side
     protected boolean changed;
@@ -70,24 +68,10 @@ public class EnderModus extends Modus {
         markDirty();
     }
 
-    private void addListenerIfNull(SimpleContainer container) {
-        if (listener == null) {
-            listener = c -> {
-                if (c instanceof SimpleContainer sc) {
-                    list = NonNullList.copyOf(sc.getItems());
-                    changed = true;
-                    markDirty();
-                }
-            };
-            container.addListener(listener);
-        }
-    }
-
     @Override
     public void initModus(ItemStack item, ServerPlayer player, NonNullList<ItemStack> prev, int size) {
         PlayerEnderChestContainer inventory = player.getEnderChestInventory();
         setList(inventory);
-        addListenerIfNull(inventory);
 
         if (side == LogicalSide.CLIENT) {
             items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
@@ -122,8 +106,8 @@ public class EnderModus extends Modus {
             return ItemStack.EMPTY;
 
         PlayerEnderChestContainer inventory = player.getEnderChestInventory();
-        addListenerIfNull(inventory);
         ItemStack taken = inventory.removeItem(slot, Item.ABSOLUTE_MAX_STACK_SIZE);
+        setList(inventory);
         markDirty();
         return taken;
     }
@@ -131,8 +115,8 @@ public class EnderModus extends Modus {
     @Override
     public boolean putItemStack(ServerPlayer player, ItemStack item) {
         PlayerEnderChestContainer inventory = player.getEnderChestInventory();
-        addListenerIfNull(inventory);
         ItemStack leftover = inventory.addItem(item);
+        setList(inventory);
         if (!leftover.isEmpty()) {
             CaptchaDeckHandler.launchItem(player, leftover);
             changed = true;
