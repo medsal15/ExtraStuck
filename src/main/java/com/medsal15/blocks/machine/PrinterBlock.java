@@ -9,6 +9,7 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.block.machine.SmallMachineBlock;
+import com.mraof.minestuck.player.IdentifierHandler;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -78,6 +79,7 @@ public class PrinterBlock extends SmallMachineBlock<PrinterBlockEntity> {
             @Nonnull BlockHitResult hitResult) {
         if (level.getBlockEntity(pos) instanceof PrinterBlockEntity printer
                 && hitResult.getDirection() == Direction.UP) {
+            printer.setOwner(IdentifierHandler.encode(player));
             IItemHandler handler = printer.getItemHandler(null);
             ItemStack dowel = handler.getStackInSlot(PrinterBlockEntity.SLOT_IN);
             if (dowel.isEmpty() && stack.getItem() == MSBlocks.CRUXITE_DOWEL.asItem()) {

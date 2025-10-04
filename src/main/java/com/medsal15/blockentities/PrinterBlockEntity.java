@@ -228,6 +228,8 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
 
     // ProgressTracker
     private boolean contentsValid() {
+        if (fuel <= 0)
+            return false;
         Level l = level;
         if (l != null && !itemHandler.getStackInSlot(SLOT_IN).isEmpty()
                 && owner != null) {
