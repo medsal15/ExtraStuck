@@ -1,0 +1,24 @@
+{
+    "name": "Mastermind Codebreaker Disk",
+    "icon": "extrastuck:mastermind_disk",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:mastermind_disk"
+            },
+            "text": "Accidentally captchalogued your favorite item? The Mastermind Codebreaker Disk exists to fix that issue!$(br)Just insert it in a computer, hold your card out, and open the program!$(br)It can also rewrite the card's code."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Blank Disk and a Mastermind Modus in a Totem Lathe.",
+            "left": "minestuck:blank_disk",
+            "mode": "&&",
+            "right": "extrastuck:mastermind_modus_card",
+            "result": "extrastuck:mastermind_disk"
+        },
+        "Some could argue that it's useless, as you can just swap modus..."
+    ]
+}

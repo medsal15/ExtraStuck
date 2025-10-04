@@ -1,0 +1,13 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 12,
+    "minestuck:amethyst": 12,
+    "minestuck:build": 260,
+    "minestuck:chalk": 12,
+    "minestuck:garnet": 12
+  },
+  "ingredient": {
+    "item": "extrastuck:mastermind_modus_card"
+  }
+}

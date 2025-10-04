@@ -20,6 +20,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ESDataComponents {
     public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister
             .createDataComponents(Registries.DATA_COMPONENT_TYPE, ExtraStuck.MODID);
+
+    // Generic
     public static final Supplier<DataComponentType<Integer>> ENERGY = DATA_COMPONENTS
             .registerComponentType(
                     "energy",
@@ -29,10 +31,15 @@ public final class ESDataComponents {
                     "energy_storage",
                     builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
+    /** Table to drop */
     public static final Supplier<DataComponentType<ResourceKey<LootTable>>> GIFT_TABLE = DATA_COMPONENTS
             .registerComponentType("gift_table", builder -> builder.persistent(ResourceKey.codec(Registries.LOOT_TABLE))
                     .networkSynchronized(ResourceKey.streamCodec(Registries.LOOT_TABLE)));
+    /** Difficulty of the item */
+    public static final Supplier<DataComponentType<Integer>> DIFFICULTY = DATA_COMPONENTS.registerComponentType(
+            "difficulty", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
+    // Grist detector
     public static final Supplier<DataComponentType<GristLayer>> GRIST_LAYER = DATA_COMPONENTS
             .registerComponentType("grist_layer", builder -> builder
                     .persistent(StringRepresentable.fromEnum(GristLayer::values))
@@ -66,7 +73,7 @@ public final class ESDataComponents {
         }
     };
 
-    // Shield specific components
+    // Shields
     /** Flame shield burn duration in ticks */
     public static final Supplier<DataComponentType<Integer>> BURN_DURATION = DATA_COMPONENTS
             .registerComponentType(
@@ -81,9 +88,18 @@ public final class ESDataComponents {
                     "shield_damage",
                     builder -> builder.persistent(Codec.FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
 
+    // Weapons
     public static final Supplier<DataComponentType<Float>> AMMO_DAMAGE = DATA_COMPONENTS.registerComponentType(
             "ammo_damage", builder -> builder.persistent(Codec.FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
-
+    /** Shots left */
     public static final Supplier<DataComponentType<Integer>> URANIUM_CHARGE = DATA_COMPONENTS.registerComponentType(
             "uranium_charge", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
+
+    // Moduses
+    /** Mastermind card code */
+    public static final Supplier<DataComponentType<Integer>> MASTERMIND_CODE = DATA_COMPONENTS.registerComponentType(
+            "mastermind_code", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
+    public static final Supplier<DataComponentType<List<Integer>>> ATTEMPTS = DATA_COMPONENTS
+            .registerComponentType("attempts", builder -> builder.persistent(Codec.INT.listOf())
+                    .networkSynchronized(ByteBufCodecs.VAR_INT.apply(ByteBufCodecs.list())));
 }

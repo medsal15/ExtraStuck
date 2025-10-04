@@ -37,7 +37,7 @@ public final class ClientGameEvents {
     private static Item lastItem = null;
 
     @SubscribeEvent
-    public static void addCustomTooltip(ItemTooltipEvent event) {
+    public static void addCustomTooltip(final ItemTooltipEvent event) {
         int i = 1;
         ItemStack stack = event.getItemStack();
         Item item = stack.getItem();

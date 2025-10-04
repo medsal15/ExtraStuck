@@ -740,6 +740,22 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 480).grist(GristTypes.TAR, 1380).grist(GristTypes.COBALT, 480)
                 .grist(GristTypes.URANIUM, 140)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.MASTERMIND_MODUS_CARD)
+                .input(MSTags.Items.MODUS_CARD).or().input(MSItems.WATER_COLORS_BUCKET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.MASTERMIND_MODUS_CARD)
+                .grist(GristTypes.BUILD, 260).grist(GristTypes.AMBER, 12).grist(GristTypes.CHALK, 12)
+                .grist(GristTypes.AMETHYST, 12).grist(GristTypes.GARNET, 12)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.MASTERMIND_DISK)
+                .input(MSItems.BLANK_DISK).and().input(ESItems.MASTERMIND_MODUS_CARD)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.MASTERMIND_DISK)
+                .grist(GristTypes.BUILD, 52).grist(GristTypes.RUST, 13).grist(GristTypes.AMBER, 1)
+                .grist(GristTypes.CHALK, 1).grist(GristTypes.AMETHYST, 1).grist(GristTypes.GARNET, 1)
+                .build(output);
     }
 
     private void toolRecipes(@Nonnull RecipeOutput output) {

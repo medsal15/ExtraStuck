@@ -30,6 +30,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.LUCK_TOKEN.get());
         basicItem(ESItems.PIZZA.get());
         basicItem(ESItems.EMPTY_ENERGY_CORE.get());
+        basicItem(ESItems.MASTERMIND_DISK.get());
     }
 
     private void registerShields() {
@@ -185,9 +186,11 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.ARCHEOLOGY_MODUS_CARD.get());
         basicItem(ESItems.VOID_MODUS_CARD.get());
         basicItem(ESItems.ENDER_MODUS_CARD.get());
+        basicItem(ESItems.MASTERMIND_MODUS_CARD.get());
 
         basicItem(ESItems.FORTUNE_COOKIE.get());
         withExistingParent(ESItems.CARD_ORE.getId().toString(), modLoc("block/card_ore"));
+        basicItem(ESItems.MASTERMIND_CARD.get());
     }
 
     private void registerTools() {

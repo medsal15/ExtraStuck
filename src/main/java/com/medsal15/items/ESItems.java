@@ -10,6 +10,7 @@ import java.util.Map;
 import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
 import com.medsal15.entities.ESEntities;
@@ -43,6 +44,7 @@ import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.BrushWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
+import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.items.projectiles.ESArrowItem;
 import com.medsal15.items.projectiles.ESBulletItem;
 import com.medsal15.items.shields.ESShield;
@@ -51,6 +53,7 @@ import com.medsal15.items.throwables.SwapTrident;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.armor.MSArmorItem;
+import com.mraof.minestuck.item.components.MSItemComponents;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
@@ -511,11 +514,6 @@ public final class ESItems {
             p -> new GristDetectorItem(p.component(ESDataComponents.GRIST_LAYER, GristLayer.COMMON)));
     // #endregion Tools
 
-    public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
-    public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
-    public static final DeferredItem<Item> INCOMPLETE_MECHANICAL_RADBOW = ITEMS
-            .registerItem("incomplete_mechanical_radbow", Item::new);
-
     // #region Modus
     public static final DeferredItem<Item> PILE_MODUS_CARD = ITEMS.registerItem("pile_modus_card", Item::new,
             new Item.Properties().stacksTo(1));
@@ -529,11 +527,23 @@ public final class ESItems {
             Item::new, new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> ENDER_MODUS_CARD = ITEMS.registerItem("ender_modus_card",
             Item::new, new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> MASTERMIND_MODUS_CARD = ITEMS.registerItem("mastermind_modus_card",
+            Item::new, new Item.Properties().stacksTo(1));
 
     public static final DeferredItem<BlockItem> CARD_ORE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_ORE);
     public static final DeferredItem<Item> FORTUNE_COOKIE = ITEMS.registerItem("fortune_cookie", FortuneCookie::new,
             new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().build()));
+    public static final DeferredItem<Item> MASTERMIND_CARD = ITEMS.registerItem("mastermind_card",
+            MastermindCardItem::new, new Item.Properties());
     // #endregion Modus
+
+    public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
+    public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
+    public static final DeferredItem<Item> INCOMPLETE_MECHANICAL_RADBOW = ITEMS
+            .registerItem("incomplete_mechanical_radbow", Item::new);
+    public static final DeferredItem<Item> MASTERMIND_DISK = ITEMS.registerItem("mastermind_disk",
+            (p) -> new Item(
+                    p.stacksTo(1).component(MSItemComponents.PROGRAM_TYPE, ESProgramTypes.MASTERMIND_CODEBREAKER)));
 
     // #region Blocks
     // #region Machines
@@ -656,6 +666,7 @@ public final class ESItems {
             output.accept(tool.get());
         }
         output.accept(GRIST_DETECTOR);
+        output.accept(MASTERMIND_DISK);
 
         for (DeferredItem<Item> item : ESItems.getShields()) {
             output.accept(item.get());
@@ -703,6 +714,7 @@ public final class ESItems {
         list.add(ARCHEOLOGY_MODUS_CARD);
         list.add(VOID_MODUS_CARD);
         list.add(ENDER_MODUS_CARD);
+        list.add(MASTERMIND_MODUS_CARD);
         return list;
     }
 

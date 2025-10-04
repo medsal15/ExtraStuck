@@ -9,10 +9,17 @@ import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.gui.LoopButton;
+import com.medsal15.client.programs.MastermindAppScreen;
+import com.medsal15.client.screen.computer.MastermindDecodeScreen;
+import com.medsal15.client.screen.computer.MastermindEncodeScreen;
+import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.medsal15.mobeffects.ESMobEffects;
+import com.mraof.minestuck.computer.ProgramType;
+import com.mraof.minestuck.computer.ProgramTypes;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
@@ -86,6 +93,7 @@ public final class ESLangProvider extends LanguageProvider {
         addArmors();
         addModuses();
         addBlocks();
+        addComputerPrograms();
         addBlockEntities();
         addTools();
         addTags();
@@ -105,6 +113,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.EMPTY_ENERGY_CORE, "You forgot the uranium");
         addBlock(ESBlocks.NORMAL_CAT_PLUSH, "Normal Cat Plush");
         addBlockTooltip(ESBlocks.NORMAL_CAT_PLUSH, "In what world is that normal?");
+        addItem(ESItems.MASTERMIND_DISK, "Mastermind Codebreaker Disk");
+        addItemTooltip(ESItems.MASTERMIND_DISK, "Screw that. Puzzles suck.");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -312,12 +322,19 @@ public final class ESLangProvider extends LanguageProvider {
         addItemBookDescription(ESItems.ENDER_MODUS_CARD,
                 "The Ender Modus is a modus with direct access to your ender chest."
                         + " This means it's limited to 27 cards. Unfortunately, it also cannot get items as cards.");
+        addItem(ESItems.MASTERMIND_MODUS_CARD, "Mastermind Modus");
+        addItemTooltip(ESItems.MASTERMIND_MODUS_CARD, "Also known as bulls and cows");
+        addItemBookDescription(ESItems.MASTERMIND_MODUS_CARD,
+                "The Mastermind Modus is a simple and basic modus."
+                        + " Retrieving items will instead lock them in a special card. Failing will destroy the item (and card)."
+                        + " Good luck figuring out the combination!");
 
         addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
         addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");
         addBlock(ESBlocks.CARD_ORE, "Card Ore");
         addBlockBookDescription(ESBlocks.CARD_ORE,
                 "Card ore is only obtainable from an Ore Modus. Breaking it will drop whatever is stored inside. Despite its name, it can be mined by hand.");
+        addItem(ESItems.MASTERMIND_CARD, "Mastermind Card");
     }
 
     private void addTools() {
@@ -350,6 +367,25 @@ public final class ESLangProvider extends LanguageProvider {
                 "You don't think it's a good idea to contain so much power in such a small machine");
         add(ReactorBlockEntity.TITLE, "Nuclear Reactor");
         add(ESFluidTags.REACTOR_FLUIDS, "Reactor Coolants");
+    }
+
+    private void addComputerPrograms() {
+        addProgram(ESProgramTypes.MASTERMIND_CODEBREAKER, "Mastermind Codebreaker");
+
+        add(MastermindAppScreen.NAME, "Mastermind Utilities");
+        add(MastermindAppScreen.DECODER, "Codebreaker");
+        add(MastermindAppScreen.RECODER, "Codemaker");
+
+        add(MastermindDecodeScreen.NAME, "Mastermind Codebreaker");
+        add(MastermindDecodeScreen.DECODE, "Codebreak");
+        add(MastermindDecodeScreen.RESULT, "Card code:");
+        add(MastermindDecodeScreen.FAILURE, "Failed to decode, are you holding a locked mastermind card?");
+
+        add(MastermindEncodeScreen.NAME, "Mastermind Codemaker");
+        add(MastermindEncodeScreen.ENCODE, "Encode");
+        add(MastermindEncodeScreen.DIFFICULTY, "New difficulty: %s");
+        add(MastermindEncodeScreen.RESULT, "Enjoy your easier (or harder) puzzle!");
+        add(MastermindEncodeScreen.FAILURE, "Failed to encode, are you holding a locked mastermind card?");
     }
 
     private void addBlocks() {
@@ -440,5 +476,15 @@ public final class ESLangProvider extends LanguageProvider {
 
     private void addEffectDescription(Supplier<? extends MobEffect> effect, String desc) {
         add(((MobEffect) effect.get()).getDescriptionId() + ".description", desc);
+    }
+
+    private void addProgram(Holder<ProgramType<?>> program, String text) {
+        ResourceLocation location = ProgramTypes.REGISTRY.getKey(program.value());
+        if (location != null) {
+            // TODO update when PR https://github.com/lunar-sway/minestuck/pull/700 is
+            // merged
+            String key = "minestuck.program." + location.getPath();
+            add(key, text);
+        }
     }
 }

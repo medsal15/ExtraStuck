@@ -11,8 +11,10 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.model.armor.HeavyBootsModel;
+import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
+import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
@@ -20,6 +22,7 @@ import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.mraof.minestuck.api.alchemy.GristType;
+import com.mraof.minestuck.client.gui.computer.ProgramGui;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -44,7 +47,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 @EventBusSubscriber(modid = ExtraStuck.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class ClientModEvents {
     @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event) {
+    public static void onClientSetup(final FMLClientSetupEvent event) {
         ItemProperties.register(ESItems.GRIST_DETECTOR.get(), ExtraStuck.modid("found"),
                 (stack, world, entity, entityId) -> stack.has(ESDataComponents.GRIST_FOUND) ? 1F : 0F);
 
@@ -57,6 +60,8 @@ public final class ClientModEvents {
         for (DeferredItem<Item> crossbow : ESItems.getCrossbows()) {
             addCrossbow(crossbow);
         }
+
+        ProgramGui.Registry.register(ESProgramTypes.MASTERMIND_CODEBREAKER, MastermindAppScreen::new);
     }
 
     private static void addBlocking(DeferredItem<Item> item) {
@@ -89,7 +94,7 @@ public final class ClientModEvents {
     }
 
     @SubscribeEvent
-    public static void registerEntityRenderers(RegisterRenderers event) {
+    public static void registerEntityRenderers(final RegisterRenderers event) {
         event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
                 CaptainJusticeShield.CJSRenderer::new);
 
@@ -144,13 +149,13 @@ public final class ClientModEvents {
     }
 
     @SubscribeEvent
-    public static void registerEntityLayers(RegisterLayerDefinitions event) {
+    public static void registerEntityLayers(final RegisterLayerDefinitions event) {
         event.registerLayerDefinition(CaptainJusticeShield.CJSModel.LAYER_LOCATION,
                 CaptainJusticeShield.CJSModel::createLayer);
     }
 
     @SubscribeEvent
-    public static void registerExtensions(RegisterClientExtensionsEvent event) {
+    public static void registerExtensions(final RegisterClientExtensionsEvent event) {
         event.registerItem(new IClientItemExtensions() {
             @Override
             public HumanoidModel<?> getHumanoidArmorModel(@Nonnull LivingEntity livingEntity,
@@ -162,7 +167,7 @@ public final class ClientModEvents {
     }
 
     @SubscribeEvent
-    public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
+    public static void registerBlockColorHandlers(final RegisterColorHandlersEvent.Block event) {
         // Tints the cruxite dowel on top with its color
         event.register((state, tintGetter, pos, tintIndex) -> {
             if (tintGetter != null && pos != null && tintIndex == 0) {
@@ -179,7 +184,7 @@ public final class ClientModEvents {
     }
 
     @SubscribeEvent
-    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
+    public static void registerItemColorHandlers(final RegisterColorHandlersEvent.Item event) {
         event.register((stack, index) -> {
             if (stack.has(ESDataComponents.GRIST_FOUND) && index == 1) {
                 GristType type = stack.get(ESDataComponents.GRIST_FOUND);

@@ -7,6 +7,7 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigCommon;
 import com.medsal15.entities.ESEntities;
@@ -100,6 +101,7 @@ public class ExtraStuck {
         ESMobEffects.MOB_EFFECTS.register(modEventBus);
         ESModus.MODUSES.register(modEventBus);
         ESProcessors.PROCESSORS.register(modEventBus);
+        ESProgramTypes.PROGRAM_TYPES.register(modEventBus);
         ESSounds.SOUND_EVENTS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);

@@ -1,0 +1,24 @@
+{
+    "name": "Mastermind Modus",
+    "icon": "extrastuck:mastermind_modus_card",
+    "category": "extrastuck:modus_cards",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:mastermind_modus_card"
+            },
+            "text": "Someone recommended a puzzle modus. Well, there it is. A classic game of mastermind, fully portable.$(br)Everytime something is retrieved, there's a different code. Failure to guess leads to item loss!"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine any modus card and a Bucket of Paint in a Punch Designix.",
+            "left": "tag:minestuck:modus_card",
+            "mode": "||",
+            "right": "minestuck:water_colors_bucket",
+            "result": "extrastuck:mastermind_modus_card"
+        },
+        "What's that, you want to know what grists are shown?$(br)$(li)Blue Chalk, a rare blue version of chalk.$(li)Crimsite, an advanced grist for end-game tools.$(li)Slurry, a late-game byproduct of alchemy that uses uranium.$(li)$(k)null$(), a buggy grist that destroys all grist it touches.$(li)Citrine, a gemstone, despite its texture.$(li)Antibuild, a removed grist that used to be for breaking blocks."
+    ]
+}

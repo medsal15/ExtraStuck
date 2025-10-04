@@ -57,6 +57,14 @@ public class ConfigCommon {
     public static final ConfigValue<Integer> RADBOW_CHARGES = BUILDER
             .comment("How many charges a radbow gets from an uranium rod")
             .defineInRange("radbow_charge", 10, 1, Integer.MAX_VALUE);
+    public static final ConfigValue<Integer> MASTERMIND_DIFFICULTY = BUILDER
+            .comment("How many colors are available by default in mastermind cards",
+                    "Existing cards will not be affected")
+            .defineInRange("mastermind.difficulty", 3, 1, 6);
+    public static final ModConfigSpec.BooleanValue MASTERMIND_HARDER = BUILDER
+            .comment(
+                    "If true, captchalogued mastermind cards will be stored in a more difficult card when retrieved from a mastermind modus")
+            .define("mastermind.incremental", false);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 }

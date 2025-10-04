@@ -1,0 +1,14 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 1,
+    "minestuck:amethyst": 1,
+    "minestuck:build": 52,
+    "minestuck:chalk": 1,
+    "minestuck:garnet": 1,
+    "minestuck:rust": 13
+  },
+  "ingredient": {
+    "item": "extrastuck:mastermind_disk"
+  }
+}
