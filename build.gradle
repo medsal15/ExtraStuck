@@ -137,6 +137,8 @@ dependencies {
 
     // Example mod dependency using a file as dependency
     // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
+
+    // REQUIRED: Minestuck & deps
     implementation "software.bernie.geckolib:geckolib-${mc_gecko_version}"
     implementation "net.commoble.infiniverse:${infiniverse_branch}:${infiniverse_version}"
 
@@ -148,13 +150,18 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    // Patchouli
     implementation "vazkii.patchouli:Patchouli:${mc_patchouli_version}"
 
+    // Create
     implementation("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
     implementation("net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:${ponder_version}")
     compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
     runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
     implementation("com.tterrag.registrate:Registrate:${registrate_version}")
+
+    implementation "curse.maven:farmers-delight-398521:6597295"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

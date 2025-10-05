@@ -57,6 +57,28 @@
         }
     },
     {
+        "__comment": "Specific to cooking pot recipes, as the default interpreter does not include the food's container",
+        "__comment_2": "Optionally supports an extra cooking_cost grist map",
+        "interpreter": {
+            "type": "extrastuck:farmersdelight_cooking"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "farmersdelight:cooking"
+        }
+    },
+    {
+        "__comment": "Specific to cooking pot recipes, as the default interpreter does not include the food's container",
+        "__comment_2": "Use the [#extrastuck:interpreters_ignore_byproduct/cutting] tag to add items that are common byproducts",
+        "interpreter": {
+            "type": "extrastuck:farmersdelight_cutting"
+        },
+        "source": {
+            "type": "recipe_serializer",
+            "serializer": "farmersdelight:cutting"
+        }
+    },
+    {
         "interpreter": {
             "type": "extrastuck:create_basic"
         },

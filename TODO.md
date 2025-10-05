@@ -2,8 +2,6 @@
 
 ## Important ##
 
-Add a mod icon
-
 Simplify arrow classes to use one class
 
 Improve mod page with fancy graphic
