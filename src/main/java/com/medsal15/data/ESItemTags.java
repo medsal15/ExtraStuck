@@ -16,6 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -34,6 +35,9 @@ public final class ESItemTags extends ItemTagsProvider {
     public static final TagKey<Item> SHOW_VALUE = ItemTags.create(ExtraStuck.modid("show_value"));
     public static final TagKey<Item> URANIUM_RODS = ItemTags.create(common("rods/uranium"));
     public static final TagKey<Item> BRASS_NUGGETS = ItemTags.create(common("nuggets/brass"));
+
+    public static final TagKey<Item> IGNORE_BYPRODUCT_CUTTING = ItemTags
+            .create(ExtraStuck.modid("interpreters_ignore_byproduct/cutting"));
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
@@ -120,6 +124,8 @@ public final class ESItemTags extends ItemTagsProvider {
 
         tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get());
         tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get());
+
+        tag(IGNORE_BYPRODUCT_CUTTING).add(Items.BONE_MEAL);
     }
 
     private void tagShield(DeferredItem<Item> item) {
