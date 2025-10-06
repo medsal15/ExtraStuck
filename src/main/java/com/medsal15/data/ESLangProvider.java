@@ -96,6 +96,7 @@ public final class ESLangProvider extends LanguageProvider {
         addComputerPrograms();
         addBlockEntities();
         addTools();
+        addFood();
         addTags();
 
         addEffect(ESMobEffects.TIME_STOP, "Time Stop");
@@ -108,7 +109,6 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.ANTI_DIE, "Anti Die");
         addItem(ESItems.LUCK_TOKEN, "Luck Token");
         addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
-        addBlock(ESBlocks.PIZZA, "Pizza");
         addItem(ESItems.EMPTY_ENERGY_CORE, "Empty Energy Core");
         addItemTooltip(ESItems.EMPTY_ENERGY_CORE, "You forgot the uranium");
         addBlock(ESBlocks.NORMAL_CAT_PLUSH, "Normal Cat Plush");
@@ -437,6 +437,13 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.ZILLIUM_BRICK_STAIRS, "Zillium Brick Stairs");
         addBlock(ESBlocks.ZILLIUM_BRICK_SLAB, "Zillium Brick Slab");
         addBlock(ESBlocks.ZILLIUM_BRICK_WALL, "Zillium Brick Wall");
+    }
+
+    private void addFood() {
+        addBlock(ESBlocks.PIZZA, "Pizza");
+        addItem(ESItems.PIZZA_SLICE, "Pizza Slice");
+        addItem(ESItems.SUSHROOM_STEW, "Sushroom Stew");
+        addItemTooltip(ESItems.SUSHROOM_STEW, "Is this stewmate trustworthy?");
     }
 
     private void addTags() {

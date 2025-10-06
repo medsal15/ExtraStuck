@@ -1,0 +1,19 @@
+{
+    "name": "Sushroom Stew",
+    "icon": "extrastuck:sushroom_stew",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:sushroom_stew"
+            },
+            "text": "A stew made of (hopefully) safe mushrooms.$(br2)Has a 1 in 6 chances to give poison or regeneration for 2.5 seconds."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shapeless/sushroom_stew",
+            "text": "Just like a mushroom stew, but with a Sushroom and Morel Mushroom instead of normal ones."
+        }
+    ]
+}
