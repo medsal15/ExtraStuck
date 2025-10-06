@@ -2,6 +2,7 @@
   "parent": "extrastuck:item/base_shield_blocking",
   "textures": {
     "0": "extrastuck:item/wooden_shield",
+    "1": "extrastuck:item/wooden_shield_handle",
     "particle": "extrastuck:item/wooden_shield"
   }
 }

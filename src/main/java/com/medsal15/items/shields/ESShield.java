@@ -150,8 +150,6 @@ public class ESShield extends ShieldItem {
         // #region USE_POWER
         public static ESShield.IBlock USE_POWER = event -> {
             ItemStack item = event.getEntity().getUseItem();
-            if (!item.has(ESDataComponents.ENERGY) || !item.has(ESDataComponents.FLUX_MULTIPLIER))
-                return false;
 
             int mult = item.getOrDefault(ESDataComponents.FLUX_MULTIPLIER, 100);
             if (mult < 0)
@@ -165,6 +163,8 @@ public class ESShield extends ShieldItem {
             // Drain energy
             @SuppressWarnings("null")
             IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(item, null);
+            if (energyStorage == null)
+                return false;
             int drain = (int) (event.getBlockedDamage() * mult);
             int extracted = energyStorage.extractEnergy(drain, false);
             if (extracted > 0) {

@@ -2,6 +2,7 @@
   "parent": "extrastuck:item/thin_shield_blocking",
   "textures": {
     "0": "extrastuck:item/non_contact_contract",
+    "1": "extrastuck:item/handle",
     "particle": "extrastuck:item/non_contact_contract"
   }
 }

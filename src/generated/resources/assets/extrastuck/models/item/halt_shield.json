@@ -10,6 +10,7 @@
   ],
   "textures": {
     "0": "extrastuck:item/halt_shield",
+    "1": "extrastuck:item/handle",
     "particle": "extrastuck:item/halt_shield"
   }
 }

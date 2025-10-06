@@ -10,6 +10,7 @@
   ],
   "textures": {
     "0": "extrastuck:item/diamond_shield",
+    "1": "extrastuck:item/diamond_shield_handle",
     "particle": "extrastuck:item/diamond_shield"
   }
 }
