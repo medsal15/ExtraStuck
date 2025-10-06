@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:pizza"
+  },
+  "input2": {
+    "item": "minestuck:dagger"
+  },
+  "mode": "or",
+  "output": "extrastuck:pizza_slice"
+}

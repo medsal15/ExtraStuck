@@ -1,7 +1,9 @@
 {
   "values": [
     "extrastuck:pizza",
+    "extrastuck:pizza_slice",
     "extrastuck:fortune_cookie",
+    "extrastuck:sushroom_stew",
     "extrastuck:sweet_tooth"
   ]
 }

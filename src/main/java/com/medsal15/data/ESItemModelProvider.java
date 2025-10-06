@@ -25,10 +25,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
         registerArmors();
         registerModus();
         registerTools();
+        registerFood();
         registerBlocks();
 
         basicItem(ESItems.LUCK_TOKEN.get());
-        basicItem(ESItems.PIZZA.get());
         basicItem(ESItems.EMPTY_ENERGY_CORE.get());
         basicItem(ESItems.MASTERMIND_DISK.get());
     }
@@ -196,6 +196,12 @@ public final class ESItemModelProvider extends ItemModelProvider {
     private void registerTools() {
         basicItem(ESItems.MAGNET.get());
         basicItem(ESItems.FIELD_CHARGER.get());
+    }
+
+    private void registerFood() {
+        basicItem(ESItems.PIZZA.get());
+        basicItem(ESItems.PIZZA_SLICE.get());
+        basicItem(ESItems.SUSHROOM_STEW.get());
     }
 
     private void registerBlocks() {

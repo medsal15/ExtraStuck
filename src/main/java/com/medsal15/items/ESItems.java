@@ -76,6 +76,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BrushItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
@@ -193,9 +194,7 @@ public final class ESItems {
             p -> new ESArrowItem(p, MissedArrow::new, MissedArrow::new));
     public static final DeferredItem<Item> SWEET_TOOTH = ITEMS.registerItem("sweet_tooth",
             p -> new ESArrowItem(p, CandyArrow::new, CandyArrow::new),
-            new Item.Properties()
-                    .food(new FoodProperties.Builder().fast().nutrition(1).saturationModifier(.5F)
-                            .build()));
+            new Item.Properties().food(ESFoods.SWEET_TOOTH));
     public static final DeferredItem<Item> LIGHTNING_ARROW = ITEMS.registerItem("lightning_arrow",
             p -> new ESArrowItem(p, LightningArrow::new, LightningArrow::new));
     public static final DeferredItem<Item> EXPLOSIVE_ARROW = ITEMS.registerItem("explosive_arrow",
@@ -537,8 +536,15 @@ public final class ESItems {
             MastermindCardItem::new, new Item.Properties());
     // #endregion Modus
 
-    public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
+    // #region Food
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
+    public static final DeferredItem<Item> PIZZA_SLICE = ITEMS.registerItem("pizza_slice",
+            p -> new Item(p.food(ESFoods.PIZZA_SLICE)));
+    public static final DeferredItem<Item> SUSHROOM_STEW = ITEMS.registerItem("sushroom_stew",
+            p -> new Item(p.food(ESFoods.SUSHROOM_STEW).stacksTo(16).craftRemainder(Items.BOWL)));
+    // #endregion Food
+
+    public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
     public static final DeferredItem<Item> INCOMPLETE_MECHANICAL_RADBOW = ITEMS
             .registerItem("incomplete_mechanical_radbow", Item::new);
     public static final DeferredItem<Item> MASTERMIND_DISK = ITEMS.registerItem("mastermind_disk",
@@ -899,7 +905,9 @@ public final class ESItems {
     public static Collection<DeferredItem<? extends Item>> getFoods() {
         ArrayList<DeferredItem<? extends Item>> list = new ArrayList<>();
         list.add(PIZZA);
+        list.add(PIZZA_SLICE);
         list.add(FORTUNE_COOKIE);
+        list.add(SUSHROOM_STEW);
         return list;
     }
 

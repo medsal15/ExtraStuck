@@ -1,8 +1,7 @@
 {
     "name": "Pizza",
     "icon": "extrastuck:pizza",
-    "category": "extrastuck:misc",
-    "sortnum": 1,
+    "category": "extrastuck:food",
     "pages": [
         {
             "type": "patchouli:spotlight",
@@ -18,6 +17,21 @@
             "mode": "||",
             "right": "minecraft:beetroot",
             "result": "extrastuck:pizza"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:pizza_slice"
+            },
+            "text": "A slice of pizza that doesn't need to be placed. Less efficient than a full pizza, but also cheaper and portable."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Pizza and a Dagger in a Punch Designix.",
+            "left": "extrastuck:pizza",
+            "mode": "||",
+            "right": "minestuck:dagger",
+            "result": "extrastuck:pizza_slice"
         }
     ]
 }
