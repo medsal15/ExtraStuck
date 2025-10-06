@@ -10,6 +10,7 @@
   ],
   "textures": {
     "0": "extrastuck:item/netherite_shield",
+    "1": "extrastuck:item/netherite_shield_handle",
     "particle": "extrastuck:item/netherite_shield"
   }
 }

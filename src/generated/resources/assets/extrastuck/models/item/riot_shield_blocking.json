@@ -2,6 +2,7 @@
   "parent": "extrastuck:item/large_shield_blocking",
   "textures": {
     "0": "extrastuck:item/riot_shield",
+    "1": "extrastuck:item/handle",
     "particle": "extrastuck:item/riot_shield"
   }
 }

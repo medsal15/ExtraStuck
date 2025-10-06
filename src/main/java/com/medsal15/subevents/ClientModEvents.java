@@ -37,11 +37,13 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 @EventBusSubscriber(modid = ExtraStuck.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -60,6 +62,16 @@ public final class ClientModEvents {
         for (DeferredItem<Item> crossbow : ESItems.getCrossbows()) {
             addCrossbow(crossbow);
         }
+
+        ItemProperties.register(ESItems.FLUX_SHIELD.get(), ExtraStuck.modid("charged"),
+                (stack, world, entity, entityId) -> {
+                    @SuppressWarnings("null")
+                    IEnergyStorage handler = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
+                    if (handler != null
+                            && handler.getEnergyStored() >= stack.getOrDefault(ESDataComponents.FLUX_MULTIPLIER, 100))
+                        return 1;
+                    return 0;
+                });
 
         ProgramGui.Registry.register(ESProgramTypes.MASTERMIND_CODEBREAKER, MastermindAppScreen::new);
     }

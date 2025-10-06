@@ -34,44 +34,51 @@ public final class ESItemModelProvider extends ItemModelProvider {
     }
 
     private void registerShields() {
-        modelShield(ESItems.WOODEN_SHIELD);
+        modelShieldHandle(ESItems.WOODEN_SHIELD);
         modelThinShield(ESItems.FLAME_SHIELD);
-        modelShield(ESItems.LIGHT_SHIELD);
+        modelShieldHandle(ESItems.LIGHT_SHIELD);
         modelThinShield(ESItems.HALT_SHIELD);
         modelThinShield(ESItems.NON_CONTACT_CONTRACT);
         basicItem(ESItems.SLIED.getId());
         modelLargeShield(ESItems.RIOT_SHIELD);
         modelRoundShield(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD);
         basicItem(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
-        modelShield(ESItems.CAPITASHIELD);
-        modelShield(ESItems.IRON_SHIELD);
-        modelShield(ESItems.GOLD_SHIELD);
-        modelShield(ESItems.FLUX_SHIELD);
-        modelShield(ESItems.DIAMOND_SHIELD);
-        modelShield(ESItems.NETHERITE_SHIELD);
-        modelShield(ESItems.GARNET_SHIELD);
-        modelShield(ESItems.POGO_SHIELD);
-        modelShield(ESItems.RETURN_TO_SENDER);
+        modelShieldHandle(ESItems.CAPITASHIELD);
+        modelShieldHandle(ESItems.IRON_SHIELD, "metal_shield_handle");
+        modelShieldHandle(ESItems.GOLD_SHIELD, "metal_shield_handle");
+        modelShieldHandle(ESItems.DIAMOND_SHIELD);
+        modelShieldHandle(ESItems.NETHERITE_SHIELD);
+        modelShieldHandle(ESItems.GARNET_SHIELD);
+        modelShieldHandle(ESItems.POGO_SHIELD, "metal_shield_handle");
+        modelShieldHandle(ESItems.RETURN_TO_SENDER);
     }
 
-    private void modelShield(DeferredItem<Item> shield, String texture, String base) {
+    private void modelShield(DeferredItem<Item> shield, String texture, String base, String handle) {
         String id = shield.getId().toString();
         ItemModelBuilder blocking = withExistingParent(id + "_blocking", modLoc(base + "_blocking"))
                 .texture("0", modLoc(texture))
+                .texture("1", modLoc(handle))
                 .texture("particle", modLoc(texture));
         withExistingParent(id, modLoc(base))
                 .texture("0", modLoc(texture))
+                .texture("1", modLoc(handle))
                 .texture("particle", modLoc(texture))
                 .override().predicate(ResourceLocation.withDefaultNamespace("blocking"), 1).model(blocking);
     }
 
-    private void modelShield(DeferredItem<Item> shield, String texture) {
-        modelShield(shield, texture, "base_shield");
+    private void modelShield(DeferredItem<Item> shield, String texture, String base) {
+        modelShield(shield, texture, base, "item/handle");
     }
 
-    private void modelShield(DeferredItem<Item> shield) {
+    private void modelShieldHandle(DeferredItem<Item> shield, String handle) {
         String path = shield.getId().getPath().toString();
-        modelShield(shield, "item/" + path);
+        modelShield(shield, "item/" + path, "base_shield", "item/" + handle);
+    }
+
+    private void modelShieldHandle(DeferredItem<Item> shield) {
+        String path = shield.getId().getPath().toString();
+        String handle = path + "_handle";
+        modelShieldHandle(shield, handle);
     }
 
     private void modelThinShield(DeferredItem<Item> shield) {

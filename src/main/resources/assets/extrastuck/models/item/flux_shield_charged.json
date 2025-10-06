@@ -1,0 +1,16 @@
+{
+    "parent": "extrastuck:item/base_shield",
+    "overrides": [
+        {
+            "model": "extrastuck:item/flux_shield_charged_blocking",
+            "predicate": {
+                "minecraft:blocking": 1.0
+            }
+        }
+    ],
+    "textures": {
+        "0": "extrastuck:item/flux_shield_charged",
+        "1": "extrastuck:item/metal_shield_handle",
+        "particle": "extrastuck:item/flux_shield"
+    }
+}

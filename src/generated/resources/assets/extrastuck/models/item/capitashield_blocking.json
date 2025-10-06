@@ -2,6 +2,7 @@
   "parent": "extrastuck:item/base_shield_blocking",
   "textures": {
     "0": "extrastuck:item/capitashield",
+    "1": "extrastuck:item/capitashield_handle",
     "particle": "extrastuck:item/capitashield"
   }
 }

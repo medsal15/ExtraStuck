@@ -1,0 +1,8 @@
+{
+    "parent": "extrastuck:item/base_shield_blocking",
+    "textures": {
+        "0": "extrastuck:item/flux_shield",
+        "1": "extrastuck:item/metal_shield_handle",
+        "particle": "extrastuck:item/flux_shield"
+    }
+}
