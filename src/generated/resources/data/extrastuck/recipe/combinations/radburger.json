@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:irradiated_steak"
+  },
+  "input2": {
+    "item": "minecraft:bread"
+  },
+  "mode": "and",
+  "output": "extrastuck:radburger"
+}

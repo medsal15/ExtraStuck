@@ -37,13 +37,14 @@ import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
+import vectorwing.farmersdelight.common.tag.CommonTags;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
 public final class ESRecipeProvider extends RecipeProvider {
-    private static final ICondition createLoaded = new ModLoadedCondition("create");
-    private static final ICondition farmersDelightLoaded = new ModLoadedCondition("farmersdelight");
+    private static final ICondition CREATE_LOADED = new ModLoadedCondition("create");
+    private static final ICondition FARMERSDELIGHT_LOADED = new ModLoadedCondition("farmersdelight");
 
     public ESRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
@@ -458,11 +459,11 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CombinationRecipeBuilder.of(ESItems.MECHANICAL_RADBOW)
                 .input(ESItems.RADBOW).and().input(MSItems.COMPUTER_PARTS)
-                .build(output.withConditions(new NotCondition(createLoaded)));
+                .build(output.withConditions(not(CREATE_LOADED)));
         GristCostRecipeBuilder.of(ESItems.MECHANICAL_RADBOW)
                 .grist(GristTypes.MERCURY, 36).grist(GristTypes.URANIUM, 2).grist(GristTypes.CAULK, 15)
                 .grist(GristTypes.BUILD, 50).grist(GristTypes.RUST, 25).grist(GristTypes.GOLD, 5)
-                .build(output.withConditions(new NotCondition(createLoaded)));
+                .build(output.withConditions(not(CREATE_LOADED)));
 
         new SequencedAssemblyRecipeBuilder(ExtraStuck.modid("mechanical_radbow"))
                 .require(ESItems.RADBOW)
@@ -805,7 +806,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ESItems.PIZZA), Ingredient.of(ModTags.KNIVES),
                 ESItems.PIZZA_SLICE, 3)
-                .build(output.withConditions(farmersDelightLoaded), modid("cutting/pizza_slice").toString());
+                .build(output.withConditions(FARMERSDELIGHT_LOADED), modid("cutting/pizza_slice").toString());
         GristCostRecipeBuilder.of(ESItems.PIZZA_SLICE)
                 .grist(GristTypes.AMBER, 2).grist(GristTypes.RUST, 1)
                 .build(output);
@@ -821,7 +822,23 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addIngredient(MSItems.MOREL_MUSHROOM)
                 .unlockedByAnyIngredient(MSItems.SUSHROOM, MSItems.MOREL_MUSHROOM)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(output.withConditions(farmersDelightLoaded), modid("cooking/sushroom_stew").toString());
+                .build(output.withConditions(FARMERSDELIGHT_LOADED), modid("cooking/sushroom_stew").toString());
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ESItems.RADBURGER)
+                .requires(Tags.Items.FOODS_BREAD)
+                .requires(MSItems.IRRADIATED_STEAK)
+                .requires(CommonTags.FOODS_LEAFY_GREEN)
+                .requires(CommonTags.CROPS_TOMATO)
+                .requires(MSItems.ONION)
+                .unlockedBy("has_irradiated_steak", has(MSItems.IRRADIATED_STEAK))
+                .save(output.withConditions(FARMERSDELIGHT_LOADED), modid("shapeless/radburger"));
+        CombinationRecipeBuilder.of(ESItems.RADBURGER)
+                .input(MSItems.IRRADIATED_STEAK).and().input(Items.BREAD)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.RADBURGER)
+                .grist(GristTypes.BUILD, 1).grist(GristTypes.AMBER, 5).grist(GristTypes.IODINE, 20)
+                .grist(GristTypes.TAR, 2).grist(GristTypes.GARNET, 2).grist(GristTypes.URANIUM, 2)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {
@@ -1355,5 +1372,9 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.NORMAL_CAT_PLUSH)
                 .grist(GristTypes.BUILD, 1).grist(GristTypes.CHALK, 3)
                 .build(output);
+    }
+
+    private ICondition not(ICondition condition) {
+        return new NotCondition(condition);
     }
 }
