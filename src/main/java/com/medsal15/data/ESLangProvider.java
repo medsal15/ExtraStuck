@@ -444,6 +444,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.PIZZA_SLICE, "Pizza Slice");
         addItem(ESItems.SUSHROOM_STEW, "Sushroom Stew");
         addItemTooltip(ESItems.SUSHROOM_STEW, "Is this stewmate trustworthy?");
+        addItem(ESItems.RADBURGER, "Radburger");
     }
 
     private void addTags() {

@@ -13,4 +13,7 @@ public final class ESFoods {
     public static final FoodProperties SUSHROOM_STEW = new FoodProperties.Builder().nutrition(6).saturationModifier(.5F)
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 50), .15F)
             .effect(() -> new MobEffectInstance(MobEffects.POISON, 50), .15F).usingConvertsTo(Items.BOWL).build();
+    public static final FoodProperties RADBURGER = new FoodProperties.Builder().nutrition(13).saturationModifier(.7F)
+            .effect(() -> new MobEffectInstance(MobEffects.WITHER, 100, 1), .6F)
+            .build();
 }

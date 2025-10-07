@@ -542,6 +542,8 @@ public final class ESItems {
             p -> new Item(p.food(ESFoods.PIZZA_SLICE)));
     public static final DeferredItem<Item> SUSHROOM_STEW = ITEMS.registerItem("sushroom_stew",
             p -> new Item(p.food(ESFoods.SUSHROOM_STEW).stacksTo(16).craftRemainder(Items.BOWL)));
+    public static final DeferredItem<Item> RADBURGER = ITEMS.registerItem("radburger",
+            p -> new Item(p.food(ESFoods.RADBURGER)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -908,6 +910,7 @@ public final class ESItems {
         list.add(PIZZA_SLICE);
         list.add(FORTUNE_COOKIE);
         list.add(SUSHROOM_STEW);
+        list.add(RADBURGER);
         return list;
     }
 

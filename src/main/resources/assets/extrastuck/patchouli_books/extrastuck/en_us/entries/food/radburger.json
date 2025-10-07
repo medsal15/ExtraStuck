@@ -1,0 +1,28 @@
+{
+    "name": "Radburger",
+    "icon": "extrastuck:radburger",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:radburger"
+            },
+            "text": "A delicious(?)-looking hamburger made with an irradiated steak. Why does it glow in the dark?$(br2)Has a 60% chance to give Wither 2 for 5 seconds."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Bread and an Irradiated Steak in a Totem Lathe.",
+            "left": "minecraft:bread",
+            "mode": "&&",
+            "right": "minestuck:irradiated_steak",
+            "result": "extrastuck:radburger"
+        },
+        {
+            "type": "patchouli:crafting",
+            "flag": "mod:farmersdelight",
+            "recipe": "extrastuck:shapeless/radburger",
+            "text": "Can also be crafted like a normal Hamburger, with a few changes..."
+        }
+    ]
+}
