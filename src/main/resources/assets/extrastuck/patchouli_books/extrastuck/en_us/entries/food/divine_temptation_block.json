@@ -1,0 +1,20 @@
+{
+    "name": "Divine Temptation",
+    "icon": "extrastuck:divine_temptation_block",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:divine_temptation_block,extrastuck:divine_temptation",
+            "text": "Legends of this ancient recipe speak say that it tasted so good that even gods descended just for a taste.$(br)Each block provides 3 servings in bowls. Each serving gives 30 seconds of Strength when eaten."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Cauldron and a Golden Apple in a Totem Lathe.",
+            "left": "minecraft:cauldron",
+            "mode": "&&",
+            "right": "minecraft:golden_apple",
+            "result": "extrastuck:divine_temptation_block"
+        }
+    ]
+}

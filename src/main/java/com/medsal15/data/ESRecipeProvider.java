@@ -10,6 +10,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.api.alchemy.GristTypes;
 import com.mraof.minestuck.api.alchemy.recipe.GristCostRecipeBuilder;
+import com.mraof.minestuck.api.alchemy.recipe.SourceGristCostBuilder;
 import com.mraof.minestuck.api.alchemy.recipe.combination.CombinationRecipeBuilder;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
@@ -37,6 +38,7 @@ import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
+import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.CommonTags;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
@@ -838,6 +840,24 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.RADBURGER)
                 .grist(GristTypes.BUILD, 1).grist(GristTypes.AMBER, 5).grist(GristTypes.IODINE, 20)
                 .grist(GristTypes.TAR, 2).grist(GristTypes.GARNET, 2).grist(GristTypes.URANIUM, 2)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
+
+        CookingPotRecipeBuilder.cookingPotRecipe(ESItems.DIVINE_TEMPTATION_BLOCK, 1, 200, .5F, Items.CAULDRON)
+                .addIngredient(ModItems.HAM.get())
+                .addIngredient(ModItems.HAM.get())
+                .addIngredient(MSItems.AMBER_GUMMY_WORM)
+                .addIngredient(Items.GOLDEN_APPLE)
+                .addIngredient(Items.BROWN_MUSHROOM)
+                .addIngredient(Items.BROWN_MUSHROOM)
+                .unlockedByAnyIngredient(MSItems.CLAW_SICKLE)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(output.withConditions(FARMERSDELIGHT_LOADED), modid("cooking/divine_temptation").toString());
+        CombinationRecipeBuilder.of(ESItems.DIVINE_TEMPTATION_BLOCK)
+                .input(Items.CAULDRON).and().input(Items.GOLDEN_APPLE)
+                .build(output);
+        SourceGristCostBuilder.of(ESItems.DIVINE_TEMPTATION_BLOCK)
+                .grist(GristTypes.AMBER, 5).grist(GristTypes.IODINE, 50)
+                .source(Items.CAULDRON).source(Items.GOLDEN_APPLE)
                 .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
     }
 

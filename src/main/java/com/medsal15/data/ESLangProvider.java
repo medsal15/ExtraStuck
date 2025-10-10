@@ -458,6 +458,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.SUSHROOM_STEW, "Sushroom Stew");
         addItemTooltip(ESItems.SUSHROOM_STEW, "Is this stewmate trustworthy?");
         addItem(ESItems.RADBURGER, "Radburger");
+        addBlock(ESBlocks.DIVINE_TEMPTATION_BLOCK, "Divine Temptation");
+        addBlockTooltip(ESBlocks.DIVINE_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
+        addItem(ESItems.DIVINE_TEMPTATION, "Bowl of Divine Temptation");
     }
 
     private void addTags() {

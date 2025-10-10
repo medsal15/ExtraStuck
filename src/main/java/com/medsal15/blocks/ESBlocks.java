@@ -3,6 +3,7 @@ package com.medsal15.blocks;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.ofFullCopy;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.blocks.food.DivineTemptationBlock;
 import com.medsal15.blocks.machine.ChargerBlock;
 import com.medsal15.blocks.machine.PrinterBlock;
 import com.medsal15.blocks.machine.ReactorBlock;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -26,9 +28,15 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ESBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ExtraStuck.MODID);
 
+    // #region Food
     public static final DeferredBlock<PizzaBlock> PIZZA = BLOCKS.registerBlock("pizza", PizzaBlock::new,
             Block.Properties.of().mapColor(MapColor.COLOR_YELLOW).sound(SoundType.WOOL).noCollission()
                     .noOcclusion().pushReaction(PushReaction.DESTROY));
+    public static final DeferredBlock<DivineTemptationBlock> DIVINE_TEMPTATION_BLOCK = BLOCKS
+            .registerBlock("divine_temptation_block", DivineTemptationBlock::new,
+                    BlockBehaviour.Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.0F)
+                            .noOcclusion());
+    // #endregion Food
 
     public static final DeferredBlock<CardOreBlock> CARD_ORE = BLOCKS.registerBlock("card_ore", CardOreBlock::new,
             Block.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).sound(SoundType.STONE).strength(1.5F, 6.0F));
