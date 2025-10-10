@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "container": {
+    "count": 1,
+    "id": "minecraft:cauldron"
+  },
+  "experience": 0.5,
+  "ingredients": [
+    {
+      "item": "farmersdelight:ham"
+    },
+    {
+      "item": "farmersdelight:ham"
+    },
+    {
+      "item": "minestuck:amber_gummy_worm"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "extrastuck:divine_temptation_block"
+  }
+}

@@ -7,6 +7,7 @@ import com.medsal15.blocks.ESBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -80,7 +81,10 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(ESBlocks.ZILLIUM_BRICK_WALL.get());
 
         add(ESBlocks.PIZZA.get(), noDrop());
+        dropOther(ESBlocks.DIVINE_TEMPTATION_BLOCK.get(), Items.CAULDRON);
+
         add(ESBlocks.CARD_ORE.get(), this::droppingWithOreItem);
+
         dropSelf(ESBlocks.PRINTER.get());
         dropSelf(ESBlocks.CHARGER.get());
         dropSelf(ESBlocks.REACTOR.get());

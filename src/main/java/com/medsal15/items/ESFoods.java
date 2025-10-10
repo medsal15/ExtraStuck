@@ -16,4 +16,8 @@ public final class ESFoods {
     public static final FoodProperties RADBURGER = new FoodProperties.Builder().nutrition(13).saturationModifier(.7F)
             .effect(() -> new MobEffectInstance(MobEffects.WITHER, 100, 1), .6F)
             .build();
+    public static final FoodProperties DIVINE_TEMPTATION = new FoodProperties.Builder().nutrition(5)
+            .saturationModifier(.45F)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600), 1F)
+            .usingConvertsTo(Items.BOWL).build();
 }

@@ -544,6 +544,10 @@ public final class ESItems {
             p -> new Item(p.food(ESFoods.SUSHROOM_STEW).stacksTo(16).craftRemainder(Items.BOWL)));
     public static final DeferredItem<Item> RADBURGER = ITEMS.registerItem("radburger",
             p -> new Item(p.food(ESFoods.RADBURGER)));
+    public static final DeferredItem<BlockItem> DIVINE_TEMPTATION_BLOCK = ITEMS
+            .registerSimpleBlockItem(ESBlocks.DIVINE_TEMPTATION_BLOCK);
+    public static final DeferredItem<Item> DIVINE_TEMPTATION = ITEMS.registerItem("divine_temptation",
+            p -> new Item(p.food(ESFoods.DIVINE_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -911,6 +915,8 @@ public final class ESItems {
         list.add(FORTUNE_COOKIE);
         list.add(SUSHROOM_STEW);
         list.add(RADBURGER);
+        list.add(DIVINE_TEMPTATION_BLOCK);
+        list.add(DIVINE_TEMPTATION);
         return list;
     }
 
