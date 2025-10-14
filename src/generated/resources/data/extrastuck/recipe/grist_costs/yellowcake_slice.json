@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 2,
+    "minestuck:iodine": 2,
+    "minestuck:uranium": 1
+  },
+  "ingredient": {
+    "item": "extrastuck:yellowcake_slice"
+  }
+}

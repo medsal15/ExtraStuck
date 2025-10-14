@@ -254,6 +254,10 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.OVERCHARGED_MAGNEFORK, "Batteries sold separately");
         addItem(ESItems.UNDERCHARGED_MAGNEFORK, "Undercharged Magnefork");
 
+        addItem(ESItems.YELLOWCAKESAW, "YellowcakeSaw");
+        addItem(ESItems.YELLOWCAKESAW_LIPSTICK, "Glowing Lipstick");
+        addItemTooltip(ESItems.YELLOWCAKESAW_LIPSTICK, "Contraband");
+
         addItem(ESItems.RADBOW, "Radbow");
         addItemTooltip(ESItems.RADBOW, "Silent, deadly, and quite radioactive!");
         addEntityType(ESEntities.URANIUM_ROD, "Uranium Rod");
@@ -461,6 +465,8 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.DIVINE_TEMPTATION_BLOCK, "Divine Temptation");
         addBlockTooltip(ESBlocks.DIVINE_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
         addItem(ESItems.DIVINE_TEMPTATION, "Bowl of Divine Temptation");
+        addItem(ESItems.YELLOWCAKE_SLICE, "Slice of Yellowcake");
+        addItemTooltip(ESItems.YELLOWCAKE_SLICE, "It's cake, right?");
     }
 
     private void addTags() {

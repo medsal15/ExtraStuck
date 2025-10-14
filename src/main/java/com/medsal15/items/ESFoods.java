@@ -20,4 +20,8 @@ public final class ESFoods {
             .saturationModifier(.45F)
             .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600), 1F)
             .usingConvertsTo(Items.BOWL).build();
+    public static final FoodProperties YELLOWCAKE_SLICE = new FoodProperties.Builder().nutrition(3)
+            .saturationModifier(.1F)
+            .effect(() -> new MobEffectInstance(MobEffects.WITHER, 20, 1), 1)
+            .build();
 }

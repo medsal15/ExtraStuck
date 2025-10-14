@@ -41,8 +41,9 @@ public record SequencedInterpreter(String option) implements RecipeInterpreter {
 
     @Override
     public GristSet generateCost(Recipe<?> recipe, Item item, GeneratorCallback callback) {
-        if (!ConfigCommon.configEnabled(option) || !ModList.get().isLoaded("create")
-                || !(recipe instanceof SequencedAssemblyRecipe))
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return null;
+        if (!ModList.get().isLoaded("create") || !(recipe instanceof SequencedAssemblyRecipe))
             return null;
 
         SequencedAssemblyRecipe assembly = (SequencedAssemblyRecipe) recipe;

@@ -414,6 +414,19 @@ public final class ESItems {
                     new MSItemProperties().durability(750)
                             .component(ESDataComponents.ENERGY_STORAGE, 30_000)));
     // #endregion Forks
+    // #region Chainsaws
+    public static final DeferredItem<Item> YELLOWCAKESAW = ITEMS.register("yellowcakesaw", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.CANDY_TIER, 4, -1.5F).efficiency(10).set(MSItemTypes.CHAINSAW_TOOL)
+                    .set(ItemRightClickEffect.switchTo(ESItems.YELLOWCAKESAW_LIPSTICK))
+                    .add(OnHitEffect.SET_CANDY_DROP_FLAG)
+                    .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.WITHER, 100, 1))),
+            new MSItemProperties().durability(720)));
+    public static final DeferredItem<Item> YELLOWCAKESAW_LIPSTICK = ITEMS.register("yellowcakesaw_lipstick",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.WOOD, -1, -.5F).efficiency(10)
+                            .set(ItemRightClickEffect.switchTo(ESItems.YELLOWCAKESAW)),
+                    new MSItemProperties().durability(720)));
+    // #endregion Chainsaws
     // #region Crossbows
     public static final DeferredItem<Item> RADBOW = ITEMS.register("radbow",
             () -> new RadBowItem(new Properties().durability(350).stacksTo(1)));
@@ -548,6 +561,8 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.DIVINE_TEMPTATION_BLOCK);
     public static final DeferredItem<Item> DIVINE_TEMPTATION = ITEMS.registerItem("divine_temptation",
             p -> new Item(p.food(ESFoods.DIVINE_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
+    public static final DeferredItem<Item> YELLOWCAKE_SLICE = ITEMS.registerItem("yellowcake_slice",
+            p -> new Item(p.food(ESFoods.YELLOWCAKE_SLICE)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -820,6 +835,9 @@ public final class ESItems {
         list.add(MAGNEFORK);
         list.add(OVERCHARGED_MAGNEFORK);
         list.add(UNDERCHARGED_MAGNEFORK);
+        // Chainsaws
+        list.add(YELLOWCAKESAW);
+        list.add(YELLOWCAKESAW_LIPSTICK);
         return list;
     }
 
@@ -828,6 +846,7 @@ public final class ESItems {
         list.add(GEM_BREAKER);
         list.add(BELL_HAMMER);
         list.add(BLIND_HAMMER);
+        list.add(YELLOWCAKESAW);
         return list;
     }
 
@@ -917,6 +936,7 @@ public final class ESItems {
         list.add(RADBURGER);
         list.add(DIVINE_TEMPTATION_BLOCK);
         list.add(DIVINE_TEMPTATION);
+        list.add(YELLOWCAKE_SLICE);
         return list;
     }
 

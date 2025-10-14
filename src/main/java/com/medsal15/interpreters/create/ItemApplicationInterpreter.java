@@ -39,7 +39,9 @@ public record ItemApplicationInterpreter(String option) implements RecipeInterpr
 
     @Override
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
-        if (!ConfigCommon.configEnabled(option) || !ModList.get().isLoaded("create")
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return null;
+        if (!ModList.get().isLoaded("create")
                 || !(recipe instanceof ItemApplicationRecipe))
             return null;
 

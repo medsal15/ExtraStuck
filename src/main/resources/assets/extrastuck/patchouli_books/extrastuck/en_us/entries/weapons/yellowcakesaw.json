@@ -1,0 +1,30 @@
+{
+    "name": "YellowcakeSaw",
+    "icon": "extrastuck:yellowcakesaw",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:yellowcakesaw"
+            },
+            "text": "An upgrade to the Cakesaw, the YellowcakeSaw is now more toxic.$(br2)$(3)$(l)Special:$() Applies Wither II for 5 seconds to enemies."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Cakesaw and a Slice of Yellowcake in a Totem Lathe.",
+            "left": "minestuck:cakesaw",
+            "mode": "&&",
+            "right": "extrastuck:yellowcake_slice",
+            "result": "extrastuck:yellowcakesaw"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:yellowcakesaw_lipstick"
+            },
+            "text": "An extremely radioactive (and illegal) lipstick.$(br)Do not use if you value your jaw and teeth."
+        }
+    ]
+}

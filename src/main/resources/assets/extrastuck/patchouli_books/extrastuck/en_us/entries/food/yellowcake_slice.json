@@ -1,0 +1,22 @@
+{
+    "name": "Slice of Yellowcake",
+    "icon": "extrastuck:yellowcake_slice",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:yellowcake_slice"
+            },
+            "text": "The most radioactive piece of cake in the world. Not safe for consumption."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Cake and a Lump of Uranium in a Punch Designix.",
+            "left": "minecraft:cake",
+            "mode": "||",
+            "right": "minestuck:raw_uranium",
+            "result": "extrastuck:yellowcake_slice"
+        }
+    ]
+}

@@ -40,8 +40,9 @@ public record CookingPotInterpreter(GristSet.Immutable cookingCost, String optio
 
     @Override
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
-        if (!ConfigCommon.configEnabled(option) || !ModList.get().isLoaded("farmersdelight")
-                || !(recipe instanceof CookingPotRecipe cook))
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return null;
+        if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CookingPotRecipe cook))
             return null;
 
         MutableGristSet totalCost = MutableGristSet.newDefault();
