@@ -40,8 +40,9 @@ public record CuttingBoardInterpreter(String option) implements RecipeInterprete
 
     @Override
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
-        if (!ConfigCommon.configEnabled(option) || !ModList.get().isLoaded("farmersdelight")
-                || !(recipe instanceof CuttingBoardRecipe cut))
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return null;
+        if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CuttingBoardRecipe cut))
             return null;
 
         int count = 0;

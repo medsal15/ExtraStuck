@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:source_grist_cost",
+  "grist_cost": {},
+  "ingredient": {
+    "item": "extrastuck:yellowcakesaw_lipstick"
+  },
+  "sources": [
+    "extrastuck:yellowcakesaw"
+  ]
+}

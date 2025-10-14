@@ -165,6 +165,9 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.MAGNEFORK.get());
         handheldItem(ESItems.OVERCHARGED_MAGNEFORK.get());
         handheldItem(ESItems.UNDERCHARGED_MAGNEFORK.get());
+
+        handheldItem(ESItems.YELLOWCAKESAW.get());
+        handheldItem(ESItems.YELLOWCAKESAW_LIPSTICK.get());
     }
 
     private void registerRangedWeapons() {
@@ -212,6 +215,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.RADBURGER.get());
         basicItem(ESItems.DIVINE_TEMPTATION_BLOCK.get());
         basicItem(ESItems.DIVINE_TEMPTATION.get());
+        basicItem(ESItems.YELLOWCAKE_SLICE.get());
     }
 
     private void registerBlocks() {

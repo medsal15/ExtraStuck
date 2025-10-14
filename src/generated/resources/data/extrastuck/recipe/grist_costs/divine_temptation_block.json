@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "farmersdelight"
+      }
+    }
+  ],
+  "type": "minestuck:source_grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 5,
+    "minestuck:iodine": 50
+  },
+  "ingredient": {
+    "item": "extrastuck:divine_temptation_block"
+  },
+  "sources": [
+    "minecraft:cauldron",
+    "minecraft:golden_apple"
+  ]
+}

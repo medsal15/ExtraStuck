@@ -12,6 +12,7 @@ import com.mraof.minestuck.api.alchemy.GristTypes;
 import com.mraof.minestuck.api.alchemy.recipe.GristCostRecipeBuilder;
 import com.mraof.minestuck.api.alchemy.recipe.SourceGristCostBuilder;
 import com.mraof.minestuck.api.alchemy.recipe.combination.CombinationRecipeBuilder;
+import com.mraof.minestuck.data.recipe.IrradiatingRecipeBuilder;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
 import com.simibubi.create.AllBlocks;
@@ -451,6 +452,18 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Forks
 
+        // #region Chainsaws
+        CombinationRecipeBuilder.of(ESItems.YELLOWCAKESAW)
+                .input(MSItems.CAKESAW).and().input(ESItems.YELLOWCAKE_SLICE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.YELLOWCAKESAW)
+                .grist(GristTypes.SULFUR, 90).grist(GristTypes.MERCURY, 36).grist(GristTypes.URANIUM, 12)
+                .build(output);
+        SourceGristCostBuilder.of(ESItems.YELLOWCAKESAW_LIPSTICK)
+                .source(ESItems.YELLOWCAKESAW.get())
+                .build(output);
+        // #endregion Chainsaws
+
         // #region Crossbows
         CombinationRecipeBuilder.of(ESItems.RADBOW)
                 .input(Items.CROSSBOW).and().input(MSItems.URANIUM_POWERED_STICK)
@@ -859,6 +872,16 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.AMBER, 5).grist(GristTypes.IODINE, 50)
                 .source(Items.CAULDRON).source(Items.GOLDEN_APPLE)
                 .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
+
+        IrradiatingRecipeBuilder
+                .irradiating(Ingredient.of(ModItems.CAKE_SLICE.get()), ESItems.YELLOWCAKE_SLICE, .1F, 20)
+                .save(output.withConditions(FARMERSDELIGHT_LOADED), modid("irradiating/yellowcake_slice"));
+        CombinationRecipeBuilder.of(ESItems.YELLOWCAKE_SLICE)
+                .input(Items.CAKE).or().input(MSItems.RAW_URANIUM)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.YELLOWCAKE_SLICE)
+                .grist(GristTypes.IODINE, 2).grist(GristTypes.AMBER, 2).grist(GristTypes.URANIUM, 1)
+                .build(output);
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

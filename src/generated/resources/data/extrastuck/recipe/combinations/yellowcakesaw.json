@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:cakesaw"
+  },
+  "input2": {
+    "item": "extrastuck:yellowcake_slice"
+  },
+  "mode": "and",
+  "output": "extrastuck:yellowcakesaw"
+}

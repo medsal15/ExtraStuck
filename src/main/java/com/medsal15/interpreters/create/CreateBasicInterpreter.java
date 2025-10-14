@@ -52,7 +52,9 @@ public record CreateBasicInterpreter(GristSet.Immutable processCost, String opti
 
     @Override
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
-        if (!ConfigCommon.configEnabled(option) || !ModList.get().isLoaded("create")
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return null;
+        if (!ModList.get().isLoaded("create")
                 || !(recipe instanceof ProcessingRecipe))
             return null;
 
