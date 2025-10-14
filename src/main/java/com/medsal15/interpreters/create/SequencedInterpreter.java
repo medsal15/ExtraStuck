@@ -2,7 +2,10 @@ package com.medsal15.interpreters.create;
 
 import java.util.List;
 
+import com.medsal15.config.ConfigCommon;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mraof.minestuck.alchemy.recipe.generator.recipe.DefaultInterpreter;
 import com.mraof.minestuck.alchemy.recipe.generator.recipe.RecipeInterpreter;
 import com.mraof.minestuck.api.alchemy.GristSet;
@@ -18,10 +21,13 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.neoforged.fml.ModList;
 
-public enum SequencedInterpreter implements RecipeInterpreter {
-    INSTANCE;
-
-    public static final MapCodec<SequencedInterpreter> CODEC = MapCodec.unit(INSTANCE);
+public record SequencedInterpreter(String option) implements RecipeInterpreter {
+    public static final MapCodec<SequencedInterpreter> CODEC = RecordCodecBuilder
+            .mapCodec(
+                    inst -> inst
+                            .group(Codec.STRING.optionalFieldOf("option", "")
+                                    .forGetter(SequencedInterpreter::option))
+                            .apply(inst, SequencedInterpreter::new));
 
     @Override
     public MapCodec<? extends RecipeInterpreter> codec() {
@@ -35,7 +41,8 @@ public enum SequencedInterpreter implements RecipeInterpreter {
 
     @Override
     public GristSet generateCost(Recipe<?> recipe, Item item, GeneratorCallback callback) {
-        if (!ModList.get().isLoaded("create") || !(recipe instanceof SequencedAssemblyRecipe))
+        if (!ConfigCommon.configEnabled(option) || !ModList.get().isLoaded("create")
+                || !(recipe instanceof SequencedAssemblyRecipe))
             return null;
 
         SequencedAssemblyRecipe assembly = (SequencedAssemblyRecipe) recipe;

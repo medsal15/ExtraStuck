@@ -2,6 +2,8 @@ package com.medsal15.interpreters.farmersdelight;
 
 import java.util.List;
 
+import com.medsal15.config.ConfigCommon;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mraof.minestuck.alchemy.recipe.generator.recipe.DefaultInterpreter;
@@ -17,12 +19,13 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.neoforged.fml.ModList;
 import vectorwing.farmersdelight.common.crafting.CookingPotRecipe;
 
-public record CookingPotInterpreter(GristSet.Immutable cookingCost) implements RecipeInterpreter {
+public record CookingPotInterpreter(GristSet.Immutable cookingCost, String option) implements RecipeInterpreter {
     public static final MapCodec<CookingPotInterpreter> CODEC = RecordCodecBuilder
             .mapCodec(
                     inst -> inst
                             .group(GristSet.Codecs.MAP_CODEC.optionalFieldOf("cooking_cost", GristSet.EMPTY)
-                                    .forGetter(CookingPotInterpreter::cookingCost))
+                                    .forGetter(CookingPotInterpreter::cookingCost),
+                                    Codec.STRING.optionalFieldOf("option", "").forGetter(CookingPotInterpreter::option))
                             .apply(inst, CookingPotInterpreter::new));
 
     @Override
@@ -37,7 +40,8 @@ public record CookingPotInterpreter(GristSet.Immutable cookingCost) implements R
 
     @Override
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
-        if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CookingPotRecipe cook))
+        if (!ConfigCommon.configEnabled(option) || !ModList.get().isLoaded("farmersdelight")
+                || !(recipe instanceof CookingPotRecipe cook))
             return null;
 
         MutableGristSet totalCost = MutableGristSet.newDefault();

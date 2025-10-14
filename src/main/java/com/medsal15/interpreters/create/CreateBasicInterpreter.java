@@ -2,6 +2,8 @@ package com.medsal15.interpreters.create;
 
 import java.util.List;
 
+import com.medsal15.config.ConfigCommon;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mraof.minestuck.alchemy.recipe.generator.recipe.DefaultInterpreter;
@@ -21,17 +23,21 @@ import net.neoforged.fml.ModList;
 /**
  * Generic interpreter for create recipes that works for most of them
  *
+ * Accepts an optional option that disables it
+ *
  * @see {ItemApplicationInterpreter} for item application (e.g. deployers), as
  *      it supports keepHeldItem
  * @see {SpecialInterpreter} for mechanical crafting
  * @see {SequencedInterpreter} for sequenced assembly
  */
-public record CreateBasicInterpreter(GristSet.Immutable processCost) implements RecipeInterpreter {
+public record CreateBasicInterpreter(GristSet.Immutable processCost, String option) implements RecipeInterpreter {
     public static final MapCodec<CreateBasicInterpreter> CODEC = RecordCodecBuilder
             .mapCodec(
                     inst -> inst
                             .group(GristSet.Codecs.MAP_CODEC.optionalFieldOf("process_cost", GristSet.EMPTY)
-                                    .forGetter(CreateBasicInterpreter::processCost))
+                                    .forGetter(CreateBasicInterpreter::processCost),
+                                    Codec.STRING.optionalFieldOf("option", "")
+                                            .forGetter(CreateBasicInterpreter::option))
                             .apply(inst, CreateBasicInterpreter::new));
 
     @Override
@@ -46,7 +52,8 @@ public record CreateBasicInterpreter(GristSet.Immutable processCost) implements 
 
     @Override
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
-        if (!ModList.get().isLoaded("create") || !(recipe instanceof ProcessingRecipe))
+        if (!ConfigCommon.configEnabled(option) || !ModList.get().isLoaded("create")
+                || !(recipe instanceof ProcessingRecipe))
             return null;
 
         ProcessingRecipe<?, ?> proc = (ProcessingRecipe<?, ?>) recipe;
