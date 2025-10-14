@@ -8,6 +8,7 @@ import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.computer.ESProgramTypes;
+import com.medsal15.conditions.ESConditions;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigCommon;
 import com.medsal15.entities.ESEntities;
@@ -92,6 +93,7 @@ public class ExtraStuck {
         ESArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         ESBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ESBlocks.BLOCKS.register(modEventBus);
+        ESConditions.CONDITIONS.register(modEventBus);
         ESDataComponents.DATA_COMPONENTS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
         ESInterpretertypes.INTERPRETER_TYPES.register(modEventBus);

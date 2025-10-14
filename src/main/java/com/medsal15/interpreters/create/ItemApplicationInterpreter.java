@@ -2,7 +2,10 @@ package com.medsal15.interpreters.create;
 
 import java.util.List;
 
+import com.medsal15.config.ConfigCommon;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mraof.minestuck.alchemy.recipe.generator.recipe.DefaultInterpreter;
 import com.mraof.minestuck.alchemy.recipe.generator.recipe.RecipeInterpreter;
 import com.mraof.minestuck.api.alchemy.GristSet;
@@ -16,10 +19,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.neoforged.fml.ModList;
 
-public enum ItemApplicationInterpreter implements RecipeInterpreter {
-    INSTANCE;
-
-    public static final MapCodec<ItemApplicationInterpreter> CODEC = MapCodec.unit(INSTANCE);
+public record ItemApplicationInterpreter(String option) implements RecipeInterpreter {
+    public static final MapCodec<ItemApplicationInterpreter> CODEC = RecordCodecBuilder
+            .mapCodec(
+                    inst -> inst
+                            .group(Codec.STRING.optionalFieldOf("option", "")
+                                    .forGetter(ItemApplicationInterpreter::option))
+                            .apply(inst, ItemApplicationInterpreter::new));
 
     @Override
     public MapCodec<? extends RecipeInterpreter> codec() {
@@ -33,7 +39,8 @@ public enum ItemApplicationInterpreter implements RecipeInterpreter {
 
     @Override
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
-        if (!ModList.get().isLoaded("create") || !(recipe instanceof ItemApplicationRecipe))
+        if (!ConfigCommon.configEnabled(option) || !ModList.get().isLoaded("create")
+                || !(recipe instanceof ItemApplicationRecipe))
             return null;
 
         ItemApplicationRecipe apply = (ItemApplicationRecipe) recipe;

@@ -1,5 +1,7 @@
 package com.medsal15.config;
 
+import com.medsal15.ExtraStuck;
+
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
@@ -49,14 +51,15 @@ public class ConfigCommon {
             .defineInRange("charger.fe_storage", 64_000, 1, Integer.MAX_VALUE);
     public static final ConfigValue<Integer> CHARGER_CHARGE_TICK = BUILDER
             .comment("How much FE is produced per tick, at the cost of 1 uranium power")
-            .defineInRange("charge.fe_tick", 500, 1, Integer.MAX_VALUE);
+            .defineInRange("charger.fe_tick", 500, 1, Integer.MAX_VALUE);
     public static final ConfigValue<Integer> CHARGER_TRANSFER_TICK = BUILDER
             .comment("How much FE is transferred between storage and item per tick", "Mostly to make charging fancier")
-            .defineInRange("charge.fe_transfer", 1_000, 1, Integer.MAX_VALUE);
+            .defineInRange("charger.fe_transfer", 1_000, 1, Integer.MAX_VALUE);
 
     public static final ConfigValue<Integer> RADBOW_CHARGES = BUILDER
             .comment("How many charges a radbow gets from an uranium rod")
             .defineInRange("radbow_charge", 10, 1, Integer.MAX_VALUE);
+
     public static final ConfigValue<Integer> MASTERMIND_DIFFICULTY = BUILDER
             .comment("How many colors are available by default in mastermind cards",
                     "Existing cards will not be affected")
@@ -66,5 +69,25 @@ public class ConfigCommon {
                     "If true, captchalogued mastermind cards will be stored in a more difficult card when retrieved from a mastermind modus")
             .define("mastermind.incremental", false);
 
+    public static final ModConfigSpec.BooleanValue INTERPRETERS_CREATE = BUILDER
+            .comment("If true, default create interpreters are loaded").define("interpreters.create", true);
+    public static final ModConfigSpec.BooleanValue INTERPRETERS_FARMERSDELIGHT = BUILDER
+            .comment("If true, default farmer's delight interpreters are loaded")
+            .define("interpreters.farmersdelight", true);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
+
+    public static boolean configEnabled(String name) {
+        switch (name) {
+            case "reactor.explode":
+                return REACTOR_EXPLODE.getAsBoolean();
+            case "interpreters.create":
+                return INTERPRETERS_CREATE.getAsBoolean();
+            case "interpreters.farmersdelight":
+                return INTERPRETERS_FARMERSDELIGHT.getAsBoolean();
+            default:
+                ExtraStuck.LOGGER.info("Unknown or non-boolean config option: {}", name);
+                return false;
+        }
+    }
 }

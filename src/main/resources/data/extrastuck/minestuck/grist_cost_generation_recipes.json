@@ -3,7 +3,8 @@
         "__comment": "Default basic create interpreter",
         "__comment_2": "Does not support recipe that have fluids as inputs/outputs",
         "interpreter": {
-            "type": "extrastuck:create_basic"
+            "type": "extrastuck:create_basic",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -14,6 +15,7 @@
         "__comment": "Also supports an (optional) extra process_cost, added to recipes",
         "interpreter": {
             "type": "extrastuck:create_basic",
+            "option": "interpreters.create",
             "process_cost": {
                 "minestuck:cobalt": 1
             }
@@ -27,7 +29,8 @@
         "__comment": "Specific to item_application and deploying, as the held item can be kept even afterwards",
         "__comment_2": "See waxing recipes for examples",
         "interpreter": {
-            "type": "extrastuck:create_item_application"
+            "type": "extrastuck:create_item_application",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -38,7 +41,8 @@
         "__comment": "Generic special recipe, in case you're sure the recipe only has 1 output",
         "__comment_2": "Not specific to create either ;)",
         "interpreter": {
-            "type": "extrastuck:special_recipe"
+            "type": "extrastuck:special_recipe",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -49,7 +53,8 @@
         "__comment": "Specific to sequenced_assembly, as it combines multiple recipe types",
         "__comment_2": "Hopefully, nothing was missed",
         "interpreter": {
-            "type": "extrastuck:create_sequenced_assembly"
+            "type": "extrastuck:create_sequenced_assembly",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -60,7 +65,8 @@
         "__comment": "Specific to cooking pot recipes, as the default interpreter does not include the food's container",
         "__comment_2": "Optionally supports an extra cooking_cost grist map",
         "interpreter": {
-            "type": "extrastuck:farmersdelight_cooking"
+            "type": "extrastuck:farmersdelight_cooking",
+            "option": "interpreters.farmersdelight"
         },
         "source": {
             "type": "recipe_serializer",
@@ -71,7 +77,8 @@
         "__comment": "Specific to cooking pot recipes, as the default interpreter does not include the food's container",
         "__comment_2": "Use the [#extrastuck:interpreters_ignore_byproduct/cutting] tag to add items that are common byproducts",
         "interpreter": {
-            "type": "extrastuck:farmersdelight_cutting"
+            "type": "extrastuck:farmersdelight_cutting",
+            "option": "interpreters.farmersdelight"
         },
         "source": {
             "type": "recipe_serializer",
@@ -80,7 +87,8 @@
     },
     {
         "interpreter": {
-            "type": "extrastuck:create_basic"
+            "type": "extrastuck:create_basic",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -89,7 +97,8 @@
     },
     {
         "interpreter": {
-            "type": "extrastuck:create_basic"
+            "type": "extrastuck:create_basic",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -98,7 +107,8 @@
     },
     {
         "interpreter": {
-            "type": "extrastuck:create_basic"
+            "type": "extrastuck:create_basic",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -107,7 +117,8 @@
     },
     {
         "interpreter": {
-            "type": "extrastuck:create_basic"
+            "type": "extrastuck:create_basic",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -116,7 +127,8 @@
     },
     {
         "interpreter": {
-            "type": "extrastuck:create_basic"
+            "type": "extrastuck:create_basic",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -125,7 +137,8 @@
     },
     {
         "interpreter": {
-            "type": "extrastuck:create_basic"
+            "type": "extrastuck:create_basic",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
@@ -134,7 +147,8 @@
     },
     {
         "interpreter": {
-            "type": "extrastuck:create_item_application"
+            "type": "extrastuck:create_item_application",
+            "option": "interpreters.create"
         },
         "source": {
             "type": "recipe_serializer",
