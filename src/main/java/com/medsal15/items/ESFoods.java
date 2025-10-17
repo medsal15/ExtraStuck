@@ -6,8 +6,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Items;
-import net.neoforged.fml.ModList;
-import vectorwing.farmersdelight.common.registry.ModEffects;
 
 public final class ESFoods {
     public static final FoodProperties SWEET_TOOTH = new FoodProperties.Builder().fast().nutrition(1)
@@ -28,24 +26,8 @@ public final class ESFoods {
             .saturationModifier(.1F)
             .effect(() -> new MobEffectInstance(MobEffects.WITHER, 20, 1), 1)
             .build();
-    public static final FoodProperties COOKED_BEEGG = new FoodProperties.Builder().nutrition(5)
+    public static final FoodProperties COOKED_BEE_LARVA = new FoodProperties.Builder().nutrition(5)
             .saturationModifier(.3F)
             .effect(() -> new MobEffectInstance(ESMobEffects.BEE_ANGRY), 1)
             .build();
-    public static final FoodProperties BACON_AND_BEEGGS;
-
-    static {
-        if (ModList.get().isLoaded("farmersdelight")) {
-            BACON_AND_BEEGGS = new FoodProperties.Builder().nutrition(12)
-                    .saturationModifier(.5F).usingConvertsTo(Items.BOWL)
-                    .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT, 1200), 1)
-                    .effect(() -> new MobEffectInstance(ESMobEffects.BEE_ANGRY, 1, 3), 1)
-                    .build();
-        } else {
-            BACON_AND_BEEGGS = new FoodProperties.Builder().nutrition(12)
-                    .saturationModifier(.5F).usingConvertsTo(Items.BOWL)
-                    .effect(() -> new MobEffectInstance(ESMobEffects.BEE_ANGRY, 1, 3), 1)
-                    .build();
-        }
-    }
 }

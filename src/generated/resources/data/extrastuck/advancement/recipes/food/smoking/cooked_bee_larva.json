@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "extrastuck:beegg"
+            "items": "extrastuck:bee_larva"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extrastuck:campfire/cooked_beegg"
+        "recipe": "extrastuck:smoking/cooked_bee_larva"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "extrastuck:campfire/cooked_beegg"
+      "extrastuck:smoking/cooked_bee_larva"
     ]
   }
 }

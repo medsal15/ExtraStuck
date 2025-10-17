@@ -564,11 +564,10 @@ public final class ESItems {
             p -> new Item(p.food(ESFoods.DIVINE_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> YELLOWCAKE_SLICE = ITEMS.registerItem("yellowcake_slice",
             p -> new Item(p.food(ESFoods.YELLOWCAKE_SLICE)));
-    public static final DeferredItem<Item> BEE_EGG = ITEMS.registerItem("beegg", p -> new BeeggItem(p.stacksTo(16)));
-    public static final DeferredItem<Item> COOKED_BEEGG = ITEMS.registerItem("cooked_beegg",
-            p -> new Item(p.food(ESFoods.COOKED_BEEGG)));
-    public static final DeferredItem<Item> CICADAS_AND_BEEGGS = ITEMS.registerItem("cicadas_and_beeggs",
-            p -> new Item(p.food(ESFoods.BACON_AND_BEEGGS).craftRemainder(Items.BOWL)));
+    public static final DeferredItem<Item> BEE_LARVA = ITEMS.registerItem("bee_larva",
+            p -> new BeeggItem(p.stacksTo(16)));
+    public static final DeferredItem<Item> COOKED_BEE_LARVA = ITEMS.registerItem("cooked_bee_larva",
+            p -> new Item(p.food(ESFoods.COOKED_BEE_LARVA)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -728,7 +727,7 @@ public final class ESItems {
             output.accept(item.get());
         }
 
-        output.accept(BEE_EGG);
+        output.accept(BEE_LARVA);
         for (DeferredItem<? extends Item> item : ESItems.getFoods()) {
             output.accept(item.get());
         }
@@ -944,8 +943,7 @@ public final class ESItems {
         list.add(DIVINE_TEMPTATION_BLOCK);
         list.add(DIVINE_TEMPTATION);
         list.add(YELLOWCAKE_SLICE);
-        list.add(COOKED_BEEGG);
-        list.add(CICADAS_AND_BEEGGS);
+        list.add(COOKED_BEE_LARVA);
         return list;
     }
 

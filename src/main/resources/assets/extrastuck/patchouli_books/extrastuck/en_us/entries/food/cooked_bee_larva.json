@@ -1,0 +1,19 @@
+{
+    "name": "Cooked Bee Larva",
+    "icon": "extrastuck:cooked_bee_larva",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:cooked_bee_larva"
+            },
+            "text": "A cooked baybee. You monster."
+        },
+        {
+            "type": "patchouli:smelting",
+            "recipe": "extrastuck:smelting/cooked_bee_larva",
+            "text": "Cook a Bee Larva. You can also use a Smoker or Campfire."
+        }
+    ]
+}

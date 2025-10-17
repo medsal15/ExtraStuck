@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cooked_beegg": {
+    "has_bee_egg": {
       "conditions": {
         "items": [
           {
-            "items": "extrastuck:cooked_beegg"
+            "items": "extrastuck:bee_larva"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extrastuck:shapeless/cicadas_and_beeggs"
+        "recipe": "extrastuck:campfire/cooked_bee_larva"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cooked_beegg"
+      "has_bee_egg"
     ]
   ],
   "rewards": {
     "recipes": [
-      "extrastuck:shapeless/cicadas_and_beeggs"
+      "extrastuck:campfire/cooked_bee_larva"
     ]
   }
 }

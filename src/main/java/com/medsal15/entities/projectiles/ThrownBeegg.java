@@ -81,6 +81,6 @@ public class ThrownBeegg extends ThrowableItemProjectile {
 
     @Override
     protected Item getDefaultItem() {
-        return ESItems.BEE_EGG.get();
+        return ESItems.BEE_LARVA.get();
     }
 }
