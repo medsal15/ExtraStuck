@@ -14,4 +14,6 @@ public final class ESMobEffects {
 
     public static final DeferredHolder<MobEffect, TimeStopEffect> TIME_STOP = MOB_EFFECTS.register("time_stop",
             () -> new TimeStopEffect(MobEffectCategory.HARMFUL, 0xff0000));
+    public static final DeferredHolder<MobEffect, BeeAngryEffect> BEE_ANGRY = MOB_EFFECTS.register("bee_angry",
+            () -> new BeeAngryEffect(MobEffectCategory.HARMFUL, 0xff7700));
 }

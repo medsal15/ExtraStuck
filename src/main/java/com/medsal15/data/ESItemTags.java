@@ -35,6 +35,8 @@ public final class ESItemTags extends ItemTagsProvider {
     public static final TagKey<Item> SHOW_VALUE = ItemTags.create(ExtraStuck.modid("show_value"));
     public static final TagKey<Item> URANIUM_RODS = ItemTags.create(common("rods/uranium"));
     public static final TagKey<Item> BRASS_NUGGETS = ItemTags.create(common("nuggets/brass"));
+    public static final TagKey<Item> BEE_EGGS = ItemTags.create(common("eggs/bee"));
+    public static final TagKey<Item> COOKED_EGGS = ItemTags.create(common("foods/cooked_egg"));
 
     public static final TagKey<Item> IGNORE_BYPRODUCT_CUTTING = ItemTags
             .create(ExtraStuck.modid("interpreters_ignore_byproduct/cutting"));
@@ -119,6 +121,9 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(Tags.Items.FOODS).add(ESItems.SWEET_TOOTH.get());
         tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED).add(ESItems.PIZZA.get(), ESItems.DIVINE_TEMPTATION_BLOCK.get());
         tag(Tags.Items.FOODS_SOUP).add(ESItems.SUSHROOM_STEW.get(), ESItems.DIVINE_TEMPTATION.get());
+        tag(Tags.Items.EGGS).add(ESItems.BEE_EGG.get());
+        tag(BEE_EGGS).add(ESItems.BEE_EGG.get());
+        tag(COOKED_EGGS).add(ESItems.COOKED_BEEGG.get());
 
         tag(ItemTags.DOORS).add(ESItems.COBALT_DOOR.get());
         tag(ItemTags.TRAPDOORS).add(ESItems.COBALT_TRAPDOOR.get());

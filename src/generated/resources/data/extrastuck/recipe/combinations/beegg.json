@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:egg"
+  },
+  "input2": {
+    "item": "minecraft:bee_nest"
+  },
+  "mode": "and",
+  "output": "extrastuck:beegg"
+}

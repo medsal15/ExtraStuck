@@ -49,6 +49,7 @@ import com.medsal15.items.projectiles.ESArrowItem;
 import com.medsal15.items.projectiles.ESBulletItem;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
+import com.medsal15.items.throwables.BeeggItem;
 import com.medsal15.items.throwables.SwapTrident;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
@@ -563,6 +564,11 @@ public final class ESItems {
             p -> new Item(p.food(ESFoods.DIVINE_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> YELLOWCAKE_SLICE = ITEMS.registerItem("yellowcake_slice",
             p -> new Item(p.food(ESFoods.YELLOWCAKE_SLICE)));
+    public static final DeferredItem<Item> BEE_EGG = ITEMS.registerItem("beegg", p -> new BeeggItem(p.stacksTo(16)));
+    public static final DeferredItem<Item> COOKED_BEEGG = ITEMS.registerItem("cooked_beegg",
+            p -> new Item(p.food(ESFoods.COOKED_BEEGG)));
+    public static final DeferredItem<Item> CICADAS_AND_BEEGGS = ITEMS.registerItem("cicadas_and_beeggs",
+            p -> new Item(p.food(ESFoods.BACON_AND_BEEGGS).craftRemainder(Items.BOWL)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -722,6 +728,7 @@ public final class ESItems {
             output.accept(item.get());
         }
 
+        output.accept(BEE_EGG);
         for (DeferredItem<? extends Item> item : ESItems.getFoods()) {
             output.accept(item.get());
         }
@@ -937,6 +944,8 @@ public final class ESItems {
         list.add(DIVINE_TEMPTATION_BLOCK);
         list.add(DIVINE_TEMPTATION);
         list.add(YELLOWCAKE_SLICE);
+        list.add(COOKED_BEEGG);
+        list.add(CICADAS_AND_BEEGGS);
         return list;
     }
 
