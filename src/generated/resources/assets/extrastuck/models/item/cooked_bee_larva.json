@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "extrastuck:item/cooked_beegg"
+    "layer0": "extrastuck:item/cooked_bee_larva"
   }
 }

@@ -119,8 +119,8 @@ public final class ESLangProvider extends LanguageProvider {
         addBlockTooltip(ESBlocks.NORMAL_CAT_PLUSH, "In what world is that normal?");
         addItem(ESItems.MASTERMIND_DISK, "Mastermind Codebreaker Disk");
         addItemTooltip(ESItems.MASTERMIND_DISK, "Screw that. Puzzles suck.");
-        addItem(ESItems.BEE_EGG, "Beegg");
-        addItemTooltip(ESItems.BEE_EGG, "Or a bee egg");
+        addItem(ESItems.BEE_LARVA, "Bee Larva");
+        addItemTooltip(ESItems.BEE_LARVA, "D'aww, it's a baybee");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -472,10 +472,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.DIVINE_TEMPTATION, "Bowl of Divine Temptation");
         addItem(ESItems.YELLOWCAKE_SLICE, "Slice of Yellowcake");
         addItemTooltip(ESItems.YELLOWCAKE_SLICE, "It's cake, right?");
-        addItem(ESItems.COOKED_BEEGG, "Cooked Beegg");
-        addItemTooltip(ESItems.COOKED_BEEGG, "You monster");
-        addItem(ESItems.CICADAS_AND_BEEGGS, "Cicadas and Beeggs");
-        addItemTooltip(ESItems.CICADAS_AND_BEEGGS, "Insects hate you as much as you hate them");
+        addItem(ESItems.COOKED_BEE_LARVA, "Cooked Bee Larva");
+        addItemTooltip(ESItems.COOKED_BEE_LARVA, "D:");
     }
 
     private void addTags() {

@@ -121,9 +121,9 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(Tags.Items.FOODS).add(ESItems.SWEET_TOOTH.get());
         tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED).add(ESItems.PIZZA.get(), ESItems.DIVINE_TEMPTATION_BLOCK.get());
         tag(Tags.Items.FOODS_SOUP).add(ESItems.SUSHROOM_STEW.get(), ESItems.DIVINE_TEMPTATION.get());
-        tag(Tags.Items.EGGS).add(ESItems.BEE_EGG.get());
-        tag(BEE_EGGS).add(ESItems.BEE_EGG.get());
-        tag(COOKED_EGGS).add(ESItems.COOKED_BEEGG.get());
+        tag(Tags.Items.EGGS).add(ESItems.BEE_LARVA.get());
+        tag(BEE_EGGS).add(ESItems.BEE_LARVA.get());
+        tag(MSTags.Items.BUGS).add(ESItems.COOKED_BEE_LARVA.get());
 
         tag(ItemTags.DOORS).add(ESItems.COBALT_DOOR.get());
         tag(ItemTags.TRAPDOORS).add(ESItems.COBALT_TRAPDOOR.get());

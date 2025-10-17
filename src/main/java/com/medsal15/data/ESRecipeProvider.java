@@ -86,10 +86,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_empty_energy_core", has(ESItems.EMPTY_ENERGY_CORE))
                 .save(output, modid("shapeless/fill_energy_core"));
 
-        CombinationRecipeBuilder.of(ESItems.BEE_EGG)
+        CombinationRecipeBuilder.of(ESItems.BEE_LARVA)
                 .input(Items.EGG).and().input(Items.BEE_NEST)
                 .build(output);
-        GristCostRecipeBuilder.of(ESItems.BEE_EGG)
+        GristCostRecipeBuilder.of(ESItems.BEE_LARVA)
                 .grist(GristTypes.AMBER, 4).grist(GristTypes.GOLD, 1).grist(GristTypes.TAR, 1)
                 .build(output);
     }
@@ -891,24 +891,18 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
 
         SimpleCookingRecipeBuilder
-                .campfireCooking(Ingredient.of(ESItems.BEE_EGG), RecipeCategory.FOOD, ESItems.COOKED_BEEGG, .35F, 600)
-                .unlockedBy("has_bee_egg", has(ESItems.BEE_EGG))
-                .save(output, modid("campfire/cooked_beegg"));
+                .campfireCooking(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD, ESItems.COOKED_BEE_LARVA, .35F,
+                        600)
+                .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
+                .save(output, modid("campfire/cooked_bee_larva"));
         SimpleCookingRecipeBuilder
-                .smelting(Ingredient.of(ESItems.BEE_EGG), RecipeCategory.FOOD, ESItems.COOKED_BEEGG, .35F, 200)
-                .unlockedBy("has_bee_egg", has(ESItems.BEE_EGG))
-                .save(output, modid("smelting/cooked_beegg"));
+                .smelting(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD, ESItems.COOKED_BEE_LARVA, .35F, 200)
+                .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
+                .save(output, modid("smelting/cooked_bee_larva"));
         SimpleCookingRecipeBuilder
-                .smoking(Ingredient.of(ESItems.BEE_EGG), RecipeCategory.FOOD, ESItems.COOKED_BEEGG, .35F, 100)
-                .unlockedBy("has_bee_egg", has(ESItems.BEE_EGG))
-                .save(output, modid("smoking/cooked_beegg"));
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ESItems.CICADAS_AND_BEEGGS.get())
-                .requires(MSItems.CICADA, 2)
-                .requires(Items.BOWL)
-                .requires(ESItems.COOKED_BEEGG, 2)
-                .unlockedBy("has_cooked_beegg", has(ESItems.COOKED_BEEGG))
-                .save(output, modid("shapeless/cicadas_and_beeggs"));
+                .smoking(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD, ESItems.COOKED_BEE_LARVA, .35F, 100)
+                .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
+                .save(output, modid("smoking/cooked_bee_larva"));
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

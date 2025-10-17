@@ -1,15 +1,15 @@
 {
-    "name": "Beegg",
-    "icon": "extrastuck:beegg",
+    "name": "Bee Larva",
+    "icon": "extrastuck:bee_larva",
     "category": "extrastuck:misc",
     "sortnum": 1,
     "pages": [
         {
             "type": "patchouli:spotlight",
             "item": {
-                "item": "extrastuck:beegg"
+                "item": "extrastuck:bee_larva"
             },
-            "text": "A small bee egg, ready to turn into a grown bee!"
+            "text": "A small bee larva, ready to turn into a grown bee!"
         },
         {
             "type": "extrastuck:combination",
@@ -17,7 +17,7 @@
             "left": "minecraft:egg",
             "mode": "&&",
             "right": "minecraft:bee_nest",
-            "result": "extrastuck:beegg"
+            "result": "extrastuck:bee_larva"
         }
     ]
 }

@@ -7,5 +7,5 @@
     "item": "minecraft:bee_nest"
   },
   "mode": "and",
-  "output": "extrastuck:beegg"
+  "output": "extrastuck:bee_larva"
 }
