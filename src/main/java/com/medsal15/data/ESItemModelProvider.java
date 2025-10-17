@@ -31,6 +31,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.LUCK_TOKEN.get());
         basicItem(ESItems.EMPTY_ENERGY_CORE.get());
         basicItem(ESItems.MASTERMIND_DISK.get());
+        basicItem(ESItems.BEE_EGG.get());
     }
 
     private void registerShields() {
@@ -216,6 +217,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.DIVINE_TEMPTATION_BLOCK.get());
         basicItem(ESItems.DIVINE_TEMPTATION.get());
         basicItem(ESItems.YELLOWCAKE_SLICE.get());
+        basicItem(ESItems.COOKED_BEEGG.get());
+        basicItem(ESItems.CICADAS_AND_BEEGGS.get());
     }
 
     private void registerBlocks() {

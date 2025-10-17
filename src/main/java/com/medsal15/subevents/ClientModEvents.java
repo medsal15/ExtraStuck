@@ -154,8 +154,11 @@ public final class ClientModEvents {
                 modid("textures/entity/bullet/heavy_handgun.png")));
         /**
          * TODO figure out why the item disappears after an instant
+         *
+         * TODO? copy egg display
          */
         event.registerEntityRenderer(ESEntities.ITEM_BULLET.get(), c -> new ThrownItemRenderer<ItemBullet>(c));
+        event.registerEntityRenderer(ESEntities.THROWN_BEEGG.get(), ThrownItemRenderer::new);
 
         event.registerBlockEntityRenderer(ESBlockEntities.CHARGER.get(), ChargerBlockRenderer::new);
     }

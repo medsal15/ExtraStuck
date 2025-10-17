@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minestuck:cicada"
+    },
+    {
+      "item": "minestuck:cicada"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "extrastuck:cooked_beegg"
+    },
+    {
+      "item": "extrastuck:cooked_beegg"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:cicadas_and_beeggs"
+  }
+}

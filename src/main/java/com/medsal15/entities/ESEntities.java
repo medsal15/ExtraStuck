@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
+import com.medsal15.entities.projectiles.ThrownBeegg;
 import com.medsal15.entities.projectiles.UraniumRod;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
@@ -45,49 +46,53 @@ public final class ESEntities {
                     .build(ExtraStuck.MODID + ":captain_justice_shield"));
 
     // #region Arrows
-    public static final Supplier<EntityType<FlameArrow>> FLAME_ARROW = registerArrow("flame_arrow", FlameArrow::new);
-    public static final Supplier<EntityType<NetherArrow>> NETHER_ARROW = registerArrow("nether_arrow",
+    public static final Supplier<EntityType<FlameArrow>> FLAME_ARROW = register("flame_arrow", FlameArrow::new);
+    public static final Supplier<EntityType<NetherArrow>> NETHER_ARROW = register("nether_arrow",
             NetherArrow::new);
-    public static final Supplier<EntityType<CardboardArrow>> CARDBOARD_ARROW = registerArrow("cardboard_arrow",
+    public static final Supplier<EntityType<CardboardArrow>> CARDBOARD_ARROW = register("cardboard_arrow",
             CardboardArrow::new);
-    public static final Supplier<EntityType<MissedArrow>> MISSED_ARROW = registerArrow("missed_arrow",
+    public static final Supplier<EntityType<MissedArrow>> MISSED_ARROW = register("missed_arrow",
             MissedArrow::new);
-    public static final Supplier<EntityType<CandyArrow>> CANDY_ARROW = registerArrow("candy_arrow", CandyArrow::new);
-    public static final Supplier<EntityType<LightningArrow>> LIGHTNING_ARROW = registerArrow("lightning_arrow",
+    public static final Supplier<EntityType<CandyArrow>> CANDY_ARROW = register("candy_arrow", CandyArrow::new);
+    public static final Supplier<EntityType<LightningArrow>> LIGHTNING_ARROW = register("lightning_arrow",
             LightningArrow::new);
-    public static final Supplier<EntityType<ExplosiveArrow>> EXPLOSIVE_ARROW = registerArrow("explosive_arrow",
+    public static final Supplier<EntityType<ExplosiveArrow>> EXPLOSIVE_ARROW = register("explosive_arrow",
             ExplosiveArrow::new);
-    public static final Supplier<EntityType<IronArrow>> IRON_ARROW = registerArrow("iron_arrow", IronArrow::new);
-    public static final Supplier<EntityType<QuartzArrow>> QUARTZ_ARROW = registerArrow("quartz_arrow",
+    public static final Supplier<EntityType<IronArrow>> IRON_ARROW = register("iron_arrow", IronArrow::new);
+    public static final Supplier<EntityType<QuartzArrow>> QUARTZ_ARROW = register("quartz_arrow",
             QuartzArrow::new);
-    public static final Supplier<EntityType<PrismarineArrow>> PRISMARINE_ARROW = registerArrow("prismarine_arrow",
+    public static final Supplier<EntityType<PrismarineArrow>> PRISMARINE_ARROW = register("prismarine_arrow",
             PrismarineArrow::new);
-    public static final Supplier<EntityType<GlassArrow>> GLASS_ARROW = registerArrow("glass_arrow", GlassArrow::new);
-    public static final Supplier<EntityType<AmethystArrow>> AMETHYST_ARROW = registerArrow("amethyst_arrow",
+    public static final Supplier<EntityType<GlassArrow>> GLASS_ARROW = register("glass_arrow", GlassArrow::new);
+    public static final Supplier<EntityType<AmethystArrow>> AMETHYST_ARROW = register("amethyst_arrow",
             AmethystArrow::new);
-    public static final Supplier<EntityType<MiningArrow>> MINING_ARROW = registerArrow("mining_arrow",
+    public static final Supplier<EntityType<MiningArrow>> MINING_ARROW = register("mining_arrow",
             MiningArrow::new);
-    public static final Supplier<EntityType<HealingArrow>> HEALING_ARROW = registerArrow("healing_arrow",
+    public static final Supplier<EntityType<HealingArrow>> HEALING_ARROW = register("healing_arrow",
             HealingArrow::new);
-    public static final Supplier<EntityType<EndArrow>> END_ARROW = registerArrow("end_arrow", EndArrow::new);
-    public static final Supplier<EntityType<TeleportArrow>> TELEPORT_ARROW = registerArrow("teleport_arrow",
+    public static final Supplier<EntityType<EndArrow>> END_ARROW = register("end_arrow", EndArrow::new);
+    public static final Supplier<EntityType<TeleportArrow>> TELEPORT_ARROW = register("teleport_arrow",
             TeleportArrow::new);
-    public static final Supplier<EntityType<DragonArrow>> DRAGON_ARROW = registerArrow("dragon_arrow",
+    public static final Supplier<EntityType<DragonArrow>> DRAGON_ARROW = register("dragon_arrow",
             DragonArrow::new);
-    public static final Supplier<EntityType<UraniumRod>> URANIUM_ROD = registerArrow("uranium_rod",
+    public static final Supplier<EntityType<UraniumRod>> URANIUM_ROD = register("uranium_rod",
             UraniumRod::new);
     // #endregion Arrows
 
     // #region Bullets
-    public static final Supplier<EntityType<ESBullet>> HANDGUN_BULLET = registerArrow("handgun_bullet", ESBullet::new);
-    public static final Supplier<EntityType<ESBullet>> HEAVY_HANDGUN_BULLET = registerArrow("heavy_handgun_bullet",
+    public static final Supplier<EntityType<ESBullet>> HANDGUN_BULLET = register("handgun_bullet", ESBullet::new);
+    public static final Supplier<EntityType<ESBullet>> HEAVY_HANDGUN_BULLET = register("heavy_handgun_bullet",
             ESBullet::new);
     public static final Supplier<EntityType<ItemBullet>> ITEM_BULLET = ENTITIES.register("item_bullet",
             () -> EntityType.Builder.<ItemBullet>of(ItemBullet::new, MobCategory.MISC).sized(.5F, .5F)
                     .clientTrackingRange(4).setUpdateInterval(10).build(ExtraStuck.MODID + ":item_bullet"));
     // #endregion Bullets
 
-    private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
+    public static final Supplier<EntityType<ThrownBeegg>> THROWN_BEEGG = ENTITIES.register("thrown_beegg",
+            () -> EntityType.Builder.<ThrownBeegg>of(ThrownBeegg::new, MobCategory.MISC).sized(.25F, .25F)
+                    .clientTrackingRange(4).updateInterval(10).build(ExtraStuck.MODID + ":thrown_beegg"));
+
+    private static <T extends AbstractArrow> Supplier<EntityType<T>> register(String name, EntityFactory<T> fac) {
         return ENTITIES.register(name, () -> EntityType.Builder.<T>of(fac, MobCategory.MISC)
                 .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20).build(ExtraStuck.MODID + ":" + name));
     }

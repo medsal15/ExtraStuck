@@ -101,6 +101,9 @@ public final class ESLangProvider extends LanguageProvider {
 
         addEffect(ESMobEffects.TIME_STOP, "Time Stop");
         addEffectDescription(ESMobEffects.TIME_STOP, "Prevents most movement");
+        addEffect(ESMobEffects.BEE_ANGRY, "Anger Bees");
+        addEffectDescription(ESMobEffects.BEE_ANGRY,
+                "Anger all bees to the target with a 6 blocks radius, increased by 3 per level");
 
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
@@ -115,6 +118,8 @@ public final class ESLangProvider extends LanguageProvider {
         addBlockTooltip(ESBlocks.NORMAL_CAT_PLUSH, "In what world is that normal?");
         addItem(ESItems.MASTERMIND_DISK, "Mastermind Codebreaker Disk");
         addItemTooltip(ESItems.MASTERMIND_DISK, "Screw that. Puzzles suck.");
+        addItem(ESItems.BEE_EGG, "Beegg");
+        addItemTooltip(ESItems.BEE_EGG, "Or a bee egg");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -454,6 +459,10 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.DIVINE_TEMPTATION, "Bowl of Divine Temptation");
         addItem(ESItems.YELLOWCAKE_SLICE, "Slice of Yellowcake");
         addItemTooltip(ESItems.YELLOWCAKE_SLICE, "It's cake, right?");
+        addItem(ESItems.COOKED_BEEGG, "Cooked Beegg");
+        addItemTooltip(ESItems.COOKED_BEEGG, "You monster");
+        addItem(ESItems.CICADAS_AND_BEEGGS, "Cicadas and Beeggs");
+        addItemTooltip(ESItems.CICADAS_AND_BEEGGS, "Insects hate you as much as you hate them");
     }
 
     private void addTags() {
