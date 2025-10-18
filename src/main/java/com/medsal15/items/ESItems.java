@@ -1,7 +1,6 @@
 package com.medsal15.items;
 
 import static com.medsal15.ExtraStuck.modid;
-import static com.medsal15.data.ESItemTags.AMMO_HANDGUN;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,10 +50,12 @@ import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.BeeggItem;
 import com.medsal15.items.throwables.SwapTrident;
+import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.armor.MSArmorItem;
 import com.mraof.minestuck.item.components.MSItemComponents;
+import com.mraof.minestuck.item.foods.DrinkableItem;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
@@ -437,7 +438,7 @@ public final class ESItems {
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
             () -> new ESGun(
-                    new ESGun.Builder().ammo(AMMO_HANDGUN).maxBullets(6).zoom(.8F)
+                    new ESGun.Builder().ammo(ESTags.Items.AMMO_HANDGUN).maxBullets(6).zoom(.8F)
                             .switchTo(ESItems.OFFICE_KEY),
                     new MSItemProperties().durability(250)));
     // #endregion Guns
@@ -568,6 +569,8 @@ public final class ESItems {
             p -> new BeeggItem(p.stacksTo(16)));
     public static final DeferredItem<Item> COOKED_BEE_LARVA = ITEMS.registerItem("cooked_bee_larva",
             p -> new Item(p.food(ESFoods.COOKED_BEE_LARVA)));
+    public static final DeferredItem<Item> DESERT_JUICE = ITEMS.registerItem("desert_juice",
+            p -> new DrinkableItem(p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -729,6 +732,9 @@ public final class ESItems {
 
         output.accept(BEE_LARVA);
         for (DeferredItem<? extends Item> item : ESItems.getFoods()) {
+            output.accept(item.get());
+        }
+        for (DeferredItem<? extends Item> item : ESItems.getDrinks()) {
             output.accept(item.get());
         }
 
@@ -944,6 +950,12 @@ public final class ESItems {
         list.add(DIVINE_TEMPTATION);
         list.add(YELLOWCAKE_SLICE);
         list.add(COOKED_BEE_LARVA);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getDrinks() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(DESERT_JUICE);
         return list;
     }
 

@@ -3,7 +3,7 @@ package com.medsal15.interpreters.farmersdelight;
 import java.util.List;
 
 import com.medsal15.config.ConfigCommon;
-import com.medsal15.data.ESItemTags;
+import com.medsal15.utils.ESTags;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -48,7 +48,7 @@ public record CuttingBoardInterpreter(String option) implements RecipeInterprete
         int count = 0;
         for (ItemStack stack : cut.getResults()) {
             if (stack.getItem() != output) {
-                if (stack.is(ESItemTags.IGNORE_BYPRODUCT_CUTTING))
+                if (stack.is(ESTags.Items.IGNORE_BYPRODUCT_CUTTING))
                     continue;
                 return null;
             }

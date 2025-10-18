@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_desert_fruit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minestuck:desert_fruit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extrastuck:desert_juice"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_desert_fruit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extrastuck:desert_juice"
+    ]
+  }
+}

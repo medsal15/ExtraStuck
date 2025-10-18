@@ -8,10 +8,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.medsal15.config.ConfigCommon;
-import com.medsal15.data.ESItemTags;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.projectiles.UraniumRod;
 import com.medsal15.items.ESDataComponents;
+import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.advancements.CriteriaTriggers;
@@ -38,12 +38,12 @@ public class RadBowItem extends CrossbowItem {
 
     @Override
     public Predicate<ItemStack> getAllSupportedProjectiles() {
-        return stack -> stack.is(ESItemTags.URANIUM_RODS) || stack.is(MSItems.URANIUM_POWERED_STICK);
+        return stack -> stack.is(ESTags.Items.URANIUM_RODS) || stack.is(MSItems.URANIUM_POWERED_STICK);
     }
 
     @Override
     public Predicate<ItemStack> getSupportedHeldProjectiles() {
-        return stack -> stack.is(ESItemTags.URANIUM_RODS) || stack.is(MSItems.URANIUM_POWERED_STICK);
+        return stack -> stack.is(ESTags.Items.URANIUM_RODS) || stack.is(MSItems.URANIUM_POWERED_STICK);
     }
 
     @Override
@@ -134,7 +134,7 @@ public class RadBowItem extends CrossbowItem {
 
     @Override
     public boolean isValidRepairItem(@Nonnull ItemStack stack, @Nonnull ItemStack repairCandidate) {
-        return stack.is(ESItemTags.URANIUM_RODS) || stack.is(MSItems.URANIUM_POWERED_STICK);
+        return stack.is(ESTags.Items.URANIUM_RODS) || stack.is(MSItems.URANIUM_POWERED_STICK);
     }
 
     @Override

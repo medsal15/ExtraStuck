@@ -1,6 +1,5 @@
 package com.medsal15.items.guns;
 
-import static com.medsal15.data.ESItemTags.AMMO;
 import static com.medsal15.data.ESLangProvider.GUN_CONTENT_KEY;
 import static com.medsal15.data.ESLangProvider.GUN_EMPTY_KEY;
 
@@ -13,6 +12,7 @@ import javax.annotation.Nullable;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.projectiles.ESBulletItem;
+import com.medsal15.utils.ESTags;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
@@ -40,7 +40,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
-    private TagKey<Item> ammo = AMMO;
+    private TagKey<Item> ammo = ESTags.Items.AMMO;
     private DeferredItem<Item> next;
     private float zoom = 1F;
     private int maxBullets = DEFAULT_MAX_STACK_SIZE;
@@ -228,7 +228,7 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
 
     public static class Builder {
         private float zoom = 1F;
-        private TagKey<Item> ammo = AMMO;
+        private TagKey<Item> ammo = ESTags.Items.AMMO;
         private int maxBullets = DEFAULT_MAX_STACK_SIZE;
         @Nullable
         private DeferredItem<Item> next = null;

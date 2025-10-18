@@ -16,6 +16,7 @@ import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.medsal15.mobeffects.ESMobEffects;
+import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.computer.ProgramType;
 import com.mraof.minestuck.computer.ProgramTypes;
 
@@ -461,12 +462,14 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.YELLOWCAKE_SLICE, "It's cake, right?");
         addItem(ESItems.COOKED_BEE_LARVA, "Cooked Bee Larva");
         addItemTooltip(ESItems.COOKED_BEE_LARVA, "D:");
+
+        addItem(ESItems.DESERT_JUICE, "Desert Juice");
     }
 
     private void addTags() {
-        add(ESItemTags.AMMO, "Ammunition");
-        add(ESItemTags.AMMO_HANDGUN, "Handgun Ammunition");
-        add(ESItemTags.SHOW_VALUE, "Armors Displaying Value");
+        add(ESTags.Items.AMMO, "Ammunition");
+        add(ESTags.Items.AMMO_HANDGUN, "Handgun Ammunition");
+        add(ESTags.Items.SHOW_VALUE, "Armors Displaying Value");
     }
 
     private void addItemTooltip(Supplier<? extends Item> key, String text) {
