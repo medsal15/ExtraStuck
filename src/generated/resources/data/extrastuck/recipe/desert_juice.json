@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minestuck:desert_fruit"
+    },
+    {
+      "item": "minestuck:desert_fruit"
+    },
+    {
+      "item": "minestuck:desert_fruit"
+    },
+    {
+      "item": "minestuck:desert_fruit"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:desert_juice"
+  }
+}

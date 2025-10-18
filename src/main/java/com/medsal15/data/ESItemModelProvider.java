@@ -218,6 +218,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.DIVINE_TEMPTATION.get());
         basicItem(ESItems.YELLOWCAKE_SLICE.get());
         basicItem(ESItems.COOKED_BEE_LARVA.get());
+
+        basicItem(ESItems.DESERT_JUICE.get());
     }
 
     private void registerBlocks() {

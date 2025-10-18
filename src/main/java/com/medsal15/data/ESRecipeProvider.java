@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.items.ESItems;
+import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.api.alchemy.GristTypes;
 import com.mraof.minestuck.api.alchemy.recipe.GristCostRecipeBuilder;
 import com.mraof.minestuck.api.alchemy.recipe.SourceGristCostBuilder;
@@ -275,6 +276,10 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.BLIND_HAMMER)
                 .grist(GristTypes.TAR, 3444).grist(GristTypes.DIAMOND, 1250).grist(GristTypes.RUST, 900)
                 .build(output);
+
+        CombinationRecipeBuilder.of(MSItems.QUENCH_CRUSHER)
+                .input(MSItems.COPSE_CRUSHER).or().input(ESItems.DESERT_JUICE)
+                .build(output);
         // #endregion Hammers
 
         // #region Dice
@@ -494,7 +499,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .loops(2)
                 .addStep(DeployerApplicationRecipe::new, sub -> sub.require(AllBlocks.LARGE_COGWHEEL))
                 .addStep(DeployerApplicationRecipe::new, sub -> sub.require(MSItems.COMPUTER_PARTS))
-                .addStep(DeployerApplicationRecipe::new, sub -> sub.require(ESItemTags.BRASS_NUGGETS))
+                .addStep(DeployerApplicationRecipe::new, sub -> sub.require(ESTags.Items.BRASS_NUGGETS))
                 .addStep(PressingRecipe::new, sub -> sub)
                 .build(output.withConditions(new ModLoadedCondition("create")));
         // #endregion Crossbows
@@ -903,6 +908,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .smoking(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD, ESItems.COOKED_BEE_LARVA, .35F, 100)
                 .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
                 .save(output, modid("smoking/cooked_bee_larva"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ESItems.DESERT_JUICE)
+                .requires(MSItems.DESERT_FRUIT, 4)
+                .requires(Items.SUGAR)
+                .requires(Items.GLASS_BOTTLE)
+                .unlockedBy("has_desert_fruit", has(MSItems.DESERT_FRUIT))
+                .save(output);
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

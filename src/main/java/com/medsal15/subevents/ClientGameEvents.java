@@ -6,11 +6,11 @@ import javax.annotation.Nullable;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.config.ConfigClient;
-import com.medsal15.data.ESItemTags;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
+import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.entity.consort.BoondollarPrices;
 
 import net.minecraft.ChatFormatting;
@@ -46,7 +46,7 @@ public final class ClientGameEvents {
         if (player != null && !stack.isEmpty()) {
             boolean show_value = false;
             for (ItemStack armor : player.getInventory().armor) {
-                if (armor.is(ESItemTags.SHOW_VALUE)) {
+                if (armor.is(ESTags.Items.SHOW_VALUE)) {
                     show_value = true;
                     break;
                 }

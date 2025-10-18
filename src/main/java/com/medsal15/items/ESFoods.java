@@ -30,4 +30,8 @@ public final class ESFoods {
             .saturationModifier(.3F)
             .effect(() -> new MobEffectInstance(ESMobEffects.BEE_ANGRY), 1)
             .build();
+    public static final FoodProperties DESERT_JUICE = new FoodProperties.Builder().alwaysEdible()
+            .usingConvertsTo(Items.GLASS_BOTTLE)
+            .effect(() -> new MobEffectInstance(MobEffects.HEAL), 1)
+            .build();
 }
