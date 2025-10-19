@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_desert_fruit": {
+    "has_negative_cake_slice": {
       "conditions": {
         "items": [
           {
-            "items": "minestuck:desert_fruit"
+            "items": "extrastuck:negative_cake_slice"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extrastuck:desert_juice"
+        "recipe": "extrastuck:shapeless/negative_cake"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_desert_fruit"
+      "has_negative_cake_slice"
     ]
   ],
   "rewards": {
     "recipes": [
-      "extrastuck:desert_juice"
+      "extrastuck:shapeless/negative_cake"
     ]
   }
 }

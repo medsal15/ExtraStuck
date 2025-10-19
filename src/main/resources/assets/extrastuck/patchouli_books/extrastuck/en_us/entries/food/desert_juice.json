@@ -1,0 +1,19 @@
+{
+    "name": "Desert Juice",
+    "icon": "extrastuck:desert_juice",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:desert_juice"
+            },
+            "text": "A simple drink that slightly heals. Perfect for those with desert lands."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shapeless/desert_juice",
+            "text": "Combine 4 desert fruits, some sugar and an empty glass bottle."
+        }
+    ]
+}

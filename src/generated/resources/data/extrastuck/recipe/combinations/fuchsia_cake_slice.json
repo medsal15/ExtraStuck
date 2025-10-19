@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:reverse_cake_slice"
+  },
+  "input2": {
+    "item": "extrastuck:fuchsia_cake_slice"
+  },
+  "mode": "and",
+  "output": "extrastuck:fuchsia_cake_slice"
+}

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "extrastuck:chocolatey_cake_slice"
+    },
+    {
+      "item": "extrastuck:chocolatey_cake_slice"
+    },
+    {
+      "item": "extrastuck:chocolatey_cake_slice"
+    },
+    {
+      "item": "extrastuck:chocolatey_cake_slice"
+    },
+    {
+      "item": "extrastuck:chocolatey_cake_slice"
+    },
+    {
+      "item": "extrastuck:chocolatey_cake_slice"
+    },
+    {
+      "item": "extrastuck:chocolatey_cake_slice"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minestuck:chocolatey_cake"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "extrastuck:item/reverse_cake_slice"
+  }
+}

@@ -34,4 +34,40 @@ public final class ESFoods {
             .usingConvertsTo(Items.GLASS_BOTTLE)
             .effect(() -> new MobEffectInstance(MobEffects.HEAL), 1)
             .build();
+    public static final FoodProperties APPLE_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.5F).fast().build();
+    public static final FoodProperties BLUE_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.3F).fast()
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 150), 1)
+            .build();
+    public static final FoodProperties COLD_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.3F).fast()
+            .effect(() -> new MobEffectInstance(MobEffects.WEAKNESS, 200, 1), 1)
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 1), 1)
+            .build();
+    public static final FoodProperties RED_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.1F).fast()
+            .effect(() -> new MobEffectInstance(MobEffects.HEAL, 1), 1)
+            .build();
+    public static final FoodProperties HOT_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.1F).fast().build();
+    public static final FoodProperties REVERSE_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.1F).fast().build();
+    public static final FoodProperties FUCHSIA_CAKE_SLICE = new FoodProperties.Builder().nutrition(3)
+            .saturationModifier(.5F).fast()
+            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 350, 1), 1)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 200), 1)
+            .build();
+    public static final FoodProperties NEGATIVE_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.3F).fast()
+            .effect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 300), 1)
+            .effect(() -> new MobEffectInstance(MobEffects.INVISIBILITY, 250), 1)
+            .build();
+    public static final FoodProperties CARROT_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 200), 1)
+            .saturationModifier(.3F).fast().build();
+    public static final FoodProperties CHOCOLATEY_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.5F).fast().build();
+    public static final FoodProperties MOON_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.5F).fast().build();
 }

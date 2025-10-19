@@ -279,7 +279,7 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CombinationRecipeBuilder.of(MSItems.QUENCH_CRUSHER)
                 .input(MSItems.COPSE_CRUSHER).or().input(ESItems.DESERT_JUICE)
-                .build(output);
+                .build(output, modid("combinations/quench_crusher"));
         // #endregion Hammers
 
         // #region Dice
@@ -821,6 +821,8 @@ public final class ESRecipeProvider extends RecipeProvider {
     }
 
     private void foodRecipes(@Nonnull RecipeOutput output) {
+        final RecipeOutput fdOutput = output.withConditions(FARMERSDELIGHT_LOADED);
+
         CombinationRecipeBuilder.of(ESItems.PIZZA)
                 .input(Items.BREAD).or().input(Items.BEETROOT)
                 .build(output);
@@ -833,7 +835,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ESItems.PIZZA), Ingredient.of(ModTags.KNIVES),
                 ESItems.PIZZA_SLICE, 3)
-                .build(output.withConditions(FARMERSDELIGHT_LOADED), modid("cutting/pizza_slice").toString());
+                .build(fdOutput, modid("cutting/pizza_slice").toString());
         GristCostRecipeBuilder.of(ESItems.PIZZA_SLICE)
                 .grist(GristTypes.AMBER, 2).grist(GristTypes.RUST, 1)
                 .build(output);
@@ -849,7 +851,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addIngredient(MSItems.MOREL_MUSHROOM)
                 .unlockedByAnyIngredient(MSItems.SUSHROOM, MSItems.MOREL_MUSHROOM)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(output.withConditions(FARMERSDELIGHT_LOADED), modid("cooking/sushroom_stew").toString());
+                .build(fdOutput, modid("cooking/sushroom_stew").toString());
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ESItems.RADBURGER)
                 .requires(Tags.Items.FOODS_BREAD)
@@ -858,7 +860,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(CommonTags.CROPS_TOMATO)
                 .requires(MSItems.ONION)
                 .unlockedBy("has_irradiated_steak", has(MSItems.IRRADIATED_STEAK))
-                .save(output.withConditions(FARMERSDELIGHT_LOADED), modid("shapeless/radburger"));
+                .save(fdOutput, modid("shapeless/radburger"));
         CombinationRecipeBuilder.of(ESItems.RADBURGER)
                 .input(MSItems.IRRADIATED_STEAK).and().input(Items.BREAD)
                 .build(output);
@@ -876,7 +878,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addIngredient(Items.BROWN_MUSHROOM)
                 .unlockedByAnyIngredient(MSItems.CLAW_SICKLE)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(output.withConditions(FARMERSDELIGHT_LOADED), modid("cooking/divine_temptation").toString());
+                .build(fdOutput, modid("cooking/divine_temptation").toString());
         CombinationRecipeBuilder.of(ESItems.DIVINE_TEMPTATION_BLOCK)
                 .input(Items.CAULDRON).and().input(Items.GOLDEN_APPLE)
                 .build(output);
@@ -887,7 +889,7 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         IrradiatingRecipeBuilder
                 .irradiating(Ingredient.of(ModItems.CAKE_SLICE.get()), ESItems.YELLOWCAKE_SLICE, .1F, 20)
-                .save(output.withConditions(FARMERSDELIGHT_LOADED), modid("irradiating/yellowcake_slice"));
+                .save(fdOutput, modid("irradiating/yellowcake_slice"));
         CombinationRecipeBuilder.of(ESItems.YELLOWCAKE_SLICE)
                 .input(Items.CAKE).or().input(MSItems.RAW_URANIUM)
                 .build(output);
@@ -914,7 +916,139 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(Items.SUGAR)
                 .requires(Items.GLASS_BOTTLE)
                 .unlockedBy("has_desert_fruit", has(MSItems.DESERT_FRUIT))
-                .save(output);
+                .save(output, modid("shapeless/desert_juice"));
+
+        // #region Cake Slice
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.APPLE_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.APPLE_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/apple_cake"));
+        CombinationRecipeBuilder.of(ESItems.APPLE_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.APPLE)
+                .build(fdOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.APPLE_CAKE)
+                .requires(ESItems.APPLE_CAKE_SLICE, 7)
+                .unlockedBy("has_apple_cake_slice", has(ESItems.APPLE_CAKE_SLICE))
+                .save(output, modid("shapeless/apple_cake"));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.BLUE_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.BLUE_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/blue_cake"));
+        CombinationRecipeBuilder.of(ESItems.BLUE_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(MSItems.GLOWING_MUSHROOM)
+                .build(fdOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.BLUE_CAKE)
+                .requires(ESItems.BLUE_CAKE_SLICE, 7)
+                .unlockedBy("has_blue_cake_slice", has(ESItems.BLUE_CAKE_SLICE))
+                .save(output, modid("shapeless/blue_cake"));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.COLD_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.COLD_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/cold_cake"));
+        CombinationRecipeBuilder.of(ESItems.COLD_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.ICE)
+                .build(fdOutput, modid("combinations/cold_cake_slice_ice"));
+        CombinationRecipeBuilder.of(ESItems.COLD_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.PACKED_ICE)
+                .build(fdOutput, modid("combinations/cold_cake_slice_packed"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.COLD_CAKE)
+                .requires(ESItems.COLD_CAKE_SLICE, 7)
+                .unlockedBy("has_cold_cake_slice", has(ESItems.COLD_CAKE_SLICE))
+                .save(output, modid("shapeless/cold_cake"));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.RED_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.RED_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/red_cake"));
+        CombinationRecipeBuilder.of(ESItems.RED_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.MELON_SLICE)
+                .build(fdOutput, modid("combinations/red_cake_slice_melon"));
+        CombinationRecipeBuilder.of(ESItems.RED_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.GLISTERING_MELON_SLICE)
+                .build(fdOutput, modid("combinations/red_cake_slice_glistering"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.RED_CAKE)
+                .requires(ESItems.RED_CAKE_SLICE, 7)
+                .unlockedBy("has_red_cake_slice", has(ESItems.RED_CAKE_SLICE))
+                .save(output, modid("shapeless/red_cake"));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.HOT_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.HOT_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/hot_cake"));
+        CombinationRecipeBuilder.of(ESItems.HOT_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.LAVA_BUCKET)
+                .build(fdOutput, modid("combinations/hot_cake_slice_lava"));
+        CombinationRecipeBuilder.of(ESItems.HOT_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.BLAZE_POWDER)
+                .build(fdOutput, modid("combinations/hot_cake_slice_blaze"));
+        CombinationRecipeBuilder.of(ESItems.HOT_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.MAGMA_BLOCK)
+                .build(fdOutput, modid("combinations/hot_cake_slice_magma"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.HOT_CAKE)
+                .requires(ESItems.HOT_CAKE_SLICE, 7)
+                .unlockedBy("has_hot_cake_slice", has(ESItems.HOT_CAKE_SLICE))
+                .save(output, modid("shapeless/hot_cake"));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.REVERSE_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.REVERSE_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/reverse_cake"));
+        CombinationRecipeBuilder.of(ESItems.REVERSE_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.GLASS_PANE)
+                .build(fdOutput, modid("combinations/reverse_cake_slice_pane"));
+        CombinationRecipeBuilder.of(ESItems.REVERSE_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.GLASS)
+                .build(fdOutput, modid("combinations/reverse_cake_slice_glass"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.REVERSE_CAKE)
+                .requires(ESItems.REVERSE_CAKE_SLICE, 7)
+                .unlockedBy("has_reverse_cake_slice", has(ESItems.REVERSE_CAKE_SLICE))
+                .save(output, modid("shapeless/reverse_cake"));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.FUCHSIA_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.FUCHSIA_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/fuchsia_cake"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.FUCHSIA_CAKE)
+                .requires(ESItems.FUCHSIA_CAKE_SLICE, 7)
+                .unlockedBy("has_fuchsia_cake_slice", has(ESItems.FUCHSIA_CAKE_SLICE))
+                .save(output, modid("shapeless/fuchsia_cake"));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.NEGATIVE_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.NEGATIVE_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/negative_cake"));
+        CombinationRecipeBuilder.of(ESItems.FUCHSIA_CAKE_SLICE)
+                .input(ESItems.REVERSE_CAKE_SLICE).and().input(ESItems.FUCHSIA_CAKE_SLICE)
+                .build(output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.NEGATIVE_CAKE)
+                .requires(ESItems.NEGATIVE_CAKE_SLICE, 7)
+                .unlockedBy("has_negative_cake_slice", has(ESItems.NEGATIVE_CAKE_SLICE))
+                .save(output, modid("shapeless/negative_cake"));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.CARROT_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.CARROT_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/carrot_cake"));
+        CombinationRecipeBuilder.of(ESItems.CARROT_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.CARROT)
+                .build(fdOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.CARROT_CAKE)
+                .requires(ESItems.CARROT_CAKE_SLICE, 7)
+                .unlockedBy("has_carrot_cake_slice", has(ESItems.CARROT_CAKE_SLICE))
+                .save(output, modid("shapeless/carrot_cake"));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.CHOCOLATEY_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.CHOCOLATEY_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("cutting/chocolatey_cake"));
+        CombinationRecipeBuilder.of(ESItems.CHOCOLATEY_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(Items.COCOA_BEANS)
+                .build(fdOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.CHOCOLATEY_CAKE)
+                .requires(ESItems.CHOCOLATEY_CAKE_SLICE, 7)
+                .unlockedBy("has_chocolatey_cake_slice", has(ESItems.CHOCOLATEY_CAKE_SLICE))
+                .save(output, modid("shapeless/chocolatey_cake"));
+
+        CombinationRecipeBuilder.of(ESItems.MOON_CAKE_SLICE)
+                .input(ModItems.CAKE_SLICE.get()).or().input(ItemTags.BEDS)
+                .build(fdOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.MOON_CAKE)
+                .requires(ESItems.MOON_CAKE_SLICE, 7)
+                .unlockedBy("has_moon_cake_slice", has(ESItems.MOON_CAKE_SLICE))
+                .save(output, modid("shapeless/moon_cake"));
+        // #endregion Cake Slice
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

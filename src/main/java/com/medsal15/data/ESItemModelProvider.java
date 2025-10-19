@@ -218,6 +218,16 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.DIVINE_TEMPTATION.get());
         basicItem(ESItems.YELLOWCAKE_SLICE.get());
         basicItem(ESItems.COOKED_BEE_LARVA.get());
+        basicItem(ESItems.APPLE_CAKE_SLICE.get());
+        basicItem(ESItems.BLUE_CAKE_SLICE.get());
+        basicItem(ESItems.COLD_CAKE_SLICE.get());
+        basicItem(ESItems.RED_CAKE_SLICE.get());
+        basicItem(ESItems.HOT_CAKE_SLICE.get());
+        basicItem(ESItems.REVERSE_CAKE_SLICE.get());
+        basicItem(ESItems.FUCHSIA_CAKE_SLICE.get());
+        basicItem(ESItems.NEGATIVE_CAKE_SLICE.get());
+        basicItem(ESItems.CARROT_CAKE_SLICE.get());
+        basicItem(ESItems.CHOCOLATEY_CAKE_SLICE.get());
 
         basicItem(ESItems.DESERT_JUICE.get());
     }

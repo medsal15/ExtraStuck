@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:copse_crusher"
+  },
+  "input2": {
+    "item": "extrastuck:desert_juice"
+  },
+  "mode": "or",
+  "output": "minestuck:quench_crusher"
+}
