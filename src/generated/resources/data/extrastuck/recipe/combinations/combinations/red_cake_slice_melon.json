@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "farmersdelight:cake_slice"
+  },
+  "input2": {
+    "item": "minecraft:melon_slice"
+  },
+  "mode": "or",
+  "output": "extrastuck:red_cake_slice"
+}

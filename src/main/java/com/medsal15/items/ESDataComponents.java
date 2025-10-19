@@ -102,4 +102,29 @@ public final class ESDataComponents {
     public static final Supplier<DataComponentType<List<Integer>>> ATTEMPTS = DATA_COMPONENTS
             .registerComponentType("attempts", builder -> builder.persistent(Codec.INT.listOf())
                     .networkSynchronized(ByteBufCodecs.VAR_INT.apply(ByteBufCodecs.list())));
+
+    // Food
+    public static final Supplier<DataComponentType<MoonCakeSliceColor>> MOON_CAKE_SLICE_COLOR = DATA_COMPONENTS
+            .registerComponentType("moon_cake_slice_color", builder -> builder
+                    .persistent(StringRepresentable.fromEnum(MoonCakeSliceColor::values))
+                    .networkSynchronized(NeoForgeStreamCodecs.enumCodec(MoonCakeSliceColor.class)));
+
+    public static enum MoonCakeSliceColor implements StringRepresentable {
+        DUAL,
+        DERSE,
+        PROSPIT;
+
+        @Override
+        public String getSerializedName() {
+            return this.name().toLowerCase(Locale.ROOT);
+        }
+
+        public static MoonCakeSliceColor fromName(String string) {
+            for (MoonCakeSliceColor layer : MoonCakeSliceColor.values()) {
+                if (layer.name().toLowerCase().equals(string))
+                    return layer;
+            }
+            throw new IllegalArgumentException("Invalid moon cake color " + string);
+        }
+    }
 }

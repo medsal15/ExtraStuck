@@ -20,6 +20,7 @@ import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
 import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.ESDataComponents.MoonCakeSliceColor;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.client.gui.computer.ProgramGui;
@@ -71,6 +72,21 @@ public final class ClientModEvents {
                             && handler.getEnergyStored() >= stack.getOrDefault(ESDataComponents.FLUX_MULTIPLIER, 100))
                         return 1;
                     return 0;
+                });
+
+        ItemProperties.register(ESItems.MOON_CAKE_SLICE.get(), ExtraStuck.modid("moon_cake"),
+                (stack, world, entity, entityId) -> {
+                    MoonCakeSliceColor color = stack.getOrDefault(ESDataComponents.MOON_CAKE_SLICE_COLOR,
+                            MoonCakeSliceColor.DUAL);
+                    switch (color) {
+                        case MoonCakeSliceColor.DUAL:
+                        default:
+                            return 0;
+                        case MoonCakeSliceColor.DERSE:
+                            return .5F;
+                        case MoonCakeSliceColor.PROSPIT:
+                            return 1;
+                    }
                 });
 
         ProgramGui.Registry.register(ESProgramTypes.MASTERMIND_CODEBREAKER, MastermindAppScreen::new);

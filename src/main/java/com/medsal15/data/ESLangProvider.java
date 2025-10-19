@@ -467,7 +467,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.PIZZA_SLICE, "Pizza Slice");
         addItem(ESItems.SUSHROOM_STEW, "Sushroom Stew");
         addItemTooltip(ESItems.SUSHROOM_STEW, "Is this stewmate trustworthy?");
-        addItem(ESItems.RADBURGER, "Radburger");
+        addItem(ESItems.RADBURGER, "Big Rad");
         addBlock(ESBlocks.DIVINE_TEMPTATION_BLOCK, "Divine Temptation");
         addBlockTooltip(ESBlocks.DIVINE_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
         addItem(ESItems.DIVINE_TEMPTATION, "Bowl of Divine Temptation");
@@ -475,6 +475,17 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.YELLOWCAKE_SLICE, "It's cake, right?");
         addItem(ESItems.COOKED_BEE_LARVA, "Cooked Bee Larva");
         addItemTooltip(ESItems.COOKED_BEE_LARVA, "D:");
+        addItem(ESItems.APPLE_CAKE_SLICE, "Slice of Apple Cake");
+        addItem(ESItems.BLUE_CAKE_SLICE, "Slice of Blue Cake");
+        addItem(ESItems.COLD_CAKE_SLICE, "Slice of Really Cold Cake");
+        addItem(ESItems.RED_CAKE_SLICE, "Slice of Red Cake");
+        addItem(ESItems.HOT_CAKE_SLICE, "Slice of Really Hot Cake");
+        addItem(ESItems.REVERSE_CAKE_SLICE, "Slice of Reverse Cake");
+        addItem(ESItems.FUCHSIA_CAKE_SLICE, "Slice of Fuchsia Cake");
+        addItem(ESItems.NEGATIVE_CAKE_SLICE, "Slice of Negative Cake");
+        addItem(ESItems.CARROT_CAKE_SLICE, "Slice of Carrot Cake");
+        addItem(ESItems.CHOCOLATEY_CAKE_SLICE, "Slice of Chocolatey Cake");
+        addItem(ESItems.MOON_CAKE_SLICE, "Slice of Moon Cake");
 
         addItem(ESItems.DESERT_JUICE, "Desert Juice");
     }

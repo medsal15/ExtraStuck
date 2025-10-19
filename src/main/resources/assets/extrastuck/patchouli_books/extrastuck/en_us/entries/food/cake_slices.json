@@ -1,0 +1,64 @@
+{
+    "name": "Slices of Cake",
+    "icon": "farmersdelight:cake_slice",
+    "flag": "mod:farmersdelight",
+    "category": "extrastuck:food",
+    "pages": [
+        "All these brand new cake slices can be obtained by cutting their respective cakes with a cutting board.$(br)You can also use alchemy with cake slices instead of cake for the respective slices.",
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:apple_cake_slice",
+            "text": "Nothing special from this simple slice of apple cake."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:blue_cake_slice",
+            "text": "Eating this will give Speed for 7.5 seconds."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:cold_cake_slice",
+            "text": "This one will give Weakness II and Slowness for 10 seconds."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:red_cake_slice",
+            "text": "Eating one will apply Instant Health, how nice!"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:hot_cake_slice",
+            "text": "Eating one will burn you for 4 seconds."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:reverse_cake_slice",
+            "text": "Not sure what you expected here. It's an upside down piece of cake."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:fuchsia_cake_slice",
+            "text": "Absorption for 17.5 seconds and Regeneration for 10. Too bad you need a fuchsia cake in the first place."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:negative_cake_slice",
+            "text": "Grants Blindness for 15 seconds and Invisibility for only 10. Great when you're in a bind."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:carrot_cake_slice",
+            "text": "Grants Night Vision for 10 seconds."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:chocolatey_cake_slice",
+            "text": "It's made of chocolate, what more do you want?"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:moon_cake_slice,extrastuck:moon_cake_slice[extrastuck:moon_cake_slice_color=prospit],extrastuck:moon_cake_slice[extrastuck:moon_cake_slice_color=derse]",
+            "text": "Come in 3 flavors, dual, prospit and derse.$(br)We all know which one is superior."
+        }
+    ]
+}

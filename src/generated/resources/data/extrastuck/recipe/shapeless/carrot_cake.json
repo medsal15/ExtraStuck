@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "extrastuck:carrot_cake_slice"
+    },
+    {
+      "item": "extrastuck:carrot_cake_slice"
+    },
+    {
+      "item": "extrastuck:carrot_cake_slice"
+    },
+    {
+      "item": "extrastuck:carrot_cake_slice"
+    },
+    {
+      "item": "extrastuck:carrot_cake_slice"
+    },
+    {
+      "item": "extrastuck:carrot_cake_slice"
+    },
+    {
+      "item": "extrastuck:carrot_cake_slice"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minestuck:carrot_cake"
+  }
+}

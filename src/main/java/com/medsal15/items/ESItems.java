@@ -32,6 +32,7 @@ import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.items.ESDataComponents.GristLayer;
+import com.medsal15.items.ESDataComponents.MoonCakeSliceColor;
 import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.DarkKnightArmorItem;
 import com.medsal15.items.armor.PropellerHatItem;
@@ -39,6 +40,7 @@ import com.medsal15.items.armor.SalesmanGogglesItem;
 import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.food.FortuneCookie;
+import com.medsal15.items.food.HotCakeSlice;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.BrushWeapon;
@@ -78,6 +80,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BrushItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.Rarity;
@@ -571,6 +574,29 @@ public final class ESItems {
             p -> new Item(p.food(ESFoods.COOKED_BEE_LARVA)));
     public static final DeferredItem<Item> DESERT_JUICE = ITEMS.registerItem("desert_juice",
             p -> new DrinkableItem(p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
+    public static final DeferredItem<Item> APPLE_CAKE_SLICE = ITEMS.registerItem("apple_cake_slice",
+            p -> new Item(p.food(ESFoods.APPLE_CAKE_SLICE)));
+    public static final DeferredItem<Item> BLUE_CAKE_SLICE = ITEMS.registerItem("blue_cake_slice",
+            p -> new Item(p.food(ESFoods.BLUE_CAKE_SLICE)));
+    public static final DeferredItem<Item> COLD_CAKE_SLICE = ITEMS.registerItem("cold_cake_slice",
+            p -> new Item(p.food(ESFoods.COLD_CAKE_SLICE)));
+    public static final DeferredItem<Item> RED_CAKE_SLICE = ITEMS.registerItem("red_cake_slice",
+            p -> new Item(p.food(ESFoods.RED_CAKE_SLICE)));
+    public static final DeferredItem<Item> HOT_CAKE_SLICE = ITEMS.registerItem("hot_cake_slice",
+            p -> new HotCakeSlice(p.food(ESFoods.HOT_CAKE_SLICE)));
+    public static final DeferredItem<Item> REVERSE_CAKE_SLICE = ITEMS.registerItem("reverse_cake_slice",
+            p -> new Item(p.food(ESFoods.REVERSE_CAKE_SLICE)));
+    public static final DeferredItem<Item> FUCHSIA_CAKE_SLICE = ITEMS.registerItem("fuchsia_cake_slice",
+            p -> new Item(p.food(ESFoods.FUCHSIA_CAKE_SLICE)));
+    public static final DeferredItem<Item> NEGATIVE_CAKE_SLICE = ITEMS.registerItem("negative_cake_slice",
+            p -> new Item(p.food(ESFoods.NEGATIVE_CAKE_SLICE)));
+    public static final DeferredItem<Item> CARROT_CAKE_SLICE = ITEMS.registerItem("carrot_cake_slice",
+            p -> new Item(p.food(ESFoods.CARROT_CAKE_SLICE)));
+    public static final DeferredItem<Item> CHOCOLATEY_CAKE_SLICE = ITEMS.registerItem("chocolatey_cake_slice",
+            p -> new Item(p.food(ESFoods.CHOCOLATEY_CAKE_SLICE)));
+    public static final DeferredItem<Item> MOON_CAKE_SLICE = ITEMS.registerItem("moon_cake_slice",
+            p -> new Item(p.food(ESFoods.MOON_CAKE_SLICE).component(ESDataComponents.MOON_CAKE_SLICE_COLOR,
+                    MoonCakeSliceColor.DUAL)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -733,6 +759,15 @@ public final class ESItems {
         output.accept(BEE_LARVA);
         for (DeferredItem<? extends Item> item : ESItems.getFoods()) {
             output.accept(item.get());
+
+            if (item.get() == MOON_CAKE_SLICE.get()) {
+                ItemStack derse = item.toStack();
+                derse.set(ESDataComponents.MOON_CAKE_SLICE_COLOR, MoonCakeSliceColor.DERSE);
+                output.accept(derse);
+                ItemStack prospit = item.toStack();
+                prospit.set(ESDataComponents.MOON_CAKE_SLICE_COLOR, MoonCakeSliceColor.PROSPIT);
+                output.accept(prospit);
+            }
         }
         for (DeferredItem<? extends Item> item : ESItems.getDrinks()) {
             output.accept(item.get());
@@ -950,6 +985,18 @@ public final class ESItems {
         list.add(DIVINE_TEMPTATION);
         list.add(YELLOWCAKE_SLICE);
         list.add(COOKED_BEE_LARVA);
+        list.add(APPLE_CAKE_SLICE);
+        list.add(BLUE_CAKE_SLICE);
+        list.add(COLD_CAKE_SLICE);
+        list.add(RED_CAKE_SLICE);
+        list.add(HOT_CAKE_SLICE);
+        list.add(REVERSE_CAKE_SLICE);
+        list.add(FUCHSIA_CAKE_SLICE);
+        list.add(NEGATIVE_CAKE_SLICE);
+        list.add(CARROT_CAKE_SLICE);
+        list.add(CHOCOLATEY_CAKE_SLICE);
+        list.add(MOON_CAKE_SLICE);
+        list.add(MOON_CAKE_SLICE);
         return list;
     }
 
