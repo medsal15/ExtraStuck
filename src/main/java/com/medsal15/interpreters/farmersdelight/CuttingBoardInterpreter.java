@@ -12,6 +12,7 @@ import com.mraof.minestuck.alchemy.recipe.generator.recipe.RecipeInterpreter;
 import com.mraof.minestuck.api.alchemy.GristSet;
 import com.mraof.minestuck.api.alchemy.MutableGristSet;
 import com.mraof.minestuck.api.alchemy.recipe.generator.GeneratorCallback;
+import com.mraof.minestuck.api.alchemy.recipe.generator.LookupTracker;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -64,5 +65,15 @@ public record CuttingBoardInterpreter(String option) implements RecipeInterprete
         }
 
         return totalCost.scale(1F / count, false);
+    }
+
+    @Override
+    public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
+        if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CuttingBoardRecipe cut))
+            return;
+
+        for (Ingredient ingredient : cut.getIngredients()) {
+            tracker.report(ingredient);
+        }
     }
 }

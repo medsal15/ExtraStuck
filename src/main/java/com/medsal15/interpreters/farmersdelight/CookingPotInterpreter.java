@@ -11,6 +11,7 @@ import com.mraof.minestuck.alchemy.recipe.generator.recipe.RecipeInterpreter;
 import com.mraof.minestuck.api.alchemy.GristSet;
 import com.mraof.minestuck.api.alchemy.MutableGristSet;
 import com.mraof.minestuck.api.alchemy.recipe.generator.GeneratorCallback;
+import com.mraof.minestuck.api.alchemy.recipe.generator.LookupTracker;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -71,5 +72,21 @@ public record CookingPotInterpreter(GristSet.Immutable cookingCost, String optio
         }
 
         return totalCost.scale(1F / count, false);
+    }
+
+    @Override
+    public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
+        if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CookingPotRecipe cook))
+            return;
+
+        for (Ingredient ingredient : cook.getIngredients()) {
+            tracker.report(ingredient);
+        }
+
+        if (!cook.getContainerOverride().isEmpty()) {
+            tracker.report(cook.getContainerOverride());
+        } else if (!cook.getOutputContainer().isEmpty()) {
+            tracker.report(cook.getOutputContainer());
+        }
     }
 }
