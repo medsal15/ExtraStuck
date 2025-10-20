@@ -37,6 +37,8 @@ public record SequencedInterpreter(String option) implements RecipeInterpreter {
 
     @Override
     public List<Item> getOutputItems(Recipe<?> recipe) {
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return List.of();
         return DefaultInterpreter.INSTANCE.getOutputItems(recipe);
     }
 
