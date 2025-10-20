@@ -91,6 +91,8 @@ public record CreateBasicInterpreter(GristSet.Immutable processCost, String opti
 
     @Override
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return;
         if (!ModList.get().isLoaded("create") || !(recipe instanceof ProcessingRecipe))
             return;
 

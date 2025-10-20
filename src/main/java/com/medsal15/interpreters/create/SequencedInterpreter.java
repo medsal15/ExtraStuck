@@ -105,6 +105,8 @@ public record SequencedInterpreter(String option) implements RecipeInterpreter {
 
     @Override
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return;
         if (!ModList.get().isLoaded("create") || !(recipe instanceof SequencedAssemblyRecipe))
             return;
 

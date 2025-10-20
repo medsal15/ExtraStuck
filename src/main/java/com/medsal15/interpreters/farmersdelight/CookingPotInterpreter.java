@@ -76,6 +76,8 @@ public record CookingPotInterpreter(GristSet.Immutable cookingCost, String optio
 
     @Override
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return;
         if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CookingPotRecipe cook))
             return;
 
