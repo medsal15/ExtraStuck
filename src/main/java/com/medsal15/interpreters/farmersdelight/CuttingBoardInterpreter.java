@@ -69,6 +69,8 @@ public record CuttingBoardInterpreter(String option) implements RecipeInterprete
 
     @Override
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return;
         if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CuttingBoardRecipe cut))
             return;
 

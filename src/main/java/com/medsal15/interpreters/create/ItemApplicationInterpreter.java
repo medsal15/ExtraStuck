@@ -41,8 +41,7 @@ public record ItemApplicationInterpreter(String option) implements RecipeInterpr
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return null;
-        if (!ModList.get().isLoaded("create")
-                || !(recipe instanceof ItemApplicationRecipe))
+        if (!ModList.get().isLoaded("create") || !(recipe instanceof ItemApplicationRecipe))
             return null;
 
         ItemApplicationRecipe apply = (ItemApplicationRecipe) recipe;
@@ -79,8 +78,9 @@ public record ItemApplicationInterpreter(String option) implements RecipeInterpr
 
     @Override
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
-        if (!ModList.get().isLoaded("create")
-                || !(recipe instanceof ItemApplicationRecipe))
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return;
+        if (!ModList.get().isLoaded("create") || !(recipe instanceof ItemApplicationRecipe))
             return;
 
         ItemApplicationRecipe apply = (ItemApplicationRecipe) recipe;
