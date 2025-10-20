@@ -36,6 +36,8 @@ public record CookingPotInterpreter(GristSet.Immutable cookingCost, String optio
 
     @Override
     public List<Item> getOutputItems(Recipe<?> recipe) {
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return List.of();
         return DefaultInterpreter.INSTANCE.getOutputItems(recipe);
     }
 

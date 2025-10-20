@@ -47,6 +47,8 @@ public record CreateBasicInterpreter(GristSet.Immutable processCost, String opti
 
     @Override
     public List<Item> getOutputItems(Recipe<?> recipe) {
+        if (option != "" && !ConfigCommon.configEnabled(option))
+            return List.of();
         return DefaultInterpreter.INSTANCE.getOutputItems(recipe);
     }
 
