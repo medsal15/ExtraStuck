@@ -79,6 +79,15 @@ public record ItemApplicationInterpreter(String option) implements RecipeInterpr
 
     @Override
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
-        DefaultInterpreter.INSTANCE.reportPreliminaryLookups(recipe, tracker);
+        if (!ModList.get().isLoaded("create")
+                || !(recipe instanceof ItemApplicationRecipe))
+            return;
+
+        ItemApplicationRecipe apply = (ItemApplicationRecipe) recipe;
+
+        tracker.report(apply.getProcessedItem());
+
+        if (!apply.shouldKeepHeldItem())
+            tracker.report(apply.getRequiredHeldItem());
     }
 }

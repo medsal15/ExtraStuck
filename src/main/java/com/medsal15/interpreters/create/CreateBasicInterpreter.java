@@ -91,6 +91,16 @@ public record CreateBasicInterpreter(GristSet.Immutable processCost, String opti
 
     @Override
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
-        DefaultInterpreter.INSTANCE.reportPreliminaryLookups(recipe, tracker);
+        if (!ModList.get().isLoaded("create") || !(recipe instanceof ProcessingRecipe))
+            return;
+
+        ProcessingRecipe<?, ?> proc = (ProcessingRecipe<?, ?>) recipe;
+
+        if (proc.getFluidIngredients().size() > 0 || proc.getFluidResults().size() > 0)
+            return;
+
+        for (Ingredient ingredient : proc.getIngredients()) {
+            tracker.report(ingredient);
+        }
     }
 }

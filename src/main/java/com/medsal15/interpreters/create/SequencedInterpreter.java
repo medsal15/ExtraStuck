@@ -11,6 +11,7 @@ import com.mraof.minestuck.alchemy.recipe.generator.recipe.RecipeInterpreter;
 import com.mraof.minestuck.api.alchemy.GristSet;
 import com.mraof.minestuck.api.alchemy.MutableGristSet;
 import com.mraof.minestuck.api.alchemy.recipe.generator.GeneratorCallback;
+import com.mraof.minestuck.api.alchemy.recipe.generator.LookupTracker;
 import com.simibubi.create.content.kinetics.deployer.ItemApplicationRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipe;
@@ -64,6 +65,8 @@ public record SequencedInterpreter(String option) implements RecipeInterpreter {
             if (sub instanceof ItemApplicationRecipe application) {
                 cost = applicationCost(application, callback);
             } else if (sub instanceof ProcessingRecipe processing) {
+                if (processing.getFluidIngredients().size() > 0)
+                    return null;
                 cost = processingCost(processing, callback, transitional);
             }
             if (cost == null)
@@ -98,5 +101,45 @@ public record SequencedInterpreter(String option) implements RecipeInterpreter {
         }
 
         return totalCost;
+    }
+
+    @Override
+    public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
+        if (!ModList.get().isLoaded("create") || !(recipe instanceof SequencedAssemblyRecipe))
+            return;
+
+        SequencedAssemblyRecipe assembly = (SequencedAssemblyRecipe) recipe;
+
+        tracker.report(assembly.getIngredient());
+
+        for (SequencedRecipe<?> step : assembly.getSequence()) {
+            Recipe<?> sub = step.getRecipe();
+            if (sub instanceof ItemApplicationRecipe application) {
+                reportApplication(application, tracker);
+            } else if (sub instanceof ProcessingRecipe processing) {
+                if (processing.getFluidIngredients().size() > 0)
+                    return;
+                reportProcessing(processing, tracker, assembly.getTransitionalItem().getItem());
+            }
+        }
+    }
+
+    private void reportApplication(ItemApplicationRecipe recipe, LookupTracker tracker) {
+        tracker.report(recipe.getProcessedItem());
+
+        if (!recipe.shouldKeepHeldItem())
+            tracker.report(recipe.getRequiredHeldItem());
+    }
+
+    private void reportProcessing(ProcessingRecipe<?, ?> recipe, LookupTracker tracker, Item transitional) {
+        if (recipe.getFluidIngredients().size() > 0 || recipe.getFluidResults().size() > 0)
+            return;
+
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            if (ingredient.test(transitional.getDefaultInstance()))
+                continue;
+
+            tracker.report(ingredient);
+        }
     }
 }
