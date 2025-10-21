@@ -53,6 +53,8 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String ALT_GUN_EMPTY_KEY = ExtraStuck.MODID + ".office_key.empty";
     public static final String ALT_GUN_HEAVY_KEY = ExtraStuck.MODID + ".office_key.heavy";
     public static final String RADBOW_CHARGE = ExtraStuck.MODID + ".radbow.charge";
+    public static final String BEENADE_LOADED = ExtraStuck.MODID + ".beenade.loaded";
+
     public static final String GRIST_DETECTOR_LOCATED = ExtraStuck.MODID + ".grist_detector.located";
     public static final String GRIST_DETECTOR_MODE = ExtraStuck.MODID + ".grist_detector.mode";
     public static final String GRIST_DETECTOR_ANY = ExtraStuck.MODID + ".grist_detector.any";
@@ -122,6 +124,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.MASTERMIND_DISK, "Screw that. Puzzles suck.");
         addItem(ESItems.BEE_LARVA, "Bee Larva");
         addItemTooltip(ESItems.BEE_LARVA, "D'aww, it's a baybee");
+        addEntityType(ESEntities.THROWN_BEE_LARVA, "Thrown Bee Larva");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -264,6 +267,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.YELLOWCAKESAW_LIPSTICK, "Glowing Lipstick");
         addItemTooltip(ESItems.YELLOWCAKESAW_LIPSTICK, "Contraband");
 
+        addItem(ESItems.THE_STING, "The Sting");
+
         addItem(ESItems.RADBOW, "Radbow");
         addItemTooltip(ESItems.RADBOW, "Silent, deadly, and quite radioactive!");
         addEntityType(ESEntities.URANIUM_ROD, "Uranium Rod");
@@ -278,6 +283,10 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.ITEM_BULLET, "Item Bullet");
+
+        addItem(ESItems.BEENADE, "Beenade");
+        add(BEENADE_LOADED, "It buzzes softly");
+        addEntityType(ESEntities.THROWN_BEENADE, "Thrown Beenade");
     }
 
     private void addArmors() {
@@ -494,6 +503,9 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.Items.AMMO, "Ammunition");
         add(ESTags.Items.AMMO_HANDGUN, "Handgun Ammunition");
         add(ESTags.Items.SHOW_VALUE, "Armors Displaying Value");
+        add(ESTags.Items.IGNORE_BYPRODUCT_CUTTING, "Ignored Cutting Byproducts");
+
+        add(ESTags.EntityTypes.BEENADE_ACCEPTS, "Accepted by Beenades");
     }
 
     private void addItemTooltip(Supplier<? extends Item> key, String text) {

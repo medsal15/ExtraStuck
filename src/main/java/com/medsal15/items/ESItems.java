@@ -11,6 +11,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.data.ESLangProvider;
+import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
@@ -50,7 +51,8 @@ import com.medsal15.items.projectiles.ESArrowItem;
 import com.medsal15.items.projectiles.ESBulletItem;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
-import com.medsal15.items.throwables.BeeggItem;
+import com.medsal15.items.throwables.BeeLarvaItem;
+import com.medsal15.items.throwables.BeenadeItem;
 import com.medsal15.items.throwables.SwapTrident;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.item.MSItemProperties;
@@ -226,6 +228,17 @@ public final class ESItems {
             p -> new ESArrowItem(p, DragonArrow::new, DragonArrow::new));
     // #endregion Arrows
 
+    /**
+     * TODO
+     * Eclipse Swordsickle
+     * - HSR reference
+     * - switchable between sickle and sword
+     * Eclipse Sicklesword
+     * Eclipse Sickle
+     * - bonus damage to other half (when off hand)
+     * Eclipse Sword
+     * - bonus damage to other half (when off hand)
+     */
     // #region Weapons
     // #region Hammers
     public static final DeferredItem<Item> GEM_BREAKER = ITEMS.register("gem_breaker",
@@ -432,6 +445,15 @@ public final class ESItems {
                             .set(ItemRightClickEffect.switchTo(ESItems.YELLOWCAKESAW)),
                     new MSItemProperties().durability(720)));
     // #endregion Chainsaws
+    // #region Batons
+    public static final DeferredItem<Item> THE_STING = ITEMS.register("the_sting",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.ORGANIC_TIER, 4, -1F).efficiency(1F).set(MSItemTypes.BATON_TOOL)
+                            .add(OnHitEffect
+                                    .enemyPotionEffect(() -> new MobEffectInstance(ESMobEffects.BEE_ANGRY, 1, 1)))
+                            .add(OnHitEffect.playSound(() -> SoundEvents.BEE_STING)),
+                    new MSItemProperties().durability(833)));
+    // #endregion Batons
     // #region Crossbows
     public static final DeferredItem<Item> RADBOW = ITEMS.register("radbow",
             () -> new RadBowItem(new Properties().durability(350).stacksTo(1)));
@@ -455,6 +477,10 @@ public final class ESItems {
                     ESBullet.createArrow(ESEntities.HEAVY_HANDGUN_BULLET.get()),
                     ESBullet.asProjectile(ESEntities.HEAVY_HANDGUN_BULLET.get())));
     // #endregion Ammo
+    // #region Throwables
+    public static final DeferredItem<Item> BEENADE = ITEMS.register("beenade",
+            () -> new BeenadeItem(new Properties().stacksTo(16)));
+    // #endregion Throwables
     // #endregion Weapons
 
     // #region Armors
@@ -569,7 +595,7 @@ public final class ESItems {
     public static final DeferredItem<Item> YELLOWCAKE_SLICE = ITEMS.registerItem("yellowcake_slice",
             p -> new Item(p.food(ESFoods.YELLOWCAKE_SLICE)));
     public static final DeferredItem<Item> BEE_LARVA = ITEMS.registerItem("bee_larva",
-            p -> new BeeggItem(p.stacksTo(16)));
+            p -> new BeeLarvaItem(p.stacksTo(16)));
     public static final DeferredItem<Item> COOKED_BEE_LARVA = ITEMS.registerItem("cooked_bee_larva",
             p -> new Item(p.food(ESFoods.COOKED_BEE_LARVA)));
     public static final DeferredItem<Item> DESERT_JUICE = ITEMS.registerItem("desert_juice",
@@ -744,6 +770,7 @@ public final class ESItems {
         for (DeferredItem<Item> item : ESItems.getRangedWeapons()) {
             output.accept(item.get());
         }
+        output.accept(BEENADE);
 
         for (DeferredItem<Item> item : ESItems.getArrows()) {
             output.accept(item.get());
@@ -885,6 +912,8 @@ public final class ESItems {
         // Chainsaws
         list.add(YELLOWCAKESAW);
         list.add(YELLOWCAKESAW_LIPSTICK);
+        // Batons
+        list.add(THE_STING);
         return list;
     }
 

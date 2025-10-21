@@ -476,6 +476,18 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Chainsaws
 
+        // #region Batons
+        CombinationRecipeBuilder.of(ESItems.THE_STING)
+                .input(MSItems.CONDUCTORS_BATON).and().input(ESItems.BEE_LARVA)
+                .build(output);
+        CombinationRecipeBuilder.of(ESItems.THE_STING)
+                .input(MSItems.CONDUCTORS_BATON).and().input(Items.BEEHIVE)
+                .build(output, modid("combinations/the_sting_hive"));
+        GristCostRecipeBuilder.of(ESItems.THE_STING)
+                .grist(GristTypes.GOLD, 60).grist(GristTypes.TAR, 40)
+                .build(output);
+        // #endregion Batons
+
         // #region Crossbows
         CombinationRecipeBuilder.of(ESItems.RADBOW)
                 .input(Items.CROSSBOW).and().input(MSItems.URANIUM_POWERED_STICK)
@@ -503,6 +515,15 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addStep(PressingRecipe::new, sub -> sub)
                 .build(output.withConditions(new ModLoadedCondition("create")));
         // #endregion Crossbows
+
+        // #region Throwables
+        CombinationRecipeBuilder.of(ESItems.BEENADE)
+                .input(MSItems.BARBASOL_BOMB).and().input(Items.BEEHIVE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BEENADE)
+                .grist(GristTypes.GOLD, 10).grist(GristTypes.AMBER, 10).grist(GristTypes.TAR, 10)
+                .build(output);
+        // #endregion Throwables
 
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)

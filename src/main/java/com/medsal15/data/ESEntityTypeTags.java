@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.ESEntities;
+import com.medsal15.utils.ESTags;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
@@ -27,5 +28,7 @@ public final class ESEntityTypeTags extends EntityTypeTagsProvider {
         for (EntityType<? extends AbstractArrow> arrow : ESEntities.getArrows()) {
             tag(EntityTypeTags.ARROWS).add(arrow);
         }
+
+        tag(ESTags.EntityTypes.BEENADE_ACCEPTS).add(EntityType.BEE);
     }
 }

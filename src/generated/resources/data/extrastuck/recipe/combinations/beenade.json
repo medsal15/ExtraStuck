@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:barbasol_bomb"
+  },
+  "input2": {
+    "item": "minecraft:beehive"
+  },
+  "mode": "and",
+  "output": "extrastuck:beenade"
+}

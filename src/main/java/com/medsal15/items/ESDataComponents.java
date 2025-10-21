@@ -94,6 +94,9 @@ public final class ESDataComponents {
     /** Shots left */
     public static final Supplier<DataComponentType<Integer>> URANIUM_CHARGE = DATA_COMPONENTS.registerComponentType(
             "uranium_charge", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
+    public static final Supplier<DataComponentType<String>> ENTITY_TYPE = DATA_COMPONENTS.registerComponentType(
+            "entity_type",
+            builder -> builder.persistent(Codec.STRING).networkSynchronized(ByteBufCodecs.STRING_UTF8));
 
     // Moduses
     /** Mastermind card code */

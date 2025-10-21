@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:conductors_baton"
+  },
+  "input2": {
+    "item": "extrastuck:bee_larva"
+  },
+  "mode": "and",
+  "output": "extrastuck:the_sting"
+}

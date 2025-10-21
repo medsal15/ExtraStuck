@@ -169,11 +169,15 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
         handheldItem(ESItems.YELLOWCAKESAW.get());
         handheldItem(ESItems.YELLOWCAKESAW_LIPSTICK.get());
+
+        handheldItem(ESItems.THE_STING.get());
     }
 
     private void registerRangedWeapons() {
         handheldItem(ESItems.INCOMPLETE_MECHANICAL_RADBOW.get());
         handheldItem(ESItems.HANDGUN.get());
+
+        handheldItem(ESItems.BEENADE.get());
     }
 
     private void registerArmors() {
