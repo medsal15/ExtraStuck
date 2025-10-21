@@ -6,7 +6,8 @@ import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
-import com.medsal15.entities.projectiles.ThrownBeegg;
+import com.medsal15.entities.projectiles.ThrownBeeLarva;
+import com.medsal15.entities.projectiles.ThrownBeenade;
 import com.medsal15.entities.projectiles.UraniumRod;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
@@ -88,9 +89,12 @@ public final class ESEntities {
                     .clientTrackingRange(4).setUpdateInterval(10).build(ExtraStuck.MODID + ":item_bullet"));
     // #endregion Bullets
 
-    public static final Supplier<EntityType<ThrownBeegg>> THROWN_BEEGG = ENTITIES.register("thrown_beegg",
-            () -> EntityType.Builder.<ThrownBeegg>of(ThrownBeegg::new, MobCategory.MISC).sized(.25F, .25F)
-                    .clientTrackingRange(4).updateInterval(10).build(ExtraStuck.MODID + ":thrown_beegg"));
+    public static final Supplier<EntityType<ThrownBeeLarva>> THROWN_BEE_LARVA = ENTITIES.register("thrown_bee_larva",
+            () -> EntityType.Builder.<ThrownBeeLarva>of(ThrownBeeLarva::new, MobCategory.MISC).sized(.25F, .25F)
+                    .clientTrackingRange(4).updateInterval(10).build(ExtraStuck.MODID + ":thrown_bee_larva"));
+    public static final Supplier<EntityType<ThrownBeenade>> THROWN_BEENADE = ENTITIES.register("thrown_beenade",
+            () -> EntityType.Builder.<ThrownBeenade>of(ThrownBeenade::new, MobCategory.MISC).sized(.25F, .25F)
+                    .clientTrackingRange(4).updateInterval(10).build(ExtraStuck.MODID + ":thrown_beenade"));
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> register(String name, EntityFactory<T> fac) {
         return ENTITIES.register(name, () -> EntityType.Builder.<T>of(fac, MobCategory.MISC)

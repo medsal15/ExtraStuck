@@ -2,7 +2,7 @@ package com.medsal15.items.throwables;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.entities.projectiles.ThrownBeegg;
+import com.medsal15.entities.projectiles.ThrownBeeLarva;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
@@ -19,8 +19,8 @@ import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
 
-public class BeeggItem extends Item implements ProjectileItem {
-    public BeeggItem(Properties properties) {
+public class BeeLarvaItem extends Item implements ProjectileItem {
+    public BeeLarvaItem(Properties properties) {
         super(properties);
         DispenserBlock.registerProjectileBehavior(this);
     }
@@ -33,7 +33,7 @@ public class BeeggItem extends Item implements ProjectileItem {
                 .5F, .4F / (level.getRandom().nextFloat() * .4F + .8F));
 
         if (!level.isClientSide) {
-            ThrownBeegg thrownBeegg = new ThrownBeegg(level, player);
+            ThrownBeeLarva thrownBeegg = new ThrownBeeLarva(level, player);
             thrownBeegg.setItem(stack);
             thrownBeegg.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1.5F, 1F);
             level.addFreshEntity(thrownBeegg);
@@ -47,7 +47,7 @@ public class BeeggItem extends Item implements ProjectileItem {
     @Override
     public Projectile asProjectile(@Nonnull Level level, @Nonnull Position pos, @Nonnull ItemStack stack,
             @Nonnull Direction direction) {
-        ThrownBeegg thrownBeegg = new ThrownBeegg(level, pos.x(), pos.y(), pos.z());
+        ThrownBeeLarva thrownBeegg = new ThrownBeeLarva(level, pos.x(), pos.y(), pos.z());
         thrownBeegg.setItem(stack);
         return thrownBeegg;
     }

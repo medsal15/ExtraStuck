@@ -17,19 +17,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-public class ThrownBeegg extends ThrowableItemProjectile {
+public class ThrownBeeLarva extends ThrowableItemProjectile {
     private static final EntityDimensions ZERO_SIZED_DIMENSIONS = EntityDimensions.fixed(0.0F, 0.0F);
 
-    public ThrownBeegg(EntityType<? extends ThrownBeegg> type, Level level) {
+    public ThrownBeeLarva(EntityType<? extends ThrownBeeLarva> type, Level level) {
         super(type, level);
     }
 
-    public ThrownBeegg(Level level, LivingEntity shooter) {
-        super(ESEntities.THROWN_BEEGG.get(), shooter, level);
+    public ThrownBeeLarva(Level level, LivingEntity shooter) {
+        super(ESEntities.THROWN_BEE_LARVA.get(), shooter, level);
     }
 
-    public ThrownBeegg(Level level, double x, double y, double z) {
-        super(ESEntities.THROWN_BEEGG.get(), x, y, z, level);
+    public ThrownBeeLarva(Level level, double x, double y, double z) {
+        super(ESEntities.THROWN_BEE_LARVA.get(), x, y, z, level);
     }
 
     @Override

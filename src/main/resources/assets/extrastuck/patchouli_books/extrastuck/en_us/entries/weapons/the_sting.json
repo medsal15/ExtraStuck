@@ -1,0 +1,23 @@
+{
+    "name": "The Sting",
+    "icon": "extrastuck:the_sting",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:the_sting"
+            },
+            "text": "An oversized bee stinger. Do bee stingers even have stripes?$(br2)$(3)$(l)Special:$() Directs nearby bees to attack the target."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Conductor's Baton and a Beehive or Bee Larva in a Totem Lathe.",
+            "left": "minestuck:conductors_baton",
+            "mode": "&&",
+            "right": "minecraft:beehive",
+            "result": "extrastuck:the_sting"
+        }
+    ]
+}

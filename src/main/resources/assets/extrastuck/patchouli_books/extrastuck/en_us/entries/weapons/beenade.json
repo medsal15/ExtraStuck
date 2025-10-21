@@ -1,0 +1,23 @@
+{
+    "name": "Beenade",
+    "icon": "extrastuck:beenade",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:beenade"
+            },
+            "text": "A portable beehive that can hold a single bee. Hitting close to an enemy will release the bee, angry and ready to attack it!$(br)Bees sold separately"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Barbasol Bomb and a Beehive in a Totem Lathe.",
+            "left": "minestuck:barbasol_bomb",
+            "mode": "&&",
+            "right": "minecraft:beehive",
+            "result": "extrastuck:beenade"
+        }
+    ]
+}

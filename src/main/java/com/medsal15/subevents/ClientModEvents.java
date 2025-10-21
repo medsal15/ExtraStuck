@@ -67,16 +67,19 @@ public final class ClientModEvents {
         ItemProperties.register(ESItems.FLUX_SHIELD.get(), ExtraStuck.modid("charged"),
                 (stack, world, entity, entityId) -> {
                     @SuppressWarnings("null")
-                    IEnergyStorage handler = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
+                    IEnergyStorage handler = Capabilities.EnergyStorage.ITEM.getCapability(stack,
+                            null);
                     if (handler != null
-                            && handler.getEnergyStored() >= stack.getOrDefault(ESDataComponents.FLUX_MULTIPLIER, 100))
+                            && handler.getEnergyStored() >= stack.getOrDefault(
+                                    ESDataComponents.FLUX_MULTIPLIER, 100))
                         return 1;
                     return 0;
                 });
 
         ItemProperties.register(ESItems.MOON_CAKE_SLICE.get(), ExtraStuck.modid("moon_cake"),
                 (stack, world, entity, entityId) -> {
-                    MoonCakeSliceColor color = stack.getOrDefault(ESDataComponents.MOON_CAKE_SLICE_COLOR,
+                    MoonCakeSliceColor color = stack.getOrDefault(
+                            ESDataComponents.MOON_CAKE_SLICE_COLOR,
                             MoonCakeSliceColor.DUAL);
                     switch (color) {
                         case MoonCakeSliceColor.DUAL:
@@ -100,13 +103,15 @@ public final class ClientModEvents {
 
     private static void addCrossbow(DeferredItem<Item> item) {
         ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("pulling"), (stack, world,
-                entity, entityId) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack
+                entity,
+                entityId) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack
                         && !RadBowItem.isCharged(stack) ? 1F : 0F);
         ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("pull"),
                 (stack, world, entity, entityId) -> {
                     if (entity == null || RadBowItem.isCharged(stack))
                         return 0F;
-                    return (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks())
+                    return (float) (stack.getUseDuration(entity)
+                            - entity.getUseItemRemainingTicks())
                             / (float) (CrossbowItem.getChargeDuration(stack, entity));
                 });
         ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"), (stack, world,
@@ -174,7 +179,8 @@ public final class ClientModEvents {
          * TODO? copy egg display
          */
         event.registerEntityRenderer(ESEntities.ITEM_BULLET.get(), c -> new ThrownItemRenderer<ItemBullet>(c));
-        event.registerEntityRenderer(ESEntities.THROWN_BEEGG.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ESEntities.THROWN_BEE_LARVA.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ESEntities.THROWN_BEENADE.get(), ThrownItemRenderer::new);
 
         event.registerBlockEntityRenderer(ESBlockEntities.CHARGER.get(), ChargerBlockRenderer::new);
     }
