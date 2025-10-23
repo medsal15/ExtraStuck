@@ -228,17 +228,6 @@ public final class ESItems {
             p -> new ESArrowItem(p, DragonArrow::new, DragonArrow::new));
     // #endregion Arrows
 
-    /**
-     * TODO
-     * Eclipse Swordsickle
-     * - HSR reference
-     * - switchable between sickle and sword
-     * Eclipse Sicklesword
-     * Eclipse Sickle
-     * - bonus damage to other half (when off hand)
-     * Eclipse Sword
-     * - bonus damage to other half (when off hand)
-     */
     // #region Weapons
     // #region Hammers
     public static final DeferredItem<Item> GEM_BREAKER = ITEMS.register("gem_breaker",
@@ -454,6 +443,23 @@ public final class ESItems {
                             .add(OnHitEffect.playSound(() -> SoundEvents.BEE_STING)),
                     new MSItemProperties().durability(833)));
     // #endregion Batons
+    // #region Swords
+    public static final DeferredItem<Item> SUN_REAVER = ITEMS.register("sun_reaver", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.REGI_TIER, 5, -2.4F).efficiency(15F).set(MSItemTypes.SWORD_TOOL)
+                    .add(OnHitEffect.SWEEP)
+                    .add(ESInventoryTickEffects.effectIfHeldOffHand((stack) -> stack.is(ESItems.NEW_MOON.get()),
+                            () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 0, false, false, false))),
+            new Item.Properties()));
+    // #endregion Swords
+    // #region Sickles
+    public static final DeferredItem<Item> NEW_MOON = ITEMS.register("new_moon",
+            () -> new WeaponItem(new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -2.2F).efficiency(4F)
+                    .set(MSItemTypes.SICKLE_TOOL).disableShield()
+                    .add(ESInventoryTickEffects.effectIfHeldOffHand((stack) -> stack.is(ESItems.SUN_REAVER.get()),
+                            () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 0, false, false, false))),
+                    new Item.Properties()));
+    // #endregion Sickles
+
     // #region Crossbows
     public static final DeferredItem<Item> RADBOW = ITEMS.register("radbow",
             () -> new RadBowItem(new Properties().durability(350).stacksTo(1)));
@@ -600,6 +606,7 @@ public final class ESItems {
             p -> new Item(p.food(ESFoods.COOKED_BEE_LARVA)));
     public static final DeferredItem<Item> DESERT_JUICE = ITEMS.registerItem("desert_juice",
             p -> new DrinkableItem(p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
+    // #region Cake Slices
     public static final DeferredItem<Item> APPLE_CAKE_SLICE = ITEMS.registerItem("apple_cake_slice",
             p -> new Item(p.food(ESFoods.APPLE_CAKE_SLICE)));
     public static final DeferredItem<Item> BLUE_CAKE_SLICE = ITEMS.registerItem("blue_cake_slice",
@@ -623,6 +630,7 @@ public final class ESItems {
     public static final DeferredItem<Item> MOON_CAKE_SLICE = ITEMS.registerItem("moon_cake_slice",
             p -> new Item(p.food(ESFoods.MOON_CAKE_SLICE).component(ESDataComponents.MOON_CAKE_SLICE_COLOR,
                     MoonCakeSliceColor.DUAL)));
+    // #endregion Cake Slices
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -914,6 +922,10 @@ public final class ESItems {
         list.add(YELLOWCAKESAW_LIPSTICK);
         // Batons
         list.add(THE_STING);
+        // Swords
+        list.add(SUN_REAVER);
+        // Sickles
+        list.add(NEW_MOON);
         return list;
     }
 

@@ -12,6 +12,8 @@ Allow change shields (wooden shield) to also transform when dropped
 
 Allow minestuck batteries to recharge items
 
+Custom page type (not component) for alchemy recipes
+
 ### Machines ###
 
 Autostorage Plate: puts inventory items in nearby storages

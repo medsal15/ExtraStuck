@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 914,
+    "minestuck:shale": 158,
+    "minestuck:tar": 400
+  },
+  "ingredient": {
+    "item": "extrastuck:sun_reaver"
+  }
+}

@@ -488,6 +488,24 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Batons
 
+        // #region Swords
+        CombinationRecipeBuilder.of(ESItems.SUN_REAVER)
+                .input(MSItems.REGISWORD).or().input(Items.DAYLIGHT_DETECTOR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SUN_REAVER)
+                .grist(GristTypes.TAR, 400).grist(GristTypes.SHALE, 158).grist(GristTypes.COBALT, 914)
+                .build(output);
+        // #endregion Swords
+
+        // #region Sickles
+        CombinationRecipeBuilder.of(ESItems.NEW_MOON)
+                .input(MSItems.REGISICKLE).or().input(MSItems.OIL_BUCKET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.NEW_MOON)
+                .grist(GristTypes.CAULK, 400).grist(GristTypes.TAR, 158).grist(GristTypes.SHALE, 914)
+                .build(output);
+        // #endregion Sickles
+
         // #region Crossbows
         CombinationRecipeBuilder.of(ESItems.RADBOW)
                 .input(Items.CROSSBOW).and().input(MSItems.URANIUM_POWERED_STICK)

@@ -269,6 +269,12 @@ public final class ESLangProvider extends LanguageProvider {
 
         addItem(ESItems.THE_STING, "The Sting");
 
+        addItem(ESItems.SUN_REAVER, "Sun Reaver");
+        addItemTooltip(ESItems.SUN_REAVER, "To kill a god...");
+
+        addItem(ESItems.NEW_MOON, "New Moon");
+        addItemTooltip(ESItems.NEW_MOON, "More strength...");
+
         addItem(ESItems.RADBOW, "Radbow");
         addItemTooltip(ESItems.RADBOW, "Silent, deadly, and quite radioactive!");
         addEntityType(ESEntities.URANIUM_ROD, "Uranium Rod");
@@ -544,9 +550,7 @@ public final class ESLangProvider extends LanguageProvider {
     private void addProgram(Holder<ProgramType<?>> program, String text) {
         ResourceLocation location = ProgramTypes.REGISTRY.getKey(program.value());
         if (location != null) {
-            // TODO update when PR https://github.com/lunar-sway/minestuck/pull/700 is
-            // merged
-            String key = "minestuck.program." + location.getPath();
+            String key = location.getNamespace() + ".program." + location.getPath();
             add(key, text);
         }
     }

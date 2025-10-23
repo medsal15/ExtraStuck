@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:caulk": 400,
+    "minestuck:shale": 914,
+    "minestuck:tar": 158
+  },
+  "ingredient": {
+    "item": "extrastuck:new_moon"
+  }
+}

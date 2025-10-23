@@ -1,0 +1,23 @@
+{
+    "name": "New Moon",
+    "icon": "extrastuck:new_moon",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:new_moon"
+            },
+            "text": "A circular sickle meant for destruction.$(br2)$(3)$(l)Special:$() Gives Strength when held along a $(l:extrastuck:weapons/sun_reaver)Sun Reaver$(/l)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Regisickle and a Bucket of Shale Oil in a Punch Designix.",
+            "left": "minestuck:regisickle",
+            "mode": "||",
+            "right": "minestuck:oil_bucket",
+            "result": "extrastuck:new_moon"
+        }
+    ]
+}

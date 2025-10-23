@@ -171,6 +171,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.YELLOWCAKESAW_LIPSTICK.get());
 
         handheldItem(ESItems.THE_STING.get());
+
+        handheldItem(ESItems.SUN_REAVER.get());
+
+        handheldItem(ESItems.NEW_MOON.get());
     }
 
     private void registerRangedWeapons() {
