@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:regisickle"
+  },
+  "input2": {
+    "item": "minestuck:oil_bucket"
+  },
+  "mode": "or",
+  "output": "extrastuck:new_moon"
+}

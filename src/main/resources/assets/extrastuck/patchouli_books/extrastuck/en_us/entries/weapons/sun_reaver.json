@@ -1,0 +1,23 @@
+{
+    "name": "Sun Reaver",
+    "icon": "extrastuck:sun_reaver",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:sun_reaver"
+            },
+            "text": "A long sword meant to destroy all.$(br2)$(3)$(l)Special:$() Gives Strength when held along a $(l:extrastuck:weapons/new_moon)New Moon$(/l)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Regisword and a Daylight Detector in a Punch Designix.",
+            "left": "minestuck:regisword",
+            "mode": "||",
+            "right": "minecraft:daylight_detector",
+            "result": "extrastuck:sun_reaver"
+        }
+    ]
+}
