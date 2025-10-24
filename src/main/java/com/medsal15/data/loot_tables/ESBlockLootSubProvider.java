@@ -82,6 +82,7 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
 
         add(ESBlocks.PIZZA.get(), noDrop());
         dropOther(ESBlocks.DIVINE_TEMPTATION_BLOCK.get(), Items.CAULDRON);
+        dropOther(ESBlocks.MORTAL_TEMPTATION_BLOCK.get(), Items.CAULDRON);
 
         add(ESBlocks.CARD_ORE.get(), this::droppingWithOreItem);
 

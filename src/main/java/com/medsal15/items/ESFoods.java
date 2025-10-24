@@ -70,4 +70,9 @@ public final class ESFoods {
             .saturationModifier(.5F).fast().build();
     public static final FoodProperties MOON_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
             .saturationModifier(.5F).fast().build();
+    public static final FoodProperties MORTAL_TEMPTATION = new FoodProperties.Builder().nutrition(5)
+            .saturationModifier(.45F)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600), 1F)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400), 1F)
+            .usingConvertsTo(Items.BOWL).build();
 }

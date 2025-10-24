@@ -11,7 +11,6 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.data.ESLangProvider;
-import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
@@ -42,6 +41,7 @@ import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.food.FortuneCookie;
 import com.medsal15.items.food.HotCakeSlice;
+import com.medsal15.items.food.MortalTemptation;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.BrushWeapon;
@@ -54,6 +54,7 @@ import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.BeeLarvaItem;
 import com.medsal15.items.throwables.BeenadeItem;
 import com.medsal15.items.throwables.SwapTrident;
+import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
@@ -82,9 +83,9 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BrushItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
@@ -631,6 +632,10 @@ public final class ESItems {
             p -> new Item(p.food(ESFoods.MOON_CAKE_SLICE).component(ESDataComponents.MOON_CAKE_SLICE_COLOR,
                     MoonCakeSliceColor.DUAL)));
     // #endregion Cake Slices
+    public static final DeferredItem<BlockItem> MORTAL_TEMPTATION_BLOCK = ITEMS
+            .registerSimpleBlockItem(ESBlocks.MORTAL_TEMPTATION_BLOCK);
+    public static final DeferredItem<Item> MORTAL_TEMPTATION = ITEMS.registerItem("mortal_temptation",
+            p -> new MortalTemptation(p.food(ESFoods.MORTAL_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -1037,7 +1042,8 @@ public final class ESItems {
         list.add(CARROT_CAKE_SLICE);
         list.add(CHOCOLATEY_CAKE_SLICE);
         list.add(MOON_CAKE_SLICE);
-        list.add(MOON_CAKE_SLICE);
+        list.add(MORTAL_TEMPTATION_BLOCK);
+        list.add(MORTAL_TEMPTATION);
         return list;
     }
 

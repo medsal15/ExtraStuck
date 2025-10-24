@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "extrastuck:item/mortal_temptation_block"
+  }
+}

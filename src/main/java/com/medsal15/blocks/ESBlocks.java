@@ -4,6 +4,7 @@ import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.of
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.food.DivineTemptationBlock;
+import com.medsal15.blocks.food.MortalTemptationBlock;
 import com.medsal15.blocks.machine.ChargerBlock;
 import com.medsal15.blocks.machine.PrinterBlock;
 import com.medsal15.blocks.machine.ReactorBlock;
@@ -34,6 +35,10 @@ public final class ESBlocks {
                     .noOcclusion().pushReaction(PushReaction.DESTROY));
     public static final DeferredBlock<DivineTemptationBlock> DIVINE_TEMPTATION_BLOCK = BLOCKS
             .registerBlock("divine_temptation_block", DivineTemptationBlock::new,
+                    BlockBehaviour.Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.0F)
+                            .noOcclusion());
+    public static final DeferredBlock<MortalTemptationBlock> MORTAL_TEMPTATION_BLOCK = BLOCKS
+            .registerBlock("mortal_temptation_block", MortalTemptationBlock::new,
                     BlockBehaviour.Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.0F)
                             .noOcclusion());
     // #endregion Food

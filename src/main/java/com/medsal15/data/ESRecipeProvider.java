@@ -1088,6 +1088,26 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_moon_cake_slice", has(ESItems.MOON_CAKE_SLICE))
                 .save(output, modid("shapeless/moon_cake"));
         // #endregion Cake Slice
+
+        CookingPotRecipeBuilder.cookingPotRecipe(ESItems.MORTAL_TEMPTATION_BLOCK, 1, 200, .5F, Items.CAULDRON)
+                .addIngredient(MSItems.CANDY_CORN)
+                .addIngredient(MSItems.TUIX_BAR)
+                .addIngredient(MSTags.Items.GRIST_CANDY)
+                .addIngredient(MSItems.GOLDEN_GRASSHOPPER)
+                .addIngredient(MSItems.MOREL_MUSHROOM)
+                .addIngredient(Items.RED_MUSHROOM)
+                .unlockedByAnyIngredient(MSItems.CLAW_SICKLE)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(fdOutput, modid("cooking/mortal_temptation").toString());
+        CombinationRecipeBuilder.of(ESItems.MORTAL_TEMPTATION_BLOCK)
+                .input(ESItems.DIVINE_TEMPTATION_BLOCK).and().input(MSItems.GOLDEN_GRASSHOPPER)
+                .build(output);
+        SourceGristCostBuilder.of(ESItems.MORTAL_TEMPTATION_BLOCK)
+                .grist(GristTypes.BUILD, 15)
+                .source(Items.CAULDRON).source(MSItems.CANDY_CORN.get()).source(MSItems.TUIX_BAR.get())
+                .source(MSItems.GOLDEN_GRASSHOPPER.get()).source(MSItems.MOREL_MUSHROOM.get())
+                .source(Items.RED_MUSHROOM)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

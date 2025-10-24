@@ -236,6 +236,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.NEGATIVE_CAKE_SLICE.get());
         basicItem(ESItems.CARROT_CAKE_SLICE.get());
         basicItem(ESItems.CHOCOLATEY_CAKE_SLICE.get());
+        basicItem(ESItems.MORTAL_TEMPTATION_BLOCK.get());
+        basicItem(ESItems.MORTAL_TEMPTATION.get());
 
         basicItem(ESItems.DESERT_JUICE.get());
     }

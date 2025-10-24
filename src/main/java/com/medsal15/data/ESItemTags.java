@@ -108,7 +108,8 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get());
 
         tag(Tags.Items.FOODS).add(ESItems.SWEET_TOOTH.get());
-        tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED).add(ESItems.PIZZA.get(), ESItems.DIVINE_TEMPTATION_BLOCK.get());
+        tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED).add(ESItems.PIZZA.get(), ESItems.DIVINE_TEMPTATION_BLOCK.get(),
+                ESItems.MORTAL_TEMPTATION_BLOCK.get());
         tag(Tags.Items.FOODS_SOUP).add(ESItems.SUSHROOM_STEW.get(), ESItems.DIVINE_TEMPTATION.get());
         tag(Tags.Items.EGGS).add(ESItems.BEE_LARVA.get());
         tag(ESTags.Items.BEE_EGGS).add(ESItems.BEE_LARVA.get());

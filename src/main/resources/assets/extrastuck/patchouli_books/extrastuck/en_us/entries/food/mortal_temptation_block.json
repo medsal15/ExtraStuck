@@ -1,0 +1,20 @@
+{
+    "name": "Mortal Temptation",
+    "icon": "extrastuck:mortal_temptation_block",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:mortal_temptation_block,extrastuck:mortal_temptation",
+            "text": "This local recipe somehow seems to please the land's consorts.$(br)Each block provides 3 servings in bowls. Each serving gives 30 seconds of Strength and 20 seconds of Regeneration when eaten."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Divine Temptation and a Golden Grasshopper in a Totem Lathe.",
+            "left": "extrastuck:divine_temptation_block",
+            "mode": "&&",
+            "right": "minestuck:golden_grasshopper",
+            "result": "extrastuck:mortal_temptation_block"
+        }
+    ]
+}
