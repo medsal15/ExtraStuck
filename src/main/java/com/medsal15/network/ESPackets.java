@@ -55,7 +55,10 @@ public final class ESPackets {
             ItemStack card = player.getItemInHand(InteractionHand.MAIN_HAND);
             if (card.getItem() != ESItems.MASTERMIND_CARD.get())
                 return;
-            List<Integer> attempts = card.getOrDefault(ESDataComponents.ATTEMPTS, new ArrayList<>());
+            List<Integer> attempts = new ArrayList<>();
+            if (card.has(ESDataComponents.ATTEMPTS)) {
+                attempts = new ArrayList<>(card.get(ESDataComponents.ATTEMPTS));
+            }
             attempts.add(code);
             card.set(ESDataComponents.ATTEMPTS, attempts);
         }

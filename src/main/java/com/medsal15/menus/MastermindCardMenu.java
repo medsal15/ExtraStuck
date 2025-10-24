@@ -60,7 +60,10 @@ public class MastermindCardMenu extends AbstractContainerMenu {
     }
 
     public List<Integer> getAttempts() {
-        return getCard().getOrDefault(ESDataComponents.ATTEMPTS, new ArrayList<>());
+        ItemStack card = getCard();
+        if (card.has(ESDataComponents.ATTEMPTS))
+            return new ArrayList<>(getCard().get(ESDataComponents.ATTEMPTS));
+        return new ArrayList<>();
     }
 
     public int getAttemptsCount() {
