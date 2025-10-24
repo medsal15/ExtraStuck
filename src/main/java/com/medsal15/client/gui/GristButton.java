@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.ExtraStuck;
 
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.gui.widget.ExtendedButton;
 
@@ -21,13 +22,33 @@ public class GristButton extends ExtendedButton {
     private final int difficulty;
 
     public GristButton(int x, int y, OnPress handler, int grist, int difficulty) {
-        super(x, y, GRIST_WIDTH, GRIST_HEIGHT, null, handler);
+        super(x, y, GRIST_WIDTH, GRIST_HEIGHT, Component.translatable(ExtraStuck.MODID + ".mastermind.grist." + grist),
+                handler);
         this.grist = grist;
         this.difficulty = difficulty;
     }
 
+    public GristButton(int x, int y, OnPress handler, int grist) {
+        super(x, y, GRIST_WIDTH, GRIST_HEIGHT, Component.translatable(ExtraStuck.MODID + ".mastermind.grist." + grist),
+                handler);
+        this.grist = grist;
+        this.difficulty = 0;
+    }
+
     @Override
     public void renderWidget(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        int from_x = GRIST_TEXTURE_X + (grist % 3) * GRIST_WIDTH;
+        int from_y = GRIST_TEXTURE_Y + (grist / 3) * GRIST_HEIGHT;
+
+        guiGraphics.blit(BACKGROUND_TEXTURE, this.getX(), this.getY(), from_x, from_y, GRIST_WIDTH, GRIST_HEIGHT);
+        if (grist >= difficulty) {
+            guiGraphics.blit(BACKGROUND_TEXTURE, this.getX(), this.getY(), GRIST_LOCK_X, GRIST_LOCK_Y, GRIST_WIDTH,
+                    GRIST_HEIGHT);
+        }
+    }
+
+    public void renderWidget(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick,
+            int difficulty) {
         int from_x = GRIST_TEXTURE_X + (grist % 3) * GRIST_WIDTH;
         int from_y = GRIST_TEXTURE_Y + (grist / 3) * GRIST_HEIGHT;
 

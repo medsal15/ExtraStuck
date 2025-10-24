@@ -2,14 +2,15 @@ package com.medsal15.items.modus;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.client.screen.MastermindCardScreen;
 import com.medsal15.items.ESDataComponents;
+import com.medsal15.menus.MastermindCardMenu;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -44,10 +45,13 @@ public class MastermindCardItem extends Item {
             return InteractionResultHolder.consume(stack);
         }
 
-        if (level.isClientSide) {
-            Minecraft.getInstance().setScreen(new MastermindCardScreen(stack, player));
+        if (player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.openMenu(new SimpleMenuProvider(
+                    (windowId, playInventory, play) -> new MastermindCardMenu(windowId, stack),
+                    getName(stack)));
         }
-        return InteractionResultHolder.success(stack);
+
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
 
     public static int generateCode(int difficulty, RandomSource random) {

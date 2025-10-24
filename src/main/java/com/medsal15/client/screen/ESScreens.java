@@ -25,6 +25,7 @@ public final class ESScreens {
         event.register(ESMenuTypes.PRINTER.get(), PrinterScreen::new);
         event.register(ESMenuTypes.CHARGER.get(), ChargerScreen::new);
         event.register(ESMenuTypes.REACTOR.get(), ReactorScreen::new);
+        event.register(ESMenuTypes.MASTERMIND_CARD.get(), MastermindCardScreen::new);
 
         // Moduses
         registerSylladexFactory(ESModus.PILE_MODUS, PileModusScreen::new);

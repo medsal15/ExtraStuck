@@ -57,6 +57,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String GRIST_DETECTOR_ANY = ExtraStuck.MODID + ".grist_detector.any";
     public static final String GRIST_DETECTOR_COMMON = ExtraStuck.MODID + ".grist_detector.common";
     public static final String GRIST_DETECTOR_UNCOMMON = ExtraStuck.MODID + ".grist_detector.uncommon";
+    public static final String MASTERMIND_GRIST_BASE = ExtraStuck.MODID + ".mastermind.grist.";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
@@ -295,39 +296,51 @@ public final class ESLangProvider extends LanguageProvider {
                 "The Pile Modus is a square modus."
                         + " Unlike other moduses, cards will try to arrange themselves in a square."
                         + " Taking an item will drop all those above. Hopefully, you're not near lava!");
+
         addItem(ESItems.FORTUNE_MODUS_CARD, "Fortune Modus");
         addItemBookDescription(ESItems.FORTUNE_MODUS_CARD,
                 "The Fortune Modus gives fortune cookies."
                         + " Just eat them to get your items back."
                         + " Please do not put the fortune cookies back in the fortune modus, otherwise you'll have to eat them twice.");
+
         addItem(ESItems.ORE_MODUS_CARD, "Ore Modus");
+        addItemTooltip(ESItems.ORE_MODUS_CARD, "Perfect for mining lovers");
         addItemBookDescription(ESItems.ORE_MODUS_CARD,
                 "The Ore Modus is perfect if you have a lot of pickaxes, or want a cheap building material."
                         + " Getting an item from it will give a Card Ore, which must be broken to get it back."
                         + " (You can even use your bare hands!)");
-        addItemTooltip(ESItems.ORE_MODUS_CARD, "Perfect for mining lovers");
+
         addItem(ESItems.ARCHEOLOGY_MODUS_CARD, "Archeology Modus");
         addItemBookDescription(ESItems.ARCHEOLOGY_MODUS_CARD,
                 "The Archeology Modus is aimed at those who wish minecraft had more things to brush than a few select locations."
                         + " Retrieved items will be stored in suspicious sand or suspicious gravel, requiring a brush to obtain."
                         + " Just, don't forget to put them on a block.");
+
         addItem(ESItems.VOID_MODUS_CARD, "Void Modus");
         addItemTooltip(ESItems.VOID_MODUS_CARD, "Too Many Items");
         addItemBookDescription(ESItems.VOID_MODUS_CARD,
                 "The Void Modus is a modus whose purpose is to delete items."
                         + " Instead of giving items back, they will be removed from your inventory."
                         + " It will also destroy any overflow. Primarily aimed at those who do not use their moduses as storage and often have a cluttered inventory.");
+
         addItem(ESItems.ENDER_MODUS_CARD, "Ender Modus");
         addItemTooltip(ESItems.ENDER_MODUS_CARD, "Portable Version");
         addItemBookDescription(ESItems.ENDER_MODUS_CARD,
                 "The Ender Modus is a modus with direct access to your ender chest."
                         + " This means it's limited to 27 cards. Unfortunately, it also cannot get items as cards.");
+
         addItem(ESItems.MASTERMIND_MODUS_CARD, "Mastermind Modus");
         addItemTooltip(ESItems.MASTERMIND_MODUS_CARD, "Also known as bulls and cows");
         addItemBookDescription(ESItems.MASTERMIND_MODUS_CARD,
                 "The Mastermind Modus is a simple and basic modus."
                         + " Retrieving items will instead lock them in a special card. Failing will destroy the item (and card)."
                         + " Good luck figuring out the combination!");
+        add(MASTERMIND_GRIST_BASE + 0, "Blue Chalk");
+        add(MASTERMIND_GRIST_BASE + 1, "Crimsite");
+        add(MASTERMIND_GRIST_BASE + 2, "Slurry");
+        add(MASTERMIND_GRIST_BASE + 3, "§knull");
+        add(MASTERMIND_GRIST_BASE + 4, "Citrine");
+        add(MASTERMIND_GRIST_BASE + 5, "Antibuild");
 
         addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
         addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");
