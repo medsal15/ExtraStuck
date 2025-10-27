@@ -505,6 +505,8 @@ public final class ESLangProvider extends LanguageProvider {
         addBlockTooltip(ESBlocks.MORTAL_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
         addItem(ESItems.MORTAL_TEMPTATION, "Bowl of Mortal Temptation");
         addItemTooltip(ESItems.MORTAL_TEMPTATION, "Even consorts love it");
+        addItem(ESItems.CANDY_CRUNCH, "Bowl of Candy Crunch");
+        addItemTooltip(ESItems.CANDY_CRUNCH, "So much sugar can't be good for you");
 
         addItem(ESItems.DESERT_JUICE, "Desert Juice");
     }

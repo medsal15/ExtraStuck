@@ -636,6 +636,8 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.MORTAL_TEMPTATION_BLOCK);
     public static final DeferredItem<Item> MORTAL_TEMPTATION = ITEMS.registerItem("mortal_temptation",
             p -> new MortalTemptation(p.food(ESFoods.MORTAL_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
+    public static final DeferredItem<Item> CANDY_CRUNCH = ITEMS.registerItem("candy_crunch",
+            p -> new MortalTemptation(p.food(ESFoods.CANDY_CRUNCH).craftRemainder(Items.BOWL).stacksTo(16)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -1044,6 +1046,7 @@ public final class ESItems {
         list.add(MOON_CAKE_SLICE);
         list.add(MORTAL_TEMPTATION_BLOCK);
         list.add(MORTAL_TEMPTATION);
+        list.add(CANDY_CRUNCH);
         return list;
     }
 

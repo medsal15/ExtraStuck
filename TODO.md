@@ -33,6 +33,58 @@ Nuclear hyper-blaster: consumes uranium, shoots lasers
 
 Grist map: map that is colored based on location grists, variants between common/uncommon/any
 
+### Bosses ###
+
+#### Spawner ####
+
+- Spawns boss when triggered
+- Entity be changed in creative mode
+- 3 stages:
+  - Active: triggers when a player approaches like trial spawners
+  - Hibernation: inactive for an amount of time
+  - Ready: requires player to activate it with UI
+- UI allows spending grist for a boss of the same type (higher spend => higher chance)
+
+#### Lich Catacombs ####
+
+- Rooms with tombstones and lich spawners
+- Tombstones are made of the land's stone
+- Breaking tombstones drops land's cobblestone & spawns a lich
+- Big room with Lich Queen
+
+##### Lich Queen #####
+
+Boss with lots of health and ranged attacks
+
+Has 2 states, alive (with attacks) and resurrecting
+
+Attacks:
+
+- Breath Cutter: fast and low damage
+- Blood Pool: AoE with low damage
+- Heart Stop: telegraphed with high damage
+- Doom Hammer: high damage with strong recoil
+
+#### Mechanical Ruins ####
+
+- Walls made of gears (hopefully create compatible)
+- Lots of puzzles
+- 3d maze
+- Top room with Grist Golem
+
+##### Grist Golem #####
+
+Multipart boss with high health and obvious weak point
+
+Weak point takes double damage
+
+Attacks:
+
+- Ground Slam: AoE and sends in the air
+- Reach: Attempts to reach and grab a player
+- Body Slam: Slams player into ground/wall for kinetic damage
+- Shatter: Dying results in smaller, weaker, simpler grist golems
+
 ## Textures ##
 
 Improve all shields' models and textures

@@ -75,4 +75,8 @@ public final class ESFoods {
             .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600), 1F)
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400), 1F)
             .usingConvertsTo(Items.BOWL).build();
+    public static final FoodProperties CANDY_CRUNCH = new FoodProperties.Builder().nutrition(3).saturationModifier(.2F)
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600, 3), 1F)
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 900, 1), 1F)
+            .build();
 }

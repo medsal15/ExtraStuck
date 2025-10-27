@@ -1108,6 +1108,22 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .source(MSItems.GOLDEN_GRASSHOPPER.get()).source(MSItems.MOREL_MUSHROOM.get())
                 .source(Items.RED_MUSHROOM)
                 .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
+
+        CookingPotRecipeBuilder.cookingPotRecipe(ESItems.CANDY_CRUNCH, 1, 200, .35F)
+                .addIngredient(MSItems.CANDY_CORN)
+                .addIngredient(MSItems.TUIX_BAR)
+                .addIngredient(MSItems.SPOREO)
+                .addIngredient(MSTags.Items.FAYGO)
+                .unlockedByAnyIngredient(MSItems.CANDY_CORN, MSItems.TUIX_BAR, MSItems.SPOREO)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(fdOutput, modid("cooking/candy_crunch").toString());
+        CombinationRecipeBuilder.of(ESItems.CANDY_CRUNCH)
+                .input(Items.BOWL).and().input(MSTags.Items.FAYGO)
+                .build(output);
+        SourceGristCostBuilder.of(ESItems.CANDY_CRUNCH)
+                .grist(GristTypes.BUILD, 2).grist(GristTypes.AMBER, 3)
+                .source(MSItems.CANDY_CORN.get()).source(MSItems.TUIX_BAR.get()).source(MSItems.SPOREO.get())
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {
