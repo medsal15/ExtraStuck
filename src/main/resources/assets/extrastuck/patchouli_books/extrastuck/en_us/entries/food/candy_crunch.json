@@ -1,0 +1,22 @@
+{
+    "name": "Bowl of Candy Crunch",
+    "icon": "extrastuck:candy_crunch",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:candy_crunch"
+            },
+            "text": "Made of pure sugar, this \"meal\" will give a much needed speed boost to anyone eating it.$(br)Obviously, that much sugar at once will also give a bit of a crash."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Bowl and a bottle of Faygo in a Totem Lathe.",
+            "left": "minecraft:bowl",
+            "mode": "&&",
+            "right": "tag:minestuck:faygo",
+            "result": "extrastuck:candy_crunch"
+        }
+    ]
+}
