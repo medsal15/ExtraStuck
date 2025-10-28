@@ -56,6 +56,12 @@ public class ConfigCommon {
             .comment("How much FE is transferred between storage and item per tick", "Mostly to make charging fancier")
             .defineInRange("charger.fe_transfer", 1_000, 1, Integer.MAX_VALUE);
 
+    public static final ConfigValue<Integer> BLASTER_URANIUM_STORAGE = BUILDER
+            .comment("How much uranium power should a charger hold",
+                    "Note that each shot consumes 1 uranium power",
+                    "Shouldn't be lower than 32, as that would prevent uranium chunks from being used")
+            .defineInRange("blaster.uranium_storage", 128, 1, Short.MAX_VALUE);
+
     public static final ConfigValue<Integer> RADBOW_CHARGES = BUILDER
             .comment("How many charges a radbow gets from an uranium rod")
             .defineInRange("radbow_charge", 10, 1, Integer.MAX_VALUE);

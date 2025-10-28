@@ -18,4 +18,7 @@ public final class ESBlockShapes {
             { 0, 0, 0, 16, 12, 16 },
             { 3, 12, 3, 13, 16, 13 }
     });
+
+    public static final CustomVoxelShape URANIUM_BLASTER = new CustomVoxelShape(
+            new double[][] { { 0, 0, 0, 16, 16, 16 } });
 }

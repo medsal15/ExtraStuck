@@ -1,4 +1,4 @@
-package com.medsal15.client.screen;
+package com.medsal15.client.screen.machine;
 
 import java.util.Objects;
 import java.util.Optional;

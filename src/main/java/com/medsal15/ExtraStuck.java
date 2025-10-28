@@ -24,6 +24,7 @@ import com.medsal15.loot_modifiers.ESLootModifiers;
 import com.medsal15.menus.ESMenuTypes;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.modus.ESModus;
+import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.structures.processors.ESProcessors;
 import com.mojang.logging.LogUtils;
 
@@ -102,6 +103,7 @@ public class ExtraStuck {
         ESMenuTypes.MENU_TYPES.register(modEventBus);
         ESMobEffects.MOB_EFFECTS.register(modEventBus);
         ESModus.MODUSES.register(modEventBus);
+        ESParticleTypes.PARTICLE_TYPES.register(modEventBus);
         ESProcessors.PROCESSORS.register(modEventBus);
         ESProgramTypes.PROGRAM_TYPES.register(modEventBus);
         ESSounds.SOUND_EVENTS.register(modEventBus);

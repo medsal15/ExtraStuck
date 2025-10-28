@@ -31,4 +31,10 @@ public final class ESBlockEntities {
     public static final Supplier<BlockEntityType<ReactorBlockEntity>> REACTOR = BLOCK_ENTITY_TYPES.register("reactor",
             () -> BlockEntityType.Builder.<ReactorBlockEntity>of(ReactorBlockEntity::new, ESBlocks.REACTOR.get())
                     .build(null));
+    @SuppressWarnings("null")
+    public static final Supplier<BlockEntityType<BlasterBlockEntity>> BLASTER = BLOCK_ENTITY_TYPES
+            .register("uranium_blaster",
+                    () -> BlockEntityType.Builder
+                            .<BlasterBlockEntity>of(BlasterBlockEntity::new, ESBlocks.URANIUM_BLASTER.get())
+                            .build(null));
 }

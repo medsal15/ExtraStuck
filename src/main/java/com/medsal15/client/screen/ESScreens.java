@@ -1,6 +1,10 @@
 package com.medsal15.client.screen;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.client.screen.machine.BlasterScreen;
+import com.medsal15.client.screen.machine.ChargerScreen;
+import com.medsal15.client.screen.machine.PrinterScreen;
+import com.medsal15.client.screen.machine.ReactorScreen;
 import com.medsal15.client.screen.modus.ArcheologyModusScreen;
 import com.medsal15.client.screen.modus.EnderModusScreen;
 import com.medsal15.client.screen.modus.FortuneModusScreen;
@@ -25,6 +29,8 @@ public final class ESScreens {
         event.register(ESMenuTypes.PRINTER.get(), PrinterScreen::new);
         event.register(ESMenuTypes.CHARGER.get(), ChargerScreen::new);
         event.register(ESMenuTypes.REACTOR.get(), ReactorScreen::new);
+        event.register(ESMenuTypes.URANIUM_BLASTER.get(), BlasterScreen::new);
+
         event.register(ESMenuTypes.MASTERMIND_CARD.get(), MastermindCardScreen::new);
 
         // Moduses

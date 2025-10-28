@@ -1,0 +1,21 @@
+{
+    "name": "Uranium Blaster",
+    "icon": "extrastuck:uranium_blaster",
+    "category": "extrastuck:machines",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:uranium_blaster",
+            "text": "An uranium-powdered device that severely irradiates enemies in front of it. Its range is limited by the redstone power and fuel provided and."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Dispenser and a Lump of Uranium in a Punch Designix.",
+            "left": "minecraft:dispenser",
+            "mode": "||",
+            "right": "minestuck:raw_uranium",
+            "result": "extrastuck:uranium_blaster"
+        }
+    ]
+}

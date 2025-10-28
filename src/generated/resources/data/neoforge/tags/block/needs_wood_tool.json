@@ -2,6 +2,7 @@
   "values": [
     "extrastuck:printer",
     "extrastuck:charger",
-    "extrastuck:reactor"
+    "extrastuck:reactor",
+    "extrastuck:uranium_blaster"
   ]
 }

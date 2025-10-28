@@ -20,6 +20,9 @@ public final class ESMenuTypes {
             () -> new MenuType<>((IContainerFactory<ChargerMenu>) ChargerMenu::new, FeatureFlags.DEFAULT_FLAGS));
     public static final Supplier<MenuType<ReactorMenu>> REACTOR = MENU_TYPES.register("reactor",
             () -> new MenuType<>((IContainerFactory<ReactorMenu>) ReactorMenu::new, FeatureFlags.DEFAULT_FLAGS));
+    public static final Supplier<MenuType<BlasterMenu>> URANIUM_BLASTER = MENU_TYPES.register("uranium_blaster",
+            () -> new MenuType<>((IContainerFactory<BlasterMenu>) BlasterMenu::new, FeatureFlags.DEFAULT_FLAGS));
+
     public static final Supplier<MenuType<MastermindCardMenu>> MASTERMIND_CARD = MENU_TYPES.register("mastermind_card",
             () -> new MenuType<MastermindCardMenu>(MastermindCardMenu::new, FeatureFlags.DEFAULT_FLAGS));
 }

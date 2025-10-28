@@ -652,6 +652,8 @@ public final class ESItems {
     public static final DeferredItem<BlockItem> PRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.PRINTER);
     public static final DeferredItem<BlockItem> CHARGER = ITEMS.registerSimpleBlockItem(ESBlocks.CHARGER);
     public static final DeferredItem<BlockItem> REACTOR = ITEMS.registerSimpleBlockItem(ESBlocks.REACTOR);
+    public static final DeferredItem<BlockItem> URANIUM_BLASTER = ITEMS
+            .registerSimpleBlockItem(ESBlocks.URANIUM_BLASTER);
     // #endregion Machines
     // #region Garnet
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
@@ -1061,6 +1063,7 @@ public final class ESItems {
         list.add(PRINTER);
         list.add(CHARGER);
         list.add(REACTOR);
+        list.add(URANIUM_BLASTER);
 
         list.add(CUT_GARNET);
         list.add(CUT_GARNET_STAIRS);

@@ -26,7 +26,6 @@ Unpacarder: takes a card with contents and extracts them, noop with punched card
 Gristwidget 13000: redstone-activatable version of the Gristwidget 12000
 Grist reader: allows create to see the amount of grist from a player
 Global grist reader: same as above but for session
-Nuclear blaster: consumes uranium, poisons enemies in front of it
 Nuclear hyper-blaster: consumes uranium, shoots lasers
 
 ### Tools ###

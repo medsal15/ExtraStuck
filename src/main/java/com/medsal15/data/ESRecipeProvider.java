@@ -1150,6 +1150,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 250).grist(GristTypes.COBALT, 170)
                 .grist(GristTypes.URANIUM, 92)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.URANIUM_BLASTER)
+                .input(Items.DISPENSER).or().input(MSItems.RAW_URANIUM)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.URANIUM_BLASTER)
+                .grist(GristTypes.RUST, 150).grist(GristTypes.RUBY, 1)
+                .grist(GristTypes.URANIUM, 25)
+                .build(output);
         // #endregion Machines
 
         // #region Garnet

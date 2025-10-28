@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
+import com.medsal15.blockentities.BlasterBlockEntity;
 import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
@@ -405,6 +406,10 @@ public final class ESLangProvider extends LanguageProvider {
                 "You don't think it's a good idea to contain so much power in such a small machine");
         add(ReactorBlockEntity.TITLE, "Nuclear Reactor");
         add(ESFluidTags.REACTOR_FLUIDS, "Reactor Coolants");
+
+        // Uranium Blaster
+        addBlock(ESBlocks.URANIUM_BLASTER, "Uranium Blaster");
+        add(BlasterBlockEntity.TITLE, "Uranium Blaster");
     }
 
     private void addComputerPrograms() {

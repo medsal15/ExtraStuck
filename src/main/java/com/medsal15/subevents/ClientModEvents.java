@@ -22,6 +22,8 @@ import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.ESDataComponents.MoonCakeSliceColor;
 import com.medsal15.items.crossbow.RadBowItem;
+import com.medsal15.particles.ESParticleTypes;
+import com.medsal15.particles.UraniumBlastParticle;
 import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.client.gui.computer.ProgramGui;
 
@@ -42,6 +44,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.energy.IEnergyStorage;
@@ -229,5 +232,10 @@ public final class ClientModEvents {
             }
             return -1;
         }, ESItems.GRIST_DETECTOR.get());
+    }
+
+    @SubscribeEvent
+    public static void registerParticleProviders(final RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(ESParticleTypes.URANIUM_BLAST.get(), UraniumBlastParticle.Provider::new);
     }
 }
