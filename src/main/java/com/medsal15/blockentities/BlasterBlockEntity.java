@@ -21,6 +21,8 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -94,6 +96,8 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
             BlockState nextState = level.getBlockState(next);
             if (!nextState.isAir()) {
                 VoxelShape shape = nextState.getCollisionShape(level, next);
+                if (!nextState.canOcclude())
+                    continue;
                 if (Block.isFaceFull(shape, direction.getOpposite())) {
                     break;
                 }
@@ -156,6 +160,7 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
                             pos.getY() + .5, pos.getZ() + .5, 1, 0, 0, 0, 0);
                 }
             }
+            l.playSound(null, worldPosition, SoundEvents.WITHER_SHOOT, SoundSource.BLOCKS, 1F, .5F);
         }
     }
 
