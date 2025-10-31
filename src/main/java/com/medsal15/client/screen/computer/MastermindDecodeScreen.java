@@ -3,8 +3,8 @@ package com.medsal15.client.screen.computer;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
-import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.mraof.minestuck.blockentity.ComputerBlockEntity;
 import com.mraof.minestuck.client.gui.computer.ThemedScreen;

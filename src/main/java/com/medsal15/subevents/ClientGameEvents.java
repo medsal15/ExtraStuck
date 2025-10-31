@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import com.medsal15.ExtraStuck;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.data.ESLangProvider;
-import com.medsal15.items.ESDataComponents;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.utils.ESTags;

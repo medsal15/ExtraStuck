@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.medsal15.ESDamageTypes;
-import com.medsal15.items.ESDataComponents;
+import com.medsal15.items.components.ESDataComponents;
 import com.mraof.minestuck.entity.underling.UnderlingEntity;
 import com.mraof.minestuck.player.PlayerBoondollars;
 import com.mraof.minestuck.player.PlayerData;

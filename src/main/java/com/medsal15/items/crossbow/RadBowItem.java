@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 import com.medsal15.config.ConfigCommon;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.projectiles.UraniumRod;
-import com.medsal15.items.ESDataComponents;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.item.MSItems;
 

@@ -7,7 +7,8 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.data.ESLangProvider;
-import com.medsal15.items.ESDataComponents.GristLayer;
+import com.medsal15.items.components.ESDataComponents;
+import com.medsal15.items.components.GristLayer;
 import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.world.lands.GristLayerInfo;
 import com.mraof.minestuck.world.lands.GristTypeLayer;

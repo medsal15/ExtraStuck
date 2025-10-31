@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.items.ESDataComponents;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.network.ESPackets.MastermindAddAttempt;
 import com.medsal15.network.ESPackets.MastermindDestroy;

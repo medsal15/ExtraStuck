@@ -4,8 +4,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.medsal15.entities.ESEntities;
-import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.throwables.BeenadeItem;
 
 import net.minecraft.core.component.DataComponents;

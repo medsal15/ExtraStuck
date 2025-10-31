@@ -2,7 +2,7 @@ package com.medsal15.entities.projectiles.bullets;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.items.ESDataComponents;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.projectiles.IAsProjectile;
 import com.medsal15.items.projectiles.ICreateArrow;
 

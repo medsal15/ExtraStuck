@@ -6,7 +6,7 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.projectiles.ThrownBeenade;
-import com.medsal15.items.ESDataComponents;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.utils.ESTags;
 
 import net.minecraft.ChatFormatting;

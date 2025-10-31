@@ -1,7 +1,7 @@
 package com.medsal15.items;
 
-import static com.medsal15.items.ESDataComponents.ENERGY;
-import static com.medsal15.items.ESDataComponents.ENERGY_STORAGE;
+import static com.medsal15.items.components.ESDataComponents.ENERGY;
+import static com.medsal15.items.components.ESDataComponents.ENERGY_STORAGE;
 
 import javax.annotation.Nonnull;
 

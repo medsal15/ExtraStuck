@@ -3,8 +3,8 @@ package com.medsal15.modus;
 import java.util.List;
 
 import com.medsal15.config.ConfigCommon;
-import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.mraof.minestuck.inventory.captchalogue.ModusType;
 

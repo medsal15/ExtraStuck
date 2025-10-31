@@ -2,7 +2,7 @@ package com.medsal15.items.modus;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.items.ESDataComponents;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.menus.MastermindCardMenu;
 
 import net.minecraft.core.component.DataComponents;

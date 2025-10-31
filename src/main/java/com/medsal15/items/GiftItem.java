@@ -2,6 +2,8 @@ package com.medsal15.items;
 
 import javax.annotation.Nonnull;
 
+import com.medsal15.items.components.ESDataComponents;
+
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;

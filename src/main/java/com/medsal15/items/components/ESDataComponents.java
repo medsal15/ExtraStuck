@@ -1,7 +1,6 @@
-package com.medsal15.items;
+package com.medsal15.items.components;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
@@ -48,31 +47,6 @@ public final class ESDataComponents {
             .registerComponentType("grist_type",
                     builder -> builder.persistent(GristType.CODEC).networkSynchronized(GristType.STREAM_CODEC));
 
-    public static enum GristLayer implements StringRepresentable {
-        COMMON,
-        UNCOMMON,
-        ANY;
-
-        @Override
-        public String getSerializedName() {
-            return this.name().toLowerCase(Locale.ROOT);
-        }
-
-        public static GristLayer fromName(String string) {
-            for (GristLayer layer : GristLayer.values()) {
-                if (layer.name().toLowerCase().equals(string))
-                    return layer;
-            }
-            throw new IllegalArgumentException("Invalid grist layer " + string);
-        }
-
-        public GristLayer next() {
-            List<GristLayer> values = List.of(GristLayer.values());
-            int i = (values.indexOf(this) + 1) % values.size();
-            return values.get(i);
-        }
-    };
-
     // Shields
     /** Flame shield burn duration in ticks */
     public static final Supplier<DataComponentType<Integer>> BURN_DURATION = DATA_COMPONENTS
@@ -111,23 +85,4 @@ public final class ESDataComponents {
             .registerComponentType("moon_cake_slice_color", builder -> builder
                     .persistent(StringRepresentable.fromEnum(MoonCakeSliceColor::values))
                     .networkSynchronized(NeoForgeStreamCodecs.enumCodec(MoonCakeSliceColor.class)));
-
-    public static enum MoonCakeSliceColor implements StringRepresentable {
-        DUAL,
-        DERSE,
-        PROSPIT;
-
-        @Override
-        public String getSerializedName() {
-            return this.name().toLowerCase(Locale.ROOT);
-        }
-
-        public static MoonCakeSliceColor fromName(String string) {
-            for (MoonCakeSliceColor layer : MoonCakeSliceColor.values()) {
-                if (layer.name().toLowerCase().equals(string))
-                    return layer;
-            }
-            throw new IllegalArgumentException("Invalid moon cake color " + string);
-        }
-    }
 }

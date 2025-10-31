@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.medsal15.ExtraStuck;
-import com.medsal15.items.ESDataComponents;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.menus.ChargerMenu;
 import com.mraof.minestuck.network.MSPacket;
 
