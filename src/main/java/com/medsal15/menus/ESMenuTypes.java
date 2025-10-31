@@ -3,10 +3,13 @@ package com.medsal15.menus;
 import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.create.menus.GristFilterMenu;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -25,4 +28,17 @@ public final class ESMenuTypes {
 
     public static final Supplier<MenuType<MastermindCardMenu>> MASTERMIND_CARD = MENU_TYPES.register("mastermind_card",
             () -> new MenuType<MastermindCardMenu>(MastermindCardMenu::new, FeatureFlags.DEFAULT_FLAGS));
+
+    public static final Supplier<MenuType<? extends AbstractContainerMenu>> GRIST_FILTER = MENU_TYPES.register(
+            "grist_filter",
+            () -> {
+                if (ModList.get().isLoaded("create"))
+                    return new MenuType<AbstractContainerMenu>(
+                            (MenuType.MenuSupplier<AbstractContainerMenu>) GristFilterMenu::new,
+                            FeatureFlags.DEFAULT_FLAGS);
+                else
+                    return new MenuType<AbstractContainerMenu>(
+                            (MenuType.MenuSupplier<AbstractContainerMenu>) FakeGristFilterMenu::new,
+                            FeatureFlags.DEFAULT_FLAGS);
+            });
 }

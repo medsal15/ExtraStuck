@@ -1,5 +1,7 @@
 package com.medsal15.client.screen;
 
+import static com.mraof.minestuck.client.gui.MSScreenFactories.registerSylladexFactory;
+
 import com.medsal15.ExtraStuck;
 import com.medsal15.client.screen.machine.BlasterScreen;
 import com.medsal15.client.screen.machine.ChargerScreen;
@@ -17,10 +19,9 @@ import com.medsal15.modus.ESModus;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-
-import static com.mraof.minestuck.client.gui.MSScreenFactories.registerSylladexFactory;
 
 @EventBusSubscriber(value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD, modid = ExtraStuck.MODID)
 public final class ESScreens {
@@ -32,6 +33,11 @@ public final class ESScreens {
         event.register(ESMenuTypes.URANIUM_BLASTER.get(), BlasterScreen::new);
 
         event.register(ESMenuTypes.MASTERMIND_CARD.get(), MastermindCardScreen::new);
+        if (ModList.get().isLoaded("create")) {
+            // TODO register screen
+        } else {
+            // TODO register screen
+        }
 
         // Moduses
         registerSylladexFactory(ESModus.PILE_MODUS, PileModusScreen::new);

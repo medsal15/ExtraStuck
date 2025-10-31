@@ -215,6 +215,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
     private void registerTools() {
         basicItem(ESItems.MAGNET.get());
         basicItem(ESItems.FIELD_CHARGER.get());
+        basicItem(ESItems.GRIST_FILTER.get());
     }
 
     private void registerFood() {

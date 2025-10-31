@@ -13,6 +13,7 @@ import com.medsal15.client.gui.LoopButton;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.screen.computer.MastermindDecodeScreen;
 import com.medsal15.client.screen.computer.MastermindEncodeScreen;
+import com.medsal15.compat.create.menus.GristFilterScreen;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
@@ -61,7 +62,25 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String GRIST_DETECTOR_ANY = ExtraStuck.MODID + ".grist_detector.any";
     public static final String GRIST_DETECTOR_COMMON = ExtraStuck.MODID + ".grist_detector.common";
     public static final String GRIST_DETECTOR_UNCOMMON = ExtraStuck.MODID + ".grist_detector.uncommon";
+    public static final String GRIST_FILTER_LIST = ExtraStuck.MODID + ".grist_filter.list";
+    public static final String GRIST_FILTER_GREATER_THAN_EQUAL = ExtraStuck.MODID + ".grist_filter.greater_than_equal";
+    public static final String GRIST_FILTER_GREATER_THAN_EQUAL_SYMBOL = ExtraStuck.MODID
+            + ".grist_filter.greater_than_equal.symbol";
+    public static final String GRIST_FILTER_GREATER_THAN = ExtraStuck.MODID + ".grist_filter.greater_than";
+    public static final String GRIST_FILTER_GREATER_THAN_SYMBOL = ExtraStuck.MODID
+            + ".grist_filter.greater_than.symbol";
+    public static final String GRIST_FILTER_EQUAL = ExtraStuck.MODID + ".grist_filter.equal";
+    public static final String GRIST_FILTER_EQUAL_SYMBOL = ExtraStuck.MODID + ".grist_filter.equal.symbol";
+    public static final String GRIST_FILTER_NOT_EQUAL = ExtraStuck.MODID + ".grist_filter.not_equal";
+    public static final String GRIST_FILTER_NOT_EQUAL_SYMBOL = ExtraStuck.MODID + ".grist_filter.not_equal.symbol";
+    public static final String GRIST_FILTER_LESS_THAN_EQUAL = ExtraStuck.MODID + ".grist_filter.less_than_equal";
+    public static final String GRIST_FILTER_LESS_THAN_EQUAL_SYMBOL = ExtraStuck.MODID
+            + ".grist_filter.less_than_equal.symbol";
+    public static final String GRIST_FILTER_LESS_THAN = ExtraStuck.MODID + ".grist_filter.less_than";
+    public static final String GRIST_FILTER_LESS_THAN_SYMBOL = ExtraStuck.MODID + ".grist_filter.less_than.symbol";
     public static final String MASTERMIND_GRIST_BASE = ExtraStuck.MODID + ".mastermind.grist.";
+
+    public static final String MISSING_MOD_ITEM = ExtraStuck.MODID + ".missing_mod_item";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
@@ -88,6 +107,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(ALT_GUN_HEAVY_KEY, "It feels weirdly heavy...");
         add(GOLDEN_PAN_HIT, "Golden Pan Strike");
         add(RADBOW_CHARGE, "Loaded with %1$s charges");
+        add(MISSING_MOD_ITEM, "Requires %s");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
@@ -388,6 +408,25 @@ public final class ESLangProvider extends LanguageProvider {
         add(GRIST_DETECTOR_ANY, "any");
         add(GRIST_DETECTOR_COMMON, "common");
         add(GRIST_DETECTOR_UNCOMMON, "uncommon");
+        // addItem(ESItems.GRIST_Filter, "Grist Filter");
+        add(GRIST_FILTER_LIST, "Selected Grists");
+        add(GRIST_FILTER_GREATER_THAN_EQUAL, "At least %1$s %2$s");
+        add(GRIST_FILTER_GREATER_THAN, "Over %1$s %2$s");
+        add(GRIST_FILTER_EQUAL, "%1$s %2$s");
+        add(GRIST_FILTER_NOT_EQUAL, "Not %1$s %2$s");
+        add(GRIST_FILTER_LESS_THAN_EQUAL, "At most %1$s %2$s");
+        add(GRIST_FILTER_LESS_THAN, "Under %1$s %2$s");
+        add(GRIST_FILTER_GREATER_THAN_EQUAL_SYMBOL, "≥");
+        add(GRIST_FILTER_GREATER_THAN_SYMBOL, ">");
+        add(GRIST_FILTER_EQUAL_SYMBOL, "=");
+        add(GRIST_FILTER_NOT_EQUAL_SYMBOL, "≠");
+        add(GRIST_FILTER_LESS_THAN_EQUAL_SYMBOL, "≤");
+        add(GRIST_FILTER_LESS_THAN_SYMBOL, "<");
+        add(GristFilterScreen.ADD_DESC, "Add grist to List");
+        add(GristFilterScreen.GRIST_TYPE, "Grist");
+        add(GristFilterScreen.MODE, "Comparison");
+        add(GristFilterScreen.LIST_SELECTED, "Grist filters:");
+        add(GristFilterScreen.LIST_EMPTY, "No grist filters");
     }
 
     private void addBlockEntities() {

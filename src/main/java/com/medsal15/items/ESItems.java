@@ -5,10 +5,12 @@ import static com.medsal15.ExtraStuck.modid;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.function.Function;
 
 import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.compat.create.items.GristFilterItem;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
@@ -646,6 +648,8 @@ public final class ESItems {
     public static final DeferredItem<Item> MASTERMIND_DISK = ITEMS.registerItem("mastermind_disk",
             (p) -> new Item(
                     p.stacksTo(1).component(MSItemComponents.PROGRAM_TYPE, ESProgramTypes.MASTERMIND_CODEBREAKER)));
+    public static final DeferredItem<Item> GRIST_FILTER = ITEMS.registerItem("grist_filter",
+            requiresMod("create", "Create", GristFilterItem::new));
 
     // #region Blocks
     // #region Machines
@@ -756,6 +760,18 @@ public final class ESItems {
                     p.component(ESDataComponents.GIFT_TABLE, ESLootSubProvider.GIFT_LOOT_TABLE)));
     public static final DeferredItem<Item> LUCK_TOKEN = ITEMS.registerItem("luck_token", p -> new Tokenitem(p));
 
+    private static Function<Properties, ? extends Item> requiresMod(String modid, String modname,
+            Function<Properties, ? extends Item> modded, Function<Properties, Properties> missing) {
+        if (ModList.get().isLoaded(modid))
+            return modded;
+        return p -> new OtherModItem(missing.apply(p), modname);
+    }
+
+    private static Function<Properties, ? extends Item> requiresMod(String modid, String modname,
+            Function<Properties, ? extends Item> modded) {
+        return requiresMod(modid, modname, modded, p -> p);
+    }
+
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
         if (ModList.get().isLoaded("patchouli")) {
@@ -771,6 +787,9 @@ public final class ESItems {
         }
         output.accept(GRIST_DETECTOR);
         output.accept(MASTERMIND_DISK);
+        if (ModList.get().isLoaded("create")) {
+            output.accept(GRIST_FILTER);
+        }
 
         for (DeferredItem<Item> item : ESItems.getShields()) {
             output.accept(item.get());

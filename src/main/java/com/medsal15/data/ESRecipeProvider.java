@@ -17,6 +17,7 @@ import com.mraof.minestuck.data.recipe.IrradiatingRecipeBuilder;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder;
@@ -857,6 +858,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.GRIST_DETECTOR)
                 .grist(GristTypes.QUARTZ, 4).grist(GristTypes.MERCURY, 44)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.GRIST_FILTER)
+                .input(AllItems.FILTER).and().input(MSItems.RAW_CRUXITE)
+                .build(output.withConditions(CREATE_LOADED));
+        GristCostRecipeBuilder.of(ESItems.GRIST_FILTER)
+                .grist(GristTypes.BUILD, 50).grist(GristTypes.CHALK, 1)
+                .build(output.withConditions(CREATE_LOADED));
     }
 
     private void foodRecipes(@Nonnull RecipeOutput output) {

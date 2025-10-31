@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.util.function.Supplier;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.items.components.GristFilterEntry;
 import com.mojang.serialization.Codec;
 import com.mraof.minestuck.api.alchemy.GristType;
 
@@ -17,6 +18,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+//TODO move to component sub package
 public final class ESDataComponents {
     public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister
             .createDataComponents(Registries.DATA_COMPONENT_TYPE, ExtraStuck.MODID);
@@ -122,7 +124,7 @@ public final class ESDataComponents {
             return this.name().toLowerCase(Locale.ROOT);
         }
 
-        public static MoonCakeSliceColor fromName(String string) {
+        public static MoonCakeSliceColor fromName(String string) throws IllegalArgumentException {
             for (MoonCakeSliceColor layer : MoonCakeSliceColor.values()) {
                 if (layer.name().toLowerCase().equals(string))
                     return layer;
@@ -130,4 +132,8 @@ public final class ESDataComponents {
             throw new IllegalArgumentException("Invalid moon cake color " + string);
         }
     }
+
+    public static final Supplier<DataComponentType<List<GristFilterEntry>>> GRIST_FILTER_DATA = DATA_COMPONENTS
+            .registerComponentType("grist_filter", builder -> builder.persistent(GristFilterEntry.LIST_CODEC)
+                    .networkSynchronized(GristFilterEntry.LIST_STREAM_CODEC));
 }
