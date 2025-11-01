@@ -302,6 +302,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.BEENADE, "Beenade");
         add(BEENADE_LOADED, "It buzzes softly");
         addEntityType(ESEntities.THROWN_BEENADE, "Thrown Beenade");
+        addItem(ESItems.YIN_YANG_ORB, "Yin-Yang Orb");
+        addItemTooltip(ESItems.YIN_YANG_ORB, "Only the true bloodline can use its full power");
     }
 
     private void addArmors() {

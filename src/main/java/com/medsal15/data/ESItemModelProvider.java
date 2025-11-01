@@ -182,6 +182,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.HANDGUN.get());
 
         handheldItem(ESItems.BEENADE.get());
+
+        basicItem(ESItems.YIN_YANG_ORB.get());
     }
 
     private void registerArmors() {

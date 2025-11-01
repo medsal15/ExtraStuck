@@ -68,6 +68,7 @@ import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
+import com.mraof.minestuck.item.weapon.projectiles.BouncingProjectileWeaponItem;
 import com.mraof.minestuck.util.MSSoundEvents;
 
 import net.minecraft.core.component.DataComponents;
@@ -497,6 +498,8 @@ public final class ESItems {
     // #region Throwables
     public static final DeferredItem<Item> BEENADE = ITEMS.register("beenade",
             () -> new BeenadeItem(new Properties().stacksTo(16)));
+    public static final DeferredItem<Item> YIN_YANG_ORB = ITEMS.register("yin_yang_orb",
+            () -> new BouncingProjectileWeaponItem(new MSItemProperties().durability(350), 1.25F, 1, 6, 40));
     // #endregion Throwables
     // #endregion Weapons
 
@@ -962,8 +965,13 @@ public final class ESItems {
 
     public static Collection<DeferredItem<Item>> getRangedWeapons() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(BAGUETTE_MAGIQUE);
+
         list.add(RADBOW);
         list.add(MECHANICAL_RADBOW);
+
+        list.add(YIN_YANG_ORB);
+
         list.add(HANDGUN);
         return list;
     }

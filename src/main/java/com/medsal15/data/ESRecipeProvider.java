@@ -548,6 +548,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.BEENADE)
                 .grist(GristTypes.GOLD, 10).grist(GristTypes.AMBER, 10).grist(GristTypes.TAR, 10)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.YIN_YANG_ORB)
+                .input(MSItems.SORCERERS_PINBALL).and().input(MSItems.KATANA)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.YIN_YANG_ORB)
+                .grist(GristTypes.TAR, 46).grist(GristTypes.CHALK, 46).grist(GristTypes.GARNET, 8)
+                .build(output);
         // #endregion Throwables
 
         GristCostRecipeBuilder.of(ESItems.HANDGUN)

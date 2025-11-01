@@ -40,6 +40,9 @@ public final class ESItemTags extends ItemTagsProvider {
         for (DeferredItem<Item> weapon : ESItems.getMeleeWeapons()) {
             tagWeapon(weapon);
         }
+        for (DeferredItem<Item> weapon : ESItems.getRangedWeapons()) {
+            tagRanged(weapon);
+        }
 
         for (DeferredItem<Item> crossbow : ESItems.getCrossbows()) {
             tag(Tags.Items.TOOLS_CROSSBOW).add(crossbow.get());
@@ -136,5 +139,11 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(ItemTags.SWORD_ENCHANTABLE).add(item.get());
         tag(ItemTags.WEAPON_ENCHANTABLE).add(item.get());
         tag(Tags.Items.MELEE_WEAPON_TOOLS).add(item.get());
+    }
+
+    private void tagRanged(DeferredItem<Item> item) {
+        tag(Tags.Items.RANGED_WEAPON_TOOLS).add(item.get());
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(item.get());
+        tag(ItemTags.VANISHING_ENCHANTABLE).add(item.get());
     }
 }
