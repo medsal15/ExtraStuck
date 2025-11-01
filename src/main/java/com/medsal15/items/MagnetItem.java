@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -32,7 +33,8 @@ public class MagnetItem extends TieredItem {
         boolean success = false;
         AABB box = new AABB(player.blockPosition()).inflate(RANGE);
         List<Entity> entities = level.getEntities(player, box,
-                e -> e instanceof ItemEntity || e instanceof GristEntity || e instanceof VitalityGelEntity);
+                e -> e instanceof ItemEntity || e instanceof GristEntity || e instanceof VitalityGelEntity
+                        || e instanceof ExperienceOrb);
 
         for (Entity entity : entities) {
             if (entity instanceof ItemEntity itemEntity) {
@@ -46,6 +48,9 @@ public class MagnetItem extends TieredItem {
                 success = true;
             } else if (entity instanceof VitalityGelEntity gelEntity) {
                 gelEntity.playerTouch(player);
+                success = true;
+            } else if (entity instanceof ExperienceOrb experienceOrb) {
+                experienceOrb.playerTouch(player);
                 success = true;
             }
         }
