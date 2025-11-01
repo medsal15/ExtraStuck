@@ -38,6 +38,7 @@ import com.medsal15.items.armor.SalesmanGogglesItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
 import com.medsal15.items.components.MoonCakeSliceColor;
+import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.food.FortuneCookie;
@@ -47,6 +48,7 @@ import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.BrushWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
+import com.medsal15.items.melee.SteamWeaponItem;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.items.projectiles.ESArrowItem;
 import com.medsal15.items.projectiles.ESBulletItem;
@@ -250,6 +252,13 @@ public final class ESItems {
                                     MobEffects.BLINDNESS, 100)))
                             .add(ESInventoryTickEffects::blind),
                     new MSItemProperties().durability(2500)));
+    public static final DeferredItem<Item> STEAM_HAMMER = ITEMS.register("steam_hammer", () -> new SteamWeaponItem(
+            new WeaponItem.Builder(ESItemTiers.COPPER_TIER, 7, -3.2F).efficiency(6F).set(MSItemTypes.HAMMER_TOOL)
+                    .add(ESHitEffects.steamPowered(200, true,
+                            OnHitEffect.setOnFire(10)))
+                    .set(ESRightClickEffects::steamWeapon),
+            new MSItemProperties().durability(600)
+                    .component(ESDataComponents.STEAM_FUEL, new SteamFuelComponent(0, false))));
     // #endregion Hammers
     // #region Dice
     public static final DeferredItem<Item> GOLD_COIN = ITEMS.register("gold_coin",
@@ -899,6 +908,7 @@ public final class ESItems {
         list.add(GEM_BREAKER);
         list.add(BELL_HAMMER);
         list.add(BLIND_HAMMER);
+        list.add(STEAM_HAMMER);
         // Dice
         list.add(GOLD_COIN);
         list.add(STICKY_DIE);
@@ -944,6 +954,8 @@ public final class ESItems {
         list.add(GEM_BREAKER);
         list.add(BELL_HAMMER);
         list.add(BLIND_HAMMER);
+        list.add(STEAM_HAMMER);
+
         list.add(YELLOWCAKESAW);
         return list;
     }

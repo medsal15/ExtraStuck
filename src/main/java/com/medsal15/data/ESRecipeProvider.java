@@ -277,6 +277,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.TAR, 3444).grist(GristTypes.DIAMOND, 1250).grist(GristTypes.RUST, 900)
                 .build(output);
 
+        CombinationRecipeBuilder.of(ESItems.STEAM_HAMMER)
+                .input(MSItems.BLACKSMITH_HAMMER).and().input(Items.FURNACE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.STEAM_HAMMER)
+                .grist(GristTypes.SHALE, 64).grist(GristTypes.TAR, 50).grist(GristTypes.BUILD, 160)
+                .build(output);
+
         CombinationRecipeBuilder.of(MSItems.QUENCH_CRUSHER)
                 .input(MSItems.COPSE_CRUSHER).or().input(ESItems.DESERT_JUICE)
                 .build(output, modid("combinations/quench_crusher"));

@@ -57,7 +57,7 @@ public class ConfigCommon {
             .defineInRange("charger.fe_transfer", 1_000, 1, Integer.MAX_VALUE);
 
     public static final ConfigValue<Integer> BLASTER_URANIUM_STORAGE = BUILDER
-            .comment("How much uranium power should a charger hold",
+            .comment("How much uranium power should a blaster hold",
                     "Note that each shot consumes 1 uranium power",
                     "Shouldn't be lower than 32, as that would prevent uranium chunks from being used")
             .defineInRange("blaster.uranium_storage", 128, 1, Short.MAX_VALUE);
@@ -80,6 +80,12 @@ public class ConfigCommon {
     public static final ModConfigSpec.BooleanValue INTERPRETERS_FARMERSDELIGHT = BUILDER
             .comment("If true, default farmer's delight interpreters are loaded")
             .define("interpreters.farmersdelight", true);
+
+    public static final ConfigValue<Integer> STEAM_FUEL_THRESHOLD = BUILDER
+            .comment("How much fuel (in ticks) allows refueling a steam-powered weapon",
+                    "That is to say, if the weapon's fuel is below or equal to this number, it can be refueled",
+                    "Note that if the value is too low, it may prevent the item from being refuelable")
+            .defineInRange("weapons.steam_powered.fuel_threshold", 200, 0, Integer.MAX_VALUE);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 

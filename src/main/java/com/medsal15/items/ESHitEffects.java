@@ -8,6 +8,8 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.items.components.ESDataComponents;
+import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.mraof.minestuck.entity.item.GristEntity;
 import com.mraof.minestuck.entity.item.VitalityGelEntity;
@@ -257,5 +259,24 @@ public final class ESHitEffects {
      */
     public static OnHitEffect requireCharge(int charge, OnHitEffect effect) {
         return requireCharge(charge, effect, true);
+    }
+
+    /**
+     * Checks if the item has enough steam fuel and is active to apply a separate
+     * hit effect
+     */
+    public static OnHitEffect steamPowered(int fuel, boolean consume, OnHitEffect effect) {
+        return (stack, target, attacker) -> {
+            if (!stack.has(ESDataComponents.STEAM_FUEL))
+                return;
+
+            SteamFuelComponent steamFuel = stack.get(ESDataComponents.STEAM_FUEL);
+            if (steamFuel.burning() && steamFuel.fuel() >= fuel) {
+                if (consume) {
+                    stack.set(ESDataComponents.STEAM_FUEL, steamFuel.drain(fuel));
+                }
+                effect.onHit(stack, target, target);
+            }
+        };
     }
 }

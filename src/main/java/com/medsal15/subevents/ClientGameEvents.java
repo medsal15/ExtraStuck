@@ -1,6 +1,8 @@
 package com.medsal15.subevents;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Nullable;
 
@@ -8,6 +10,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.components.ESDataComponents;
+import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.utils.ESTags;
@@ -42,8 +45,19 @@ public final class ClientGameEvents {
         ItemStack stack = event.getItemStack();
         Item item = stack.getItem();
         Player player = event.getEntity();
+        List<Component> tooltip = event.getToolTip();
 
         if (player != null && !stack.isEmpty()) {
+            // Steam-powered stuff
+            if (stack.has(ESDataComponents.STEAM_FUEL)) {
+                SteamFuelComponent fuel = stack.get(ESDataComponents.STEAM_FUEL);
+                List<Component> list = new ArrayList<>();
+                fuel.addToTooltip(event.getContext(), list::add, event.getFlags());
+                tooltip.addAll(i, list);
+                i += list.size();
+            }
+
+            // custom value
             boolean show_value = false;
             for (ItemStack armor : player.getInventory().armor) {
                 if (armor.is(ESTags.Items.SHOW_VALUE)) {
@@ -51,14 +65,13 @@ public final class ClientGameEvents {
                     break;
                 }
             }
-
             if (show_value) {
                 if (item != lastItem) {
                     lastItem = item;
                     lastValue = BoondollarPrices.getInstance().findPrice(stack, random).orElse(0);
                 }
                 if (lastValue != 0) {
-                    event.getToolTip().add(i, Component.translatable(ESLangProvider.BOONDOLLAR_VALUE_KEY,
+                    tooltip.add(i, Component.translatable(ESLangProvider.BOONDOLLAR_VALUE_KEY,
                             NumberFormat.getInstance().format(lastValue)));
                     i++;
                 }
@@ -73,18 +86,17 @@ public final class ClientGameEvents {
         // Fancy item descriptions
         String tooltip_key = stack.getDescriptionId() + ".tooltip";
         if (I18n.exists(tooltip_key)) {
-            event.getToolTip().add(i,
-                    Component.translatable(tooltip_key).withStyle(ChatFormatting.GRAY));
+            tooltip.add(i, Component.translatable(tooltip_key).withStyle(ChatFormatting.GRAY));
             i++;
         }
 
         // Shield info
         if (ConfigClient.displayShieldInfo) {
             if (item instanceof ESShield shield && shield.hasOnBlock(BlockFuncs.DAMAGE)) {
-                event.getToolTip().add(i,
-                        Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
-                                stack.get(ESDataComponents.SHIELD_DAMAGE)
-                                        .intValue())
+                tooltip.add(i,
+                        Component
+                                .translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
+                                        stack.get(ESDataComponents.SHIELD_DAMAGE).intValue())
                                 .withStyle(ChatFormatting.GRAY));
                 i++;
             }
@@ -94,7 +106,7 @@ public final class ClientGameEvents {
         @SuppressWarnings("null")
         IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
         if (energyStorage != null) {
-            event.getToolTip().add(i, Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
+            tooltip.add(i, Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
                     NumberFormat.getInstance().format(energyStorage.getEnergyStored()),
                     NumberFormat.getInstance().format(energyStorage.getMaxEnergyStored())));
             i++;

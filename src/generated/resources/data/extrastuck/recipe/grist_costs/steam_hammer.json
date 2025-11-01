@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 160,
+    "minestuck:shale": 64,
+    "minestuck:tar": 50
+  },
+  "ingredient": {
+    "item": "extrastuck:steam_hammer"
+  }
+}

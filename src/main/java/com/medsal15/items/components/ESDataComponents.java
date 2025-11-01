@@ -71,6 +71,9 @@ public final class ESDataComponents {
     public static final Supplier<DataComponentType<String>> ENTITY_TYPE = DATA_COMPONENTS.registerComponentType(
             "entity_type",
             builder -> builder.persistent(Codec.STRING).networkSynchronized(ByteBufCodecs.STRING_UTF8));
+    public static final Supplier<DataComponentType<SteamFuelComponent>> STEAM_FUEL = DATA_COMPONENTS
+            .registerComponentType("steam_fuel", builder -> builder.persistent(SteamFuelComponent.CODEC)
+                    .networkSynchronized(SteamFuelComponent.STREAM_CODEC));
 
     // Moduses
     /** Mastermind card code */

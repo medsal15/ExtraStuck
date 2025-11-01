@@ -1,0 +1,23 @@
+{
+    "name": "Steam-Powered Hammer",
+    "icon": "extrastuck:steam_hammer",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:steam_hammer"
+            },
+            "text": "A heavy hammer combined with a furnace to boost its damage.$(br2)$(3)$(l)Special:$() Can be activated to set the enemy on fire at the cost of fuel."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Blacksmith's Hammer and a Furnace in a Totem Lathe.",
+            "left": "minestuck:blacksmith_hammer",
+            "mode": "&&",
+            "right": "minecraft:furnace",
+            "result": "extrastuck:steam_hammer"
+        }
+    ]
+}

@@ -55,6 +55,9 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String ALT_GUN_HEAVY_KEY = ExtraStuck.MODID + ".office_key.heavy";
     public static final String RADBOW_CHARGE = ExtraStuck.MODID + ".radbow.charge";
     public static final String BEENADE_LOADED = ExtraStuck.MODID + ".beenade.loaded";
+    public static final String STEAM_WEAPON_FUEL = ExtraStuck.MODID + ".steam_weapon.fuel";
+    public static final String STEAM_WEAPON_LIT = ExtraStuck.MODID + ".steam_weapon.lit";
+    public static final String STEAM_WEAPON_UNLIT = ExtraStuck.MODID + ".steam_weapon.unlit";
 
     public static final String GRIST_DETECTOR_LOCATED = ExtraStuck.MODID + ".grist_detector.located";
     public static final String GRIST_DETECTOR_MODE = ExtraStuck.MODID + ".grist_detector.mode";
@@ -88,6 +91,9 @@ public final class ESLangProvider extends LanguageProvider {
         add(ALT_GUN_HEAVY_KEY, "It feels weirdly heavy...");
         add(GOLDEN_PAN_HIT, "Golden Pan Strike");
         add(RADBOW_CHARGE, "Loaded with %1$s charges");
+        add(STEAM_WEAPON_FUEL, "Holds %1$s fuel (%2$s)");
+        add(STEAM_WEAPON_LIT, "Lit");
+        add(STEAM_WEAPON_UNLIT, "Exinguished");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
@@ -223,6 +229,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.BELL_HAMMER, "It rings with every strike");
         addItem(ESItems.BLIND_HAMMER, "Blind Hammer");
         addItemTooltip(ESItems.BLIND_HAMMER, "With you in the dark");
+        addItem(ESItems.STEAM_HAMMER, "Steam-Powered Warhammer");
+        addItemTooltip(ESItems.STEAM_HAMMER, "Stoke the Forge");
 
         addItem(ESItems.GOLD_COIN, "Gold Coin");
         addItem(ESItems.STICKY_DIE, "Sticky Die");
