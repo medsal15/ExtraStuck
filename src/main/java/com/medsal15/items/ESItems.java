@@ -57,6 +57,10 @@ import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.BeeLarvaItem;
 import com.medsal15.items.throwables.BeenadeItem;
 import com.medsal15.items.throwables.SwapTrident;
+import com.medsal15.items.weaponeffects.ESHitEffects;
+import com.medsal15.items.weaponeffects.ESInventoryTickEffects;
+import com.medsal15.items.weaponeffects.ESRightClickBlockEffects;
+import com.medsal15.items.weaponeffects.ESRightClickEffects;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.item.MSItemProperties;
@@ -404,6 +408,10 @@ public final class ESItems {
                             .set(ESRightClickBlockEffects::brush)
                             .add(OnHitEffect.enemyKnockback(1F)),
                     new Item.Properties()));
+    public static final DeferredItem<Item> IRON_CROWBAR = ITEMS.register("iron_crowbar", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.IRON, 2, -2F).set(MSItemTypes.CANE_TOOL)
+                    .set(ESRightClickBlockEffects::pry),
+            new Item.Properties()));
     // #endregion Canes
     // #region Forks
     public static final DeferredItem<Item> MAGNEFORK = ITEMS.register("magnefork",
@@ -936,6 +944,7 @@ public final class ESItems {
         list.add(BAGUETTE_MAGIQUE);
         // Canes
         list.add(BROOM);
+        list.add(IRON_CROWBAR);
         // Forks
         list.add(MAGNEFORK);
         list.add(OVERCHARGED_MAGNEFORK);

@@ -445,6 +445,16 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.BROOM)
                 .grist(GristTypes.CHALK, 39).grist(GristTypes.IODINE, 50).grist(GristTypes.SHALE, 27)
                 .build(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ESItems.IRON_CROWBAR)
+                .pattern(" IB")
+                .pattern(" B ")
+                .pattern("BN ")
+                .define('I', Tags.Items.INGOTS_IRON)
+                .define('B', Items.IRON_BARS)
+                .define('N', Tags.Items.NUGGETS_IRON)
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .save(output, modid("shaped/iron_crowbar"));
         // #endregion Canes
 
         // #region Forks

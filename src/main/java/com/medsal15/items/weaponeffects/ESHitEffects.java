@@ -1,4 +1,4 @@
-package com.medsal15.items;
+package com.medsal15.items.weaponeffects;
 
 import java.util.List;
 import java.util.Optional;

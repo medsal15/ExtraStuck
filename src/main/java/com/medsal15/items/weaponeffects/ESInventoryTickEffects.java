@@ -1,4 +1,4 @@
-package com.medsal15.items;
+package com.medsal15.items.weaponeffects;
 
 import java.util.function.Predicate;
 import java.util.function.Supplier;

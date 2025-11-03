@@ -238,6 +238,8 @@
   "item.extrastuck.infini_die": "Infini-Die",
   "item.extrastuck.infini_die.tooltip": "Theorically infinite damage output",
   "item.extrastuck.iron_arrow": "Iron Arrow",
+  "item.extrastuck.iron_crowbar": "Iron Crowbar",
+  "item.extrastuck.iron_crowbar.tooltip": "A normal crowbar that pries things open",
   "item.extrastuck.iron_shield": "Iron Shield",
   "item.extrastuck.jawbiter": "Jawbiter",
   "item.extrastuck.key_of_ominous_trials": "Key of Ominous Trials",

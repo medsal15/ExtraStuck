@@ -1,4 +1,6 @@
-package com.medsal15.items;
+package com.medsal15.items.weaponeffects;
+
+import com.medsal15.utils.ESTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -26,6 +28,28 @@ public final class ESRightClickBlockEffects {
                 stack.hurtAndBreak(1, player, slot);
             }
             return InteractionResult.CONSUME;
+        }
+
+        return InteractionResult.PASS;
+    }
+
+    public static InteractionResult pry(UseOnContext context) {
+        Player player = context.getPlayer();
+
+        if (player != null && player.isCrouching()) {
+            BlockPos pos = context.getClickedPos();
+            Level level = context.getLevel();
+
+            if (level.getBlockState(pos).is(ESTags.Blocks.PRYABLE)) {
+                ItemStack stack = context.getItemInHand();
+                EquipmentSlot slot = context.getHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND
+                        : EquipmentSlot.OFFHAND;
+
+                level.destroyBlock(pos, true);
+                stack.hurtAndBreak(1, player, slot);
+
+                return InteractionResult.CONSUME;
+            }
         }
 
         return InteractionResult.PASS;

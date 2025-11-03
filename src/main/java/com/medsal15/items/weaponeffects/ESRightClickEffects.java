@@ -1,4 +1,4 @@
-package com.medsal15.items;
+package com.medsal15.items.weaponeffects;
 
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;

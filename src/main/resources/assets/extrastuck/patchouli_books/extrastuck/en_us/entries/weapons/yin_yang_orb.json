@@ -1,0 +1,23 @@
+{
+    "name": "Yin-Yang Orb",
+    "icon": "extrastuck:yin_yang_orb",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:yin_yang_orb"
+            },
+            "text": "A black and white bouncing ball.$(br2)Hopefully no angry japanese priestess will appear in the forseeable future."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Sorcerer's Pinball and a Katana in a Totem Lathe.",
+            "left": "minestuck:sorcerers_pinball",
+            "mode": "&&",
+            "right": "minestuck:katana",
+            "result": "extrastuck:yin_yang_orb"
+        }
+    ]
+}

@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.utils.ESTags;
+import com.mraof.minestuck.block.MSBlocks;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
@@ -24,6 +25,8 @@ public final class ESBlockTags extends BlockTagsProvider {
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
+        tag(ESTags.Blocks.PRYABLE).add(MSBlocks.PYXIS_LID.get(), MSBlocks.CRUXTRUDER_LID.get());
+
         tag(ESTags.Blocks.INCORRECT_FOR_COPPER_TIER).addTag(BlockTags.INCORRECT_FOR_STONE_TOOL);
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(

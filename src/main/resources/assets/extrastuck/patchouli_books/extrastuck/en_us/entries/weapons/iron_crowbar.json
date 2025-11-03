@@ -1,0 +1,20 @@
+{
+    "name": "Iron Crowbar",
+    "icon": "extrastuck:iron_crowbar",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:iron_crowbar"
+            },
+            "text": "A common crowbar made of iron.$(br2)$(3)$(l)Special:$() Can instantly break specific blocks by crouching and using the crowbar on them."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shaped/iron_crowbar",
+            "text": "Put iron bars in a diagonal with an iron ingot in the top center slot"
+        }
+    ]
+}

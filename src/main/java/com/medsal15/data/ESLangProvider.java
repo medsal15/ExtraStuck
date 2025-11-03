@@ -266,6 +266,8 @@ public final class ESLangProvider extends LanguageProvider {
 
         addItem(ESItems.BROOM, "Broom");
         addItemTooltip(ESItems.BROOM, "Sweep sweep sweep");
+        addItem(ESItems.IRON_CROWBAR, "Iron Crowbar");
+        addItemTooltip(ESItems.IRON_CROWBAR, "A normal crowbar that pries things open");
 
         addItem(ESItems.MAGNEFORK, "Magnefork");
         addItem(ESItems.OVERCHARGED_MAGNEFORK, "Overcharged Magnefork");
