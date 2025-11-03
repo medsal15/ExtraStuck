@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
 
+import com.medsal15.config.ConfigCommon;
 import com.medsal15.data.ESLangProvider;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -52,7 +53,7 @@ public record SteamFuelComponent(int fuel, boolean burning) implements TooltipPr
     @Override
     public void addToTooltip(@Nonnull TooltipContext context, @Nonnull Consumer<Component> tooltipAdder,
             @Nonnull TooltipFlag tooltipFlag) {
-        float burnTime = (float) fuel / 20;
+        int uses = fuel / ConfigCommon.STEAM_FUEL_CONSUME.get();
 
         MutableComponent state;
         if (burning) {
@@ -60,6 +61,6 @@ public record SteamFuelComponent(int fuel, boolean burning) implements TooltipPr
         } else {
             state = Component.translatable(ESLangProvider.STEAM_WEAPON_UNLIT).withStyle(ChatFormatting.DARK_GRAY);
         }
-        tooltipAdder.accept(Component.translatable(ESLangProvider.STEAM_WEAPON_FUEL, burnTime, state));
+        tooltipAdder.accept(Component.translatable(ESLangProvider.STEAM_WEAPON_FUEL, uses, state));
     }
 }

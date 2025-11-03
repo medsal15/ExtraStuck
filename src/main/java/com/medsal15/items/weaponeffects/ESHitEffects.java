@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.config.ConfigCommon;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.mobeffects.ESMobEffects;
@@ -265,15 +266,22 @@ public final class ESHitEffects {
      * Checks if the item has enough steam fuel and is active to apply a separate
      * hit effect
      */
-    public static OnHitEffect steamPowered(int fuel, boolean consume, OnHitEffect effect) {
+    public static OnHitEffect steamPowered(boolean consume, OnHitEffect effect) {
         return (stack, target, attacker) -> {
             if (!stack.has(ESDataComponents.STEAM_FUEL))
                 return;
 
+            int fuel = ConfigCommon.STEAM_FUEL_CONSUME.get();
             SteamFuelComponent steamFuel = stack.get(ESDataComponents.STEAM_FUEL);
             if (steamFuel.burning() && steamFuel.fuel() >= fuel) {
                 if (consume) {
-                    stack.set(ESDataComponents.STEAM_FUEL, steamFuel.drain(fuel));
+                    steamFuel = steamFuel.drain(fuel);
+
+                    // Not enough fuel to keep going
+                    if (steamFuel.fuel() < fuel)
+                        steamFuel = steamFuel.extinguish();
+
+                    stack.set(ESDataComponents.STEAM_FUEL, steamFuel);
                 }
                 effect.onHit(stack, target, target);
             }

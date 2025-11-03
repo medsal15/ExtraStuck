@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:steam_hammer"
             },
-            "text": "A heavy hammer combined with a furnace to boost its damage.$(br2)$(3)$(l)Special:$() Can be activated to set the enemy on fire at the cost of fuel."
+            "text": "A heavy hammer combined with a furnace to boost its damage.$(br2)$(3)$(l)Special:$() Requires furnace fuel to deal damage and set enemies on fire for 10 seconds."
         },
         {
             "type": "extrastuck:combination",

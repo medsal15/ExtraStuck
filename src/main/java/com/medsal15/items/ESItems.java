@@ -258,9 +258,8 @@ public final class ESItems {
                             .add(ESInventoryTickEffects::blind),
                     new MSItemProperties().durability(2500)));
     public static final DeferredItem<Item> STEAM_HAMMER = ITEMS.register("steam_hammer", () -> new SteamWeaponItem(
-            new WeaponItem.Builder(ESItemTiers.COPPER_TIER, 7, -3.2F).efficiency(6F).set(MSItemTypes.HAMMER_TOOL)
-                    .add(ESHitEffects.steamPowered(200, true,
-                            OnHitEffect.setOnFire(10)))
+            new WeaponItem.Builder(ESItemTiers.COPPER_TIER, 8, -3.2F).efficiency(6F).set(MSItemTypes.HAMMER_TOOL)
+                    .add(ESHitEffects.steamPowered(true, OnHitEffect.setOnFire(10)))
                     .set(ESRightClickEffects::steamWeapon),
             new MSItemProperties().durability(600)
                     .component(ESDataComponents.STEAM_FUEL, new SteamFuelComponent(0, false))));

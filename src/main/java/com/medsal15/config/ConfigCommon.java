@@ -86,6 +86,9 @@ public class ConfigCommon {
                     "That is to say, if the weapon's fuel is below or equal to this number, it can be refueled",
                     "Note that if the value is too low, it may prevent the item from being refuelable")
             .defineInRange("weapons.steam_powered.fuel_threshold", 200, 0, Integer.MAX_VALUE);
+    public static final ConfigValue<Integer> STEAM_FUEL_CONSUME = BUILDER
+            .comment("How much fuel (in ticks) is consumed to attack with a steam-powered weapon")
+            .defineInRange("weapons.steam_powered.fuel_threshold", 200, 0, Integer.MAX_VALUE);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
