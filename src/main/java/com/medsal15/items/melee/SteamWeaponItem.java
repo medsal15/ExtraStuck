@@ -68,4 +68,6 @@ public class SteamWeaponItem extends WeaponItem {
                     EquipmentSlotGroup.MAINHAND);
         }
     }
+
+    // TODO item handler
 }

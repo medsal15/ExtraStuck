@@ -243,6 +243,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.MORTAL_TEMPTATION_BLOCK.get());
         basicItem(ESItems.MORTAL_TEMPTATION.get());
         basicItem(ESItems.CANDY_CRUNCH.get());
+        basicItem(ESItems.HOME_DONUT.get());
 
         basicItem(ESItems.DESERT_JUICE.get());
     }

@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class ChargerBlockRenderer implements BlockEntityRenderer<ChargerBlockEntity> {
-    private ItemRenderer itemRenderer;
+    private final ItemRenderer itemRenderer;
 
     public ChargerBlockRenderer(BlockEntityRendererProvider.Context context) {
         super();

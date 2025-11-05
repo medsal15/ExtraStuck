@@ -1,0 +1,22 @@
+{
+    "name": "Donut",
+    "icon": "extrastuck:home_donut",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:home_donut"
+            },
+            "text": "A donut with magical properties that sends you back home."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Bread and a Respawn Anchor in a Punch Designix.",
+            "left": "minecraft:bread",
+            "mode": "||",
+            "right": "minecraft:respawn_anchor",
+            "result": "extrastuck:home_donut"
+        }
+    ]
+}

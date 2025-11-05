@@ -40,7 +40,7 @@ public final class ESRightClickBlockEffects {
             BlockPos pos = context.getClickedPos();
             Level level = context.getLevel();
 
-            if (level.getBlockState(pos).is(ESTags.Blocks.PRYABLE)) {
+            if (level.getBlockState(pos).is(ESTags.Blocks.PRYABLE) && player.canInteractWithBlock(pos, 0)) {
                 ItemStack stack = context.getItemInHand();
                 EquipmentSlot slot = context.getHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND
                         : EquipmentSlot.OFFHAND;

@@ -79,4 +79,6 @@ public final class ESFoods {
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600, 3), 1F)
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 900, 1), 1F)
             .build();
+    public static final FoodProperties HOME_DONUT = new FoodProperties.Builder().nutrition(4).saturationModifier(.2F)
+            .alwaysEdible().build();
 }

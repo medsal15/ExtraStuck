@@ -64,6 +64,11 @@ Attacks:
 - Heart Stop: telegraphed with high damage
 - Doom Hammer: high damage with strong recoil
 
+Drops:
+
+- Queen Wand (iss staff/wandkind)
+- Lich Crown (bonus magic/underling damage)
+
 #### Mechanical Ruins ####
 
 - Walls made of gears (hopefully create compatible)
@@ -83,6 +88,11 @@ Attacks:
 - Reach: Attempts to reach and grab a player
 - Body Slam: Slams player into ground/wall for kinetic damage
 - Shatter: Dying results in smaller, weaker, simpler grist golems
+
+Drops:
+
+- Golem Core (upgrades iron golems)
+- Reinforced Gauntlets (short range & high damage)
 
 ## Textures ##
 

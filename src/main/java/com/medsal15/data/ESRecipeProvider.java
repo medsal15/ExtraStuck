@@ -1148,6 +1148,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 2).grist(GristTypes.AMBER, 3)
                 .source(MSItems.CANDY_CORN.get()).source(MSItems.TUIX_BAR.get()).source(MSItems.SPOREO.get())
                 .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
+
+        CombinationRecipeBuilder.of(ESItems.HOME_DONUT)
+                .input(Items.RESPAWN_ANCHOR).or().input(Items.BREAD)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.HOME_DONUT)
+                .grist(GristTypes.IODINE, 12).grist(GristTypes.GARNET, 1).grist(GristTypes.CHALK, 5)
+                .grist(GristTypes.ARTIFACT, 1)
+                .build(output);
     }
 
     private void blockRecipes(@Nonnull RecipeOutput output) {

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:respawn_anchor"
+  },
+  "input2": {
+    "item": "minecraft:bread"
+  },
+  "mode": "or",
+  "output": "extrastuck:home_donut"
+}

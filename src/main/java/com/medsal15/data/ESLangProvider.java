@@ -58,6 +58,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String STEAM_WEAPON_FUEL = ExtraStuck.MODID + ".steam_weapon.fuel";
     public static final String STEAM_WEAPON_LIT = ExtraStuck.MODID + ".steam_weapon.lit";
     public static final String STEAM_WEAPON_UNLIT = ExtraStuck.MODID + ".steam_weapon.unlit";
+    public static final String HOME_DONUT_NO_TP = ExtraStuck.MODID + ".home_done.no_tp";
 
     public static final String GRIST_DETECTOR_LOCATED = ExtraStuck.MODID + ".grist_detector.located";
     public static final String GRIST_DETECTOR_MODE = ExtraStuck.MODID + ".grist_detector.mode";
@@ -524,6 +525,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.MORTAL_TEMPTATION, "Even consorts love it");
         addItem(ESItems.CANDY_CRUNCH, "Bowl of Candy Crunch");
         addItemTooltip(ESItems.CANDY_CRUNCH, "So much sugar can't be good for you");
+        addItem(ESItems.HOME_DONUT, "Donut");
+        addItemTooltip(ESItems.HOME_DONUT, "Smells like home");
+        add(HOME_DONUT_NO_TP, "The donut could not find the way back home.");
 
         addItem(ESItems.DESERT_JUICE, "Desert Juice");
     }

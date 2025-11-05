@@ -1,0 +1,12 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:artifact": 1,
+    "minestuck:chalk": 5,
+    "minestuck:garnet": 1,
+    "minestuck:iodine": 12
+  },
+  "ingredient": {
+    "item": "extrastuck:home_donut"
+  }
+}

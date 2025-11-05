@@ -42,6 +42,7 @@ import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.food.FortuneCookie;
+import com.medsal15.items.food.HomeDonut;
 import com.medsal15.items.food.HotCakeSlice;
 import com.medsal15.items.food.MortalTemptation;
 import com.medsal15.items.guns.ESGun;
@@ -657,7 +658,9 @@ public final class ESItems {
     public static final DeferredItem<Item> MORTAL_TEMPTATION = ITEMS.registerItem("mortal_temptation",
             p -> new MortalTemptation(p.food(ESFoods.MORTAL_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> CANDY_CRUNCH = ITEMS.registerItem("candy_crunch",
-            p -> new MortalTemptation(p.food(ESFoods.CANDY_CRUNCH).craftRemainder(Items.BOWL).stacksTo(16)));
+            p -> new Item(p.food(ESFoods.CANDY_CRUNCH).craftRemainder(Items.BOWL).stacksTo(16)));
+    public static final DeferredItem<Item> HOME_DONUT = ITEMS.registerItem("home_donut",
+            p -> new HomeDonut(p.food(ESFoods.HOME_DONUT)));
     // #endregion Food
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -1078,6 +1081,7 @@ public final class ESItems {
         list.add(MORTAL_TEMPTATION_BLOCK);
         list.add(MORTAL_TEMPTATION);
         list.add(CANDY_CRUNCH);
+        list.add(HOME_DONUT);
         return list;
     }
 
