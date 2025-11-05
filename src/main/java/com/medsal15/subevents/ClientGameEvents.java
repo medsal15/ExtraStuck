@@ -68,7 +68,9 @@ public final class ClientGameEvents {
             if (show_value) {
                 if (item != lastItem) {
                     lastItem = item;
-                    lastValue = BoondollarPrices.getInstance().findPrice(stack, random).orElse(0);
+                    // FIXME does not work client side
+                    // lastValue = BoondollarPrices.getInstance().findPrice(stack,
+                    // random).orElse(0);
                 }
                 if (lastValue != 0) {
                     tooltip.add(i, Component.translatable(ESLangProvider.BOONDOLLAR_VALUE_KEY,
