@@ -4,6 +4,7 @@ import com.medsal15.config.ConfigCommon;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
 
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -20,11 +21,13 @@ public final class ESRightClickEffects {
             SteamFuelComponent fuel = stack.getOrDefault(ESDataComponents.STEAM_FUEL, new SteamFuelComponent(0, false));
             if (fuel.burning()) {
                 stack.set(ESDataComponents.STEAM_FUEL, fuel.extinguish());
+                player.playSound(SoundEvents.FIRE_EXTINGUISH);
                 return InteractionResultHolder.success(stack);
             }
             int fuel_needed = ConfigCommon.STEAM_FUEL_CONSUME.get();
             if (fuel.fuel() >= fuel_needed) {
                 stack.set(ESDataComponents.STEAM_FUEL, fuel.toggle(true));
+                player.playSound(SoundEvents.FLINTANDSTEEL_USE);
                 return InteractionResultHolder.success(stack);
             }
         }

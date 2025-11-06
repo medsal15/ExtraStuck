@@ -25,9 +25,17 @@ import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
 public class SteamWeaponItem extends WeaponItem {
+    /** Final multiplier to damage dealt */
+    private final double damageMult;
+
     public SteamWeaponItem(WeaponItem.Builder builder, Properties properties) {
+        this(builder, properties, -.5);
+    }
+
+    public SteamWeaponItem(WeaponItem.Builder builder, Properties properties, double damageMultiplier) {
         super(builder, properties);
         NeoForge.EVENT_BUS.addListener(this::adjustDamge);
+        damageMult = damageMultiplier;
     }
 
     @Override
@@ -55,7 +63,7 @@ public class SteamWeaponItem extends WeaponItem {
         return false;
     }
 
-    private void adjustDamge(final ItemAttributeModifierEvent event) {
+    protected void adjustDamge(final ItemAttributeModifierEvent event) {
         ItemStack stack = event.getItemStack();
         if (!(stack.getItem() instanceof SteamWeaponItem))
             return;
@@ -64,7 +72,7 @@ public class SteamWeaponItem extends WeaponItem {
                 new SteamFuelComponent(0, false));
         if (!steamFuel.burning()) {
             event.addModifier(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(ExtraStuck.modid("steam_weapon"), -1, Operation.ADD_MULTIPLIED_TOTAL),
+                    new AttributeModifier(ExtraStuck.modid("steam_weapon"), damageMult, Operation.ADD_MULTIPLIED_TOTAL),
                     EquipmentSlotGroup.MAINHAND);
         }
     }

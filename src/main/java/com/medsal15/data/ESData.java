@@ -29,7 +29,7 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-@EventBusSubscriber(modid = ExtraStuck.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ExtraStuck.MODID)
 public final class ESData {
     @SubscribeEvent
     public static final void gatherData(GatherDataEvent event) {

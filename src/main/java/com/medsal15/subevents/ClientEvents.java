@@ -2,9 +2,13 @@ package com.medsal15.subevents;
 
 import static com.medsal15.ExtraStuck.modid;
 
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.ESBlockEntities;
@@ -15,24 +19,36 @@ import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
 import com.medsal15.computer.ESProgramTypes;
+import com.medsal15.config.ConfigClient;
+import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;
+import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.RadBowItem;
+import com.medsal15.items.shields.ESShield;
+import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.particles.UraniumBlastParticle;
+import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.client.gui.computer.ProgramGui;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -48,10 +64,92 @@ import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 
-@EventBusSubscriber(modid = ExtraStuck.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public final class ClientModEvents {
+@EventBusSubscriber(modid = ExtraStuck.MODID, value = Dist.CLIENT)
+public final class ClientEvents {
+    private static RandomSource random = RandomSource.create();
+    private static int lastValue = 0;
+    @Nullable
+    private static Item lastItem = null;
+
+    @SubscribeEvent
+    public static void addCustomTooltip(final ItemTooltipEvent event) {
+        int i = 1;
+        ItemStack stack = event.getItemStack();
+        Item item = stack.getItem();
+        Player player = event.getEntity();
+        List<Component> tooltip = event.getToolTip();
+
+        if (player != null && !stack.isEmpty()) {
+            // Steam-powered stuff
+            if (stack.has(ESDataComponents.STEAM_FUEL)) {
+                SteamFuelComponent fuel = stack.get(ESDataComponents.STEAM_FUEL);
+                List<Component> list = new ArrayList<>();
+                fuel.addToTooltip(event.getContext(), list::add, event.getFlags());
+                tooltip.addAll(i, list);
+                i += list.size();
+            }
+
+            // custom value
+            boolean show_value = false;
+            for (ItemStack armor : player.getInventory().armor) {
+                if (armor.is(ESTags.Items.SHOW_VALUE)) {
+                    show_value = true;
+                    break;
+                }
+            }
+            if (show_value) {
+                if (item != lastItem) {
+                    lastItem = item;
+                    // FIXME does not work client side
+                    // lastValue = BoondollarPrices.getInstance().findPrice(stack,
+                    // random).orElse(0);
+                }
+                if (lastValue != 0) {
+                    tooltip.add(i, Component.translatable(ESLangProvider.BOONDOLLAR_VALUE_KEY,
+                            NumberFormat.getInstance().format(lastValue)));
+                    i++;
+                }
+            }
+        }
+
+        // Only for this mod
+        final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
+        if (itemId == null || !itemId.getNamespace().equals(ExtraStuck.MODID))
+            return;
+
+        // Fancy item descriptions
+        String tooltip_key = stack.getDescriptionId() + ".tooltip";
+        if (I18n.exists(tooltip_key)) {
+            tooltip.add(i, Component.translatable(tooltip_key).withStyle(ChatFormatting.GRAY));
+            i++;
+        }
+
+        // Shield info
+        if (ConfigClient.displayShieldInfo) {
+            if (item instanceof ESShield shield && shield.hasOnBlock(BlockFuncs.DAMAGE)) {
+                tooltip.add(i,
+                        Component
+                                .translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
+                                        stack.get(ESDataComponents.SHIELD_DAMAGE).intValue())
+                                .withStyle(ChatFormatting.GRAY));
+                i++;
+            }
+        }
+
+        // RF
+        @SuppressWarnings("null")
+        IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
+        if (energyStorage != null) {
+            tooltip.add(i, Component.translatable(ESLangProvider.ENERGY_STORAGE_KEY,
+                    NumberFormat.getInstance().format(energyStorage.getEnergyStored()),
+                    NumberFormat.getInstance().format(energyStorage.getMaxEnergyStored())));
+            i++;
+        }
+    }
+
     @SubscribeEvent
     public static void onClientSetup(final FMLClientSetupEvent event) {
         ItemProperties.register(ESItems.GRIST_DETECTOR.get(), ExtraStuck.modid("found"),
@@ -252,4 +350,5 @@ public final class ClientModEvents {
     public static void registerParticleProviders(final RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ESParticleTypes.URANIUM_BLAST.get(), UraniumBlastParticle.Provider::new);
     }
+
 }

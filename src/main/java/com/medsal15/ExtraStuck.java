@@ -126,6 +126,7 @@ public class ExtraStuck {
                 ESItems.FIELD_CHARGER.get());
 
         event.registerItem(Capabilities.ItemHandler.ITEM,
+                // TODO move to a subclass & method to get
                 (stack, u) -> new GunContainer(1, stack),
                 ESItems.HANDGUN.get());
 

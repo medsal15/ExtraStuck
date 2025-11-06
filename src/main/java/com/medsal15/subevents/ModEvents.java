@@ -16,7 +16,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
-@EventBusSubscriber(modid = ExtraStuck.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ExtraStuck.MODID)
 public final class ModEvents {
     @SubscribeEvent
     public static void registerPayloadHandlers(final RegisterPayloadHandlersEvent event) {

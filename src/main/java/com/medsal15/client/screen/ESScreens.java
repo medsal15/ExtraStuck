@@ -22,7 +22,7 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
 import static com.mraof.minestuck.client.gui.MSScreenFactories.registerSylladexFactory;
 
-@EventBusSubscriber(value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD, modid = ExtraStuck.MODID)
+@EventBusSubscriber(value = Dist.CLIENT, modid = ExtraStuck.MODID)
 public final class ESScreens {
     @SubscribeEvent
     public static void registerScreenFactories(RegisterMenuScreensEvent event) {

@@ -8,7 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-@EventBusSubscriber(modid = ExtraStuck.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = ExtraStuck.MODID, value = Dist.CLIENT)
 public class ConfigClient {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 

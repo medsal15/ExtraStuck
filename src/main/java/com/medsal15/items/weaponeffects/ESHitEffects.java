@@ -23,6 +23,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -278,8 +279,10 @@ public final class ESHitEffects {
                     steamFuel = steamFuel.drain(fuel);
 
                     // Not enough fuel to keep going
-                    if (steamFuel.fuel() < fuel)
+                    if (steamFuel.fuel() < fuel) {
                         steamFuel = steamFuel.extinguish();
+                        attacker.playSound(SoundEvents.FIRE_EXTINGUISH);
+                    }
 
                     stack.set(ESDataComponents.STEAM_FUEL, steamFuel);
                 }
