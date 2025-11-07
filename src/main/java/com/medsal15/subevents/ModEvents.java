@@ -5,6 +5,7 @@ import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.network.ESPackets.MastermindAddAttempt;
 import com.medsal15.network.ESPackets.MastermindDestroy;
 import com.medsal15.network.ESPackets.MastermindReset;
+import com.medsal15.network.ESPackets.SyncBoondollarValues;
 import com.medsal15.network.ESPackets.ToggleMode;
 import com.mraof.minestuck.network.MSPacket;
 
@@ -26,10 +27,16 @@ public final class ModEvents {
         registrar.playToServer(MastermindAddAttempt.ID, MastermindAddAttempt.STREAM_CODEC, ModEvents::exec);
         registrar.playToServer(MastermindDestroy.ID, MastermindDestroy.STREAM_CODEC, ModEvents::exec);
         registrar.playToServer(MastermindReset.ID, MastermindReset.STREAM_CODEC, ModEvents::exec);
+
+        registrar.playToClient(SyncBoondollarValues.ID, SyncBoondollarValues.STREAM_CODEC, ModEvents::execClient);
     }
 
     private static void exec(MSPacket.PlayToServer packet, IPayloadContext context) {
         packet.execute(context, (ServerPlayer) context.player());
+    }
+
+    private static void execClient(MSPacket.PlayToClient packet, IPayloadContext context) {
+        packet.execute(context);
     }
 
     @SubscribeEvent

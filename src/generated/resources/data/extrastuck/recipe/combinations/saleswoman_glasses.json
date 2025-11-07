@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:red_stained_glass_pane"
+  },
+  "input2": {
+    "item": "minecraft:gold_nugget"
+  },
+  "mode": "and",
+  "output": "extrastuck:saleswoman_glasses"
+}

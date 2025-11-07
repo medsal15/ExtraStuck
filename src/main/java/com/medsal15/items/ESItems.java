@@ -35,6 +35,7 @@ import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.DarkKnightArmorItem;
 import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.armor.SalesmanGogglesItem;
+import com.medsal15.items.armor.SaleswomanGogglesItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
 import com.medsal15.items.components.MoonCakeSliceColor;
@@ -558,6 +559,9 @@ public final class ESItems {
     public static final DeferredItem<Item> SALESMAN_GOGGLES = ITEMS.register("salesman_goggles",
             () -> new SalesmanGogglesItem(ESArmorMaterials.SALESMAN_GLASSES, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(13))));
+    public static final DeferredItem<Item> SALESWOMAN_GLASSES = ITEMS.register("saleswoman_glasses",
+            () -> new SaleswomanGogglesItem(ESArmorMaterials.SALESMAN_GLASSES, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(13))));
     // #region Dark Knight
     public static final DeferredItem<Item> DARK_KNIGHT_HELMET = ITEMS.register("dark_knight_helmet",
             () -> new DarkKnightArmorItem(ESArmorMaterials.DARK_KNIGHT, ArmorItem.Type.HELMET,
@@ -1016,6 +1020,7 @@ public final class ESItems {
         list.add(PROPELLER_HAT);
         list.add(HEAVY_BOOTS);
         list.add(SALESMAN_GOGGLES);
+        list.add(SALESWOMAN_GLASSES);
 
         list.add(DARK_KNIGHT_HELMET);
         list.add(DARK_KNIGHT_CHESTPLATE);
@@ -1032,6 +1037,7 @@ public final class ESItems {
         list.add(PROPELLER_HAT);
         list.add(SALESMAN_GOGGLES);
         list.add(DARK_KNIGHT_HELMET);
+        list.add(SALESWOMAN_GLASSES);
 
         return list;
     }

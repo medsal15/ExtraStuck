@@ -14,5 +14,6 @@ public class ESPriceProvider extends BoondollarPriceProvider {
     @Override
     protected void registerPrices() {
         add(ESItems.SALESMAN_GOGGLES, 1997);
+        add(ESItems.SALESWOMAN_GLASSES, 10_000);
     }
 }

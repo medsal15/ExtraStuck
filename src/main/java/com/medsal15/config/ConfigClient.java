@@ -15,13 +15,29 @@ public class ConfigClient {
     private static final ModConfigSpec.BooleanValue DISPLAY_SHIELD_INFO = BUILDER
             .comment("Whether to show the shield special effects in the tooltip")
             .define("displayShieldInfo", true);
+    private static final ModConfigSpec.EnumValue<BoondollarDisplayMode> BOONDOLLAR_DISPLAY_MODE = BUILDER
+            .comment("How boondollar costs are shown when wearing an item that makes them visible",
+                    "DISABLED: completely hides the value",
+                    "RAW: displays lowest and highest prices (when available)",
+                    "AVERAGE: displays the middle ground for the above",
+                    "RANDOM: displays a random value between the lowest and highest")
+            .defineEnum("boondollarDisplayMode", BoondollarDisplayMode.RANDOM);
+
+    public static enum BoondollarDisplayMode {
+        DISABLED,
+        RAW,
+        AVERAGE,
+        RANDOM;
+    }
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
+    public static BoondollarDisplayMode boondollarDisplayMode;
     public static boolean displayShieldInfo;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         displayShieldInfo = DISPLAY_SHIELD_INFO.get();
+        boondollarDisplayMode = BOONDOLLAR_DISPLAY_MODE.get();
     }
 }

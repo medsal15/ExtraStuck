@@ -20,6 +20,7 @@ import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigClient;
+import com.medsal15.config.ConfigClient.BoondollarDisplayMode;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
@@ -33,6 +34,8 @@ import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.particles.UraniumBlastParticle;
+import com.medsal15.storage.ESBoondollarValues;
+import com.medsal15.storage.ESBoondollarValues.BoondollarValue;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.client.gui.computer.ProgramGui;
@@ -70,7 +73,9 @@ import net.neoforged.neoforge.registries.DeferredItem;
 @EventBusSubscriber(modid = ExtraStuck.MODID, value = Dist.CLIENT)
 public final class ClientEvents {
     private static RandomSource random = RandomSource.create();
-    private static int lastValue = 0;
+    @Nullable
+    private static BoondollarValue lastValue = null;
+    private static int lastRandomValue;
     @Nullable
     private static Item lastItem = null;
 
@@ -100,17 +105,45 @@ public final class ClientEvents {
                     break;
                 }
             }
-            if (show_value) {
+            if (show_value && ConfigClient.boondollarDisplayMode != BoondollarDisplayMode.DISABLED) {
+                boolean update_last = false;
                 if (item != lastItem) {
                     lastItem = item;
-                    // FIXME does not work client side
-                    // lastValue = BoondollarPrices.getInstance().findPrice(stack,
-                    // random).orElse(0);
+                    lastValue = ESBoondollarValues.getInstance().getValue(stack).orElse(null);
+                    update_last = lastValue != null;
                 }
-                if (lastValue != 0) {
-                    tooltip.add(i, Component.translatable(ESLangProvider.BOONDOLLAR_VALUE_KEY,
-                            NumberFormat.getInstance().format(lastValue)));
-                    i++;
+                if (lastValue != null) {
+                    BoondollarValue value = lastValue;
+                    Component text = null;
+                    if (value.min() == value.max()) {
+                        text = Component.translatable(ESLangProvider.BOONDOLLAR_VALUE_KEY, value.min());
+                        lastRandomValue = 0;
+                    } else {
+                        switch (ConfigClient.boondollarDisplayMode) {
+                            case DISABLED:
+                                break;
+                            case RAW:
+                                text = Component.translatable(ESLangProvider.BOONDOLLAR_RANGE_KEY, value.min(),
+                                        value.max());
+                                lastRandomValue = 0;
+                                break;
+                            case AVERAGE:
+                                text = Component.translatable(ESLangProvider.BOONDOLLAR_VALUE_KEY,
+                                        (value.min() + value.max()) / 2);
+                                lastRandomValue = 0;
+                                break;
+                            case RANDOM:
+                                if (lastRandomValue == 0 || update_last) {
+                                    lastRandomValue = random.nextIntBetweenInclusive(value.min(), value.max());
+                                }
+                                text = Component.translatable(ESLangProvider.BOONDOLLAR_VALUE_KEY, lastRandomValue);
+                                break;
+                        }
+                    }
+                    if (text != null) {
+                        tooltip.add(i, text);
+                        i++;
+                    }
                 }
             }
         }

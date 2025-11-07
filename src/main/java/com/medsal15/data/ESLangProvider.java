@@ -70,6 +70,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
     public static final String BOONDOLLAR_VALUE_KEY = ExtraStuck.MODID + ".boondollar_value";
+    public static final String BOONDOLLAR_RANGE_KEY = ExtraStuck.MODID + ".boondollar_range";
 
     public static final String INNATE_ENCHANT_KEY = ExtraStuck.MODID + ".innate_enchant";
     public static final String INNATE_ENCHANTS_KEY = ExtraStuck.MODID + ".innate_enchants";
@@ -84,6 +85,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(ENERGY_STORAGE_KEY, "%1$s / %2$s FE");
         add(FLUID_STORAGE_KEY, "%1$s mB / %2$s mB %3$s");
         add(BOONDOLLAR_VALUE_KEY, "Value: %1$s ฿");
+        add(BOONDOLLAR_RANGE_KEY, "Value: %1$s-%2$s ฿");
         add(INNATE_ENCHANT_KEY, "+1 level to %2$s");
         add(INNATE_ENCHANTS_KEY, "+%1$s levels to %2$s");
         add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
@@ -323,6 +325,12 @@ public final class ESLangProvider extends LanguageProvider {
                 "ARE YOU SO BORED THAT YOU [[Browse catalogue]]?"
                         + " THEN FEEL FREE TO USE THESE FOR THE BEST [[Specil Deal]]!"
                         + " ALL YOU HAVE TO DO IS [[Hyperlink Blocked]]");
+        addItem(ESItems.SALESWOMAN_GLASSES, "Saleswoman Glasses");
+        addItemTooltip(ESItems.SALESWOMAN_GLASSES, "A \"reasonable\" price");
+        addItemBookDescription(ESItems.SALESWOMAN_GLASSES,
+                "Welcome, feel free to browse my wares."
+                        + " Lucky you! I just so happen to have lucked upon quite the elusive treasure."
+                        + " As for the price... How about... just a million boondollars?");
 
         addItem(ESItems.DARK_KNIGHT_HELMET, "Dark Knight Helmet");
         addItemTooltip(ESItems.DARK_KNIGHT_HELMET, "You can't see out of it");

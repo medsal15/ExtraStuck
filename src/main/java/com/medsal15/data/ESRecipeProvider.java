@@ -763,6 +763,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.AMETHYST, 19).grist(GristTypes.GOLD, 19).grist(GristTypes.ARTIFACT, 97)
                 .build(output);
 
+        CombinationRecipeBuilder.of(ESItems.SALESWOMAN_GLASSES)
+                .input(Items.RED_STAINED_GLASS_PANE).and().input(Items.GOLD_NUGGET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SALESWOMAN_GLASSES)
+                .grist(GristTypes.GARNET, 20).grist(GristTypes.GOLD, 30).grist(GristTypes.DIAMOND, 10)
+                .build(output);
+
         // #region Dark Knight
         CombinationRecipeBuilder.of(ESItems.DARK_KNIGHT_HELMET)
                 .input(Items.NETHERITE_HELMET).and().input(Items.TINTED_GLASS)

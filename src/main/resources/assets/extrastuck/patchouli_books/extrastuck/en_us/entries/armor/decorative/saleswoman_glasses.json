@@ -1,0 +1,21 @@
+{
+    "name": "Saleswoman Glasses",
+    "icon": "extrastuck:saleswoman_glasses",
+    "category": "extrastuck:decorative_armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:saleswoman_glasses",
+            "text": "A fancy pair of diamond-shaped red-tinted goggles. Whoever wore these must have been pretty important."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Red Stained Glass Pane and a Gold Nugget in a Totem Lathe.",
+            "left": "minecraft:red_stained_glass_pane",
+            "mode": "&&",
+            "right": "minecraft:gold_nugget",
+            "result": "extrastuck:saleswoman_glasses"
+        }
+    ]
+}

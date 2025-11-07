@@ -7,10 +7,13 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.menus.ChargerMenu;
+import com.medsal15.storage.ESBoondollarValues;
+import com.medsal15.storage.ESBoondollarValues.BoondollarValue;
 import com.mraof.minestuck.network.MSPacket;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -109,7 +112,8 @@ public final class ESPackets {
     public record MastermindReset(int code, int difficulty) implements MSPacket.PlayToServer {
         public static final Type<MastermindReset> ID = new Type<>(ExtraStuck.modid("mastermind/replace"));
         public static final StreamCodec<ByteBuf, MastermindReset> STREAM_CODEC = StreamCodec.composite(
-                ByteBufCodecs.INT, MastermindReset::code, ByteBufCodecs.INT, MastermindReset::difficulty,
+                ByteBufCodecs.INT, MastermindReset::code,
+                ByteBufCodecs.INT, MastermindReset::difficulty,
                 MastermindReset::new);
 
         @Override
@@ -126,6 +130,24 @@ public final class ESPackets {
                 card.remove(ESDataComponents.ATTEMPTS);
             card.set(ESDataComponents.MASTERMIND_CODE, code);
             card.set(ESDataComponents.DIFFICULTY, difficulty);
+        }
+    }
+
+    public record SyncBoondollarValues(List<BoondollarValue> values) implements MSPacket.PlayToClient {
+        public static final Type<SyncBoondollarValues> ID = new Type<>(ExtraStuck.modid("sync_boondollar_values"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, SyncBoondollarValues> STREAM_CODEC = StreamCodec
+                .composite(
+                        BoondollarValue.STREAM_CODEC.apply(ByteBufCodecs.list()), SyncBoondollarValues::values,
+                        SyncBoondollarValues::new);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context) {
+            ESBoondollarValues.fromList(values);
         }
     }
 }

@@ -91,7 +91,7 @@ public final class ESItemTags extends ItemTagsProvider {
 
         tag(ESTags.Items.AMMO).addTag(ESTags.Items.AMMO_HANDGUN);
         tag(ESTags.Items.AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
-        tag(ESTags.Items.SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get());
+        tag(ESTags.Items.SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get(), ESItems.SALESWOMAN_GLASSES.get());
 
         tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 
