@@ -1,0 +1,23 @@
+{
+    "name": "Destruction's Bat",
+    "icon": "extrastuck:destruction_bat",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:destruction_bat"
+            },
+            "text": "A pitch black bat meant to strike, well, just about anything.$(br2)$(3)$(l)Special:$() Deals additionnal damage to bigger enemies."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Silver Bat and Netherite Scrap in a Punch Designix.",
+            "left": "extrastuck:silver_bat",
+            "mode": "&&",
+            "right": "minecraft:netherite_scrap",
+            "result": "extrastuck:destruction_bat"
+        }
+    ]
+}

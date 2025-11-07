@@ -256,6 +256,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.GOLDEN_PAN, "Golden Pan");
         addItemTooltip(ESItems.GOLDEN_PAN, "A valuable frying pan, extremely rarely found in lootbo- gifts.");
         addItem(ESItems.ROLLING_PIN, "Rolling Pin");
+        addItem(ESItems.DESTRUCTION_BAT, "Destruction's Bat");
+        addItemTooltip(ESItems.DESTRUCTION_BAT, "The bigger they are, the harder they fall");
 
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");

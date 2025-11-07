@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 62,
+    "minestuck:tar": 164
+  },
+  "ingredient": {
+    "item": "extrastuck:destruction_bat"
+  }
+}

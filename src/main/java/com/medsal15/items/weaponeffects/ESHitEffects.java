@@ -29,8 +29,8 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -93,10 +93,7 @@ public final class ESHitEffects {
             }
 
             // Extra damage based on luck
-            AttributeInstance luckatin = attacker.getAttribute(Attributes.LUCK);
-            if (luckatin != null) {
-                rng += (float) luckatin.getValue();
-            }
+            rng += attacker.getAttributeValue(Attributes.LUCK);
 
             target.hurt(source, rng);
         };
@@ -287,6 +284,34 @@ public final class ESHitEffects {
                     stack.set(ESDataComponents.STEAM_FUEL, steamFuel);
                 }
                 effect.onHit(stack, target, target);
+            }
+        };
+    }
+
+    public static OnHitEffect biggerDamage(float damage) {
+        return (stack, target, attacker) -> {
+            AABB attackerBounds = attacker.getBoundingBox();
+            double attackerVolume = attackerBounds.getXsize() * attackerBounds.getYsize() * attackerBounds.getZsize()
+                    * 1.5;
+            AABB targetBounds = target.getBoundingBox();
+            double targetVolume = targetBounds.getXsize() * targetBounds.getYsize() * targetBounds.getZsize();
+
+            if (attackerVolume < targetVolume) {
+                float base = 0;
+                for (var mod : stack.getAttributeModifiers().modifiers()) {
+                    if (mod.attribute().is(Attributes.ATTACK_DAMAGE.getKey())
+                            && mod.slot() == EquipmentSlotGroup.MAINHAND) {
+                        base += mod.modifier().amount();
+                    }
+                }
+                DamageSource source;
+                if (attacker instanceof Player player) {
+                    source = attacker.damageSources().playerAttack(player);
+                } else {
+                    source = attacker.damageSources().mobAttack(attacker);
+                }
+
+                target.hurt(source, damage + base);
             }
         };
     }

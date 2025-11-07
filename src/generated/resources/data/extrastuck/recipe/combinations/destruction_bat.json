@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:silver_bat"
+  },
+  "input2": {
+    "item": "minecraft:netherite_scrap"
+  },
+  "mode": "or",
+  "output": "extrastuck:destruction_bat"
+}

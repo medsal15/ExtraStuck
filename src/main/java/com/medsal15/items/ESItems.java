@@ -372,6 +372,11 @@ public final class ESItems {
                     new WeaponItem.Builder(Tiers.WOOD, 1, -2.8F).set(MSItemTypes.CLUB_TOOL)
                             .add(OnHitEffect.enemyKnockback(.1F)),
                     new Item.Properties()));
+    public static final DeferredItem<Item> DESTRUCTION_BAT = ITEMS.register("destruction_bat",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.REGI_TIER, 3, -2.8F).set(MSItemTypes.CLUB_TOOL)
+                            .add(ESHitEffects.biggerDamage(3)),
+                    new Item.Properties()));
     // #endregion Clubs
     // #region Keys
     public static final DeferredItem<Item> KEY_OF_TRIALS = ITEMS.register("key_of_trials",
@@ -938,6 +943,7 @@ public final class ESItems {
         list.add(SILVER_BAT);
         list.add(GOLDEN_PAN);
         list.add(ROLLING_PIN);
+        list.add(DESTRUCTION_BAT);
         // Keys
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);

@@ -401,6 +401,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.ROLLING_PIN)
                 .grist(GristTypes.BUILD, 12)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.DESTRUCTION_BAT)
+                .input(ESItems.SILVER_BAT).or().input(Items.NETHERITE_SCRAP)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.DESTRUCTION_BAT)
+                .grist(GristTypes.TAR, 164).grist(GristTypes.AMBER, 62)
+                .build(output);
         // #endregion Clubs
 
         // #region Keys
