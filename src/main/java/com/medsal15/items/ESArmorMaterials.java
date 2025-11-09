@@ -38,4 +38,12 @@ public final class ESArmorMaterials {
                     ArmorItem.Type.LEGGINGS, 7,
                     ArmorItem.Type.BOOTS, 4), 13, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> null,
                     List.of(new ArmorMaterial.Layer(ExtraStuck.modid("knight_armor"))), 3F, .1F));
+    public static final Holder<ArmorMaterial> CACTUS = ARMOR_MATERIALS.register("cactus",
+            () -> new ArmorMaterial(Map.of(
+                    ArmorItem.Type.HELMET, 1,
+                    ArmorItem.Type.CHESTPLATE, 2,
+                    ArmorItem.Type.LEGGINGS, 3,
+                    ArmorItem.Type.BOOTS, 1), 15, SoundEvents.ARMOR_EQUIP_LEATHER,
+                    () -> Ingredient.of(Tags.Items.CROPS_CACTUS),
+                    List.of(new ArmorMaterial.Layer(ExtraStuck.modid("cactus_armor"))), 3F, .1F));
 }

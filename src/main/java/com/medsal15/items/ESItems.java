@@ -31,6 +31,7 @@ import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
+import com.medsal15.items.armor.CactusArmorItem;
 import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.DarkKnightArmorItem;
 import com.medsal15.items.armor.PropellerHatItem;
@@ -576,8 +577,23 @@ public final class ESItems {
             () -> new DarkKnightArmorItem(ESArmorMaterials.DARK_KNIGHT, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(40))));
     // #endregion Dark Knight
-    /*
-     * //TODO axolotl armor
+    // #region Cactus Armor
+    // TODO costs & guide
+    public static final DeferredItem<Item> CACTUS_HELMET = ITEMS.register("cactus_helmet",
+            () -> new CactusArmorItem(ESArmorMaterials.CACTUS, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(10))));
+    public static final DeferredItem<Item> CACTUS_CHESTPLATE = ITEMS.register("cactus_chestplate",
+            () -> new CactusArmorItem(ESArmorMaterials.CACTUS, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(10))));
+    public static final DeferredItem<Item> CACTUS_LEGGINGS = ITEMS.register("cactus_leggings",
+            () -> new CactusArmorItem(ESArmorMaterials.CACTUS, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(10))));
+    public static final DeferredItem<Item> CACTUS_BOOTS = ITEMS.register("cactus_boots",
+            () -> new CactusArmorItem(ESArmorMaterials.CACTUS, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(10))));
+    // #endregion Cactus Armor
+    /**
+     * TODO axolotl armor
      * regen on damage
      * prismarine armor && axolotl bucket/ghast tear?
      */
@@ -678,6 +694,7 @@ public final class ESItems {
     public static final DeferredItem<Item> MASTERMIND_DISK = ITEMS.registerItem("mastermind_disk",
             (p) -> new Item(
                     p.stacksTo(1).component(MSItemComponents.PROGRAM_TYPE, ESProgramTypes.MASTERMIND_CODEBREAKER)));
+    // TODO Money for Dummies (use for alchemizing money-related weapons)
 
     // #region Blocks
     // #region Machines
@@ -1027,6 +1044,11 @@ public final class ESItems {
         list.add(DARK_KNIGHT_LEGGINGS);
         list.add(DARK_KNIGHT_BOOTS);
 
+        list.add(CACTUS_HELMET);
+        list.add(CACTUS_CHESTPLATE);
+        list.add(CACTUS_LEGGINGS);
+        list.add(CACTUS_BOOTS);
+
         return list;
     }
 
@@ -1038,6 +1060,7 @@ public final class ESItems {
         list.add(SALESMAN_GOGGLES);
         list.add(DARK_KNIGHT_HELMET);
         list.add(SALESWOMAN_GLASSES);
+        list.add(CACTUS_HELMET);
 
         return list;
     }
@@ -1047,6 +1070,7 @@ public final class ESItems {
 
         list.add(CHEF_APRON);
         list.add(DARK_KNIGHT_CHESTPLATE);
+        list.add(CACTUS_CHESTPLATE);
 
         return list;
     }
@@ -1055,6 +1079,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(DARK_KNIGHT_LEGGINGS);
+        list.add(CACTUS_LEGGINGS);
 
         return list;
     }
@@ -1064,6 +1089,7 @@ public final class ESItems {
 
         list.add(HEAVY_BOOTS);
         list.add(DARK_KNIGHT_BOOTS);
+        list.add(CACTUS_BOOTS);
 
         return list;
     }

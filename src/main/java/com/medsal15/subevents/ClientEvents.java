@@ -383,5 +383,4 @@ public final class ClientEvents {
     public static void registerParticleProviders(final RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ESParticleTypes.URANIUM_BLAST.get(), UraniumBlastParticle.Provider::new);
     }
-
 }

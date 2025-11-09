@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 40,
+    "minestuck:caulk": 7
+  },
+  "ingredient": {
+    "item": "extrastuck:cactus_leggings"
+  }
+}

@@ -337,6 +337,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.DARK_KNIGHT_CHESTPLATE, "Dark Knight Chestplate");
         addItem(ESItems.DARK_KNIGHT_LEGGINGS, "Dark Knight Leggings");
         addItem(ESItems.DARK_KNIGHT_BOOTS, "Dark Knight Boots");
+
+        addItem(ESItems.CACTUS_HELMET, "Cactus Helmet");
+        addItem(ESItems.CACTUS_CHESTPLATE, "Cactus Chestplate");
+        addItem(ESItems.CACTUS_LEGGINGS, "Cactus Leggings");
+        addItem(ESItems.CACTUS_BOOTS, "Cactus Boots");
     }
 
     private void addModuses() {

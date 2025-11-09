@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 50,
+    "minestuck:marble": 8
+  },
+  "ingredient": {
+    "item": "extrastuck:cactus_chestplate"
+  }
+}

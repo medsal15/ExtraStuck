@@ -202,6 +202,11 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.DARK_KNIGHT_CHESTPLATE.get());
         basicItem(ESItems.DARK_KNIGHT_LEGGINGS.get());
         basicItem(ESItems.DARK_KNIGHT_BOOTS.get());
+
+        basicItem(ESItems.CACTUS_HELMET.get());
+        basicItem(ESItems.CACTUS_CHESTPLATE.get());
+        basicItem(ESItems.CACTUS_LEGGINGS.get());
+        basicItem(ESItems.CACTUS_BOOTS.get());
     }
 
     private void registerModus() {

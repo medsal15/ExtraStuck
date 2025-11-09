@@ -803,6 +803,36 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.SHALE, 5200)
                 .build(output);
         // #endregion Dark Knight
+
+        // #region Cactus Armor
+        CombinationRecipeBuilder.of(ESItems.CACTUS_HELMET)
+                .input(Items.LEATHER_HELMET).or().input(Items.CACTUS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CACTUS_HELMET)
+                .grist(GristTypes.AMBER, 25).grist(GristTypes.IODINE, 5)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.CACTUS_CHESTPLATE)
+                .input(Items.LEATHER_CHESTPLATE).or().input(Items.CACTUS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CACTUS_CHESTPLATE)
+                .grist(GristTypes.AMBER, 50).grist(GristTypes.MARBLE, 8)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.CACTUS_LEGGINGS)
+                .input(Items.LEATHER_LEGGINGS).or().input(Items.CACTUS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CACTUS_LEGGINGS)
+                .grist(GristTypes.AMBER, 40).grist(GristTypes.CAULK, 7)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.CACTUS_BOOTS)
+                .input(Items.LEATHER_BOOTS).or().input(Items.CACTUS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CACTUS_BOOTS)
+                .grist(GristTypes.AMBER, 20).grist(GristTypes.SULFUR, 4)
+                .build(output);
+        // #endregion Cactus Armor
     }
 
     private void modusRecipes(@Nonnull RecipeOutput output) {

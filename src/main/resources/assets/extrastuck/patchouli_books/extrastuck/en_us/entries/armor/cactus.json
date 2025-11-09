@@ -1,0 +1,45 @@
+{
+    "name": "Cactus",
+    "icon": "extrastuck:cactus_helmet",
+    "category": "extrastuck:armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:cactus_helmet,extrastuck:cactus_chestplate,extrastuck:cactus_leggings,extrastuck:cactus_boots",
+            "text": "This armor is made of cactus. It's very prickly, which is great if you tend to be attacked often.$(br2)$(3)$(l)Special:$() Each piece has an extra level of Thorns."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Leather Helmet and a Cactus in a Punch Designix.",
+            "left": "minecraft:leather_helmet",
+            "mode": "||",
+            "right": "minecraft:cactus",
+            "result": "extrastuck:cactus_helmet"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Leather Chestplate and a Cactus in a Punch Designix.",
+            "left": "minecraft:leather_chestplate",
+            "mode": "||",
+            "right": "minecraft:cactus",
+            "result": "extrastuck:cactus_chestplate"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Leather Leggings and a Cactus in a Punch Designix.",
+            "left": "minecraft:leather_leggings",
+            "mode": "||",
+            "right": "minecraft:cactus",
+            "result": "extrastuck:cactus_leggings"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Leather Boots and a Cactus in a Punch Designix.",
+            "left": "minecraft:leather_boots",
+            "mode": "||",
+            "right": "minecraft:cactus",
+            "result": "extrastuck:cactus_boots"
+        }
+    ]
+}
