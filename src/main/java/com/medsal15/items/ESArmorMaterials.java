@@ -45,5 +45,5 @@ public final class ESArmorMaterials {
                     ArmorItem.Type.LEGGINGS, 3,
                     ArmorItem.Type.BOOTS, 1), 15, SoundEvents.ARMOR_EQUIP_LEATHER,
                     () -> Ingredient.of(Tags.Items.CROPS_CACTUS),
-                    List.of(new ArmorMaterial.Layer(ExtraStuck.modid("cactus_armor"))), 3F, .1F));
+                    List.of(new ArmorMaterial.Layer(ExtraStuck.modid("cactus_armor"))), 0, 0));
 }

@@ -578,7 +578,6 @@ public final class ESItems {
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(40))));
     // #endregion Dark Knight
     // #region Cactus Armor
-    // TODO costs & guide
     public static final DeferredItem<Item> CACTUS_HELMET = ITEMS.register("cactus_helmet",
             () -> new CactusArmorItem(ESArmorMaterials.CACTUS, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(10))));
