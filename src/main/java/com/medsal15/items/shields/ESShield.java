@@ -28,6 +28,7 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -81,6 +82,7 @@ public class ESShield extends ShieldItem {
     }
 
     public void onShieldBlock(LivingShieldBlockEvent event) {
+        ItemStack shield = event.getEntity().getUseItem();
         Collection<IBlock> ob = onBlock;
         if (ob == null || ob.size() == 0)
             return;
@@ -89,6 +91,14 @@ public class ESShield extends ShieldItem {
             if (func.onBlock(event))
                 return;
         }
+
+        EquipmentSlot slot;
+        if (event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND).equals(shield)) {
+            slot = EquipmentSlot.MAINHAND;
+        } else {
+            slot = EquipmentSlot.OFFHAND;
+        }
+        shield.hurtAndBreak((int) event.shieldDamage(), event.getEntity(), slot);
     }
 
     @Override

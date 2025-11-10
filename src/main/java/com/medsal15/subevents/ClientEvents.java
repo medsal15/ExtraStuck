@@ -30,6 +30,7 @@ import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.RadBowItem;
+import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.particles.ESParticleTypes;
@@ -60,6 +61,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -382,5 +384,20 @@ public final class ClientEvents {
     @SubscribeEvent
     public static void registerParticleProviders(final RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ESParticleTypes.URANIUM_BLAST.get(), UraniumBlastParticle.Provider::new);
+    }
+
+    @SubscribeEvent
+    public static void modifyFov(final ComputeFovModifierEvent event) {
+        Player player = event.getPlayer();
+
+        ItemStack stack = player.getUseItem();
+        float zoom = 1F;
+
+        if (!stack.isEmpty() && stack.getItem() instanceof ESGun gun) {
+            zoom = gun.getZoom();
+        }
+        if (zoom != 1f) {
+            event.setNewFovModifier(zoom);
+        }
     }
 }
