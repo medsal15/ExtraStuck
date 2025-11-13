@@ -22,6 +22,9 @@ public class ConfigClient {
                     "AVERAGE: displays the middle ground for the above",
                     "RANDOM: displays a random value between the lowest and highest")
             .defineEnum("boondollarDisplayMode", BoondollarDisplayMode.RANDOM);
+    private static final ModConfigSpec.BooleanValue ADD_CONVERTION_RECIPES = BUILDER
+            .comment("Whether to add mysterious convertion recipes when create is loaded or not")
+            .define("addConvertionRecipes", true);
 
     public static enum BoondollarDisplayMode {
         DISABLED,
@@ -34,10 +37,12 @@ public class ConfigClient {
 
     public static BoondollarDisplayMode boondollarDisplayMode;
     public static boolean displayShieldInfo;
+    public static boolean addConvertionRecipes;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         displayShieldInfo = DISPLAY_SHIELD_INFO.get();
         boondollarDisplayMode = BOONDOLLAR_DISPLAY_MODE.get();
+        addConvertionRecipes = ADD_CONVERTION_RECIPES.get();
     }
 }

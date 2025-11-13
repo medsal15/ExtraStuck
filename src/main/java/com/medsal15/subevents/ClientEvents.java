@@ -40,6 +40,8 @@ import com.medsal15.storage.ESBoondollarValues.BoondollarValue;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.client.gui.computer.ProgramGui;
+import com.simibubi.create.compat.jei.ConversionRecipe;
+import com.simibubi.create.compat.jei.category.MysteriousItemConversionCategory;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.HumanoidModel;
@@ -49,6 +51,7 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -56,12 +59,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -399,5 +405,35 @@ public final class ClientEvents {
         if (zoom != 1f) {
             event.setNewFovModifier(zoom);
         }
+    }
+
+    private static boolean registeredConvertions = false;
+
+    @SubscribeEvent
+    public static void registerReloadListeners(final RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener((ResourceManagerReloadListener) manager -> {
+            if (registeredConvertions)
+                return;
+            if (ConfigClient.addConvertionRecipes && ModList.get().isLoaded("create")
+                    && ModList.get().isLoaded("jei")) {
+                registeredConvertions = true;
+
+                registerBiConvertion(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE,
+                        ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD);
+                registerBiConvertion(ESItems.OFFICE_KEY, ESItems.HANDGUN);
+                registerBiConvertion(ESItems.OVERCHARGED_MAGNEFORK, ESItems.UNDERCHARGED_MAGNEFORK);
+                registerBiConvertion(ESItems.YELLOWCAKESAW, ESItems.YELLOWCAKESAW_LIPSTICK);
+                registerBiConvertion(ESItems.CASHGRABBERS, ESItems.CASHGRABBERS_SHEATHED);
+            }
+        });
+    }
+
+    private static void registerBiConvertion(ItemLike first, ItemLike second) {
+        registerConvertion(first, second);
+        registerConvertion(second, first);
+    }
+
+    private static void registerConvertion(ItemLike from, ItemLike to) {
+        MysteriousItemConversionCategory.RECIPES.add(ConversionRecipe.create(new ItemStack(from), new ItemStack(to)));
     }
 }
