@@ -1,0 +1,26 @@
+{
+    "name": "Cashgrabbers",
+    "icon": "extrastuck:cashgrabbers",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:cashgrabbers"
+            },
+            "text": "A modified claw machine claw made of gold, emerald, and diamond.$(br2)$(3)$(l)Special:$() Killing enemies has a chance to drop boondollars, can be sheathed by using it while crouching."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Cat Claws and Boondollars for Idiots in a Punch Designix.",
+            "left": "minestuck:cat_claws",
+            "mode": "||",
+            "right": "extrastuck:boondollars_for_idiots",
+            "result": "extrastuck:cashgrabbers"
+        },
+        {
+            "type": "extrastuck:boondollar_weapon_desc"
+        }
+    ]
+}

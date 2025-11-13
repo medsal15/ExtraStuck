@@ -1,0 +1,24 @@
+{
+    "name": "Jackpot",
+    "icon": "extrastuck:jackpot",
+    "category": "extrastuck:dice",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:jackpot"
+            },
+            "text": "A portable slot machine, how nice!$(br2)$(3)$(l)Special:$() Attacks roll 3 symbols. Matching 2 symbols (and sevens) gives an effect. Match 3 for a stronger effect. Match sevens for all the rewards!"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Token Tetrahedron and Boondollars for Idiots in a Punch Designix.",
+            "left": "extrastuck:token_tetrahedron",
+            "mode": "||",
+            "right": "extrastuck:boondollars_for_idiots",
+            "result": "extrastuck:jackpot"
+        },
+        "$(li)Diamonds give Strength and Resistance$(li)Hearts give Regeneration$(li)Spades give Strength$(li)Clubs give Haste$(li)Horseshoes give Luck$(li)Bells apply Slowness and Weakness to enemies"
+    ]
+}

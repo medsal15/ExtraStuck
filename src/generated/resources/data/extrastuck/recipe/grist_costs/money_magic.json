@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 1250,
+    "minestuck:gold": 730,
+    "minestuck:ruby": 120
+  },
+  "ingredient": {
+    "item": "extrastuck:money_magic"
+  }
+}

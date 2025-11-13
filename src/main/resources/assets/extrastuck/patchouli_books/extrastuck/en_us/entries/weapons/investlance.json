@@ -1,0 +1,26 @@
+{
+    "name": "Investlance",
+    "icon": "extrastuck:investlance",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:investlance"
+            },
+            "text": "A lance that encompasses investments. The more enemies you defeat, the more they rise.$(br2)$(3)$(l)Special:$() Killing enemies has a chance to drop boondollars."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Firestarter and Boondollars for Idiots in a Totem Lathe.",
+            "left": "minestuck:firestarter",
+            "mode": "&&",
+            "right": "extrastuck:boondollars_for_idiots",
+            "result": "extrastuck:investlance"
+        },
+        {
+            "type": "extrastuck:boondollar_weapon_desc"
+        }
+    ]
+}

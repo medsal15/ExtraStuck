@@ -66,8 +66,10 @@ public class ComponentGristSet implements ICustomComponent {
 
     @Override
     public void render(GuiGraphics graphics, IComponentRenderContext context, float pticks, int mouseX, int mouseY) {
-        Font font = Minecraft.getInstance().font;
+        if (gristSet != null) {
+            Font font = Minecraft.getInstance().font;
 
-        GuiUtil.drawGristBoard(graphics, gristSet, GuiUtil.GristboardMode.LARGE_ALCHEMITER, x, y, font);
+            GuiUtil.drawGristBoard(graphics, gristSet, GuiUtil.GristboardMode.LARGE_ALCHEMITER, x, y, font);
+        }
     }
 }

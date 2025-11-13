@@ -1,0 +1,26 @@
+{
+    "name": "Money Magic",
+    "icon": "extrastuck:money_magic",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:money_magic"
+            },
+            "text": "This magical wand casts what is best described as a money powered form of magic.$(br2)$(3)$(l)Special:$() Killing enemies has a chance to drop boondollars, projectile damage is boosted based on the user's boondollars."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Needle Wand and Boondollars for Idiots in a Punch Designix.",
+            "left": "minestuck:needle_wand",
+            "mode": "||",
+            "right": "extrastuck:boondollars_for_idiots",
+            "result": "extrastuck:money_magic"
+        },
+        {
+            "type": "extrastuck:boondollar_weapon_desc"
+        }
+    ]
+}

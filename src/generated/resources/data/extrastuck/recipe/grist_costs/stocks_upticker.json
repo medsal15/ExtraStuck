@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:garnet": 400,
+    "minestuck:gold": 750,
+    "minestuck:uranium": 25
+  },
+  "ingredient": {
+    "item": "extrastuck:stocks_upticker"
+  }
+}

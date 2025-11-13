@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.items.ESItemTypes;
+import com.medsal15.loot_modifiers.BoondollarLootModifier;
 import com.medsal15.loot_modifiers.ESLandLootModifier;
 import com.mraof.minestuck.Minestuck;
 import com.mraof.minestuck.world.lands.LandTypes;
@@ -15,6 +17,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
+import net.neoforged.neoforge.common.loot.CanItemPerformAbility;
 
 public class ESGLMProvider extends GlobalLootModifierProvider {
     public ESGLMProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
@@ -42,5 +45,8 @@ public class ESGLMProvider extends GlobalLootModifierProvider {
                         Minestuck.id("chests/medium_basic"), Optional.empty(), Optional.of(LandTypes.THUNDER.get())),
                 List.of());
         // #endregion Land Titles
+
+        add("boondollar_mining", new BoondollarLootModifier(
+                new LootItemCondition[] { new CanItemPerformAbility(ESItemTypes.BOONDOLLAR_MINING) }, 0.5F));
     }
 }

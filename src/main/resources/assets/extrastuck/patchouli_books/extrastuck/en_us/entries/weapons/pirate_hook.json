@@ -1,0 +1,26 @@
+{
+    "name": "Pirate Hook",
+    "icon": "extrastuck:pirate_hook",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:pirate_hook"
+            },
+            "text": "You wouldn't download boondollars.$(br)Piracy. It's a crime.$(br2)$(3)$(l)Special:$() Killing enemies has a chance to drop boondollars."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Hereticus Aururum and Boondollars for Idiots in a Totem Lathe.",
+            "left": "minestuck:hereticus_aururm",
+            "mode": "&&",
+            "right": "extrastuck:boondollars_for_idiots",
+            "result": "extrastuck:pirate_hook"
+        },
+        {
+            "type": "extrastuck:boondollar_weapon_desc"
+        }
+    ]
+}

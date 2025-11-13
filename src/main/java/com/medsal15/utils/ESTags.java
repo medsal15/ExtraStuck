@@ -18,6 +18,7 @@ public final class ESTags {
         public static final TagKey<Item> SHOW_VALUE = ItemTags.create(ExtraStuck.modid("show_value"));
         public static final TagKey<Item> IGNORE_BYPRODUCT_CUTTING = ItemTags
                 .create(ExtraStuck.modid("interpreters_ignore_byproduct/cutting"));
+        public static final TagKey<Item> DROPS_BOONDOLLARS = ItemTags.create(ExtraStuck.modid("drops_boondollars"));
 
         public static final TagKey<Item> TOOLS_ROLLING_PIN = ItemTags.create(common("tools/rolling_pin"));
         public static final TagKey<Item> URANIUM_RODS = ItemTags.create(common("rods/uranium"));

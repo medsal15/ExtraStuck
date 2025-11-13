@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:diamond": 10,
+    "minestuck:gold": 110
+  },
+  "ingredient": {
+    "item": "extrastuck:boondollars_for_idiots"
+  }
+}

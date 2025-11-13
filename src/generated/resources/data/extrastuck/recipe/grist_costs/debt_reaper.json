@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 1400,
+    "minestuck:diamond": 250,
+    "minestuck:gold": 600
+  },
+  "ingredient": {
+    "item": "extrastuck:debt_reaper"
+  }
+}

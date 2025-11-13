@@ -55,6 +55,9 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(ItemTags.MINING_ENCHANTABLE).add(tool.get());
             tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(tool.get());
         }
+        for (DeferredItem<Item> shovel : ESItems.getShovels()) {
+            tag(ItemTags.SHOVELS).add(shovel.get());
+        }
 
         for (DeferredItem<Item> armor : ESItems.getArmor()) {
             tag(ItemTags.ARMOR_ENCHANTABLE).add(armor.get());
@@ -92,6 +95,9 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(ESTags.Items.AMMO).addTag(ESTags.Items.AMMO_HANDGUN);
         tag(ESTags.Items.AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
         tag(ESTags.Items.SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get(), ESItems.SALESWOMAN_GLASSES.get());
+        tag(ESTags.Items.DROPS_BOONDOLLARS).add(ESItems.DEBT_REAPER.get(), ESItems.STOCKS_UPTICKER.get(),
+                ESItems.PIRATE_HOOK.get(), ESItems.NONE_OF_YOUR_BUSINESS.get(), ESItems.INVESTLANCE.get(),
+                ESItems.MONEY_MAGIC.get(), ESItems.CASHGRABBERS.get());
 
         tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 
@@ -120,6 +126,8 @@ public final class ESItemTags extends ItemTagsProvider {
 
         tag(ItemTags.DOORS).add(ESItems.COBALT_DOOR.get());
         tag(ItemTags.TRAPDOORS).add(ESItems.COBALT_TRAPDOOR.get());
+
+        tag(ItemTags.BOOKSHELF_BOOKS).add(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
 
         tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get());
         tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get());

@@ -14,6 +14,7 @@
     "extrastuck:rainbow_d7",
     "extrastuck:d8_night",
     "extrastuck:can_die",
+    "extrastuck:jackpot",
     "extrastuck:infini_die",
     "extrastuck:silver_bat",
     "extrastuck:golden_pan",
@@ -23,6 +24,7 @@
     "extrastuck:key_of_ominous_trials",
     "extrastuck:office_key",
     "extrastuck:baguette_magique",
+    "extrastuck:money_magic",
     "extrastuck:broom",
     "extrastuck:iron_crowbar",
     "extrastuck:magnefork",
@@ -31,7 +33,14 @@
     "extrastuck:yellowcakesaw",
     "extrastuck:yellowcakesaw_lipstick",
     "extrastuck:the_sting",
+    "extrastuck:stocks_upticker",
     "extrastuck:sun_reaver",
-    "extrastuck:new_moon"
+    "extrastuck:new_moon",
+    "extrastuck:pirate_hook",
+    "extrastuck:debt_reaper",
+    "extrastuck:none_of_your_business",
+    "extrastuck:investlance",
+    "extrastuck:cashgrabbers",
+    "extrastuck:cashgrabbers_sheathed"
   ]
 }

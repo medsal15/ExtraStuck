@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:saleswoman_glasses"
+  },
+  "input2": {
+    "item": "extrastuck:salesman_goggles"
+  },
+  "mode": "and",
+  "output": "extrastuck:boondollars_for_idiots"
+}

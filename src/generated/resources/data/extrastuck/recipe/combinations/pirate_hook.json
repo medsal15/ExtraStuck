@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:hereticus_aururm"
+  },
+  "input2": {
+    "item": "extrastuck:boondollars_for_idiots"
+  },
+  "mode": "and",
+  "output": "extrastuck:pirate_hook"
+}

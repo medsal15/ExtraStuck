@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:uranium_baton"
+  },
+  "input2": {
+    "item": "extrastuck:boondollars_for_idiots"
+  },
+  "mode": "and",
+  "output": "extrastuck:stocks_upticker"
+}

@@ -93,6 +93,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.BEE_LARVA)
                 .grist(GristTypes.AMBER, 4).grist(GristTypes.GOLD, 1).grist(GristTypes.TAR, 1)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .input(ESItems.SALESWOMAN_GLASSES).and().input(ESItems.SALESMAN_GOGGLES)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .grist(GristTypes.GOLD, 110).grist(GristTypes.DIAMOND, 10)
+                .build(output);
     }
 
     private void shieldRecipes(@Nonnull RecipeOutput output) {
@@ -381,6 +388,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.MARBLE, 12).grist(GristTypes.CHALK, 36)
                 .grist(GristTypes.AMBER, 12)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.JACKPOT)
+                .input(ESItems.TOKEN_TETRAHEDRON).or().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.JACKPOT)
+                .grist(GristTypes.GOLD, 777).grist(GristTypes.DIAMOND, 333)
+                .grist(GristTypes.GARNET, 333).grist(GristTypes.AMETHYST, 333)
+                .build(output);
         // #endregion Dice
 
         // #region Clubs
@@ -442,6 +457,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.BAGUETTE_MAGIQUE)
                 .grist(GristTypes.AMBER, 12).grist(GristTypes.IODINE, 18).grist(GristTypes.SULFUR, 6)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.MONEY_MAGIC)
+                .input(MSItems.NEEDLE_WAND).or().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.MONEY_MAGIC)
+                .grist(GristTypes.RUBY, 120).grist(GristTypes.GOLD, 730).grist(GristTypes.COBALT, 1250)
                 .build(output);
         // #endregion Wands
 
@@ -510,6 +532,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.THE_STING)
                 .grist(GristTypes.GOLD, 60).grist(GristTypes.TAR, 40)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.STOCKS_UPTICKER)
+                .input(MSItems.URANIUM_BATON).and().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.STOCKS_UPTICKER)
+                .grist(GristTypes.GOLD, 750).grist(GristTypes.GARNET, 400).grist(GristTypes.URANIUM, 25)
+                .build(output);
         // #endregion Batons
 
         // #region Swords
@@ -528,7 +557,53 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.NEW_MOON)
                 .grist(GristTypes.CAULK, 400).grist(GristTypes.TAR, 158).grist(GristTypes.SHALE, 914)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.PIRATE_HOOK)
+                .input(MSItems.HERETICUS_AURURM).and().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.PIRATE_HOOK)
+                .grist(GristTypes.GOLD, 700).grist(GristTypes.TAR, 400).grist(GristTypes.COBALT, 1300)
+                .build(output);
         // #endregion Sickles
+
+        // #region Scythes
+        CombinationRecipeBuilder.of(ESItems.DEBT_REAPER)
+                .input(MSItems.PROSPECTING_PICKSCYTHE).or().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.DEBT_REAPER)
+                .grist(GristTypes.GOLD, 600).grist(GristTypes.AMBER, 1400).grist(GristTypes.DIAMOND, 250)
+                .build(output);
+        // #endregion Scythes
+
+        // #region Fans
+        CombinationRecipeBuilder.of(ESItems.NONE_OF_YOUR_BUSINESS)
+                .input(MSItems.FIRESTARTER).and().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.NONE_OF_YOUR_BUSINESS)
+                .grist(GristTypes.AMETHYST, 440).grist(GristTypes.SHALE, 880).grist(GristTypes.DIAMOND, 220)
+                .build(output);
+        // #endregion Fans
+
+        // #region Lances
+        CombinationRecipeBuilder.of(ESItems.INVESTLANCE)
+                .input(MSItems.JOUSTING_LANCE).and().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.INVESTLANCE)
+                .grist(GristTypes.GARNET, 678).grist(GristTypes.COBALT, 654).grist(GristTypes.GOLD, 720)
+                .build(output);
+        // #endregion Lances
+
+        // #region Claws
+        CombinationRecipeBuilder.of(ESItems.CASHGRABBERS)
+                .input(MSItems.CAT_CLAWS_DRAWN).or().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CASHGRABBERS)
+                .grist(GristTypes.GOLD, 804).grist(GristTypes.DIAMOND, 450).grist(GristTypes.RUBY, 222)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CASHGRABBERS_SHEATHED)
+                .grist(GristTypes.GOLD, 804).grist(GristTypes.DIAMOND, 450).grist(GristTypes.RUBY, 222)
+                .build(output);
+        // #endregion Claws
 
         // #region Crossbows
         CombinationRecipeBuilder.of(ESItems.RADBOW)
@@ -924,6 +999,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.GRIST_DETECTOR)
                 .grist(GristTypes.QUARTZ, 4).grist(GristTypes.MERCURY, 44)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.GOLD_DIGGER)
+                .input(Items.GOLDEN_SHOVEL).or().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.GOLD_DIGGER)
+                .grist(GristTypes.GOLD, 850).grist(GristTypes.BUILD, 1500).grist(GristTypes.AMBER, 600)
                 .build(output);
     }
 

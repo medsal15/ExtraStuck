@@ -15,4 +15,6 @@ public class ESLootModifiers {
 
     public static final Supplier<MapCodec<ESLandLootModifier>> LAND_LOOT_MODIFIER = GLM_SERIALIZERS
             .register("land_loot_modifier", () -> ESLandLootModifier.CODEC);
+    public static final Supplier<MapCodec<BoondollarLootModifier>> BOONDOLLAR_LOOT_MODIFIER = GLM_SERIALIZERS
+            .register("boondollar_loot_modifier", () -> BoondollarLootModifier.CODEC);
 }

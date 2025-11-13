@@ -9,11 +9,14 @@ import javax.annotation.Nullable;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.config.ConfigCommon;
+import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.mraof.minestuck.entity.item.GristEntity;
 import com.mraof.minestuck.entity.item.VitalityGelEntity;
+import com.mraof.minestuck.item.BoondollarsItem;
+import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.player.EnumAspect;
 import com.mraof.minestuck.player.EnumClass;
@@ -36,6 +39,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -314,5 +318,151 @@ public final class ESHitEffects {
                 target.hurt(source, damage + base);
             }
         };
+    }
+
+    /**
+     * Rolls 3 numbers and do something based on them
+     */
+    public static void jackpotEffect(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        int left = attacker.getRandom().nextInt(7);
+        int middle = attacker.getRandom().nextInt(7);
+        int right = attacker.getRandom().nextInt(7);
+
+        stack.set(ESDataComponents.ROLLS, List.of(left, middle, right));
+        Optional<Integer> triple = getJackpotTriple(left, middle, right);
+        int value = 0;
+        if (triple.isPresent()) {
+            switch (triple.get()) {
+                case 6:
+                    attacker.sendSystemMessage(Component.translatable(ESLangProvider.JACKPOT_JACKPOT_KEY));
+                    if (!stack.isEnchanted()) {
+                        EnchantmentHelper.enchantItem(attacker.getRandom(), stack, 49,
+                                attacker.level().registryAccess(),
+                                Optional.empty());
+                    }
+                    value = 777;
+                    // Get all the effects!
+                    attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2400, 4));
+                    attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2400, 2));
+                    attacker.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 1600, 2));
+                    attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 600, 2));
+                    attacker.addEffect(new MobEffectInstance(MobEffects.LUCK, 1200, 2));
+                    target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 2));
+                    target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 600, 2));
+                    break;
+                case 5:
+                    attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, 2));
+                    attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 2));
+                    break;
+                case 4:
+                    attacker.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 800, 2));
+                    break;
+                case 3:
+                    attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600, 2));
+                    break;
+                case 2:
+                    attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 600, 2));
+                    break;
+                case 1:
+                    attacker.addEffect(new MobEffectInstance(MobEffects.LUCK, 600, 2));
+                    break;
+                case 0:
+                    target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 2));
+                    target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 600, 2));
+                    break;
+                default:
+                    ExtraStuck.LOGGER.error("Jackpot rolled invalid number {}", triple);
+            }
+        } else {
+            int[] symbols = getJackpotDouble(left, middle, right);
+            for (int symbol : symbols) {
+                switch (symbol) {
+                    case 6:
+                        value += 77;
+                        // Get all the effects!
+                        attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, 2));
+                        attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200));
+                        attacker.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 800));
+                        attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 600));
+                        attacker.addEffect(new MobEffectInstance(MobEffects.LUCK, 600));
+                        target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 300));
+                        target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 300));
+                        break;
+                    case 5:
+                        attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600));
+                        attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600));
+                        break;
+                    case 4:
+                        attacker.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 400));
+                        break;
+                    case 3:
+                        attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 300));
+                        break;
+                    case 2:
+                        attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 300));
+                        break;
+                    case 1:
+                        attacker.addEffect(new MobEffectInstance(MobEffects.LUCK, 300));
+                        break;
+                    case 0:
+                        target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 300));
+                        target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 300));
+                        break;
+                    default:
+                        ExtraStuck.LOGGER.error("Jackpot rolled invalid number {}", symbol);
+                }
+            }
+        }
+
+        if (value > 0) {
+            ItemStack boondollars = MSItems.BOONDOLLARS.toStack();
+            boondollars = BoondollarsItem.setCount(boondollars, value);
+            ItemEntity entity = new ItemEntity(attacker.level(), target.getX(), target.getY(),
+                    target.getZ(), boondollars);
+            attacker.level().addFreshEntity(entity);
+        }
+    }
+
+    /**
+     * Checks 3 numbers for a jackpot
+     * <p>
+     * If any is a 7 (represented with a <code>6</code>) and the other 2 are equal,
+     * the other's value will be returned
+     *
+     * @returns The value of all 3 symbols, or -1 if none are matching
+     */
+    private static Optional<Integer> getJackpotTriple(int left, int middle, int right) {
+        if (left == middle && middle == right)
+            return Optional.of(left);
+        if (left == 6 && middle == right)
+            return Optional.of(middle);
+        if (middle == 6 && left == right)
+            return Optional.of(left);
+        if (right == 6 && left == middle)
+            return Optional.of(left);
+        return Optional.empty();
+    }
+
+    /**
+     * Checks 2 numbers for a pair
+     * <p>
+     * If only 1 is a 7 (represented with a <code>6</code>) the other 2 are returned
+     *
+     * @returns All pairs (7 allows for more than 1 at once)
+     */
+    private static int[] getJackpotDouble(int left, int middle, int right) {
+        if (left == 6 && middle != 6 && right != 6)
+            return new int[] { middle, right };
+        if (middle == 6 && left != 6 && right != 6)
+            return new int[] { left, right };
+        if (right == 6 && left != 6 && middle != 6)
+            return new int[] { left, middle };
+        if (left == middle)
+            return new int[] { left };
+        if (left == right)
+            return new int[] { left };
+        if (middle == right)
+            return new int[] { middle };
+        return new int[0];
     }
 }

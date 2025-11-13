@@ -1,0 +1,23 @@
+{
+    "name": "Boondollars for Idiots",
+    "icon": "extrastuck:boondollars_for_idiots",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:boondollars_for_idiots"
+            },
+            "text": "This book is from the famous franchise \"for Idiots\". As its name implies, it contains a lot of information to get a lot of money."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Salesman Goggles and Saleswoman Glasses in a Totem Lathe.",
+            "left": "extrastuck:salesman_goggles",
+            "mode": "&&",
+            "right": "extrastuck:saleswoman_glasses",
+            "result": "extrastuck:boondollars_for_idiots"
+        }
+    ]
+}

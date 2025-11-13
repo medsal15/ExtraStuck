@@ -1,0 +1,8 @@
+{
+    "components": [
+        {
+            "type": "patchouli:text",
+            "text": "The chance to get boondollars is 10%, increased by 10% per level of Looting.$(br)The amount is between 0 and the enemy's max health divided by 10."
+        }
+    ]
+}

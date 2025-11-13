@@ -1,0 +1,10 @@
+{
+  "type": "extrastuck:boondollar_loot_modifier",
+  "conditions": [
+    {
+      "ability": "boondollar_mining",
+      "condition": "neoforge:can_item_perform_ability"
+    }
+  ],
+  "multiplier": 0.5
+}

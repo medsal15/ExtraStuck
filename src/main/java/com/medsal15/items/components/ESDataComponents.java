@@ -74,6 +74,9 @@ public final class ESDataComponents {
     public static final Supplier<DataComponentType<SteamFuelComponent>> STEAM_FUEL = DATA_COMPONENTS
             .registerComponentType("steam_fuel", builder -> builder.persistent(SteamFuelComponent.CODEC)
                     .networkSynchronized(SteamFuelComponent.STREAM_CODEC));
+    public static final Supplier<DataComponentType<List<Integer>>> ROLLS = DATA_COMPONENTS.registerComponentType(
+            "rolls", builder -> builder.persistent(Codec.INT.listOf())
+                    .networkSynchronized(ByteBufCodecs.INT.apply(ByteBufCodecs.list())));
 
     // Moduses
     /** Mastermind card code */
@@ -81,7 +84,7 @@ public final class ESDataComponents {
             "mastermind_code", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
     public static final Supplier<DataComponentType<List<Integer>>> ATTEMPTS = DATA_COMPONENTS
             .registerComponentType("attempts", builder -> builder.persistent(Codec.INT.listOf())
-                    .networkSynchronized(ByteBufCodecs.VAR_INT.apply(ByteBufCodecs.list())));
+                    .networkSynchronized(ByteBufCodecs.INT.apply(ByteBufCodecs.list())));
 
     // Food
     public static final Supplier<DataComponentType<MoonCakeSliceColor>> MOON_CAKE_SLICE_COLOR = DATA_COMPONENTS

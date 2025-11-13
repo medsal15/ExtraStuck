@@ -32,6 +32,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.EMPTY_ENERGY_CORE.get());
         basicItem(ESItems.MASTERMIND_DISK.get());
         basicItem(ESItems.BEE_LARVA.get());
+        basicItem(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
     }
 
     private void registerShields() {
@@ -140,8 +141,9 @@ public final class ESItemModelProvider extends ItemModelProvider {
     }
 
     private void registerMeleeWeapons() {
+        // Hammers
         handheldItem(ESItems.GEM_BREAKER.get());
-
+        // Dice
         handheldItem(ESItems.GOLD_COIN.get());
         modelDie(ESItems.D_ICE, "item/dice/ice");
         handheldItem(ESItems.TOKEN_TETRAHEDRON.get());
@@ -152,32 +154,45 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.D8_NIGHT.get());
         handheldItem(ESItems.CAN_DIE.get());
         handheldItem(ESItems.INFINI_DIE.get());
-
+        handheldItem(ESItems.JACKPOT.get());
+        // Clubs
         handheldItem(ESItems.SILVER_BAT.get());
         handheldItem(ESItems.GOLDEN_PAN.get());
         handheldItem(ESItems.ROLLING_PIN.get());
         handheldItem(ESItems.DESTRUCTION_BAT.get());
-
+        // Keys
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
         handheldItem(ESItems.OFFICE_KEY.get());
-
+        // Wands
         handheldItem(ESItems.BAGUETTE_MAGIQUE.get());
-
+        handheldItem(ESItems.MONEY_MAGIC.get());
+        // Canes
         handheldItem(ESItems.IRON_CROWBAR.get());
-
+        // Forks
         handheldItem(ESItems.MAGNEFORK.get());
         handheldItem(ESItems.OVERCHARGED_MAGNEFORK.get());
         handheldItem(ESItems.UNDERCHARGED_MAGNEFORK.get());
-
+        // Chainsaws & Lipsticks
         handheldItem(ESItems.YELLOWCAKESAW.get());
         handheldItem(ESItems.YELLOWCAKESAW_LIPSTICK.get());
-
+        // Batons
         handheldItem(ESItems.THE_STING.get());
-
+        handheldItem(ESItems.STOCKS_UPTICKER.get());
+        // Swords
         handheldItem(ESItems.SUN_REAVER.get());
-
+        // Sickles
         handheldItem(ESItems.NEW_MOON.get());
+        handheldItem(ESItems.PIRATE_HOOK.get());
+        // Scythes
+        handheldItem(ESItems.DEBT_REAPER.get());
+        // Fans
+        handheldItem(ESItems.NONE_OF_YOUR_BUSINESS.get());
+        // Lances
+        handheldItem(ESItems.INVESTLANCE.get());
+        // Claws
+        handheldItem(ESItems.CASHGRABBERS.get());
+        handheldItem(ESItems.CASHGRABBERS_SHEATHED.get());
     }
 
     private void registerRangedWeapons() {
@@ -224,8 +239,11 @@ public final class ESItemModelProvider extends ItemModelProvider {
     }
 
     private void registerTools() {
+        // Misc
         basicItem(ESItems.MAGNET.get());
         basicItem(ESItems.FIELD_CHARGER.get());
+        // Shovels
+        basicItem(ESItems.GOLD_DIGGER.get());
     }
 
     private void registerFood() {

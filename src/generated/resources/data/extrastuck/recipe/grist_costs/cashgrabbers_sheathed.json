@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:diamond": 450,
+    "minestuck:gold": 804,
+    "minestuck:ruby": 222
+  },
+  "ingredient": {
+    "item": "extrastuck:cashgrabbers_sheathed"
+  }
+}

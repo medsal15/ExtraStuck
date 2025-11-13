@@ -1,0 +1,26 @@
+{
+    "name": "Debt Reaper",
+    "icon": "extrastuck:debt_reaper",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:debt_reaper"
+            },
+            "text": "Taxes are inevitable. If it means paying in death, then so shall be it.$(br2)$(3)$(l)Special:$() Killing enemies has a chance to drop boondollars."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Prospecting Pickscythe and Boondollars for Idiots in a Punch Designix.",
+            "left": "minestuck:prospecting_pickscythe",
+            "mode": "||",
+            "right": "extrastuck:boondollars_for_idiots",
+            "result": "extrastuck:debt_reaper"
+        },
+        {
+            "type": "extrastuck:boondollar_weapon_desc"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Gold Digger",
+    "icon": "extrastuck:gold_digger",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:gold_digger"
+            },
+            "text": "A fancy shovel that finds money in the ground.$(br2)$(3)$(l)Special:$() Converts mined blocks into boondollars (when possible)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Golden Shovel and Boondollars for Idiots in a Punch Designix.",
+            "left": "minecraft:golden_shovel",
+            "mode": "||",
+            "right": "extrastuck:boondollars_for_idiots",
+            "result": "extrastuck:gold_digger"
+        }
+    ]
+}

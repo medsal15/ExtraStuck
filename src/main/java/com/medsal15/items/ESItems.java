@@ -51,6 +51,7 @@ import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.BrushWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
+import com.medsal15.items.melee.JackpotWeapon;
 import com.medsal15.items.melee.SteamWeaponItem;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.items.projectiles.ESArrowItem;
@@ -356,6 +357,12 @@ public final class ESItems {
                     new Item.Properties()
                             .component(DataComponents.UNBREAKABLE, new Unbreakable(true))
                             .rarity(Rarity.EPIC)));
+    // TODO custom render for results
+    public static final DeferredItem<Item> JACKPOT = ITEMS.register("jackpot",
+            () -> new JackpotWeapon(
+                    new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 4, -3F).set(ESItemTypes.DICE_TOOL)
+                            .add(ESHitEffects::jackpotEffect),
+                    new MSItemProperties().durability(1326)));
     // #endregion Dice
     // #region Clubs
     public static final DeferredItem<Item> SILVER_BAT = ITEMS.register("silver_bat",
@@ -406,6 +413,9 @@ public final class ESItems {
                     .set(MSItemTypes.WAND_TOOL).set(MagicRangedRightClickEffect.STANDARD_MAGIC)
                     .add(OnHitEffect.SPAWN_BREADCRUMBS),
                     new Item.Properties()));
+    public static final DeferredItem<Item> MONEY_MAGIC = ITEMS.register("money_magic", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.GOLD, 2, -1F).set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects.CASH_MAGIC),
+            new MSItemProperties().durability(1326)));
     // #endregion Wands
     // #region Canes
     public static final DeferredItem<Item> BROOM = ITEMS.register("broom",
@@ -469,6 +479,9 @@ public final class ESItems {
                                     .enemyPotionEffect(() -> new MobEffectInstance(ESMobEffects.BEE_ANGRY, 1, 1)))
                             .add(OnHitEffect.playSound(() -> SoundEvents.BEE_STING)),
                     new MSItemProperties().durability(833)));
+    public static final DeferredItem<Item> STOCKS_UPTICKER = ITEMS.register("stocks_upticker", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.GOLD, 4, -1F).efficiency(2F).set(MSItemTypes.BATON_TOOL),
+            new MSItemProperties().durability(1326)));
     // #endregion Batons
     // #region Swords
     public static final DeferredItem<Item> SUN_REAVER = ITEMS.register("sun_reaver", () -> new WeaponItem(
@@ -485,7 +498,39 @@ public final class ESItems {
                     .add(ESInventoryTickEffects.effectIfHeldOffHand((stack) -> stack.is(ESItems.SUN_REAVER.get()),
                             () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 0, false, false, false))),
                     new Item.Properties()));
+    public static final DeferredItem<Item> PIRATE_HOOK = ITEMS.register("pirate_hook",
+            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 9, -2.2F).efficiency(8).set(MSItemTypes.SICKLE_TOOL)
+                    .disableShield(), new MSItemProperties().durability(1326)));
     // #endregion Sickles
+    // #region Scythes
+    public static final DeferredItem<Item> DEBT_REAPER = ITEMS.register("debt_reaper", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(13).disableShield().set(MSItemTypes.SCYTHE_TOOL),
+            new MSItemProperties().durability(1326)));
+    // #endregion Scythes
+    // #region Fans
+    public static final DeferredItem<Item> NONE_OF_YOUR_BUSINESS = ITEMS.register("none_of_your_business",
+            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 4, -1F).set(MSItemTypes.FAN_TOOL)
+                    .set(ItemRightClickEffect.extinguishFire(0)).add(OnHitEffect.enemyKnockback(1.5F)),
+                    new MSItemProperties().durability(1326)));
+    // #endregion Fans
+    // #region Lances
+    public static final DeferredItem<Item> INVESTLANCE = ITEMS.register("investlance",
+            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 7, -2.8F).set(MSItemTypes.LANCE_TOOL),
+                    new MSItemProperties().durability(1326)));
+    // #endregion Lances
+    // #region Claws
+    public static final DeferredItem<Item> CASHGRABBERS = ITEMS.register("cashgrabbers",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.GOLD, 4, -1.5F).set(MSItemTypes.CLAWS_TOOL)
+                            .set(ItemRightClickEffect.switchTo(ESItems.CASHGRABBERS_SHEATHED)),
+                    new MSItemProperties().durability(1326)));
+    public static final DeferredItem<Item> CASHGRABBERS_SHEATHED = ITEMS.register("cashgrabbers_sheathed",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(Tiers.GOLD, -1, -1F)
+                            .set(ItemRightClickEffect.switchTo(ESItems.CASHGRABBERS)),
+                    new MSItemProperties().durability(1326)));
+    // #endregion Claws
+    // TODO stocks downticker (drains boondollars from players)
 
     // #region Crossbows
     public static final DeferredItem<Item> RADBOW = ITEMS.register("radbow",
@@ -607,6 +652,11 @@ public final class ESItems {
             p -> new ChargerItem(p.stacksTo(1).component(ESDataComponents.ENERGY_STORAGE, 50_000)));
     public static final DeferredItem<Item> GRIST_DETECTOR = ITEMS.registerItem("grist_detector",
             p -> new GristDetectorItem(p.component(ESDataComponents.GRIST_LAYER, GristLayer.COMMON)));
+    // #region Shovels
+    public static final DeferredItem<Item> GOLD_DIGGER = ITEMS.register("gold_digger",
+            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 3, -2.4F).set(MSItemTypes.SHOVEL_TOOL)
+                    .add(ESItemTypes.BOONDOLLAR_MINING), new MSItemProperties().durability(1326)));
+    // #endregion Shovels
     // #endregion Tools
 
     // #region Modus
@@ -693,7 +743,8 @@ public final class ESItems {
     public static final DeferredItem<Item> MASTERMIND_DISK = ITEMS.registerItem("mastermind_disk",
             (p) -> new Item(
                     p.stacksTo(1).component(MSItemComponents.PROGRAM_TYPE, ESProgramTypes.MASTERMIND_CODEBREAKER)));
-    // TODO Money for Dummies (use for alchemizing money-related weapons)
+    public static final DeferredItem<Item> BOONDOLLARS_FOR_IDIOTS = ITEMS.registerItem("boondollars_for_idiots",
+            p -> new Item(p.stacksTo(1)));
 
     // #region Blocks
     // #region Machines
@@ -866,6 +917,7 @@ public final class ESItems {
         }
 
         output.accept(EMPTY_ENERGY_CORE);
+        output.accept(BOONDOLLARS_FOR_IDIOTS);
 
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
             output.accept(item.get());
@@ -889,6 +941,8 @@ public final class ESItems {
         list.add(OLD_BRUSH);
         list.add(MAGNET);
         list.add(FIELD_CHARGER);
+
+        list.addAll(getShovels());
         return list;
     }
 
@@ -958,6 +1012,7 @@ public final class ESItems {
         list.add(RAINBOW_D7);
         list.add(D8_NIGHT);
         list.add(CAN_DIE);
+        list.add(JACKPOT);
         list.add(INFINI_DIE);
         // Clubs
         list.add(SILVER_BAT);
@@ -970,6 +1025,7 @@ public final class ESItems {
         list.add(OFFICE_KEY);
         // Wands
         list.add(BAGUETTE_MAGIQUE);
+        list.add(MONEY_MAGIC);
         // Canes
         list.add(BROOM);
         list.add(IRON_CROWBAR);
@@ -982,10 +1038,21 @@ public final class ESItems {
         list.add(YELLOWCAKESAW_LIPSTICK);
         // Batons
         list.add(THE_STING);
+        list.add(STOCKS_UPTICKER);
         // Swords
         list.add(SUN_REAVER);
         // Sickles
         list.add(NEW_MOON);
+        list.add(PIRATE_HOOK);
+        // Scythes
+        list.add(DEBT_REAPER);
+        // Fans
+        list.add(NONE_OF_YOUR_BUSINESS);
+        // Lances
+        list.add(INVESTLANCE);
+        // Claws
+        list.add(CASHGRABBERS);
+        list.add(CASHGRABBERS_SHEATHED);
         return list;
     }
 
@@ -997,6 +1064,16 @@ public final class ESItems {
         list.add(STEAM_HAMMER);
 
         list.add(YELLOWCAKESAW);
+
+        list.addAll(getShovels());
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getShovels() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(GOLD_DIGGER);
+
         return list;
     }
 

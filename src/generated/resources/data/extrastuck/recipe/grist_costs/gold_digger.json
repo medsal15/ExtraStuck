@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 600,
+    "minestuck:build": 1500,
+    "minestuck:gold": 850
+  },
+  "ingredient": {
+    "item": "extrastuck:gold_digger"
+  }
+}

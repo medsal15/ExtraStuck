@@ -44,6 +44,16 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String DONE_DROP_KEY = ESItems.DONE.get().getDescriptionId() + ".drop_message";
     public static final String GIFT_PROTECTION_GIFT_KEY = ESItems.GIFT_OF_PROTECTION.get().getDescriptionId()
             + ".gift_drop";
+    public static final String JACKPOT_JACKPOT_KEY = ESItems.JACKPOT.get().getDescriptionId() + ".jackpot";
+    public static final String JACKPOT_ROLL_KEY = ESItems.JACKPOT.get().getDescriptionId() + ".roll";
+    public static final String JACKPOT_ROLLED_BASE = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.";
+    public static final String JACKPOT_ROLLED_0 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.0";
+    public static final String JACKPOT_ROLLED_1 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.1";
+    public static final String JACKPOT_ROLLED_2 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.2";
+    public static final String JACKPOT_ROLLED_3 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.3";
+    public static final String JACKPOT_ROLLED_4 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.4";
+    public static final String JACKPOT_ROLLED_5 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.5";
+    public static final String JACKPOT_ROLLED_6 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.6";
 
     public static final String TOKEN_TETRAHEDRON_TOKEN_KEY = ESItems.TOKEN_TETRAHEDRON.get().getDescriptionId()
             + ".token_drop";
@@ -135,6 +145,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.BEE_LARVA, "Bee Larva");
         addItemTooltip(ESItems.BEE_LARVA, "D'aww, it's a baybee");
         addEntityType(ESEntities.THROWN_BEE_LARVA, "Thrown Bee Larva");
+        addItem(ESItems.BOONDOLLARS_FOR_IDIOTS, "Boondollars for Idiots");
+        addItemTooltip(ESItems.BOONDOLLARS_FOR_IDIOTS,
+                "Contains all you need to know to become the richest player in the session");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
@@ -227,6 +240,7 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     private void addWeapons() {
+        // Hammers
         addItem(ESItems.GEM_BREAKER, "Gem Breaker");
         addItem(ESItems.BELL_HAMMER, "Bell Hammer");
         addItemTooltip(ESItems.BELL_HAMMER, "It rings with every strike");
@@ -234,7 +248,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.BLIND_HAMMER, "With you in the dark");
         addItem(ESItems.STEAM_HAMMER, "Steam-Powered Warhammer");
         addItemTooltip(ESItems.STEAM_HAMMER, "Stoke the Forge");
-
+        // Dice
         addItem(ESItems.GOLD_COIN, "Gold Coin");
         addItem(ESItems.STICKY_DIE, "Sticky Die");
         addItem(ESItems.TOKEN_TETRAHEDRON, "Token Tetrahedron");
@@ -252,7 +266,18 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.CAN_DIE, "Can-Die");
         addItem(ESItems.INFINI_DIE, "Infini-Die");
         addItemTooltip(ESItems.INFINI_DIE, "Theorically infinite damage output");
-
+        addItem(ESItems.JACKPOT, "Jackpot");
+        addItemTooltip(ESItems.JACKPOT, "Let's go gambling!");
+        add(JACKPOT_JACKPOT_KEY, "Rolled 3 sevens and got a reward!");
+        add(JACKPOT_ROLL_KEY, "Last roll: %1$s %2$s %3$s");
+        add(JACKPOT_ROLLED_0, "Bell");
+        add(JACKPOT_ROLLED_1, "Horseshoe");
+        add(JACKPOT_ROLLED_2, "Club");
+        add(JACKPOT_ROLLED_3, "Spade");
+        add(JACKPOT_ROLLED_4, "Heart");
+        add(JACKPOT_ROLLED_5, "Diamond");
+        add(JACKPOT_ROLLED_6, "Seven");
+        // Clubs
         addItem(ESItems.SILVER_BAT, "Silver Bat");
         addItemTooltip(ESItems.SILVER_BAT, "Purify all your enemies");
         addItem(ESItems.GOLDEN_PAN, "Golden Pan");
@@ -260,37 +285,56 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.ROLLING_PIN, "Rolling Pin");
         addItem(ESItems.DESTRUCTION_BAT, "Destruction's Bat");
         addItemTooltip(ESItems.DESTRUCTION_BAT, "The bigger they are, the harder they fall");
-
+        // Keys
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
         addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");
         addItem(ESItems.OFFICE_KEY, "Office Key");
-
+        // Wands
         addItem(ESItems.BAGUETTE_MAGIQUE, "Baguette Magique");
         addItemTooltip(ESItems.BAGUETTE_MAGIQUE, "Un morceau de pain utilisé par les magiciens");
-
+        addItem(ESItems.MONEY_MAGIC, "Money Magic");
+        addItemTooltip(ESItems.MONEY_MAGIC, "Empowered by your bank account");
+        // Canes
         addItem(ESItems.BROOM, "Broom");
         addItemTooltip(ESItems.BROOM, "Sweep sweep sweep");
         addItem(ESItems.IRON_CROWBAR, "Iron Crowbar");
         addItemTooltip(ESItems.IRON_CROWBAR, "A normal crowbar that pries things open");
-
+        // Forks
         addItem(ESItems.MAGNEFORK, "Magnefork");
         addItem(ESItems.OVERCHARGED_MAGNEFORK, "Overcharged Magnefork");
         addItemTooltip(ESItems.OVERCHARGED_MAGNEFORK, "Batteries sold separately");
         addItem(ESItems.UNDERCHARGED_MAGNEFORK, "Undercharged Magnefork");
-
+        // Chainsaws & Lipsticks
         addItem(ESItems.YELLOWCAKESAW, "YellowcakeSaw");
         addItem(ESItems.YELLOWCAKESAW_LIPSTICK, "Glowing Lipstick");
         addItemTooltip(ESItems.YELLOWCAKESAW_LIPSTICK, "Contraband");
-
+        // Batons
         addItem(ESItems.THE_STING, "The Sting");
-
+        addItem(ESItems.STOCKS_UPTICKER, "Stocks Upticker");
+        addItemTooltip(ESItems.STOCKS_UPTICKER, "Looks like your investments are finally paying off!");
+        // Swords
         addItem(ESItems.SUN_REAVER, "Sun Reaver");
         addItemTooltip(ESItems.SUN_REAVER, "To kill a god...");
-
+        addItem(ESItems.PIRATE_HOOK, "Pirate Hook");
+        addItemTooltip(ESItems.PIRATE_HOOK, "Yarr! Thy booty is mine!");
+        // Sickles
         addItem(ESItems.NEW_MOON, "New Moon");
         addItemTooltip(ESItems.NEW_MOON, "More strength...");
-
+        // Scythes
+        addItem(ESItems.DEBT_REAPER, "Debt Reaper");
+        addItemTooltip(ESItems.DEBT_REAPER, "You can't escape taxes");
+        // Fands
+        addItem(ESItems.NONE_OF_YOUR_BUSINESS, "None of Your Business");
+        addItemTooltip(ESItems.NONE_OF_YOUR_BUSINESS, "Privacy first");
+        // Lances
+        addItem(ESItems.INVESTLANCE, "Investlance");
+        addItemTooltip(ESItems.INVESTLANCE, "Crash the stocks (through your enemies)");
+        // Claws
+        addItem(ESItems.CASHGRABBERS, "Cashgrabbers");
+        addItemTooltip(ESItems.CASHGRABBERS, "Claw machines are not liable for whatever you use the claws for");
+        addItem(ESItems.CASHGRABBERS_SHEATHED, "Sheathed Cashgrabbers");
+        // Crossbows
         addItem(ESItems.RADBOW, "Radbow");
         addItemTooltip(ESItems.RADBOW, "Silent, deadly, and quite radioactive!");
         addEntityType(ESEntities.URANIUM_ROD, "Uranium Rod");
@@ -298,14 +342,14 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.INCOMPLETE_MECHANICAL_RADBOW, "You can tell this is a great idea");
         addItem(ESItems.MECHANICAL_RADBOW, "Mechanical Radbow");
         addItemTooltip(ESItems.MECHANICAL_RADBOW, "An engineer's weapon of choice");
-
+        // Other Ranged
         addItem(ESItems.HANDGUN, "Handgun");
         addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
         addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");
         addItem(ESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.ITEM_BULLET, "Item Bullet");
-
+        // Throwables
         addItem(ESItems.BEENADE, "Beenade");
         add(BEENADE_LOADED, "It buzzes softly");
         addEntityType(ESEntities.THROWN_BEENADE, "Thrown Beenade");
@@ -416,6 +460,9 @@ public final class ESLangProvider extends LanguageProvider {
         add(GRIST_DETECTOR_ANY, "any");
         add(GRIST_DETECTOR_COMMON, "common");
         add(GRIST_DETECTOR_UNCOMMON, "uncommon");
+        // Shovels
+        addItem(ESItems.GOLD_DIGGER, "Gold Digger");
+        addItemTooltip(ESItems.GOLD_DIGGER, "There's money everywhere!");
     }
 
     private void addBlockEntities() {
@@ -552,6 +599,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.Items.AMMO_HANDGUN, "Handgun Ammunition");
         add(ESTags.Items.SHOW_VALUE, "Armors Displaying Value");
         add(ESTags.Items.IGNORE_BYPRODUCT_CUTTING, "Ignored Cutting Byproducts");
+        add(ESTags.Items.DROPS_BOONDOLLARS, "Drops Boondollars on Kill");
 
         add(ESTags.EntityTypes.BEENADE_ACCEPTS, "Accepted by Beenades");
     }

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 654,
+    "minestuck:garnet": 678,
+    "minestuck:gold": 720
+  },
+  "ingredient": {
+    "item": "extrastuck:investlance"
+  }
+}

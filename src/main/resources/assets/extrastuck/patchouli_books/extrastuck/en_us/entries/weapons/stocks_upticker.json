@@ -1,0 +1,26 @@
+{
+    "name": "Stocks Upticker",
+    "icon": "extrastuck:stocks_upticker",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:stocks_upticker"
+            },
+            "text": "I don't think you're supposed to grab and hold a physical manifestation of your investments.$(br2)$(3)$(l)Special:$() Killing enemies has a chance to drop boondollars."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Uranium Baton and Boondollars for Idiots in a Totem Lathe.",
+            "left": "minestuck:uranium_baton",
+            "mode": "&&",
+            "right": "extrastuck:boondollars_for_idiots",
+            "result": "extrastuck:stocks_upticker"
+        },
+        {
+            "type": "extrastuck:boondollar_weapon_desc"
+        }
+    ]
+}
