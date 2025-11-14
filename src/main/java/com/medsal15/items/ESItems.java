@@ -47,6 +47,8 @@ import com.medsal15.items.food.FortuneCookie;
 import com.medsal15.items.food.HomeDonut;
 import com.medsal15.items.food.HotCakeSlice;
 import com.medsal15.items.food.MortalTemptation;
+import com.medsal15.items.food.RocketJump;
+import com.medsal15.items.food.SourBombCandy;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.BrushWeapon;
@@ -60,6 +62,7 @@ import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.BlockFuncs;
 import com.medsal15.items.throwables.BeeLarvaItem;
 import com.medsal15.items.throwables.BeenadeItem;
+import com.medsal15.items.throwables.LemonNadeItem;
 import com.medsal15.items.throwables.SwapTrident;
 import com.medsal15.items.weaponeffects.ESHitEffects;
 import com.medsal15.items.weaponeffects.ESInventoryTickEffects;
@@ -560,6 +563,8 @@ public final class ESItems {
             () -> new BeenadeItem(new Properties().stacksTo(16)));
     public static final DeferredItem<Item> YIN_YANG_ORB = ITEMS.register("yin_yang_orb",
             () -> new BouncingProjectileWeaponItem(new MSItemProperties().durability(350), 1.25F, 1, 6, 40));
+    public static final DeferredItem<Item> LEMONNADE = ITEMS.register("lemonnade",
+            () -> new LemonNadeItem(new Properties().stacksTo(16)));
     // #endregion Throwables
     // #endregion Weapons
 
@@ -700,8 +705,6 @@ public final class ESItems {
             p -> new BeeLarvaItem(p.stacksTo(16)));
     public static final DeferredItem<Item> COOKED_BEE_LARVA = ITEMS.registerItem("cooked_bee_larva",
             p -> new Item(p.food(ESFoods.COOKED_BEE_LARVA)));
-    public static final DeferredItem<Item> DESERT_JUICE = ITEMS.registerItem("desert_juice",
-            p -> new DrinkableItem(p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
     // #region Cake Slices
     public static final DeferredItem<Item> APPLE_CAKE_SLICE = ITEMS.registerItem("apple_cake_slice",
             p -> new Item(p.food(ESFoods.APPLE_CAKE_SLICE)));
@@ -735,7 +738,16 @@ public final class ESItems {
             p -> new Item(p.food(ESFoods.CANDY_CRUNCH).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> HOME_DONUT = ITEMS.registerItem("home_donut",
             p -> new HomeDonut(p.food(ESFoods.HOME_DONUT)));
+    public static final DeferredItem<Item> SOUR_BOMB_CANDY = ITEMS.registerItem("sour_bomb_candy",
+            p -> new SourBombCandy(p.food(ESFoods.SOUR_BOMB_CANDY)));
     // #endregion Food
+
+    // #region Drinks
+    public static final DeferredItem<Item> DESERT_JUICE = ITEMS.registerItem("desert_juice",
+            p -> new DrinkableItem(p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
+    public static final DeferredItem<Item> ROCKET_JUMP = ITEMS.registerItem("rocket_jump",
+            p -> new RocketJump(p.food(ESFoods.ROCKET_JUMP).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
+    // #endregion Drinks
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
     public static final DeferredItem<Item> INCOMPLETE_MECHANICAL_RADBOW = ITEMS
@@ -887,6 +899,7 @@ public final class ESItems {
             output.accept(item.get());
         }
         output.accept(BEENADE);
+        output.accept(LEMONNADE);
 
         for (DeferredItem<Item> item : ESItems.getArrows()) {
             output.accept(item.get());
@@ -1196,12 +1209,14 @@ public final class ESItems {
         list.add(MORTAL_TEMPTATION);
         list.add(CANDY_CRUNCH);
         list.add(HOME_DONUT);
+        list.add(SOUR_BOMB_CANDY);
         return list;
     }
 
     public static Collection<DeferredItem<Item>> getDrinks() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(DESERT_JUICE);
+        list.add(ROCKET_JUMP);
         return list;
     }
 

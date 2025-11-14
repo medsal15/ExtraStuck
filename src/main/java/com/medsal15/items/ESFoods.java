@@ -30,10 +30,6 @@ public final class ESFoods {
             .saturationModifier(.3F)
             .effect(() -> new MobEffectInstance(ESMobEffects.BEE_ANGRY), 1)
             .build();
-    public static final FoodProperties DESERT_JUICE = new FoodProperties.Builder().alwaysEdible()
-            .usingConvertsTo(Items.GLASS_BOTTLE)
-            .effect(() -> new MobEffectInstance(MobEffects.HEAL), 1)
-            .build();
     public static final FoodProperties APPLE_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
             .saturationModifier(.5F).fast().build();
     public static final FoodProperties BLUE_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
@@ -81,4 +77,13 @@ public final class ESFoods {
             .build();
     public static final FoodProperties HOME_DONUT = new FoodProperties.Builder().nutrition(4).saturationModifier(.2F)
             .alwaysEdible().build();
+    public static final FoodProperties SOUR_BOMB_CANDY = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.1F).alwaysEdible().fast().build();
+
+    public static final FoodProperties DESERT_JUICE = new FoodProperties.Builder().alwaysEdible()
+            .usingConvertsTo(Items.GLASS_BOTTLE)
+            .effect(() -> new MobEffectInstance(MobEffects.HEAL), 1)
+            .build();
+    public static final FoodProperties ROCKET_JUMP = new FoodProperties.Builder().alwaysEdible()
+            .usingConvertsTo(Items.GLASS_BOTTLE).build();
 }

@@ -1,0 +1,12 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 60,
+    "minestuck:chalk": 32,
+    "minestuck:sulfur": 8,
+    "minestuck:tar": 3
+  },
+  "ingredient": {
+    "item": "extrastuck:rocket_jump"
+  }
+}

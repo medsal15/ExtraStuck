@@ -355,6 +355,9 @@ public final class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.THROWN_BEENADE, "Thrown Beenade");
         addItem(ESItems.YIN_YANG_ORB, "Yin-Yang Orb");
         addItemTooltip(ESItems.YIN_YANG_ORB, "Only the true bloodline can use its full power");
+        addItem(ESItems.LEMONNADE, "LemonNade");
+        addItemTooltip(ESItems.LEMONNADE, "This lemon burns houses down");
+        addEntityType(ESEntities.LEMONNADE, "LemonNade");
     }
 
     private void addArmors() {
@@ -590,8 +593,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.HOME_DONUT, "Donut");
         addItemTooltip(ESItems.HOME_DONUT, "Smells like home");
         add(HOME_DONUT_NO_TP, "The donut could not find the way back home.");
+        addItem(ESItems.SOUR_BOMB_CANDY, "Sour Bomb Candy");
 
         addItem(ESItems.DESERT_JUICE, "Desert Juice");
+        addItem(ESItems.ROCKET_JUMP, "Rocket Jump");
+        addItemTooltip(ESItems.ROCKET_JUMP, "Screamin' Eagles!");
     }
 
     private void addTags() {

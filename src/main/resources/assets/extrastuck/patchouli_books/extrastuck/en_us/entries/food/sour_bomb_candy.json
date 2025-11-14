@@ -1,0 +1,22 @@
+{
+    "name": "Sour Bomb Candy",
+    "icon": "extrastuck:sour_bomb_candy",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:sour_bomb_candy"
+            },
+            "text": "An explosive flavor that launches you to heaven!$(br2)$(o)You may wish to grab a bucket of water.$()"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a LemonNade and Sugar in a Totem Lathe.",
+            "left": "extrastuck:lemonnade",
+            "mode": "&&",
+            "right": "minecraft:sugar",
+            "result": "extrastuck:sour_bomb_candy"
+        }
+    ]
+}

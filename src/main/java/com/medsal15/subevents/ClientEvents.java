@@ -337,6 +337,7 @@ public final class ClientEvents {
         event.registerEntityRenderer(ESEntities.ITEM_BULLET.get(), c -> new ThrownItemRenderer<ItemBullet>(c));
         event.registerEntityRenderer(ESEntities.THROWN_BEE_LARVA.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ESEntities.THROWN_BEENADE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ESEntities.LEMONNADE.get(), ThrownItemRenderer::new);
 
         event.registerBlockEntityRenderer(ESBlockEntities.CHARGER.get(), ChargerBlockRenderer::new);
     }

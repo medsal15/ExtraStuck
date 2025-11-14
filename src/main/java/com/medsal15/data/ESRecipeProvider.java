@@ -39,6 +39,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
+import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.CommonTags;
@@ -64,6 +65,7 @@ public final class ESRecipeProvider extends RecipeProvider {
         modusRecipes(output);
         toolRecipes(output);
         foodRecipes(output);
+        drinkRecipes(output);
         blockRecipes(output);
 
         CombinationRecipeBuilder.of(ESItems.GIFT)
@@ -641,6 +643,21 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GOLD, 10).grist(GristTypes.AMBER, 10).grist(GristTypes.TAR, 10)
                 .build(output);
 
+        CombinationRecipeBuilder.of(ESItems.LEMONNADE)
+                .input(MSItems.BARBASOL_BOMB).or().input(Items.YELLOW_DYE)
+                .build(output);
+        CombinationRecipeBuilder.of(ESItems.LEMONNADE)
+                .input(ESTags.Items.LEMON_FRUITS).and().input(Items.GUNPOWDER)
+                .build(output.withConditions(not(new TagEmptyCondition(ESTags.Items.LEMON_FRUITS))),
+                        modid("combinations/lemonnade_lemon_fruits"));
+        CombinationRecipeBuilder.of(ESItems.LEMONNADE)
+                .input(ESTags.Items.LEMON_CROPS).and().input(Items.GUNPOWDER)
+                .build(output.withConditions(not(new TagEmptyCondition(ESTags.Items.LEMON_CROPS))),
+                        modid("combinations/lemonnade_lemon_crops"));
+        GristCostRecipeBuilder.of(ESItems.LEMONNADE)
+                .grist(GristTypes.AMBER, 40).grist(GristTypes.CHALK, 23).grist(GristTypes.GOLD, 9)
+                .build(output);
+
         CombinationRecipeBuilder.of(ESItems.YIN_YANG_ORB)
                 .input(MSItems.SORCERERS_PINBALL).and().input(MSItems.KATANA)
                 .build(output);
@@ -1100,13 +1117,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
                 .save(output, modid("smoking/cooked_bee_larva"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ESItems.DESERT_JUICE)
-                .requires(MSItems.DESERT_FRUIT, 4)
-                .requires(Items.SUGAR)
-                .requires(Items.GLASS_BOTTLE)
-                .unlockedBy("has_desert_fruit", has(MSItems.DESERT_FRUIT))
-                .save(output, modid("shapeless/desert_juice"));
-
         // #region Cake Slice
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.APPLE_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.APPLE_CAKE_SLICE.get(), 7)
@@ -1281,6 +1291,42 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.HOME_DONUT)
                 .grist(GristTypes.IODINE, 12).grist(GristTypes.GARNET, 1).grist(GristTypes.CHALK, 5)
                 .grist(GristTypes.ARTIFACT, 1)
+                .build(output);
+
+        CookingPotRecipeBuilder.cookingPotRecipe(ESItems.SOUR_BOMB_CANDY, 4, 200, .25F)
+                .addIngredient(ESItems.LEMONNADE)
+                .addIngredient(Items.SUGAR)
+                .unlockedByAnyIngredient(ESItems.LEMONNADE)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(fdOutput, modid("cooking/sour_bomb_candy").toString());
+        CombinationRecipeBuilder.of(ESItems.SOUR_BOMB_CANDY)
+                .input(ESItems.LEMONNADE).or().input(Items.SUGAR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SOUR_BOMB_CANDY)
+                .grist(GristTypes.AMBER, 10).grist(GristTypes.CHALK, 6).grist(GristTypes.SULFUR, 2)
+                .build(output);
+    }
+
+    private void drinkRecipes(@Nonnull RecipeOutput output) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ESItems.DESERT_JUICE)
+                .requires(MSItems.DESERT_FRUIT, 4)
+                .requires(Items.SUGAR)
+                .requires(Items.GLASS_BOTTLE)
+                .unlockedBy("has_desert_fruit", has(MSItems.DESERT_FRUIT))
+                .save(output, modid("shapeless/desert_juice"));
+
+        CookingPotRecipeBuilder.cookingPotRecipe(ESItems.ROCKET_JUMP, 1, 200, .25F)
+                .addIngredient(ESItems.LEMONNADE)
+                .addIngredient(Items.NETHER_WART)
+                .unlockedByAnyIngredient(ESItems.LEMONNADE)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(output.withConditions(FARMERSDELIGHT_LOADED), modid("cooking/rocket_jump").toString());
+        CombinationRecipeBuilder.of(ESItems.ROCKET_JUMP)
+                .input(ESItems.LEMONNADE).or().input(Items.GLASS_BOTTLE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.ROCKET_JUMP)
+                .grist(GristTypes.AMBER, 60).grist(GristTypes.CHALK, 32).grist(GristTypes.SULFUR, 8)
+                .grist(GristTypes.TAR, 3)
                 .build(output);
     }
 

@@ -1,0 +1,22 @@
+{
+    "name": "Rocket Jump",
+    "icon": "extrastuck:rocket_jump",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:rocket_jump"
+            },
+            "text": "This drink was the best way to reach the 2nd floor of your house. Until the discovery of stairs.$(br2)$(o)You may wish to grab a bucket of water.$()"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a LemonNade and a Glass Bottle in a Totem Lathe.",
+            "left": "extrastuck:lemonnade",
+            "mode": "&&",
+            "right": "minecraft:glass_bottle",
+            "result": "extrastuck:rocket_jump"
+        }
+    ]
+}

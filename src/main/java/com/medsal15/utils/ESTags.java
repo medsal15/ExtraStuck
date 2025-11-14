@@ -25,6 +25,8 @@ public final class ESTags {
         public static final TagKey<Item> BRASS_NUGGETS = ItemTags.create(common("nuggets/brass"));
         public static final TagKey<Item> BEE_EGGS = ItemTags.create(common("eggs/bee"));
         public static final TagKey<Item> DRINKS = ItemTags.create(common("drinks"));
+        public static final TagKey<Item> LEMON_FRUITS = ItemTags.create(common("foods/fruit/lemon"));
+        public static final TagKey<Item> LEMON_CROPS = ItemTags.create(common("crops/lemon"));
     }
 
     public static final class Blocks {

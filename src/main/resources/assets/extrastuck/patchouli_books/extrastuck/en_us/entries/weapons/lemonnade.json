@@ -1,0 +1,23 @@
+{
+    "name": "LemonNade",
+    "icon": "extrastuck:lemonnade",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:lemonnade"
+            },
+            "text": "When life gives you lemon, don't make lemonade, make LemonNades! Burn life's house down!$(br2)Stronger and safer (assuming you don't get hit) than Barbasol Bombs."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Barbasol Bomb and yellow dye in a Punch Designix.",
+            "left": "minestuck:barbasol_bomb",
+            "mode": "||",
+            "right": "minecraft:yellow_dye",
+            "result": "extrastuck:lemonnade"
+        }
+    ]
+}

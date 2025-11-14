@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:crops/lemon"
+      }
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "tag": "c:crops/lemon"
+  },
+  "input2": {
+    "item": "minecraft:gunpowder"
+  },
+  "mode": "and",
+  "output": "extrastuck:lemonnade"
+}

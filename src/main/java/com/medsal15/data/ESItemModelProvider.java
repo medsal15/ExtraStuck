@@ -200,6 +200,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.HANDGUN.get());
 
         handheldItem(ESItems.BEENADE.get());
+        handheldItem(ESItems.LEMONNADE.get());
 
         basicItem(ESItems.YIN_YANG_ORB.get());
     }
@@ -269,8 +270,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.MORTAL_TEMPTATION.get());
         basicItem(ESItems.CANDY_CRUNCH.get());
         basicItem(ESItems.HOME_DONUT.get());
+        basicItem(ESItems.SOUR_BOMB_CANDY.get());
 
         basicItem(ESItems.DESERT_JUICE.get());
+        basicItem(ESItems.ROCKET_JUMP.get());
     }
 
     private void registerBlocks() {

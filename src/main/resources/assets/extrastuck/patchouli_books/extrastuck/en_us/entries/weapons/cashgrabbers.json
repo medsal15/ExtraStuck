@@ -14,7 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Cat Claws and Boondollars for Idiots in a Punch Designix.",
-            "left": "minestuck:cat_claws",
+            "left": "minestuck:cat_claws_drawn",
             "mode": "||",
             "right": "extrastuck:boondollars_for_idiots",
             "result": "extrastuck:cashgrabbers"
