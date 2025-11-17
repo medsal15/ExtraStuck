@@ -64,9 +64,14 @@ public final class ESHitEffects {
 
     public static void timeStop(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         int duration = 5 * 20;
-        if (attacker instanceof ServerPlayer player
-                && (player.isCreative() || Title.isPlayerOfAspect(player, EnumAspect.TIME))) {
-            duration = 15 * 20;
+        if (attacker instanceof ServerPlayer player) {
+            if (player.getCooldowns().isOnCooldown(stack.getItem())) {
+                return;
+            }
+            if ((player.isCreative() || Title.isPlayerOfAspect(player, EnumAspect.TIME))) {
+                duration = 15 * 20;
+            }
+            player.getCooldowns().addCooldown(stack.getItem(), duration + 5 * 20);
         }
 
         target.addEffect(new MobEffectInstance(ESMobEffects.TIME_STOP, duration));
