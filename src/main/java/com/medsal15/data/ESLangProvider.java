@@ -76,6 +76,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String GRIST_DETECTOR_COMMON = ExtraStuck.MODID + ".grist_detector.common";
     public static final String GRIST_DETECTOR_UNCOMMON = ExtraStuck.MODID + ".grist_detector.uncommon";
     public static final String MASTERMIND_GRIST_BASE = ExtraStuck.MODID + ".mastermind.grist.";
+    public static final String FURNACE_MODUS_FUEL = ESItems.FURNACE_MODUS_CARD.get().getDescriptionId() + ".fuel";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
@@ -403,6 +404,8 @@ public final class ESLangProvider extends LanguageProvider {
                 "The Fortune Modus gives fortune cookies."
                         + " Just eat them to get your items back."
                         + " Please do not put the fortune cookies back in the fortune modus, otherwise you'll have to eat them twice.");
+        addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
+        addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");
 
         addItem(ESItems.ORE_MODUS_CARD, "Ore Modus");
         addItemTooltip(ESItems.ORE_MODUS_CARD, "Perfect for mining lovers");
@@ -410,6 +413,9 @@ public final class ESLangProvider extends LanguageProvider {
                 "The Ore Modus is perfect if you have a lot of pickaxes, or want a cheap building material."
                         + " Getting an item from it will give a Card Ore, which must be broken to get it back."
                         + " (You can even use your bare hands!)");
+        addBlock(ESBlocks.CARD_ORE, "Card Ore");
+        addBlockBookDescription(ESBlocks.CARD_ORE,
+                "Card ore is only obtainable from an Ore Modus. Breaking it will drop whatever is stored inside. Despite its name, it can be mined by hand.");
 
         addItem(ESItems.ARCHEOLOGY_MODUS_CARD, "Archeology Modus");
         addItemBookDescription(ESItems.ARCHEOLOGY_MODUS_CARD,
@@ -442,13 +448,14 @@ public final class ESLangProvider extends LanguageProvider {
         add(MASTERMIND_GRIST_BASE + 3, "§knull");
         add(MASTERMIND_GRIST_BASE + 4, "Citrine");
         add(MASTERMIND_GRIST_BASE + 5, "Antibuild");
-
-        addItem(ESItems.FORTUNE_COOKIE, "Fortune Cookie");
-        addItemTooltip(ESItems.FORTUNE_COOKIE, "What's inside?");
-        addBlock(ESBlocks.CARD_ORE, "Card Ore");
-        addBlockBookDescription(ESBlocks.CARD_ORE,
-                "Card ore is only obtainable from an Ore Modus. Breaking it will drop whatever is stored inside. Despite its name, it can be mined by hand.");
         addItem(ESItems.MASTERMIND_CARD, "Mastermind Card");
+
+        addItem(ESItems.FURNACE_MODUS_CARD, "Furnace Modus");
+        addItemTooltip(ESItems.FURNACE_MODUS_CARD, "Portable smelter");
+        addItemBookDescription(ESItems.FURNACE_MODUS_CARD, "The Furnace Modus requires fuel to work."
+                + " Extracting an item requires as much fuel as smelting it (or a second of fuel if it does not have a smelting recipe)."
+                + " It will also smelt the item in question if possible.");
+        add(FURNACE_MODUS_FUEL, "Can smelt (estimated) %s items");
     }
 
     private void addTools() {

@@ -233,6 +233,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.VOID_MODUS_CARD.get());
         basicItem(ESItems.ENDER_MODUS_CARD.get());
         basicItem(ESItems.MASTERMIND_MODUS_CARD.get());
+        basicItem(ESItems.FURNACE_MODUS_CARD.get());
 
         basicItem(ESItems.FORTUNE_COOKIE.get());
         withExistingParent(ESItems.CARD_ORE.getId().toString(), modLoc("block/card_ore"));

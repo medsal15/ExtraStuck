@@ -986,6 +986,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 52).grist(GristTypes.RUST, 13).grist(GristTypes.AMBER, 1)
                 .grist(GristTypes.CHALK, 1).grist(GristTypes.AMETHYST, 1).grist(GristTypes.GARNET, 1)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.FURNACE_MODUS_CARD)
+                .input(MSTags.Items.MODUS_CARD).or().input(Items.FURNACE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.FURNACE_MODUS_CARD)
+                .grist(GristTypes.BUILD, 160).grist(GristTypes.TAR, 16)
+                .build(output);
     }
 
     private void toolRecipes(@Nonnull RecipeOutput output) {

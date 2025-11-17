@@ -679,6 +679,8 @@ public final class ESItems {
             Item::new, new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> MASTERMIND_MODUS_CARD = ITEMS.registerItem("mastermind_modus_card",
             Item::new, new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> FURNACE_MODUS_CARD = ITEMS.registerItem("furnace_modus_card",
+            Item::new, new Item.Properties().stacksTo(1));
 
     public static final DeferredItem<BlockItem> CARD_ORE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_ORE);
     public static final DeferredItem<Item> FORTUNE_COOKIE = ITEMS.registerItem("fortune_cookie", FortuneCookie::new,
@@ -946,6 +948,7 @@ public final class ESItems {
         list.add(VOID_MODUS_CARD);
         list.add(ENDER_MODUS_CARD);
         list.add(MASTERMIND_MODUS_CARD);
+        list.add(FURNACE_MODUS_CARD);
         return list;
     }
 

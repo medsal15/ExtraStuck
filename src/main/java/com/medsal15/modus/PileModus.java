@@ -79,7 +79,7 @@ public class PileModus extends BaseModus {
         return (int) Math.ceil(Math.sqrt(list.size()));
     }
 
-    private ArrayList<ItemStack> removePile(int id) {
+    protected ArrayList<ItemStack> removePile(int id) {
         ArrayList<ItemStack> items = new ArrayList<>();
         ArrayList<Integer> ids = new ArrayList<>();
 

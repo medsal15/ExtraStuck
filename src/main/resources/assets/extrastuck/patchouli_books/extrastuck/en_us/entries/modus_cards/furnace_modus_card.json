@@ -1,0 +1,23 @@
+{
+    "name": "Furnace Modus",
+    "icon": "extrastuck:furnace_modus_card",
+    "category": "extrastuck:modus_cards",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:furnace_modus_card"
+            },
+            "text": "A sylladex with a furnace included! Requires the equivalent of 10 seconds of smelting to extract an item.$(br)As a bonus, items that can be smelted will be, at the full cost of smelting the stack.$(br)Just be careful with furnace fuels, these are non-refundable."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine any modus card and a Furnace in a Punch Designix.",
+            "left": "tag:minestuck:modus_card",
+            "mode": "||",
+            "right": "minecraft:furnace",
+            "result": "extrastuck:furnace_modus_card"
+        }
+    ]
+}

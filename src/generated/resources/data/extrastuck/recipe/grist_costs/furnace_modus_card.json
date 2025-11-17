@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 160,
+    "minestuck:tar": 16
+  },
+  "ingredient": {
+    "item": "extrastuck:furnace_modus_card"
+  }
+}

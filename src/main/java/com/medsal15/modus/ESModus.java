@@ -27,4 +27,6 @@ public final class ESModus {
             () -> new ModusType<>(EnderModus::new, ESItems.ENDER_MODUS_CARD));
     public static final Supplier<ModusType<MastermindModus>> MASTERMIND_MODUS = MODUSES.register("mastermind_modus",
             () -> new ModusType<>(MastermindModus::new, ESItems.MASTERMIND_MODUS_CARD));
+    public static final Supplier<ModusType<FurnaceModus>> FURNACE_MODUS = MODUSES.register("furnace_modus",
+            () -> new ModusType<>(FurnaceModus::new, ESItems.FURNACE_MODUS_CARD));
 }
