@@ -69,7 +69,7 @@ Drops:
 - Queen Wand (iss staff/wandkind)
 - Lich Crown (bonus magic/underling damage)
 
-#### Mechanical Ruins ####
+#### Factory Ruins ####
 
 - Walls made of gears (hopefully create compatible)
 - Lots of puzzles
@@ -93,6 +93,37 @@ Drops:
 
 - Golem Core (upgrades iron golems)
 - Reinforced Gauntlets (short range & high damage)
+
+#### Containment Cube ####
+
+- Layers of cubes
+- 3d maze with ladders/stairs
+- Center is a sphere
+
+##### Snail #####
+
+Medium sized boss with lots of armor and low speed.
+
+Instant kill attacks.
+
+Drops:
+
+- Snail Shell (chestplate with high armor but lowers speed)
+- Slowpoke (baton applying slowness)
+
+#### Sunny Dungeon ####
+
+- Flat layer of rooms
+- Rooms can contain puzzles/encounters/shops
+
+##### Goblins #####
+
+Multiple enemies with various weapons of random kinds
+
+Drops:
+
+- Held weapons
+- Blank Dye (dupes dyes, alchemy ingredient for dungeons of sunnydale based items)
 
 ## Textures ##
 
