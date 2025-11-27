@@ -31,7 +31,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 
 @EventBusSubscriber(modid = ExtraStuck.MODID)
@@ -75,10 +74,21 @@ public final class CommonEvents {
     }
 
     @SubscribeEvent
-    public static void onDamage(final LivingIncomingDamageEvent event) {
-        LivingEntity entity = event.getEntity();
-        if (entity.getHealth() > event.getAmount())
+    public static void onDeath(final LivingDeathEvent event) {
+        handleAntiDie(event);
+        if (event.isCanceled())
             return;
+
+        dropBoondollars(event);
+    }
+
+    /**
+     * Prevents death when holding an Anti Die
+     * <p>
+     * Heals from 1 to 6 (both inclusive) health, cancelling the event
+     */
+    private static void handleAntiDie(final LivingDeathEvent event) {
+        LivingEntity entity = event.getEntity();
 
         InteractionHand hand;
         if (entity.getMainHandItem().is(ESItems.ANTI_DIE)) {
@@ -98,11 +108,7 @@ public final class CommonEvents {
         renderer.displayItemActivation(ESItems.ANTI_DIE.toStack());
         event.setCanceled(true);
         entity.setItemInHand(hand, ItemStack.EMPTY);
-    }
-
-    @SubscribeEvent
-    public static void onDeath(final LivingDeathEvent event) {
-        dropBoondollars(event);
+        entity.setHealth(entity.getRandom().nextFloat() * 5 + 1);
     }
 
     /**
