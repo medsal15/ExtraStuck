@@ -27,15 +27,18 @@ public final class ESTags {
         public static final TagKey<Item> DRINKS = ItemTags.create(common("drinks"));
         public static final TagKey<Item> LEMON_FRUITS = ItemTags.create(common("foods/fruit/lemon"));
         public static final TagKey<Item> LEMON_CROPS = ItemTags.create(common("crops/lemon"));
+
+        public static final TagKey<Item> ISS_SPELLBOOKS = ItemTags
+                .create(ResourceLocation.fromNamespaceAndPath("curios", "spellbook"));
+        public static final TagKey<Item> ISS_MITHRIL_ORES = ItemTags.create(common("ores/mithril"));
     }
 
     public static final class Blocks {
         public static final TagKey<Block> PRYABLE = BlockTags.create(ExtraStuck.modid("pryable"));
+        public static final TagKey<Block> MINEABLE_WITH_DICE = BlockTags.create(ExtraStuck.modid("mineable_with_dice"));
 
         public static final TagKey<Block> INCORRECT_FOR_COPPER_TIER = BlockTags
                 .create(ExtraStuck.modid("incorrect_for_copper_tier"));
-
-        public static final TagKey<Block> MINEABLE_WITH_DICE = BlockTags.create(ExtraStuck.modid("mineable_with_dice"));
     }
 
     public static final class EntityTypes {

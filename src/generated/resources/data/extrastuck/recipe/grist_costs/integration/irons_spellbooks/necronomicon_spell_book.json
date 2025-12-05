@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.grist_costs"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 250,
+    "minestuck:gold": 450,
+    "minestuck:iodine": 600
+  },
+  "ingredient": {
+    "item": "irons_spellbooks:necronomicon_spell_book"
+  }
+}

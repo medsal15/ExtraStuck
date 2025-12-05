@@ -9,6 +9,7 @@ import com.medsal15.items.ESItems;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.util.MSTags;
 
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -49,6 +50,9 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(ItemTags.CROSSBOW_ENCHANTABLE).add(crossbow.get());
             tag(ItemTags.DURABILITY_ENCHANTABLE).add(crossbow.get());
             tag(ItemTags.VANISHING_ENCHANTABLE).add(crossbow.get());
+        }
+        for (DeferredItem<Item> spellbook : ESItems.getSpellbooks()) {
+            tag(ESTags.Items.ISS_SPELLBOOKS).add(spellbook.get());
         }
 
         for (DeferredItem<Item> tool : ESItems.getMiningTools()) {
@@ -129,7 +133,10 @@ public final class ESItemTags extends ItemTagsProvider {
 
         tag(ItemTags.BOOKSHELF_BOOKS).add(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
 
-        tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get());
+        tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get())
+                .addOptional(ItemRegistry.DIVINE_SOULSHARD.getId()).addOptional(ItemRegistry.PYRIUM_INGOT.getId())
+                .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())
+                .addOptional(ItemRegistry.ELDRITCH_PAGE.getId());
         tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get());
 
         tag(ESTags.Items.IGNORE_BYPRODUCT_CUTTING).add(Items.BONE_MEAL);

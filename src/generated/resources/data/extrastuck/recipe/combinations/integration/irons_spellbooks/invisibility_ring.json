@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.combinations"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "irons_spellbooks:visibility_ring"
+  },
+  "input2": {
+    "item": "minecraft:tinted_glass"
+  },
+  "mode": "and",
+  "output": "irons_spellbooks:invisibility_ring"
+}

@@ -90,6 +90,19 @@ public class ConfigCommon {
             .comment("How much fuel (in ticks) is consumed to attack with a steam-powered weapon")
             .defineInRange("weapons.steam_powered.fuel_threshold", 200, 0, Integer.MAX_VALUE);
 
+    public static final ModConfigSpec.BooleanValue ISS_GRIST_COSTS = BUILDER
+            .comment("If true, adds grist costs to Iron's Spells & Spellbooks items")
+            .define("integration.irons_spellbooks.grist_costs", true);
+    public static final ModConfigSpec.BooleanValue ISS_COMBINATIONS = BUILDER
+            .comment("If true, adds combination recipes to multiple Iron's Spells & Spellbooks items")
+            .define("integration.irons_spellbooks.combinations", true);
+    public static final ModConfigSpec.BooleanValue ISS_LOOT_COMBINATIONS = BUILDER
+            .comment(
+                    "If true, adds combination recipes to Iron's Spells & Spellbooks items that are dropped by entities",
+                    "These include the Rotten Spell Book, Blood Staff, and Hither-Thither Wand",
+                    "Basically, most non-craftable Iron's Spellbooks items")
+            .define("integration.irons_spellbooks.loot_combinations", false);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     public static boolean configEnabled(String name) {
@@ -100,6 +113,12 @@ public class ConfigCommon {
                 return INTERPRETERS_CREATE.getAsBoolean();
             case "interpreters.farmersdelight":
                 return INTERPRETERS_FARMERSDELIGHT.getAsBoolean();
+            case "integration.irons_spellbooks.grist_costs":
+                return ISS_GRIST_COSTS.getAsBoolean();
+            case "integration.irons_spellbooks.combinations":
+                return ISS_COMBINATIONS.getAsBoolean();
+            case "integration.irons_spellbooks.loot_recipes":
+                return ISS_LOOT_COMBINATIONS.getAsBoolean();
             default:
                 ExtraStuck.LOGGER.info("Unknown or non-boolean config option: {}", name);
                 return false;

@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.grist_costs"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 13,
+    "minestuck:amethyst": 11,
+    "minestuck:chalk": 5,
+    "minestuck:iodine": 23,
+    "minestuck:tar": 31
+  },
+  "ingredient": {
+    "item": "irons_spellbooks:ruined_book"
+  }
+}

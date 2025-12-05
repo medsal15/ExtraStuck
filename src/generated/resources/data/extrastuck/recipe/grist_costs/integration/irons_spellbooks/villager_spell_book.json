@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.grist_costs"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:chalk": 300,
+    "minestuck:gold": 150,
+    "minestuck:iodine": 300,
+    "minestuck:ruby": 75
+  },
+  "ingredient": {
+    "item": "irons_spellbooks:villager_spell_book"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.combinations"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "irons_spellbooks:chained_book"
+  },
+  "input2": {
+    "item": "minecraft:sculk"
+  },
+  "mode": "and",
+  "output": "irons_spellbooks:ruined_book"
+}

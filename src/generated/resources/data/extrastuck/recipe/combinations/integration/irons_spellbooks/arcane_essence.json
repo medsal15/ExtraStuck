@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.combinations"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:glowstone_dust"
+  },
+  "input2": {
+    "item": "minecraft:enchanting_table"
+  },
+  "mode": "and",
+  "output": "irons_spellbooks:arcane_essence"
+}

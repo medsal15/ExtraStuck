@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.grist_costs"
+    }
+  ],
+  "type": "minestuck:source_grist_cost",
+  "grist_cost": {
+    "minestuck:build": 1,
+    "minestuck:caulk": 4,
+    "minestuck:cobalt": 2
+  },
+  "ingredient": {
+    "item": "irons_spellbooks:timeless_slurry"
+  },
+  "sources": [
+    "minecraft:echo_shard"
+  ]
+}

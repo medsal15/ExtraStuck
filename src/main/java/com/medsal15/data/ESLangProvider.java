@@ -343,13 +343,6 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.INCOMPLETE_MECHANICAL_RADBOW, "You can tell this is a great idea");
         addItem(ESItems.MECHANICAL_RADBOW, "Mechanical Radbow");
         addItemTooltip(ESItems.MECHANICAL_RADBOW, "An engineer's weapon of choice");
-        // Other Ranged
-        addItem(ESItems.HANDGUN, "Handgun");
-        addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
-        addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");
-        addItem(ESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
-        addEntityType(ESEntities.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
-        addEntityType(ESEntities.ITEM_BULLET, "Item Bullet");
         // Throwables
         addItem(ESItems.BEENADE, "Beenade");
         add(BEENADE_LOADED, "It buzzes softly");
@@ -359,6 +352,13 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.LEMONNADE, "LemonNade");
         addItemTooltip(ESItems.LEMONNADE, "This lemon burns houses down");
         addEntityType(ESEntities.LEMONNADE, "LemonNade");
+        // Other Ranged
+        addItem(ESItems.HANDGUN, "Handgun");
+        addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
+        addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");
+        addItem(ESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
+        addEntityType(ESEntities.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
+        addEntityType(ESEntities.ITEM_BULLET, "Item Bullet");
     }
 
     private void addArmors() {

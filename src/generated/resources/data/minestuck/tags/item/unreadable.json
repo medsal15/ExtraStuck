@@ -1,5 +1,21 @@
 {
   "values": [
-    "extrastuck:anti_die"
+    "extrastuck:anti_die",
+    {
+      "id": "irons_spellbooks:divine_soulshard",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:pyrium_ingot",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ancient_knowledge_fragment",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:eldritch_manuscript",
+      "required": false
+    }
   ]
 }

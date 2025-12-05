@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.conditions.ConfigCondition;
 import com.medsal15.items.ESItems;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.api.alchemy.GristTypes;
@@ -21,6 +22,7 @@ import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder;
 
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -50,6 +52,7 @@ import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 public final class ESRecipeProvider extends RecipeProvider {
     private static final ICondition CREATE_LOADED = new ModLoadedCondition("create");
     private static final ICondition FARMERSDELIGHT_LOADED = new ModLoadedCondition("farmersdelight");
+    private static final ICondition ISS_LOADED = new ModLoadedCondition("irons_spellbooks");
 
     public ESRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
@@ -67,6 +70,8 @@ public final class ESRecipeProvider extends RecipeProvider {
         foodRecipes(output);
         drinkRecipes(output);
         blockRecipes(output);
+
+        issRecipes(output);
 
         CombinationRecipeBuilder.of(ESItems.GIFT)
                 .input(Items.PAPER).and().input(MSItems.SURPRISE_EMBRYO)
@@ -295,7 +300,7 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CombinationRecipeBuilder.of(MSItems.QUENCH_CRUSHER)
                 .input(MSItems.COPSE_CRUSHER).or().input(ESItems.DESERT_JUICE)
-                .build(output, modid("combinations/quench_crusher"));
+                .build(output, modid("quench_crusher"));
         // #endregion Hammers
 
         // #region Dice
@@ -530,7 +535,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         CombinationRecipeBuilder.of(ESItems.THE_STING)
                 .input(MSItems.CONDUCTORS_BATON).and().input(Items.BEEHIVE)
-                .build(output, modid("combinations/the_sting_hive"));
+                .build(output, modid("the_sting_hive"));
         GristCostRecipeBuilder.of(ESItems.THE_STING)
                 .grist(GristTypes.GOLD, 60).grist(GristTypes.TAR, 40)
                 .build(output);
@@ -649,11 +654,11 @@ public final class ESRecipeProvider extends RecipeProvider {
         CombinationRecipeBuilder.of(ESItems.LEMONNADE)
                 .input(ESTags.Items.LEMON_FRUITS).and().input(Items.GUNPOWDER)
                 .build(output.withConditions(not(new TagEmptyCondition(ESTags.Items.LEMON_FRUITS))),
-                        modid("combinations/lemonnade_lemon_fruits"));
+                        modid("lemonnade_lemon_fruits"));
         CombinationRecipeBuilder.of(ESItems.LEMONNADE)
                 .input(ESTags.Items.LEMON_CROPS).and().input(Items.GUNPOWDER)
                 .build(output.withConditions(not(new TagEmptyCondition(ESTags.Items.LEMON_CROPS))),
-                        modid("combinations/lemonnade_lemon_crops"));
+                        modid("lemonnade_lemon_crops"));
         GristCostRecipeBuilder.of(ESItems.LEMONNADE)
                 .grist(GristTypes.AMBER, 40).grist(GristTypes.CHALK, 23).grist(GristTypes.GOLD, 9)
                 .build(output);
@@ -1048,7 +1053,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ESItems.PIZZA), Ingredient.of(ModTags.KNIVES),
                 ESItems.PIZZA_SLICE, 3)
-                .build(fdOutput, modid("cutting/pizza_slice").toString());
+                .build(fdOutput, modid("pizza_slice").toString());
         GristCostRecipeBuilder.of(ESItems.PIZZA_SLICE)
                 .grist(GristTypes.AMBER, 2).grist(GristTypes.RUST, 1)
                 .build(output);
@@ -1064,7 +1069,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addIngredient(MSItems.MOREL_MUSHROOM)
                 .unlockedByAnyIngredient(MSItems.SUSHROOM, MSItems.MOREL_MUSHROOM)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(fdOutput, modid("cooking/sushroom_stew").toString());
+                .save(fdOutput, modid("sushroom_stew"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ESItems.RADBURGER)
                 .requires(Tags.Items.FOODS_BREAD)
@@ -1091,7 +1096,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addIngredient(Items.BROWN_MUSHROOM)
                 .unlockedByAnyIngredient(MSItems.CLAW_SICKLE)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(fdOutput, modid("cooking/divine_temptation").toString());
+                .build(fdOutput, modid("divine_temptation").toString());
         CombinationRecipeBuilder.of(ESItems.DIVINE_TEMPTATION_BLOCK)
                 .input(Items.CAULDRON).and().input(Items.GOLDEN_APPLE)
                 .build(output);
@@ -1127,7 +1132,7 @@ public final class ESRecipeProvider extends RecipeProvider {
         // #region Cake Slice
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.APPLE_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.APPLE_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/apple_cake"));
+                .build(fdOutput, modid("apple_cake"));
         CombinationRecipeBuilder.of(ESItems.APPLE_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.APPLE)
                 .build(fdOutput);
@@ -1138,7 +1143,7 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.BLUE_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.BLUE_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/blue_cake"));
+                .build(fdOutput, modid("blue_cake"));
         CombinationRecipeBuilder.of(ESItems.BLUE_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(MSItems.GLOWING_MUSHROOM)
                 .build(fdOutput);
@@ -1149,13 +1154,13 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.COLD_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.COLD_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/cold_cake"));
+                .build(fdOutput, modid("cold_cake"));
         CombinationRecipeBuilder.of(ESItems.COLD_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.ICE)
-                .build(fdOutput, modid("combinations/cold_cake_slice_ice"));
+                .build(fdOutput, modid("cold_cake_slice_ice"));
         CombinationRecipeBuilder.of(ESItems.COLD_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.PACKED_ICE)
-                .build(fdOutput, modid("combinations/cold_cake_slice_packed"));
+                .build(fdOutput, modid("cold_cake_slice_packed"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.COLD_CAKE)
                 .requires(ESItems.COLD_CAKE_SLICE, 7)
                 .unlockedBy("has_cold_cake_slice", has(ESItems.COLD_CAKE_SLICE))
@@ -1163,13 +1168,13 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.RED_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.RED_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/red_cake"));
+                .build(fdOutput, modid("red_cake"));
         CombinationRecipeBuilder.of(ESItems.RED_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.MELON_SLICE)
-                .build(fdOutput, modid("combinations/red_cake_slice_melon"));
+                .build(fdOutput, modid("red_cake_slice_melon"));
         CombinationRecipeBuilder.of(ESItems.RED_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.GLISTERING_MELON_SLICE)
-                .build(fdOutput, modid("combinations/red_cake_slice_glistering"));
+                .build(fdOutput, modid("red_cake_slice_glistering"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.RED_CAKE)
                 .requires(ESItems.RED_CAKE_SLICE, 7)
                 .unlockedBy("has_red_cake_slice", has(ESItems.RED_CAKE_SLICE))
@@ -1177,16 +1182,16 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.HOT_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.HOT_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/hot_cake"));
+                .build(fdOutput, modid("hot_cake"));
         CombinationRecipeBuilder.of(ESItems.HOT_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.LAVA_BUCKET)
-                .build(fdOutput, modid("combinations/hot_cake_slice_lava"));
+                .build(fdOutput, modid("hot_cake_slice_lava"));
         CombinationRecipeBuilder.of(ESItems.HOT_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.BLAZE_POWDER)
-                .build(fdOutput, modid("combinations/hot_cake_slice_blaze"));
+                .build(fdOutput, modid("hot_cake_slice_blaze"));
         CombinationRecipeBuilder.of(ESItems.HOT_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.MAGMA_BLOCK)
-                .build(fdOutput, modid("combinations/hot_cake_slice_magma"));
+                .build(fdOutput, modid("hot_cake_slice_magma"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.HOT_CAKE)
                 .requires(ESItems.HOT_CAKE_SLICE, 7)
                 .unlockedBy("has_hot_cake_slice", has(ESItems.HOT_CAKE_SLICE))
@@ -1194,13 +1199,13 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.REVERSE_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.REVERSE_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/reverse_cake"));
+                .build(fdOutput, modid("reverse_cake"));
         CombinationRecipeBuilder.of(ESItems.REVERSE_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.GLASS_PANE)
-                .build(fdOutput, modid("combinations/reverse_cake_slice_pane"));
+                .build(fdOutput, modid("reverse_cake_slice_pane"));
         CombinationRecipeBuilder.of(ESItems.REVERSE_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.GLASS)
-                .build(fdOutput, modid("combinations/reverse_cake_slice_glass"));
+                .build(fdOutput, modid("reverse_cake_slice_glass"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.REVERSE_CAKE)
                 .requires(ESItems.REVERSE_CAKE_SLICE, 7)
                 .unlockedBy("has_reverse_cake_slice", has(ESItems.REVERSE_CAKE_SLICE))
@@ -1208,7 +1213,7 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.FUCHSIA_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.FUCHSIA_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/fuchsia_cake"));
+                .build(fdOutput, modid("fuchsia_cake"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.FUCHSIA_CAKE)
                 .requires(ESItems.FUCHSIA_CAKE_SLICE, 7)
                 .unlockedBy("has_fuchsia_cake_slice", has(ESItems.FUCHSIA_CAKE_SLICE))
@@ -1216,8 +1221,8 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.NEGATIVE_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.NEGATIVE_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/negative_cake"));
-        CombinationRecipeBuilder.of(ESItems.FUCHSIA_CAKE_SLICE)
+                .build(fdOutput, modid("negative_cake"));
+        CombinationRecipeBuilder.of(ESItems.NEGATIVE_CAKE_SLICE)
                 .input(ESItems.REVERSE_CAKE_SLICE).and().input(ESItems.FUCHSIA_CAKE_SLICE)
                 .build(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.NEGATIVE_CAKE)
@@ -1227,7 +1232,7 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.CARROT_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.CARROT_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/carrot_cake"));
+                .build(fdOutput, modid("carrot_cake"));
         CombinationRecipeBuilder.of(ESItems.CARROT_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.CARROT)
                 .build(fdOutput);
@@ -1238,7 +1243,7 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.CHOCOLATEY_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.CHOCOLATEY_CAKE_SLICE.get(), 7)
-                .build(fdOutput, modid("cutting/chocolatey_cake"));
+                .build(fdOutput, modid("chocolatey_cake"));
         CombinationRecipeBuilder.of(ESItems.CHOCOLATEY_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(Items.COCOA_BEANS)
                 .build(fdOutput);
@@ -1265,7 +1270,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addIngredient(Items.RED_MUSHROOM)
                 .unlockedByAnyIngredient(MSItems.CLAW_SICKLE)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(fdOutput, modid("cooking/mortal_temptation").toString());
+                .build(fdOutput, modid("mortal_temptation").toString());
         CombinationRecipeBuilder.of(ESItems.MORTAL_TEMPTATION_BLOCK)
                 .input(ESItems.DIVINE_TEMPTATION_BLOCK).and().input(MSItems.GOLDEN_GRASSHOPPER)
                 .build(output);
@@ -1283,7 +1288,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addIngredient(MSTags.Items.FAYGO)
                 .unlockedByAnyIngredient(MSItems.CANDY_CORN, MSItems.TUIX_BAR, MSItems.SPOREO)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(fdOutput, modid("cooking/candy_crunch").toString());
+                .save(fdOutput, modid("candy_crunch"));
         CombinationRecipeBuilder.of(ESItems.CANDY_CRUNCH)
                 .input(Items.BOWL).and().input(MSTags.Items.FAYGO)
                 .build(output);
@@ -1305,7 +1310,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addIngredient(Items.SUGAR)
                 .unlockedByAnyIngredient(ESItems.LEMONNADE)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(fdOutput, modid("cooking/sour_bomb_candy").toString());
+                .save(fdOutput, modid("sour_bomb_candy"));
         CombinationRecipeBuilder.of(ESItems.SOUR_BOMB_CANDY)
                 .input(ESItems.LEMONNADE).or().input(Items.SUGAR)
                 .build(output);
@@ -1327,7 +1332,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addIngredient(Items.NETHER_WART)
                 .unlockedByAnyIngredient(ESItems.LEMONNADE)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(output.withConditions(FARMERSDELIGHT_LOADED), modid("cooking/rocket_jump").toString());
+                .save(output.withConditions(FARMERSDELIGHT_LOADED), modid("rocket_jump"));
         CombinationRecipeBuilder.of(ESItems.ROCKET_JUMP)
                 .input(ESItems.LEMONNADE).or().input(Items.GLASS_BOTTLE)
                 .build(output);
@@ -1876,6 +1881,326 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.NORMAL_CAT_PLUSH)
                 .grist(GristTypes.BUILD, 1).grist(GristTypes.CHALK, 3)
                 .build(output);
+    }
+
+    private void issRecipes(@Nonnull RecipeOutput output) {
+        final RecipeOutput gristCosts = output.withConditions(ISS_LOADED,
+                new ConfigCondition("integration.irons_spellbooks.grist_costs"));
+        final RecipeOutput combinations = output.withConditions(ISS_LOADED,
+                new ConfigCondition("integration.irons_spellbooks.combinations"));
+        final RecipeOutput lootCombinations = output.withConditions(ISS_LOADED,
+                new ConfigCondition("integration.irons_spellbooks.loot_combinations"));
+
+        final String pathPrefix = "integration/irons_spellbooks/";
+
+        // #region Spell Books
+        GristCostRecipeBuilder.of(ItemRegistry.EVOKER_SPELL_BOOK.get())
+                .grist(GristTypes.TAR, 450).grist(GristTypes.GOLD, 360).grist(GristTypes.MARBLE, 360)
+                .build(gristCosts, modid("evoker_spell_book").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.EVOKER_SPELL_BOOK.get())
+                .input(ItemRegistry.RUINED_BOOK.get()).or().input(ItemRegistry.EVOCATION_RUNE.get())
+                .build(lootCombinations, modid("evoker_spell_book").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.NECRONOMICON.get())
+                .grist(GristTypes.IODINE, 600).grist(GristTypes.AMBER, 250).grist(GristTypes.GOLD, 450)
+                .build(gristCosts, modid("necronomicon_spell_book").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.NECRONOMICON.get())
+                .input(ItemRegistry.ROTTEN_SPELL_BOOK.get()).and().input(ItemRegistry.BLOOD_RUNE.get())
+                .build(lootCombinations, modid("necronomicon_spell_book").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.ROTTEN_SPELL_BOOK.get())
+                .grist(GristTypes.IODINE, 300).grist(GristTypes.AMBER, 50).grist(GristTypes.SHALE, 75)
+                .build(gristCosts, modid("rotten_spell_book").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.ROTTEN_SPELL_BOOK.get())
+                .input(ItemRegistry.IRON_SPELL_BOOK.get()).and().input(Items.ROTTEN_FLESH)
+                .build(lootCombinations, modid("rotten_spell_book").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.BLAZE_SPELL_BOOK.get())
+                .grist(GristTypes.TAR, 450).grist(GristTypes.SULFUR, 250).grist(GristTypes.URANIUM, 175)
+                .build(gristCosts, modid("blaze_spell_book").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.BLAZE_SPELL_BOOK.get())
+                .input(ItemRegistry.GOLD_SPELL_BOOK.get()).and().input(Items.BLAZE_ROD)
+                .build(lootCombinations, modid("blaze_spell_book").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.VILLAGER_SPELL_BOOK.get())
+                .grist(GristTypes.IODINE, 300).grist(GristTypes.CHALK, 300)
+                .grist(GristTypes.GOLD, 150).grist(GristTypes.RUBY, 75)
+                .build(gristCosts, modid("villager_spell_book").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.VILLAGER_SPELL_BOOK.get())
+                .input(ItemRegistry.COPPER_SPELL_BOOK.get()).or().input(ItemRegistry.HOLY_RUNE.get())
+                .build(lootCombinations, modid("villager_spell_book").withPrefix(pathPrefix));
+        // #endregion Spell Books
+
+        // #region Curios
+        GristCostRecipeBuilder.of(ItemRegistry.SILVER_RING.get())
+                .grist(GristTypes.MERCURY, 75).grist(GristTypes.DIAMOND, 5)
+                .build(gristCosts, modid("silver_ring").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.SILVER_RING.get())
+                .input(Items.ENCHANTING_TABLE).or().input(ItemRegistry.ARCANE_ESSENCE.get())
+                .build(combinations, modid("silver_ring").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.TELEPORTATION_AMULET.get())
+                .grist(GristTypes.RUST, 36).grist(GristTypes.DIAMOND, 1).grist(GristTypes.MERCURY, 2)
+                .grist(GristTypes.URANIUM, 4).grist(GristTypes.ARTIFACT, 4)
+                .build(gristCosts, modid("teleportation_amulet").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.TELEPORTATION_AMULET.get())
+                .input(ItemRegistry.AMETHYST_RESONANCE_NECKLACE.get()).or().input(Items.ENDER_PEARL)
+                .build(combinations, modid("teleportation_amulet").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.INVISIBILITY_RING.get())
+                .grist(GristTypes.QUARTZ, 75).grist(GristTypes.MERCURY, 55).grist(GristTypes.ARTIFACT, 35)
+                .build(gristCosts, modid("invisibility_ring").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.INVISIBILITY_RING.get())
+                .input(ItemRegistry.VISIBILITY_RING.get()).and().input(Items.TINTED_GLASS)
+                .build(combinations, modid("invisibility_ring").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.SIGNET_OF_THE_BETRAYER.get())
+                .grist(GristTypes.RUST, 350).grist(GristTypes.CAULK, 290).grist(GristTypes.SHALE, 230)
+                .build(gristCosts, modid("betrayer_signet").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.SIGNET_OF_THE_BETRAYER.get())
+                .input(ItemRegistry.AFFINITY_RING.get()).and().input(Items.ECHO_SHARD)
+                .build(lootCombinations, modid("betrayer_signet").withPrefix(pathPrefix));
+        // #endregion Curios
+
+        // #region Weapons
+        GristCostRecipeBuilder.of(ItemRegistry.BLOOD_STAFF.get())
+                .grist(GristTypes.GARNET, 800).grist(GristTypes.GOLD, 666).grist(GristTypes.TAR, 750)
+                .build(gristCosts, modid("blood_staff").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.BLOOD_STAFF.get())
+                .input(ItemRegistry.ARTIFICER_STAFF.get()).and().input(ItemRegistry.BLOOD_RUNE.get())
+                .build(lootCombinations, modid("blood_staff").withPrefix(pathPrefix));
+
+        SourceGristCostBuilder.of(ItemRegistry.LIGHTNING_ROD_STAFF.get())
+                .source(Items.LIGHTNING_ROD).source(ItemRegistry.ENERGIZED_CORE.get())
+                .build(gristCosts, modid("lightning_rod").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.MAGEHUNTER.get())
+                .grist(GristTypes.DIAMOND, 25).grist(GristTypes.MERCURY, 75)
+                .build(gristCosts, modid("magehunter").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.MAGEHUNTER.get())
+                .input(Items.DIAMOND_SWORD).or().input(ItemRegistry.BLANK_RUNE.get())
+                .build(lootCombinations, modid("magehunter").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.KEEPER_FLAMBERGE.get())
+                .grist(GristTypes.RUST, 350).grist(GristTypes.GOLD, 175)
+                .build(gristCosts, modid("keeper_flamberge").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.KEEPER_FLAMBERGE.get())
+                .input(Items.NETHERITE_SWORD).and().input(ItemRegistry.CINDER_ESSENCE.get())
+                .build(lootCombinations, modid("keeper_flamberge").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.DECREPIT_SCYTHE.get())
+                .grist(GristTypes.RUST, 350).grist(GristTypes.GOLD, 175)
+                .build(gristCosts, modid("decrepit_scythe").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.DECREPIT_SCYTHE.get())
+                .input(MSItems.SUNRAY_HARVESTER).and().input(ItemRegistry.CINDER_ESSENCE.get())
+                .build(lootCombinations, modid("decrepit_scythe").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.AUTOLOADER_CROSSBOW.get())
+                .grist(GristTypes.BUILD, 21).grist(GristTypes.GOLD, 49).grist(GristTypes.AMBER, 70)
+                .build(gristCosts, modid("autoloader_crossbow").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.AUTOLOADER_CROSSBOW.get())
+                .input(Items.CROSSBOW).or().input(Items.HOPPER)
+                .build(combinations, modid("autoloader_crossbow").withPrefix(pathPrefix));
+        // #endregion Weapons
+
+        // #region Materials
+        CombinationRecipeBuilder.of(ItemRegistry.INK_COMMON.get())
+                .input(MSItems.INK_SQUID_PRO_QUO).or().input(ItemRegistry.ARCANE_ESSENCE.get())
+                .build(combinations, modid("common_ink").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.INK_COMMON.get())
+                .grist(GristTypes.TAR, 10).grist(GristTypes.BUILD, 1)
+                .build(gristCosts, modid("common_ink").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.INK_UNCOMMON.get())
+                .grist(GristTypes.TAR, 40).grist(GristTypes.AMBER, 8).grist(GristTypes.BUILD, 1)
+                .build(gristCosts, modid("uncommon_ink").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.INK_RARE.get())
+                .grist(GristTypes.TAR, 150).grist(GristTypes.AMBER, 8).grist(GristTypes.COBALT, 8)
+                .grist(GristTypes.BUILD, 1)
+                .build(gristCosts, modid("rare_ink").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.INK_EPIC.get())
+                .grist(GristTypes.TAR, 600).grist(GristTypes.AMBER, 8).grist(GristTypes.COBALT, 8)
+                .grist(GristTypes.AMETHYST, 8).grist(GristTypes.BUILD, 1)
+                .build(gristCosts, modid("epic_ink").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.INK_LEGENDARY.get())
+                .grist(GristTypes.TAR, 2000).grist(GristTypes.AMBER, 8).grist(GristTypes.COBALT, 8)
+                .grist(GristTypes.AMETHYST, 8).grist(GristTypes.GOLD, 8).grist(GristTypes.BUILD, 1)
+                .build(gristCosts, modid("legendary_ink").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.LIGHTNING_BOTTLE.get())
+                .input(Items.GLASS_BOTTLE).and().input(Items.LIGHTNING_ROD)
+                .build(combinations, modid("lightning_bottle").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.LIGHTNING_BOTTLE.get())
+                .grist(GristTypes.QUARTZ, 8).grist(GristTypes.CHALK, 4).grist(GristTypes.BUILD, 2)
+                .build(gristCosts, modid("lightning_bottle").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.FROZEN_BONE_SHARD.get())
+                .input(Items.BONE).or().input(Items.ICE)
+                .build(lootCombinations, modid("frozen_bone").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.FROZEN_BONE_SHARD.get())
+                .grist(GristTypes.CHALK, 7).grist(GristTypes.COBALT, 3)
+                .build(gristCosts, modid("frozen_bone").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.BLOOD_VIAL.get())
+                .grist(GristTypes.GARNET, 8).grist(GristTypes.BUILD, 1)
+                .build(gristCosts, modid("blood_vial").withPrefix(pathPrefix));
+
+        SourceGristCostBuilder.of(ItemRegistry.ICE_VENOM_VIAL.get())
+                .source(ItemRegistry.ICY_FANG.get())
+                .grist(GristTypes.COBALT, 1).grist(GristTypes.BUILD, 1)
+                .build(gristCosts, modid("ice_venom_vial").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.HOGSKIN.get())
+                .input(Items.LEATHER).or().input(Items.NETHERRACK)
+                .build(lootCombinations, modid("hogskin").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.HOGSKIN.get())
+                .grist(GristTypes.IODINE, 9).grist(GristTypes.SULFUR, 3)
+                .build(gristCosts, modid("hogskin").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.BLOODY_VELLUM.get())
+                .grist(GristTypes.IODINE, 9).grist(GristTypes.SULFUR, 3).grist(GristTypes.GARNET, 32)
+                .build(gristCosts, modid("bloody_vellum").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.DRAGONSKIN.get())
+                .grist(GristTypes.SHALE, 25).grist(GristTypes.MERCURY, 9)
+                .build(gristCosts, modid("dragonskin").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.ARCANE_ESSENCE.get())
+                .input(Items.GLOWSTONE_DUST).and().input(Items.ENCHANTING_TABLE)
+                .build(combinations, modid("arcane_essence").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.ARCANE_ESSENCE.get())
+                .grist(GristTypes.AMETHYST, 7).grist(GristTypes.COBALT, 3)
+                .build(gristCosts, modid("arcane_essence").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.CHAINED_BOOK.get())
+                .input(Items.BOOK).or().input(Items.CHAIN)
+                .build(combinations, modid("chained_book").withPrefix(pathPrefix));
+        SourceGristCostBuilder.of(ItemRegistry.CHAINED_BOOK.get())
+                .source(Items.BOOK)
+                .grist(GristTypes.RUST, 11)
+                .build(gristCosts, modid("chained_book").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.RUINED_BOOK.get())
+                .input(ItemRegistry.CHAINED_BOOK.get()).and().input(Items.SCULK)
+                .build(combinations, modid("ruined_book").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.RUINED_BOOK.get())
+                .grist(GristTypes.IODINE, 23).grist(GristTypes.CHALK, 5).grist(GristTypes.AMBER, 13)
+                .grist(GristTypes.TAR, 31).grist(GristTypes.AMETHYST, 11)
+                .build(gristCosts, modid("ruined_book").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.CINDER_ESSENCE.get())
+                .input(ItemRegistry.ARCANE_ESSENCE.get()).and().input(Items.BLAZE_POWDER)
+                .build(combinations, modid("cinder_essence").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.CINDER_ESSENCE.get())
+                .grist(GristTypes.TAR, 17).grist(GristTypes.GOLD, 7)
+                .build(gristCosts, modid("cinder_essence").withPrefix(pathPrefix));
+
+        SourceGristCostBuilder.of(ItemRegistry.TIMELESS_SLURRY.get())
+                .source(Items.ECHO_SHARD)
+                .grist(GristTypes.COBALT, 2).grist(GristTypes.BUILD, 1).grist(GristTypes.CAULK, 4)
+                .build(gristCosts, modid("timeless_slurry").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.MITHRIL_SCRAP.get())
+                .input(ItemRegistry.ARCANE_ESSENCE.get()).and().input(Items.NETHERITE_SCRAP)
+                .build(combinations, modid("mithril_scrap").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.MITHRIL_SCRAP.get())
+                .grist(GristTypes.DIAMOND, 45).grist(GristTypes.MERCURY, 90)
+                .build(gristCosts, modid("mithril_scrap").withPrefix(pathPrefix));
+
+        SourceGristCostBuilder.of(ItemRegistry.RAW_MITHRIL.get())
+                .source(ItemRegistry.MITHRIL_SCRAP.get())
+                .build(gristCosts, modid("raw_mithril").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.DIVINE_SOULSHARD.get())
+                .input(Items.NETHER_STAR).or().input(Items.ECHO_SHARD)
+                .build(lootCombinations, modid("divine_soulshard").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.DIVINE_SOULSHARD.get())
+                .grist(GristTypes.RUBY, 97).grist(GristTypes.AMETHYST, 150).grist(GristTypes.QUARTZ, 344)
+                .build(gristCosts, modid("divine_soulshard").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.PYRIUM_INGOT.get())
+                .input(Items.NETHERITE_INGOT).and().input(ItemRegistry.DIVINE_SOULSHARD.get())
+                .build(combinations, modid("pyrium_ingot").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.PYRIUM_INGOT.get())
+                .grist(GristTypes.GOLD, 150).grist(GristTypes.SULFUR, 250)
+                .build(gristCosts, modid("pyrium_ingot").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.get())
+                .input(ItemRegistry.SCROLL.get()).or().input(MSItems.GRIMOIRE)
+                .build(combinations, modid("ancient_knowledge_fragment").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.get())
+                .grist(GristTypes.MARBLE, 25).grist(GristTypes.COBALT, 80).grist(GristTypes.TAR, 50)
+                .build(gristCosts, modid("ancient_knowledge_fragment").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.ICY_FANG.get())
+                .input(Items.SPIDER_EYE).and().input(Items.PACKED_ICE)
+                .build(lootCombinations, modid("icy_fang").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.ICY_FANG.get())
+                .grist(GristTypes.CAULK, 29).grist(GristTypes.QUARTZ, 12)
+                .build(gristCosts, modid("icy_fang").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.ICE_CRYSTAL.get())
+                .input(Items.DIAMOND).and().input(Items.BLUE_ICE)
+                .build(combinations, modid("permafrost_shard").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.ICE_CRYSTAL.get())
+                .grist(GristTypes.DIAMOND, 54).grist(GristTypes.COBALT, 90)
+                .build(gristCosts, modid("permafrost_shard").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.BLANK_RUNE.get())
+                .input(Items.STONE_SLAB).or().input(ItemRegistry.ARCANE_ESSENCE.get())
+                .build(combinations, modid("blank_rune").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.BLANK_RUNE.get())
+                .grist(GristTypes.BUILD, 800).grist(GristTypes.RUST, 92).grist(GristTypes.AMETHYST, 32)
+                .build(gristCosts, modid("blank_rune").withPrefix(pathPrefix));
+        // #endregion Materials
+
+        // #region Blocks
+        CombinationRecipeBuilder.of(ItemRegistry.INSCRIPTION_TABLE_BLOCK_ITEM.get())
+                .input(ItemRegistry.SCROLL.get()).and().input(Items.CRAFTING_TABLE)
+                .build(combinations, modid("inscription_table").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.ACANE_ANVIL_BLOCK_ITEM.get())
+                .input(Items.ANVIL).or().input(Items.AMETHYST_BLOCK)
+                .build(combinations, modid("arcane_anvil").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.MITHRIL_ORE_BLOCK_ITEM.get())
+                .input(ItemRegistry.MITHRIL_INGOT.get()).and().input(Items.STONE)
+                .build(combinations, modid("mithril_ore").withPrefix(pathPrefix));
+        SourceGristCostBuilder.of(ESTags.Items.ISS_MITHRIL_ORES)
+                .grist(GristTypes.BUILD, 4).multiplier(3).source(ItemRegistry.RAW_MITHRIL.get())
+                .build(gristCosts, modid("mithril_ore").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.ALCHEMIST_CAULDRON_BLOCK_ITEM.get())
+                .input(Items.CAULDRON).or().input(ItemRegistry.ARCANE_ESSENCE.get())
+                .build(combinations, modid("alchemist_cauldron").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ItemRegistry.PORTAL_FRAME_ITEM.get())
+                .input(MSItems.TRANSPORTALIZER).and().input(ItemRegistry.MITHRIL_INGOT.get())
+                .build(combinations, modid("portal_frame").withPrefix(pathPrefix));
+        // #endregion Blocks
+
+        // Misc
+        GristCostRecipeBuilder.of(ItemRegistry.TARNISHED_CROWN.get())
+                .grist(GristTypes.RUST, 299).grist(GristTypes.CAULK, 135)
+                .build(gristCosts, modid("tarnished_crown").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.TARNISHED_CROWN.get())
+                .input(Items.CHAINMAIL_HELMET).and().input(ItemRegistry.ARCANE_ESSENCE.get())
+                .build(lootCombinations, modid("tarnished_crown").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.HITHER_THITHER_WAND.get())
+                .grist(GristTypes.AMETHYST, 664).grist(GristTypes.GOLD, 200).grist(GristTypes.BUILD, 400)
+                .build(gristCosts, modid("hither_thither_wand").withPrefix(pathPrefix));
+        CombinationRecipeBuilder.of(ItemRegistry.HITHER_THITHER_WAND.get())
+                .input(ItemRegistry.GRAYBEARD_STAFF.get()).and().input(ItemRegistry.PORTAL_FRAME_ITEM.get())
+                .build(combinations, modid("hither_thither_wand").withPrefix(pathPrefix));
+
+        GristCostRecipeBuilder.of(ItemRegistry.MUSIC_DISC_DEAD_KING_LULLABY.get())
+                .grist(GristTypes.BUILD, 15).grist(GristTypes.CAULK, 8)
+                .grist(GristTypes.IODINE, 5).grist(GristTypes.RUST, 5)
+                .build(gristCosts, modid("music_disc_dead_king_lullaby").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.FLAME_STILL_BURNS_FRAGMENT.get())
+                .grist(GristTypes.BUILD, 25).grist(GristTypes.RUBY, 4)
+                .grist(GristTypes.GOLD, 8).grist(GristTypes.TAR, 15)
+                .build(gristCosts, modid("disc_fragment_flame_still_burns").withPrefix(pathPrefix));
     }
 
     private ICondition not(ICondition condition) {

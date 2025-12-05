@@ -5,6 +5,7 @@ import static com.medsal15.ExtraStuck.modid;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
@@ -485,6 +486,7 @@ public final class ESItems {
     public static final DeferredItem<Item> STOCKS_UPTICKER = ITEMS.register("stocks_upticker", () -> new WeaponItem(
             new WeaponItem.Builder(Tiers.GOLD, 4, -1F).efficiency(2F).set(MSItemTypes.BATON_TOOL),
             new MSItemProperties().durability(1326)));
+    // TODO stocks downticker (drains boondollars from players)
     // #endregion Batons
     // #region Swords
     public static final DeferredItem<Item> SUN_REAVER = ITEMS.register("sun_reaver", () -> new WeaponItem(
@@ -533,7 +535,6 @@ public final class ESItems {
                             .set(ItemRightClickEffect.switchTo(ESItems.CASHGRABBERS)),
                     new MSItemProperties().durability(1326)));
     // #endregion Claws
-    // TODO stocks downticker (drains boondollars from players)
 
     // #region Crossbows
     public static final DeferredItem<Item> RADBOW = ITEMS.register("radbow",
@@ -903,6 +904,12 @@ public final class ESItems {
         output.accept(BEENADE);
         output.accept(LEMONNADE);
 
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            for (DeferredItem<Item> item : ESItems.getSpellbooks()) {
+                output.accept(item.get());
+            }
+        }
+
         for (DeferredItem<Item> item : ESItems.getArrows()) {
             output.accept(item.get());
         }
@@ -1069,6 +1076,12 @@ public final class ESItems {
         // Claws
         list.add(CASHGRABBERS);
         list.add(CASHGRABBERS_SHEATHED);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getSpellbooks() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
         return list;
     }
 
@@ -1282,5 +1295,11 @@ public final class ESItems {
         list.add(CARD_ORE);
 
         return list;
+    }
+
+    private static Supplier<Item> otherModItem(String modid, Supplier<Item> missing, Supplier<Item> present) {
+        if (ModList.get().isLoaded(modid))
+            return present;
+        return missing;
     }
 }

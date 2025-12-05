@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.grist_costs"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amethyst": 32,
+    "minestuck:build": 800,
+    "minestuck:rust": 92
+  },
+  "ingredient": {
+    "item": "irons_spellbooks:blank_rune"
+  }
+}

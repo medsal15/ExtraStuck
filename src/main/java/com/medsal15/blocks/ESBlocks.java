@@ -55,6 +55,7 @@ public final class ESBlocks {
     // Objectively worse than a miniature alchemiter
     public static final DeferredBlock<PrinterBlock> PRINTER = BLOCKS.registerBlock("printer", PrinterBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
+    // TODO disprinter, printer && dispenser
     public static final DeferredBlock<ChargerBlock> CHARGER = BLOCKS.registerBlock("charger", ChargerBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
     // Objectively better than a charger

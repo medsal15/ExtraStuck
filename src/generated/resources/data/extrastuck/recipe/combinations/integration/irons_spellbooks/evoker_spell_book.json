@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.loot_combinations"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "irons_spellbooks:ruined_book"
+  },
+  "input2": {
+    "item": "irons_spellbooks:evocation_rune"
+  },
+  "mode": "or",
+  "output": "irons_spellbooks:evoker_spell_book"
+}

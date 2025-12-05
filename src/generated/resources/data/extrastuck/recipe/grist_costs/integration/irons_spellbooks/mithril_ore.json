@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.grist_costs"
+    }
+  ],
+  "type": "minestuck:source_grist_cost",
+  "grist_cost": {
+    "minestuck:build": 4
+  },
+  "ingredient": {
+    "tag": "c:ores/mithril"
+  },
+  "multiplier": 3.0,
+  "sources": [
+    "irons_spellbooks:raw_mithril"
+  ]
+}

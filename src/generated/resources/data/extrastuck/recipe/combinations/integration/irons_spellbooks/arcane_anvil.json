@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.combinations"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:anvil"
+  },
+  "input2": {
+    "item": "minecraft:amethyst_block"
+  },
+  "mode": "or",
+  "output": "irons_spellbooks:arcane_anvil"
+}

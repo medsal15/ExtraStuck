@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "extrastuck:config",
+      "option": "integration.irons_spellbooks.loot_combinations"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "irons_spellbooks:gold_spell_book"
+  },
+  "input2": {
+    "item": "minecraft:blaze_rod"
+  },
+  "mode": "and",
+  "output": "irons_spellbooks:blaze_spell_book"
+}
