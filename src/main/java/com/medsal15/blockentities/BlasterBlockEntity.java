@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 import com.medsal15.blockentities.handlers.BEStackHandler;
 import com.medsal15.blockentities.handlers.FuellessWrapper;
 import com.medsal15.blocks.machine.BlasterBlock;
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.menus.BlasterMenu;
 import com.medsal15.particles.ESParticleTypes;
 import com.mraof.minestuck.block.machine.MachineBlock;
@@ -165,7 +165,7 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
     }
 
     public boolean canRefuel() {
-        return fuel <= ConfigCommon.BLASTER_URANIUM_STORAGE.get() - FUEL_INCREASE;
+        return fuel <= ConfigServer.BLASTER_URANIUM_STORAGE.get() - FUEL_INCREASE;
     }
 
     // MachineProcessBlockEntity
@@ -236,7 +236,7 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
     // UraniumPowered
     @Override
     public boolean atMaxFuel() {
-        return fuel >= ConfigCommon.BLASTER_URANIUM_STORAGE.get();
+        return fuel >= ConfigServer.BLASTER_URANIUM_STORAGE.get();
     }
 
     @Override

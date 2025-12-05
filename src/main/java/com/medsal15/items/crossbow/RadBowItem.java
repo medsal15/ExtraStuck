@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.projectiles.UraniumRod;
 import com.medsal15.items.components.ESDataComponents;
@@ -84,7 +84,7 @@ public class RadBowItem extends CrossbowItem {
         int time = getUseDuration(stack, entity) - timeLeft;
         float power = getPowerForTime(time, stack, entity);
         if (power >= 1 && !isCharged(stack)) {
-            stack.set(ESDataComponents.URANIUM_CHARGE, ConfigCommon.RADBOW_CHARGES.get());
+            stack.set(ESDataComponents.URANIUM_CHARGE, ConfigServer.RADBOW_CHARGES.get());
         }
     }
 

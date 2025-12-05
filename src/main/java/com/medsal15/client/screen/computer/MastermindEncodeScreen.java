@@ -3,7 +3,7 @@ package com.medsal15.client.screen.computer;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.network.ESPackets.MastermindReset;
@@ -46,7 +46,7 @@ public class MastermindEncodeScreen extends ThemedScreen {
     public void init() {
         super.init();
 
-        difficulty = ConfigCommon.MASTERMIND_DIFFICULTY.get();
+        difficulty = ConfigServer.MASTERMIND_DIFFICULTY.get();
 
         decrease = new ExtendedButton(xOffset + SCREEN_OFFSET_X + 8, yOffset + SCREEN_OFFSET_Y + 8, 20, 20,
                 Component.literal("-"), button -> {

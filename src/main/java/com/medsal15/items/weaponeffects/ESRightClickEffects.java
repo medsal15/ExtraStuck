@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.mraof.minestuck.client.util.MagicEffect;
@@ -38,7 +38,7 @@ public final class ESRightClickEffects {
                 player.playSound(SoundEvents.FIRE_EXTINGUISH);
                 return InteractionResultHolder.success(stack);
             }
-            int fuel_needed = ConfigCommon.STEAM_FUEL_CONSUME.get();
+            int fuel_needed = ConfigServer.STEAM_FUEL_CONSUME.get();
             if (fuel.fuel() >= fuel_needed) {
                 stack.set(ESDataComponents.STEAM_FUEL, fuel.toggle(true));
                 player.playSound(SoundEvents.FLINTANDSTEEL_USE);

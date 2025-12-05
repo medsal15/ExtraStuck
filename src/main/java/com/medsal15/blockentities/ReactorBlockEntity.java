@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.handlers.BEStackHandler;
 import com.medsal15.blockentities.handlers.FuellessWrapper;
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESFluidTags;
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.menus.ReactorMenu;
@@ -157,15 +157,15 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
     }
 
     public boolean canCharge() {
-        return charge + ConfigCommon.REACTOR_CHARGE_TICK.get() <= ConfigCommon.REACTOR_FE_STORAGE.get();
+        return charge + ConfigServer.REACTOR_CHARGE_TICK.get() <= ConfigServer.REACTOR_FE_STORAGE.get();
     }
 
     public boolean canUranium() {
-        return uranium + ConfigCommon.REACTOR_URANIUM_TICK.get() <= ConfigCommon.REACTOR_URANIUM_STORAGE.get();
+        return uranium + ConfigServer.REACTOR_URANIUM_TICK.get() <= ConfigServer.REACTOR_URANIUM_STORAGE.get();
     }
 
     public boolean canDrain() {
-        return fluid.getAmount() >= ConfigCommon.REACTOR_FLUID_TICK.get();
+        return fluid.getAmount() >= ConfigServer.REACTOR_FLUID_TICK.get();
     }
 
     public boolean canOutput() {
@@ -243,7 +243,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int getTankCapacity(int tank) {
-            return ConfigCommon.REACTOR_FLUID_STORAGE.get();
+            return ConfigServer.REACTOR_FLUID_STORAGE.get();
         }
 
         @Override
@@ -256,7 +256,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
             if (!reactor.fluid.isEmpty() && !FluidStack.isSameFluidSameComponents(reactor.fluid, resource))
                 return 0;
 
-            int missing = ConfigCommon.REACTOR_FLUID_STORAGE.get() - reactor.fluid.getAmount();
+            int missing = ConfigServer.REACTOR_FLUID_STORAGE.get() - reactor.fluid.getAmount();
             int filled = Math.min(missing, resource.getAmount());
 
             if (action == FluidAction.EXECUTE) {
@@ -307,7 +307,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int receiveEnergy(int toReceive, boolean simulate) {
-            int missing = Math.min(ConfigCommon.REACTOR_FE_STORAGE.get() - reactor.charge, toReceive);
+            int missing = Math.min(ConfigServer.REACTOR_FE_STORAGE.get() - reactor.charge, toReceive);
 
             if (!simulate) {
                 reactor.charge += missing;
@@ -334,7 +334,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public int getMaxEnergyStored() {
-            return ConfigCommon.REACTOR_FE_STORAGE.get();
+            return ConfigServer.REACTOR_FE_STORAGE.get();
         }
 
         @Override
@@ -375,7 +375,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
         // Process
         if (fuel > 0 && canOutput() && (canCharge() || canUranium())
-                && (canDrain() || ConfigCommon.REACTOR_EXPLODE.getAsBoolean())) {
+                && (canDrain() || ConfigServer.REACTOR_EXPLODE.getAsBoolean())) {
             if (!canDrain() && l != null) {
                 // Kaboom
                 l.explode(null, worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), fuel / 10,
@@ -383,12 +383,12 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
                 return;
             }
             if (canUranium()) {
-                uranium += ConfigCommon.REACTOR_URANIUM_TICK.get();
+                uranium += ConfigServer.REACTOR_URANIUM_TICK.get();
             }
             if (canCharge()) {
-                charge += ConfigCommon.REACTOR_CHARGE_TICK.get();
+                charge += ConfigServer.REACTOR_CHARGE_TICK.get();
             }
-            fluid.shrink(ConfigCommon.REACTOR_FLUID_TICK.get());
+            fluid.shrink(ConfigServer.REACTOR_FLUID_TICK.get());
             fuel--;
             changed = true;
         }
@@ -419,7 +419,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
                 // Send uranium power to neighbors
                 if (uranium > 0 && neighbe instanceof UraniumPowered powered && !powered.atMaxFuel()) {
-                    powered.addFuel((short) Math.min(uranium, ConfigCommon.REACTOR_MAX_URANIUM_TRANSFER.get()));
+                    powered.addFuel((short) Math.min(uranium, ConfigServer.REACTOR_MAX_URANIUM_TRANSFER.get()));
                     uranium--;
                 }
 
@@ -428,7 +428,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
                         dir.getOpposite());
                 if (charge > 0 && neighandler != null && neighandler.canReceive()) {
                     int sent = neighandler.receiveEnergy(
-                            Math.min(this.charge, ConfigCommon.REACTOR_MAX_FE_TRANSFER.get()),
+                            Math.min(this.charge, ConfigServer.REACTOR_MAX_FE_TRANSFER.get()),
                             false);
                     charge -= sent;
                 }

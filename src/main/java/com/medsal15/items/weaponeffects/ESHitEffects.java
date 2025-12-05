@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 import com.medsal15.ExtraStuck;
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
@@ -278,7 +278,7 @@ public final class ESHitEffects {
             if (!stack.has(ESDataComponents.STEAM_FUEL))
                 return;
 
-            int fuel = ConfigCommon.STEAM_FUEL_CONSUME.get();
+            int fuel = ConfigServer.STEAM_FUEL_CONSUME.get();
             SteamFuelComponent steamFuel = stack.get(ESDataComponents.STEAM_FUEL);
             if (steamFuel.burning() && steamFuel.fuel() >= fuel) {
                 if (consume) {

@@ -2,6 +2,7 @@ package com.medsal15.modus;
 
 import java.util.Optional;
 
+import com.medsal15.config.ConfigServer;
 import com.mraof.minestuck.inventory.captchalogue.CaptchaDeckHandler;
 import com.mraof.minestuck.inventory.captchalogue.ModusType;
 import com.mraof.minestuck.item.CaptchaCardItem;
@@ -103,20 +104,20 @@ public class FurnaceModus extends BaseModus {
 
         // Check if there is a smelting recipe available
         Optional<? extends AbstractCookingRecipe> optionalRecipe = getRecipe(item, player.level());
+        int cost = ConfigServer.FURNACE_DEFAULT_COST.get();
         if (optionalRecipe.isPresent()) {
             AbstractCookingRecipe recipe = optionalRecipe.get();
-            int cost = recipe.getCookingTime() * item.getCount();
-            if (cost > fuel) {
-                return ItemStack.EMPTY;
-            } else {
-                fuel -= cost;
+            cost = recipe.getCookingTime() * item.getCount();
+            if (cost <= fuel) {
                 item = recipe.getResultItem(player.level().registryAccess()).copyWithCount(item.getCount());
-                list.remove(slot);
             }
-        } else if (fuel >= 200) {
-            // Default to 200 fuel cost
+        } else if (fuel < cost) {
+            return ItemStack.EMPTY;
+        }
+
+        if (cost <= fuel) {
+            fuel -= cost;
             list.remove(slot);
-            fuel -= 200;
         } else {
             return ItemStack.EMPTY;
         }
@@ -143,6 +144,6 @@ public class FurnaceModus extends BaseModus {
     }
 
     public int getFuel() {
-        return fuel / 200;
+        return fuel / ConfigServer.FURNACE_DEFAULT_COST.get();
     }
 }

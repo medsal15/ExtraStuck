@@ -3,7 +3,7 @@ package com.medsal15.client.screen.machine;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.menus.BlasterMenu;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mraof.minestuck.Minestuck;
@@ -43,7 +43,7 @@ public class BlasterScreen extends MachineScreen<BlasterMenu> {
 
         guiGraphics.blit(BACKGROUND_TEXTURE, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
-        int fuel_fill = getScaledValue(menu.getFuel(), ConfigCommon.BLASTER_URANIUM_STORAGE.get(), FUEL_BAR_HEIGHT);
+        int fuel_fill = getScaledValue(menu.getFuel(), ConfigServer.BLASTER_URANIUM_STORAGE.get(), FUEL_BAR_HEIGHT);
         guiGraphics.blit(FUEL_BAR_TEXTURE, leftPos + FUEL_BAR_X, topPos + FUEL_BAR_Y + FUEL_BAR_HEIGHT - fuel_fill, 0,
                 FUEL_BAR_HEIGHT - fuel_fill, FUEL_BAR_WIDTH, fuel_fill, FUEL_BAR_WIDTH, FUEL_BAR_HEIGHT);
     }

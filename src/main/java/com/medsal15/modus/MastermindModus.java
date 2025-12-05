@@ -2,7 +2,7 @@ package com.medsal15.modus;
 
 import java.util.List;
 
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.modus.MastermindCardItem;
@@ -23,11 +23,11 @@ public class MastermindModus extends BaseModus {
     public ItemStack getItem(ServerPlayer player, int slot, boolean asCard) {
         ItemStack item = super.getItem(player, slot, asCard);
         int difficulty;
-        if (ConfigCommon.MASTERMIND_HARDER.getAsBoolean() && item.has(ESDataComponents.DIFFICULTY)) {
+        if (ConfigServer.MASTERMIND_HARDER.getAsBoolean() && item.has(ESDataComponents.DIFFICULTY)) {
             // Imagine captchaloguing a locked card
             difficulty = Math.min(item.get(ESDataComponents.DIFFICULTY) + 1, 6);
         } else {
-            difficulty = ConfigCommon.MASTERMIND_DIFFICULTY.get();
+            difficulty = ConfigServer.MASTERMIND_DIFFICULTY.get();
         }
 
         int code = MastermindCardItem.generateCode(difficulty, player.getRandom());

@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -53,7 +53,7 @@ public record SteamFuelComponent(int fuel, boolean burning) implements TooltipPr
     @Override
     public void addToTooltip(@Nonnull TooltipContext context, @Nonnull Consumer<Component> tooltipAdder,
             @Nonnull TooltipFlag tooltipFlag) {
-        int uses = fuel / ConfigCommon.STEAM_FUEL_CONSUME.get();
+        int uses = fuel / ConfigServer.STEAM_FUEL_CONSUME.get();
 
         MutableComponent state;
         if (burning) {

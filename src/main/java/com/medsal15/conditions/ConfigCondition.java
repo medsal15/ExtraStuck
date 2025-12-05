@@ -2,7 +2,6 @@ package com.medsal15.conditions;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.ExtraStuck;
 import com.medsal15.config.ConfigCommon;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -22,7 +21,6 @@ public record ConfigCondition(String option) implements ICondition {
 
     @Override
     public boolean test(@Nonnull IContext context) {
-        ExtraStuck.LOGGER.info("res for {}: {}", option, ConfigCommon.configEnabled(option));
         return ConfigCommon.configEnabled(option);
     }
 }

@@ -3,7 +3,7 @@ package com.medsal15.items.melee;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
-import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.mraof.minestuck.item.weapon.WeaponItem;
@@ -52,7 +52,7 @@ public class SteamWeaponItem extends WeaponItem {
 
             SteamFuelComponent steamFuel = stack.getOrDefault(ESDataComponents.STEAM_FUEL,
                     new SteamFuelComponent(0, false));
-            if (steamFuel.fuel() > ConfigCommon.STEAM_FUEL_THRESHOLD.get())
+            if (steamFuel.fuel() > ConfigServer.STEAM_FUEL_THRESHOLD.get())
                 return false;
 
             stack.set(ESDataComponents.STEAM_FUEL, steamFuel.refuel(furnaceFuel.burnTime()));

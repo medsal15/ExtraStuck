@@ -8,6 +8,7 @@ import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.conditions.ESConditions;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigCommon;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.interpreters.ESInterpretertypes;
 import com.medsal15.items.ESArmorMaterials;
@@ -86,6 +87,7 @@ public class ExtraStuck {
         // file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, ConfigCommon.SPEC);
         modContainer.registerConfig(ModConfig.Type.CLIENT, ConfigClient.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, ConfigServer.SPEC);
     }
 
     // private void commonSetup(final FMLCommonSetupEvent event) {}
