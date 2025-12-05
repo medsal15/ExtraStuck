@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "irons_spellbooks"
+      }
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 250,
+    "minestuck:gold": 150,
+    "minestuck:quartz": 20,
+    "minestuck:rust": 50,
+    "minestuck:tar": 50
+  },
+  "ingredient": {
+    "item": "extrastuck:vault_melter"
+  }
+}

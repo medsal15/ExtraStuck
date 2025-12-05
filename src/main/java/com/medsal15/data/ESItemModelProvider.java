@@ -164,6 +164,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
         handheldItem(ESItems.OFFICE_KEY.get());
+        handheldItem(ESItems.ANCIENT_VAULT_OPENER.get());
+        handheldItem(ESItems.VAULT_MELTER.get());
         // Wands
         handheldItem(ESItems.BAGUETTE_MAGIQUE.get());
         handheldItem(ESItems.MONEY_MAGIC.get());

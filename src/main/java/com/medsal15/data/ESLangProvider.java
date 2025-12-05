@@ -291,6 +291,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
         addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");
         addItem(ESItems.OFFICE_KEY, "Office Key");
+        addItem(ESItems.ANCIENT_VAULT_OPENER, "Ancient Vault Opener");
+        addItem(ESItems.VAULT_MELTER, "Vault Melter");
+        addItemTooltip(ESItems.VAULT_MELTER, "No vault can stand the heat. What is the point?");
         // Wands
         addItem(ESItems.BAGUETTE_MAGIQUE, "Baguette Magique");
         addItemTooltip(ESItems.BAGUETTE_MAGIQUE, "Un morceau de pain utilisé par les magiciens");

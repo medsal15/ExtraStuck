@@ -4,8 +4,8 @@ import static com.medsal15.ExtraStuck.modid;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
 
 import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
@@ -52,6 +52,7 @@ import com.medsal15.items.food.RocketJump;
 import com.medsal15.items.food.SourBombCandy;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
+import com.medsal15.items.melee.AttributeWeapon;
 import com.medsal15.items.melee.BrushWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
 import com.medsal15.items.melee.JackpotWeapon;
@@ -83,6 +84,7 @@ import com.mraof.minestuck.item.weapon.WeaponItem;
 import com.mraof.minestuck.item.weapon.projectiles.BouncingProjectileWeaponItem;
 import com.mraof.minestuck.util.MSSoundEvents;
 
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
@@ -410,6 +412,45 @@ public final class ESItems {
                             .set(ItemRightClickEffect.switchTo(ESItems.HANDGUN)),
                     new Item.Properties().component(DataComponents.CONTAINER,
                             ItemContainerContents.EMPTY)));
+    public static final DeferredItem<Item> ANCIENT_VAULT_OPENER = ITEMS.register("ancient_vault_opener",
+            () -> new AttributeWeapon(
+                    new WeaponItem.Builder(Tiers.IRON, 1, -1F).efficiency(2F)
+                            .set(MSItemTypes.KEY_TOOL),
+                    new MSItemProperties().durability(500),
+                    () -> {
+                        List<ItemAttributeModifiers.Entry> list = new ArrayList<>();
+
+                        if (ModList.get().isLoaded("irons_spellbooks")) {
+                            list.add(new ItemAttributeModifiers.Entry(AttributeRegistry.FIRE_SPELL_POWER,
+                                    new AttributeModifier(ExtraStuck.modid("ancient_vault_opener"), .1,
+                                            Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.MAINHAND));
+                        }
+
+                        return list;
+                    }));
+    public static final DeferredItem<Item> VAULT_MELTER = ITEMS.register("vault_melter",
+            () -> new AttributeWeapon(
+                    new WeaponItem.Builder(Tiers.NETHERITE, 0, -1F).efficiency(2F)
+                            .set(MSItemTypes.KEY_TOOL)
+                            .add(OnHitEffect.setOnFire(10)),
+                    new MSItemProperties().durability(1000),
+                    () -> {
+                        List<ItemAttributeModifiers.Entry> list = new ArrayList<>();
+
+                        if (ModList.get().isLoaded("irons_spellbooks")) {
+                            list.add(new ItemAttributeModifiers.Entry(AttributeRegistry.FIRE_SPELL_POWER,
+                                    new AttributeModifier(ExtraStuck.modid("vault_melter_fire_sp"), .15,
+                                            Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.MAINHAND));
+                            list.add(new ItemAttributeModifiers.Entry(AttributeRegistry.FIRE_MAGIC_RESIST,
+                                    new AttributeModifier(ExtraStuck.modid("vault_melter_fire_res"), .1,
+                                            Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.MAINHAND));
+                        }
+
+                        return list;
+                    }));
     // #endregion Keys
     // #region Wands
     public static final DeferredItem<Item> BAGUETTE_MAGIQUE = ITEMS.register("baguette_magique",
@@ -1046,6 +1087,8 @@ public final class ESItems {
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
         list.add(OFFICE_KEY);
+        list.add(ANCIENT_VAULT_OPENER);
+        list.add(VAULT_MELTER);
         // Wands
         list.add(BAGUETTE_MAGIQUE);
         list.add(MONEY_MAGIC);
@@ -1295,11 +1338,5 @@ public final class ESItems {
         list.add(CARD_ORE);
 
         return list;
-    }
-
-    private static Supplier<Item> otherModItem(String modid, Supplier<Item> missing, Supplier<Item> present) {
-        if (ModList.get().isLoaded(modid))
-            return present;
-        return missing;
     }
 }

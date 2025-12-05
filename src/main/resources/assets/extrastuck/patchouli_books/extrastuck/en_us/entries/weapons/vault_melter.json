@@ -1,0 +1,30 @@
+{
+    "name": "Vault Melter",
+    "icon": "extrastuck:vault_melter",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:vault_melter"
+            },
+            "text": "Now reinfused with pure fire, this key is ready to melt your opponents down!$(br2)$(3)$(l)Special:$() Increases fire spell power and resistance (when Iron's Spells and Spellbooks is installed) and burns enemies for 10 seconds."
+        },
+        {
+            "flag": "!mod:irons_spellbooks",
+            "type": "extrastuck:combination",
+            "text": "Combine an Ancient Vault Opener and a Blaze Rod in a Totem Lathe.",
+            "left": "extrastuck:key_of_trials",
+            "mode": "&&",
+            "right": "minecraft:blaze_rod",
+            "result": "extrastuck:vault_melter"
+        },
+        {
+            "flag": "mod:irons_spellbooks",
+            "type": "patchouli:smithing",
+            "recipe": "extrastuck:smithing/vault_melter",
+            "text": "Upgrade your Ancient Vault Opener with Timeless Slurry and a Pyrium Ingot in a smithing table."
+        }
+    ]
+}

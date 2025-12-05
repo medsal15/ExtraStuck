@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extrastuck:smithing/vault_melter"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "vault_melter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:ancient_vault_opener"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "vault_melter"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extrastuck:smithing/vault_melter"
+    ]
+  }
+}

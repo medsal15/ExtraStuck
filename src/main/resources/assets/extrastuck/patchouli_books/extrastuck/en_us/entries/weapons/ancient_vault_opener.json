@@ -1,0 +1,33 @@
+{
+    "name": "Ancient Vault Opener",
+    "icon": "extrastuck:ancient_vault_opener",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:ancient_vault_opener"
+            },
+            "text": "An old key that has seen more challengers fall than you can count.$(br2)$(3)$(l)Special:$() Increases fire spell power (when Iron's Spells and Spellbooks is installed)."
+        },
+        {
+            "flag": "mod:irons_spellbooks",
+            "type": "extrastuck:combination",
+            "text": "Combine a Key of Trials and a Decrepit Key in a Punch Designix.",
+            "left": "extrastuck:key_of_trials",
+            "mode": "||",
+            "right": "irons_spellbooks:decrepit_key",
+            "result": "extrastuck:ancient_vault_opener"
+        },
+        {
+            "flag": "!mod:irons_spellbooks",
+            "type": "extrastuck:combination",
+            "text": "Combine a Key of Trials and Netherite Scrap in a Punch Designix.",
+            "left": "extrastuck:key_of_trials",
+            "mode": "||",
+            "right": "minecraft:netherite_scrap",
+            "result": "extrastuck:ancient_vault_opener"
+        }
+    ]
+}

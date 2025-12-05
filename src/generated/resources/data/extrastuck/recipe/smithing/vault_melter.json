@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "irons_spellbooks:pyrium_ingot"
+  },
+  "base": {
+    "item": "extrastuck:ancient_vault_opener"
+  },
+  "result": {
+    "count": 1,
+    "id": "extrastuck:vault_melter"
+  },
+  "template": {
+    "item": "irons_spellbooks:timeless_slurry"
+  }
+}

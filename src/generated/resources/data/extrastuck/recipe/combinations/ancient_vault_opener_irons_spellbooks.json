@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:key_of_trials"
+  },
+  "input2": {
+    "item": "irons_spellbooks:decrepit_key"
+  },
+  "mode": "or",
+  "output": "extrastuck:ancient_vault_opener"
+}

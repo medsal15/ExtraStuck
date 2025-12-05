@@ -456,6 +456,29 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.OFFICE_KEY)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.ANCIENT_VAULT_OPENER)
+                .input(ESItems.KEY_OF_TRIALS).or().input(ItemRegistry.DECREPIT_KEY.get())
+                .build(output.withConditions(ISS_LOADED), ExtraStuck.modid("ancient_vault_opener_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ESItems.ANCIENT_VAULT_OPENER)
+                .input(ESItems.KEY_OF_TRIALS).or().input(Items.NETHERITE_SCRAP)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESItems.ANCIENT_VAULT_OPENER)
+                .grist(GristTypes.RUST, 36).grist(GristTypes.TAR, 29)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.VAULT_MELTER)
+                .input(ESItems.ANCIENT_VAULT_OPENER).and().input(Items.BLAZE_ROD)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESItems.VAULT_MELTER)
+                .grist(GristTypes.RUST, 50).grist(GristTypes.TAR, 50).grist(GristTypes.QUARTZ, 20)
+                .grist(GristTypes.GOLD, 150).grist(GristTypes.AMBER, 250)
+                .build(output.withConditions(not(ISS_LOADED)));
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(ItemRegistry.TIMELESS_SLURRY.get()),
+                Ingredient.of(ESItems.ANCIENT_VAULT_OPENER.get()), Ingredient.of(ItemRegistry.PYRIUM_INGOT.get()),
+                RecipeCategory.COMBAT, ESItems.VAULT_MELTER.get())
+                .unlocks("vault_melter", has(ESItems.ANCIENT_VAULT_OPENER))
+                .save(output.withConditions(ISS_LOADED), modid("smithing/vault_melter"));
         // #endregion Keys
 
         // #region Wands
