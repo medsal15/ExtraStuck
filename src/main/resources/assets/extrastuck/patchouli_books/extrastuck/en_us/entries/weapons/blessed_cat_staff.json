@@ -1,0 +1,24 @@
+{
+    "name": "Blessed Cat Staff",
+    "icon": "extrastuck:blessed_cat_staff",
+    "flag": "!mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:blessed_cat_staff"
+            },
+            "text": "A blessed magic staff that has absorbed kindness and love.$(br2)$(3)$(l)Special:$() Shoots magic when used."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Wand and a Normal Cat in a Punch Designix.",
+            "left": "minestuck:wand",
+            "mode": "||",
+            "right": "extrastuck:normal_cat_plush",
+            "result": "extrastuck:blessed_cat_staff"
+        }
+    ]
+}

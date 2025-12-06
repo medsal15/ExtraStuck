@@ -1,0 +1,17 @@
+{
+    "name": "Normal Cat Plush",
+    "icon": "extrastuck:normal_cat_plush",
+    "category": "extrastuck:blocks",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:normal_cat_plush",
+            "text": "Good news, it's no longer mutated!$(br)But why is it... round?$(br2)$(3)$(l)Special:$() Can be pet and meows."
+        },
+        {
+            "type": "extrastuck:grist_cost",
+            "item": "extrastuck:normal_cat_plush"
+        }
+    ]
+}

@@ -694,6 +694,28 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Throwables
 
+        // #region Staves
+        CombinationRecipeBuilder.of(ESItems.CURSED_CAT_STAFF)
+                .input(ItemRegistry.BLOOD_STAFF.get()).and().input(ESItems.NORMAL_CAT_PLUSH)
+                .build(output.withConditions(ISS_LOADED), ExtraStuck.modid("cursed_cat_staff_from_blood_staff"));
+        CombinationRecipeBuilder.of(ESItems.CURSED_CAT_STAFF)
+                .input(MSItems.POOL_CUE_WAND).and().input(ESItems.NORMAL_CAT_PLUSH)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESItems.CURSED_CAT_STAFF)
+                .grist(GristTypes.TAR, 1000).grist(GristTypes.DIAMOND, 500).grist(GristTypes.COBALT, 900)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BLESSED_CAT_STAFF)
+                .input(ItemRegistry.BLOOD_STAFF.get()).or().input(ESItems.NORMAL_CAT_PLUSH)
+                .build(output.withConditions(ISS_LOADED), ExtraStuck.modid("blessed_cat_staff_from_blood_staff"));
+        CombinationRecipeBuilder.of(ESItems.BLESSED_CAT_STAFF)
+                .input(MSItems.WAND).or().input(ESItems.NORMAL_CAT_PLUSH)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESItems.BLESSED_CAT_STAFF)
+                .grist(GristTypes.MARBLE, 1200).grist(GristTypes.GOLD, 250).grist(GristTypes.CHALK, 800)
+                .build(output);
+        // #endregion Staves
+
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);

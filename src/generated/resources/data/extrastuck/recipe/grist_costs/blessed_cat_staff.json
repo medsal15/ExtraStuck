@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:chalk": 800,
+    "minestuck:gold": 250,
+    "minestuck:marble": 1200
+  },
+  "ingredient": {
+    "item": "extrastuck:blessed_cat_staff"
+  }
+}

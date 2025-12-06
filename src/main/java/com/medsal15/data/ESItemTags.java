@@ -54,6 +54,9 @@ public final class ESItemTags extends ItemTagsProvider {
         for (DeferredItem<Item> spellbook : ESItems.getSpellbooks()) {
             tag(ESTags.Items.ISS_SPELLBOOKS).add(spellbook.get());
         }
+        for (DeferredItem<Item> staff : ESItems.getStaves()) {
+            tag(ESTags.Items.ISS_STAVES).add(staff.get());
+        }
 
         for (DeferredItem<Item> tool : ESItems.getMiningTools()) {
             tag(ItemTags.MINING_ENCHANTABLE).add(tool.get());

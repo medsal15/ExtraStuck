@@ -31,6 +31,8 @@ public final class ESTags {
         public static final TagKey<Item> ISS_SPELLBOOKS = ItemTags
                 .create(ResourceLocation.fromNamespaceAndPath("curios", "spellbook"));
         public static final TagKey<Item> ISS_MITHRIL_ORES = ItemTags.create(common("ores/mithril"));
+        public static final TagKey<Item> ISS_STAVES = ItemTags
+                .create(ResourceLocation.fromNamespaceAndPath("irons_spellbooks", "staff"));
     }
 
     public static final class Blocks {

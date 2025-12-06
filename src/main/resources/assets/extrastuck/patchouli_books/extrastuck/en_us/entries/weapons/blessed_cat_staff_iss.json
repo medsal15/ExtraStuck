@@ -1,0 +1,24 @@
+{
+    "name": "Blessed Cat Staff",
+    "icon": "extrastuck:blessed_cat_staff",
+    "flag": "mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:blessed_cat_staff"
+            },
+            "text": "A blessed magic staff that has absorbed kindness and love.$(br2)$(3)$(l)Special:$() Increases mana regeneration, holy spell power and lightning spell power by 15%."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine The Blood Staff and a Normal Cat in a Punch Designix.",
+            "left": "irons_spellbooks:blood_staff",
+            "mode": "||",
+            "right": "extrastuck:normal_cat_plush",
+            "result": "extrastuck:blessed_cat_staff"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "irons_spellbooks:blood_staff"
+  },
+  "input2": {
+    "item": "extrastuck:normal_cat_plush"
+  },
+  "mode": "or",
+  "output": "extrastuck:blessed_cat_staff"
+}

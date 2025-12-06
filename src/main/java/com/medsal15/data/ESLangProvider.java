@@ -355,6 +355,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.LEMONNADE, "LemonNade");
         addItemTooltip(ESItems.LEMONNADE, "This lemon burns houses down");
         addEntityType(ESEntities.LEMONNADE, "LemonNade");
+        // Staves
+        addItem(ESItems.CURSED_CAT_STAFF, "Cursed Cat Staff");
+        addItemTooltip(ESItems.CURSED_CAT_STAFF, "You can hear strange whispers when holding it...");
+        addItem(ESItems.BLESSED_CAT_STAFF, "Blessed Cat Staff");
+        addItemTooltip(ESItems.BLESSED_CAT_STAFF, "A powerful staff for a dangerous wanderer");
         // Other Ranged
         addItem(ESItems.HANDGUN, "Handgun");
         addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");

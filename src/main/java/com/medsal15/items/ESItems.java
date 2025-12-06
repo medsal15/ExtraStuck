@@ -4,12 +4,12 @@ import static com.medsal15.ExtraStuck.modid;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
@@ -78,16 +78,18 @@ import com.mraof.minestuck.item.armor.MSArmorItem;
 import com.mraof.minestuck.item.components.MSItemComponents;
 import com.mraof.minestuck.item.foods.DrinkableItem;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
+import com.mraof.minestuck.item.weapon.MagicAOERightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 import com.mraof.minestuck.item.weapon.projectiles.BouncingProjectileWeaponItem;
 import com.mraof.minestuck.util.MSSoundEvents;
 
-import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -417,40 +419,14 @@ public final class ESItems {
                     new WeaponItem.Builder(Tiers.IRON, 1, -1F).efficiency(2F)
                             .set(MSItemTypes.KEY_TOOL),
                     new MSItemProperties().durability(500),
-                    () -> {
-                        List<ItemAttributeModifiers.Entry> list = new ArrayList<>();
-
-                        if (ModList.get().isLoaded("irons_spellbooks")) {
-                            list.add(new ItemAttributeModifiers.Entry(AttributeRegistry.FIRE_SPELL_POWER,
-                                    new AttributeModifier(ExtraStuck.modid("ancient_vault_opener"), .1,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.MAINHAND));
-                        }
-
-                        return list;
-                    }));
+                    ISSAttributes::ancientVaultOpener));
     public static final DeferredItem<Item> VAULT_MELTER = ITEMS.register("vault_melter",
             () -> new AttributeWeapon(
                     new WeaponItem.Builder(Tiers.NETHERITE, 0, -1F).efficiency(2F)
                             .set(MSItemTypes.KEY_TOOL)
                             .add(OnHitEffect.setOnFire(10)),
                     new MSItemProperties().durability(1000),
-                    () -> {
-                        List<ItemAttributeModifiers.Entry> list = new ArrayList<>();
-
-                        if (ModList.get().isLoaded("irons_spellbooks")) {
-                            list.add(new ItemAttributeModifiers.Entry(AttributeRegistry.FIRE_SPELL_POWER,
-                                    new AttributeModifier(ExtraStuck.modid("vault_melter_fire_sp"), .15,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.MAINHAND));
-                            list.add(new ItemAttributeModifiers.Entry(AttributeRegistry.FIRE_MAGIC_RESIST,
-                                    new AttributeModifier(ExtraStuck.modid("vault_melter_fire_res"), .1,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.MAINHAND));
-                        }
-
-                        return list;
-                    }));
+                    ISSAttributes::vaultMelter));
     // #endregion Keys
     // #region Wands
     public static final DeferredItem<Item> BAGUETTE_MAGIQUE = ITEMS.register("baguette_magique",
@@ -576,6 +552,35 @@ public final class ESItems {
                             .set(ItemRightClickEffect.switchTo(ESItems.CASHGRABBERS)),
                     new MSItemProperties().durability(1326)));
     // #endregion Claws
+    // #region Staves
+    public static final DeferredItem<Item> CURSED_CAT_STAFF = ITEMS.register("cursed_cat_staff",
+            () -> {
+                WeaponItem.Builder builder = new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -3F).efficiency(1F)
+                        .set(MSItemTypes.WAND_TOOL);
+                Item.Properties properties = new Item.Properties();
+                // Either the item is a casting implement (overrides right-click)
+                // Or a magic wand (also overrides right-click)
+                // I am not testing who takes precedence
+                if (ModList.get().isLoaded("irons_spellbooks")) {
+                    properties.component(ComponentRegistry.CASTING_IMPLEMENT, Unit.INSTANCE);
+                } else {
+                    builder.set(MagicAOERightClickEffect.STANDARD_MAGIC);
+                }
+                return new AttributeWeapon(builder, properties, ISSAttributes::cursedStaff);
+            });
+    public static final DeferredItem<Item> BLESSED_CAT_STAFF = ITEMS.register("blessed_cat_staff",
+            () -> {
+                WeaponItem.Builder builder = new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -3F).efficiency(1F)
+                        .set(MSItemTypes.WAND_TOOL);
+                Item.Properties properties = new Item.Properties();
+                if (ModList.get().isLoaded("irons_spellbooks")) {
+                    properties.component(ComponentRegistry.CASTING_IMPLEMENT, Unit.INSTANCE);
+                } else {
+                    builder.set(MagicRangedRightClickEffect.STANDARD_MAGIC);
+                }
+                return new AttributeWeapon(builder, properties, ISSAttributes::blessedStaff);
+            });
+    // #endregion Staves
 
     // #region Crossbows
     public static final DeferredItem<Item> RADBOW = ITEMS.register("radbow",
@@ -950,6 +955,9 @@ public final class ESItems {
                 output.accept(item.get());
             }
         }
+        for (DeferredItem<Item> item : ESItems.getStaves()) {
+            output.accept(item.get());
+        }
 
         for (DeferredItem<Item> item : ESItems.getArrows()) {
             output.accept(item.get());
@@ -1124,6 +1132,15 @@ public final class ESItems {
 
     public static Collection<DeferredItem<Item>> getSpellbooks() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getStaves() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(CURSED_CAT_STAFF);
+        list.add(BLESSED_CAT_STAFF);
 
         return list;
     }

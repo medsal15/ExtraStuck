@@ -1,0 +1,24 @@
+{
+    "name": "Cursed Cat Staff",
+    "icon": "extrastuck:cursed_cat_staff",
+    "flag": "mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:cursed_cat_staff"
+            },
+            "text": "A cursed magic staff that whispers curses in your ears.$(br2)$(3)$(l)Special:$() Increases mana regeneration by 15%, blood spell power by 20% and eldritch spell power by 10%."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine The Blood Staff and a Normal Cat in a Totem Lathe.",
+            "left": "irons_spellbooks:blood_staff",
+            "mode": "&&",
+            "right": "extrastuck:normal_cat_plush",
+            "result": "extrastuck:cursed_cat_staff"
+        }
+    ]
+}

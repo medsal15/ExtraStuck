@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 900,
+    "minestuck:diamond": 500,
+    "minestuck:tar": 1000
+  },
+  "ingredient": {
+    "item": "extrastuck:cursed_cat_staff"
+  }
+}
