@@ -78,7 +78,6 @@ import com.mraof.minestuck.item.armor.MSArmorItem;
 import com.mraof.minestuck.item.components.MSItemComponents;
 import com.mraof.minestuck.item.foods.DrinkableItem;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
-import com.mraof.minestuck.item.weapon.MagicAOERightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
@@ -553,6 +552,7 @@ public final class ESItems {
                     new MSItemProperties().durability(1326)));
     // #endregion Claws
     // #region Staves
+    // Staves are technically wands, but slower and bigger
     public static final DeferredItem<Item> CURSED_CAT_STAFF = ITEMS.register("cursed_cat_staff",
             () -> {
                 WeaponItem.Builder builder = new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -3F).efficiency(1F)
@@ -564,7 +564,7 @@ public final class ESItems {
                 if (ModList.get().isLoaded("irons_spellbooks")) {
                     properties.component(ComponentRegistry.CASTING_IMPLEMENT, Unit.INSTANCE);
                 } else {
-                    builder.set(MagicAOERightClickEffect.STANDARD_MAGIC);
+                    builder.set(ESRightClickEffects.CURSED_STAFF_MAGIC);
                 }
                 return new AttributeWeapon(builder, properties, ISSAttributes::cursedStaff);
             });
@@ -576,7 +576,7 @@ public final class ESItems {
                 if (ModList.get().isLoaded("irons_spellbooks")) {
                     properties.component(ComponentRegistry.CASTING_IMPLEMENT, Unit.INSTANCE);
                 } else {
-                    builder.set(MagicRangedRightClickEffect.STANDARD_MAGIC);
+                    builder.set(ESRightClickEffects.BLESSED_STAFF_MAGIC);
                 }
                 return new AttributeWeapon(builder, properties, ISSAttributes::blessedStaff);
             });
