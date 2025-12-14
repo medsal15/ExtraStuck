@@ -21,7 +21,8 @@ public final class ESBlockEntities {
                             .build(null));
     @SuppressWarnings("null")
     public static final Supplier<BlockEntityType<PrinterBlockEntity>> PRINTER = BLOCK_ENTITY_TYPES.register("printer",
-            () -> BlockEntityType.Builder.<PrinterBlockEntity>of(PrinterBlockEntity::new, ESBlocks.PRINTER.get())
+            () -> BlockEntityType.Builder
+                    .<PrinterBlockEntity>of(PrinterBlockEntity::new, ESBlocks.PRINTER.get(), ESBlocks.DISPRINTER.get())
                     .build(null));
     @SuppressWarnings("null")
     public static final Supplier<BlockEntityType<ChargerBlockEntity>> CHARGER = BLOCK_ENTITY_TYPES.register("charger",

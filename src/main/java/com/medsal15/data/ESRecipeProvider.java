@@ -1397,6 +1397,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GARNET, 500).grist(GristTypes.DIAMOND, 250)
                 .build(output);
 
+        CombinationRecipeBuilder.of(ESItems.DISPRINTER)
+                .input(ESItems.PRINTER).or().input(Items.DISPENSER)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.DISPRINTER)
+                .grist(GristTypes.BUILD, 5000).grist(GristTypes.URANIUM, 175)
+                .grist(GristTypes.GARNET, 505).grist(GristTypes.DIAMOND, 250)
+                .build(output);
+
         CombinationRecipeBuilder.of(ESItems.CHARGER)
                 .input(MSItems.POWER_HUB).or().input(Items.HOPPER)
                 .build(output);

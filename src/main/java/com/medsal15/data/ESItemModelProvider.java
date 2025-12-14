@@ -281,6 +281,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
     private void registerBlocks() {
         withExistingParent(ESItems.PRINTER.getId().toString(), modLoc("block/printer"));
+        withExistingParent(ESItems.DISPRINTER.getId().toString(), modLoc("block/disprinter"));
         withExistingParent(ESItems.CHARGER.getId().toString(), modLoc("block/charger"));
         withExistingParent(ESItems.REACTOR.getId().toString(), modLoc("block/reactor"));
         withExistingParent(ESItems.URANIUM_BLASTER.getId().toString(), modLoc("block/uranium_blaster"));

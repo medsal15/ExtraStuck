@@ -374,7 +374,7 @@ public final class ClientEvents {
             }
 
             return 0xFFFFFFFF;
-        }, ESBlocks.PRINTER.get());
+        }, ESBlocks.PRINTER.get(), ESBlocks.DISPRINTER.get());
     }
 
     @SubscribeEvent

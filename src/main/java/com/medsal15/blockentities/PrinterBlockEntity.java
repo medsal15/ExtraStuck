@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.handlers.BEStackHandler;
 import com.medsal15.blockentities.handlers.FuellessWrapper;
+import com.medsal15.blocks.ESBlocks;
 import com.medsal15.blocks.machine.PrinterBlock;
 import com.medsal15.menus.PrinterMenu;
 import com.mraof.minestuck.alchemy.GristHelper;
@@ -15,6 +16,7 @@ import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.api.alchemy.GristTypes;
 import com.mraof.minestuck.api.alchemy.recipe.GristCostRecipe;
 import com.mraof.minestuck.block.MSBlocks;
+import com.mraof.minestuck.block.machine.MachineBlock;
 import com.mraof.minestuck.blockentity.IColored;
 import com.mraof.minestuck.blockentity.machine.GristWildcardHolder;
 import com.mraof.minestuck.blockentity.machine.IOwnable;
@@ -32,12 +34,16 @@ import com.mraof.minestuck.util.ExtraModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -56,6 +62,7 @@ import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 public class PrinterBlockEntity extends MachineProcessBlockEntity
         implements IOwnable, GristWildcardHolder, MenuProvider, IColored, UraniumPowered {
     public static final String TITLE = "container.extrastuck.printer";
+    public static final String TITLE_DISPRINTER = "container.extrastuck.disprinter";
     public static final int SLOT_IN = 0, SLOT_OUT = 1, SLOT_FUEL = 2;
     public static final int MAX_PROGRESS = 200;
     public static final short MAX_FUEL = 128;
@@ -267,8 +274,26 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
             print = event.getItemResult();
 
             ItemStack output = itemHandler.getStackInSlot(SLOT_OUT);
-            if (!output.isEmpty())
+            if (!output.isEmpty()) {
                 print.grow(output.getCount());
+            }
+
+            if (l.getBlockState(worldPosition).is(ESBlocks.DISPRINTER)) {
+                // Disprinter special
+                Direction facing = l.getBlockState(worldPosition).getValue(MachineBlock.FACING);
+                BlockPos frontPos = worldPosition.relative(facing);
+                if (l.getBlockState(frontPos).isEmpty()) {
+                    // Copied from dispenser
+                    Position pos = worldPosition.getCenter().add(
+                            .7 * (double) facing.getStepX(),
+                            .7 * (double) facing.getStepY(),
+                            .7 * (double) facing.getStepZ());
+                    DefaultDispenseItemBehavior.spawnItem(l, print, 6, facing, pos);
+                    l.playSound(null, worldPosition, SoundEvents.DISPENSER_DISPENSE, SoundSource.BLOCKS);
+
+                    print = ItemStack.EMPTY;
+                }
+            }
 
             fuel--;
             itemHandler.setStackInSlot(SLOT_OUT, print);
@@ -302,6 +327,8 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
     // MenuProvider
     @Override
     public Component getDisplayName() {
+        if (level != null && level.getBlockState(worldPosition).is(ESBlocks.DISPRINTER))
+            return Component.translatable(TITLE_DISPRINTER);
         return Component.translatable(TITLE);
     }
 

@@ -86,6 +86,12 @@ public class PrinterMenu extends MachineContainerMenu {
         return ESBlocks.PRINTER.get();
     }
 
+    @Override
+    public boolean stillValid(Player playerIn) {
+        return stillValid(access, playerIn, ESBlocks.PRINTER.get())
+                || stillValid(access, playerIn, ESBlocks.DISPRINTER.get());
+    }
+
     // AbstractContainerMenu
     @Override
     public ItemStack quickMoveStack(@Nonnull Player player, int index) {

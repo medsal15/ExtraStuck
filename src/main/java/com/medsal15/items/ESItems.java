@@ -810,6 +810,7 @@ public final class ESItems {
     // #region Blocks
     // #region Machines
     public static final DeferredItem<BlockItem> PRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.PRINTER);
+    public static final DeferredItem<BlockItem> DISPRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.DISPRINTER);
     public static final DeferredItem<BlockItem> CHARGER = ITEMS.registerSimpleBlockItem(ESBlocks.CHARGER);
     public static final DeferredItem<BlockItem> REACTOR = ITEMS.registerSimpleBlockItem(ESBlocks.REACTOR);
     public static final DeferredItem<BlockItem> URANIUM_BLASTER = ITEMS
@@ -1299,6 +1300,7 @@ public final class ESItems {
     public static Collection<DeferredItem<BlockItem>> getBlocks() {
         ArrayList<DeferredItem<BlockItem>> list = new ArrayList<>();
         list.add(PRINTER);
+        list.add(DISPRINTER);
         list.add(CHARGER);
         list.add(REACTOR);
         list.add(URANIUM_BLASTER);

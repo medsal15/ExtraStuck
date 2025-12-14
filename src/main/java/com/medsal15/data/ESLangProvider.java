@@ -489,6 +489,11 @@ public final class ESLangProvider extends LanguageProvider {
         add(PrinterBlockEntity.TITLE, "Printer");
         add(LoopButton.LOOP, "START");
 
+        // Disrinter
+        addBlock(ESBlocks.DISPRINTER, "Disprinter");
+        addBlockTooltip(ESBlocks.DISPRINTER, "Is this really an upgrade?");
+        add(PrinterBlockEntity.TITLE_DISPRINTER, "Disprinter");
+
         // Charger
         addBlock(ESBlocks.CHARGER, "Charger");
         add(ChargerBlockEntity.TITLE, "Charger");

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:printer"
+  },
+  "input2": {
+    "item": "minecraft:dispenser"
+  },
+  "mode": "or",
+  "output": "extrastuck:disprinter"
+}

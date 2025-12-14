@@ -3,6 +3,7 @@
     "extrastuck:printer",
     "extrastuck:charger",
     "extrastuck:reactor",
-    "extrastuck:uranium_blaster"
+    "extrastuck:uranium_blaster",
+    "extrastuck:disprinter"
   ]
 }
