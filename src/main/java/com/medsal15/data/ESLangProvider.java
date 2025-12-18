@@ -364,10 +364,10 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.LEMONNADE, "This lemon burns houses down");
         addEntityType(ESEntities.LEMONNADE, "LemonNade");
         // Staves
-        addItem(ESItems.CURSED_CAT_STAFF, "Cursed Cat Staff");
-        addItemTooltip(ESItems.CURSED_CAT_STAFF, "You can hear strange whispers when holding it...");
-        addItem(ESItems.BLESSED_CAT_STAFF, "Blessed Cat Staff");
-        addItemTooltip(ESItems.BLESSED_CAT_STAFF, "A powerful staff for a dangerous wanderer");
+        addItem(ESISSItems.CURSED_CAT_STAFF, "Cursed Cat Staff");
+        addItemTooltip(ESISSItems.CURSED_CAT_STAFF, "You can hear strange whispers when holding it...");
+        addItem(ESISSItems.BLESSED_CAT_STAFF, "Blessed Cat Staff");
+        addItemTooltip(ESISSItems.BLESSED_CAT_STAFF, "A powerful staff for a dangerous wanderer");
         // Spellbooks
         addItem(ESISSItems.GRIMOIRE, "Grimoire for Manipulating the Physically Dubious");
         addItemTooltip(ESISSItems.GRIMOIRE, "The volume number is unreadable");

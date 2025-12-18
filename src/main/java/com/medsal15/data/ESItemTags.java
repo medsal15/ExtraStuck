@@ -55,7 +55,7 @@ public final class ESItemTags extends ItemTagsProvider {
         for (DeferredItem<Item> spellbook : ESISSItems.getSpellbooks()) {
             tag(ESTags.Items.ISS_SPELLBOOKS).add(spellbook.get());
         }
-        for (DeferredItem<Item> staff : ESItems.getStaves()) {
+        for (DeferredItem<Item> staff : ESISSItems.getStaves()) {
             tag(ESTags.Items.ISS_STAVES).add(staff.get());
         }
 

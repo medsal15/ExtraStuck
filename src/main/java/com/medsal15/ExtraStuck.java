@@ -6,7 +6,7 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
-import com.medsal15.compat.irons_spellbooks.items.ESMissingItems;
+import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.conditions.ESConditions;
 import com.medsal15.config.ConfigClient;
@@ -90,7 +90,7 @@ public class ExtraStuck {
             ESISSItems.ITEMS.register(modEventBus);
             ESISSComponents.DATA_COMPONENTS.register(modEventBus);
         } else {
-            ESMissingItems.ITEMS.register(modEventBus);
+            ESISSMissingItems.ITEMS.register(modEventBus);
         }
 
         // Register our mod's ModConfigSpec so that FML can create and load the config

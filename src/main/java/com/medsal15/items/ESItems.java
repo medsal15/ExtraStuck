@@ -11,6 +11,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
+import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
@@ -85,11 +86,9 @@ import com.mraof.minestuck.item.weapon.WeaponItem;
 import com.mraof.minestuck.item.weapon.projectiles.BouncingProjectileWeaponItem;
 import com.mraof.minestuck.util.MSSoundEvents;
 
-import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -552,37 +551,9 @@ public final class ESItems {
                             .set(ItemRightClickEffect.switchTo(ESItems.CASHGRABBERS)),
                     new MSItemProperties().durability(1326)));
     // #endregion Claws
-    // #region Staves
-    // Staves are technically wands, but slower and bigger
-    public static final DeferredItem<Item> CURSED_CAT_STAFF = ITEMS.register("cursed_cat_staff",
-            () -> {
-                WeaponItem.Builder builder = new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -3F).efficiency(1F)
-                        .set(MSItemTypes.WAND_TOOL);
-                Item.Properties properties = new Item.Properties();
-                // Either the item is a casting implement (overrides right-click)
-                // Or a magic wand (also overrides right-click)
-                // I am not testing who takes precedence
-                if (ModList.get().isLoaded("irons_spellbooks")) {
-                    properties.component(ComponentRegistry.CASTING_IMPLEMENT, Unit.INSTANCE);
-                } else {
-                    builder.set(ESRightClickEffects.CURSED_STAFF_MAGIC);
-                }
-                return new AttributeWeapon(builder, properties, ISSAttributes::cursedStaff);
-            });
-    public static final DeferredItem<Item> BLESSED_CAT_STAFF = ITEMS.register("blessed_cat_staff",
-            () -> {
-                WeaponItem.Builder builder = new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -3F).efficiency(1F)
-                        .set(MSItemTypes.WAND_TOOL);
-                Item.Properties properties = new Item.Properties();
-                if (ModList.get().isLoaded("irons_spellbooks")) {
-                    properties.component(ComponentRegistry.CASTING_IMPLEMENT, Unit.INSTANCE);
-                } else {
-                    builder.set(ESRightClickEffects.BLESSED_STAFF_MAGIC);
-                }
-                return new AttributeWeapon(builder, properties, ISSAttributes::blessedStaff);
-            });
-    // TODO branch of yggdrasil (welsh)
-    // #endregion Staves
+
+    // Staves and Spellbooks are handled in the ISS compat package
+    // See the ESISSItems and ESMissingItems classes
 
     // #region Crossbows
     public static final DeferredItem<Item> RADBOW = ITEMS.register("radbow",
@@ -957,9 +928,13 @@ public final class ESItems {
             for (DeferredItem<Item> item : ESISSItems.getSpellbooks()) {
                 output.accept(item.get());
             }
-        }
-        for (DeferredItem<Item> item : ESItems.getStaves()) {
-            output.accept(item.get());
+            for (DeferredItem<Item> item : ESISSItems.getStaves()) {
+                output.accept(item.get());
+            }
+        } else {
+            for (DeferredItem<Item> item : ESISSMissingItems.getStaves()) {
+                output.accept(item.get());
+            }
         }
 
         for (DeferredItem<Item> item : ESItems.getArrows()) {
@@ -1130,15 +1105,6 @@ public final class ESItems {
         // Claws
         list.add(CASHGRABBERS);
         list.add(CASHGRABBERS_SHEATHED);
-        return list;
-    }
-
-    public static Collection<DeferredItem<Item>> getStaves() {
-        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
-
-        list.add(CURSED_CAT_STAFF);
-        list.add(BLESSED_CAT_STAFF);
-
         return list;
     }
 
