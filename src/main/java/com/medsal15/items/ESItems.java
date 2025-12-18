@@ -10,6 +10,7 @@ import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
+import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
@@ -580,6 +581,7 @@ public final class ESItems {
                 }
                 return new AttributeWeapon(builder, properties, ISSAttributes::blessedStaff);
             });
+    // TODO branch of yggdrasil (welsh)
     // #endregion Staves
 
     // #region Crossbows
@@ -952,7 +954,7 @@ public final class ESItems {
         output.accept(LEMONNADE);
 
         if (ModList.get().isLoaded("irons_spellbooks")) {
-            for (DeferredItem<Item> item : ESItems.getSpellbooks()) {
+            for (DeferredItem<Item> item : ESISSItems.getSpellbooks()) {
                 output.accept(item.get());
             }
         }
@@ -1128,12 +1130,6 @@ public final class ESItems {
         // Claws
         list.add(CASHGRABBERS);
         list.add(CASHGRABBERS_SHEATHED);
-        return list;
-    }
-
-    public static Collection<DeferredItem<Item>> getSpellbooks() {
-        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
-
         return list;
     }
 

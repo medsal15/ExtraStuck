@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 64,
+    "minestuck:build": 160,
+    "minestuck:cobalt": 200,
+    "minestuck:diamond": 32,
+    "minestuck:garnet": 100
+  },
+  "ingredient": {
+    "item": "extrastuck:gemini_spellbook_blue"
+  }
+}

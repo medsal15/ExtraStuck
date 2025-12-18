@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.conditions.ConfigCondition;
 import com.medsal15.items.ESItems;
 import com.medsal15.utils.ESTags;
@@ -715,6 +716,29 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.MARBLE, 1200).grist(GristTypes.GOLD, 250).grist(GristTypes.CHALK, 800)
                 .build(output);
         // #endregion Staves
+
+        // #region Spellbooks
+        final RecipeOutput issOutput = output.withConditions(ISS_LOADED);
+
+        CombinationRecipeBuilder.of(ESISSItems.GRIMOIRE)
+                .input(MSItems.GRIMOIRE).and().input(ItemRegistry.GOLD_SPELL_BOOK.get())
+                .build(issOutput);
+        GristCostRecipeBuilder.of(ESISSItems.GRIMOIRE)
+                .grist(GristTypes.MARBLE, 66).grist(GristTypes.AMETHYST, 666).grist(GristTypes.GARNET, 133)
+                .build(issOutput);
+
+        CombinationRecipeBuilder.of(ESISSItems.GEMINI_SPELLBOOK_BLUE)
+                .input(ItemRegistry.DIAMOND_SPELL_BOOK.get()).or().input(MSItems.MIRROR)
+                .build(issOutput);
+        GristCostRecipeBuilder.of(ESISSItems.GEMINI_SPELLBOOK_BLUE)
+                .grist(GristTypes.BUILD, 160).grist(GristTypes.COBALT, 200).grist(GristTypes.GARNET, 100)
+                .grist(GristTypes.DIAMOND, 32).grist(GristTypes.AMBER, 64)
+                .build(issOutput);
+        GristCostRecipeBuilder.of(ESISSItems.GEMINI_SPELLBOOK_RED)
+                .grist(GristTypes.BUILD, 160).grist(GristTypes.COBALT, 200).grist(GristTypes.GARNET, 100)
+                .grist(GristTypes.DIAMOND, 32).grist(GristTypes.AMBER, 64)
+                .build(issOutput);
+        // #endregion Spellbooks
 
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)

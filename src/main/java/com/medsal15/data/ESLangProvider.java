@@ -13,6 +13,7 @@ import com.medsal15.client.gui.LoopButton;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.screen.computer.MastermindDecodeScreen;
 import com.medsal15.client.screen.computer.MastermindEncodeScreen;
+import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
@@ -86,28 +87,19 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String INNATE_ENCHANT_KEY = ExtraStuck.MODID + ".innate_enchant";
     public static final String INNATE_ENCHANTS_KEY = ExtraStuck.MODID + ".innate_enchants";
 
+    public static final String MISSING_MOD_KEY = ExtraStuck.MODID + ".missing_mod";
+    public static final String MISSING_MOD_KEY_ADVANCED = ExtraStuck.MODID + ".missing_mod_advanced";
+
     @Override
     protected void addTranslations() {
         add("itemGroup.extrastuck", "ExtraStuck");
 
-        add(SHIELD_DAMAGE_KEY, "Deals %1$s damage to melee attackers");
-        add(SHIELD_EFFECT_KEY, "Applies %1$s (%2$s) to melee attackers");
-        add(SHIELD_SELF_EFFECT_KEY, "Applies %1$s (%2$s) when attacked");
         add(ENERGY_STORAGE_KEY, "%1$s / %2$s FE");
         add(FLUID_STORAGE_KEY, "%1$s mB / %2$s mB %3$s");
-        add(BOONDOLLAR_VALUE_KEY, "Value: %1$s ฿");
+        add(BOONDOLLAR_VALUE_KEY, "Value: %s ฿");
         add(BOONDOLLAR_RANGE_KEY, "Value: %1$s-%2$s ฿");
-        add(INNATE_ENCHANT_KEY, "+1 level to %2$s");
-        add(INNATE_ENCHANTS_KEY, "+%1$s levels to %2$s");
-        add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
-        add(GUN_EMPTY_KEY, "Unloaded");
-        add(ALT_GUN_EMPTY_KEY, "It feels strangely hollow...");
-        add(ALT_GUN_HEAVY_KEY, "It feels weirdly heavy...");
-        add(GOLDEN_PAN_HIT, "Golden Pan Strike");
-        add(RADBOW_CHARGE, "Loaded with %1$s charges");
-        add(STEAM_WEAPON_FUEL, "Holds %1$s fuel (%2$s)");
-        add(STEAM_WEAPON_LIT, "Lit");
-        add(STEAM_WEAPON_UNLIT, "Exinguished");
+        add(MISSING_MOD_KEY, "Requires %s loaded to be useful");
+        add(MISSING_MOD_KEY_ADVANCED, "Requires %1$s [%2$s] loaded to be useful");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
@@ -157,6 +149,10 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     private void addShields() {
+        add(SHIELD_DAMAGE_KEY, "Deals %1$s damage to melee attackers");
+        add(SHIELD_EFFECT_KEY, "Applies %1$s (%2$s) to melee attackers");
+        add(SHIELD_SELF_EFFECT_KEY, "Applies %1$s (%2$s) when attacked");
+
         addItem(ESItems.WOODEN_SHIELD, "Wooden Shield");
         addItemTooltip(ESItems.WOODEN_SHIELD, "This cheap shield is 100% fire-ready");
         addItem(ESItems.FLAME_SHIELD, "Flame Shield");
@@ -241,6 +237,16 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     private void addWeapons() {
+        add(INNATE_ENCHANT_KEY, "+1 level to %2$s");
+        add(INNATE_ENCHANTS_KEY, "+%1$s levels to %2$s");
+
+        add(ALT_GUN_EMPTY_KEY, "It feels strangely hollow...");
+        add(ALT_GUN_HEAVY_KEY, "It feels weirdly heavy...");
+
+        add(STEAM_WEAPON_FUEL, "Holds %1$s fuel (%2$s)");
+        add(STEAM_WEAPON_LIT, "Lit");
+        add(STEAM_WEAPON_UNLIT, "Exinguished");
+
         // Hammers
         addItem(ESItems.GEM_BREAKER, "Gem Breaker");
         addItem(ESItems.BELL_HAMMER, "Bell Hammer");
@@ -283,6 +289,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.SILVER_BAT, "Purify all your enemies");
         addItem(ESItems.GOLDEN_PAN, "Golden Pan");
         addItemTooltip(ESItems.GOLDEN_PAN, "A valuable frying pan, extremely rarely found in lootbo- gifts.");
+        add(GOLDEN_PAN_HIT, "Golden Pan Strike");
         addItem(ESItems.ROLLING_PIN, "Rolling Pin");
         addItem(ESItems.DESTRUCTION_BAT, "Destruction's Bat");
         addItemTooltip(ESItems.DESTRUCTION_BAT, "The bigger they are, the harder they fall");
@@ -341,6 +348,7 @@ public final class ESLangProvider extends LanguageProvider {
         // Crossbows
         addItem(ESItems.RADBOW, "Radbow");
         addItemTooltip(ESItems.RADBOW, "Silent, deadly, and quite radioactive!");
+        add(RADBOW_CHARGE, "Loaded with %1$s charges");
         addEntityType(ESEntities.URANIUM_ROD, "Uranium Rod");
         addItem(ESItems.INCOMPLETE_MECHANICAL_RADBOW, "Incomplete Mechanical Radbow");
         addItemTooltip(ESItems.INCOMPLETE_MECHANICAL_RADBOW, "You can tell this is a great idea");
@@ -360,7 +368,14 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.CURSED_CAT_STAFF, "You can hear strange whispers when holding it...");
         addItem(ESItems.BLESSED_CAT_STAFF, "Blessed Cat Staff");
         addItemTooltip(ESItems.BLESSED_CAT_STAFF, "A powerful staff for a dangerous wanderer");
+        // Spellbooks
+        addItem(ESISSItems.GRIMOIRE, "Grimoire for Manipulating the Physically Dubious");
+        addItemTooltip(ESISSItems.GRIMOIRE, "The volume number is unreadable");
+        addItem(ESISSItems.GEMINI_SPELLBOOK_RED, "Gemini Spell Book");
+        addItem(ESISSItems.GEMINI_SPELLBOOK_BLUE, "Gemini Spell Book");
         // Other Ranged
+        add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
+        add(GUN_EMPTY_KEY, "Unloaded");
         addItem(ESItems.HANDGUN, "Handgun");
         addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
         addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");

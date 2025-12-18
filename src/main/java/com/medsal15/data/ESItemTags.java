@@ -5,6 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.items.ESItems;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.util.MSTags;
@@ -51,7 +52,7 @@ public final class ESItemTags extends ItemTagsProvider {
             tag(ItemTags.DURABILITY_ENCHANTABLE).add(crossbow.get());
             tag(ItemTags.VANISHING_ENCHANTABLE).add(crossbow.get());
         }
-        for (DeferredItem<Item> spellbook : ESItems.getSpellbooks()) {
+        for (DeferredItem<Item> spellbook : ESISSItems.getSpellbooks()) {
             tag(ESTags.Items.ISS_SPELLBOOKS).add(spellbook.get());
         }
         for (DeferredItem<Item> staff : ESItems.getStaves()) {

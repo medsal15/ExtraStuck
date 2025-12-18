@@ -18,6 +18,7 @@ import com.medsal15.client.model.armor.HeavyBootsModel;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
+import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigClient.BoondollarDisplayMode;
@@ -425,6 +426,10 @@ public final class ClientEvents {
                 registerBiConvertion(ESItems.OVERCHARGED_MAGNEFORK, ESItems.UNDERCHARGED_MAGNEFORK);
                 registerBiConvertion(ESItems.YELLOWCAKESAW, ESItems.YELLOWCAKESAW_LIPSTICK);
                 registerBiConvertion(ESItems.CASHGRABBERS, ESItems.CASHGRABBERS_SHEATHED);
+
+                if (ModList.get().isLoaded("irons_spellbooks")) {
+                    registerBiConvertion(ESISSItems.GEMINI_SPELLBOOK_BLUE, ESISSItems.GEMINI_SPELLBOOK_RED);
+                }
             }
         });
     }

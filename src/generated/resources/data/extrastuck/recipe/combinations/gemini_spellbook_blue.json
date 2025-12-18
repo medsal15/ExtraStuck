@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "irons_spellbooks:diamond_spell_book"
+  },
+  "input2": {
+    "item": "minestuck:mirror"
+  },
+  "mode": "or",
+  "output": "extrastuck:gemini_spellbook_blue"
+}

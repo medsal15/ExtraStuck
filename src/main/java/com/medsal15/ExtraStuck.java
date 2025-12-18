@@ -4,6 +4,9 @@ import org.slf4j.Logger;
 
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
+import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
+import com.medsal15.compat.irons_spellbooks.items.ESMissingItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.conditions.ESConditions;
 import com.medsal15.config.ConfigClient;
@@ -28,6 +31,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -80,8 +84,14 @@ public class ExtraStuck {
         ESProcessors.PROCESSORS.register(modEventBus);
         ESProgramTypes.PROGRAM_TYPES.register(modEventBus);
         ESSounds.SOUND_EVENTS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
+
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            ESISSItems.ITEMS.register(modEventBus);
+            ESISSComponents.DATA_COMPONENTS.register(modEventBus);
+        } else {
+            ESMissingItems.ITEMS.register(modEventBus);
+        }
 
         // Register our mod's ModConfigSpec so that FML can create and load the config
         // file for us

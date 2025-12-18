@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:item/handheld",
+    "loader": "neoforge:separate_transforms",
+    "base": {
+        "textures": {
+            "book": "extrastuck:item/spellbooks/gemini_spellbook_red",
+            "particle": "extrastuck:item/spellbooks/gemini_spellbook_red"
+        },
+        "parent": "extrastuck:item/template_spellbook"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "item/generated",
+            "textures": {
+                "layer0": "extrastuck:item/gemini_spellbook_red"
+            }
+        },
+        "head": {
+            "textures": {
+                "book": "extrastuck:item/spellbooks/gemini_spellbook_red",
+                "particle": "extrastuck:item/spellbooks/gemini_spellbook_red"
+            },
+            "parent": "extrastuck:item/template_spellbook_open"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "name": "Grimoire for Manipulating the Physically Dubious",
+    "flag": "mod:irons_spellbooks",
+    "icon": "extrastuck:grimoire",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:grimoire"
+            },
+            "text": "An old cursed spellbook that increases eldritch power."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Grimoire for Summoning the Zoologically Dubious and an Apprentice's Spell Book in a Totem Lathe.",
+            "left": "minestuck:grimoire",
+            "mode": "&&",
+            "right": "irons_spellbooks:gold_spell_book",
+            "result": "extrastuck:grimoire"
+        }
+    ]
+}
