@@ -1,6 +1,7 @@
 {
   "values": [
     "extrastuck:anti_die",
+    "extrastuck:perfectly_unique_spellbook",
     {
       "id": "irons_spellbooks:divine_soulshard",
       "required": false

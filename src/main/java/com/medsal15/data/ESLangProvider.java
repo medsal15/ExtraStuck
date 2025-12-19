@@ -3,6 +3,7 @@ package com.medsal15.data;
 import java.util.function.Supplier;
 
 import com.medsal15.ESDamageTypes;
+import com.medsal15.ESKindAbstratus;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.BlasterBlockEntity;
 import com.medsal15.blockentities.ChargerBlockEntity;
@@ -141,6 +142,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.BOONDOLLARS_FOR_IDIOTS, "Boondollars for Idiots");
         addItemTooltip(ESItems.BOONDOLLARS_FOR_IDIOTS,
                 "Contains all you need to know to become the richest player in the session");
+
+        add("strife." + ESKindAbstratus.DICE, "Dicekind");
+        add("strife." + ESKindAbstratus.SHIELD, "Shieldkind");
 
         addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");

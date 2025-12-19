@@ -35,6 +35,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -66,9 +67,11 @@ public class ExtraStuck {
     // pass them in automatically.
     public ExtraStuck(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
-        // modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::commonSetup);
 
         // Register the Deferred Register to the mod event bus so items get registered
+        CREATIVE_MODE_TABS.register(modEventBus);
+
         ESArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         ESBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ESBlocks.BLOCKS.register(modEventBus);
@@ -86,7 +89,6 @@ public class ExtraStuck {
         ESProcessors.PROCESSORS.register(modEventBus);
         ESProgramTypes.PROGRAM_TYPES.register(modEventBus);
         ESSounds.SOUND_EVENTS.register(modEventBus);
-        CREATIVE_MODE_TABS.register(modEventBus);
 
         if (ModList.get().isLoaded("irons_spellbooks")) {
             ESISSItems.ITEMS.register(modEventBus);
@@ -102,5 +104,9 @@ public class ExtraStuck {
         modContainer.registerConfig(ModConfig.Type.SERVER, ConfigServer.SPEC);
     }
 
-    // private void commonSetup(final FMLCommonSetupEvent event) {}
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            ESKindAbstratus.registerTypes();
+        });
+    }
 }
