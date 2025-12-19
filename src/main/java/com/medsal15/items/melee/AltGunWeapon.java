@@ -44,7 +44,7 @@ public class AltGunWeapon extends WeaponItem {
 
     private void adjustDamge(final ItemAttributeModifierEvent event) {
         ItemStack stack = event.getItemStack();
-        if (!(stack.getItem() instanceof AltGunWeapon))
+        if (stack.getItem() != this)
             return;
 
         ItemContainerContents contents = stack.get(DataComponents.CONTAINER);

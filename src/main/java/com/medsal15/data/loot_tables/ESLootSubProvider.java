@@ -5,7 +5,9 @@ import java.util.function.BiConsumer;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.items.ESItems;
+import com.medsal15.loot_functions.TurnToCardFunction;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
 
@@ -17,6 +19,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.LootTable.Builder;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.TagEntry;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
@@ -58,6 +61,12 @@ public class ESLootSubProvider implements LootTableSubProvider {
                 LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0, 1))
                         .add(LootItem.lootTableItem(ESItems.LIGHTNING_ARROW).setQuality(1).apply(rangeAmount(0, 8)))));
         // #endregion Land Titles
+
+        consumer.accept(key("chests/inject/unique_spellbook"),
+                LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK)
+                                .apply(TurnToCardFunction.builder(true)))
+                        .add(EmptyLootItem.emptyItem().setWeight(199))));
 
         // Gift
         consumer.accept(GIFT_LOOT_TABLE,

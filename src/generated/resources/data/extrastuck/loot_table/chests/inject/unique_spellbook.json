@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "extrastuck:turn_to_card",
+              "punched": true
+            }
+          ],
+          "name": "extrastuck:perfectly_unique_spellbook"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 99
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "extrastuck:chests/inject/unique_spellbook"
+}

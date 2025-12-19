@@ -54,7 +54,12 @@ public final class ESISSItems {
                     .withSpellbookAttributes(
                             new AttributeContainer(AttributeRegistry.MAX_MANA, 300, Operation.ADD_VALUE)));
     // TODO mage guy
+    public static final DeferredItem<Item> PERFECTLY_UNIQUE_SPELLBOOK = ITEMS.register("perfectly_unique_spellbook",
+            PerfectlyUniqueSpellbook::new);
+    // TODO sburbdb (increases damage to underlings)
     // #endregion Spellbooks
+
+    // TODO leader's sword (unique, has innate heal)
 
     public static Collection<DeferredItem<Item>> getSpellbooks() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
@@ -62,6 +67,7 @@ public final class ESISSItems {
         list.add(GRIMOIRE);
         list.add(GEMINI_SPELLBOOK_BLUE);
         list.add(GEMINI_SPELLBOOK_RED);
+        list.add(PERFECTLY_UNIQUE_SPELLBOOK);
 
         return list;
     }

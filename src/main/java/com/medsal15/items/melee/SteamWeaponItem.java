@@ -65,7 +65,7 @@ public class SteamWeaponItem extends WeaponItem {
 
     protected void adjustDamge(final ItemAttributeModifierEvent event) {
         ItemStack stack = event.getItemStack();
-        if (!(stack.getItem() instanceof SteamWeaponItem))
+        if (stack.getItem() != this)
             return;
 
         SteamFuelComponent steamFuel = stack.getOrDefault(ESDataComponents.STEAM_FUEL,

@@ -16,6 +16,7 @@ import com.mraof.minestuck.world.lands.LandTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.CanItemPerformAbility;
 
@@ -45,6 +46,10 @@ public class ESGLMProvider extends GlobalLootModifierProvider {
                         Minestuck.id("chests/medium_basic"), Optional.empty(), Optional.of(LandTypes.THUNDER.get())),
                 List.of());
         // #endregion Land Titles
+
+        add("perfectly_unique_spellbook", new ESLandLootModifier(new LootItemCondition[0],
+                modid("chests/inject/unique_spellbook"), Minestuck.id("chests/medium_basic"), Optional.empty(),
+                Optional.empty()), List.of(new ModLoadedCondition("irons_spellbooks")));
 
         add("boondollar_mining", new BoondollarLootModifier(
                 new LootItemCondition[] { new CanItemPerformAbility(ESItemTypes.BOONDOLLAR_MINING) }, 0.5F));

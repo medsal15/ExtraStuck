@@ -17,6 +17,7 @@ import com.medsal15.interpreters.ESInterpretertypes;
 import com.medsal15.items.ESArmorMaterials;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
+import com.medsal15.loot_functions.ESLootFunctions;
 import com.medsal15.loot_modifiers.ESLootModifiers;
 import com.medsal15.menus.ESMenuTypes;
 import com.medsal15.mobeffects.ESMobEffects;
@@ -76,6 +77,7 @@ public class ExtraStuck {
         ESEntities.ENTITIES.register(modEventBus);
         ESInterpretertypes.INTERPRETER_TYPES.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
+        ESLootFunctions.FUNCTIONS.register(modEventBus);
         ESLootModifiers.GLM_SERIALIZERS.register(modEventBus);
         ESMenuTypes.MENU_TYPES.register(modEventBus);
         ESMobEffects.MOB_EFFECTS.register(modEventBus);

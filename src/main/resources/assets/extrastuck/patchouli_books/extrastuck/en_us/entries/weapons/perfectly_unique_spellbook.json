@@ -1,0 +1,21 @@
+{
+    "name": "Perfectly Unique Spell Book",
+    "flag": "mod:irons_spellbooks",
+    "icon": "extrastuck:perfectly_unique_spellbook",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:perfectly_unique_spellbook"
+            },
+            "text": "A horribly expensive spell book. And a joke one at that?!$(br2)$(3)$(l)Special:$() Gains 10% spell power per unused spell slot."
+        },
+        {
+            "type": "extrastuck:grist_cost",
+            "text": "Cheapest Avarita item",
+            "item": "extrastuck:perfectly_unique_spellbook"
+        }
+    ]
+}

@@ -738,6 +738,11 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 160).grist(GristTypes.COBALT, 200).grist(GristTypes.GARNET, 100)
                 .grist(GristTypes.DIAMOND, 32).grist(GristTypes.AMBER, 64)
                 .build(issOutput);
+
+        GristCostRecipeBuilder.of(ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK)
+                .grist(GristTypes.BUILD, 93475).grist(GristTypes.URANIUM, 31).grist(GristTypes.AMETHYST, 866578)
+                .grist(GristTypes.ZILLIUM, 3).grist(GristTypes.CAULK, 30)
+                .build(issOutput);
         // #endregion Spellbooks
 
         GristCostRecipeBuilder.of(ESItems.HANDGUN)

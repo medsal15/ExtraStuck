@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "extrastuck:land_loot_modifier",
+  "conditions": [],
+  "inject": "extrastuck:chests/inject/unique_spellbook",
+  "target": "minestuck:chests/medium_basic"
+}

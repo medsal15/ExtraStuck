@@ -137,7 +137,7 @@ public final class ESItemTags extends ItemTagsProvider {
 
         tag(ItemTags.BOOKSHELF_BOOKS).add(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
 
-        tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get())
+        tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get(), ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK.get())
                 .addOptional(ItemRegistry.DIVINE_SOULSHARD.getId()).addOptional(ItemRegistry.PYRIUM_INGOT.getId())
                 .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())
                 .addOptional(ItemRegistry.ELDRITCH_PAGE.getId());

@@ -42,6 +42,10 @@ public final class ESISSMissingItems {
                 () -> new MissingModItem(new Item.Properties().stacksTo(1),
                         "Iron's Spells & Spellbooks",
                         "irons_spellbooks"));
+        ITEMS.register("perfectly_unique_spellbook",
+                () -> new MissingModItem(new Item.Properties().stacksTo(1),
+                        "Iron's Spells & Spellbooks",
+                        "irons_spellbooks"));
     }
 
     public static Collection<DeferredItem<Item>> getStaves() {

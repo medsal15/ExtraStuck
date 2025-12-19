@@ -373,6 +373,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESISSItems.GRIMOIRE, "The volume number is unreadable");
         addItem(ESISSItems.GEMINI_SPELLBOOK_RED, "Gemini Spell Book");
         addItem(ESISSItems.GEMINI_SPELLBOOK_BLUE, "Gemini Spell Book");
+        addItem(ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK, "Perfectly Unique Spell Book");
         // Other Ranged
         add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
         add(GUN_EMPTY_KEY, "Unloaded");
