@@ -1,0 +1,11 @@
+{
+    "attributes": [
+        {
+            "attribute": "irons_spellbooks:max_mana",
+            "id": "kubejs:echeladder_max_mana",
+            "operation": "add_value",
+            "value": 0.0,
+            "change_per_rung": 4
+        }
+    ]
+}
