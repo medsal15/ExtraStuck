@@ -1,0 +1,23 @@
+{
+    "name": "Compact Modus",
+    "icon": "extrastuck:compact_modus_card",
+    "category": "extrastuck:modus_cards",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:compact_modus_card"
+            },
+            "text": "An upgrade to the Set Modus, this modus holds all copies in the same slot! Just scroll to select the next/previous one.$(br2)With strict mode enabled, it treats different components as different items too. Just use an Array Modus at that point..."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Set Modus Card and a Barrel in a Totem Lathe.",
+            "left": "minestuck:set_modus_card",
+            "mode": "&&",
+            "right": "minecraft:barrel",
+            "result": "extrastuck:compact_modus_card"
+        }
+    ]
+}

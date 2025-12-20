@@ -6,6 +6,7 @@ import com.medsal15.client.screen.machine.ChargerScreen;
 import com.medsal15.client.screen.machine.PrinterScreen;
 import com.medsal15.client.screen.machine.ReactorScreen;
 import com.medsal15.client.screen.modus.ArcheologyModusScreen;
+import com.medsal15.client.screen.modus.CompactModusScreen;
 import com.medsal15.client.screen.modus.EnderModusScreen;
 import com.medsal15.client.screen.modus.FortuneModusScreen;
 import com.medsal15.client.screen.modus.FurnaceModusScreen;
@@ -43,5 +44,6 @@ public final class ESScreens {
         registerSylladexFactory(ESModus.ENDER_MODUS, EnderModusScreen::new);
         registerSylladexFactory(ESModus.MASTERMIND_MODUS, MastermindModusScreen::new);
         registerSylladexFactory(ESModus.FURNACE_MODUS, FurnaceModusScreen::new);
+        registerSylladexFactory(ESModus.COMPACT_MODUS, CompactModusScreen::new);
     }
 }

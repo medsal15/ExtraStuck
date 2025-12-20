@@ -72,6 +72,14 @@ public final class ConfigServer {
             .comment(
                     "If true, captchalogued mastermind cards will be stored in a more difficult card when retrieved from a mastermind modus")
             .define("modus.mastermind.incremental", false);
+    public static final ModConfigSpec.BooleanValue MASTERMIND_CHANGE = BUILDER
+            .comment("If true, the Mastermind Modus Card can have its default difficulty changed",
+                    "Due to restrictions outside the mod's power, the difficulty will reset to the config's value when swapped")
+            .define("modus.mastermind.change", true);
+    public static final ModConfigSpec.BooleanValue MASTERMIND_CHANGE_PC = BUILDER
+            .comment("If true, Mastermind Codebreaker can change a Mastermind Modus Card's default difficulty",
+                    "Only affects data components if change is disabled")
+            .define("modus.mastermind.change_with_pc", true);
 
     public static final ConfigValue<Integer> FURNACE_DEFAULT_COST = BUILDER
             .comment("How much fuel (in ticks) does it cost to extract an item from the Furnace Modus",

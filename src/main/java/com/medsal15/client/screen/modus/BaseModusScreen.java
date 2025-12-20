@@ -52,4 +52,11 @@ public abstract class BaseModusScreen extends SylladexScreen {
             }
         }
     }
+
+    protected boolean isMouseInContainer(double xcor, double ycor) {
+        int xOffset = (this.width - 256) / 2;
+        int yOffset = (this.height - 202) / 2;
+        return xcor >= (double) (xOffset + 16) && xcor < (double) (xOffset + 16 + 224)
+                && ycor >= (double) (yOffset + 17) && ycor < (double) (yOffset + 17 + 153);
+    }
 }

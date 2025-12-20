@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.menus.ChargerMenu;
@@ -130,6 +131,27 @@ public final class ESPackets {
                 card.remove(ESDataComponents.ATTEMPTS);
             card.set(ESDataComponents.MASTERMIND_CODE, code);
             card.set(ESDataComponents.DIFFICULTY, difficulty);
+        }
+    }
+
+    public record MastermindDifficulty(int difficulty) implements MSPacket.PlayToServer {
+        public static final Type<MastermindDifficulty> ID = new Type<>(ExtraStuck.modid("mastermind/difficulty"));
+        public static final StreamCodec<ByteBuf, MastermindDifficulty> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.INT, MastermindDifficulty::difficulty,
+                MastermindDifficulty::new);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context, ServerPlayer player) {
+            ItemStack modus = player.getItemInHand(InteractionHand.MAIN_HAND);
+            if (modus.getItem() == ESItems.MASTERMIND_MODUS_CARD.get()
+                    && ConfigServer.MASTERMIND_CHANGE_PC.getAsBoolean()) {
+                modus.set(ESDataComponents.DIFFICULTY, difficulty);
+            }
         }
     }
 

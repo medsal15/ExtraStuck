@@ -4,6 +4,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.network.ESPackets.MastermindAddAttempt;
 import com.medsal15.network.ESPackets.MastermindDestroy;
+import com.medsal15.network.ESPackets.MastermindDifficulty;
 import com.medsal15.network.ESPackets.MastermindReset;
 import com.medsal15.network.ESPackets.SyncBoondollarValues;
 import com.medsal15.network.ESPackets.ToggleMode;
@@ -27,6 +28,7 @@ public final class ModEvents {
         registrar.playToServer(MastermindAddAttempt.ID, MastermindAddAttempt.STREAM_CODEC, ModEvents::exec);
         registrar.playToServer(MastermindDestroy.ID, MastermindDestroy.STREAM_CODEC, ModEvents::exec);
         registrar.playToServer(MastermindReset.ID, MastermindReset.STREAM_CODEC, ModEvents::exec);
+        registrar.playToServer(MastermindDifficulty.ID, MastermindDifficulty.STREAM_CODEC, ModEvents::exec);
 
         registrar.playToClient(SyncBoondollarValues.ID, SyncBoondollarValues.STREAM_CODEC, ModEvents::execClient);
     }

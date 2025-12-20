@@ -6,6 +6,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.modus.MastermindCardItem;
+import com.medsal15.network.ESPackets.MastermindDifficulty;
 import com.medsal15.network.ESPackets.MastermindReset;
 import com.mraof.minestuck.blockentity.ComputerBlockEntity;
 import com.mraof.minestuck.client.gui.computer.ThemedScreen;
@@ -98,11 +99,13 @@ public class MastermindEncodeScreen extends ThemedScreen {
             return;
 
         ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
-        if (stack.getItem() != ESItems.MASTERMIND_CARD.get())
-            return;
-
-        success = true;
-        int code = MastermindCardItem.generateCode(difficulty, player.getRandom());
-        PacketDistributor.sendToServer(new MastermindReset(code, difficulty), new CustomPacketPayload[0]);
+        if (stack.getItem() == ESItems.MASTERMIND_CARD.get()) {
+            success = true;
+            int code = MastermindCardItem.generateCode(difficulty, player.getRandom());
+            PacketDistributor.sendToServer(new MastermindReset(code, difficulty), new CustomPacketPayload[0]);
+        } else if (stack.getItem() == ESItems.MASTERMIND_MODUS_CARD.get()) {
+            success = true;
+            PacketDistributor.sendToServer(new MastermindDifficulty(difficulty), new CustomPacketPayload[0]);
+        }
     }
 }

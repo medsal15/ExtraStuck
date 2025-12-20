@@ -79,6 +79,10 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String GRIST_DETECTOR_UNCOMMON = ExtraStuck.MODID + ".grist_detector.uncommon";
     public static final String MASTERMIND_GRIST_BASE = ExtraStuck.MODID + ".mastermind.grist.";
     public static final String FURNACE_MODUS_FUEL = ESItems.FURNACE_MODUS_CARD.get().getDescriptionId() + ".fuel";
+    public static final String COMPACT_MODUS_STRICT_ON = ESItems.COMPACT_MODUS_CARD.get().getDescriptionId()
+            + ".strict.on";
+    public static final String COMPACT_MODUS_STRICT_OFF = ESItems.COMPACT_MODUS_CARD.get().getDescriptionId()
+            + ".strict.off";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
@@ -484,6 +488,13 @@ public final class ESLangProvider extends LanguageProvider {
                 + " Extracting an item requires as much fuel as smelting it (or a second of fuel if it does not have a smelting recipe)."
                 + " It will also smelt the item in question if possible.");
         add(FURNACE_MODUS_FUEL, "Can smelt (estimated) %s items");
+
+        addItem(ESItems.COMPACT_MODUS_CARD, "Compact Modus");
+        addItemBookDescription(ESItems.COMPACT_MODUS_CARD, "The Compact Modus displays fewer cards."
+                + " Every item is kept in a compact pile that can be scrolled between its different variants."
+                + " Only applies if the item ids are the same. Strict mode extends this to components.");
+        add(COMPACT_MODUS_STRICT_ON, "Strict Mode Enabled");
+        add(COMPACT_MODUS_STRICT_OFF, "Strict Mode Disabled");
     }
 
     private void addTools() {

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 1650,
+    "minestuck:diamond": 12,
+    "minestuck:quartz": 149
+  },
+  "ingredient": {
+    "item": "extrastuck:compact_modus_card"
+  }
+}

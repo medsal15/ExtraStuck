@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:set_modus_card"
+  },
+  "input2": {
+    "item": "minecraft:barrel"
+  },
+  "mode": "and",
+  "output": "extrastuck:compact_modus_card"
+}
