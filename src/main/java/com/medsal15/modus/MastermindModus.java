@@ -69,4 +69,14 @@ public class MastermindModus extends BaseModus {
 
         return lock;
     }
+
+    @Override
+    public ItemStack getModusItem() {
+        if (difficulty > 0) {
+            ItemStack modus = ESItems.MASTERMIND_MODUS_CARD.toStack();
+            modus.set(ESDataComponents.DIFFICULTY, difficulty);
+            return modus;
+        }
+        return super.getModusItem();
+    }
 }
