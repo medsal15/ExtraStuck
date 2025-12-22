@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "irons_spellbooks"
+      }
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:spyglass"
+  },
+  "input2": {
+    "item": "minestuck:completed_sburb_code"
+  },
+  "mode": "and",
+  "output": "extrastuck:sburbdb"
+}

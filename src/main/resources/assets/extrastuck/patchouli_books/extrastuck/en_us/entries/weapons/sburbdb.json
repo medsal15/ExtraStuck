@@ -1,0 +1,24 @@
+{
+    "name": "SburbDB",
+    "icon": "extrastuck:sburbdb",
+    "flag": "!mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:sburbdb"
+            },
+            "text": "A simple book that increases damage against underlings when held.$(br2)$(3)$(l)Special:$() Can be used on underlings to know their secondary grist drops (if any)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Spyglass and a completed Sburb Code in a Totem Lathe.",
+            "left": "minecraft:spyglass",
+            "mode": "&&",
+            "right": "minestuck:completed_sburb_code",
+            "result": "extrastuck:sburbdb"
+        }
+    ]
+}

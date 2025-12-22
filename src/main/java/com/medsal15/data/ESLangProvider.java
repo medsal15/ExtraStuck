@@ -22,6 +22,7 @@ import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.computer.ProgramType;
 import com.mraof.minestuck.computer.ProgramTypes;
+import com.mraof.minestuck.entity.MSAttributes;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -56,9 +57,9 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String JACKPOT_ROLLED_4 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.4";
     public static final String JACKPOT_ROLLED_5 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.5";
     public static final String JACKPOT_ROLLED_6 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.6";
-
     public static final String TOKEN_TETRAHEDRON_TOKEN_KEY = ESItems.TOKEN_TETRAHEDRON.get().getDescriptionId()
             + ".token_drop";
+    public static final String SBURBDB_SECONDARIES_KEY = ESISSItems.SBURBDB.get().getDescriptionId() + ".secondaries";
 
     public static final String GOLDEN_PAN_HIT = "sound." + ExtraStuck.MODID + ".golden_pan_hit";
     public static final String GUN_CONTENT_KEY = ExtraStuck.MODID + ".gun_content";
@@ -154,6 +155,10 @@ public final class ESLangProvider extends LanguageProvider {
                 "%1$s was shot by %2$s with %3$s");
         addDeathMessages(ESDamageTypes.THORN_SHIELD, "%1$s struck %2$s's shield too hard",
                 "%1$s struck %2$s's %3$s too hard");
+
+        // Band-aids for Minestuck's missing translation
+        add(MSAttributes.UNDERLING_DAMAGE_MODIFIER.value().getDescriptionId(), "Damage Against Underlings");
+        add(MSAttributes.UNDERLING_PROTECTION_MODIFIER.value().getDescriptionId(), "Damage From Underlings");
     }
 
     private void addShields() {
@@ -382,6 +387,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESISSItems.GEMINI_SPELLBOOK_RED, "Gemini Spell Book");
         addItem(ESISSItems.GEMINI_SPELLBOOK_BLUE, "Gemini Spell Book");
         addItem(ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK, "Perfectly Unique Spell Book");
+        addItem(ESISSItems.SBURBDB, "SburbDB");
+        addItemTooltip(ESISSItems.SBURBDB, "Database of everything in Sburb (book edition)");
+        add(SBURBDB_SECONDARIES_KEY, "Can also drop %s");
         // Other Ranged
         add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
         add(GUN_EMPTY_KEY, "Unloaded");

@@ -56,7 +56,7 @@ public final class ESISSItems {
     // TODO mage guy
     public static final DeferredItem<Item> PERFECTLY_UNIQUE_SPELLBOOK = ITEMS.register("perfectly_unique_spellbook",
             PerfectlyUniqueSpellbook::new);
-    // TODO sburbdb (increases damage to underlings)
+    public static final DeferredItem<Item> SBURBDB = ITEMS.register("sburbdb", () -> new SburbDBSpellbook(4));
     // #endregion Spellbooks
 
     // TODO leader's sword (unique, has innate heal)
@@ -68,6 +68,7 @@ public final class ESISSItems {
         list.add(GEMINI_SPELLBOOK_BLUE);
         list.add(GEMINI_SPELLBOOK_RED);
         list.add(PERFECTLY_UNIQUE_SPELLBOOK);
+        list.add(SBURBDB);
 
         return list;
     }

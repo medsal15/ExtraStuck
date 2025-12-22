@@ -743,6 +743,18 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 93475).grist(GristTypes.URANIUM, 31).grist(GristTypes.AMETHYST, 866578)
                 .grist(GristTypes.ZILLIUM, 3).grist(GristTypes.CAULK, 30)
                 .build(issOutput);
+
+        CombinationRecipeBuilder.of(ESISSItems.SBURBDB)
+                .input(ItemRegistry.IRON_SPELL_BOOK.get()).and().input(MSItems.COMPLETED_SBURB_CODE)
+                .build(issOutput, modid("sburbdb_iss"));
+        CombinationRecipeBuilder.of(ESISSItems.SBURBDB)
+                .input(Items.SPYGLASS).and().input(MSItems.COMPLETED_SBURB_CODE)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESISSItems.SBURBDB)
+                .grist(GristTypes.BUILD, 160).grist(GristTypes.MERCURY, 20)
+                .grist(GristTypes.CAULK, 8).grist(GristTypes.SHALE, 8).grist(GristTypes.RUST, 8)
+                .grist(GristTypes.URANIUM, 8)
+                .build(output);
         // #endregion Spellbooks
 
         GristCostRecipeBuilder.of(ESItems.HANDGUN)

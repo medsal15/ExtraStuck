@@ -934,6 +934,9 @@ public final class ESItems {
                 output.accept(item.get());
             }
         } else {
+            for (DeferredItem<Item> item : ESISSMissingItems.getMisc()) {
+                output.accept(item.get());
+            }
             for (DeferredItem<Item> item : ESISSMissingItems.getStaves()) {
                 output.accept(item.get());
             }

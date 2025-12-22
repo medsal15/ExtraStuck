@@ -1,4 +1,6 @@
 {
+  "attribute.name.player.underling_damage_modifier": "Damage Against Underlings",
+  "attribute.name.player.underling_protection_modifier": "Damage From Underlings",
   "block.extrastuck.card_ore": "Card Ore",
   "block.extrastuck.charger": "Charger",
   "block.extrastuck.chiseled_garnet_bricks": "Chiseled Garnet Bricks",
@@ -367,6 +369,9 @@
   "item.extrastuck.salesman_goggles.tooltip": "How valuable is it?",
   "item.extrastuck.saleswoman_glasses": "Saleswoman Glasses",
   "item.extrastuck.saleswoman_glasses.tooltip": "A \"reasonable\" price",
+  "item.extrastuck.sburbdb": "SburbDB",
+  "item.extrastuck.sburbdb.secondaries": "Can also drop %s",
+  "item.extrastuck.sburbdb.tooltip": "Database of everything in Sburb (book edition)",
   "item.extrastuck.silver_bat": "Silver Bat",
   "item.extrastuck.silver_bat.tooltip": "Purify all your enemies",
   "item.extrastuck.slice_and_dice": "Slice and Dice",

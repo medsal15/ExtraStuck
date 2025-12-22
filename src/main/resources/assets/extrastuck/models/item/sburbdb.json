@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:item/handheld",
+    "loader": "neoforge:separate_transforms",
+    "base": {
+        "textures": {
+            "book": "extrastuck:item/spellbooks/sburbdb",
+            "particle": "extrastuck:item/spellbooks/sburbdb"
+        },
+        "parent": "extrastuck:item/template_spellbook"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "item/generated",
+            "textures": {
+                "layer0": "extrastuck:item/sburbdb"
+            }
+        },
+        "head": {
+            "textures": {
+                "book": "extrastuck:item/spellbooks/sburbdb",
+                "particle": "extrastuck:item/spellbooks/sburbdb"
+            },
+            "parent": "extrastuck:item/template_spellbook_open"
+        }
+    }
+}

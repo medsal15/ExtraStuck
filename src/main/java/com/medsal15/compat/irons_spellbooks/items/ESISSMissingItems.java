@@ -5,7 +5,9 @@ import java.util.Collection;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.compat.MissingModItem;
+import com.medsal15.items.melee.SburbDBWeapon;
 import com.medsal15.items.weaponeffects.ESRightClickEffects;
+import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
@@ -15,6 +17,12 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class ESISSMissingItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
+
+    // #region Misc
+    public static final DeferredItem<Item> SBURBDB = ITEMS.register("sburbdb",
+            () -> new SburbDBWeapon(new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -3F).set(MSItemTypes.MISC_TOOL),
+                    new MSItemProperties().durability(120)));
+    // #endregion Misc
 
     // #region Staves
     // Staves are technically wands, but slower and bigger
@@ -53,6 +61,14 @@ public final class ESISSMissingItems {
 
         list.add(CURSED_CAT_STAFF);
         list.add(BLESSED_CAT_STAFF);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getMisc() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(SBURBDB);
 
         return list;
     }

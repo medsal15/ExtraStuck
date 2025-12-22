@@ -1,0 +1,24 @@
+{
+    "name": "SburbDB",
+    "icon": "extrastuck:sburbdb",
+    "flag": "mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:sburbdb"
+            },
+            "text": "An intelligent spellbook that increases damage against underlings.$(br2)$(3)$(l)Special:$() Can be used on underlings to know their secondary grist drops (if any)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Ironbound Tome and a completed Sburb Code in a Totem Lathe.",
+            "left": "irons_spellbooks:iron_spell_book",
+            "mode": "&&",
+            "right": "minestuck:completed_sburb_code",
+            "result": "extrastuck:sburbdb"
+        }
+    ]
+}
