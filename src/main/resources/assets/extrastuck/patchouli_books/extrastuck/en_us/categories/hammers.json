@@ -1,0 +1,7 @@
+{
+    "name": "Hammers",
+    "sortnum": 1,
+    "description": "When you fight nails, get a hammer!",
+    "icon": "minestuck:claw_hammer",
+    "parent": "extrastuck:weapons"
+}

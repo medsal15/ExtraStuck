@@ -1,0 +1,7 @@
+{
+    "name": "Clubs",
+    "sortnum": 1,
+    "description": "It's clubbering time",
+    "icon": "minestuck:deuce_club",
+    "parent": "extrastuck:weapons"
+}

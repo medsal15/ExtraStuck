@@ -30,13 +30,9 @@ public class SburbDBWeapon extends AttributeWeapon {
         super(builder, properties, () -> {
             return List.of(
                     new ItemAttributeModifiers.Entry(MSAttributes.UNDERLING_DAMAGE_MODIFIER,
-                            new AttributeModifier(ExtraStuck.modid("sburbdb_mainhand"), .1,
+                            new AttributeModifier(ExtraStuck.modid("sburbdb_underlingdamage"), .1,
                                     Operation.ADD_MULTIPLIED_BASE),
-                            EquipmentSlotGroup.MAINHAND),
-                    new ItemAttributeModifiers.Entry(MSAttributes.UNDERLING_DAMAGE_MODIFIER,
-                            new AttributeModifier(ExtraStuck.modid("sburbdb_offhand"), .1,
-                                    Operation.ADD_MULTIPLIED_BASE),
-                            EquipmentSlotGroup.OFFHAND));
+                            EquipmentSlotGroup.HAND));
         });
     }
 

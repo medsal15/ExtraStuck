@@ -2,7 +2,7 @@
     "name": "Gemini Spell Book",
     "flag": "mod:irons_spellbooks",
     "icon": "extrastuck:gemini_spellbook_blue",
-    "category": "extrastuck:weapons",
+    "category": "extrastuck:spellbooks",
     "sortnum": 1,
     "pages": [
         {

@@ -2,7 +2,7 @@
     "name": "Perfectly Unique Spell Book",
     "flag": "mod:irons_spellbooks",
     "icon": "extrastuck:perfectly_unique_spellbook",
-    "category": "extrastuck:weapons",
+    "category": "extrastuck:spellbooks",
     "sortnum": 1,
     "pages": [
         {

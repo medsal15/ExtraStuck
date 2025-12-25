@@ -1,0 +1,8 @@
+{
+    "name": "Spellbooks",
+    "sortnum": 1,
+    "description": "Advancing spell book technology with alchemy",
+    "flag": "mod:irons_spellbooks",
+    "icon": "irons_spellbooks:iron_spell_book",
+    "parent": "extrastuck:weapons"
+}

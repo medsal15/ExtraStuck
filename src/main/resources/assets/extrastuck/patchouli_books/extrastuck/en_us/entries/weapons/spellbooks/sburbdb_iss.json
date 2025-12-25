@@ -2,7 +2,7 @@
     "name": "SburbDB",
     "icon": "extrastuck:sburbdb",
     "flag": "mod:irons_spellbooks",
-    "category": "extrastuck:weapons",
+    "category": "extrastuck:spellbooks",
     "sortnum": 1,
     "pages": [
         {

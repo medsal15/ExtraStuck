@@ -1,7 +1,7 @@
 {
     "name": "Office Key",
     "icon": "extrastuck:office_key",
-    "category": "extrastuck:weapons",
+    "category": "extrastuck:keys",
     "sortnum": 1,
     "pages": [
         {

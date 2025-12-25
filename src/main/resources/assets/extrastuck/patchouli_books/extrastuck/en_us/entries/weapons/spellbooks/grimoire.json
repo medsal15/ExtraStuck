@@ -2,7 +2,7 @@
     "name": "Grimoire for Manipulating the Physically Dubious",
     "flag": "mod:irons_spellbooks",
     "icon": "extrastuck:grimoire",
-    "category": "extrastuck:weapons",
+    "category": "extrastuck:spellbooks",
     "sortnum": 1,
     "pages": [
         {

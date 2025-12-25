@@ -1,7 +1,7 @@
 {
     "name": "Ancient Vault Opener",
     "icon": "extrastuck:ancient_vault_opener",
-    "category": "extrastuck:weapons",
+    "category": "extrastuck:keys",
     "sortnum": 1,
     "pages": [
         {

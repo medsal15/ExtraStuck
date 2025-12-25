@@ -1,0 +1,7 @@
+{
+    "name": "Keys",
+    "sortnum": 1,
+    "description": "Opening the way to victory with keys",
+    "icon": "minestuck:house_key",
+    "parent": "extrastuck:weapons"
+}
