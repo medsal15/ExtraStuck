@@ -340,9 +340,11 @@ public final class ESLangProvider extends LanguageProvider {
         // Swords
         addItem(ESItems.SUN_REAVER, "Sun Reaver");
         addItemTooltip(ESItems.SUN_REAVER, "To kill a god...");
+        addItem(ESISSItems.LEADER_SWORD, "Leader's Sword");
+        addItemTooltip(ESISSItems.LEADER_SWORD, "Your reflection judges you");
+        // Sickles
         addItem(ESItems.PIRATE_HOOK, "Pirate Hook");
         addItemTooltip(ESItems.PIRATE_HOOK, "Yarr! Thy booty is mine!");
-        // Sickles
         addItem(ESItems.NEW_MOON, "New Moon");
         addItemTooltip(ESItems.NEW_MOON, "More strength...");
         // Scythes

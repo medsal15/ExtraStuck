@@ -4,16 +4,27 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.medsal15.ExtraStuck;
+import com.mraof.minestuck.item.MSItemProperties;
+import com.mraof.minestuck.item.MSItemTypes;
 
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
+import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.item.weapons.StaffTier;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -59,7 +70,24 @@ public final class ESISSItems {
     public static final DeferredItem<Item> SBURBDB = ITEMS.register("sburbdb", () -> new SburbDBSpellbook(4));
     // #endregion Spellbooks
 
-    // TODO leader's sword (unique, has innate heal)
+    public static final DeferredItem<Item> LEADER_SWORD = ITEMS.register("leader_sword",
+            () -> new MagicSwordItem(MSItemTypes.REGI_TIER, new MSItemProperties().durability(1500)
+                    .attributes(ItemAttributeModifiers.builder()
+                            .add(Attributes.ATTACK_DAMAGE,
+                                    new AttributeModifier(SwordItem.BASE_ATTACK_DAMAGE_ID, 7, Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.MAINHAND)
+                            .add(Attributes.ATTACK_SPEED,
+                                    new AttributeModifier(SwordItem.BASE_ATTACK_SPEED_ID, -2.4f, Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.MAINHAND)
+                            .add(AttributeRegistry.HOLY_SPELL_POWER,
+                                    new AttributeModifier(ExtraStuck.modid("leader_sword_holy"), .1f,
+                                            Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.MAINHAND)
+                            .build())
+                    .rarity(Rarity.UNCOMMON),
+                    new SpellDataRegistryHolder[] {
+                            new SpellDataRegistryHolder(SpellRegistry.HEALING_CIRCLE_SPELL, 1),
+                    }));
 
     public static Collection<DeferredItem<Item>> getSpellbooks() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
@@ -78,6 +106,14 @@ public final class ESISSItems {
 
         list.add(CURSED_CAT_STAFF);
         list.add(BLESSED_CAT_STAFF);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getSwords() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(LEADER_SWORD);
 
         return list;
     }

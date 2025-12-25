@@ -12,6 +12,7 @@ import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -22,6 +23,12 @@ public final class ESISSMissingItems {
     public static final DeferredItem<Item> SBURBDB = ITEMS.register("sburbdb",
             () -> new SburbDBWeapon(new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -3F).set(MSItemTypes.MISC_TOOL),
                     new MSItemProperties().durability(120)));
+
+    public static final DeferredItem<Item> LEADER_SWORD = ITEMS.register("leader_sword",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -2.4f).set(MSItemTypes.SWORD_TOOL).efficiency(15f)
+                            .set(ESRightClickEffects.healNearby(5)),
+                    new MSItemProperties().durability(1500).rarity(Rarity.UNCOMMON)));
     // #endregion Misc
 
     // #region Staves
@@ -69,6 +76,14 @@ public final class ESISSMissingItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(SBURBDB);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getSwords() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(LEADER_SWORD);
 
         return list;
     }

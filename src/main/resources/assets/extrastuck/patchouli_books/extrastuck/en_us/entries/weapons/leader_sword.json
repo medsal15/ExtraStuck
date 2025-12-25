@@ -1,0 +1,24 @@
+{
+    "name": "Leader's Sword",
+    "icon": "extrastuck:leader_sword",
+    "flag": "!mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:leader_sword"
+            },
+            "text": "A rapier with healing abilities.$(br2)$(3)$(l)Special:$() Using gives Regeneration for 10 seconds to nearby allies."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Angel Apocalypse and a Mirror in a Totem Lathe.",
+            "left": "minestuck:angel_apocalypse",
+            "mode": "&&",
+            "right": "minestuck:mirror",
+            "result": "extrastuck:leader_sword"
+        }
+    ]
+}

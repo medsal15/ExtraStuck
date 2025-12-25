@@ -1,6 +1,7 @@
 package com.medsal15.data;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.items.ESItems;
 
 import net.minecraft.data.PackOutput;
@@ -183,6 +184,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.STOCKS_UPTICKER.get());
         // Swords
         handheldItem(ESItems.SUN_REAVER.get());
+        handheldItem(ESISSItems.LEADER_SWORD.get());
         // Sickles
         handheldItem(ESItems.NEW_MOON.get());
         handheldItem(ESItems.PIRATE_HOOK.get());

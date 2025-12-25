@@ -1,0 +1,24 @@
+{
+    "name": "Leader's Sword",
+    "icon": "extrastuck:leader_sword",
+    "flag": "mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:leader_sword"
+            },
+            "text": "A rapier with healing abilities.$(br2)$(3)$(l)Special:$() Alchemized with Healing Circle 1 and gives 10% holy spell power."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Angel Apocalypse and a Divine Pearl in a Totem Lathe.",
+            "left": "minestuck:angel_apocalypse",
+            "mode": "&&",
+            "right": "irons_spellbooks:divine_pearl",
+            "result": "extrastuck:leader_sword"
+        }
+    ]
+}

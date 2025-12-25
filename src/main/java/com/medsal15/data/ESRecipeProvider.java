@@ -267,6 +267,8 @@ public final class ESRecipeProvider extends RecipeProvider {
     }
 
     private void weaponRecipes(@Nonnull RecipeOutput output) {
+        final RecipeOutput issOutput = output.withConditions(ISS_LOADED);
+
         // #region Hammers
         CombinationRecipeBuilder.of(ESItems.GEM_BREAKER)
                 .input(MSItems.REGI_HAMMER).or().input(Items.EMERALD_BLOCK)
@@ -579,6 +581,16 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.SUN_REAVER)
                 .grist(GristTypes.TAR, 400).grist(GristTypes.SHALE, 158).grist(GristTypes.COBALT, 914)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESISSItems.LEADER_SWORD)
+                .input(MSItems.ANGEL_APOCALYPSE).and().input(ItemRegistry.DIVINE_PEARL.get())
+                .build(issOutput, modid("leader_sword_iss"));
+        CombinationRecipeBuilder.of(ESISSItems.LEADER_SWORD)
+                .input(MSItems.ANGEL_APOCALYPSE).and().input(MSItems.MIRROR)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESISSItems.LEADER_SWORD)
+                .grist(GristTypes.RUBY, 88).grist(GristTypes.URANIUM, 150).grist(GristTypes.AMBER, 1511)
+                .build(output);
         // #endregion Swords
 
         // #region Sickles
@@ -694,8 +706,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.TAR, 46).grist(GristTypes.CHALK, 46).grist(GristTypes.GARNET, 8)
                 .build(output);
         // #endregion Throwables
-
-        final RecipeOutput issOutput = output.withConditions(ISS_LOADED);
 
         // #region Staves
         CombinationRecipeBuilder.of(ESISSItems.CURSED_CAT_STAFF)

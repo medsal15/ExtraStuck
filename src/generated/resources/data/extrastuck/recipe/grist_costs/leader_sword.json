@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 1511,
+    "minestuck:ruby": 88,
+    "minestuck:uranium": 150
+  },
+  "ingredient": {
+    "item": "extrastuck:leader_sword"
+  }
+}

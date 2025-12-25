@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:angel_apocalypse"
+  },
+  "input2": {
+    "item": "irons_spellbooks:divine_pearl"
+  },
+  "mode": "and",
+  "output": "extrastuck:leader_sword"
+}

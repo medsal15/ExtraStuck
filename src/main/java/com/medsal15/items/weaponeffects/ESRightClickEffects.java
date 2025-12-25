@@ -1,5 +1,6 @@
 package com.medsal15.items.weaponeffects;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -12,6 +13,7 @@ import com.medsal15.items.components.SteamFuelComponent;
 import com.mraof.minestuck.client.util.MagicEffect;
 import com.mraof.minestuck.client.util.MagicEffect.AOEType;
 import com.mraof.minestuck.client.util.MagicEffect.RangedType;
+import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicAOERightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.player.PlayerData;
@@ -24,10 +26,14 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.common.util.FakePlayer;
 
 public final class ESRightClickEffects {
@@ -62,6 +68,41 @@ public final class ESRightClickEffects {
 
     public static final MagicRangedRightClickEffect BLESSED_STAFF_MAGIC = new MagicRightClickEffect(16, 5, null,
             () -> SoundEvents.AMETHYST_BLOCK_CHIME, 1F, RangedType.ENCHANT);
+
+    public static ItemRightClickEffect healNearby(int radius) {
+        return (level, player, hand) -> {
+            ItemStack stack = player.getItemInHand(hand);
+
+            AABB box = new AABB(player.blockPosition()).inflate(radius);
+            List<Entity> targets = level.getEntities(player, box);
+            targets.add(player);
+
+            for (Entity entity : targets) {
+                if (!(entity instanceof LivingEntity livingEntity))
+                    continue;
+
+                boolean canHeal = entity == player ||
+                        (entity instanceof TamableAnimal tamableAnimal && tamableAnimal.isOwnedBy(player)) ||
+                        player.getTeam() == null ||
+                        entity.isAlliedTo(player);
+
+                if (canHeal) {
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200));
+                }
+            }
+
+            EquipmentSlot slot;
+            if (hand == InteractionHand.MAIN_HAND)
+                slot = EquipmentSlot.MAINHAND;
+            else
+                slot = EquipmentSlot.OFFHAND;
+            stack.hurtAndBreak(radius * 10, player, slot);
+
+            player.getCooldowns().addCooldown(stack.getItem(), 300);
+
+            return InteractionResultHolder.pass(stack);
+        };
+    }
 
     private static class CashMagicRangedEffect extends MagicRightClickEffect {
         public CashMagicRangedEffect(int distance, int damage, Supplier<MobEffectInstance> effect,

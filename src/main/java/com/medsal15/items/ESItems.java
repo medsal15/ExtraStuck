@@ -1099,6 +1099,11 @@ public final class ESItems {
         list.add(STOCKS_UPTICKER);
         // Swords
         list.add(SUN_REAVER);
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            list.addAll(ESISSItems.getSwords());
+        } else {
+            list.addAll(ESISSMissingItems.getSwords());
+        }
         // Sickles
         list.add(NEW_MOON);
         list.add(PIRATE_HOOK);
