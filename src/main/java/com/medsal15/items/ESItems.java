@@ -1142,7 +1142,7 @@ public final class ESItems {
 
     public static Collection<DeferredItem<Item>> getRangedWeapons() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
-        list.add(BAGUETTE_MAGIQUE);
+        list.addAll(getMagicWeapons());
 
         list.add(RADBOW);
         list.add(MECHANICAL_RADBOW);
@@ -1150,6 +1150,15 @@ public final class ESItems {
         list.add(YIN_YANG_ORB);
 
         list.add(HANDGUN);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getMagicWeapons() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(BAGUETTE_MAGIQUE);
+        list.add(MONEY_MAGIC);
+
         return list;
     }
 

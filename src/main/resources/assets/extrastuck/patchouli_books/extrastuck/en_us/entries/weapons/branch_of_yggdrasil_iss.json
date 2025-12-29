@@ -1,0 +1,24 @@
+{
+    "name": "Branch of Yggdrasil",
+    "icon": "extrastuck:branch_of_yggdrasil",
+    "flag": "mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:branch_of_yggdrasil"
+            },
+            "text": "Straight up a branch of the World Tree. The tree that connects worlds together. That the norses believed in.$(br)Pretty strong, huh. But is it strong enough?"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Artificer Cane and a Cueball in a Totem Lathe.",
+            "left": "irons_spellbooks:artificer_cane",
+            "mode": "&&",
+            "right": "minestuck:cueball",
+            "result": "extrastuck:branch_of_yggdrasil"
+        }
+    ]
+}

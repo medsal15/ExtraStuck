@@ -1,0 +1,24 @@
+{
+    "name": "Branch of Yggdrasil",
+    "icon": "extrastuck:branch_of_yggdrasil",
+    "flag": "!mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:branch_of_yggdrasil"
+            },
+            "text": "Straight up a branch of the World Tree. The tree that connects worlds together. That the norses believed in.$(br)Pretty strong, huh. But is it strong enough?$(br2)$(3)$(l)Special:$() Shoots magic which may give Levitation for 10 seconds used."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Thorn of Oglogoth and a Cueball in a Totem Lathe.",
+            "left": "minestuck:thorn_of_oglogoth",
+            "mode": "&&",
+            "right": "minestuck:cueball",
+            "result": "extrastuck:branch_of_yggdrasil"
+        }
+    ]
+}

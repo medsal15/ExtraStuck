@@ -41,6 +41,14 @@ public final class ESISSMissingItems {
             () -> new WeaponItem(new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -3F).efficiency(1F)
                     .set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects.BLESSED_STAFF_MAGIC),
                     new Item.Properties()));
+    public static final DeferredItem<Item> BRANCH_OF_YGGDRASIL = ITEMS.register("branch_of_yggdrasil",
+            () -> new WeaponItem(new WeaponItem.Builder(MSItemTypes.WELSH_TIER, 5, -2.5F).efficiency(1F)
+                    .set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects.BRANCH_OF_YGGDRASIL_MAGIC),
+                    new Item.Properties()));
+    public static final DeferredItem<Item> STAFF_OF_YGGDRASIL = ITEMS.register("staff_of_yggdrasil",
+            () -> new WeaponItem(new WeaponItem.Builder(MSItemTypes.WELSH_TIER, 6, -2.5F).efficiency(1F)
+                    .set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects.STAFF_OF_YGGDRASIL_MAGIC),
+                    new Item.Properties()));
     // #endregion Staves
 
     // These are not referenced anywhere
@@ -68,6 +76,8 @@ public final class ESISSMissingItems {
 
         list.add(CURSED_CAT_STAFF);
         list.add(BLESSED_CAT_STAFF);
+        list.add(BRANCH_OF_YGGDRASIL);
+        list.add(STAFF_OF_YGGDRASIL);
 
         return list;
     }

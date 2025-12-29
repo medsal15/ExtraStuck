@@ -383,6 +383,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESISSItems.CURSED_CAT_STAFF, "You can hear strange whispers when holding it...");
         addItem(ESISSItems.BLESSED_CAT_STAFF, "Blessed Cat Staff");
         addItemTooltip(ESISSItems.BLESSED_CAT_STAFF, "A powerful staff for a dangerous wanderer");
+        addItem(ESISSItems.BRANCH_OF_YGGDRASIL, "Branch of Yggdrasil");
+        addItemTooltip(ESISSItems.BRANCH_OF_YGGDRASIL, "Snapped straight off the World Tree");
+        addItem(ESISSItems.STAFF_OF_YGGDRASIL, "Staff of Yggdrasil");
         // Spellbooks
         addItem(ESISSItems.GRIMOIRE, "Grimoire for Manipulating the Physically Dubious");
         addItemTooltip(ESISSItems.GRIMOIRE, "The volume number is unreadable");

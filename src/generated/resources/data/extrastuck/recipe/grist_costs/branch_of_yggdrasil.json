@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 5983,
+    "minestuck:marble": 3723,
+    "minestuck:quartz": 2700
+  },
+  "ingredient": {
+    "item": "extrastuck:branch_of_yggdrasil"
+  }
+}

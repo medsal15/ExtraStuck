@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "irons_spellbooks"
+      }
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:thorn_of_oglogoth"
+  },
+  "input2": {
+    "item": "minestuck:cueball"
+  },
+  "mode": "and",
+  "output": "extrastuck:branch_of_yggdrasil"
+}

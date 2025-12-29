@@ -1,5 +1,6 @@
 package com.medsal15.items.weaponeffects;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -24,6 +25,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -69,6 +71,14 @@ public final class ESRightClickEffects {
     public static final MagicRangedRightClickEffect BLESSED_STAFF_MAGIC = new MagicRightClickEffect(16, 5, null,
             () -> SoundEvents.AMETHYST_BLOCK_CHIME, 1F, RangedType.ENCHANT);
 
+    public static final MagicRangedRightClickEffect BRANCH_OF_YGGDRASIL_MAGIC = new MagicRightClickEffect(24, 8,
+            () -> new MobEffectInstance(MobEffects.LEVITATION, 200), () -> SoundEvents.BLAZE_SHOOT, 1F,
+            RangedType.ECHIDNA);
+
+    public static final MagicRangedRightClickEffect STAFF_OF_YGGDRASIL_MAGIC = new YggdrasilMagicRangedEffect(24, 8,
+            () -> new MobEffectInstance(MobEffects.LEVITATION, 200), () -> SoundEvents.BLAZE_SHOOT, 1F,
+            RangedType.ECHIDNA);
+
     public static ItemRightClickEffect healNearby(int radius) {
         return (level, player, hand) -> {
             ItemStack stack = player.getItemInHand(hand);
@@ -104,6 +114,9 @@ public final class ESRightClickEffects {
         };
     }
 
+    /**
+     * Increases spell damage by log10 player boondollars
+     */
     private static class CashMagicRangedEffect extends MagicRightClickEffect {
         public CashMagicRangedEffect(int distance, int damage, Supplier<MobEffectInstance> effect,
                 Supplier<SoundEvent> sound, float pitch, @Nullable MagicEffect.RangedType type) {
@@ -122,6 +135,26 @@ public final class ESRightClickEffects {
                 }
             }
             return (float) damage;
+        }
+    }
+
+    /**
+     * Increases spell damage by sum of negative effect levels
+     */
+    private static class YggdrasilMagicRangedEffect extends MagicRightClickEffect {
+        public YggdrasilMagicRangedEffect(int distance, int damage, Supplier<MobEffectInstance> effect,
+                Supplier<SoundEvent> sound, float pitch, @Nullable MagicEffect.RangedType type) {
+            super(distance, damage, effect, sound, pitch, type);
+        }
+
+        @Override
+        protected float calculateDamage(ServerPlayer player, LivingEntity target, int damage) {
+            List<MobEffectInstance> effects = new ArrayList<>(target.getActiveEffects());
+            effects.removeIf(
+                    effect -> effect.getEffect().value().getCategory() != MobEffectCategory.HARMFUL
+                            || effect.getEffect().value().isInstantenous());
+            damage += effects.stream().map(eff -> eff.getAmplifier() + 1).reduce((sum, n) -> sum + n).orElse(0);
+            return super.calculateDamage(player, target, damage);
         }
     }
 

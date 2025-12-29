@@ -1,0 +1,48 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "irons_spellbooks"
+      }
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "extrastuck:branch_of_yggdrasil"
+    },
+    "G": {
+      "tag": "c:storage_blocks/gold"
+    },
+    "b": {
+      "item": "minestuck:coagulated_blood"
+    },
+    "e": {
+      "item": "minecraft:dragon_head"
+    },
+    "f": {
+      "item": "minecraft:blaze_rod"
+    },
+    "i": {
+      "item": "minecraft:blue_ice"
+    },
+    "l": {
+      "item": "minecraft:creeper_head"
+    },
+    "n": {
+      "item": "minecraft:spider_eye"
+    }
+  },
+  "pattern": [
+    "lGe",
+    "fBn",
+    "bGi"
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:staff_of_yggdrasil"
+  }
+}

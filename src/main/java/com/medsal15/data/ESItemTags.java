@@ -45,6 +45,9 @@ public final class ESItemTags extends ItemTagsProvider {
         for (DeferredItem<Item> weapon : ESItems.getRangedWeapons()) {
             tagRanged(weapon);
         }
+        for (DeferredItem<Item> weapon : ESItems.getMagicWeapons()) {
+            tag(MSTags.Items.MAGIC_WEAPON).add(weapon.get());
+        }
 
         for (DeferredItem<Item> crossbow : ESItems.getCrossbows()) {
             tag(Tags.Items.TOOLS_CROSSBOW).add(crossbow.get());
@@ -57,6 +60,7 @@ public final class ESItemTags extends ItemTagsProvider {
         }
         for (DeferredItem<Item> staff : ESISSItems.getStaves()) {
             tag(ESTags.Items.ISS_STAVES).add(staff.get());
+            tag(MSTags.Items.MAGIC_WEAPON).add(staff.get());
         }
 
         for (DeferredItem<Item> tool : ESItems.getMiningTools()) {
@@ -141,7 +145,8 @@ public final class ESItemTags extends ItemTagsProvider {
                 .addOptional(ItemRegistry.DIVINE_SOULSHARD.getId()).addOptional(ItemRegistry.PYRIUM_INGOT.getId())
                 .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())
                 .addOptional(ItemRegistry.ELDRITCH_PAGE.getId());
-        tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get());
+        tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get(), ESISSItems.BRANCH_OF_YGGDRASIL.get(),
+                ESISSItems.STAFF_OF_YGGDRASIL.get());
 
         tag(ESTags.Items.IGNORE_BYPRODUCT_CUTTING).add(Items.BONE_MEAL);
     }

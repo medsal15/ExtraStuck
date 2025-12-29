@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "irons_spellbooks"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extrastuck:shaped/staff_of_yggdrasil"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yggdrasil_branch": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:branch_of_yggdrasil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_yggdrasil_branch"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extrastuck:shaped/staff_of_yggdrasil"
+    ]
+  }
+}

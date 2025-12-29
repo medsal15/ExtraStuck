@@ -727,6 +727,45 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESISSItems.BLESSED_CAT_STAFF)
                 .grist(GristTypes.MARBLE, 1200).grist(GristTypes.GOLD, 250).grist(GristTypes.CHALK, 800)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESISSItems.BRANCH_OF_YGGDRASIL)
+                .input(ItemRegistry.ARTIFICER_STAFF.get()).and().input(MSItems.CUEBALL)
+                .build(issOutput, ExtraStuck.modid("branch_of_yggdrasil_iss"));
+        CombinationRecipeBuilder.of(ESISSItems.BRANCH_OF_YGGDRASIL)
+                .input(MSItems.THORN_OF_OGLOGOTH).and().input(MSItems.CUEBALL)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESISSItems.BRANCH_OF_YGGDRASIL)
+                .grist(GristTypes.BUILD, 5983).grist(GristTypes.MARBLE, 3723).grist(GristTypes.QUARTZ, 2700)
+                .build(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESISSItems.STAFF_OF_YGGDRASIL.toStack())
+                .pattern("fGi")
+                .pattern("lBe")
+                .pattern("bGn")
+                .define('G', Tags.Items.STORAGE_BLOCKS_GOLD)
+                .define('B', ESISSItems.BRANCH_OF_YGGDRASIL)
+                .define('f', ItemRegistry.FIRE_RUNE.get())
+                .define('i', ItemRegistry.ICE_RUNE.get())
+                .define('l', ItemRegistry.LIGHTNING_RUNE.get())
+                .define('e', ItemRegistry.ENDER_RUNE.get())
+                .define('b', ItemRegistry.BLOOD_RUNE.get())
+                .define('n', ItemRegistry.NATURE_RUNE.get())
+                .unlockedBy("has_yggdrasil_branch", has(ESISSItems.BRANCH_OF_YGGDRASIL))
+                .save(issOutput, modid("shaped/staff_of_yggdrasil_iss"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESISSItems.STAFF_OF_YGGDRASIL.toStack())
+                .pattern("lGe")
+                .pattern("fBn")
+                .pattern("bGi")
+                .define('G', Tags.Items.STORAGE_BLOCKS_GOLD)
+                .define('B', ESISSItems.BRANCH_OF_YGGDRASIL)
+                .define('f', Items.BLAZE_ROD)
+                .define('i', Items.BLUE_ICE)
+                .define('l', Items.CREEPER_HEAD)
+                .define('e', Items.DRAGON_HEAD)
+                .define('b', MSItems.COAGULATED_BLOOD)
+                .define('n', Items.SPIDER_EYE)
+                .unlockedBy("has_yggdrasil_branch", has(ESISSItems.BRANCH_OF_YGGDRASIL))
+                .save(output.withConditions(not(ISS_LOADED)), modid("shaped/staff_of_yggdrasil"));
         // #endregion Staves
 
         // #region Spellbooks

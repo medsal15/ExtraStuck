@@ -48,7 +48,34 @@ public final class ESISSItems {
                                     Operation.ADD_MULTIPLIED_BASE),
                             new AttributeContainer(AttributeRegistry.LIGHTNING_SPELL_POWER, .15,
                                     Operation.ADD_MULTIPLIED_BASE))))));
-    // TODO branch of yggdrasil (welsh)
+    public static final DeferredItem<Item> BRANCH_OF_YGGDRASIL = ITEMS.register("branch_of_yggdrasil",
+            () -> new StaffItem(ItemPropertiesHelper.equipment(1)
+                    .attributes(ExtendedSwordItem.createAttributes(new StaffTier(8, -2.5F,
+                            new AttributeContainer(AttributeRegistry.MANA_REGEN, .25, Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.CAST_TIME_REDUCTION, .15,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.CASTING_MOVESPEED, .15,
+                                    Operation.ADD_MULTIPLIED_BASE))))));
+    public static final DeferredItem<Item> STAFF_OF_YGGDRASIL = ITEMS.register("staff_of_yggdrasil",
+            () -> new StaffItem(ItemPropertiesHelper.equipment(1)
+                    .attributes(ExtendedSwordItem.createAttributes(new StaffTier(8, -2.5F,
+                            new AttributeContainer(AttributeRegistry.MANA_REGEN, .25, Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.CAST_TIME_REDUCTION, .15,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.CASTING_MOVESPEED, .15,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.FIRE_SPELL_POWER, .2,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, .2,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.LIGHTNING_SPELL_POWER, .2,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, .2,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, .2,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.NATURE_SPELL_POWER, .2,
+                                    Operation.ADD_MULTIPLIED_BASE))))));
     // #endregion Staves
 
     // #region Spellbooks
@@ -106,6 +133,8 @@ public final class ESISSItems {
 
         list.add(CURSED_CAT_STAFF);
         list.add(BLESSED_CAT_STAFF);
+        list.add(BRANCH_OF_YGGDRASIL);
+        list.add(STAFF_OF_YGGDRASIL);
 
         return list;
     }
