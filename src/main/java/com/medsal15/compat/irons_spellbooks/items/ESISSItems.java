@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.items.ESItemTiers;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.IBlock;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
+import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
+import com.mraof.minestuck.item.weapon.OnHitEffect;
+import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
@@ -20,8 +24,10 @@ import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.item.weapons.StaffTier;
+import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Unit;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -123,7 +129,14 @@ public final class ESISSItems {
                             new AttributeContainer(AttributeRegistry.HOLY_SPELL_POWER, .2,
                                     Operation.ADD_MULTIPLIED_BASE)))),
                     ESISSItems.CAST_GOLD_SHIELD));
-    // TODO Dersite Wand & Dersite Dagger (switchable, allows casting spells)
+    public static final DeferredItem<Item> DERSITE_WAND = ITEMS.register("dersite_wand",
+            () -> new SwappableStaffItem(ItemPropertiesHelper.equipment(1)
+                    .attributes(ExtendedSwordItem.createAttributes(new StaffTier(6, -3F,
+                            new AttributeContainer(AttributeRegistry.CASTING_MOVESPEED, .15,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, .2,
+                                    Operation.ADD_MULTIPLIED_BASE)))),
+                    ESISSItems.AMETHYST_BACKSTABBER));
     // #endregion Staves
 
     // #region Spellbooks
@@ -173,6 +186,12 @@ public final class ESISSItems {
                                     EquipmentSlotGroup.HAND)
                             .build()),
                     ESISSItems.PROSPITIAN_WAND, SHIELD_CAST_SPELL));
+    public static final DeferredItem<Item> AMETHYST_BACKSTABBER = ITEMS.register("amethyst_backstabber",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(ESItemTiers.AMETHYST_TIER, 1, -2F).set(MSItemTypes.KNIFE_TOOL)
+                            .add(OnHitEffect.backstab(7)).set(ItemRightClickEffect.switchTo(ESISSItems.DERSITE_WAND)),
+                    new MSItemProperties().durability(1200).component(ComponentRegistry.CASTING_IMPLEMENT,
+                            Unit.INSTANCE)));
     // #endregion Armory
 
     // TODO cosmic plague set (ender + nature bonus)
@@ -202,6 +221,7 @@ public final class ESISSItems {
         list.add(BRANCH_OF_YGGDRASIL);
         list.add(STAFF_OF_YGGDRASIL);
         list.add(PROSPITIAN_WAND);
+        list.add(DERSITE_WAND);
 
         return list;
     }
@@ -210,6 +230,14 @@ public final class ESISSItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(LEADER_SWORD);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getKnives() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(AMETHYST_BACKSTABBER);
 
         return list;
     }

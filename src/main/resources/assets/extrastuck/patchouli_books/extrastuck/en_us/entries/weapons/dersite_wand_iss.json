@@ -1,0 +1,20 @@
+{
+    "name": "Dersite Wand",
+    "icon": "extrastuck:dersite_wand",
+    "flag": "mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:dersite_wand"
+            },
+            "text": "A wand commonly used by Dersites. As a mace.$(br2)$(3)$(l)Special:$() Increases speed by 15% while casting, ender spell power by 20%, and can be turned into an Amethyst Backstabber by using it while holding shift (does not work with a spellbook equipped)."
+        },
+        {
+            "type": "extrastuck:grist_cost",
+            "item": "extrastuck:dersite_wand"
+        }
+    ]
+}

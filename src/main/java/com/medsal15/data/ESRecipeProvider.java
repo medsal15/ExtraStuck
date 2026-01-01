@@ -663,6 +663,27 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Claws
 
+        // #region Knives
+        CombinationRecipeBuilder.of(ESISSItems.AMETHYST_BACKSTABBER)
+                .input(MSItems.SHADOWRAZOR).and().input(Items.AMETHYST_BLOCK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESISSItems.AMETHYST_BACKSTABBER)
+                .grist(GristTypes.AMETHYST, 264).grist(GristTypes.SHALE, 512).grist(GristTypes.TAR, 1128)
+                .build(output);
+        GristCostRecipeBuilder.of(ESISSItems.DERSITE_WAND)
+                .grist(GristTypes.AMETHYST, 264).grist(GristTypes.SHALE, 512).grist(GristTypes.TAR, 1128)
+                .build(output);
+        // Add swapping for ISS
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ESISSItems.AMETHYST_BACKSTABBER.toStack())
+                .requires(ESISSItems.DERSITE_WAND)
+                .unlockedBy("has_dersite_wand", has(ESISSItems.DERSITE_WAND))
+                .save(output.withConditions(ISS_LOADED), modid("shapeless/dersite_wand_swap"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ESISSItems.DERSITE_WAND.toStack())
+                .requires(ESISSItems.AMETHYST_BACKSTABBER)
+                .unlockedBy("has_dersite_wand", has(ESISSItems.AMETHYST_BACKSTABBER))
+                .save(output.withConditions(ISS_LOADED), modid("shapeless/amethyst_backstabber_swap"));
+        // #endregion Knives
+
         // #region Crossbows
         CombinationRecipeBuilder.of(ESItems.RADBOW)
                 .input(Items.CROSSBOW).and().input(MSItems.URANIUM_POWERED_STICK)

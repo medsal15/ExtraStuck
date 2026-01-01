@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "extrastuck:dersite_wand"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:amethyst_backstabber"
+  }
+}

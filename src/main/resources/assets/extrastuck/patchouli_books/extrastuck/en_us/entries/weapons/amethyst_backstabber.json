@@ -1,0 +1,23 @@
+{
+    "name": "Amethyst Backstabber",
+    "icon": "extrastuck:amethyst_backstabber",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:amethyst_backstabber"
+            },
+            "text": "An everyday knife for backstabbing. Surprisingly durable for a weapon made of amethyst$(br2)$(3)$(l)Special:$() Deals 7 damage on backstabs and can be turned into a Dersite Wand by right-clicking while holding shift."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Shadowrazor and a Block of Amethyst in a Totem Lathe.",
+            "left": "minestuck:shadowrazor",
+            "mode": "&&",
+            "right": "minecraft:amethyst_block",
+            "result": "extrastuck:amethyst_backstabber"
+        }
+    ]
+}

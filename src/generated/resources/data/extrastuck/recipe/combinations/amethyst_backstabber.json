@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:shadowrazor"
+  },
+  "input2": {
+    "item": "minecraft:amethyst_block"
+  },
+  "mode": "and",
+  "output": "extrastuck:amethyst_backstabber"
+}

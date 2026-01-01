@@ -5,11 +5,14 @@ import java.util.Collection;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.compat.MissingModItem;
+import com.medsal15.items.ESItemTiers;
 import com.medsal15.items.melee.SburbDBWeapon;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.weaponeffects.ESRightClickEffects;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
+import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
+import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.world.item.Item;
@@ -35,6 +38,13 @@ public final class ESISSMissingItems {
     public static final DeferredItem<Item> CAST_GOLD_SHIELD = ITEMS.register("cast_gold_shield",
             () -> new ESShield(new Item.Properties().durability(1200), ESISSMissingItems.PROSPITIAN_WAND,
                     ESShield.IBlock::shootFireball));
+
+    public static final DeferredItem<Item> AMETHYST_BACKSTABBER = ITEMS.register("amethyst_backstabber",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(ESItemTiers.AMETHYST_TIER, 1, -2F).set(MSItemTypes.KNIFE_TOOL)
+                            .add(OnHitEffect.backstab(7))
+                            .set(ItemRightClickEffect.switchTo(ESISSMissingItems.DERSITE_WAND)),
+                    new MSItemProperties().durability(1200)));
     // #endregion Misc
 
     // #region Staves
@@ -56,8 +66,12 @@ public final class ESISSMissingItems {
                     .set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects.STAFF_OF_YGGDRASIL_MAGIC),
                     new Item.Properties()));
     public static final DeferredItem<Item> PROSPITIAN_WAND = ITEMS.register("prospitian_wand",
-            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 4, -3F).efficiency(1F)
+            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 6, -3F).efficiency(1F)
                     .set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects::prospitianWand),
+                    new MSItemProperties().durability(1200)));
+    public static final DeferredItem<Item> DERSITE_WAND = ITEMS.register("dersite_wand",
+            () -> new WeaponItem(new WeaponItem.Builder(ESItemTiers.AMETHYST_TIER, 4, -3F).efficiency(1F)
+                    .set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects::dersiteWand),
                     new MSItemProperties().durability(1200)));
     // #endregion Staves
 
@@ -89,6 +103,7 @@ public final class ESISSMissingItems {
         list.add(BRANCH_OF_YGGDRASIL);
         list.add(STAFF_OF_YGGDRASIL);
         list.add(PROSPITIAN_WAND);
+        list.add(DERSITE_WAND);
 
         return list;
     }
@@ -105,6 +120,14 @@ public final class ESISSMissingItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(LEADER_SWORD);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getKnives() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(AMETHYST_BACKSTABBER);
 
         return list;
     }

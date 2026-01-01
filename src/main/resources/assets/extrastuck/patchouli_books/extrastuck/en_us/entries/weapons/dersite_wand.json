@@ -1,0 +1,20 @@
+{
+    "name": "Dersite Wand",
+    "icon": "extrastuck:dersite_wand",
+    "flag": "!mod:irons_spellbooks",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:dersite_wand"
+            },
+            "text": "A wand commonly used by Dersites. As a mace.$(br2)$(3)$(l)Special:$() Gives Invisibility for 10 seconds (20 seconds for Void players) when used, and can be turned into an Amethyst Backstabber by using it while holding shift."
+        },
+        {
+            "type": "extrastuck:grist_cost",
+            "item": "extrastuck:dersite_wand"
+        }
+    ]
+}

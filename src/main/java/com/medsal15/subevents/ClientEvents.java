@@ -19,6 +19,7 @@ import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
+import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigClient.BoondollarDisplayMode;
@@ -430,6 +431,10 @@ public final class ClientEvents {
                 if (ModList.get().isLoaded("irons_spellbooks")) {
                     registerBiConvertion(ESISSItems.GEMINI_SPELLBOOK_BLUE, ESISSItems.GEMINI_SPELLBOOK_RED);
                     registerBiConvertion(ESISSItems.PROSPITIAN_WAND, ESISSItems.CAST_GOLD_SHIELD);
+                    registerBiConvertion(ESISSItems.DERSITE_WAND, ESISSItems.AMETHYST_BACKSTABBER);
+                } else {
+                    registerBiConvertion(ESISSMissingItems.PROSPITIAN_WAND, ESISSMissingItems.CAST_GOLD_SHIELD);
+                    registerBiConvertion(ESISSMissingItems.DERSITE_WAND, ESISSMissingItems.AMETHYST_BACKSTABBER);
                 }
             }
         });

@@ -1143,6 +1143,12 @@ public final class ESItems {
         // Claws
         list.add(CASHGRABBERS);
         list.add(CASHGRABBERS_SHEATHED);
+        // Knives
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            list.addAll(ESISSItems.getKnives());
+        } else {
+            list.addAll(ESISSMissingItems.getKnives());
+        }
         return list;
     }
 

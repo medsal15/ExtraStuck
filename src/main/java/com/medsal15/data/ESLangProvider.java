@@ -352,7 +352,7 @@ public final class ESLangProvider extends LanguageProvider {
         // Scythes
         addItem(ESItems.DEBT_REAPER, "Debt Reaper");
         addItemTooltip(ESItems.DEBT_REAPER, "You can't escape taxes");
-        // Fands
+        // Fans
         addItem(ESItems.NONE_OF_YOUR_BUSINESS, "None of Your Business");
         addItemTooltip(ESItems.NONE_OF_YOUR_BUSINESS, "Privacy first");
         // Lances
@@ -362,6 +362,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.CASHGRABBERS, "Cashgrabbers");
         addItemTooltip(ESItems.CASHGRABBERS, "Claw machines are not liable for whatever you use the claws for");
         addItem(ESItems.CASHGRABBERS_SHEATHED, "Sheathed Cashgrabbers");
+        // Knives
+        addItem(ESISSItems.AMETHYST_BACKSTABBER, "Amethyst Backstabber");
+        addItemTooltip(ESISSItems.AMETHYST_BACKSTABBER, "Intruder Alert! A Dersite Spy is in the base!");
         // Crossbows
         addItem(ESItems.RADBOW, "Radbow");
         addItemTooltip(ESItems.RADBOW, "Silent, deadly, and quite radioactive!");
@@ -390,6 +393,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESISSItems.STAFF_OF_YGGDRASIL, "Staff of Yggdrasil");
         addItem(ESISSItems.PROSPITIAN_WAND, "Prospitian Wand");
         addItemTooltip(ESISSItems.PROSPITIAN_WAND, "Big wand commonly used by Prospitians for magic");
+        addItem(ESISSItems.DERSITE_WAND, "Dersite Wand");
+        addItemTooltip(ESISSItems.DERSITE_WAND, "Years of misuse by Dersites have bent it");
         // Spellbooks
         addItem(ESISSItems.GRIMOIRE, "Grimoire for Manipulating the Physically Dubious");
         addItemTooltip(ESISSItems.GRIMOIRE, "The volume number is unreadable");

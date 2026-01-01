@@ -41,6 +41,8 @@ public final class ESTags {
 
         public static final TagKey<Block> INCORRECT_FOR_COPPER_TIER = BlockTags
                 .create(ExtraStuck.modid("incorrect_for_copper_tier"));
+        public static final TagKey<Block> INCORRECT_FOR_AMETHYST_TIER = BlockTags
+                .create(ExtraStuck.modid("incorrect_for_amethyst_tier"));
     }
 
     public static final class EntityTypes {

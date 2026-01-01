@@ -198,6 +198,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         // Claws
         handheldItem(ESItems.CASHGRABBERS.get());
         handheldItem(ESItems.CASHGRABBERS_SHEATHED.get());
+        // Knives
+        knifeWeapon(ESISSItems.AMETHYST_BACKSTABBER);
     }
 
     private void registerRangedWeapons() {

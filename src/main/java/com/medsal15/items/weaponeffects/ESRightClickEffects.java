@@ -18,7 +18,9 @@ import com.mraof.minestuck.client.util.MagicEffect.RangedType;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicAOERightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
+import com.mraof.minestuck.player.EnumAspect;
 import com.mraof.minestuck.player.PlayerData;
+import com.mraof.minestuck.player.Title;
 import com.mraof.minestuck.util.MSAttachments;
 
 import net.minecraft.server.level.ServerPlayer;
@@ -108,6 +110,29 @@ public final class ESRightClickEffects {
             }
 
             return InteractionResultHolder.pass(stack);
+        }
+    }
+
+    /**
+     * Switches to Amethyst Backstabber when holding shift, ??? otherwise
+     */
+    public static InteractionResultHolder<ItemStack> dersiteWand(Level level, Player player, InteractionHand hand) {
+        if (player.isShiftKeyDown()) {
+            return ItemRightClickEffect.switchTo(ESISSMissingItems.AMETHYST_BACKSTABBER).onRightClick(level, player,
+                    hand);
+        } else {
+            ItemStack stack = player.getItemInHand(hand);
+
+            if (!player.hasEffect(MobEffects.INVISIBILITY) && player instanceof ServerPlayer serverPlayer) {
+                int duration = 200;
+                if (player.isCreative() || Title.isPlayerOfAspect(serverPlayer, EnumAspect.VOID))
+                    duration = 400;
+                player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, duration));
+                stack.hurtAndBreak(1, player,
+                        hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+            }
+
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
         }
     }
 
