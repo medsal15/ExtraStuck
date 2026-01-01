@@ -6,6 +6,7 @@ import java.util.Collection;
 import com.medsal15.ExtraStuck;
 import com.medsal15.compat.MissingModItem;
 import com.medsal15.items.melee.SburbDBWeapon;
+import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.weaponeffects.ESRightClickEffects;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
@@ -13,6 +14,7 @@ import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.Tiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -29,6 +31,10 @@ public final class ESISSMissingItems {
                     new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -2.4f).set(MSItemTypes.SWORD_TOOL).efficiency(15f)
                             .set(ESRightClickEffects.healNearby(5)),
                     new MSItemProperties().durability(1500).rarity(Rarity.UNCOMMON)));
+
+    public static final DeferredItem<Item> CAST_GOLD_SHIELD = ITEMS.register("cast_gold_shield",
+            () -> new ESShield(new Item.Properties().durability(1200), ESISSMissingItems.PROSPITIAN_WAND,
+                    ESShield.IBlock::shootFireball));
     // #endregion Misc
 
     // #region Staves
@@ -49,6 +55,10 @@ public final class ESISSMissingItems {
             () -> new WeaponItem(new WeaponItem.Builder(MSItemTypes.WELSH_TIER, 6, -2.5F).efficiency(1F)
                     .set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects.STAFF_OF_YGGDRASIL_MAGIC),
                     new Item.Properties()));
+    public static final DeferredItem<Item> PROSPITIAN_WAND = ITEMS.register("prospitian_wand",
+            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 4, -3F).efficiency(1F)
+                    .set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects::prospitianWand),
+                    new MSItemProperties().durability(1200)));
     // #endregion Staves
 
     // These are not referenced anywhere
@@ -78,6 +88,7 @@ public final class ESISSMissingItems {
         list.add(BLESSED_CAT_STAFF);
         list.add(BRANCH_OF_YGGDRASIL);
         list.add(STAFF_OF_YGGDRASIL);
+        list.add(PROSPITIAN_WAND);
 
         return list;
     }
@@ -94,6 +105,14 @@ public final class ESISSMissingItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(LEADER_SWORD);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getShields() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(CAST_GOLD_SHIELD);
 
         return list;
     }

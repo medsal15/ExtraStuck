@@ -4,31 +4,70 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.items.shields.ESShield;
+import com.medsal15.items.shields.ESShield.IBlock;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
+import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.spells.SpellData;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.item.weapons.StaffTier;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class ESISSItems {
+    // #region SHIELD_CAST_SPELL
+    /**
+     * Attempts to cast currently active spell
+     */
+    private static final IBlock SHIELD_CAST_SPELL = event -> {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            Level level = player.level();
+            SpellSelectionManager spellSelectionManager = new SpellSelectionManager(player);
+            SpellSelectionManager.SelectionOption selectionOption = spellSelectionManager.getSelection();
+            if (selectionOption != null && !selectionOption.spellData.equals(SpellData.EMPTY)) {
+                SpellData spellData = selectionOption.spellData;
+                int spellLevel = spellData.getSpell().getLevelFor(spellData.getLevel(), player);
+                ItemStack shield = player.getUseItem();
+                String slot;
+
+                if (player.getItemInHand(InteractionHand.MAIN_HAND).equals(shield)) {
+                    slot = SpellSelectionManager.MAINHAND;
+                } else {
+                    slot = SpellSelectionManager.OFFHAND;
+                }
+
+                if (spellData.getSpell().attemptInitiateCast(shield, spellLevel, level, player,
+                        selectionOption.getCastSource(), true, slot))
+                    return true;
+            }
+        }
+
+        return false;
+    };
+    // #endregion SHIELD_CAST_SPELL
+
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
 
     // #region Staves
@@ -76,6 +115,15 @@ public final class ESISSItems {
                                     Operation.ADD_MULTIPLIED_BASE),
                             new AttributeContainer(AttributeRegistry.NATURE_SPELL_POWER, .2,
                                     Operation.ADD_MULTIPLIED_BASE))))));
+    public static final DeferredItem<Item> PROSPITIAN_WAND = ITEMS.register("prospitian_wand",
+            () -> new SwappableStaffItem(ItemPropertiesHelper.equipment(1)
+                    .attributes(ExtendedSwordItem.createAttributes(new StaffTier(6, -3F,
+                            new AttributeContainer(AttributeRegistry.CAST_TIME_REDUCTION, .15,
+                                    Operation.ADD_MULTIPLIED_BASE),
+                            new AttributeContainer(AttributeRegistry.HOLY_SPELL_POWER, .2,
+                                    Operation.ADD_MULTIPLIED_BASE)))),
+                    ESISSItems.CAST_GOLD_SHIELD));
+    // TODO Dersite Wand & Dersite Dagger (switchable, allows casting spells)
     // #endregion Staves
 
     // #region Spellbooks
@@ -97,6 +145,7 @@ public final class ESISSItems {
     public static final DeferredItem<Item> SBURBDB = ITEMS.register("sburbdb", () -> new SburbDBSpellbook(4));
     // #endregion Spellbooks
 
+    // #region Armory
     public static final DeferredItem<Item> LEADER_SWORD = ITEMS.register("leader_sword",
             () -> new MagicSwordItem(MSItemTypes.REGI_TIER, new MSItemProperties().durability(1500)
                     .attributes(ItemAttributeModifiers.builder()
@@ -115,6 +164,23 @@ public final class ESISSItems {
                     new SpellDataRegistryHolder[] {
                             new SpellDataRegistryHolder(SpellRegistry.HEALING_CIRCLE_SPELL, 1),
                     }));
+    public static final DeferredItem<Item> CAST_GOLD_SHIELD = ITEMS.register("cast_gold_shield",
+            () -> new ESShield(
+                    new Item.Properties().durability(1200).attributes(ItemAttributeModifiers.builder()
+                            .add(AttributeRegistry.HOLY_SPELL_POWER,
+                                    new AttributeModifier(ExtraStuck.modid("cast_gold_shield"), .2,
+                                            Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.HAND)
+                            .build()),
+                    ESISSItems.PROSPITIAN_WAND, SHIELD_CAST_SPELL));
+    // #endregion Armory
+
+    // TODO cosmic plague set (ender + nature bonus)
+    // TODO lich crown (better tarnished crown)
+    // TODO crown of the netherlich (netherite lich crown)
+
+    // TODO thorn ring (strong ice bonus + health malus, unremovable)
+    // * will probably require a class for curios loading/missing
 
     public static Collection<DeferredItem<Item>> getSpellbooks() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
@@ -135,6 +201,7 @@ public final class ESISSItems {
         list.add(BLESSED_CAT_STAFF);
         list.add(BRANCH_OF_YGGDRASIL);
         list.add(STAFF_OF_YGGDRASIL);
+        list.add(PROSPITIAN_WAND);
 
         return list;
     }
@@ -143,6 +210,14 @@ public final class ESISSItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(LEADER_SWORD);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getShields() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(CAST_GOLD_SHIELD);
 
         return list;
     }

@@ -33,7 +33,7 @@ import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.shields.ESShield;
-import com.medsal15.items.shields.ESShield.BlockFuncs;
+import com.medsal15.items.shields.ESShield.IBlock;
 import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.particles.UraniumBlastParticle;
 import com.medsal15.storage.ESBoondollarValues;
@@ -171,7 +171,7 @@ public final class ClientEvents {
 
         // Shield info
         if (ConfigClient.displayShieldInfo) {
-            if (item instanceof ESShield shield && shield.hasOnBlock(BlockFuncs.DAMAGE)) {
+            if (item instanceof ESShield shield && shield.hasOnBlock(IBlock.DAMAGE)) {
                 tooltip.add(i,
                         Component
                                 .translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
@@ -429,6 +429,7 @@ public final class ClientEvents {
 
                 if (ModList.get().isLoaded("irons_spellbooks")) {
                     registerBiConvertion(ESISSItems.GEMINI_SPELLBOOK_BLUE, ESISSItems.GEMINI_SPELLBOOK_RED);
+                    registerBiConvertion(ESISSItems.PROSPITIAN_WAND, ESISSItems.CAST_GOLD_SHIELD);
                 }
             }
         });

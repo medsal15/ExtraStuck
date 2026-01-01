@@ -19,6 +19,8 @@ import net.minecraft.core.Holder.Reference;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -32,12 +34,14 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileDeflection;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
@@ -121,13 +125,10 @@ public class ESShield extends ShieldItem {
          * @return True if this should end the event
          */
         public boolean onBlock(LivingShieldBlockEvent event);
-    }
 
-    /** Holds the different onblock functions */
-    public static final class BlockFuncs {
         // #region DAMAGE
         // Must be a value so it can be equal to itself
-        public static ESShield.IBlock DAMAGE = event -> {
+        ESShield.IBlock DAMAGE = event -> {
             ItemStack useItem = event.getEntity().getUseItem();
             if (!useItem.has(ESDataComponents.SHIELD_DAMAGE))
                 return false;
@@ -158,7 +159,7 @@ public class ESShield extends ShieldItem {
         // #endregion DAMAGE
 
         // #region USE_POWER
-        public static ESShield.IBlock USE_POWER = event -> {
+        ESShield.IBlock USE_POWER = event -> {
             ItemStack item = event.getEntity().getUseItem();
 
             int mult = item.getOrDefault(ESDataComponents.FLUX_MULTIPLIER, 100);
@@ -325,6 +326,32 @@ public class ESShield extends ShieldItem {
                 }
                 return false;
             };
+        }
+
+        /**
+         * Shoots a fireball forward
+         */
+        public static boolean shootFireball(LivingShieldBlockEvent event) {
+            LivingEntity user = event.getEntity();
+            ItemStack itemStack = user.getUseItem();
+            Level level = user.level();
+            level.playSound(null, user.getX(), user.getY(), user.getZ(),
+                    SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1f, .8f);
+
+            if (!level.isClientSide && user instanceof Player player) {
+                Vec3 sight = user.getViewVector(1F);
+                Vec3 aim = new Vec3(sight.x * 2, sight.y * 2, sight.z * 2);
+                LargeFireball fireball = new LargeFireball(level, user, aim.normalize(), 0);
+                fireball.setPos(user.getX() + sight.x * .5, .5 + user.getY(.5), user.getZ() + sight.z * .5);
+                level.addFreshEntity(fireball);
+
+                player.getCooldowns().addCooldown(itemStack.getItem(), 20);
+                itemStack.hurtAndBreak(2, player,
+                        player.getUsedItemHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND
+                                : EquipmentSlot.OFFHAND);
+            }
+
+            return true;
         }
 
         public static ESShield.IBlock selfDropChance(float chance, Supplier<String> message) {

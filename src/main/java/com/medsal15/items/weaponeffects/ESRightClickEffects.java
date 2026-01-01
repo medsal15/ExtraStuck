@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
+import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
@@ -23,6 +24,7 @@ import com.mraof.minestuck.util.MSAttachments;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -33,9 +35,11 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.util.FakePlayer;
 
 public final class ESRightClickEffects {
@@ -78,6 +82,34 @@ public final class ESRightClickEffects {
     public static final MagicRangedRightClickEffect STAFF_OF_YGGDRASIL_MAGIC = new YggdrasilMagicRangedEffect(24, 8,
             () -> new MobEffectInstance(MobEffects.LEVITATION, 200), () -> SoundEvents.BLAZE_SHOOT, 1F,
             RangedType.ECHIDNA);
+
+    /**
+     * Switches to Cast Gold Shield when holding shift, shoots a fireball otherwise
+     */
+    public static InteractionResultHolder<ItemStack> prospitianWand(Level level, Player player, InteractionHand hand) {
+        if (player.isShiftKeyDown()) {
+            return ItemRightClickEffect.switchTo(ESISSMissingItems.CAST_GOLD_SHIELD).onRightClick(level, player, hand);
+        } else {
+            ItemStack stack = player.getItemInHand(hand);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLAZE_SHOOT,
+                    SoundSource.PLAYERS, 1.0F, 0.8F);
+
+            if (!level.isClientSide) {
+                Vec3 sight = player.getViewVector(1F);
+                Vec3 aim = new Vec3(sight.x * 2, sight.y * 2, sight.z * 2);
+                LargeFireball fireball = new LargeFireball(level, player, aim.normalize(), 1);
+                fireball.setPos(player.getX() + sight.x, .5 + player.getY(.5), player.getZ() + sight.z);
+                level.addFreshEntity(fireball);
+
+                player.getCooldowns().addCooldown(stack.getItem(), 20);
+                stack.hurtAndBreak(2, player,
+                        player.getUsedItemHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND
+                                : EquipmentSlot.OFFHAND);
+            }
+
+            return InteractionResultHolder.pass(stack);
+        }
+    }
 
     public static ItemRightClickEffect healNearby(int radius) {
         return (level, player, hand) -> {

@@ -201,6 +201,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.POGO_SHIELD, "The shield that bounces back!");
         addItem(ESItems.RETURN_TO_SENDER, "Return to Sender");
         addItemTooltip(ESItems.RETURN_TO_SENDER, "The shield that shoots back!");
+        addItem(ESISSItems.CAST_GOLD_SHIELD, "Cast Gold Shield");
+        addItemTooltip(ESISSItems.CAST_GOLD_SHIELD, "Using Prospit's core has strange effects");
     }
 
     private void addArrows() {
@@ -386,6 +388,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESISSItems.BRANCH_OF_YGGDRASIL, "Branch of Yggdrasil");
         addItemTooltip(ESISSItems.BRANCH_OF_YGGDRASIL, "Snapped straight off the World Tree");
         addItem(ESISSItems.STAFF_OF_YGGDRASIL, "Staff of Yggdrasil");
+        addItem(ESISSItems.PROSPITIAN_WAND, "Prospitian Wand");
+        addItemTooltip(ESISSItems.PROSPITIAN_WAND, "Big wand commonly used by Prospitians for magic");
         // Spellbooks
         addItem(ESISSItems.GRIMOIRE, "Grimoire for Manipulating the Physically Dubious");
         addItemTooltip(ESISSItems.GRIMOIRE, "The volume number is unreadable");

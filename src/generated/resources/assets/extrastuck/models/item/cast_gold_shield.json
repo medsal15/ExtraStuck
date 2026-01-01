@@ -1,0 +1,16 @@
+{
+  "parent": "extrastuck:item/base_shield",
+  "overrides": [
+    {
+      "model": "extrastuck:item/cast_gold_shield_blocking",
+      "predicate": {
+        "minecraft:blocking": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "0": "extrastuck:item/cast_gold_shield",
+    "1": "extrastuck:item/cast_iron_handle",
+    "particle": "extrastuck:item/cast_gold_shield"
+  }
+}

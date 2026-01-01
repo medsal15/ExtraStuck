@@ -264,6 +264,21 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.GIFT_OF_PROTECTION)
                 .grist(GristTypes.AMBER, 1225).grist(GristTypes.IODINE, 606)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESISSItems.CAST_GOLD_SHIELD)
+                .input(ESItems.GOLD_SHIELD).and().input(MSItems.CAST_IRON)
+                .build(output);
+        GristCostRecipeBuilder.of(ESISSItems.CAST_GOLD_SHIELD)
+                .grist(GristTypes.GOLD, 512).grist(GristTypes.RUST, 201).grist(GristTypes.TAR, 1115)
+                .build(output);
+        GristCostRecipeBuilder.of(ESISSItems.PROSPITIAN_WAND)
+                .grist(GristTypes.GOLD, 512).grist(GristTypes.RUST, 201).grist(GristTypes.TAR, 1115)
+                .build(output);
+        // Add swapping for ISS
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ESISSItems.CAST_GOLD_SHIELD.toStack())
+                .requires(ESISSItems.PROSPITIAN_WAND)
+                .unlockedBy("has_prospitian_wand", has(ESISSItems.PROSPITIAN_WAND))
+                .save(output.withConditions(ISS_LOADED), modid("shapeless/prospitian_wand_swap"));
     }
 
     private void weaponRecipes(@Nonnull RecipeOutput output) {

@@ -1,0 +1,24 @@
+{
+    "name": "Cast Gold Shield",
+    "flag": "!mod:irons_spellbooks",
+    "icon": "extrastuck:cast_gold_shield",
+    "category": "extrastuck:shields",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:cast_gold_shield"
+            },
+            "text": "A shield made of materials taken straight from Prospit's Core. It seems have given it some strange effects...$(br2)$(3)$(l)Special:$() Can be turned into a Prospitian Wand, and blocking attacks will shoot fireballs."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Gold Shield and Cast Iron in a Totem Lathe.",
+            "left": "extrastuck:gold_shield",
+            "mode": "&&",
+            "right": "minestuck:cast_iron",
+            "result": "extrastuck:cast_gold_shield"
+        }
+    ]
+}

@@ -63,7 +63,7 @@ import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.items.projectiles.ESArrowItem;
 import com.medsal15.items.projectiles.ESBulletItem;
 import com.medsal15.items.shields.ESShield;
-import com.medsal15.items.shields.ESShield.BlockFuncs;
+import com.medsal15.items.shields.ESShield.IBlock;
 import com.medsal15.items.throwables.BeeLarvaItem;
 import com.medsal15.items.throwables.BeenadeItem;
 import com.medsal15.items.throwables.LemonNadeItem;
@@ -123,21 +123,21 @@ public final class ESItems {
     // #region Shields
     public static final DeferredItem<Item> FLAME_SHIELD = ITEMS.registerItem("flame_shield",
             p -> new ESShield(p.durability(80).component(ESDataComponents.BURN_DURATION, 100),
-                    BlockFuncs::burn));
+                    IBlock::burn));
     public static final DeferredItem<Item> WOODEN_SHIELD = ITEMS.registerItem("wooden_shield",
             p -> new ESShield(p.durability(80),
-                    BlockFuncs.replace(ESItems.FLAME_SHIELD, DamageTypeTags.IS_FIRE)));
+                    IBlock.replace(ESItems.FLAME_SHIELD, DamageTypeTags.IS_FIRE)));
     public static final DeferredItem<Item> HALT_SHIELD = ITEMS.registerItem("halt_shield",
-            p -> new ESShield(p.durability(243), BlockFuncs::strongerKnockback, BlockFuncs.turn(180)));
+            p -> new ESShield(p.durability(243), IBlock::strongerKnockback, IBlock.turn(180)));
     public static final DeferredItem<Item> NON_CONTACT_CONTRACT = ITEMS.registerItem("non_contact_contract",
             ESShield::new, new Item.Properties().durability(328));
     public static final DeferredItem<Item> SLIED = ITEMS.registerItem("slied",
             p -> new ESShield(p.durability(59),
-                    BlockFuncs.selfDropChance(.25F, () -> ESLangProvider.SLIED_DROP_KEY)));
+                    IBlock.selfDropChance(.25F, () -> ESLangProvider.SLIED_DROP_KEY)));
     public static final DeferredItem<Item> RIOT_SHIELD = ITEMS.registerItem("riot_shield",
             ESShield::new, new Item.Properties().durability(328));
     public static final DeferredItem<Item> CAPITASHIELD = ITEMS.registerItem("capitashield",
-            p -> new ESShield(p.durability(130), BlockFuncs::consumeBoondollars));
+            p -> new ESShield(p.durability(130), IBlock::consumeBoondollars));
     public static final DeferredItem<Item> IRON_SHIELD = ITEMS.registerItem("iron_shield", ESShield::new,
             new Item.Properties().durability(480));
     public static final DeferredItem<Item> GOLD_SHIELD = ITEMS.registerItem("gold_shield", ESShield::new,
@@ -150,16 +150,16 @@ public final class ESItems {
                             Attributes.KNOCKBACK_RESISTANCE,
                             new AttributeModifier(ExtraStuck.modid("netherite_shield"), 0.1,
                                     Operation.ADD_VALUE),
-                            EquipmentSlotGroup.OFFHAND).build()));
+                            EquipmentSlotGroup.HAND).build()));
     public static final DeferredItem<Item> GARNET_SHIELD = ITEMS.registerItem("garnet_shield", ESShield::new,
             new Item.Properties().durability(2560)
                     .attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_SPEED,
                             new AttributeModifier(ExtraStuck.modid("garnet_shield"), 0.1,
                                     Operation.ADD_VALUE),
-                            EquipmentSlotGroup.OFFHAND).build()));
+                            EquipmentSlotGroup.HAND).build()));
     public static final DeferredItem<Item> POGO_SHIELD = ITEMS.registerItem("pogo_shield",
             p -> new ESShield(p.durability(450),
-                    BlockFuncs.bounceProjectiles((projectile, entity, random) -> {
+                    IBlock.bounceProjectiles((projectile, entity, random) -> {
                         // randomly multiply by 1 / 5 - 5
                         double mx = random.nextDouble() * 4D + 1D;
                         double fx = random.nextBoolean() ? mx : 1 / mx;
@@ -170,7 +170,7 @@ public final class ESItems {
                     })));
     public static final DeferredItem<Item> RETURN_TO_SENDER = ITEMS.registerItem("return_to_sender",
             p -> new ESShield(p.durability(1353),
-                    BlockFuncs.bounceProjectiles((projectile, entity, random) -> {
+                    IBlock.bounceProjectiles((projectile, entity, random) -> {
                         if (entity != null) {
                             Vec3 vec3 = entity.getLookAngle().normalize().multiply(-4, -4,
                                     -4);
@@ -180,22 +180,22 @@ public final class ESItems {
                     })));
     public static final DeferredItem<Item> SPIKES_ON_A_SLAB = ITEMS.registerItem("spikes_on_a_slab",
             p -> new ESShield(p.durability(732).component(ESDataComponents.SHIELD_DAMAGE, 6F),
-                    BlockFuncs.DAMAGE));
+                    IBlock.DAMAGE));
     public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter",
             p -> new ESShield(p.durability(612).component(ESDataComponents.SHIELD_DAMAGE, 8F),
-                    BlockFuncs.DAMAGE,
-                    BlockFuncs::dropCandy));
+                    IBlock.DAMAGE,
+                    IBlock::dropCandy));
     public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
             p -> new ESShield(p.durability(490)
                     .component(ESDataComponents.ENERGY_STORAGE, 100_000)
-                    .component(ESDataComponents.FLUX_MULTIPLIER, 100), BlockFuncs.USE_POWER));
+                    .component(ESDataComponents.FLUX_MULTIPLIER, 100), IBlock.USE_POWER));
     public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
             p -> new ESShield(p.durability(880).component(ESDataComponents.BURN_DURATION, 600),
-                    BlockFuncs::burn));
+                    IBlock::burn));
     public static final DeferredItem<Item> ELDRITCH_SHIELD = ITEMS.registerItem("eldritch_shield",
             p -> new ESShield(p.durability(1441).component(ESDataComponents.SHIELD_DAMAGE, 10F),
-                    BlockFuncs.DAMAGE,
-                    BlockFuncs.gainEffect(MobEffects.DAMAGE_BOOST, 100)));
+                    IBlock.DAMAGE,
+                    IBlock.gainEffect(MobEffects.DAMAGE_BOOST, 100)));
     /** Shield variant */
     public static final DeferredItem<Item> CAPTAIN_JUSTICE_THROWABLE_SHIELD = ITEMS.registerItem(
             "captain_justice_throwable_shield",
@@ -206,7 +206,7 @@ public final class ESItems {
             p -> new SwapTrident(p.durability(789), CAPTAIN_JUSTICE_THROWABLE_SHIELD));
     public static final DeferredItem<Item> GIFT_OF_PROTECTION = ITEMS.registerItem("gift_protection",
             p -> new ESShield(p.durability(624),
-                    BlockFuncs.itemDropChance(() -> ESItems.GIFT.toStack(), .1f,
+                    IBlock.itemDropChance(() -> ESItems.GIFT.toStack(), .1f,
                             () -> ESLangProvider.GIFT_PROTECTION_GIFT_KEY)));
     // #endregion Shields
 
@@ -269,7 +269,8 @@ public final class ESItems {
                             .add(ESInventoryTickEffects::blind),
                     new MSItemProperties().durability(2500)));
     public static final DeferredItem<Item> STEAM_HAMMER = ITEMS.register("steam_hammer", () -> new SteamWeaponItem(
-            new WeaponItem.Builder(ESItemTiers.COPPER_TIER, 8, -3.2F).efficiency(6F).set(MSItemTypes.HAMMER_TOOL)
+            new WeaponItem.Builder(ESItemTiers.COPPER_TIER, 8, -3.2F).efficiency(6F)
+                    .set(MSItemTypes.HAMMER_TOOL)
                     .add(ESHitEffects.steamPowered(true, OnHitEffect.setOnFire(10)))
                     .set(ESRightClickEffects::steamWeapon),
             new MSItemProperties().durability(600)
@@ -367,7 +368,8 @@ public final class ESItems {
     // TODO custom render for results
     public static final DeferredItem<Item> JACKPOT = ITEMS.register("jackpot",
             () -> new JackpotWeapon(
-                    new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 4, -3F).set(ESItemTypes.DICE_TOOL)
+                    new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 4, -3F)
+                            .set(ESItemTypes.DICE_TOOL)
                             .add(ESHitEffects::jackpotEffect),
                     new MSItemProperties().durability(1326)));
     // #endregion Dice
@@ -390,7 +392,8 @@ public final class ESItems {
                     new Item.Properties()));
     public static final DeferredItem<Item> DESTRUCTION_BAT = ITEMS.register("destruction_bat",
             () -> new WeaponItem(
-                    new WeaponItem.Builder(MSItemTypes.REGI_TIER, 3, -2.8F).set(MSItemTypes.CLUB_TOOL)
+                    new WeaponItem.Builder(MSItemTypes.REGI_TIER, 3, -2.8F)
+                            .set(MSItemTypes.CLUB_TOOL)
                             .add(ESHitEffects.biggerDamage(3)),
                     new Item.Properties()));
     // #endregion Clubs
@@ -434,7 +437,8 @@ public final class ESItems {
                     .add(OnHitEffect.SPAWN_BREADCRUMBS),
                     new Item.Properties()));
     public static final DeferredItem<Item> MONEY_MAGIC = ITEMS.register("money_magic", () -> new WeaponItem(
-            new WeaponItem.Builder(Tiers.GOLD, 2, -1F).set(MSItemTypes.WAND_TOOL).set(ESRightClickEffects.CASH_MAGIC),
+            new WeaponItem.Builder(Tiers.GOLD, 2, -1F).set(MSItemTypes.WAND_TOOL)
+                    .set(ESRightClickEffects.CASH_MAGIC),
             new MSItemProperties().durability(1326)));
     // #endregion Wands
     // #region Canes
@@ -480,10 +484,12 @@ public final class ESItems {
     // #endregion Forks
     // #region Chainsaws
     public static final DeferredItem<Item> YELLOWCAKESAW = ITEMS.register("yellowcakesaw", () -> new WeaponItem(
-            new WeaponItem.Builder(MSItemTypes.CANDY_TIER, 4, -1.5F).efficiency(10).set(MSItemTypes.CHAINSAW_TOOL)
+            new WeaponItem.Builder(MSItemTypes.CANDY_TIER, 4, -1.5F).efficiency(10)
+                    .set(MSItemTypes.CHAINSAW_TOOL)
                     .set(ItemRightClickEffect.switchTo(ESItems.YELLOWCAKESAW_LIPSTICK))
                     .add(OnHitEffect.SET_CANDY_DROP_FLAG)
-                    .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.WITHER, 100, 1))),
+                    .add(OnHitEffect.enemyPotionEffect(
+                            () -> new MobEffectInstance(MobEffects.WITHER, 100, 1))),
             new MSItemProperties().durability(720)));
     public static final DeferredItem<Item> YELLOWCAKESAW_LIPSTICK = ITEMS.register("yellowcakesaw_lipstick",
             () -> new WeaponItem(
@@ -494,9 +500,11 @@ public final class ESItems {
     // #region Batons
     public static final DeferredItem<Item> THE_STING = ITEMS.register("the_sting",
             () -> new WeaponItem(
-                    new WeaponItem.Builder(MSItemTypes.ORGANIC_TIER, 4, -1F).efficiency(1F).set(MSItemTypes.BATON_TOOL)
+                    new WeaponItem.Builder(MSItemTypes.ORGANIC_TIER, 4, -1F).efficiency(1F)
+                            .set(MSItemTypes.BATON_TOOL)
                             .add(OnHitEffect
-                                    .enemyPotionEffect(() -> new MobEffectInstance(ESMobEffects.BEE_ANGRY, 1, 1)))
+                                    .enemyPotionEffect(() -> new MobEffectInstance(
+                                            ESMobEffects.BEE_ANGRY, 1, 1)))
                             .add(OnHitEffect.playSound(() -> SoundEvents.BEE_STING)),
                     new MSItemProperties().durability(833)));
     public static final DeferredItem<Item> STOCKS_UPTICKER = ITEMS.register("stocks_upticker", () -> new WeaponItem(
@@ -506,32 +514,40 @@ public final class ESItems {
     // #endregion Batons
     // #region Swords
     public static final DeferredItem<Item> SUN_REAVER = ITEMS.register("sun_reaver", () -> new WeaponItem(
-            new WeaponItem.Builder(MSItemTypes.REGI_TIER, 5, -2.4F).efficiency(15F).set(MSItemTypes.SWORD_TOOL)
+            new WeaponItem.Builder(MSItemTypes.REGI_TIER, 5, -2.4F).efficiency(15F)
+                    .set(MSItemTypes.SWORD_TOOL)
                     .add(OnHitEffect.SWEEP)
-                    .add(ESInventoryTickEffects.effectIfHeldOffHand((stack) -> stack.is(ESItems.NEW_MOON.get()),
-                            () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 0, false, false, false))),
+                    .add(ESInventoryTickEffects.effectIfHeldOffHand(
+                            (stack) -> stack.is(ESItems.NEW_MOON.get()),
+                            () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 0,
+                                    false, false, false))),
             new Item.Properties()));
     // #endregion Swords
     // #region Sickles
     public static final DeferredItem<Item> NEW_MOON = ITEMS.register("new_moon",
             () -> new WeaponItem(new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -2.2F).efficiency(4F)
                     .set(MSItemTypes.SICKLE_TOOL).disableShield()
-                    .add(ESInventoryTickEffects.effectIfHeldOffHand((stack) -> stack.is(ESItems.SUN_REAVER.get()),
-                            () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 0, false, false, false))),
+                    .add(ESInventoryTickEffects.effectIfHeldOffHand(
+                            (stack) -> stack.is(ESItems.SUN_REAVER.get()),
+                            () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 0,
+                                    false, false, false))),
                     new Item.Properties()));
     public static final DeferredItem<Item> PIRATE_HOOK = ITEMS.register("pirate_hook",
-            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 9, -2.2F).efficiency(8).set(MSItemTypes.SICKLE_TOOL)
+            () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 9, -2.2F).efficiency(8)
+                    .set(MSItemTypes.SICKLE_TOOL)
                     .disableShield(), new MSItemProperties().durability(1326)));
     // #endregion Sickles
     // #region Scythes
     public static final DeferredItem<Item> DEBT_REAPER = ITEMS.register("debt_reaper", () -> new WeaponItem(
-            new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(13).disableShield().set(MSItemTypes.SCYTHE_TOOL),
+            new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(13).disableShield()
+                    .set(MSItemTypes.SCYTHE_TOOL),
             new MSItemProperties().durability(1326)));
     // #endregion Scythes
     // #region Fans
     public static final DeferredItem<Item> NONE_OF_YOUR_BUSINESS = ITEMS.register("none_of_your_business",
             () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 4, -1F).set(MSItemTypes.FAN_TOOL)
-                    .set(ItemRightClickEffect.extinguishFire(0)).add(OnHitEffect.enemyKnockback(1.5F)),
+                    .set(ItemRightClickEffect.extinguishFire(0))
+                    .add(OnHitEffect.enemyKnockback(1.5F)),
                     new MSItemProperties().durability(1326)));
     // #endregion Fans
     // #region Lances
@@ -543,7 +559,8 @@ public final class ESItems {
     public static final DeferredItem<Item> CASHGRABBERS = ITEMS.register("cashgrabbers",
             () -> new WeaponItem(
                     new WeaponItem.Builder(Tiers.GOLD, 4, -1.5F).set(MSItemTypes.CLAWS_TOOL)
-                            .set(ItemRightClickEffect.switchTo(ESItems.CASHGRABBERS_SHEATHED)),
+                            .set(ItemRightClickEffect
+                                    .switchTo(ESItems.CASHGRABBERS_SHEATHED)),
                     new MSItemProperties().durability(1326)));
     public static final DeferredItem<Item> CASHGRABBERS_SHEATHED = ITEMS.register("cashgrabbers_sheathed",
             () -> new WeaponItem(
@@ -582,7 +599,8 @@ public final class ESItems {
     public static final DeferredItem<Item> BEENADE = ITEMS.register("beenade",
             () -> new BeenadeItem(new Properties().stacksTo(16)));
     public static final DeferredItem<Item> YIN_YANG_ORB = ITEMS.register("yin_yang_orb",
-            () -> new BouncingProjectileWeaponItem(new MSItemProperties().durability(350), 1.25F, 1, 6, 40));
+            () -> new BouncingProjectileWeaponItem(new MSItemProperties().durability(350), 1.25F, 1, 6,
+                    40));
     public static final DeferredItem<Item> LEMONNADE = ITEMS.register("lemonnade",
             () -> new LemonNadeItem(new Properties().stacksTo(16)));
     // #endregion Throwables
@@ -757,7 +775,8 @@ public final class ESItems {
     public static final DeferredItem<BlockItem> MORTAL_TEMPTATION_BLOCK = ITEMS
             .registerSimpleBlockItem(ESBlocks.MORTAL_TEMPTATION_BLOCK);
     public static final DeferredItem<Item> MORTAL_TEMPTATION = ITEMS.registerItem("mortal_temptation",
-            p -> new MortalTemptation(p.food(ESFoods.MORTAL_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
+            p -> new MortalTemptation(
+                    p.food(ESFoods.MORTAL_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> CANDY_CRUNCH = ITEMS.registerItem("candy_crunch",
             p -> new Item(p.food(ESFoods.CANDY_CRUNCH).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> HOME_DONUT = ITEMS.registerItem("home_donut",
@@ -768,9 +787,11 @@ public final class ESItems {
 
     // #region Drinks
     public static final DeferredItem<Item> DESERT_JUICE = ITEMS.registerItem("desert_juice",
-            p -> new DrinkableItem(p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
+            p -> new DrinkableItem(
+                    p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
     public static final DeferredItem<Item> ROCKET_JUMP = ITEMS.registerItem("rocket_jump",
-            p -> new RocketJump(p.food(ESFoods.ROCKET_JUMP).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
+            p -> new RocketJump(
+                    p.food(ESFoods.ROCKET_JUMP).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
     // #endregion Drinks
 
     public static final DeferredItem<Item> EMPTY_ENERGY_CORE = ITEMS.registerItem("empty_energy_core", Item::new);
@@ -778,7 +799,8 @@ public final class ESItems {
             .registerItem("incomplete_mechanical_radbow", Item::new);
     public static final DeferredItem<Item> MASTERMIND_DISK = ITEMS.registerItem("mastermind_disk",
             (p) -> new Item(
-                    p.stacksTo(1).component(MSItemComponents.PROGRAM_TYPE, ESProgramTypes.MASTERMIND_CODEBREAKER)));
+                    p.stacksTo(1).component(MSItemComponents.PROGRAM_TYPE,
+                            ESProgramTypes.MASTERMIND_CODEBREAKER)));
     public static final DeferredItem<Item> BOONDOLLARS_FOR_IDIOTS = ITEMS.registerItem("boondollars_for_idiots",
             p -> new Item(p.stacksTo(1)));
 
@@ -1025,6 +1047,11 @@ public final class ESItems {
         list.add(GARNET_SHIELD);
         list.add(POGO_SHIELD);
         list.add(RETURN_TO_SENDER);
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            list.addAll(ESISSItems.getShields());
+        } else {
+            list.addAll(ESISSMissingItems.getShields());
+        }
         return list;
     }
 

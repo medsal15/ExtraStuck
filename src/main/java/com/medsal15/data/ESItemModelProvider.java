@@ -54,6 +54,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         modelShieldHandle(ESItems.GARNET_SHIELD);
         modelShieldHandle(ESItems.POGO_SHIELD, "metal_shield_handle");
         modelShieldHandle(ESItems.RETURN_TO_SENDER);
+        modelShieldHandle(ESISSItems.CAST_GOLD_SHIELD, "cast_iron_handle");
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base, String handle) {

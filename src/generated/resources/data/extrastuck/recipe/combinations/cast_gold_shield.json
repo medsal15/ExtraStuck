@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:gold_shield"
+  },
+  "input2": {
+    "item": "minestuck:cast_iron"
+  },
+  "mode": "and",
+  "output": "extrastuck:cast_gold_shield"
+}

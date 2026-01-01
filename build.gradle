@@ -36,6 +36,15 @@ repositories {
     }
     maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
     maven { url = "https://maven.ithundxr.dev/snapshots" } // Registrate
+    // Iron's Spells & Spellbooks
+    maven {
+        name = "Iron's Maven - Release"
+        url = "https://code.redspace.io/releases"
+    }
+    maven {
+        name = "Iron's Maven - Snapshots"
+        url = "https://code.redspace.io/snapshots"
+    }
 }
 
 base {
@@ -170,7 +179,7 @@ dependencies {
     implementation "maven.modrinth:farmers-delight:${farmersdelight_version}"
 
     // Iron's Spellbooks
-    implementation "curse.maven:irons-spells-n-spellbooks-855414:7262331"
+    implementation "io.redspace:irons_spellbooks:${irons_spells_version}"
     implementation "curse.maven:curios-309927:6076118"
     implementation "curse.maven:playeranimator-658587:6024462"
 }
