@@ -230,6 +230,9 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.CACTUS_CHESTPLATE.get());
         basicItem(ESItems.CACTUS_LEGGINGS.get());
         basicItem(ESItems.CACTUS_BOOTS.get());
+
+        basicItem(ESISSItems.LICH_CROWN.get());
+        basicItem(ESISSItems.NETHER_LICH_CROWN.get());
     }
 
     private void registerModus() {

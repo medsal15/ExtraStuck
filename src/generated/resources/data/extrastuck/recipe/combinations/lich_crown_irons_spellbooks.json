@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "irons_spellbooks:tarnished_helmet"
+  },
+  "input2": {
+    "item": "minestuck:garnet_twix"
+  },
+  "mode": "and",
+  "output": "extrastuck:lich_crown"
+}

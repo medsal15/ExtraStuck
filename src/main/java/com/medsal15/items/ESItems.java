@@ -615,7 +615,7 @@ public final class ESItems {
                     new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(10))));
     public static final DeferredItem<Item> HEAVY_BOOTS = ITEMS.register("heavy_boots",
             () -> new MSArmorItem(ArmorMaterials.IRON, ArmorItem.Type.BOOTS, new Item.Properties()
-                    .durability(ArmorItem.Type.CHESTPLATE.getDurability(17))
+                    .durability(ArmorItem.Type.BOOTS.getDurability(17))
                     .attributes(ItemAttributeModifiers.builder()
                             .add(Attributes.GRAVITY,
                                     new AttributeModifier(ExtraStuck.modid(
@@ -1230,6 +1230,12 @@ public final class ESItems {
         list.add(CACTUS_LEGGINGS);
         list.add(CACTUS_BOOTS);
 
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            list.addAll(ESISSItems.getHelmets());
+        } else {
+            list.addAll(ESISSMissingItems.getHelmets());
+        }
+
         return list;
     }
 
@@ -1242,6 +1248,11 @@ public final class ESItems {
         list.add(DARK_KNIGHT_HELMET);
         list.add(SALESWOMAN_GLASSES);
         list.add(CACTUS_HELMET);
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            list.addAll(ESISSItems.getHelmets());
+        } else {
+            list.addAll(ESISSMissingItems.getHelmets());
+        }
 
         return list;
     }

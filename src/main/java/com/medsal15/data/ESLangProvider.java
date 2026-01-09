@@ -444,6 +444,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.CACTUS_CHESTPLATE, "Cactus Chestplate");
         addItem(ESItems.CACTUS_LEGGINGS, "Cactus Leggings");
         addItem(ESItems.CACTUS_BOOTS, "Cactus Boots");
+
+        addItem(ESISSItems.LICH_CROWN, "Lich Crown");
+        addItem(ESISSItems.NETHER_LICH_CROWN, "Crown of the Netherlich");
     }
 
     private void addModuses() {

@@ -1101,6 +1101,22 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.AMBER, 20).grist(GristTypes.SULFUR, 4)
                 .build(output);
         // #endregion Cactus Armor
+
+        CombinationRecipeBuilder.of(ESISSItems.LICH_CROWN)
+                .input(ItemRegistry.TARNISHED_CROWN.get()).and().input(MSItems.GARNET_TWIX)
+                .build(output.withConditions(ISS_LOADED), modid("lich_crown_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ESISSItems.LICH_CROWN)
+                .input(Items.IRON_HELMET).and().input(MSItems.GARNET_TWIX)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESISSItems.LICH_CROWN)
+                .grist(GristTypes.GARNET, 18).grist(GristTypes.MERCURY, 420).grist(GristTypes.CAULK, 249)
+                .build(output);
+
+        SmithingTransformRecipeBuilder
+                .smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(ESISSItems.LICH_CROWN), Ingredient.of(Items.NETHERITE_INGOT),
+                        RecipeCategory.COMBAT, ESISSItems.NETHER_LICH_CROWN.get())
+                .unlocks("lich_crown", has(ESISSItems.LICH_CROWN)).save(output, modid("smithing/nether_lich_crown"));
     }
 
     private void modusRecipes(@Nonnull RecipeOutput output) {

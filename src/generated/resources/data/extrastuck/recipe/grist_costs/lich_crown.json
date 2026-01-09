@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:caulk": 249,
+    "minestuck:garnet": 18,
+    "minestuck:mercury": 420
+  },
+  "ingredient": {
+    "item": "extrastuck:lich_crown"
+  }
+}

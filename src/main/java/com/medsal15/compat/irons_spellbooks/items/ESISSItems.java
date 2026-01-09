@@ -192,11 +192,12 @@ public final class ESISSItems {
                             .add(OnHitEffect.backstab(7)).set(ItemRightClickEffect.switchTo(ESISSItems.DERSITE_WAND)),
                     new MSItemProperties().durability(1200).component(ComponentRegistry.CASTING_IMPLEMENT,
                             Unit.INSTANCE)));
+    public static final DeferredItem<Item> LICH_CROWN = ITEMS.register("lich_crown", () -> new LichCrownISS());
+    public static final DeferredItem<Item> NETHER_LICH_CROWN = ITEMS.register("nether_lich_crown",
+            () -> new NetherLichCrownISS());
     // #endregion Armory
 
     // TODO cosmic plague set (ender + nature bonus)
-    // TODO lich crown (better tarnished crown)
-    // TODO crown of the netherlich (netherite lich crown)
 
     // TODO thorn ring (strong ice bonus + health malus, unremovable)
     // * will probably require a class for curios loading/missing
@@ -246,6 +247,15 @@ public final class ESISSItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(CAST_GOLD_SHIELD);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getHelmets() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(LICH_CROWN);
+        list.add(NETHER_LICH_CROWN);
 
         return list;
     }
