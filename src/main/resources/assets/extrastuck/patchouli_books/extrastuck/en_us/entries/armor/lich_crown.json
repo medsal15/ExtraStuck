@@ -1,0 +1,27 @@
+{
+    "name": "Lich Crown",
+    "icon": "extrastuck:lich_crown",
+    "flag": "!mod:irons_spellbooks",
+    "category": "extrastuck:armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:lich_crown",
+            "text": "The crown of a powerful lich.$(br)Somehow increases damage at the cost of armor."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Iron Helmet and Garnet Twix in a Totem Lathe.",
+            "left": "minecraft:iron_helmet",
+            "mode": "&&",
+            "right": "minestuck:garnet_twix",
+            "result": "extrastuck:lich_crown"
+        },
+        {
+            "type": "patchouli:smithing",
+            "recipe": "extrastuck:smithing/nether_lich_crown",
+            "text": "Can also be upgraded like diamond armor. Even though it's not made of diamonds."
+        }
+    ]
+}
