@@ -28,7 +28,7 @@ public class MastermindModus extends BaseModus {
     public void initModus(ItemStack item, ServerPlayer player, NonNullList<ItemStack> prev, int size) {
         super.initModus(item, player, prev, size);
 
-        if (item.has(ESDataComponents.DIFFICULTY)) {
+        if (item != null && item.has(ESDataComponents.DIFFICULTY)) {
             this.difficulty = item.get(ESDataComponents.DIFFICULTY);
         }
     }
