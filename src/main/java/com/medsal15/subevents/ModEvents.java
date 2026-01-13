@@ -6,6 +6,11 @@ import com.medsal15.network.ESPackets.MastermindAddAttempt;
 import com.medsal15.network.ESPackets.MastermindDestroy;
 import com.medsal15.network.ESPackets.MastermindDifficulty;
 import com.medsal15.network.ESPackets.MastermindReset;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuNext;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuOpen;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuQuit;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuSave;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuSync;
 import com.medsal15.network.ESPackets.SyncBoondollarValues;
 import com.medsal15.network.ESPackets.ToggleMode;
 import com.mraof.minestuck.network.MSPacket;
@@ -29,8 +34,18 @@ public final class ModEvents {
         registrar.playToServer(MastermindDestroy.ID, MastermindDestroy.STREAM_CODEC, ModEvents::exec);
         registrar.playToServer(MastermindReset.ID, MastermindReset.STREAM_CODEC, ModEvents::exec);
         registrar.playToServer(MastermindDifficulty.ID, MastermindDifficulty.STREAM_CODEC, ModEvents::exec);
+        registrar.playToServer(CraftingModusRecipeMenuOpen.ID, CraftingModusRecipeMenuOpen.STREAM_CODEC,
+                ModEvents::exec);
+        registrar.playToServer(CraftingModusRecipeMenuNext.ID, CraftingModusRecipeMenuNext.STREAM_CODEC,
+                ModEvents::exec);
+        registrar.playToServer(CraftingModusRecipeMenuSave.ID, CraftingModusRecipeMenuSave.STREAM_CODEC,
+                ModEvents::exec);
 
         registrar.playToClient(SyncBoondollarValues.ID, SyncBoondollarValues.STREAM_CODEC, ModEvents::execClient);
+        registrar.playToClient(CraftingModusRecipeMenuSync.ID, CraftingModusRecipeMenuSync.STREAM_CODEC,
+                ModEvents::execClient);
+        registrar.playToClient(CraftingModusRecipeMenuQuit.ID, CraftingModusRecipeMenuQuit.STREAM_CODEC,
+                ModEvents::execClient);
     }
 
     private static void exec(MSPacket.PlayToServer packet, IPayloadContext context) {

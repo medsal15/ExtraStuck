@@ -84,6 +84,8 @@ public final class ESLangProvider extends LanguageProvider {
             + ".strict.on";
     public static final String COMPACT_MODUS_STRICT_OFF = ESItems.COMPACT_MODUS_CARD.get().getDescriptionId()
             + ".strict.off";
+    public static final String CRAFTING_MODUS_ADD_RECIPE = ESItems.CRAFTING_MODUS_CARD.get().getDescriptionId()
+            + ".add_recipe";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
@@ -520,6 +522,12 @@ public final class ESLangProvider extends LanguageProvider {
                 + " Only applies if the item ids are the same. Strict mode extends this to components.");
         add(COMPACT_MODUS_STRICT_ON, "Strict Mode Enabled");
         add(COMPACT_MODUS_STRICT_OFF, "Strict Mode Disabled");
+
+        addItem(ESItems.CRAFTING_MODUS_CARD, "Crafting Modus");
+        addItemTooltip(ESItems.CRAFTING_MODUS_CARD, "Portable workbench");
+        addItemBookDescription(ESItems.CRAFTING_MODUS_CARD, "The Crafting Modus does not store items, but recipes."
+                + " Ingredients will be pulled straight from your inventory.");
+        add(CRAFTING_MODUS_ADD_RECIPE, "Add Recipe");
     }
 
     private void addTools() {

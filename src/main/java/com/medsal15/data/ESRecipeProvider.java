@@ -1192,6 +1192,15 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.COMPACT_MODUS_CARD)
                 .grist(GristTypes.BUILD, 1650).grist(GristTypes.QUARTZ, 149).grist(GristTypes.DIAMOND, 12)
                 .build(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ESItems.CRAFTING_MODUS_CARD.toStack())
+                .pattern("TTT")
+                .pattern("TCT")
+                .pattern("TTT")
+                .define('T', Items.CRAFTING_TABLE)
+                .define('C', MSItems.CAPTCHA_CARD)
+                .unlockedBy("has_card", has(MSItems.CAPTCHA_CARD))
+                .save(output, modid("shaped/crafting_modus_card"));
     }
 
     private void toolRecipes(@Nonnull RecipeOutput output) {

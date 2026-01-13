@@ -23,7 +23,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public class CompactModusScreen extends BaseModusScreen {
     private CompactModus modus;
 
-    protected Button guiButton;
+    protected Button modeButton;
 
     public CompactModusScreen(Modus modus) {
         super(modus);
@@ -35,14 +35,14 @@ public class CompactModusScreen extends BaseModusScreen {
     public void init() {
         super.init();
 
-        guiButton = new ExtendedButton((width - GUI_WIDTH) / 2 + 15, (height - GUI_HEIGHT) / 2 + 175, 120, 20,
+        modeButton = new ExtendedButton((width - GUI_WIDTH) / 2 + 15, (height - GUI_HEIGHT) / 2 + 175, 120, 20,
                 Component.empty(), button -> changeSetting());
-        addRenderableWidget(guiButton);
+        addRenderableWidget(modeButton);
     }
 
     @Override
     public void render(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        guiButton.setMessage(Component.translatable(
+        modeButton.setMessage(Component.translatable(
                 modus.isStrict() ? ESLangProvider.COMPACT_MODUS_STRICT_ON : ESLangProvider.COMPACT_MODUS_STRICT_OFF));
 
         super.render(guiGraphics, mouseX, mouseY, partialTick);

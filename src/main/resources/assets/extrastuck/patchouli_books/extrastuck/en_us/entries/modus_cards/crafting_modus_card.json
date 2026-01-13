@@ -1,0 +1,29 @@
+{
+    "name": "Crafting Modus",
+    "icon": "extrastuck:crafting_modus_card",
+    "category": "extrastuck:modus_cards",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:crafting_modus_card"
+            },
+            "text": "If you often craft the same item over and over, this modus is perfect for you. It stores crafting recipes instead of items. Crafted items can also be stored in captchalogue cards like normal items.$(br)Only by emptying your Sylladex can you remove all the recipes, so be careful!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shaped/crafting_modus_card",
+            "text": "Surround a Captchalogue Card with 8 Crafting Tables."
+        },
+        {
+            "type": "patchouli:image",
+            "title": "How to add Recipes to your modus",
+            "images": [
+                "extrastuck:textures/patchouli_books/craftingmodusgui.png"
+            ],
+            "text": "Yes it's your inventory being cut off below"
+        },
+        "$(li)The 3 by 3 grid made of cards is for item input. Items are not consumed when placed. Be aware that once placed, an item cannot be removed!$(li)The arrow points towards the recipe result card.$(li)The small card above allows switching between conflicting recipes. You'll know it's useful when numbers appear below.$(li)The checkmark card saves the recipe to the modus and sends you back.$(li)The cross mark cancels the recipe (and sends you back)."
+    ]
+}

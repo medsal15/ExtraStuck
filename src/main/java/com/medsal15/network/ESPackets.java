@@ -8,18 +8,24 @@ import com.medsal15.config.ConfigServer;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.menus.ChargerMenu;
+import com.medsal15.menus.CraftingModusRecipeMenu;
 import com.medsal15.storage.ESBoondollarValues;
 import com.medsal15.storage.ESBoondollarValues.BoondollarValue;
+import com.mraof.minestuck.client.gui.MSScreenFactories;
 import com.mraof.minestuck.network.MSPacket;
+import com.mraof.minestuck.player.ClientPlayerData;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
@@ -152,6 +158,118 @@ public final class ESPackets {
                     && ConfigServer.MASTERMIND_CHANGE_PC.getAsBoolean()) {
                 modus.set(ESDataComponents.DIFFICULTY, difficulty);
             }
+        }
+    }
+
+    public enum CraftingModusRecipeMenuOpen implements MSPacket.PlayToServer {
+        INSTANCE;
+
+        public static final Type<CraftingModusRecipeMenuOpen> ID = new Type<>(
+                ExtraStuck.modid("crafting_modus/open_recipe"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, CraftingModusRecipeMenuOpen> STREAM_CODEC = StreamCodec
+                .unit(INSTANCE);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context, ServerPlayer player) {
+            player.openMenu(new SimpleMenuProvider(
+                    (windowId, playInventory, play) -> new CraftingModusRecipeMenu(windowId, playInventory),
+                    Component.literal("")));
+        }
+    }
+
+    /** Switches to the next available recipe in the craftin menu */
+    public enum CraftingModusRecipeMenuNext implements MSPacket.PlayToServer {
+        INSTANCE;
+
+        public static final Type<CraftingModusRecipeMenuNext> ID = new Type<>(
+                ExtraStuck.modid("crafting_modus/next_recipe"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, CraftingModusRecipeMenuNext> STREAM_CODEC = StreamCodec
+                .unit(INSTANCE);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context, ServerPlayer player) {
+            if (player.containerMenu instanceof CraftingModusRecipeMenu menu) {
+                menu.nextRecipe();
+            }
+        }
+    }
+
+    /** Tells the menu to save the crafting modus data */
+    public enum CraftingModusRecipeMenuSave implements MSPacket.PlayToServer {
+        INSTANCE;
+
+        public static final Type<CraftingModusRecipeMenuSave> ID = new Type<>(
+                ExtraStuck.modid("crafting_modus/save_recipe"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, CraftingModusRecipeMenuSave> STREAM_CODEC = StreamCodec
+                .unit(INSTANCE);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context, ServerPlayer player) {
+            if (player.containerMenu instanceof CraftingModusRecipeMenu menu) {
+                menu.saveRecipe(player);
+            }
+        }
+    }
+
+    /** Syncs data from the server crafting menu to the player's copy */
+    public record CraftingModusRecipeMenuSync(int index, int size, ItemStack output) implements MSPacket.PlayToClient {
+        public static final Type<CraftingModusRecipeMenuSync> ID = new Type<>(
+                ExtraStuck.modid("crafting_modus/sync_menu"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, CraftingModusRecipeMenuSync> STREAM_CODEC = StreamCodec
+                .composite(
+                        ByteBufCodecs.INT, CraftingModusRecipeMenuSync::index,
+                        ByteBufCodecs.INT, CraftingModusRecipeMenuSync::size,
+                        ItemStack.OPTIONAL_STREAM_CODEC, CraftingModusRecipeMenuSync::output,
+                        CraftingModusRecipeMenuSync::new);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @SuppressWarnings("null")
+        @Override
+        public void execute(IPayloadContext context) {
+            if (Minecraft.getInstance().player.containerMenu instanceof CraftingModusRecipeMenu menu) {
+                menu.setRecipeCount(size);
+                menu.setRecipeIndex(index);
+                menu.setOutput(output);
+            }
+        }
+    }
+
+    /** Exits the crafting menu and returns to the sylladex screen */
+    public enum CraftingModusRecipeMenuQuit implements MSPacket.PlayToClient {
+        INSTANCE;
+
+        public static final Type<CraftingModusRecipeMenuQuit> ID = new Type<>(
+                ExtraStuck.modid("crafting_modus/quit"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, CraftingModusRecipeMenuQuit> STREAM_CODEC = StreamCodec
+                .unit(INSTANCE);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context) {
+            MSScreenFactories.displaySylladexScreen(ClientPlayerData.getModus());
         }
     }
 

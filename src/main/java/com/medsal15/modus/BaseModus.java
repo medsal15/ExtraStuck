@@ -1,7 +1,5 @@
 package com.medsal15.modus;
 
-import java.util.Iterator;
-
 import com.mraof.minestuck.MinestuckConfig;
 import com.mraof.minestuck.inventory.captchalogue.CaptchaDeckHandler;
 import com.mraof.minestuck.inventory.captchalogue.Modus;
@@ -50,11 +48,11 @@ public class BaseModus extends Modus {
     @Override
     public CompoundTag writeToNBT(CompoundTag nbt, HolderLookup.Provider provider) {
         nbt.putInt("size", size);
-        Iterator<ItemStack> iter = list.iterator();
+
         for (int i = 0; i < list.size(); i++) {
-            ItemStack stack = iter.next();
-            nbt.put("item" + i, stack.save(provider));
+            nbt.put("item" + i, list.get(i).save(provider));
         }
+
         return nbt;
     }
 

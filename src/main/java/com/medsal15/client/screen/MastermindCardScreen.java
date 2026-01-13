@@ -53,7 +53,6 @@ public class MastermindCardScreen extends AbstractContainerScreen<MastermindCard
                 menu.addAttempt(grist);
             }, i));
         }
-
     }
 
     @Override

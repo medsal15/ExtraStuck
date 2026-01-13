@@ -7,6 +7,7 @@ import com.medsal15.client.screen.machine.PrinterScreen;
 import com.medsal15.client.screen.machine.ReactorScreen;
 import com.medsal15.client.screen.modus.ArcheologyModusScreen;
 import com.medsal15.client.screen.modus.CompactModusScreen;
+import com.medsal15.client.screen.modus.CraftingModusScreen;
 import com.medsal15.client.screen.modus.EnderModusScreen;
 import com.medsal15.client.screen.modus.FortuneModusScreen;
 import com.medsal15.client.screen.modus.FurnaceModusScreen;
@@ -34,6 +35,7 @@ public final class ESScreens {
         event.register(ESMenuTypes.URANIUM_BLASTER.get(), BlasterScreen::new);
 
         event.register(ESMenuTypes.MASTERMIND_CARD.get(), MastermindCardScreen::new);
+        event.register(ESMenuTypes.CRAFTING_MODUS_RECIPE.get(), CraftingModusRecipeScreen::new);
 
         // Moduses
         registerSylladexFactory(ESModus.PILE_MODUS, PileModusScreen::new);
@@ -45,5 +47,6 @@ public final class ESScreens {
         registerSylladexFactory(ESModus.MASTERMIND_MODUS, MastermindModusScreen::new);
         registerSylladexFactory(ESModus.FURNACE_MODUS, FurnaceModusScreen::new);
         registerSylladexFactory(ESModus.COMPACT_MODUS, CompactModusScreen::new);
+        registerSylladexFactory(ESModus.CRAFTING_MODUS, CraftingModusScreen::new);
     }
 }

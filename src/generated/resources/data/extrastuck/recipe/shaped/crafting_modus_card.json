@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "minestuck:captcha_card"
+    },
+    "T": {
+      "item": "minecraft:crafting_table"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TCT",
+    "TTT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:crafting_modus_card"
+  }
+}

@@ -25,4 +25,7 @@ public final class ESMenuTypes {
 
     public static final Supplier<MenuType<MastermindCardMenu>> MASTERMIND_CARD = MENU_TYPES.register("mastermind_card",
             () -> new MenuType<MastermindCardMenu>(MastermindCardMenu::new, FeatureFlags.DEFAULT_FLAGS));
+    public static final Supplier<MenuType<CraftingModusRecipeMenu>> CRAFTING_MODUS_RECIPE = MENU_TYPES.register(
+            "crafting_modus_recipe",
+            () -> new MenuType<CraftingModusRecipeMenu>(CraftingModusRecipeMenu::new, FeatureFlags.DEFAULT_FLAGS));
 }

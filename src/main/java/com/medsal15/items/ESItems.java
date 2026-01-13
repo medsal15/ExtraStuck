@@ -542,6 +542,7 @@ public final class ESItems {
             new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(13).disableShield()
                     .set(MSItemTypes.SCYTHE_TOOL),
             new MSItemProperties().durability(1326)));
+    // TODO leafburner (farmines leaves, flint and steel, sets enemies on fire)
     // #endregion Scythes
     // #region Fans
     public static final DeferredItem<Item> NONE_OF_YOUR_BUSINESS = ITEMS.register("none_of_your_business",
@@ -720,6 +721,8 @@ public final class ESItems {
     public static final DeferredItem<Item> FURNACE_MODUS_CARD = ITEMS.registerItem("furnace_modus_card",
             Item::new, new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> COMPACT_MODUS_CARD = ITEMS.registerItem("compact_modus_card",
+            Item::new, new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> CRAFTING_MODUS_CARD = ITEMS.registerItem("crafting_modus_card",
             Item::new, new Item.Properties().stacksTo(1));
 
     public static final DeferredItem<BlockItem> CARD_ORE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_ORE);
@@ -1011,6 +1014,7 @@ public final class ESItems {
         list.add(MASTERMIND_MODUS_CARD);
         list.add(FURNACE_MODUS_CARD);
         list.add(COMPACT_MODUS_CARD);
+        list.add(CRAFTING_MODUS_CARD);
         return list;
     }
 
