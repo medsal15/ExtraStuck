@@ -45,6 +45,15 @@ repositories {
         name = "Iron's Maven - Snapshots"
         url = "https://code.redspace.io/snapshots"
     }
+    // JEI
+    maven {
+        name = 'Progwml6 maven'
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
+    maven {
+        name = 'ModMaven'
+        url = 'https://modmaven.dev'
+    }
 }
 
 base {
@@ -182,6 +191,11 @@ dependencies {
     implementation "io.redspace:irons_spellbooks:${irons_spells_version}"
     implementation "curse.maven:curios-309927:6076118"
     implementation "curse.maven:playeranimator-658587:6024462"
+
+	// JEI
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${mc_jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${mc_jei_version}"
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${mc_jei_version}"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

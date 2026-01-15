@@ -569,6 +569,7 @@ public final class ESItems {
                             .set(ItemRightClickEffect.switchTo(ESItems.CASHGRABBERS)),
                     new MSItemProperties().durability(1326)));
     // #endregion Claws
+    // TODO D8th M8ce, chance to deal extra damage based on kills since last trigger
 
     // Staves and Spellbooks are handled in the ISS compat package
     // See the ESISSItems and ESMissingItems classes
