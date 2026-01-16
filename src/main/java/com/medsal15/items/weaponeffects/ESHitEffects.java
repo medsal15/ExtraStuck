@@ -33,6 +33,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -229,6 +230,9 @@ public final class ESHitEffects {
             return true;
         } else if (entity instanceof VitalityGelEntity gel) {
             gel.playerTouch(player);
+            return true;
+        } else if (entity instanceof ExperienceOrb experience) {
+            experience.playerTouch(player);
             return true;
         }
         return false;

@@ -402,6 +402,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESISSItems.GRIMOIRE, "The volume number is unreadable");
         addItem(ESISSItems.GEMINI_SPELLBOOK_RED, "Gemini Spell Book");
         addItem(ESISSItems.GEMINI_SPELLBOOK_BLUE, "Gemini Spell Book");
+        addItem(ESISSItems.MAGE_GUY, "Mage Guy");
+        addItemTooltip(ESISSItems.MAGE_GUY, "Instead of magic tricks, this one contains spells!");
         addItem(ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK, "Perfectly Unique Spell Book");
         addItem(ESISSItems.SBURBDB, "SburbDB");
         addItemTooltip(ESISSItems.SBURBDB, "Database of everything in Sburb (book edition)");

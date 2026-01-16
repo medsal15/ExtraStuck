@@ -282,7 +282,8 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
                 // Disprinter special
                 Direction facing = l.getBlockState(worldPosition).getValue(MachineBlock.FACING);
                 BlockPos frontPos = worldPosition.relative(facing);
-                if (l.getBlockState(frontPos).isEmpty()) {
+                BlockState frontState = l.getBlockState(frontPos);
+                if (!frontState.isCollisionShapeFullBlock(l, frontPos)) {
                     // Copied from dispenser
                     Position pos = worldPosition.getCenter().add(
                             .7 * (double) facing.getStepX(),

@@ -1,0 +1,24 @@
+{
+    "name": "Mage Guy",
+    "flag": "mod:irons_spellbooks",
+    "icon": "extrastuck:mage_guy",
+    "category": "extrastuck:spellbooks",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:mage_guy"
+            },
+            "text": "Turns out a book about magic tricks can make a decent upgrade to your basic spellbook."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Wise Guy and an Ironbound Tome in a Totem Lathe.",
+            "left": "minestuck:wiseguy",
+            "mode": "&&",
+            "right": "irons_spellbooks:iron_spell_book",
+            "result": "extrastuck:mage_guy"
+        }
+    ]
+}

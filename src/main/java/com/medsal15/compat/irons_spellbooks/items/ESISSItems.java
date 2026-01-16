@@ -152,7 +152,9 @@ public final class ESISSItems {
             () -> new DoubleSpellbook(6, ESISSItems.GEMINI_SPELLBOOK_RED)
                     .withSpellbookAttributes(
                             new AttributeContainer(AttributeRegistry.MAX_MANA, 300, Operation.ADD_VALUE)));
-    // TODO mage guy
+    public static final DeferredItem<Item> MAGE_GUY = ITEMS.register("mage_guy",
+            () -> new SpellBook(6).withSpellbookAttributes(
+                    new AttributeContainer(AttributeRegistry.MAX_MANA, 50, Operation.ADD_VALUE)));
     public static final DeferredItem<Item> PERFECTLY_UNIQUE_SPELLBOOK = ITEMS.register("perfectly_unique_spellbook",
             PerfectlyUniqueSpellbook::new);
     public static final DeferredItem<Item> SBURBDB = ITEMS.register("sburbdb", () -> new SburbDBSpellbook(4));
@@ -197,7 +199,7 @@ public final class ESISSItems {
             () -> new NetherLichCrownISS());
     // #endregion Armory
 
-    // TODO cosmic plague set (ender + nature bonus)
+    // TODO cosmic plague set (ender + nature bonus, poison immunity)
 
     // TODO thorn ring (strong ice bonus + health malus, unremovable)
     // * will probably require a class for curios loading/missing
@@ -208,6 +210,7 @@ public final class ESISSItems {
         list.add(GRIMOIRE);
         list.add(GEMINI_SPELLBOOK_BLUE);
         list.add(GEMINI_SPELLBOOK_RED);
+        list.add(MAGE_GUY);
         list.add(PERFECTLY_UNIQUE_SPELLBOOK);
         list.add(SBURBDB);
 

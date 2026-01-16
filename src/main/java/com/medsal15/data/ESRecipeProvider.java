@@ -824,6 +824,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.DIAMOND, 32).grist(GristTypes.AMBER, 64)
                 .build(issOutput);
 
+        CombinationRecipeBuilder.of(ESISSItems.MAGE_GUY)
+                .input(ItemRegistry.IRON_SPELL_BOOK.get()).and().input(MSItems.WISEGUY)
+                .build(issOutput);
+        GristCostRecipeBuilder.of(ESISSItems.MAGE_GUY)
+                .grist(GristTypes.SULFUR, 12).grist(GristTypes.CHALK, 18).grist(GristTypes.IODINE, 12)
+                .grist(GristTypes.SHALE, 21)
+                .build(issOutput);
+
         GristCostRecipeBuilder.of(ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK)
                 .grist(GristTypes.BUILD, 93475).grist(GristTypes.URANIUM, 31).grist(GristTypes.AMETHYST, 866578)
                 .grist(GristTypes.ZILLIUM, 3).grist(GristTypes.CAULK, 30)

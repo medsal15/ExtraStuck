@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:chalk": 18,
+    "minestuck:iodine": 12,
+    "minestuck:shale": 21,
+    "minestuck:sulfur": 12
+  },
+  "ingredient": {
+    "item": "extrastuck:mage_guy"
+  }
+}
