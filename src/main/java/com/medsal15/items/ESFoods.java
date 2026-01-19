@@ -86,4 +86,7 @@ public final class ESFoods {
             .build();
     public static final FoodProperties ROCKET_JUMP = new FoodProperties.Builder().alwaysEdible()
             .usingConvertsTo(Items.GLASS_BOTTLE).build();
+    public static final FoodProperties COSMIC_SPOREO = new FoodProperties.Builder().nutrition(6).saturationModifier(.3F)
+            .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 100), .1F)
+            .build();
 }

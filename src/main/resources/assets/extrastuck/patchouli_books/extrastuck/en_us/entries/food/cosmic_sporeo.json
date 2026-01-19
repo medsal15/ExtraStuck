@@ -1,0 +1,22 @@
+{
+    "name": "Cosmic Sporeo",
+    "icon": "extrastuck:cosmic_sporeo",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:cosmic_sporeo"
+            },
+            "text": "A sporeo that seems to radiate energy. Is this even safe to eat?"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Cosmic Plague Spore and a Milk Bucket in a Totem Lathe.",
+            "left": "extrastuck:cosmic_plague_spore",
+            "mode": "&&",
+            "right": "minecraft:milk_bucket",
+            "result": "extrastuck:cosmic_sporeo"
+        }
+    ]
+}

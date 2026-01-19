@@ -1,5 +1,10 @@
 package com.medsal15.config;
 
+import java.util.List;
+
+import com.mraof.minestuck.world.MSDimensions;
+
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
@@ -63,6 +68,12 @@ public final class ConfigServer {
     public static final ConfigValue<Integer> RADBOW_CHARGES = BUILDER
             .comment("How many charges a radbow gets from an uranium rod")
             .defineInRange("radbow_charge", 10, 1, Integer.MAX_VALUE);
+
+    public static final ConfigValue<List<String>> COSMIC_DIMENSIONS = BUILDER
+            .comment("Determines which dimensions trigger the Cosmic Plague Spore's inventory effect",
+                    "That is, give Poison V for 5 seconds", " Default: [\"minecraft:the_end\", \"minestuck:veil\"]")
+            .define("cosmic_spore_dimensions",
+                    List.of(Level.END.location().toString(), MSDimensions.VEIL.location().toString()));
 
     public static final ConfigValue<Integer> MASTERMIND_DIFFICULTY = BUILDER
             .comment("How many colors are available by default in mastermind cards",

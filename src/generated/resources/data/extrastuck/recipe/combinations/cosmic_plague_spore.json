@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:fungal_spore"
+  },
+  "input2": {
+    "item": "minecraft:dragon_head"
+  },
+  "mode": "or",
+  "output": "extrastuck:cosmic_plague_spore"
+}

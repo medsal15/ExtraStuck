@@ -1,0 +1,46 @@
+{
+    "name": "Cosmic Plague Armor",
+    "icon": "extrastuck:cosmic_plague_helmet",
+    "flag": "mod:irons_spellbooks",
+    "category": "extrastuck:armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:cosmic_plague_helmet,extrastuck:cosmic_plague_chestplate,extrastuck:cosmic_plague_leggings,extrastuck:cosmic_plague_boots",
+            "text": "An armor made to fight an ancient plague.$(br2)$(3)$(l)Special:$() Each piece has a 25% chance to prevent Poison from being applied, and the full set has a 20% chance to prevent Wither from being applied, in addition to boosting Ender and Nature spell power."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Netherite Battlemage Hat and a Cosmic Plague Spore in a Totem Lathe.",
+            "left": "irons_spellbooks:netherite_mage_helmet",
+            "mode": "&&",
+            "right": "extrastuck:cosmic_plague_spore",
+            "result": "extrastuck:cosmic_plague_helmet"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Netherite Battlemage Robes and a Cosmic Plague Spore in a Totem Lathe.",
+            "left": "irons_spellbooks:netherite_mage_chestplate",
+            "mode": "&&",
+            "right": "extrastuck:cosmic_plague_spore",
+            "result": "extrastuck:cosmic_plague_chestplate"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Netherite Battlemage Leggings and a Cosmic Plague Spore in a Totem Lathe.",
+            "left": "irons_spellbooks:netherite_mage_leggings",
+            "mode": "&&",
+            "right": "extrastuck:cosmic_plague_spore",
+            "result": "extrastuck:cosmic_plague_leggings"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Netherite Battlemage Boots and a Cosmic Plague Spore in a Totem Lathe.",
+            "left": "irons_spellbooks:netherite_mage_boots",
+            "mode": "&&",
+            "right": "extrastuck:cosmic_plague_spore",
+            "result": "extrastuck:cosmic_plague_boots"
+        }
+    ]
+}

@@ -5,27 +5,22 @@ import java.util.Collection;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.compat.MissingModItem;
+import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.items.ESItemTiers;
 import com.medsal15.items.melee.SburbDBWeapon;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.weaponeffects.ESRightClickEffects;
-import com.mraof.minestuck.entity.MSAttributes;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -56,69 +51,27 @@ public final class ESISSMissingItems {
 
     public static final DeferredItem<Item> LICH_CROWN = ITEMS.register("lich_crown",
             () -> new LichCrownArmor(ArmorMaterials.IRON, ArmorItem.Type.HELMET, new Item.Properties()
+                    .stacksTo(1)
                     .durability(ArmorItem.Type.HELMET.getDurability(23))
-                    .attributes(ItemAttributeModifiers.builder()
-                            .add(Attributes.ARMOR,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_armor"), 2F,
-                                            Operation.ADD_VALUE),
-                                    EquipmentSlotGroup.HEAD)
-                            .add(Attributes.ARMOR,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_armor_red"), -.25F,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.HEAD)
-                            .add(Attributes.ATTACK_DAMAGE,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_damage"), .1F,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.HEAD)
-                            .add(MSAttributes.UNDERLING_DAMAGE_MODIFIER,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_underling_damage"), .15F,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.HEAD)
-                            .build())));
+                    .attributes(ISSAttributes.lichCrown())));
     public static final DeferredItem<Item> NETHER_LICH_CROWN = ITEMS.register("nether_lich_crown",
-            () -> new NetherLichCrownArmor(ArmorMaterials.NETHERITE, ArmorItem.Type.HELMET, new Item.Properties()
-                    .durability(ArmorItem.Type.HELMET.getDurability(32))
-                    .attributes(ItemAttributeModifiers.builder()
-                            .add(Attributes.ARMOR,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_armor"), 3F,
-                                            Operation.ADD_VALUE),
-                                    EquipmentSlotGroup.HEAD)
-                            .add(Attributes.ARMOR,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_armor_red"), -.25F,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.HEAD)
-                            .add(Attributes.ARMOR,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_armor_toughness"), 3F,
-                                            Operation.ADD_VALUE),
-                                    EquipmentSlotGroup.HEAD)
-                            .add(Attributes.KNOCKBACK_RESISTANCE,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_kb_resistance"), .1F,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.HEAD)
-                            .add(Attributes.ATTACK_DAMAGE,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_damage"), .15F,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.HEAD)
-                            .add(MSAttributes.UNDERLING_DAMAGE_MODIFIER,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_underling_damage"), .2F,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.HEAD)
-                            .add(MSAttributes.UNDERLING_PROTECTION_MODIFIER,
-                                    new AttributeModifier(ExtraStuck
-                                            .modid("lich_crown_underling_protection"), .1F,
-                                            Operation.ADD_MULTIPLIED_BASE),
-                                    EquipmentSlotGroup.HEAD)
-                            .build())));
+            () -> new NetherLichCrownArmor(ArmorMaterials.NETHERITE, ArmorItem.Type.HELMET,
+                    new Item.Properties().stacksTo(1)
+                            .durability(ArmorItem.Type.HELMET.getDurability(32))
+                            .attributes(ISSAttributes.netheriteLichCrown())));
+
+    public static final DeferredItem<Item> COSMIC_PLAGUE_HELMET = ITEMS.register("cosmic_plague_helmet",
+            () -> new CosmicPlagueArmor(ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1)
+                    .durability(ArmorItem.Type.HELMET.getDurability(37))));
+    public static final DeferredItem<Item> COSMIC_PLAGUE_CHESTPLATE = ITEMS.register("cosmic_plague_chestplate",
+            () -> new CosmicPlagueArmor(ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1)
+                    .durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
+    public static final DeferredItem<Item> COSMIC_PLAGUE_LEGGINGS = ITEMS.register("cosmic_plague_leggings",
+            () -> new CosmicPlagueArmor(ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1)
+                    .durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
+    public static final DeferredItem<Item> COSMIC_PLAGUE_BOOTS = ITEMS.register("cosmic_plague_boots",
+            () -> new CosmicPlagueArmor(ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1)
+                    .durability(ArmorItem.Type.BOOTS.getDurability(37))));
     // #endregion Misc
 
     // #region Staves
@@ -218,11 +171,50 @@ public final class ESISSMissingItems {
         return list;
     }
 
+    public static Collection<DeferredItem<Item>> getArmor() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(LICH_CROWN);
+        list.add(NETHER_LICH_CROWN);
+
+        list.add(COSMIC_PLAGUE_HELMET);
+        list.add(COSMIC_PLAGUE_CHESTPLATE);
+        list.add(COSMIC_PLAGUE_LEGGINGS);
+        list.add(COSMIC_PLAGUE_BOOTS);
+
+        return list;
+    }
+
     public static Collection<DeferredItem<Item>> getHelmets() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(LICH_CROWN);
         list.add(NETHER_LICH_CROWN);
+        list.add(COSMIC_PLAGUE_HELMET);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getChesplates() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(COSMIC_PLAGUE_CHESTPLATE);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getLeggings() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(COSMIC_PLAGUE_LEGGINGS);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getBoots() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(COSMIC_PLAGUE_BOOTS);
 
         return list;
     }

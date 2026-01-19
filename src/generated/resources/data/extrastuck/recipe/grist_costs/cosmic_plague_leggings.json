@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amethyst": 1350,
+    "minestuck:mercury": 250,
+    "minestuck:shale": 1250
+  },
+  "ingredient": {
+    "item": "extrastuck:cosmic_plague_leggings"
+  }
+}

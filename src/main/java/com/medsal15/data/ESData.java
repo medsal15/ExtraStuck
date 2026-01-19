@@ -10,6 +10,11 @@ import com.medsal15.data.loot_tables.ESBlockLootSubProvider;
 import com.medsal15.data.loot_tables.ESGLMProvider;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
 import com.medsal15.data.loot_tables.ESLootTableProvider;
+import com.medsal15.data.tags.ESBlockTags;
+import com.medsal15.data.tags.ESEntityTypeTags;
+import com.medsal15.data.tags.ESFluidTags;
+import com.medsal15.data.tags.ESItemTags;
+import com.medsal15.data.tags.ESMobEffectTags;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
@@ -63,14 +68,8 @@ public final class ESData {
                                             DamageEffects.THORNS,
                                             DeathMessageType.DEFAULT));
                         }), Set.of(ExtraStuck.MODID)));
-        ESBlockTags blocktags = gen.addProvider(event.includeServer(),
-                new ESBlockTags(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(), new ESRecipeProvider(output, lookupProvider));
-        gen.addProvider(event.includeServer(),
-                new ESItemTags(output, lookupProvider, blocktags.contentsGetter(), fileHelper));
-        gen.addProvider(event.includeServer(), new ESFluidTags(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(), new DataMapGenerator(output, lookupProvider));
-        gen.addProvider(event.includeServer(), new ESEntityTypeTags(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(),
                 (DataProvider.Factory<ESLootTableProvider>) (o -> new ESLootTableProvider(o,
                         lookupProvider,
@@ -80,5 +79,13 @@ public final class ESData {
                                         LootContextParamSets.CHEST)))));
         gen.addProvider(event.includeServer(), new ESGLMProvider(output, lookupProvider));
         gen.addProvider(event.includeServer(), new ESPriceProvider(output));
+
+        ESBlockTags blocktags = gen.addProvider(event.includeServer(),
+                new ESBlockTags(output, lookupProvider, fileHelper));
+        gen.addProvider(event.includeServer(),
+                new ESItemTags(output, lookupProvider, blocktags.contentsGetter(), fileHelper));
+        gen.addProvider(event.includeServer(), new ESFluidTags(output, lookupProvider, fileHelper));
+        gen.addProvider(event.includeServer(), new ESEntityTypeTags(output, lookupProvider, fileHelper));
+        gen.addProvider(event.includeServer(), new ESMobEffectTags(output, lookupProvider, fileHelper));
     }
 }

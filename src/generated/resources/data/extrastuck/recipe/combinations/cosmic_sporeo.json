@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:cosmic_plague_spore"
+  },
+  "input2": {
+    "item": "minecraft:milk_bucket"
+  },
+  "mode": "and",
+  "output": "extrastuck:cosmic_sporeo"
+}

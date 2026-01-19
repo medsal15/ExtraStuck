@@ -108,6 +108,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.BOONDOLLARS_FOR_IDIOTS)
                 .grist(GristTypes.GOLD, 110).grist(GristTypes.DIAMOND, 10)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.COSMIC_PLAGUE_SPORE)
+                .input(MSItems.FUNGAL_SPORE).or().input(Items.DRAGON_HEAD)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.COSMIC_PLAGUE_SPORE)
+                .grist(GristTypes.SHALE, 66).grist(GristTypes.URANIUM, 23).grist(GristTypes.AMETHYST, 11)
+                .build(output);
     }
 
     private void shieldRecipes(@Nonnull RecipeOutput output) {
@@ -1125,6 +1132,48 @@ public final class ESRecipeProvider extends RecipeProvider {
                         Ingredient.of(ESISSItems.LICH_CROWN), Ingredient.of(Items.NETHERITE_INGOT),
                         RecipeCategory.COMBAT, ESISSItems.NETHER_LICH_CROWN.get())
                 .unlocks("lich_crown", has(ESISSItems.LICH_CROWN)).save(output, modid("smithing/nether_lich_crown"));
+
+        // #region Cosmic Plague Armor
+        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_HELMET)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(ItemRegistry.NETHERITE_MAGE_HELMET.get())
+                .build(output.withConditions(ISS_LOADED), modid("cosmic_plague_helmet_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_HELMET)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(Items.NETHERITE_HELMET)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_HELMET)
+                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 7).grist(GristTypes.DIAMOND, 250)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_CHESTPLATE)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(ItemRegistry.NETHERITE_MAGE_CHESTPLATE.get())
+                .build(output.withConditions(ISS_LOADED), modid("cosmic_plague_chestplate_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_CHESTPLATE)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(Items.NETHERITE_CHESTPLATE)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_CHESTPLATE)
+                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 10).grist(GristTypes.URANIUM, 250)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_LEGGINGS)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(ItemRegistry.NETHERITE_MAGE_LEGGINGS.get())
+                .build(output.withConditions(ISS_LOADED), modid("cosmic_plague_leggings_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_LEGGINGS)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(Items.NETHERITE_LEGGINGS)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_LEGGINGS)
+                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 9).grist(GristTypes.MERCURY, 250)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_BOOTS)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(ItemRegistry.NETHERITE_MAGE_BOOTS.get())
+                .build(output.withConditions(ISS_LOADED), modid("cosmic_plague_boots_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_BOOTS)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(Items.NETHERITE_BOOTS)
+                .build(output.withConditions(not(ISS_LOADED)));
+        GristCostRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_BOOTS)
+                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 6).grist(GristTypes.TAR, 250)
+                .build(output);
+        // #endregion Cosmic Plague Armor
     }
 
     private void modusRecipes(@Nonnull RecipeOutput output) {
@@ -1527,6 +1576,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.SOUR_BOMB_CANDY)
                 .grist(GristTypes.AMBER, 10).grist(GristTypes.CHALK, 6).grist(GristTypes.SULFUR, 2)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.COSMIC_SPOREO)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(Items.MILK_BUCKET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.COSMIC_SPOREO)
+                .grist(GristTypes.SHALE, 12).grist(GristTypes.URANIUM, 1).grist(GristTypes.MERCURY, 3)
                 .build(output);
     }
 

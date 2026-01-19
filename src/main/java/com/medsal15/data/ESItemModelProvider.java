@@ -34,6 +34,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.MASTERMIND_DISK.get());
         basicItem(ESItems.BEE_LARVA.get());
         basicItem(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
+        basicItem(ESItems.COSMIC_PLAGUE_SPORE.get());
     }
 
     private void registerShields() {
@@ -233,6 +234,11 @@ public final class ESItemModelProvider extends ItemModelProvider {
 
         basicItem(ESISSItems.LICH_CROWN.get());
         basicItem(ESISSItems.NETHER_LICH_CROWN.get());
+
+        basicItem(ESISSItems.COSMIC_PLAGUE_HELMET.get());
+        basicItem(ESISSItems.COSMIC_PLAGUE_CHESTPLATE.get());
+        basicItem(ESISSItems.COSMIC_PLAGUE_LEGGINGS.get());
+        basicItem(ESISSItems.COSMIC_PLAGUE_BOOTS.get());
     }
 
     private void registerModus() {
@@ -284,6 +290,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.CANDY_CRUNCH.get());
         basicItem(ESItems.HOME_DONUT.get());
         basicItem(ESItems.SOUR_BOMB_CANDY.get());
+        basicItem(ESItems.COSMIC_SPOREO.get());
 
         basicItem(ESItems.DESERT_JUICE.get());
         basicItem(ESItems.ROCKET_JUMP.get());

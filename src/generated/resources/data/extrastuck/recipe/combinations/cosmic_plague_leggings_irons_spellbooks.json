@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:cosmic_plague_spore"
+  },
+  "input2": {
+    "item": "irons_spellbooks:netherite_mage_leggings"
+  },
+  "mode": "and",
+  "output": "extrastuck:cosmic_plague_leggings"
+}

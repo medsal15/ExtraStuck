@@ -1,5 +1,5 @@
 {
-    "name": "Cactus",
+    "name": "Cactus Armor",
     "icon": "extrastuck:cactus_helmet",
     "category": "extrastuck:armor",
     "sortnum": 1,
@@ -27,7 +27,7 @@
         },
         {
             "type": "extrastuck:combination",
-            "text": "Combine a Leather Leggings and a Cactus in a Punch Designix.",
+            "text": "Combine Leather Leggings and a Cactus in a Punch Designix.",
             "left": "minecraft:leather_leggings",
             "mode": "||",
             "right": "minecraft:cactus",
@@ -35,7 +35,7 @@
         },
         {
             "type": "extrastuck:combination",
-            "text": "Combine a Leather Boots and a Cactus in a Punch Designix.",
+            "text": "Combine Leather Boots and a Cactus in a Punch Designix.",
             "left": "minecraft:leather_boots",
             "mode": "||",
             "right": "minecraft:cactus",

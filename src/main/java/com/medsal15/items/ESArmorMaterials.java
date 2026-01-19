@@ -46,4 +46,12 @@ public final class ESArmorMaterials {
                     ArmorItem.Type.BOOTS, 1), 15, SoundEvents.ARMOR_EQUIP_LEATHER,
                     () -> Ingredient.of(Tags.Items.CROPS_CACTUS),
                     List.of(new ArmorMaterial.Layer(ExtraStuck.modid("cactus_armor"))), 0, 0));
+    public static final Holder<ArmorMaterial> COSMIC_PLAGUE = ARMOR_MATERIALS.register("cosmic_plague",
+            () -> new ArmorMaterial(
+                    Map.of(
+                            ArmorItem.Type.HELMET, 3,
+                            ArmorItem.Type.CHESTPLATE, 8,
+                            ArmorItem.Type.LEGGINGS, 6,
+                            ArmorItem.Type.BOOTS, 3),
+                    20, SoundEvents.ARMOR_EQUIP_DIAMOND, () -> Ingredient.of(), List.of(), 1, 0));
 }

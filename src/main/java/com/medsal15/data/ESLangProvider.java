@@ -149,6 +149,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.BOONDOLLARS_FOR_IDIOTS, "Boondollars for Idiots");
         addItemTooltip(ESItems.BOONDOLLARS_FOR_IDIOTS,
                 "Contains all you need to know to become the richest player in the session");
+        addItem(ESItems.COSMIC_PLAGUE_SPORE, "Cosmic Plague Spore");
+        addItemTooltip(ESItems.COSMIC_PLAGUE_SPORE, "Extremely toxic in airless environements");
 
         add("strife." + ESKindAbstratus.DICE, "Dicekind");
         add("strife." + ESKindAbstratus.SHIELD, "Shieldkind");
@@ -451,6 +453,11 @@ public final class ESLangProvider extends LanguageProvider {
 
         addItem(ESISSItems.LICH_CROWN, "Lich Crown");
         addItem(ESISSItems.NETHER_LICH_CROWN, "Crown of the Netherlich");
+
+        addItem(ESISSItems.COSMIC_PLAGUE_HELMET, "Cosmic Plague Helmet");
+        addItem(ESISSItems.COSMIC_PLAGUE_CHESTPLATE, "Cosmic Plague Chestplate");
+        addItem(ESISSItems.COSMIC_PLAGUE_LEGGINGS, "Cosmic Plague Leggings");
+        addItem(ESISSItems.COSMIC_PLAGUE_BOOTS, "Cosmic Plague Boots");
     }
 
     private void addModuses() {
@@ -569,7 +576,7 @@ public final class ESLangProvider extends LanguageProvider {
         addBlockTooltip(ESBlocks.REACTOR,
                 "You don't think it's a good idea to contain so much power in such a small machine");
         add(ReactorBlockEntity.TITLE, "Nuclear Reactor");
-        add(ESFluidTags.REACTOR_FLUIDS, "Reactor Coolants");
+        add(ESTags.Fluids.REACTOR_FLUIDS, "Reactor Coolants");
 
         // Uranium Blaster
         addBlock(ESBlocks.URANIUM_BLASTER, "Uranium Blaster");
@@ -680,6 +687,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.HOME_DONUT, "Smells like home");
         add(HOME_DONUT_NO_TP, "The donut could not find the way back home.");
         addItem(ESItems.SOUR_BOMB_CANDY, "Sour Bomb Candy");
+        addItem(ESItems.COSMIC_SPOREO, "Cosmic Sporeo");
+        addItemTooltip(ESItems.COSMIC_SPOREO, "A delicious quasar, now rid of all the toxins");
 
         addItem(ESItems.DESERT_JUICE, "Desert Juice");
         addItem(ESItems.ROCKET_JUMP, "Rocket Jump");
@@ -692,6 +701,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.Items.SHOW_VALUE, "Armors Displaying Value");
         add(ESTags.Items.IGNORE_BYPRODUCT_CUTTING, "Ignored Cutting Byproducts");
         add(ESTags.Items.DROPS_BOONDOLLARS, "Drops Boondollars on Kill");
+        add(ESTags.Items.COSMIC_PLAGUE_ARMOR, "Cosmic Plague Armor");
 
         add(ESTags.EntityTypes.BEENADE_ACCEPTS, "Accepted by Beenades");
     }

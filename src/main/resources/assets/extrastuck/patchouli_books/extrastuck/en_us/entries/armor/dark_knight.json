@@ -27,7 +27,7 @@
         },
         {
             "type": "extrastuck:combination",
-            "text": "Combine a Netherite Leggings and Tinted Glass in a Totem Lathe.",
+            "text": "Combine Netherite Leggings and Tinted Glass in a Totem Lathe.",
             "left": "minecraft:netherite_leggings",
             "mode": "&&",
             "right": "minecraft:tinted_glass",
@@ -35,7 +35,7 @@
         },
         {
             "type": "extrastuck:combination",
-            "text": "Combine a Netherite Boots and Tinted Glass in a Totem Lathe.",
+            "text": "Combine Netherite Boots and Tinted Glass in a Totem Lathe.",
             "left": "minecraft:netherite_boots",
             "mode": "&&",
             "right": "minecraft:tinted_glass",

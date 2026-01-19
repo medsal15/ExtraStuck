@@ -1,0 +1,23 @@
+{
+    "name": "Cosmic Plague Spore",
+    "icon": "extrastuck:cosmic_plague_spore",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:cosmic_plague_spore"
+            },
+            "text": "An ancient diseases that once raged beyond the veil and decimated civilizations. Maybe.$(br2)On the bright side, it only activates in airless dimensions. As long as you're careful with it, it should not be a problem."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Fungal Spore and a Dragon Head in a Punch Designix.",
+            "left": "minestuck:fungal_spore",
+            "mode": "||",
+            "right": "minecraft:dragon_head",
+            "result": "extrastuck:cosmic_plague_spore"
+        }
+    ]
+}

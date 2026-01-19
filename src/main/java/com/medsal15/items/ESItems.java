@@ -787,6 +787,8 @@ public final class ESItems {
             p -> new HomeDonut(p.food(ESFoods.HOME_DONUT)));
     public static final DeferredItem<Item> SOUR_BOMB_CANDY = ITEMS.registerItem("sour_bomb_candy",
             p -> new SourBombCandy(p.food(ESFoods.SOUR_BOMB_CANDY)));
+    public static final DeferredItem<Item> COSMIC_SPOREO = ITEMS.registerItem("cosmic_sporeo",
+            p -> new Item(p.food(ESFoods.COSMIC_SPOREO)));
     // #endregion Food
 
     // #region Drinks
@@ -807,6 +809,8 @@ public final class ESItems {
                             ESProgramTypes.MASTERMIND_CODEBREAKER)));
     public static final DeferredItem<Item> BOONDOLLARS_FOR_IDIOTS = ITEMS.registerItem("boondollars_for_idiots",
             p -> new Item(p.stacksTo(1)));
+    public static final DeferredItem<Item> COSMIC_PLAGUE_SPORE = ITEMS.registerItem("cosmic_plague_spore",
+            CosmicPlagueSporeItem::new);
 
     // #region Blocks
     // #region Machines
@@ -998,6 +1002,7 @@ public final class ESItems {
 
         output.accept(EMPTY_ENERGY_CORE);
         output.accept(BOONDOLLARS_FOR_IDIOTS);
+        output.accept(COSMIC_PLAGUE_SPORE);
 
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
             output.accept(item.get());
@@ -1236,9 +1241,9 @@ public final class ESItems {
         list.add(CACTUS_BOOTS);
 
         if (ModList.get().isLoaded("irons_spellbooks")) {
-            list.addAll(ESISSItems.getHelmets());
+            list.addAll(ESISSItems.getArmor());
         } else {
-            list.addAll(ESISSMissingItems.getHelmets());
+            list.addAll(ESISSMissingItems.getArmor());
         }
 
         return list;
@@ -1268,6 +1273,11 @@ public final class ESItems {
         list.add(CHEF_APRON);
         list.add(DARK_KNIGHT_CHESTPLATE);
         list.add(CACTUS_CHESTPLATE);
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            list.addAll(ESISSItems.getChesplates());
+        } else {
+            list.addAll(ESISSMissingItems.getChesplates());
+        }
 
         return list;
     }
@@ -1277,6 +1287,11 @@ public final class ESItems {
 
         list.add(DARK_KNIGHT_LEGGINGS);
         list.add(CACTUS_LEGGINGS);
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            list.addAll(ESISSItems.getLeggings());
+        } else {
+            list.addAll(ESISSMissingItems.getLeggings());
+        }
 
         return list;
     }
@@ -1287,6 +1302,11 @@ public final class ESItems {
         list.add(HEAVY_BOOTS);
         list.add(DARK_KNIGHT_BOOTS);
         list.add(CACTUS_BOOTS);
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            list.addAll(ESISSItems.getBoots());
+        } else {
+            list.addAll(ESISSMissingItems.getBoots());
+        }
 
         return list;
     }
@@ -1318,6 +1338,7 @@ public final class ESItems {
         list.add(CANDY_CRUNCH);
         list.add(HOME_DONUT);
         list.add(SOUR_BOMB_CANDY);
+        list.add(COSMIC_SPOREO);
         return list;
     }
 

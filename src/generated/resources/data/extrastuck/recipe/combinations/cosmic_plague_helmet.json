@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "irons_spellbooks"
+      }
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:cosmic_plague_spore"
+  },
+  "input2": {
+    "item": "minecraft:netherite_helmet"
+  },
+  "mode": "and",
+  "output": "extrastuck:cosmic_plague_helmet"
+}

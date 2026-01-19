@@ -8,9 +8,9 @@ import javax.annotation.Nullable;
 import com.medsal15.blockentities.handlers.BEStackHandler;
 import com.medsal15.blockentities.handlers.FuellessWrapper;
 import com.medsal15.config.ConfigServer;
-import com.medsal15.data.ESFluidTags;
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.menus.ReactorMenu;
+import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.blockentity.machine.MachineProcessBlockEntity;
 import com.mraof.minestuck.blockentity.machine.UraniumPowered;
 import com.mraof.minestuck.item.MSItems;
@@ -248,7 +248,7 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
 
         @Override
         public boolean isFluidValid(int tank, @Nonnull FluidStack stack) {
-            return stack.is(ESFluidTags.REACTOR_FLUIDS);
+            return stack.is(ESTags.Fluids.REACTOR_FLUIDS);
         }
 
         @Override

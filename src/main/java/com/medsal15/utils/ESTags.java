@@ -5,11 +5,14 @@ import com.medsal15.ExtraStuck;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 public final class ESTags {
     public static final class Items {
@@ -19,6 +22,7 @@ public final class ESTags {
         public static final TagKey<Item> IGNORE_BYPRODUCT_CUTTING = ItemTags
                 .create(ExtraStuck.modid("interpreters_ignore_byproduct/cutting"));
         public static final TagKey<Item> DROPS_BOONDOLLARS = ItemTags.create(ExtraStuck.modid("drops_boondollars"));
+        public static final TagKey<Item> COSMIC_PLAGUE_ARMOR = ItemTags.create(ExtraStuck.modid("armor/cosmic_plague"));
 
         public static final TagKey<Item> TOOLS_ROLLING_PIN = ItemTags.create(common("tools/rolling_pin"));
         public static final TagKey<Item> URANIUM_RODS = ItemTags.create(common("rods/uranium"));
@@ -45,11 +49,24 @@ public final class ESTags {
                 .create(ExtraStuck.modid("incorrect_for_amethyst_tier"));
     }
 
+    public static final class Fluids {
+        public static final TagKey<Fluid> REACTOR_FLUIDS = FluidTags.create(ExtraStuck.modid("reactor_fluids"));
+    }
+
     public static final class EntityTypes {
         public static final TagKey<EntityType<?>> BEENADE_ACCEPTS = create("beenade_accepts");
 
         private static TagKey<EntityType<?>> create(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, ExtraStuck.modid(name));
+        }
+    }
+
+    public static final class MobEffects {
+        public static final TagKey<MobEffect> COSMIC_PLAGUE_IMMUNITY = create("cosmic_plague/immunity");
+        public static final TagKey<MobEffect> COSMIC_PLAGUE_PARTIAL_IMMUNITY = create("cosmic_plague/partial_immunity");
+
+        private static TagKey<MobEffect> create(String name) {
+            return TagKey.create(Registries.MOB_EFFECT, ExtraStuck.modid(name));
         }
     }
 

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amethyst": 11,
+    "minestuck:shale": 66,
+    "minestuck:uranium": 23
+  },
+  "ingredient": {
+    "item": "extrastuck:cosmic_plague_spore"
+  }
+}

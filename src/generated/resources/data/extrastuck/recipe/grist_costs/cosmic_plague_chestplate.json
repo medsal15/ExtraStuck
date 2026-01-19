@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amethyst": 1500,
+    "minestuck:shale": 1250,
+    "minestuck:uranium": 250
+  },
+  "ingredient": {
+    "item": "extrastuck:cosmic_plague_chestplate"
+  }
+}

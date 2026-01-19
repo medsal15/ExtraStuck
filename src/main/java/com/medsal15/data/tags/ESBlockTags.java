@@ -1,4 +1,4 @@
-package com.medsal15.data;
+package com.medsal15.data.tags;
 
 import java.util.concurrent.CompletableFuture;
 

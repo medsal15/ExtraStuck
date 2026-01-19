@@ -1,4 +1,4 @@
-package com.medsal15.data;
+package com.medsal15.data.tags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -110,6 +110,9 @@ public final class ESItemTags extends ItemTagsProvider {
         tag(ESTags.Items.DROPS_BOONDOLLARS).add(ESItems.DEBT_REAPER.get(), ESItems.STOCKS_UPTICKER.get(),
                 ESItems.PIRATE_HOOK.get(), ESItems.NONE_OF_YOUR_BUSINESS.get(), ESItems.INVESTLANCE.get(),
                 ESItems.MONEY_MAGIC.get(), ESItems.CASHGRABBERS.get());
+        tag(ESTags.Items.COSMIC_PLAGUE_ARMOR).add(ESISSItems.COSMIC_PLAGUE_HELMET.get(),
+                ESISSItems.COSMIC_PLAGUE_CHESTPLATE.get(), ESISSItems.COSMIC_PLAGUE_LEGGINGS.get(),
+                ESISSItems.COSMIC_PLAGUE_BOOTS.get());
 
         tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 

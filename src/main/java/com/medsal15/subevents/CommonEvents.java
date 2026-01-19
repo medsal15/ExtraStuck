@@ -5,20 +5,35 @@ import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
+import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.guns.GunContainer;
 import com.medsal15.items.shields.ESShield;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuNext;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuOpen;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuQuit;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuSave;
+import com.medsal15.network.ESPackets.CraftingModusRecipeMenuSync;
+import com.medsal15.network.ESPackets.MastermindAddAttempt;
+import com.medsal15.network.ESPackets.MastermindDestroy;
+import com.medsal15.network.ESPackets.MastermindDifficulty;
+import com.medsal15.network.ESPackets.MastermindReset;
+import com.medsal15.network.ESPackets.SyncBoondollarValues;
+import com.medsal15.network.ESPackets.ToggleMode;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.item.BoondollarsItem;
 import com.mraof.minestuck.item.MSItems;
+import com.mraof.minestuck.network.MSPacket;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -32,6 +47,11 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
 @EventBusSubscriber(modid = ExtraStuck.MODID)
 public final class CommonEvents {
@@ -148,5 +168,74 @@ public final class CommonEvents {
         boondollars = BoondollarsItem.setCount(boondollars, amount);
         ItemEntity drops = new ItemEntity(level, entity.getX(), entity.getY(), entity.getZ(), boondollars);
         entity.level().addFreshEntity(drops);
+    }
+
+    @SubscribeEvent
+    public static void registerPayloadHandlers(final RegisterPayloadHandlersEvent event) {
+        PayloadRegistrar registrar = event.registrar(ExtraStuck.MODID);
+
+        registrar.playToServer(ToggleMode.ID, ToggleMode.STREAM_CODEC, CommonEvents::exec);
+        registrar.playToServer(MastermindAddAttempt.ID, MastermindAddAttempt.STREAM_CODEC, CommonEvents::exec);
+        registrar.playToServer(MastermindDestroy.ID, MastermindDestroy.STREAM_CODEC, CommonEvents::exec);
+        registrar.playToServer(MastermindReset.ID, MastermindReset.STREAM_CODEC, CommonEvents::exec);
+        registrar.playToServer(MastermindDifficulty.ID, MastermindDifficulty.STREAM_CODEC, CommonEvents::exec);
+        registrar.playToServer(CraftingModusRecipeMenuOpen.ID, CraftingModusRecipeMenuOpen.STREAM_CODEC,
+                CommonEvents::exec);
+        registrar.playToServer(CraftingModusRecipeMenuNext.ID, CraftingModusRecipeMenuNext.STREAM_CODEC,
+                CommonEvents::exec);
+        registrar.playToServer(CraftingModusRecipeMenuSave.ID, CraftingModusRecipeMenuSave.STREAM_CODEC,
+                CommonEvents::exec);
+
+        registrar.playToClient(SyncBoondollarValues.ID, SyncBoondollarValues.STREAM_CODEC, CommonEvents::execClient);
+        registrar.playToClient(CraftingModusRecipeMenuSync.ID, CraftingModusRecipeMenuSync.STREAM_CODEC,
+                CommonEvents::execClient);
+        registrar.playToClient(CraftingModusRecipeMenuQuit.ID, CraftingModusRecipeMenuQuit.STREAM_CODEC,
+                CommonEvents::execClient);
+    }
+
+    private static void exec(MSPacket.PlayToServer packet, IPayloadContext context) {
+        packet.execute(context, (ServerPlayer) context.player());
+    }
+
+    private static void execClient(MSPacket.PlayToClient packet, IPayloadContext context) {
+        packet.execute(context);
+    }
+
+    @SubscribeEvent
+    public static void registerDataMapTypes(final RegisterDataMapTypesEvent event) {
+        event.register(ReactorFuel.REACTOR_MAP);
+    }
+
+    @SubscribeEvent
+    public static void onEffectApplicable(final MobEffectEvent.Applicable event) {
+        handleCosmicPlagueArmor(event);
+    }
+
+    /**
+     * Rolls the CancelsEffectArmor::chanceToCancel
+     */
+    private static void handleCosmicPlagueArmor(final MobEffectEvent.Applicable event) {
+        Entity entity = event.getEntity();
+        if (!(entity instanceof LivingEntity livingEntity))
+            return;
+
+        int count = 0;
+        for (ItemStack armorStack : livingEntity.getArmorSlots()) {
+            if (armorStack.is(ESTags.Items.COSMIC_PLAGUE_ARMOR)) {
+                count++;
+            }
+        }
+
+        if (count <= 0)
+            return;
+
+        if (event.getEffectInstance().getEffect().is(ESTags.MobEffects.COSMIC_PLAGUE_IMMUNITY)
+                && (count >= 4 || entity.getRandom().nextFloat() * 4 < count)) {
+            event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+        } else if (event.getEffectInstance().getEffect().is(ESTags.MobEffects.COSMIC_PLAGUE_PARTIAL_IMMUNITY)
+                && count >= 4
+                && entity.getRandom().nextFloat() < .2) {
+            event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+        }
     }
 }

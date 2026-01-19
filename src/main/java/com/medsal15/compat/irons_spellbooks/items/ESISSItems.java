@@ -33,6 +33,7 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -197,12 +198,22 @@ public final class ESISSItems {
     public static final DeferredItem<Item> LICH_CROWN = ITEMS.register("lich_crown", () -> new LichCrownISS());
     public static final DeferredItem<Item> NETHER_LICH_CROWN = ITEMS.register("nether_lich_crown",
             () -> new NetherLichCrownISS());
+    public static final DeferredItem<Item> COSMIC_PLAGUE_HELMET = ITEMS.register("cosmic_plague_helmet",
+            () -> new CosmicPlagueISS(ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(37))));
+    public static final DeferredItem<Item> COSMIC_PLAGUE_CHESTPLATE = ITEMS.register("cosmic_plague_chestplate",
+            () -> new CosmicPlagueISS(ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
+    public static final DeferredItem<Item> COSMIC_PLAGUE_LEGGINGS = ITEMS.register("cosmic_plague_leggings",
+            () -> new CosmicPlagueISS(ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
+    public static final DeferredItem<Item> COSMIC_PLAGUE_BOOTS = ITEMS.register("cosmic_plague_boots",
+            () -> new CosmicPlagueISS(ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(37))));
     // #endregion Armory
 
-    // TODO cosmic plague set (ender + nature bonus, poison immunity)
-
     // TODO thorn ring (strong ice bonus + health malus, unremovable)
-    // * will probably require a class for curios loading/missing
+    // * will probably require a pair of classes for curios loading/missing
 
     public static Collection<DeferredItem<Item>> getSpellbooks() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
@@ -254,11 +265,50 @@ public final class ESISSItems {
         return list;
     }
 
+    public static Collection<DeferredItem<Item>> getArmor() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(LICH_CROWN);
+        list.add(NETHER_LICH_CROWN);
+
+        list.add(COSMIC_PLAGUE_HELMET);
+        list.add(COSMIC_PLAGUE_CHESTPLATE);
+        list.add(COSMIC_PLAGUE_LEGGINGS);
+        list.add(COSMIC_PLAGUE_BOOTS);
+
+        return list;
+    }
+
     public static Collection<DeferredItem<Item>> getHelmets() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(LICH_CROWN);
         list.add(NETHER_LICH_CROWN);
+        list.add(COSMIC_PLAGUE_HELMET);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getChesplates() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(COSMIC_PLAGUE_CHESTPLATE);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getLeggings() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(COSMIC_PLAGUE_LEGGINGS);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getBoots() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(COSMIC_PLAGUE_BOOTS);
 
         return list;
     }
