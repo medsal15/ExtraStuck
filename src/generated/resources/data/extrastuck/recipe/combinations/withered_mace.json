@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:death_mace"
+  },
+  "input2": {
+    "item": "minecraft:wither_skeleton_skull"
+  },
+  "mode": "and",
+  "output": "extrastuck:withered_mace"
+}

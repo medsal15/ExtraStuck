@@ -105,5 +105,14 @@ public final class ConfigServer {
             .comment("How much fuel (in ticks) is consumed to attack with a steam-powered weapon")
             .defineInRange("weapons.steam_powered.fuel_consume", 200, 0, Integer.MAX_VALUE);
 
+    public static final ConfigValue<Integer> ISS_CREATIVE_SHOCK_SURVIVAL = BUILDER
+            .comment("Which amplifier of Creative Shock should prevent spell casting for non-creative players",
+                    "Note that an amplifier of 3 means level IV")
+            .define("integration.irons_spellbooks.creative_shock_survival", 1);
+    public static final ConfigValue<Integer> ISS_CREATIVE_SHOCK_CREATIVE = BUILDER
+            .comment("Which amplifier of Creative Shock should prevent spell casting for creative players",
+                    "Note that an amplifier of 3 means level IV")
+            .define("integration.irons_spellbooks.creative_shock_creative", 4);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 }

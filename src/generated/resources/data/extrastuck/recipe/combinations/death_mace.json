@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:rubiks_mace"
+  },
+  "input2": {
+    "item": "minecraft:skeleton_skull"
+  },
+  "mode": "or",
+  "output": "extrastuck:death_mace"
+}

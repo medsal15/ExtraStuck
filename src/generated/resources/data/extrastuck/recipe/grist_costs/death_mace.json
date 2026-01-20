@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:caulk": 9,
+    "minestuck:chalk": 242,
+    "minestuck:marble": 64
+  },
+  "ingredient": {
+    "item": "extrastuck:death_mace"
+  }
+}

@@ -7,6 +7,7 @@ import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
+import com.medsal15.compat.irons_spellbooks.subevents.ISSCommonEvents;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.conditions.ESConditions;
 import com.medsal15.config.ConfigClient;
@@ -36,6 +37,7 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -93,6 +95,7 @@ public class ExtraStuck {
         if (ModList.get().isLoaded("irons_spellbooks")) {
             ESISSItems.ITEMS.register(modEventBus);
             ESISSComponents.DATA_COMPONENTS.register(modEventBus);
+            NeoForge.EVENT_BUS.register(ISSCommonEvents.class);
         } else {
             ESISSMissingItems.ITEMS.register(modEventBus);
         }

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:d8_night"
+  },
+  "input2": {
+    "item": "extrastuck:death_mace"
+  },
+  "mode": "and",
+  "output": "extrastuck:d8th_m8ce"
+}

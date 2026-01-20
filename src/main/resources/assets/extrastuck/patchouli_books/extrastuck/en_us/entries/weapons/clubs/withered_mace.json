@@ -1,0 +1,23 @@
+{
+    "name": "Withered Mace",
+    "icon": "extrastuck:withered_mace",
+    "category": "extrastuck:clubs",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:withered_mace"
+            },
+            "text": "Adding a wither skeleton's skull on top of your mace seems to have made it less powerful somehow.$(br2)$(3)$(l)Special:$() Applies Wither for 5 seconds to enemies."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Death Mace and a Skeleton Skull in a Totem Lathe.",
+            "left": "extrastuck:death_mace",
+            "mode": "&&",
+            "right": "minecraft:wither_skeleton_skull",
+            "result": "extrastuck:withered_mace"
+        }
+    ]
+}

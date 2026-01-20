@@ -312,6 +312,9 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.ROLLING_PIN, "Rolling Pin");
         addItem(ESItems.DESTRUCTION_BAT, "Destruction's Bat");
         addItemTooltip(ESItems.DESTRUCTION_BAT, "The bigger they are, the harder they fall");
+        addItem(ESItems.DEATH_MACE, "Death Mace");
+        addItem(ESItems.WITHERED_MACE, "Withered Mace");
+        addItem(ESItems.D8TH_M8CE, "D8th M8ce");
         // Keys
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");

@@ -1,0 +1,23 @@
+{
+    "name": "D8th M8ce",
+    "icon": "extrastuck:d8th_m8ce",
+    "category": "extrastuck:clubs",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:d8th_m8ce"
+            },
+            "text": "You now have a Skel8on skull on top of your mace. Is it worth it?$(br2)$(3)$(l)Special:$() Has a 25% chance to deal double damage."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Death Mace and D8 Night in a Totem Lathe.",
+            "left": "extrastuck:death_mace",
+            "mode": "&&",
+            "right": "extrastuck:d8_night",
+            "result": "extrastuck:d8th_m8ce"
+        }
+    ]
+}

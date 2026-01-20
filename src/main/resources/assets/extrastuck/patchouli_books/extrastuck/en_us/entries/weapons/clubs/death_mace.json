@@ -1,0 +1,23 @@
+{
+    "name": "Death Mace",
+    "icon": "extrastuck:death_mace",
+    "category": "extrastuck:clubs",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:death_mace"
+            },
+            "text": "There is now a skull on top of your mace. Strange idea, but why not?"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Rubik's Mace and a Skeleton Skull in a Punch Designix.",
+            "left": "minestuck:rubiks_mace",
+            "mode": "||",
+            "right": "minecraft:skeleton_skull",
+            "result": "extrastuck:death_mace"
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 {
     "name": "Clubs",
     "sortnum": 1,
-    "description": "It's clubbering time",
+    "description": "It's clubbering time$(br2)Legally speaking, maces are just spiky clubs. (Sometimes)",
     "icon": "minestuck:deuce_club",
     "parent": "extrastuck:weapons"
 }

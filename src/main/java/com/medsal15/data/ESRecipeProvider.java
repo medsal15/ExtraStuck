@@ -455,6 +455,27 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.DESTRUCTION_BAT)
                 .grist(GristTypes.TAR, 164).grist(GristTypes.AMBER, 62)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.DEATH_MACE)
+                .input(MSItems.RUBIKS_MACE).or().input(Items.SKELETON_SKULL)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.DEATH_MACE)
+                .grist(GristTypes.CHALK, 242).grist(GristTypes.MARBLE, 64).grist(GristTypes.CAULK, 9)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.WITHERED_MACE)
+                .input(ESItems.DEATH_MACE).and().input(Items.WITHER_SKELETON_SKULL)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.WITHERED_MACE)
+                .grist(GristTypes.TAR, 472).grist(GristTypes.DIAMOND, 64).grist(GristTypes.URANIUM, 50)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.D8TH_M8CE)
+                .input(ESItems.D8_NIGHT).and().input(ESItems.DEATH_MACE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.D8TH_M8CE)
+                .grist(GristTypes.COBALT, 888).grist(GristTypes.DIAMOND, 128).grist(GristTypes.MARBLE, 343)
+                .build(output);
         // #endregion Clubs
 
         // #region Keys

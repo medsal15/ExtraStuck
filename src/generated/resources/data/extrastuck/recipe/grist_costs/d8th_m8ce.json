@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 888,
+    "minestuck:diamond": 128,
+    "minestuck:marble": 343
+  },
+  "ingredient": {
+    "item": "extrastuck:d8th_m8ce"
+  }
+}

@@ -180,6 +180,9 @@ public final class ESHitEffects {
         };
     }
 
+    /**
+     * Deals between 0 and the enemy's health damage (if it's finite)
+     */
     public static void randomMaxDamage(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         DamageSource source;
         if (attacker instanceof Player player) {
@@ -473,5 +476,35 @@ public final class ESHitEffects {
         if (middle == right)
             return new int[] { middle };
         return new int[0];
+    }
+
+    /**
+     * Has a <code>chance</code>% chance to deal <code>mult</code> times damage
+     */
+    public static OnHitEffect randomDamageMult(float mult, float chance) {
+        return (stack, target, attacker) -> {
+            if (mult <= 1 || attacker.getRandom().nextFloat() >= chance)
+                return;
+
+            DamageSource source;
+            if (attacker instanceof Player player) {
+                source = attacker.damageSources().playerAttack(player);
+            } else {
+                source = attacker.damageSources().mobAttack(attacker);
+            }
+
+            // Includes the base player damage
+            float damage = 1;
+            if (stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) {
+                ItemAttributeModifiers modifiers = stack.getAttributeModifiers();
+                for (ItemAttributeModifiers.Entry entry : modifiers.modifiers()) {
+                    if (entry.attribute() == Attributes.ATTACK_DAMAGE) {
+                        damage += entry.modifier().amount();
+                    }
+                }
+            }
+
+            target.hurt(source, damage * mult);
+        };
     }
 }

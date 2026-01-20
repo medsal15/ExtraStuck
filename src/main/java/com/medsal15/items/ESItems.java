@@ -396,6 +396,17 @@ public final class ESItems {
                             .set(MSItemTypes.CLUB_TOOL)
                             .add(ESHitEffects.biggerDamage(3)),
                     new Item.Properties()));
+    public static final DeferredItem<Item> DEATH_MACE = ITEMS.register("death_mace", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.ORGANIC_TIER, 9, -2.8f).set(MSItemTypes.CLUB_TOOL),
+            new MSItemProperties().durability(750)));
+    public static final DeferredItem<Item> WITHERED_MACE = ITEMS.register("withered_mace", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.HORRORTERROR_TIER, 4, -2.8f).set(MSItemTypes.CLUB_TOOL)
+                    .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.WITHER, 100))),
+            new MSItemProperties().durability(750)));
+    public static final DeferredItem<Item> D8TH_M8CE = ITEMS.register("d8th_m8ce", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.DIAMOND, 4, -2.8f).set(MSItemTypes.CLUB_TOOL)
+                    .add(ESHitEffects.randomDamageMult(2, 0.25f)),
+            new MSItemProperties().durability(888)));
     // #endregion Clubs
     // #region Keys
     public static final DeferredItem<Item> KEY_OF_TRIALS = ITEMS.register("key_of_trials",
@@ -569,7 +580,6 @@ public final class ESItems {
                             .set(ItemRightClickEffect.switchTo(ESItems.CASHGRABBERS)),
                     new MSItemProperties().durability(1326)));
     // #endregion Claws
-    // TODO D8th M8ce, chance to deal extra damage based on kills since last trigger
 
     // Staves and Spellbooks are handled in the ISS compat package
     // See the ESISSItems and ESMissingItems classes
@@ -1112,6 +1122,9 @@ public final class ESItems {
         list.add(GOLDEN_PAN);
         list.add(ROLLING_PIN);
         list.add(DESTRUCTION_BAT);
+        list.add(DEATH_MACE);
+        list.add(WITHERED_MACE);
+        list.add(D8TH_M8CE);
         // Keys
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
