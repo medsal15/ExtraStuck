@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 767,
+    "minestuck:build": 750,
+    "minestuck:tar": 500
+  },
+  "ingredient": {
+    "item": "extrastuck:leafburner"
+  }
+}

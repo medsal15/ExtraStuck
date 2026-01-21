@@ -1,0 +1,23 @@
+{
+    "name": "Blight",
+    "icon": "extrastuck:blight",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:blight"
+            },
+            "text": "A dead sickle from a bad year of harvest.$(br2)$(3)$(l)Special:$() Applies Poison II to enemies for 3 seconds on hit."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine A Thorny Subject and a Dead Bush in a Punch Designix.",
+            "left": "minestuck:thorny_subject",
+            "mode": "||",
+            "right": "minecraft:dead_bush",
+            "result": "extrastuck:blight"
+        }
+    ]
+}

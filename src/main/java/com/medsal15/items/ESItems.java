@@ -79,6 +79,7 @@ import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.armor.MSArmorItem;
 import com.mraof.minestuck.item.components.MSItemComponents;
 import com.mraof.minestuck.item.foods.DrinkableItem;
+import com.mraof.minestuck.item.weapon.FarmineEffect;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
@@ -274,7 +275,7 @@ public final class ESItems {
                     .add(ESHitEffects.steamPowered(true, OnHitEffect.setOnFire(10)))
                     .set(ESRightClickEffects::steamWeapon),
             new MSItemProperties().durability(600)
-                    .component(ESDataComponents.STEAM_FUEL, new SteamFuelComponent(0, false))));
+                    .component(ESDataComponents.STEAM_FUEL, SteamFuelComponent.empty())));
     // #endregion Hammers
     // #region Dice
     public static final DeferredItem<Item> GOLD_COIN = ITEMS.register("gold_coin",
@@ -547,13 +548,24 @@ public final class ESItems {
             () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 9, -2.2F).efficiency(8)
                     .set(MSItemTypes.SICKLE_TOOL)
                     .disableShield(), new MSItemProperties().durability(1326)));
+    public static final DeferredItem<Item> BLIGHT = ITEMS.register("blight",
+            () -> new WeaponItem(new WeaponItem.Builder(MSItemTypes.URANIUM_TIER, 2, -2.2F).efficiency(4)
+                    .set(MSItemTypes.SICKLE_TOOL)
+                    .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.POISON, 60, 1)))
+                    .disableShield(), new Item.Properties()));
     // #endregion Sickles
     // #region Scythes
     public static final DeferredItem<Item> DEBT_REAPER = ITEMS.register("debt_reaper", () -> new WeaponItem(
             new WeaponItem.Builder(Tiers.GOLD, 8, -2.6F).efficiency(13).disableShield()
                     .set(MSItemTypes.SCYTHE_TOOL),
             new MSItemProperties().durability(1326)));
-    // TODO leafburner (farmines leaves, flint and steel, sets enemies on fire)
+    public static final DeferredItem<Item> LEAFBURNER = ITEMS.register("leafburner", () -> new SteamWeaponItem(
+            new WeaponItem.Builder(Tiers.NETHERITE, 8, -2.6F).disableShield()
+                    .set(MSItemTypes.SCYTHE_TOOL).set(new FarmineEffect(Integer.MAX_VALUE, 50))
+                    .set(ESRightClickBlockEffects.steamPowered(true, ESRightClickBlockEffects::setOnFire))
+                    .add(ESHitEffects.steamPowered(true, OnHitEffect.setOnFire(15)))
+                    .set(ESRightClickEffects::steamWeapon),
+            new Item.Properties().component(ESDataComponents.STEAM_FUEL, SteamFuelComponent.empty())));
     // #endregion Scythes
     // #region Fans
     public static final DeferredItem<Item> NONE_OF_YOUR_BUSINESS = ITEMS.register("none_of_your_business",
@@ -1157,8 +1169,10 @@ public final class ESItems {
         // Sickles
         list.add(NEW_MOON);
         list.add(PIRATE_HOOK);
+        list.add(BLIGHT);
         // Scythes
         list.add(DEBT_REAPER);
+        list.add(LEAFBURNER);
         // Fans
         list.add(NONE_OF_YOUR_BUSINESS);
         // Lances

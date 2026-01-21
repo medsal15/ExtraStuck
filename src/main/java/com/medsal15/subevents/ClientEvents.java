@@ -237,6 +237,7 @@ public final class ClientEvents {
                 });
 
         addSteamBurning(ESItems.STEAM_HAMMER);
+        addSteamBurning(ESItems.LEAFBURNER);
 
         ProgramGui.Registry.register(ESProgramTypes.MASTERMIND_CODEBREAKER, MastermindAppScreen::new);
     }

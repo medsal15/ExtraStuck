@@ -63,4 +63,8 @@ public record SteamFuelComponent(int fuel, boolean burning) implements TooltipPr
         }
         tooltipAdder.accept(Component.translatable(ESLangProvider.STEAM_WEAPON_FUEL, uses, state));
     }
+
+    public static SteamFuelComponent empty() {
+        return new SteamFuelComponent(0, false);
+    }
 }

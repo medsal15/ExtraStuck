@@ -45,13 +45,16 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.util.FakePlayer;
 
 public final class ESRightClickEffects {
+    /**
+     * Allows toggling the steam weapon's fire by crouch using
+     */
     public static InteractionResultHolder<ItemStack> steamWeapon(Level level, Player player,
             InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
         // Toggle
         if (player.isShiftKeyDown()) {
-            SteamFuelComponent fuel = stack.getOrDefault(ESDataComponents.STEAM_FUEL, new SteamFuelComponent(0, false));
+            SteamFuelComponent fuel = stack.getOrDefault(ESDataComponents.STEAM_FUEL, SteamFuelComponent.empty());
             if (fuel.burning()) {
                 stack.set(ESDataComponents.STEAM_FUEL, fuel.extinguish());
                 player.playSound(SoundEvents.FIRE_EXTINGUISH);

@@ -1,0 +1,23 @@
+{
+    "name": "Leafburner",
+    "icon": "extrastuck:leafburner",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:leafburner"
+            },
+            "text": "The best solution to getting rid of all your leaves.$(br2)$(3)$(l)Special:$() Can break up to 50 connected leaves. While lit: doubles damage, sets enemies on fire for 15 seconds, and can be used to set things on fire."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Sunray Harvester and a Smoker in a Punch Designix.",
+            "left": "minestuck:sunray_harvester",
+            "mode": "||",
+            "right": "minecraft:smoker",
+            "result": "extrastuck:leafburner"
+        }
+    ]
+}

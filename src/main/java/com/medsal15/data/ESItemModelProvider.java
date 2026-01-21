@@ -193,6 +193,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         // Sickles
         handheldItem(ESItems.NEW_MOON.get());
         handheldItem(ESItems.PIRATE_HOOK.get());
+        handheldItem(ESItems.BLIGHT.get());
         // Scythes
         handheldItem(ESItems.DEBT_REAPER.get());
         // Fans

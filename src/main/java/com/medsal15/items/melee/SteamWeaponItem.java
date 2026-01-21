@@ -50,12 +50,16 @@ public class SteamWeaponItem extends WeaponItem {
             if (furnaceFuel == null)
                 return false;
 
-            SteamFuelComponent steamFuel = stack.getOrDefault(ESDataComponents.STEAM_FUEL,
-                    new SteamFuelComponent(0, false));
+            SteamFuelComponent steamFuel = stack.getOrDefault(ESDataComponents.STEAM_FUEL, SteamFuelComponent.empty());
             if (steamFuel.fuel() > ConfigServer.STEAM_FUEL_THRESHOLD.get())
                 return false;
 
             stack.set(ESDataComponents.STEAM_FUEL, steamFuel.refuel(furnaceFuel.burnTime()));
+            if (other.hasCraftingRemainingItem()) {
+                ItemStack remaining = other.copyWithCount(1).getCraftingRemainingItem();
+                if (!player.getInventory().add(remaining))
+                    player.drop(remaining, false);
+            }
             other.shrink(1);
             return true;
         }
@@ -68,8 +72,7 @@ public class SteamWeaponItem extends WeaponItem {
         if (stack.getItem() != this)
             return;
 
-        SteamFuelComponent steamFuel = stack.getOrDefault(ESDataComponents.STEAM_FUEL,
-                new SteamFuelComponent(0, false));
+        SteamFuelComponent steamFuel = stack.getOrDefault(ESDataComponents.STEAM_FUEL, SteamFuelComponent.empty());
         if (!steamFuel.burning()) {
             event.addModifier(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(ExtraStuck.modid("steam_weapon"), damageMult, Operation.ADD_MULTIPLIED_TOTAL),

@@ -356,9 +356,12 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.PIRATE_HOOK, "Yarr! Thy booty is mine!");
         addItem(ESItems.NEW_MOON, "New Moon");
         addItemTooltip(ESItems.NEW_MOON, "More strength...");
+        addItem(ESItems.BLIGHT, "Blight");
+        addItemTooltip(ESItems.BLIGHT, "Bad crop? Bro we're gonna starve");
         // Scythes
         addItem(ESItems.DEBT_REAPER, "Debt Reaper");
         addItemTooltip(ESItems.DEBT_REAPER, "You can't escape taxes");
+        addItem(ESItems.LEAFBURNER, "Leafburner");
         // Fans
         addItem(ESItems.NONE_OF_YOUR_BUSINESS, "None of Your Business");
         addItemTooltip(ESItems.NONE_OF_YOUR_BUSINESS, "Privacy first");

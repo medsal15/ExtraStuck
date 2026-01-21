@@ -650,6 +650,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.PIRATE_HOOK)
                 .grist(GristTypes.GOLD, 700).grist(GristTypes.TAR, 400).grist(GristTypes.COBALT, 1300)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BLIGHT)
+                .input(MSItems.THORNY_SUBJECT).or().input(Items.DEAD_BUSH)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BLIGHT)
+                .grist(GristTypes.SULFUR, 111).grist(GristTypes.AMBER, 41).grist(GristTypes.BUILD, 63)
+                .build(output);
         // #endregion Sickles
 
         // #region Scythes
@@ -658,6 +665,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.DEBT_REAPER)
                 .grist(GristTypes.GOLD, 600).grist(GristTypes.AMBER, 1400).grist(GristTypes.DIAMOND, 250)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.LEAFBURNER)
+                .input(MSItems.SUNRAY_HARVESTER).or().input(Items.SMOKER)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.LEAFBURNER)
+                .grist(GristTypes.AMBER, 767).grist(GristTypes.TAR, 500).grist(GristTypes.BUILD, 750)
                 .build(output);
         // #endregion Scythes
 
