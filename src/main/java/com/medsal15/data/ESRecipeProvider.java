@@ -1619,6 +1619,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.COSMIC_SPOREO)
                 .grist(GristTypes.SHALE, 12).grist(GristTypes.URANIUM, 1).grist(GristTypes.MERCURY, 3)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SPAM)
+                .input(MSItems.FOOD_CAN).and().input(ESItems.SALESMAN_GOGGLES)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SPAM)
+                .grist(GristTypes.IODINE, 8).grist(GristTypes.RUST, 4).grist(GristTypes.CHALK, 2)
+                .build(output);
     }
 
     private void drinkRecipes(@Nonnull RecipeOutput output) {

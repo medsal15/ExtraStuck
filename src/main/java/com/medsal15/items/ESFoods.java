@@ -89,4 +89,6 @@ public final class ESFoods {
     public static final FoodProperties COSMIC_SPOREO = new FoodProperties.Builder().nutrition(6).saturationModifier(.3F)
             .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 100), .1F)
             .build();
+    public static final FoodProperties SPAM = new FoodProperties.Builder().nutrition(4).saturationModifier(.6F)
+            .fast().alwaysEdible().build();
 }

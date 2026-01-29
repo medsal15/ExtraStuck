@@ -49,6 +49,7 @@ import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.food.FortuneCookie;
 import com.medsal15.items.food.HomeDonut;
 import com.medsal15.items.food.HotCakeSlice;
+import com.medsal15.items.food.LootFood;
 import com.medsal15.items.food.MortalTemptation;
 import com.medsal15.items.food.RocketJump;
 import com.medsal15.items.food.SourBombCandy;
@@ -88,6 +89,7 @@ import com.mraof.minestuck.item.weapon.projectiles.BouncingProjectileWeaponItem;
 import com.mraof.minestuck.util.MSSoundEvents;
 
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -811,6 +813,10 @@ public final class ESItems {
             p -> new SourBombCandy(p.food(ESFoods.SOUR_BOMB_CANDY)));
     public static final DeferredItem<Item> COSMIC_SPOREO = ITEMS.registerItem("cosmic_sporeo",
             p -> new Item(p.food(ESFoods.COSMIC_SPOREO)));
+    // TODO guide
+    public static final DeferredItem<Item> SPAM = ITEMS.registerItem("spam", p -> new LootFood(
+            p.food(ESFoods.SPAM).component(ESDataComponents.GIFT_TABLE, ESLootSubProvider.SPAM_LOOT_TABLE),
+            Component.translatable(ESLangProvider.SPAM_FOOD)));
     // #endregion Food
 
     // #region Drinks
@@ -1366,6 +1372,7 @@ public final class ESItems {
         list.add(HOME_DONUT);
         list.add(SOUR_BOMB_CANDY);
         list.add(COSMIC_SPOREO);
+        list.add(SPAM);
         return list;
     }
 

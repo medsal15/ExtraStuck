@@ -295,6 +295,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.HOME_DONUT.get());
         basicItem(ESItems.SOUR_BOMB_CANDY.get());
         basicItem(ESItems.COSMIC_SPOREO.get());
+        basicItem(ESItems.SPAM.get());
 
         basicItem(ESItems.DESERT_JUICE.get());
         basicItem(ESItems.ROCKET_JUMP.get());

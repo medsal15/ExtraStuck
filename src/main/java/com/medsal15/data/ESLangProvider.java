@@ -72,6 +72,13 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String STEAM_WEAPON_LIT = ExtraStuck.MODID + ".steam_weapon.lit";
     public static final String STEAM_WEAPON_UNLIT = ExtraStuck.MODID + ".steam_weapon.unlit";
     public static final String HOME_DONUT_NO_TP = ExtraStuck.MODID + ".home_done.no_tp";
+    public static final String SPAM_FOOD = ExtraStuck.MODID + ".spam.food";
+    public static final String SPAM_TITLE_1 = ESItems.SPAM.get().getDescriptionId() + ".title.1";
+    public static final String SPAM_TITLE_2 = ESItems.SPAM.get().getDescriptionId() + ".title.2";
+    public static final String SPAM_TITLE_3 = ESItems.SPAM.get().getDescriptionId() + ".title.3";
+    public static final String SPAM_DESC_1 = ESItems.SPAM.get().getDescriptionId() + ".desc.1";
+    public static final String SPAM_DESC_2 = ESItems.SPAM.get().getDescriptionId() + ".desc.2";
+    public static final String SPAM_DESC_3 = ESItems.SPAM.get().getDescriptionId() + ".desc.3";
 
     public static final String GRIST_DETECTOR_LOCATED = ExtraStuck.MODID + ".grist_detector.located";
     public static final String GRIST_DETECTOR_MODE = ExtraStuck.MODID + ".grist_detector.mode";
@@ -699,6 +706,14 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.DESERT_JUICE, "Desert Juice");
         addItem(ESItems.ROCKET_JUMP, "Rocket Jump");
         addItemTooltip(ESItems.ROCKET_JUMP, "Screamin' Eagles!");
+        addItem(ESItems.SPAM, "Spam");
+        add(SPAM_FOOD, "Looks like there's something else inside");
+        add(SPAM_TITLE_1, "Big Sale! Everything 90%* off!");
+        add(SPAM_DESC_1, "We are currently having a Big Sale in all of our shops! Come now and don't miss out!");
+        add(SPAM_TITLE_2, "Now's your chance to save a lot of money");
+        add(SPAM_DESC_2, "All of our affiliate shops have everything on sale (up to) 75% off!");
+        add(SPAM_TITLE_3, "Stained Paper");
+        add(SPAM_DESC_3, "You can't make out the text, but you can tell there's a phone number.");
     }
 
     private void addTags() {

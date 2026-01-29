@@ -1,21 +1,27 @@
 package com.medsal15.data.loot_tables;
 
+import java.util.List;
 import java.util.function.BiConsumer;
 
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
+import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.ESItems;
 import com.medsal15.loot_functions.TurnToCardFunction;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.LootTable.Builder;
@@ -23,6 +29,7 @@ import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.TagEntry;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
+import net.minecraft.world.level.storage.loot.functions.SetComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemDamageFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -33,6 +40,7 @@ public class ESLootSubProvider implements LootTableSubProvider {
     }
 
     public static ResourceKey<LootTable> GIFT_LOOT_TABLE = key("gameplay/gift");
+    public static ResourceKey<LootTable> SPAM_LOOT_TABLE = key("gameplay/spam");
 
     @Override
     public void generate(@Nonnull BiConsumer<ResourceKey<LootTable>, Builder> consumer) {
@@ -86,6 +94,21 @@ public class ESLootSubProvider implements LootTableSubProvider {
                         .add(TagEntry.expandTag(MSTags.Items.FAYGO).setWeight(6))
                         .add(TagEntry.expandTag(MSTags.Items.GRIST_CANDY).setQuality(1).setWeight(3))
                         .add(LootItem.lootTableItem(ESItems.GOLDEN_PAN).setQuality(5))));
+        consumer.accept(SPAM_LOOT_TABLE, LootTable.lootTable().withPool(LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(Items.PAPER).apply(SetComponentsFunction.setComponent(
+                        DataComponents.ITEM_NAME, Component.translatable(ESLangProvider.SPAM_TITLE_1)))
+                        .apply(SetComponentsFunction.setComponent(DataComponents.LORE,
+                                new ItemLore(List.of(Component.translatable(ESLangProvider.SPAM_DESC_1))))))
+                .add(LootItem.lootTableItem(Items.PAPER).apply(SetComponentsFunction.setComponent(
+                        DataComponents.ITEM_NAME, Component.translatable(ESLangProvider.SPAM_TITLE_2)))
+                        .apply(SetComponentsFunction.setComponent(DataComponents.LORE,
+                                new ItemLore(List.of(Component.translatable(ESLangProvider.SPAM_DESC_2))))))
+                .add(LootItem.lootTableItem(Items.PAPER).apply(SetComponentsFunction.setComponent(
+                        DataComponents.ITEM_NAME, Component.translatable(ESLangProvider.SPAM_TITLE_3)))
+                        .apply(SetComponentsFunction.setComponent(DataComponents.LORE,
+                                new ItemLore(List.of(Component.translatable(ESLangProvider.SPAM_DESC_3)
+                                        .withStyle(ChatFormatting.GRAY))))))));
     }
 
     public static ResourceKey<LootTable> key(String path) {
