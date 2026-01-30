@@ -1,4 +1,4 @@
-package com.medsal15.items;
+package com.medsal15.items.tools;
 
 import javax.annotation.Nonnull;
 

@@ -1,0 +1,23 @@
+{
+    "name": "End of Civilization",
+    "icon": "extrastuck:end_of_civilization",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:end_of_civilization"
+            },
+            "text": "This weapon was the downfall of an entire intergalactic civilization.$(br2)$(3)$(l)Special:$() Applies Cosmic Plague V to enemies for 1 minute on hit. It spreads to nearby entities not wearing a Cosmic Plague armor set (at a lower level).$(br)This includes you."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Blight and a Cosmic Plague Spore in a Totem Lathe.",
+            "left": "extrastuck:blight",
+            "mode": "&&",
+            "right": "extrastuck:cosmic_plague_spore",
+            "result": "extrastuck:end_of_civilization"
+        }
+    ]
+}

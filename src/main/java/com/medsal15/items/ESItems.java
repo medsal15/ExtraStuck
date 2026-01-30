@@ -69,6 +69,11 @@ import com.medsal15.items.throwables.BeeLarvaItem;
 import com.medsal15.items.throwables.BeenadeItem;
 import com.medsal15.items.throwables.LemonNadeItem;
 import com.medsal15.items.throwables.SwapTrident;
+import com.medsal15.items.tools.ChargerItem;
+import com.medsal15.items.tools.GiftItem;
+import com.medsal15.items.tools.GristDetectorItem;
+import com.medsal15.items.tools.MagnetItem;
+import com.medsal15.items.tools.Tokenitem;
 import com.medsal15.items.weaponeffects.ESHitEffects;
 import com.medsal15.items.weaponeffects.ESInventoryTickEffects;
 import com.medsal15.items.weaponeffects.ESRightClickBlockEffects;
@@ -555,6 +560,14 @@ public final class ESItems {
                     .set(MSItemTypes.SICKLE_TOOL)
                     .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.POISON, 60, 1)))
                     .disableShield(), new Item.Properties()));
+    // TODO cost & guide
+    public static final DeferredItem<Item> END_OF_CIVILIZATION = ITEMS.register("end_of_civilization",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.DENIZEN_TIER, 6, -2.2F).efficiency(15)
+                            .set(MSItemTypes.SICKLE_TOOL).disableShield()
+                            .add(OnHitEffect.enemyPotionEffect(
+                                    () -> new MobEffectInstance(ESMobEffects.COSMIC_PLAGUE, 1200, 4))),
+                    new Item.Properties().rarity(Rarity.EPIC)));
     // #endregion Sickles
     // #region Scythes
     public static final DeferredItem<Item> DEBT_REAPER = ITEMS.register("debt_reaper", () -> new WeaponItem(
@@ -813,7 +826,6 @@ public final class ESItems {
             p -> new SourBombCandy(p.food(ESFoods.SOUR_BOMB_CANDY)));
     public static final DeferredItem<Item> COSMIC_SPOREO = ITEMS.registerItem("cosmic_sporeo",
             p -> new Item(p.food(ESFoods.COSMIC_SPOREO)));
-    // TODO guide
     public static final DeferredItem<Item> SPAM = ITEMS.registerItem("spam", p -> new LootFood(
             p.food(ESFoods.SPAM).component(ESDataComponents.GIFT_TABLE, ESLootSubProvider.SPAM_LOOT_TABLE),
             Component.translatable(ESLangProvider.SPAM_FOOD)));
@@ -1176,6 +1188,7 @@ public final class ESItems {
         list.add(NEW_MOON);
         list.add(PIRATE_HOOK);
         list.add(BLIGHT);
+        list.add(END_OF_CIVILIZATION);
         // Scythes
         list.add(DEBT_REAPER);
         list.add(LEAFBURNER);

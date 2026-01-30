@@ -2,9 +2,6 @@ package com.medsal15.config;
 
 import java.util.List;
 
-import com.mraof.minestuck.world.MSDimensions;
-
-import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
@@ -69,11 +66,22 @@ public final class ConfigServer {
             .comment("How many charges a radbow gets from an uranium rod")
             .defineInRange("radbow_charge", 10, 1, Integer.MAX_VALUE);
 
-    public static final ConfigValue<List<String>> COSMIC_DIMENSIONS = BUILDER
+    public static final ConfigValue<List<? extends String>> COSMIC_DIMENSIONS = BUILDER
             .comment("Determines which dimensions trigger the Cosmic Plague Spore's inventory effect",
-                    "That is, give Poison V for 5 seconds", " Default: [\"minecraft:the_end\", \"minestuck:veil\"]")
-            .define("cosmic_spore_dimensions",
-                    List.of(Level.END.location().toString(), MSDimensions.VEIL.location().toString()));
+                    "That is, give Poison V for 5 seconds",
+                    "This is separate from the \"extrastuck:cosmic_dimension_types\" tag and should only be used in case multiple dimensions use the same type",
+                    " Default: []")
+            .defineList("cosmic_spore_dimensions", List.of(), () -> "minecraft:overworld",
+                    s -> s instanceof String str && str.contains(":"));
+
+    public static final ModConfigSpec.BooleanValue COSMIC_PLAGUE_SPREAD = BUILDER
+            .comment(
+                    "If true, Cosmic Plague attempts to spread to nearby entities that are not tagged \"extrastuck:cosmic_plague_immune\"",
+                    "Does not prevent initial application, use the tag for that")
+            .define("cosmic_plague.spread", true);
+    public static final ConfigValue<Double> COSMIC_PLAGUE_RANGE = BUILDER
+            .comment("Sets the range for Cosmic Plague's spread", "Does not have to be an integer")
+            .defineInRange("cosmic_plague.range", (double) 5, 0, Integer.MAX_VALUE);
 
     public static final ConfigValue<Integer> MASTERMIND_DIFFICULTY = BUILDER
             .comment("How many colors are available by default in mastermind cards",

@@ -30,5 +30,6 @@ public final class ESEntityTypeTags extends EntityTypeTagsProvider {
         }
 
         tag(ESTags.EntityTypes.BEENADE_ACCEPTS).add(EntityType.BEE);
+        tag(ESTags.EntityTypes.COSMIC_PLAGUE_IMMUNE).add(EntityType.ENDER_DRAGON);
     }
 }

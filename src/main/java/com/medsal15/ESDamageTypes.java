@@ -10,4 +10,6 @@ public final class ESDamageTypes {
             ResourceLocation.fromNamespaceAndPath(ExtraStuck.MODID, "thorn_shield"));
     public static ResourceKey<DamageType> CAPTAIN_JUSTICE_PROJECTILE = ResourceKey.create(Registries.DAMAGE_TYPE,
             ResourceLocation.fromNamespaceAndPath(ExtraStuck.MODID, "captain_justice_projectile"));
+    public static ResourceKey<DamageType> COSMIC_PLAGUE = ResourceKey.create(Registries.DAMAGE_TYPE,
+            ResourceLocation.fromNamespaceAndPath(ExtraStuck.MODID, "cosmic_plague"));
 }

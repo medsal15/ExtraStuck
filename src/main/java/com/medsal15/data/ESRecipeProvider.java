@@ -657,6 +657,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.BLIGHT)
                 .grist(GristTypes.SULFUR, 111).grist(GristTypes.AMBER, 41).grist(GristTypes.BUILD, 63)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.END_OF_CIVILIZATION)
+                .input(ESItems.BLIGHT).and().input(ESItems.COSMIC_PLAGUE_SPORE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.END_OF_CIVILIZATION)
+                .grist(GristTypes.AMETHYST, 3929).grist(GristTypes.DIAMOND, 1352).grist(GristTypes.URANIUM, 420)
+                .build(output);
         // #endregion Sickles
 
         // #region Scythes

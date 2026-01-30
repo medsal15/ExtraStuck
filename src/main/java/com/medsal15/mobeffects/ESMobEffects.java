@@ -16,4 +16,6 @@ public final class ESMobEffects {
             () -> new TimeStopEffect(MobEffectCategory.HARMFUL, 0xff0000));
     public static final DeferredHolder<MobEffect, BeeAngryEffect> BEE_ANGRY = MOB_EFFECTS.register("bee_angry",
             () -> new BeeAngryEffect(MobEffectCategory.HARMFUL, 0xff7700));
+    public static final DeferredHolder<MobEffect, CosmicPlagueEffect> COSMIC_PLAGUE = MOB_EFFECTS.register(
+            "cosmic_plague", () -> new CosmicPlagueEffect(MobEffectCategory.HARMFUL, 0xaa88ff));
 }

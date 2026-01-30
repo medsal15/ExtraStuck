@@ -12,6 +12,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.material.Fluid;
 
 public final class ESTags {
@@ -55,6 +56,7 @@ public final class ESTags {
 
     public static final class EntityTypes {
         public static final TagKey<EntityType<?>> BEENADE_ACCEPTS = create("beenade_accepts");
+        public static final TagKey<EntityType<?>> COSMIC_PLAGUE_IMMUNE = create("cosmic_plague_immune");
 
         private static TagKey<EntityType<?>> create(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, ExtraStuck.modid(name));
@@ -67,6 +69,14 @@ public final class ESTags {
 
         private static TagKey<MobEffect> create(String name) {
             return TagKey.create(Registries.MOB_EFFECT, ExtraStuck.modid(name));
+        }
+    }
+
+    public static final class DimensionTypes {
+        public static final TagKey<DimensionType> COSMIC_DIMENSION_TYPES = create("cosmic_dimension_types");
+
+        private static TagKey<DimensionType> create(String name) {
+            return TagKey.create(Registries.DIMENSION_TYPE, ExtraStuck.modid(name));
         }
     }
 

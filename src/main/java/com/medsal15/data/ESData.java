@@ -11,6 +11,7 @@ import com.medsal15.data.loot_tables.ESGLMProvider;
 import com.medsal15.data.loot_tables.ESLootSubProvider;
 import com.medsal15.data.loot_tables.ESLootTableProvider;
 import com.medsal15.data.tags.ESBlockTags;
+import com.medsal15.data.tags.ESDamageTypeTags;
 import com.medsal15.data.tags.ESEntityTypeTags;
 import com.medsal15.data.tags.ESFluidTags;
 import com.medsal15.data.tags.ESItemTags;
@@ -49,7 +50,7 @@ public final class ESData {
         gen.addProvider(event.includeClient(), new ESSoundDefinitions(output, fileHelper));
         gen.addProvider(event.includeClient(), new ESParticleDescriptions(output, fileHelper));
 
-        gen.addProvider(
+        DatapackBuiltinEntriesProvider datapackProvider = gen.addProvider(
                 event.includeServer(),
                 new DatapackBuiltinEntriesProvider(output, lookupProvider,
                         new RegistrySetBuilder().add(Registries.DAMAGE_TYPE, bootstrap -> {
@@ -66,6 +67,13 @@ public final class ESData {
                                             DamageScaling.NEVER,
                                             .1F,
                                             DamageEffects.THORNS,
+                                            DeathMessageType.DEFAULT));
+                            bootstrap.register(ESDamageTypes.COSMIC_PLAGUE,
+                                    new DamageType(ESDamageTypes.COSMIC_PLAGUE
+                                            .location().toString(),
+                                            DamageScaling.NEVER,
+                                            .2F,
+                                            DamageEffects.HURT,
                                             DeathMessageType.DEFAULT));
                         }), Set.of(ExtraStuck.MODID)));
         gen.addProvider(event.includeServer(), new ESRecipeProvider(output, lookupProvider));
@@ -87,5 +95,7 @@ public final class ESData {
         gen.addProvider(event.includeServer(), new ESFluidTags(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(), new ESEntityTypeTags(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(), new ESMobEffectTags(output, lookupProvider, fileHelper));
+        gen.addProvider(event.includeServer(),
+                new ESDamageTypeTags(output, datapackProvider.getRegistryProvider(), fileHelper));
     }
 }

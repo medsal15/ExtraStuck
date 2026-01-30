@@ -3,6 +3,7 @@ package com.medsal15.items;
 import javax.annotation.Nonnull;
 
 import com.medsal15.config.ConfigServer;
+import com.medsal15.utils.ESTags;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -23,11 +24,11 @@ public class CosmicPlagueSporeItem extends Item {
         if (level.isClientSide)
             return;
 
-        if (!ConfigServer.COSMIC_DIMENSIONS.get().contains(level.dimension().location().toString()))
-            return;
-
-        if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 4));
+        if (ConfigServer.COSMIC_DIMENSIONS.get().contains(level.dimension().location().toString()) ||
+                level.dimensionTypeRegistration().is(ESTags.DimensionTypes.COSMIC_DIMENSION_TYPES)) {
+            if (entity instanceof LivingEntity livingEntity) {
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 4));
+            }
         }
     }
 }

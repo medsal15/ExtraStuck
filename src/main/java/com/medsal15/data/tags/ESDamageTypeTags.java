@@ -1,4 +1,4 @@
-package com.medsal15.data;
+package com.medsal15.data.tags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -24,5 +24,9 @@ public final class ESDamageTypeTags extends DamageTypeTagsProvider {
     protected void addTags(@Nonnull Provider provider) {
         tag(DamageTypeTags.IS_PROJECTILE).add(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE);
         tag(DamageTypeTags.BYPASSES_SHIELD).add(ESDamageTypes.THORN_SHIELD);
+        tag(DamageTypeTags.BYPASSES_ARMOR).add(ESDamageTypes.COSMIC_PLAGUE);
+        tag(DamageTypeTags.BYPASSES_WOLF_ARMOR).add(ESDamageTypes.COSMIC_PLAGUE);
+        tag(DamageTypeTags.NO_KNOCKBACK).add(ESDamageTypes.COSMIC_PLAGUE);
+        tag(DamageTypeTags.PANIC_CAUSES).add(ESDamageTypes.COSMIC_PLAGUE);
     }
 }

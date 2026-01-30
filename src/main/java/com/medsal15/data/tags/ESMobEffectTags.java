@@ -5,7 +5,9 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.utils.ESTags;
+import com.mraof.minestuck.util.MSTags;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.Registries;
@@ -23,7 +25,10 @@ public class ESMobEffectTags extends TagsProvider<MobEffect> {
 
     @Override
     protected void addTags(@Nonnull Provider provider) {
-        tag(ESTags.MobEffects.COSMIC_PLAGUE_IMMUNITY).add(MobEffects.POISON.getKey());
+        tag(ESTags.MobEffects.COSMIC_PLAGUE_IMMUNITY).add(MobEffects.POISON.getKey(),
+                ESMobEffects.COSMIC_PLAGUE.getKey());
         tag(ESTags.MobEffects.COSMIC_PLAGUE_PARTIAL_IMMUNITY).add(MobEffects.WITHER.getKey());
+
+        tag(MSTags.Effects.SOPOR_SICKNESS_WHITELIST).add(ESMobEffects.COSMIC_PLAGUE.getKey());
     }
 }

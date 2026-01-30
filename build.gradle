@@ -45,6 +45,11 @@ repositories {
         name = "Iron's Maven - Snapshots"
         url = "https://code.redspace.io/snapshots"
     }
+    // Curios
+    maven {
+        name = "Illusive Soulworks maven"
+        url = "https://maven.theillusivec4.top/"
+    }
     // JEI
     maven {
         name = 'Progwml6 maven'
@@ -189,8 +194,11 @@ dependencies {
 
     // Iron's Spellbooks
     implementation "io.redspace:irons_spellbooks:${irons_spells_version}"
-    implementation "curse.maven:curios-309927:6076118"
     implementation "curse.maven:playeranimator-658587:6024462"
+
+    // Curios
+    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
 	// JEI
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${mc_jei_version}"

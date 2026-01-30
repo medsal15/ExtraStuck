@@ -15,9 +15,9 @@ public enum MoonCakeSliceColor implements StringRepresentable {
     }
 
     public static MoonCakeSliceColor fromName(String string) {
-        for (MoonCakeSliceColor layer : MoonCakeSliceColor.values()) {
-            if (layer.name().toLowerCase().equals(string))
-                return layer;
+        for (MoonCakeSliceColor color : MoonCakeSliceColor.values()) {
+            if (color.name().toLowerCase().equals(string))
+                return color;
         }
         throw new IllegalArgumentException("Invalid moon cake color " + string);
     }

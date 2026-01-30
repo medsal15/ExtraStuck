@@ -130,12 +130,7 @@ public final class ESLangProvider extends LanguageProvider {
         addTools();
         addFood();
         addTags();
-
-        addEffect(ESMobEffects.TIME_STOP, "Time Stop");
-        addEffectDescription(ESMobEffects.TIME_STOP, "Prevents most movement");
-        addEffect(ESMobEffects.BEE_ANGRY, "Anger Bees");
-        addEffectDescription(ESMobEffects.BEE_ANGRY,
-                "Anger all bees to the target with a 6 blocks radius, increased by 3 per level");
+        addMobEffects();
 
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
@@ -162,10 +157,12 @@ public final class ESLangProvider extends LanguageProvider {
         add("strife." + ESKindAbstratus.DICE, "Dicekind");
         add("strife." + ESKindAbstratus.SHIELD, "Shieldkind");
 
-        addDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
+        addPlayerDeathMessages(ESDamageTypes.CAPTAIN_JUSTICE_PROJECTILE, "%1$s was shot by %2$s",
                 "%1$s was shot by %2$s with %3$s");
-        addDeathMessages(ESDamageTypes.THORN_SHIELD, "%1$s struck %2$s's shield too hard",
+        addPlayerDeathMessages(ESDamageTypes.THORN_SHIELD, "%1$s struck %2$s's shield too hard",
                 "%1$s struck %2$s's %3$s too hard");
+        addEffectDeathMessages(ESDamageTypes.COSMIC_PLAGUE, "%1$s succumbed to the cosmic plague",
+                "%1$s succumbed to the cosmic plague while fighting %2$s");
 
         // Band-aids for Minestuck's missing translation
         add(MSAttributes.UNDERLING_DAMAGE_MODIFIER.value().getDescriptionId(), "Damage Against Underlings");
@@ -364,7 +361,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.NEW_MOON, "New Moon");
         addItemTooltip(ESItems.NEW_MOON, "More strength...");
         addItem(ESItems.BLIGHT, "Blight");
-        addItemTooltip(ESItems.BLIGHT, "Bad crop? Bro we're gonna starve");
+        addItem(ESItems.END_OF_CIVILIZATION, "End of Civilization");
+        addItemTooltip(ESItems.END_OF_CIVILIZATION, "Are you sure this is a good idea?");
         // Scythes
         addItem(ESItems.DEBT_REAPER, "Debt Reaper");
         addItemTooltip(ESItems.DEBT_REAPER, "You can't escape taxes");
@@ -716,6 +714,17 @@ public final class ESLangProvider extends LanguageProvider {
         add(SPAM_DESC_3, "You can't make out the text, but you can tell there's a phone number.");
     }
 
+    private void addMobEffects() {
+        addEffect(ESMobEffects.TIME_STOP, "Time Stop");
+        addEffectDescription(ESMobEffects.TIME_STOP, "Prevents most movement");
+        addEffect(ESMobEffects.BEE_ANGRY, "Anger Bees");
+        addEffectDescription(ESMobEffects.BEE_ANGRY,
+                "Anger all bees to the target with a 6 blocks radius, increased by 3 per level");
+        addEffect(ESMobEffects.COSMIC_PLAGUE, "Cosmic Plague");
+        addEffectDescription(ESMobEffects.COSMIC_PLAGUE,
+                "Deals 2 damage every 2 seconds.\nEvery level halves the time between damage ticks.\nSpreads to nearby entities with one less level");
+    }
+
     private void addTags() {
         add(ESTags.Items.AMMO, "Ammunition");
         add(ESTags.Items.AMMO_HANDGUN, "Handgun Ammunition");
@@ -724,7 +733,15 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.Items.DROPS_BOONDOLLARS, "Drops Boondollars on Kill");
         add(ESTags.Items.COSMIC_PLAGUE_ARMOR, "Cosmic Plague Armor");
 
+        add(ESTags.Blocks.PRYABLE, "Pryable with the Iron Crowbar");
+
         add(ESTags.EntityTypes.BEENADE_ACCEPTS, "Accepted by Beenades");
+        add(ESTags.EntityTypes.COSMIC_PLAGUE_IMMUNE, "Immune to Cosmic Plague");
+
+        add(ESTags.MobEffects.COSMIC_PLAGUE_IMMUNITY, "Prevented with cosmic plague armor");
+        add(ESTags.MobEffects.COSMIC_PLAGUE_PARTIAL_IMMUNITY, "Sometimes prevented with cosmic plague armor");
+
+        add(ESTags.DimensionTypes.COSMIC_DIMENSION_TYPES, "Dimensions triggering the Cosmic Plague Spore effect");
     }
 
     private void addItemTooltip(Supplier<? extends Item> key, String text) {
@@ -739,9 +756,14 @@ public final class ESLangProvider extends LanguageProvider {
         add(((Block) (key.get())).getDescriptionId() + ".tooltip", text);
     }
 
-    private void addDeathMessages(ResourceKey<DamageType> damage, String generic, String namedItem) {
+    private void addPlayerDeathMessages(ResourceKey<DamageType> damage, String generic, String namedItem) {
         add("death.attack." + damage.location().toString(), generic);
         add("death.attack." + damage.location().toString() + ".item", namedItem);
+    }
+
+    private void addEffectDeathMessages(ResourceKey<DamageType> damage, String generic, String player) {
+        add("death.attack." + damage.location().toString(), generic);
+        add("death.attack." + damage.location().toString() + ".player", player);
     }
 
     private void addItemBookDescription(Supplier<? extends Item> item, String text) {
