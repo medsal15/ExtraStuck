@@ -1,0 +1,18 @@
+{
+    "neoforge:conditions": [
+        {
+            "type": "neoforge:mod_loaded",
+            "modid": "jeed"
+        }
+    ],
+    "type": "jeed:effect_provider",
+    "effect": "minecraft:darkness",
+    "providers": [
+        {
+            "item": "extrastuck:blind_hammer"
+        },
+        {
+            "item": "extrastuck:d8_night"
+        }
+    ]
+}

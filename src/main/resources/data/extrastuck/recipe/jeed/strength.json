@@ -1,0 +1,27 @@
+{
+    "neoforge:conditions": [
+        {
+            "type": "neoforge:mod_loaded",
+            "modid": "jeed"
+        }
+    ],
+    "type": "jeed:effect_provider",
+    "effect": "minecraft:strength",
+    "providers": [
+        {
+            "item": "extrastuck:eldritch_shield"
+        },
+        {
+            "item": "extrastuck:rainbow_d7"
+        },
+        {
+            "item": "extrastuck:jackpot"
+        },
+        {
+            "item": "extrastuck:sun_reaver"
+        },
+        {
+            "item": "extrastuck:new_moon"
+        }
+    ]
+}

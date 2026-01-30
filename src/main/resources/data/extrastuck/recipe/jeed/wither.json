@@ -1,0 +1,27 @@
+{
+    "neoforge:conditions": [
+        {
+            "type": "neoforge:mod_loaded",
+            "modid": "jeed"
+        }
+    ],
+    "type": "jeed:effect_provider",
+    "effect": "minecraft:wither",
+    "providers": [
+        {
+            "item": "extrastuck:withered_mace"
+        },
+        {
+            "item": "extrastuck:yellowcakesaw"
+        },
+        {
+            "item": "extrastuck:radbow"
+        },
+        {
+            "item": "extrastuck:mechanical_radbow"
+        },
+        {
+            "item": "extrastuck:uranium_blaster"
+        }
+    ]
+}

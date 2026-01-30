@@ -560,7 +560,6 @@ public final class ESItems {
                     .set(MSItemTypes.SICKLE_TOOL)
                     .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.POISON, 60, 1)))
                     .disableShield(), new Item.Properties()));
-    // TODO cost & guide
     public static final DeferredItem<Item> END_OF_CIVILIZATION = ITEMS.register("end_of_civilization",
             () -> new WeaponItem(
                     new WeaponItem.Builder(MSItemTypes.DENIZEN_TIER, 6, -2.2F).efficiency(15)
