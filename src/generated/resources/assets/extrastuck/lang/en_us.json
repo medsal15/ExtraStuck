@@ -1,4 +1,6 @@
 {
+  "advancements.extrastuck.extra_modi.description": "Obtain every Extrastuck modi",
+  "advancements.extrastuck.extra_modi.title": "An Extra Set",
   "attribute.name.player.underling_damage_modifier": "Damage Against Underlings",
   "attribute.name.player.underling_protection_modifier": "Damage From Underlings",
   "block.extrastuck.card_ore": "Card Ore",

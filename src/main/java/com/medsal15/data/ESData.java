@@ -87,6 +87,7 @@ public final class ESData {
                                         LootContextParamSets.CHEST)))));
         gen.addProvider(event.includeServer(), new ESGLMProvider(output, lookupProvider));
         gen.addProvider(event.includeServer(), new ESPriceProvider(output));
+        gen.addProvider(event.includeServer(), ESAdvancementsProvider.create(output, lookupProvider, fileHelper));
 
         ESBlockTags blocktags = gen.addProvider(event.includeServer(),
                 new ESBlockTags(output, lookupProvider, fileHelper));

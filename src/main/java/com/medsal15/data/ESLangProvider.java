@@ -164,6 +164,9 @@ public final class ESLangProvider extends LanguageProvider {
         addEffectDeathMessages(ESDamageTypes.COSMIC_PLAGUE, "%1$s succumbed to the cosmic plague",
                 "%1$s succumbed to the cosmic plague while fighting %2$s");
 
+        add(ESAdvancementsProvider.title(ESAdvancementsProvider.EXTRA_MODI), "An Extra Set");
+        add(ESAdvancementsProvider.desc(ESAdvancementsProvider.EXTRA_MODI), "Obtain every Extrastuck modi");
+
         // Band-aids for Minestuck's missing translation
         add(MSAttributes.UNDERLING_DAMAGE_MODIFIER.value().getDescriptionId(), "Damage Against Underlings");
         add(MSAttributes.UNDERLING_PROTECTION_MODIFIER.value().getDescriptionId(), "Damage From Underlings");

@@ -1,0 +1,151 @@
+{
+  "parent": "minestuck:minestuck/all_modi",
+  "criteria": {
+    "archeology": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:archeology_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "compact": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:compact_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crafting": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:crafting_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "ender": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:ender_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "fortune": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:fortune_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:furnace_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mastermind": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:mastermind_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:ore_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pile": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:pile_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "void": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:void_modus_card"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.extrastuck.extra_modi.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "extrastuck:mastermind_modus_card"
+    },
+    "title": {
+      "translate": "advancements.extrastuck.extra_modi.title"
+    }
+  },
+  "requirements": [
+    [
+      "pile"
+    ],
+    [
+      "fortune"
+    ],
+    [
+      "ore"
+    ],
+    [
+      "archeology"
+    ],
+    [
+      "void"
+    ],
+    [
+      "ender"
+    ],
+    [
+      "mastermind"
+    ],
+    [
+      "furnace"
+    ],
+    [
+      "compact"
+    ],
+    [
+      "crafting"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
