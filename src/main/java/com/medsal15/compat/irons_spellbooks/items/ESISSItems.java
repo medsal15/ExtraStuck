@@ -40,6 +40,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -182,13 +183,14 @@ public final class ESISSItems {
                     }));
     public static final DeferredItem<Item> CAST_GOLD_SHIELD = ITEMS.register("cast_gold_shield",
             () -> new ESShield(
+                    new ESShield.Builder().setOther(ESISSItems.PROSPITIAN_WAND).addBlock(SHIELD_CAST_SPELL)
+                            .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_GOLD)),
                     new Item.Properties().durability(1200).attributes(ItemAttributeModifiers.builder()
                             .add(AttributeRegistry.HOLY_SPELL_POWER,
                                     new AttributeModifier(ExtraStuck.modid("cast_gold_shield"), .2,
                                             Operation.ADD_MULTIPLIED_BASE),
                                     EquipmentSlotGroup.HAND)
-                            .build()),
-                    ESISSItems.PROSPITIAN_WAND, SHIELD_CAST_SPELL));
+                            .build())));
     public static final DeferredItem<Item> AMETHYST_BACKSTABBER = ITEMS.register("amethyst_backstabber",
             () -> new WeaponItem(
                     new WeaponItem.Builder(ESItemTiers.AMETHYST_TIER, 1, -2F).set(MSItemTypes.KNIFE_TOOL)

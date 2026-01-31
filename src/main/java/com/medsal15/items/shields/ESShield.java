@@ -1,8 +1,9 @@
 package com.medsal15.items.shields;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
@@ -48,50 +49,40 @@ import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ESShield extends ShieldItem {
+    private final Collection<IBlock> onBlock;
     @Nullable
-    private Collection<IBlock> onBlock;
-    @Nullable
-    private DeferredItem<Item> swapWith;
+    private final DeferredItem<Item> swapWith;
+    private final Predicate<ItemStack> isRepairMaterial;
 
     public ESShield(Properties properties) {
         super(properties);
+        onBlock = new ArrayList<>();
+        swapWith = null;
+        isRepairMaterial = s -> false;
     }
 
-    public ESShield(Properties properties, DeferredItem<Item> swapItem) {
+    public ESShield(Builder builder, Properties properties) {
         super(properties);
-
-        swapWith = swapItem;
-    }
-
-    public ESShield(Properties properties, IBlock... blocks) {
-        super(properties);
-
-        onBlock = List.of(blocks);
-    }
-
-    public ESShield(Properties properties, DeferredItem<Item> swapItem, IBlock... blocks) {
-        super(properties);
-
-        swapWith = swapItem;
-        onBlock = List.of(blocks);
+        this.onBlock = builder.onBlock;
+        this.swapWith = builder.swapWith;
+        this.isRepairMaterial = builder.isRepairMaterial;
     }
 
     public boolean hasOnBlock(IBlock block) {
-        return onBlock != null && onBlock.contains(block);
+        return onBlock.contains(block);
     }
 
     @Override
     public boolean isValidRepairItem(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair) {
-        return false;
+        return isRepairMaterial.test(repair);
     }
 
     public void onShieldBlock(LivingShieldBlockEvent event) {
         ItemStack shield = event.getEntity().getUseItem();
-        Collection<IBlock> ob = onBlock;
-        if (ob == null || ob.size() == 0)
+        if (onBlock.size() == 0)
             return;
 
-        for (IBlock func : ob) {
+        for (IBlock func : onBlock) {
             if (func.onBlock(event))
                 return;
         }
@@ -116,6 +107,28 @@ public class ESShield extends ShieldItem {
             return InteractionResultHolder.success(swap);
         }
         return super.use(level, player, hand);
+    }
+
+    public static class Builder {
+        private final Collection<IBlock> onBlock = new ArrayList<>();
+        @Nullable
+        private DeferredItem<Item> swapWith;
+        private Predicate<ItemStack> isRepairMaterial = s -> false;
+
+        public Builder addBlock(IBlock onBlock) {
+            this.onBlock.add(onBlock);
+            return this;
+        }
+
+        public Builder setOther(DeferredItem<Item> other) {
+            this.swapWith = other;
+            return this;
+        }
+
+        public Builder setRepairMaterial(Predicate<ItemStack> repair) {
+            this.isRepairMaterial = repair;
+            return this;
+        }
     }
 
     public static interface IBlock {
@@ -158,8 +171,7 @@ public class ESShield extends ShieldItem {
         };
         // #endregion DAMAGE
 
-        // #region USE_POWER
-        ESShield.IBlock USE_POWER = event -> {
+        public static boolean usePower(LivingShieldBlockEvent event) {
             ItemStack item = event.getEntity().getUseItem();
 
             int mult = item.getOrDefault(ESDataComponents.FLUX_MULTIPLIER, 100);
@@ -183,8 +195,7 @@ public class ESShield extends ShieldItem {
             }
 
             return false;
-        };
-        // #endregion USE_POWER
+        }
 
         public static boolean consumeBoondollars(LivingShieldBlockEvent event) {
             LivingEntity user = event.getEntity();

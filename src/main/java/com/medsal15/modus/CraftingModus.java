@@ -22,7 +22,6 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.neoforged.fml.LogicalSide;
 
 //TODO verify recipes on load/reload
-//TODO not showing recipes on adding
 public class CraftingModus extends Modus {
     /** Cards available */
     protected int size;

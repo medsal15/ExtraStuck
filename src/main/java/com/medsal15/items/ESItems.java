@@ -92,11 +92,13 @@ import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 import com.mraof.minestuck.item.weapon.projectiles.BouncingProjectileWeaponItem;
 import com.mraof.minestuck.util.MSSoundEvents;
+import com.mraof.minestuck.util.MSTags;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -121,6 +123,7 @@ import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import vazkii.patchouli.common.item.ItemModBook;
@@ -130,35 +133,43 @@ public final class ESItems {
 
     // #region Shields
     public static final DeferredItem<Item> FLAME_SHIELD = ITEMS.registerItem("flame_shield",
-            p -> new ESShield(p.durability(80).component(ESDataComponents.BURN_DURATION, 100),
-                    IBlock::burn));
+            p -> new ESShield(new ESShield.Builder().addBlock(IBlock::burn),
+                    p.durability(80).component(ESDataComponents.BURN_DURATION, 100)));
     public static final DeferredItem<Item> WOODEN_SHIELD = ITEMS.registerItem("wooden_shield",
-            p -> new ESShield(p.durability(80),
-                    IBlock.replace(ESItems.FLAME_SHIELD, DamageTypeTags.IS_FIRE)));
+            p -> new ESShield(
+                    new ESShield.Builder().addBlock(IBlock.replace(ESItems.FLAME_SHIELD, DamageTypeTags.IS_FIRE))
+                            .setRepairMaterial(stack -> stack.is(ItemTags.PLANKS)),
+                    p.durability(80)));
     public static final DeferredItem<Item> HALT_SHIELD = ITEMS.registerItem("halt_shield",
-            p -> new ESShield(p.durability(243), IBlock::strongerKnockback, IBlock.turn(180)));
+            p -> new ESShield(new ESShield.Builder().addBlock(IBlock::strongerKnockback).addBlock(IBlock.turn(180)),
+                    p.durability(243)));
     public static final DeferredItem<Item> NON_CONTACT_CONTRACT = ITEMS.registerItem("non_contact_contract",
-            ESShield::new, new Item.Properties().durability(328));
+            p -> new ESShield(new ESShield.Builder().setRepairMaterial(stack -> stack.is(Items.PAPER)),
+                    p.durability(328)));
     public static final DeferredItem<Item> SLIED = ITEMS.registerItem("slied",
-            p -> new ESShield(p.durability(59),
-                    IBlock.selfDropChance(.25F, () -> ESLangProvider.SLIED_DROP_KEY)));
+            p -> new ESShield(
+                    new ESShield.Builder().addBlock(IBlock.selfDropChance(.25F, () -> ESLangProvider.SLIED_DROP_KEY)),
+                    p.durability(59)));
     public static final DeferredItem<Item> RIOT_SHIELD = ITEMS.registerItem("riot_shield",
-            ESShield::new, new Item.Properties().durability(328));
+            p -> new ESShield(new ESShield.Builder().setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_IRON)),
+                    p.durability(328)));
     public static final DeferredItem<Item> CAPITASHIELD = ITEMS.registerItem("capitashield",
-            p -> new ESShield(p.durability(130), IBlock::consumeBoondollars));
-    public static final DeferredItem<Item> IRON_SHIELD = ITEMS.registerItem("iron_shield", ESShield::new,
-            new Item.Properties().durability(480));
-    public static final DeferredItem<Item> GOLD_SHIELD = ITEMS.registerItem("gold_shield", ESShield::new,
-            new Item.Properties().durability(980));
-    public static final DeferredItem<Item> DIAMOND_SHIELD = ITEMS.registerItem("diamond_shield", ESShield::new,
-            new Item.Properties().durability(1561));
-    public static final DeferredItem<Item> NETHERITE_SHIELD = ITEMS.registerItem("netherite_shield", ESShield::new,
-            new Item.Properties().durability(1561).fireResistant()
-                    .attributes(ItemAttributeModifiers.builder().add(
-                            Attributes.KNOCKBACK_RESISTANCE,
-                            new AttributeModifier(ExtraStuck.modid("netherite_shield"), 0.1,
-                                    Operation.ADD_VALUE),
-                            EquipmentSlotGroup.HAND).build()));
+            p -> new ESShield(new ESShield.Builder().addBlock(IBlock::consumeBoondollars), p.durability(130)));
+    public static final DeferredItem<Item> IRON_SHIELD = ITEMS.registerItem("iron_shield",
+            p -> new ESShield(new ESShield.Builder().setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_IRON)),
+                    p.durability(480)));
+    public static final DeferredItem<Item> GOLD_SHIELD = ITEMS.registerItem("gold_shield",
+            p -> new ESShield(new ESShield.Builder().setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_GOLD)),
+                    p.durability(980)));
+    public static final DeferredItem<Item> DIAMOND_SHIELD = ITEMS.registerItem("diamond_shield",
+            p -> new ESShield(new ESShield.Builder().setRepairMaterial(stack -> stack.is(Tags.Items.GEMS_DIAMOND)),
+                    p.durability(1561)));
+    public static final DeferredItem<Item> NETHERITE_SHIELD = ITEMS.registerItem("netherite_shield", p -> new ESShield(
+            new ESShield.Builder().setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_NETHERITE)),
+            p.durability(1561).fireResistant()
+                    .attributes(ItemAttributeModifiers.builder().add(Attributes.KNOCKBACK_RESISTANCE,
+                            new AttributeModifier(ExtraStuck.modid("netherite_shield"), 0.1, Operation.ADD_VALUE),
+                            EquipmentSlotGroup.HAND).build())));
     public static final DeferredItem<Item> GARNET_SHIELD = ITEMS.registerItem("garnet_shield", ESShield::new,
             new Item.Properties().durability(2560)
                     .attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_SPEED,
@@ -166,56 +177,60 @@ public final class ESItems {
                                     Operation.ADD_VALUE),
                             EquipmentSlotGroup.HAND).build()));
     public static final DeferredItem<Item> POGO_SHIELD = ITEMS.registerItem("pogo_shield",
-            p -> new ESShield(p.durability(450),
-                    IBlock.bounceProjectiles((projectile, entity, random) -> {
-                        // randomly multiply by 1 / 5 - 5
-                        double mx = random.nextDouble() * 4D + 1D;
-                        double fx = random.nextBoolean() ? mx : 1 / mx;
-                        double mz = random.nextDouble() * 4D + 1D;
-                        double fz = random.nextBoolean() ? mz : 1 / mz;
-                        projectile.setDeltaMovement(
-                                projectile.getDeltaMovement().multiply(fx, 1, fz));
-                    })));
+            p -> new ESShield(new ESShield.Builder().addBlock(IBlock.bounceProjectiles((projectile, entity, random) -> {
+                // randomly multiply by 1 / 5 - 5
+                double mx = random.nextDouble() * 4D + 1D;
+                double fx = random.nextBoolean() ? mx : 1 / mx;
+                double mz = random.nextDouble() * 4D + 1D;
+                double fz = random.nextBoolean() ? mz : 1 / mz;
+                projectile.setDeltaMovement(
+                        projectile.getDeltaMovement().multiply(fx, 1, fz));
+            })).setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_IRON)), p.durability(450)));
     public static final DeferredItem<Item> RETURN_TO_SENDER = ITEMS.registerItem("return_to_sender",
-            p -> new ESShield(p.durability(1353),
-                    IBlock.bounceProjectiles((projectile, entity, random) -> {
-                        if (entity != null) {
-                            Vec3 vec3 = entity.getLookAngle().normalize().multiply(-4, -4,
-                                    -4);
-                            projectile.setDeltaMovement(vec3);
-                            projectile.hasImpulse = true;
-                        }
-                    })));
+            p -> new ESShield(new ESShield.Builder().addBlock(IBlock.bounceProjectiles((projectile, entity, random) -> {
+                if (entity != null) {
+                    Vec3 vec3 = entity.getLookAngle().normalize().multiply(-4, -4, -4);
+                    projectile.setDeltaMovement(vec3);
+                    projectile.hasImpulse = true;
+                }
+            })), p.durability(1353)));
     public static final DeferredItem<Item> SPIKES_ON_A_SLAB = ITEMS.registerItem("spikes_on_a_slab",
-            p -> new ESShield(p.durability(732).component(ESDataComponents.SHIELD_DAMAGE, 6F),
-                    IBlock.DAMAGE));
+            p -> new ESShield(
+                    new ESShield.Builder().addBlock(IBlock.DAMAGE)
+                            .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_IRON)),
+                    p.durability(732).component(ESDataComponents.SHIELD_DAMAGE, 6F)));
     public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter",
-            p -> new ESShield(p.durability(612).component(ESDataComponents.SHIELD_DAMAGE, 8F),
-                    IBlock.DAMAGE,
-                    IBlock::dropCandy));
+            p -> new ESShield(
+                    new ESShield.Builder().addBlock(IBlock.DAMAGE).addBlock(IBlock::dropCandy)
+                            .setRepairMaterial(stack -> stack.is(MSTags.Items.GRIST_CANDY)),
+                    p.durability(612).component(ESDataComponents.SHIELD_DAMAGE, 8F)));
     public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
-            p -> new ESShield(p.durability(490)
-                    .component(ESDataComponents.ENERGY_STORAGE, 100_000)
-                    .component(ESDataComponents.FLUX_MULTIPLIER, 100), IBlock.USE_POWER));
+            p -> new ESShield(
+                    new ESShield.Builder().addBlock(IBlock::usePower)
+                            .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_GOLD)),
+                    p.durability(490)
+                            .component(ESDataComponents.ENERGY_STORAGE, 100_000)
+                            .component(ESDataComponents.FLUX_MULTIPLIER, 100)));
     public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
-            p -> new ESShield(p.durability(880).component(ESDataComponents.BURN_DURATION, 600),
-                    IBlock::burn));
+            p -> new ESShield(new ESShield.Builder().addBlock(IBlock::burn),
+                    p.durability(880).component(ESDataComponents.BURN_DURATION, 600)));
     public static final DeferredItem<Item> ELDRITCH_SHIELD = ITEMS.registerItem("eldritch_shield",
-            p -> new ESShield(p.durability(1441).component(ESDataComponents.SHIELD_DAMAGE, 10F),
-                    IBlock.DAMAGE,
-                    IBlock.gainEffect(MobEffects.DAMAGE_BOOST, 100)));
+            p -> new ESShield(
+                    new ESShield.Builder().addBlock(IBlock.DAMAGE)
+                            .addBlock(IBlock.gainEffect(MobEffects.DAMAGE_BOOST, 100)),
+                    p.durability(1441).component(ESDataComponents.SHIELD_DAMAGE, 10F)));
     /** Shield variant */
     public static final DeferredItem<Item> CAPTAIN_JUSTICE_THROWABLE_SHIELD = ITEMS.registerItem(
             "captain_justice_throwable_shield",
-            p -> new ESShield(p.durability(789), ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE));
+            p -> new ESShield(new ESShield.Builder().setOther(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE),
+                    p.durability(789)));
     /** Throwable variant */
     public static final DeferredItem<Item> CAPTAIN_JUSTICE_SHIELD_THROWABLE = ITEMS.registerItem(
             "captain_justice_shield_throwable",
             p -> new SwapTrident(p.durability(789), CAPTAIN_JUSTICE_THROWABLE_SHIELD));
     public static final DeferredItem<Item> GIFT_OF_PROTECTION = ITEMS.registerItem("gift_protection",
-            p -> new ESShield(p.durability(624),
-                    IBlock.itemDropChance(() -> ESItems.GIFT.toStack(), .1f,
-                            () -> ESLangProvider.GIFT_PROTECTION_GIFT_KEY)));
+            p -> new ESShield(new ESShield.Builder().addBlock(IBlock.itemDropChance(() -> ESItems.GIFT.toStack(), .1f,
+                    () -> ESLangProvider.GIFT_PROTECTION_GIFT_KEY)), p.durability(624)));
     // #endregion Shields
 
     // #region Arrows
