@@ -22,6 +22,10 @@ public class ConfigClient {
                     "AVERAGE: displays the middle ground for the above",
                     "RANDOM: displays a random value between the lowest and highest")
             .defineEnum("tooltip.boondollar_display", BoondollarDisplayMode.RANDOM);
+    private static final ModConfigSpec.BooleanValue DISPLAY_INNATE_ENCHANTMENTS = BUILDER
+            .comment("Whether to show innate enchantments if they are present",
+                    "In case you have another mod that shows them anyways")
+            .define("tooltip.innate_enchantments", true);
     private static final ModConfigSpec.BooleanValue ADD_MISSING_MOD_TOOLTIP = BUILDER
             .comment("Whether to show in compat items that the required mod is missing")
             .define("tooltip.missing_mod", true);
@@ -40,12 +44,14 @@ public class ConfigClient {
 
     public static BoondollarDisplayMode boondollarDisplayMode;
     public static boolean displayShieldInfo;
+    public static boolean displayInnateEnchants;
     public static boolean addConvertionRecipes;
     public static boolean addMissingModTooltip;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         displayShieldInfo = DISPLAY_SHIELD_INFO.get();
+        displayInnateEnchants = DISPLAY_INNATE_ENCHANTMENTS.get();
         boondollarDisplayMode = BOONDOLLAR_DISPLAY_MODE.get();
         addConvertionRecipes = ADD_CONVERTION_RECIPES.get();
         addMissingModTooltip = ADD_MISSING_MOD_TOOLTIP.get();

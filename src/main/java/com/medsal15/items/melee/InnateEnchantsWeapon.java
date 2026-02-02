@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.annotation.Nonnull;
 
+import com.medsal15.config.ConfigClient;
 import com.medsal15.data.ESLangProvider;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
@@ -63,6 +64,8 @@ public class InnateEnchantsWeapon extends WeaponItem {
             @Nonnull List<Component> tooltipComponents, @Nonnull TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
+        if (!ConfigClient.displayInnateEnchants)
+            return;
         for (ResourceKey<Enchantment> key : innate.keySet()) {
             int extra = innate.get(key);
             MutableComponent ench = Component.translatable(getEnchantmentKey(key));
