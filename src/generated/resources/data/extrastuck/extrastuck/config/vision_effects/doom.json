@@ -1,0 +1,8 @@
+{
+  "aspect": "doom",
+  "effects": [
+    {
+      "effect": "minecraft:resistance"
+    }
+  ]
+}

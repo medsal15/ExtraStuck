@@ -24,6 +24,8 @@ public final class ESTags {
                 .create(ExtraStuck.modid("interpreters_ignore_byproduct/cutting"));
         public static final TagKey<Item> DROPS_BOONDOLLARS = ItemTags.create(ExtraStuck.modid("drops_boondollars"));
         public static final TagKey<Item> COSMIC_PLAGUE_ARMOR = ItemTags.create(ExtraStuck.modid("armor/cosmic_plague"));
+        public static final TagKey<Item> VISION = ItemTags.create(ExtraStuck.modid("vision"));
+        public static final TagKey<Item> ACTIVE_VISION = ItemTags.create(ExtraStuck.modid("vision/active"));
 
         public static final TagKey<Item> TOOLS_ROLLING_PIN = ItemTags.create(common("tools/rolling_pin"));
         public static final TagKey<Item> URANIUM_RODS = ItemTags.create(common("rods/uranium"));
@@ -38,6 +40,8 @@ public final class ESTags {
         public static final TagKey<Item> ISS_MITHRIL_ORES = ItemTags.create(common("ores/mithril"));
         public static final TagKey<Item> ISS_STAVES = ItemTags
                 .create(ResourceLocation.fromNamespaceAndPath("irons_spellbooks", "staff"));
+        public static final TagKey<Item> CURIOS_CURIO = ItemTags
+                .create(ResourceLocation.fromNamespaceAndPath("curios", "curio"));
     }
 
     public static final class Blocks {

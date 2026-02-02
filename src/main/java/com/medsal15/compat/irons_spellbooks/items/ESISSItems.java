@@ -6,7 +6,6 @@ import java.util.Collection;
 import com.medsal15.ExtraStuck;
 import com.medsal15.items.ESItemTiers;
 import com.medsal15.items.shields.ESShield;
-import com.medsal15.items.shields.ESShield.IBlock;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
@@ -41,41 +40,11 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class ESISSItems {
-    // #region SHIELD_CAST_SPELL
-    /**
-     * Attempts to cast currently active spell
-     */
-    private static final IBlock SHIELD_CAST_SPELL = event -> {
-        if (event.getEntity() instanceof ServerPlayer player) {
-            Level level = player.level();
-            SpellSelectionManager spellSelectionManager = new SpellSelectionManager(player);
-            SpellSelectionManager.SelectionOption selectionOption = spellSelectionManager.getSelection();
-            if (selectionOption != null && !selectionOption.spellData.equals(SpellData.EMPTY)) {
-                SpellData spellData = selectionOption.spellData;
-                int spellLevel = spellData.getSpell().getLevelFor(spellData.getLevel(), player);
-                ItemStack shield = player.getUseItem();
-                String slot;
-
-                if (player.getItemInHand(InteractionHand.MAIN_HAND).equals(shield)) {
-                    slot = SpellSelectionManager.MAINHAND;
-                } else {
-                    slot = SpellSelectionManager.OFFHAND;
-                }
-
-                if (spellData.getSpell().attemptInitiateCast(shield, spellLevel, level, player,
-                        selectionOption.getCastSource(), true, slot))
-                    return true;
-            }
-        }
-
-        return false;
-    };
-    // #endregion SHIELD_CAST_SPELL
-
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
 
     // #region Staves
@@ -183,7 +152,7 @@ public final class ESISSItems {
                     }));
     public static final DeferredItem<Item> CAST_GOLD_SHIELD = ITEMS.register("cast_gold_shield",
             () -> new ESShield(
-                    new ESShield.Builder().setOther(ESISSItems.PROSPITIAN_WAND).addBlock(SHIELD_CAST_SPELL)
+                    new ESShield.Builder().setOther(ESISSItems.PROSPITIAN_WAND).addBlock(ESISSItems::shieldCastSpell)
                             .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_GOLD)),
                     new Item.Properties().durability(1200).attributes(ItemAttributeModifiers.builder()
                             .add(AttributeRegistry.HOLY_SPELL_POWER,
@@ -313,5 +282,34 @@ public final class ESISSItems {
         list.add(COSMIC_PLAGUE_BOOTS);
 
         return list;
+    }
+
+    /**
+     * Attempts to cast currently active spell
+     */
+    private static boolean shieldCastSpell(LivingShieldBlockEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            Level level = player.level();
+            SpellSelectionManager spellSelectionManager = new SpellSelectionManager(player);
+            SpellSelectionManager.SelectionOption selectionOption = spellSelectionManager.getSelection();
+            if (selectionOption != null && !selectionOption.spellData.equals(SpellData.EMPTY)) {
+                SpellData spellData = selectionOption.spellData;
+                int spellLevel = spellData.getSpell().getLevelFor(spellData.getLevel(), player);
+                ItemStack shield = player.getUseItem();
+                String slot;
+
+                if (player.getItemInHand(InteractionHand.MAIN_HAND).equals(shield)) {
+                    slot = SpellSelectionManager.MAINHAND;
+                } else {
+                    slot = SpellSelectionManager.OFFHAND;
+                }
+
+                if (spellData.getSpell().attemptInitiateCast(shield, spellLevel, level, player,
+                        selectionOption.getCastSource(), true, slot))
+                    return true;
+            }
+        }
+
+        return false;
     }
 }

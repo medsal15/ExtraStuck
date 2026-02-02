@@ -26,6 +26,9 @@ public class ConfigClient {
             .comment("Whether to show innate enchantments if they are present",
                     "In case you have another mod that shows them anyways")
             .define("tooltip.innate_enchantments", true);
+    private static final ModConfigSpec.BooleanValue DISPLAY_VISION_WARNING = BUILDER
+            .comment("If enabled, infused visions will include a warning about the use limit")
+            .define("tooltip.vision_warning", true);
     private static final ModConfigSpec.BooleanValue ADD_MISSING_MOD_TOOLTIP = BUILDER
             .comment("Whether to show in compat items that the required mod is missing")
             .define("tooltip.missing_mod", true);
@@ -45,6 +48,7 @@ public class ConfigClient {
     public static BoondollarDisplayMode boondollarDisplayMode;
     public static boolean displayShieldInfo;
     public static boolean displayInnateEnchants;
+    public static boolean displayVisionWarning;
     public static boolean addConvertionRecipes;
     public static boolean addMissingModTooltip;
 
@@ -52,6 +56,7 @@ public class ConfigClient {
     static void onLoad(final ModConfigEvent event) {
         displayShieldInfo = DISPLAY_SHIELD_INFO.get();
         displayInnateEnchants = DISPLAY_INNATE_ENCHANTMENTS.get();
+        displayVisionWarning = DISPLAY_VISION_WARNING.get();
         boondollarDisplayMode = BOONDOLLAR_DISPLAY_MODE.get();
         addConvertionRecipes = ADD_CONVERTION_RECIPES.get();
         addMissingModTooltip = ADD_MISSING_MOD_TOOLTIP.get();

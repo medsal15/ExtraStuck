@@ -113,6 +113,16 @@ public final class ConfigServer {
             .comment("How much fuel (in ticks) is consumed to attack with a steam-powered weapon")
             .defineInRange("weapons.steam_powered.fuel_consume", 200, 0, Integer.MAX_VALUE);
 
+    public static final ModConfigSpec.BooleanValue VISION_TUNING = BUILDER
+            .comment("If true, empty visions can be tuned by aspect holders to their own aspect")
+            .define("vision.tuning", true);
+    public static final ModConfigSpec.BooleanValue VISION_TUNING_SAFE = BUILDER
+            .comment("If true, players with no aspect cannot tune visions into useless ones")
+            .define("vision.safe_tuning", false);
+    public static final ConfigValue<Integer> VISION_LIMIT = BUILDER
+            .comment("How many visions can be active at once for a player", "This is limited to the amount of aspects")
+            .defineInRange("vision.limit.creative_shock_survival", 1, 0, 12);
+
     public static final ConfigValue<Integer> ISS_CREATIVE_SHOCK_SURVIVAL = BUILDER
             .comment("Which amplifier of Creative Shock should prevent spell casting for non-creative players",
                     "Note that an amplifier of 3 means level IV")

@@ -1,0 +1,25 @@
+{
+    "name": "Visions",
+    "icon": "extrastuck:vision_blank",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:vision_blank"
+            },
+            "text": "A blank vision. A diving being (you, or a friend) must infuse it with power for it to become usable.$(br2)Using it will infuse it with the player's aspect, granting the wielder its aspect's first buff."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Cueball and an Ender Portal Frame in a Totem Lathe.",
+            "left": "minestuck:cueball",
+            "mode": "&&",
+            "right": "minecraft:end_portal_frame",
+            "result": "extrastuck:vision_blank"
+        },
+        "If a mortal (any player without an aspect) infuses it, it will create a dull vision which can still block effects.",
+        "If Curios is installed, the vision(s) must be equipped by the player for any effect."
+    ]
+}

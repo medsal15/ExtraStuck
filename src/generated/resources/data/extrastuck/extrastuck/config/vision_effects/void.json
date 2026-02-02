@@ -1,0 +1,8 @@
+{
+  "aspect": "void",
+  "effects": [
+    {
+      "effect": "minecraft:invisibility"
+    }
+  ]
+}

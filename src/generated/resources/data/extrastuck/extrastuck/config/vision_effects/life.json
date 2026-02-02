@@ -1,0 +1,8 @@
+{
+  "aspect": "life",
+  "effects": [
+    {
+      "effect": "minecraft:regeneration"
+    }
+  ]
+}

@@ -74,6 +74,8 @@ import com.medsal15.items.tools.GiftItem;
 import com.medsal15.items.tools.GristDetectorItem;
 import com.medsal15.items.tools.MagnetItem;
 import com.medsal15.items.tools.Tokenitem;
+import com.medsal15.items.tools.UntunedVisionItem;
+import com.medsal15.items.tools.VisionItem;
 import com.medsal15.items.weaponeffects.ESHitEffects;
 import com.medsal15.items.weaponeffects.ESInventoryTickEffects;
 import com.medsal15.items.weaponeffects.ESRightClickBlockEffects;
@@ -91,6 +93,7 @@ import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 import com.mraof.minestuck.item.weapon.projectiles.BouncingProjectileWeaponItem;
+import com.mraof.minestuck.player.EnumAspect;
 import com.mraof.minestuck.util.MSSoundEvents;
 import com.mraof.minestuck.util.MSTags;
 
@@ -753,6 +756,36 @@ public final class ESItems {
             () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 3, -2.4F).set(MSItemTypes.SHOVEL_TOOL)
                     .add(ESItemTypes.BOONDOLLAR_MINING), new MSItemProperties().durability(1326)));
     // #endregion Shovels
+    // #region Visions
+    public static final DeferredItem<Item> VISION_BLANK = ITEMS.registerItem("vision_blank", UntunedVisionItem::new,
+            new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> VISION_DULL = ITEMS.registerItem("vision_dull",
+            p -> new VisionItem(p.stacksTo(1)));
+    public static final DeferredItem<Item> VISION_SPACE = ITEMS.registerItem("vision_space",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.SPACE));
+    public static final DeferredItem<Item> VISION_TIME = ITEMS.registerItem("vision_time",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.TIME));
+    public static final DeferredItem<Item> VISION_MIND = ITEMS.registerItem("vision_mind",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.MIND));
+    public static final DeferredItem<Item> VISION_HEART = ITEMS.registerItem("vision_heart",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.HEART));
+    public static final DeferredItem<Item> VISION_HOPE = ITEMS.registerItem("vision_hope",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.HOPE));
+    public static final DeferredItem<Item> VISION_RAGE = ITEMS.registerItem("vision_rage",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.RAGE));
+    public static final DeferredItem<Item> VISION_BREATH = ITEMS.registerItem("vision_breath",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.BREATH));
+    public static final DeferredItem<Item> VISION_BLOOD = ITEMS.registerItem("vision_blood",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.BLOOD));
+    public static final DeferredItem<Item> VISION_LIFE = ITEMS.registerItem("vision_life",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.LIFE));
+    public static final DeferredItem<Item> VISION_DOOM = ITEMS.registerItem("vision_doom",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.DOOM));
+    public static final DeferredItem<Item> VISION_LIGHT = ITEMS.registerItem("vision_light",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.LIGHT));
+    public static final DeferredItem<Item> VISION_VOID = ITEMS.registerItem("vision_void",
+            p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.VOID));
+    // #endregion Visions
     // #endregion Tools
 
     // #region Modus
@@ -991,6 +1024,9 @@ public final class ESItems {
         }
         output.accept(GRIST_DETECTOR);
         output.accept(MASTERMIND_DISK);
+        for (DeferredItem<Item> vision : ESItems.getVisions()) {
+            output.accept(vision.get());
+        }
 
         for (DeferredItem<Item> item : ESItems.getShields()) {
             output.accept(item.get());
@@ -1085,6 +1121,36 @@ public final class ESItems {
         list.add(FIELD_CHARGER);
 
         list.addAll(getShovels());
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getVisions() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(VISION_BLANK);
+        list.add(VISION_DULL);
+
+        list.addAll(getActiveVisions());
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getActiveVisions() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(VISION_SPACE);
+        list.add(VISION_TIME);
+        list.add(VISION_MIND);
+        list.add(VISION_HEART);
+        list.add(VISION_HOPE);
+        list.add(VISION_RAGE);
+        list.add(VISION_BREATH);
+        list.add(VISION_BLOOD);
+        list.add(VISION_LIFE);
+        list.add(VISION_DOOM);
+        list.add(VISION_LIGHT);
+        list.add(VISION_VOID);
+
         return list;
     }
 

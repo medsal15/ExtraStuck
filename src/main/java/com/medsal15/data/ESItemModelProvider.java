@@ -3,12 +3,14 @@ package com.medsal15.data;
 import com.medsal15.ExtraStuck;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.items.ESItems;
+import com.mraof.minestuck.player.EnumAspect;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
 
@@ -269,6 +271,31 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.FIELD_CHARGER.get());
         // Shovels
         basicItem(ESItems.GOLD_DIGGER.get());
+        // Visions
+        modelVision(ESItems.VISION_BLANK, "blank");
+        modelVision(ESItems.VISION_DULL, "dull");
+        modelVision(ESItems.VISION_SPACE, EnumAspect.SPACE);
+        modelVision(ESItems.VISION_TIME, EnumAspect.TIME);
+        modelVision(ESItems.VISION_MIND, EnumAspect.MIND);
+        modelVision(ESItems.VISION_HEART, EnumAspect.HEART);
+        modelVision(ESItems.VISION_HOPE, EnumAspect.HOPE);
+        modelVision(ESItems.VISION_RAGE, EnumAspect.RAGE);
+        modelVision(ESItems.VISION_BREATH, EnumAspect.BREATH);
+        modelVision(ESItems.VISION_BLOOD, EnumAspect.BLOOD);
+        modelVision(ESItems.VISION_LIFE, EnumAspect.LIFE);
+        modelVision(ESItems.VISION_DOOM, EnumAspect.DOOM);
+        modelVision(ESItems.VISION_LIGHT, EnumAspect.LIGHT);
+        modelVision(ESItems.VISION_VOID, EnumAspect.VOID);
+    }
+
+    private ItemModelBuilder modelVision(DeferredItem<Item> vision, EnumAspect aspect) {
+        return modelVision(vision, aspect.name());
+    }
+
+    private ItemModelBuilder modelVision(DeferredItem<Item> vision, String aspect) {
+        return getBuilder(vision.getId().toString())
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", ExtraStuck.modid("item/vision/" + aspect.toLowerCase()));
     }
 
     private void registerFood() {

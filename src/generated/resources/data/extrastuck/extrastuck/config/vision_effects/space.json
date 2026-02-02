@@ -1,0 +1,8 @@
+{
+  "aspect": "space",
+  "effects": [
+    {
+      "effect": "minecraft:jump_boost"
+    }
+  ]
+}

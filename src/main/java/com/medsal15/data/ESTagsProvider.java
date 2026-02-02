@@ -191,6 +191,15 @@ public final class ESTagsProvider {
                 tag(ItemTags.VANISHING_ENCHANTABLE).add(tool.get());
             }
 
+            for (DeferredItem<Item> vision : ESItems.getVisions()) {
+                tag(MSTags.Items.UNREADABLE).add(vision.get());
+                tag(ESTags.Items.CURIOS_CURIO).add(vision.get());
+                tag(ESTags.Items.VISION).add(vision.get());
+            }
+            for (DeferredItem<Item> vision : ESItems.getActiveVisions()) {
+                tag(ESTags.Items.ACTIVE_VISION).add(vision.get());
+            }
+
             tag(ESTags.Items.AMMO).addTag(ESTags.Items.AMMO_HANDGUN);
             tag(ESTags.Items.AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
             tag(ESTags.Items.SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get(), ESItems.SALESWOMAN_GLASSES.get());

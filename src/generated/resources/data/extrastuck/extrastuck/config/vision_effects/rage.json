@@ -1,0 +1,8 @@
+{
+  "aspect": "rage",
+  "effects": [
+    {
+      "effect": "minecraft:strength"
+    }
+  ]
+}

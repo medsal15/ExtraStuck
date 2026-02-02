@@ -1,0 +1,8 @@
+{
+  "aspect": "time",
+  "effects": [
+    {
+      "effect": "minecraft:haste"
+    }
+  ]
+}

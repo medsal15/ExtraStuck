@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 2810,
+    "minestuck:uranium": 621,
+    "minestuck:zillium": 12
+  },
+  "ingredient": {
+    "item": "extrastuck:vision_blank"
+  }
+}

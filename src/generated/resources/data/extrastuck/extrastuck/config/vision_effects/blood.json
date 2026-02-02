@@ -1,0 +1,8 @@
+{
+  "aspect": "blood",
+  "effects": [
+    {
+      "effect": "minecraft:absorption"
+    }
+  ]
+}

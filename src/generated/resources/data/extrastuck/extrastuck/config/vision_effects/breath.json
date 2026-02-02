@@ -1,0 +1,8 @@
+{
+  "aspect": "breath",
+  "effects": [
+    {
+      "effect": "minecraft:speed"
+    }
+  ]
+}

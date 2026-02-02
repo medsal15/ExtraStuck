@@ -59,7 +59,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String JACKPOT_ROLLED_6 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.6";
     public static final String TOKEN_TETRAHEDRON_TOKEN_KEY = ESItems.TOKEN_TETRAHEDRON.get().getDescriptionId()
             + ".token_drop";
-    public static final String SBURBDB_SECONDARIES_KEY = ESISSItems.SBURBDB.get().getDescriptionId() + ".secondaries";
+    public static final String SBURBDB_SECONDARIES_KEY = ExtraStuck.MODID + ".sburbdb.secondaries";
 
     public static final String GOLDEN_PAN_HIT = "sound." + ExtraStuck.MODID + ".golden_pan_hit";
     public static final String GUN_CONTENT_KEY = ExtraStuck.MODID + ".gun_content";
@@ -79,6 +79,11 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String SPAM_DESC_1 = ESItems.SPAM.get().getDescriptionId() + ".desc.1";
     public static final String SPAM_DESC_2 = ESItems.SPAM.get().getDescriptionId() + ".desc.2";
     public static final String SPAM_DESC_3 = ESItems.SPAM.get().getDescriptionId() + ".desc.3";
+
+    public static final String VISION_HINT_ONE = ESItems.SPAM.get().getDescriptionId() + ".hint_curios";
+    public static final String VISION_HINT_MANY = ESItems.SPAM.get().getDescriptionId() + ".hint_nocurios";
+    public static final String VISION_TUNE = ESItems.SPAM.get().getDescriptionId() + ".tune";
+    public static final String VISION_TUNE_FAIL = ESItems.SPAM.get().getDescriptionId() + ".tune_fail";
 
     public static final String GRIST_DETECTOR_LOCATED = ExtraStuck.MODID + ".grist_detector.located";
     public static final String GRIST_DETECTOR_MODE = ExtraStuck.MODID + ".grist_detector.mode";
@@ -166,6 +171,9 @@ public final class ESLangProvider extends LanguageProvider {
 
         add(ESAdvancementsProvider.title(ESAdvancementsProvider.EXTRA_MODI), "An Extra Set");
         add(ESAdvancementsProvider.desc(ESAdvancementsProvider.EXTRA_MODI), "Obtain every Extrastuck modi");
+        add(ESAdvancementsProvider.title(ESAdvancementsProvider.VISIONARY), "Visionary");
+        add(ESAdvancementsProvider.desc(ESAdvancementsProvider.VISIONARY),
+                "Obtain all 14 visions! You're surrounded by friends");
 
         // Band-aids for Minestuck's missing translation
         add(MSAttributes.UNDERLING_DAMAGE_MODIFIER.value().getDescriptionId(), "Damage Against Underlings");
@@ -568,6 +576,25 @@ public final class ESLangProvider extends LanguageProvider {
         // Shovels
         addItem(ESItems.GOLD_DIGGER, "Gold Digger");
         addItemTooltip(ESItems.GOLD_DIGGER, "There's money everywhere!");
+        // Visions
+        add(VISION_HINT_ONE, "Wearing more than 1 vision at once will cause interferences between them");
+        add(VISION_HINT_MANY, "Wearing more than %s visions at once will cause interferences between them");
+        addItem(ESItems.VISION_BLANK, "Blank Vision");
+        addItemTooltip(ESItems.VISION_BLANK, "It resonates with you");
+        addItem(ESItems.VISION_DULL, "Dull Vision");
+        addItemTooltip(ESItems.VISION_DULL, "It is no longer resonating");
+        addItem(ESItems.VISION_SPACE, "Kosmos Vision");
+        addItem(ESItems.VISION_TIME, "Khronos Vision");
+        addItem(ESItems.VISION_MIND, "Menos Vision");
+        addItem(ESItems.VISION_HEART, "Kardia Vision");
+        addItem(ESItems.VISION_HOPE, "Elpis Vision");
+        addItem(ESItems.VISION_RAGE, "Lussa Vision");
+        addItem(ESItems.VISION_BREATH, "Pnoe Vision");
+        addItem(ESItems.VISION_BLOOD, "Haima Vision");
+        addItem(ESItems.VISION_LIFE, "Zoe Vision");
+        addItem(ESItems.VISION_DOOM, "Moira Vision");
+        addItem(ESItems.VISION_LIGHT, "Phoster Vision");
+        addItem(ESItems.VISION_VOID, "Adeios Vision");
     }
 
     private void addBlockEntities() {
@@ -735,6 +762,8 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.Items.IGNORE_BYPRODUCT_CUTTING, "Ignored Cutting Byproducts");
         add(ESTags.Items.DROPS_BOONDOLLARS, "Drops Boondollars on Kill");
         add(ESTags.Items.COSMIC_PLAGUE_ARMOR, "Cosmic Plague Armor");
+        add(ESTags.Items.VISION, "Visions");
+        add(ESTags.Items.ACTIVE_VISION, "Activated Visions");
 
         add(ESTags.Blocks.PRYABLE, "Pryable with the Iron Crowbar");
 

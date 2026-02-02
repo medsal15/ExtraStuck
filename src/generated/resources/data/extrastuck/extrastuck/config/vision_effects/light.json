@@ -1,0 +1,8 @@
+{
+  "aspect": "light",
+  "effects": [
+    {
+      "effect": "minecraft:luck"
+    }
+  ]
+}

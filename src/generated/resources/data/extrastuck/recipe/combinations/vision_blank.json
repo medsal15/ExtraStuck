@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:cueball"
+  },
+  "input2": {
+    "item": "minecraft:end_portal_frame"
+  },
+  "mode": "and",
+  "output": "extrastuck:vision_blank"
+}

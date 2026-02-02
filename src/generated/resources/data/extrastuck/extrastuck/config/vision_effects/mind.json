@@ -1,0 +1,8 @@
+{
+  "aspect": "mind",
+  "effects": [
+    {
+      "effect": "minecraft:night_vision"
+    }
+  ]
+}

@@ -1169,12 +1169,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GARNET, 18).grist(GristTypes.MERCURY, 420).grist(GristTypes.CAULK, 249)
                 .build(output);
 
-        SmithingTransformRecipeBuilder
-                .smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-                        Ingredient.of(ESISSItems.LICH_CROWN), Ingredient.of(Items.NETHERITE_INGOT),
-                        RecipeCategory.COMBAT, ESISSItems.NETHER_LICH_CROWN.get())
-                .unlocks("lich_crown", has(ESISSItems.LICH_CROWN)).save(output, modid("smithing/nether_lich_crown"));
-
         // #region Cosmic Plague Armor
         CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_HELMET)
                 .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(ItemRegistry.NETHERITE_MAGE_HELMET.get())
@@ -1337,6 +1331,18 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.GOLD_DIGGER)
                 .grist(GristTypes.GOLD, 850).grist(GristTypes.BUILD, 1500).grist(GristTypes.AMBER, 600)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.VISION_BLANK)
+                .input(MSItems.CUEBALL).and().input(Items.END_PORTAL_FRAME)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.VISION_BLANK)
+                // As one could expect, these are in reference to Genshin Impact's release date
+                // (28/10) and first beta test (21/6, but the other way)
+                .grist(GristTypes.BUILD, 2810)
+                .grist(GristTypes.URANIUM, 621)
+                // And the 12 aspects of course!
+                .grist(GristTypes.ZILLIUM, 12)
                 .build(output);
     }
 

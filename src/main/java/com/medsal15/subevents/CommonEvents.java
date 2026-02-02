@@ -5,6 +5,7 @@ import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
+import com.medsal15.compat.curios.CuriosCapabilities;
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
@@ -42,6 +43,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
@@ -81,6 +83,10 @@ public final class CommonEvents {
 
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ESBlockEntities.REACTOR.get(),
                 ReactorBlockEntity::getFluidHandler);
+
+        if (ModList.get().isLoaded("curios")) {
+            CuriosCapabilities.registerCuriosCapabilities(event);
+        }
     }
 
     @SubscribeEvent

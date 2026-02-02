@@ -1,0 +1,204 @@
+{
+  "parent": "minestuck:minestuck/legendary_weapon",
+  "criteria": {
+    "blank": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_blank"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blood": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_blood"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "breath": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_breath"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "doom": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_doom"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dull": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_dull"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_heart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "hope": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_hope"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "life": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_life"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "light": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_light"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mind": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_mind"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "rage": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_rage"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "space": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_space"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "time": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_time"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "void": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:vision_void"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.extrastuck.visionary.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "extrastuck:vision_blank"
+    },
+    "title": {
+      "translate": "advancements.extrastuck.visionary.title"
+    }
+  },
+  "requirements": [
+    [
+      "blank"
+    ],
+    [
+      "dull"
+    ],
+    [
+      "space"
+    ],
+    [
+      "time"
+    ],
+    [
+      "mind"
+    ],
+    [
+      "heart"
+    ],
+    [
+      "hope"
+    ],
+    [
+      "rage"
+    ],
+    [
+      "breath"
+    ],
+    [
+      "blood"
+    ],
+    [
+      "life"
+    ],
+    [
+      "doom"
+    ],
+    [
+      "light"
+    ],
+    [
+      "void"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
