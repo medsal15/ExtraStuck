@@ -153,6 +153,10 @@
   "extrastuck.steam_weapon.fuel": "Holds %1$s fuel (%2$s)",
   "extrastuck.steam_weapon.lit": "Lit",
   "extrastuck.steam_weapon.unlit": "Exinguished",
+  "extrastuck.vision.hint_curios": "Wearing more than 1 vision at once will cause interferences between them",
+  "extrastuck.vision.hint_nocurios": "Wearing more than %s visions at once will cause interferences between them",
+  "extrastuck.vision.tune": "You resonate with the Vision and change it",
+  "extrastuck.vision.tune_fail": "You try to resonate with the Vision but only dull it",
   "extrastuck:archeology_modus_card.book_desc": "The Archeology Modus is aimed at those who wish minecraft had more things to brush than a few select locations. Retrieved items will be stored in suspicious sand or suspicious gravel, requiring a brush to obtain. Just, don't forget to put them on a block.",
   "extrastuck:card_ore.book_desc": "Card ore is only obtainable from an Ore Modus. Breaking it will drop whatever is stored inside. Despite its name, it can be mined by hand.",
   "extrastuck:compact_modus_card.book_desc": "The Compact Modus displays fewer cards. Every item is kept in a compact pile that can be scrolled between its different variants. Only applies if the item ids are the same. Strict mode extends this to components.",
@@ -426,8 +430,6 @@
   "item.extrastuck.spam.desc.1": "We are currently having a Big Sale in all of our shops! Come now and don't miss out!",
   "item.extrastuck.spam.desc.2": "All of our affiliate shops have everything on sale (up to) 75% off!",
   "item.extrastuck.spam.desc.3": "You can't make out the text, but you can tell there's a phone number.",
-  "item.extrastuck.spam.hint_curios": "Wearing more than 1 vision at once will cause interferences between them",
-  "item.extrastuck.spam.hint_nocurios": "Wearing more than %s visions at once will cause interferences between them",
   "item.extrastuck.spam.title.1": "Big Sale! Everything 90%* off!",
   "item.extrastuck.spam.title.2": "Now's your chance to save a lot of money",
   "item.extrastuck.spam.title.3": "Stained Paper",
@@ -498,6 +500,8 @@
   "tag.item.extrastuck.drops_boondollars": "Drops Boondollars on Kill",
   "tag.item.extrastuck.interpreters_ignore_byproduct.cutting": "Ignored Cutting Byproducts",
   "tag.item.extrastuck.show_value": "Armors Displaying Value",
+  "tag.item.extrastuck.vision": "Visions",
+  "tag.item.extrastuck.vision.active": "Activated Visions",
   "tag.mob_effect.extrastuck.cosmic_plague.immunity": "Prevented with cosmic plague armor",
   "tag.mob_effect.extrastuck.cosmic_plague.partial_immunity": "Sometimes prevented with cosmic plague armor"
 }

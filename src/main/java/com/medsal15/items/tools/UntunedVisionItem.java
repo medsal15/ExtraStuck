@@ -5,10 +5,12 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 
 import com.medsal15.config.ConfigServer;
+import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.player.Title;
 
 import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -29,6 +31,7 @@ public class UntunedVisionItem extends Item {
         if (ConfigServer.VISION_TUNING.getAsBoolean() && player instanceof ServerPlayer serverPlayer) {
             Optional<Title> otitle = Title.getTitle(serverPlayer);
             ItemStack result = ItemStack.EMPTY;
+            Component message = null;
             if (otitle.isPresent()) {
                 Title title = otitle.get();
                 Holder<Item> item = switch (title.heroAspect()) {
@@ -46,12 +49,16 @@ public class UntunedVisionItem extends Item {
                     case VOID -> ESItems.VISION_VOID;
                 };
                 result = new ItemStack(item, 1, stack.getComponentsPatch());
+                message = Component.translatable(ESLangProvider.VISION_TUNE);
             } else if (!ConfigServer.VISION_TUNING_SAFE.getAsBoolean()) {
                 result = new ItemStack(ESItems.VISION_DULL, 1, stack.getComponentsPatch());
+                message = Component.translatable(ESLangProvider.VISION_TUNE_FAIL);
             }
 
             if (!result.isEmpty()) {
                 stack.consume(1, serverPlayer);
+                if (message != null)
+                    player.sendSystemMessage(message);
                 if (!player.getInventory().add(result)) {
                     player.drop(stack, false);
                 }

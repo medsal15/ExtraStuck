@@ -80,10 +80,10 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String SPAM_DESC_2 = ESItems.SPAM.get().getDescriptionId() + ".desc.2";
     public static final String SPAM_DESC_3 = ESItems.SPAM.get().getDescriptionId() + ".desc.3";
 
-    public static final String VISION_HINT_ONE = ESItems.SPAM.get().getDescriptionId() + ".hint_curios";
-    public static final String VISION_HINT_MANY = ESItems.SPAM.get().getDescriptionId() + ".hint_nocurios";
-    public static final String VISION_TUNE = ESItems.SPAM.get().getDescriptionId() + ".tune";
-    public static final String VISION_TUNE_FAIL = ESItems.SPAM.get().getDescriptionId() + ".tune_fail";
+    public static final String VISION_HINT_ONE = ExtraStuck.MODID + ".vision.hint_curios";
+    public static final String VISION_HINT_MANY = ExtraStuck.MODID + ".vision.hint_nocurios";
+    public static final String VISION_TUNE = ExtraStuck.MODID + ".vision.tune";
+    public static final String VISION_TUNE_FAIL = ExtraStuck.MODID + ".vision.tune_fail";
 
     public static final String GRIST_DETECTOR_LOCATED = ExtraStuck.MODID + ".grist_detector.located";
     public static final String GRIST_DETECTOR_MODE = ExtraStuck.MODID + ".grist_detector.mode";
@@ -579,6 +579,8 @@ public final class ESLangProvider extends LanguageProvider {
         // Visions
         add(VISION_HINT_ONE, "Wearing more than 1 vision at once will cause interferences between them");
         add(VISION_HINT_MANY, "Wearing more than %s visions at once will cause interferences between them");
+        add(VISION_TUNE, "You resonate with the Vision and change it");
+        add(VISION_TUNE_FAIL, "You try to resonate with the Vision but only dull it");
         addItem(ESItems.VISION_BLANK, "Blank Vision");
         addItemTooltip(ESItems.VISION_BLANK, "It resonates with you");
         addItem(ESItems.VISION_DULL, "Dull Vision");
