@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:chest"
+  },
+  "input2": {
+    "item": "minestuck:cruxite_dowel"
+  },
+  "mode": "or",
+  "output": "extrastuck:dowel_storage"
+}

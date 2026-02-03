@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "extrastuck:block/dowel_storage",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "extrastuck:block/dowel_storage",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "extrastuck:block/dowel_storage",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "extrastuck:block/dowel_storage",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "extrastuck:block/dowel_storage"
+    },
+    "facing=west": {
+      "model": "extrastuck:block/dowel_storage",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

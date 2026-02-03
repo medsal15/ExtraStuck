@@ -38,4 +38,9 @@ public final class ESBlockEntities {
                     () -> BlockEntityType.Builder
                             .<BlasterBlockEntity>of(BlasterBlockEntity::new, ESBlocks.URANIUM_BLASTER.get())
                             .build(null));
+    @SuppressWarnings("null")
+    public static final Supplier<BlockEntityType<StorageBlockEntity.Dowel>> DOWEL_STORAGE = BLOCK_ENTITY_TYPES
+            .register("dowel_storage",
+                    () -> BlockEntityType.Builder.<StorageBlockEntity.Dowel>of(StorageBlockEntity.Dowel::new,
+                            ESBlocks.DOWEL_STORAGE.get()).build(null));
 }

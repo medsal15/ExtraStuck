@@ -9,6 +9,7 @@ import com.medsal15.blockentities.BlasterBlockEntity;
 import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
+import com.medsal15.blockentities.StorageBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.gui.LoopButton;
 import com.medsal15.client.programs.MastermindAppScreen;
@@ -624,6 +625,10 @@ public final class ESLangProvider extends LanguageProvider {
         // Uranium Blaster
         addBlock(ESBlocks.URANIUM_BLASTER, "Uranium Blaster");
         add(BlasterBlockEntity.TITLE, "Uranium Blaster");
+
+        // Storage Blocks
+        addBlock(ESBlocks.DOWEL_STORAGE, "Dowel Storage");
+        add(StorageBlockEntity.Dowel.TITLE, "Dowel Storage");
     }
 
     private void addComputerPrograms() {

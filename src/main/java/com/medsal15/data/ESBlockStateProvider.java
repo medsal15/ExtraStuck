@@ -10,12 +10,16 @@ import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile.ExistingModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class ESBlockStateProvider extends BlockStateProvider {
+    private final ExistingFileHelper fileHelper;
+
     public ESBlockStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, ExtraStuck.MODID, existingFileHelper);
+        fileHelper = existingFileHelper;
     }
 
     @Override
@@ -70,6 +74,9 @@ public class ESBlockStateProvider extends BlockStateProvider {
         stairsBlock(ESBlocks.ZILLIUM_BRICK_STAIRS.get(), modLoc("block/zillium_bricks"));
         slabBlock(ESBlocks.ZILLIUM_BRICK_SLAB.get(), modLoc("block/zillium_bricks"), modLoc("block/zillium_bricks"));
         wallBlock(ESBlocks.ZILLIUM_BRICK_WALL.get(), modLoc("block/zillium_bricks"));
+
+        directionalBlock(ESBlocks.DOWEL_STORAGE.get(),
+                new ExistingModelFile(ExtraStuck.modid("block/dowel_storage"), fileHelper));
 
         simpleBlock(ESBlocks.CARD_ORE.get());
     }

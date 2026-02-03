@@ -1704,6 +1704,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.RUST, 150).grist(GristTypes.RUBY, 1)
                 .grist(GristTypes.URANIUM, 25)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.DOWEL_STORAGE)
+                .input(Items.CHEST).or().input(MSItems.CRUXITE_DOWEL)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.DOWEL_STORAGE)
+                .grist(GristTypes.BUILD, 216)
+                .build(output);
         // #endregion Machines
 
         // #region Garnet

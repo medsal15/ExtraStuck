@@ -3,6 +3,7 @@ package com.medsal15.client.screen;
 import com.medsal15.ExtraStuck;
 import com.medsal15.client.screen.machine.BlasterScreen;
 import com.medsal15.client.screen.machine.ChargerScreen;
+import com.medsal15.client.screen.machine.DowelStorageScreen;
 import com.medsal15.client.screen.machine.PrinterScreen;
 import com.medsal15.client.screen.machine.ReactorScreen;
 import com.medsal15.client.screen.modus.ArcheologyModusScreen;
@@ -33,6 +34,7 @@ public final class ESScreens {
         event.register(ESMenuTypes.CHARGER.get(), ChargerScreen::new);
         event.register(ESMenuTypes.REACTOR.get(), ReactorScreen::new);
         event.register(ESMenuTypes.URANIUM_BLASTER.get(), BlasterScreen::new);
+        event.register(ESMenuTypes.DOWEL_STORAGE.get(), DowelStorageScreen::new);
 
         event.register(ESMenuTypes.MASTERMIND_CARD.get(), MastermindCardScreen::new);
         event.register(ESMenuTypes.CRAFTING_MODUS_RECIPE.get(), CraftingModusRecipeScreen::new);
