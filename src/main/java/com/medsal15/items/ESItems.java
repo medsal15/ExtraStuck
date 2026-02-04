@@ -907,8 +907,8 @@ public final class ESItems {
     public static final DeferredItem<BlockItem> REACTOR = ITEMS.registerSimpleBlockItem(ESBlocks.REACTOR);
     public static final DeferredItem<BlockItem> URANIUM_BLASTER = ITEMS
             .registerSimpleBlockItem(ESBlocks.URANIUM_BLASTER);
-    // TODO guide
     public static final DeferredItem<BlockItem> DOWEL_STORAGE = ITEMS.registerSimpleBlockItem(ESBlocks.DOWEL_STORAGE);
+    public static final DeferredItem<BlockItem> CARD_STORAGE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_STORAGE);
     // #endregion Machines
     // #region Garnet
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
@@ -1130,7 +1130,6 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(VISION_BLANK);
-        list.add(VISION_DULL);
 
         list.addAll(getActiveVisions());
 
@@ -1140,6 +1139,7 @@ public final class ESItems {
     public static Collection<DeferredItem<Item>> getActiveVisions() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
+        list.add(VISION_DULL);
         list.add(VISION_SPACE);
         list.add(VISION_TIME);
         list.add(VISION_MIND);
@@ -1486,6 +1486,7 @@ public final class ESItems {
         list.add(REACTOR);
         list.add(URANIUM_BLASTER);
         list.add(DOWEL_STORAGE);
+        list.add(CARD_STORAGE);
 
         list.add(CUT_GARNET);
         list.add(CUT_GARNET_STAIRS);

@@ -60,6 +60,7 @@ import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 public final class CommonEvents {
     @SubscribeEvent
     public static void registerCapabilities(final RegisterCapabilitiesEvent event) {
+        // TODO add energy bar with RegisterItemDecorationsEvent
         event.registerItem(Capabilities.EnergyStorage.ITEM,
                 (stack, u) -> new ESEnergyStorage(stack),
                 ESItems.FLUX_SHIELD.get(), ESItems.OVERCHARGED_MAGNEFORK.get(), ESItems.UNDERCHARGED_MAGNEFORK.get(),
@@ -77,6 +78,8 @@ public final class CommonEvents {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.REACTOR.get(),
                 ReactorBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.DOWEL_STORAGE.get(),
+                StorageBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.CARD_STORAGE.get(),
                 StorageBlockEntity::getItemHandler);
 
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.CHARGER.get(),

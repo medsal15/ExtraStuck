@@ -15,20 +15,29 @@ public final class ESMenuTypes {
             ExtraStuck.MODID);
 
     public static final Supplier<MenuType<PrinterMenu>> PRINTER = MENU_TYPES.register("printer",
-            () -> new MenuType<>((IContainerFactory<PrinterMenu>) PrinterMenu::new, FeatureFlags.DEFAULT_FLAGS));
+            () -> new MenuType<>((IContainerFactory<PrinterMenu>) PrinterMenu::new,
+                    FeatureFlags.DEFAULT_FLAGS));
     public static final Supplier<MenuType<ChargerMenu>> CHARGER = MENU_TYPES.register("charger",
-            () -> new MenuType<>((IContainerFactory<ChargerMenu>) ChargerMenu::new, FeatureFlags.DEFAULT_FLAGS));
+            () -> new MenuType<>((IContainerFactory<ChargerMenu>) ChargerMenu::new,
+                    FeatureFlags.DEFAULT_FLAGS));
     public static final Supplier<MenuType<ReactorMenu>> REACTOR = MENU_TYPES.register("reactor",
-            () -> new MenuType<>((IContainerFactory<ReactorMenu>) ReactorMenu::new, FeatureFlags.DEFAULT_FLAGS));
+            () -> new MenuType<>((IContainerFactory<ReactorMenu>) ReactorMenu::new,
+                    FeatureFlags.DEFAULT_FLAGS));
     public static final Supplier<MenuType<BlasterMenu>> URANIUM_BLASTER = MENU_TYPES.register("uranium_blaster",
-            () -> new MenuType<>((IContainerFactory<BlasterMenu>) BlasterMenu::new, FeatureFlags.DEFAULT_FLAGS));
-    public static final Supplier<MenuType<DowelStorageMenu>> DOWEL_STORAGE = MENU_TYPES.register("dowel_storage",
-            () -> new MenuType<>((IContainerFactory<DowelStorageMenu>) DowelStorageMenu::new,
+            () -> new MenuType<>((IContainerFactory<BlasterMenu>) BlasterMenu::new,
+                    FeatureFlags.DEFAULT_FLAGS));
+    public static final Supplier<MenuType<StorageBlockMenu.Dowel>> DOWEL_STORAGE = MENU_TYPES.register("dowel_storage",
+            () -> new MenuType<>((IContainerFactory<StorageBlockMenu.Dowel>) StorageBlockMenu.Dowel::new,
+                    FeatureFlags.DEFAULT_FLAGS));
+    public static final Supplier<MenuType<StorageBlockMenu.Card>> CARD_STORAGE = MENU_TYPES.register("card_storage",
+            () -> new MenuType<>((IContainerFactory<StorageBlockMenu.Card>) StorageBlockMenu.Card::new,
                     FeatureFlags.DEFAULT_FLAGS));
 
-    public static final Supplier<MenuType<MastermindCardMenu>> MASTERMIND_CARD = MENU_TYPES.register("mastermind_card",
+    public static final Supplier<MenuType<MastermindCardMenu>> MASTERMIND_CARD = MENU_TYPES.register(
+            "mastermind_card",
             () -> new MenuType<MastermindCardMenu>(MastermindCardMenu::new, FeatureFlags.DEFAULT_FLAGS));
     public static final Supplier<MenuType<CraftingModusRecipeMenu>> CRAFTING_MODUS_RECIPE = MENU_TYPES.register(
             "crafting_modus_recipe",
-            () -> new MenuType<CraftingModusRecipeMenu>(CraftingModusRecipeMenu::new, FeatureFlags.DEFAULT_FLAGS));
+            () -> new MenuType<CraftingModusRecipeMenu>(CraftingModusRecipeMenu::new,
+                    FeatureFlags.DEFAULT_FLAGS));
 }

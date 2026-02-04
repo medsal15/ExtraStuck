@@ -88,9 +88,11 @@ public final class ESTagsProvider {
                     ESBlocks.ZILLIUM_BRICKS.get(), ESBlocks.ZILLIUM_BRICK_STAIRS.get(),
                     ESBlocks.ZILLIUM_BRICK_SLAB.get(), ESBlocks.ZILLIUM_BRICK_WALL.get(),
                     ESBlocks.CARD_ORE.get(), ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
-                    ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get());
+                    ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
+                    ESBlocks.CARD_STORAGE.get());
             tag(Tags.Blocks.NEEDS_WOOD_TOOL).add(ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
-                    ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get());
+                    ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
+                    ESBlocks.CARD_STORAGE.get());
 
             tag(BlockTags.WALLS).add(ESBlocks.CUT_GARNET_WALL.get(), ESBlocks.GARNET_BRICK_WALL.get(),
                     ESBlocks.CUT_RUBY_WALL.get(), ESBlocks.RUBY_BRICK_WALL.get(), ESBlocks.SULFUROUS_STONE_WALL.get(),

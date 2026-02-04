@@ -2,9 +2,9 @@
   "type": "minestuck:grist_cost",
   "grist_cost": {
     "minestuck:build": 216,
-    "minestuck:cobalt": 1
+    "minestuck:chalk": 1
   },
   "ingredient": {
-    "item": "extrastuck:dowel_storage"
+    "item": "extrastuck:card_storage"
   }
 }

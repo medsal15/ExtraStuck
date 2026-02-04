@@ -92,6 +92,7 @@ public class ESBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(ESBlocks.REACTOR.get());
         dropSelf(ESBlocks.URANIUM_BLASTER.get());
         dropSelf(ESBlocks.DOWEL_STORAGE.get());
+        dropSelf(ESBlocks.CARD_STORAGE.get());
 
         dropSelf(ESBlocks.NORMAL_CAT_PLUSH.get());
     }

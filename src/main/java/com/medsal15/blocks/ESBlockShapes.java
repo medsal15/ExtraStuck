@@ -1,4 +1,4 @@
-package com.medsal15.blocks.machine;
+package com.medsal15.blocks;
 
 import com.mraof.minestuck.block.CustomVoxelShape;
 

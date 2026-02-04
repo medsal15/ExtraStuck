@@ -627,8 +627,10 @@ public final class ESLangProvider extends LanguageProvider {
         add(BlasterBlockEntity.TITLE, "Uranium Blaster");
 
         // Storage Blocks
-        addBlock(ESBlocks.DOWEL_STORAGE, "Dowel Storage");
-        add(StorageBlockEntity.Dowel.TITLE, "Dowel Storage");
+        addBlock(ESBlocks.DOWEL_STORAGE, "Dowel Drive");
+        add(StorageBlockEntity.Dowel.TITLE, "Dowel Drive");
+        addBlock(ESBlocks.CARD_STORAGE, "Card Cabinet");
+        add(StorageBlockEntity.Card.TITLE, "Card Cabinet");
     }
 
     private void addComputerPrograms() {

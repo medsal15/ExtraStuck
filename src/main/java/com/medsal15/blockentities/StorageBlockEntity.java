@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.handlers.BEStackHandler;
-import com.medsal15.menus.DowelStorageMenu;
+import com.medsal15.menus.StorageBlockMenu;
 import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.BlockPos;
@@ -91,8 +91,37 @@ public abstract class StorageBlockEntity extends BlockEntity {
         public AbstractContainerMenu createMenu(int containerId, @Nonnull Inventory playerInventory,
                 @Nonnull Player player) {
             if (level != null)
-                return new DowelStorageMenu(containerId, ContainerLevelAccess.create(level, worldPosition),
-                        playerInventory, itemHandler);
+                return new StorageBlockMenu.Dowel(containerId, ContainerLevelAccess.create(level, worldPosition),
+                        playerInventory, itemHandler, stack -> isValidItem(0, stack));
+            return null;
+        }
+    }
+
+    public static class Card extends StorageBlockEntity implements MenuProvider {
+        public static final String TITLE = "container.extrastuck.card_storage";
+
+        public Card(BlockPos pos, BlockState state) {
+            super(ESBlockEntities.CARD_STORAGE.get(), pos, state);
+        }
+
+        @Override
+        public boolean isValidItem(int slot, ItemStack stack) {
+            return stack.is(MSItems.CAPTCHA_CARD);
+        }
+
+        @Override
+        public Component getDisplayName() {
+            return Component.translatable(TITLE);
+        }
+
+        @Override
+        @Nullable
+        public AbstractContainerMenu createMenu(int containerId, @Nonnull Inventory playerInventory,
+                @Nonnull Player player) {
+            if (level != null) {
+                return new StorageBlockMenu.Card(containerId, ContainerLevelAccess.create(level, worldPosition),
+                        playerInventory, itemHandler, stack -> isValidItem(0, stack));
+            }
             return null;
         }
     }

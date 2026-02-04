@@ -43,4 +43,9 @@ public final class ESBlockEntities {
             .register("dowel_storage",
                     () -> BlockEntityType.Builder.<StorageBlockEntity.Dowel>of(StorageBlockEntity.Dowel::new,
                             ESBlocks.DOWEL_STORAGE.get()).build(null));
+    @SuppressWarnings("null")
+    public static final Supplier<BlockEntityType<StorageBlockEntity.Card>> CARD_STORAGE = BLOCK_ENTITY_TYPES
+            .register("card_storage",
+                    () -> BlockEntityType.Builder.<StorageBlockEntity.Card>of(StorageBlockEntity.Card::new,
+                            ESBlocks.CARD_STORAGE.get()).build(null));
 }

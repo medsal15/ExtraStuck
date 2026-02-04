@@ -6,6 +6,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.food.DivineTemptationBlock;
 import com.medsal15.blocks.food.MortalTemptationBlock;
 import com.medsal15.blocks.machine.BlasterBlock;
+import com.medsal15.blocks.machine.CardStorageBlock;
 import com.medsal15.blocks.machine.ChargerBlock;
 import com.medsal15.blocks.machine.DowelStorageBlock;
 import com.medsal15.blocks.machine.PrinterBlock;
@@ -70,6 +71,9 @@ public final class ESBlocks {
     public static final DeferredBlock<DowelStorageBlock> DOWEL_STORAGE = BLOCKS.registerBlock("dowel_storage",
             DowelStorageBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
+    public static final DeferredBlock<CardStorageBlock> CARD_STORAGE = BLOCKS.registerBlock("card_storage",
+            CardStorageBlock::new,
+            Block.Properties.of().mapColor(MapColor.COLOR_MAGENTA).requiresCorrectToolForDrops().strength(3F));
     // #endregion Machines
 
     // #region Garnet

@@ -77,6 +77,8 @@ public class ESBlockStateProvider extends BlockStateProvider {
 
         directionalBlock(ESBlocks.DOWEL_STORAGE.get(),
                 new ExistingModelFile(ExtraStuck.modid("block/dowel_storage"), fileHelper));
+        horizontalBlock(ESBlocks.CARD_STORAGE.get(),
+                new ExistingModelFile(ExtraStuck.modid("block/card_storage"), fileHelper));
 
         simpleBlock(ESBlocks.CARD_ORE.get());
     }

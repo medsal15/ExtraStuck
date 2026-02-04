@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:barrel"
+  },
+  "input2": {
+    "item": "minecraft:paper"
+  },
+  "mode": "or",
+  "output": "extrastuck:card_storage"
+}

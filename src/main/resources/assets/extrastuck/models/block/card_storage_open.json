@@ -1,0 +1,193 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/cube_all",
+    "__comment": "Unused as I have no idea how to make a block that can open",
+	"textures": {
+		"0": "extrastuck:block/card_storage/front",
+		"1": "extrastuck:block/card_storage/side",
+		"2": "extrastuck:block/card_storage/back",
+		"3": "extrastuck:block/card_storage/top_top",
+		"4": "extrastuck:block/card_storage/front_back",
+		"5": "extrastuck:block/card_storage/drawer_side",
+		"6": "extrastuck:block/card_storage/drawer_back",
+		"7": "extrastuck:block/card_storage/bottom_top",
+		"particle": "extrastuck:block/card_storage/front"
+	},
+	"elements": [
+		{
+			"name": "bottom",
+			"from": [0, 0, 0],
+			"to": [16, 1, 16],
+			"faces": {
+				"north": {"uv": [0, 15, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#missing"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		},
+		{
+			"name": "left",
+			"from": [15, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#missing"}
+			}
+		},
+		{
+			"name": "right",
+			"from": [0, 0, 0],
+			"to": [1, 16, 16],
+			"faces": {
+				"north": {"uv": [15, 0, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#missing"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "back",
+			"from": [0, 0, 15],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#missing"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "top",
+			"from": [0, 15, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#2"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#missing"}
+			}
+		},
+		{
+			"name": "bottom",
+			"from": [2, 8, -4],
+			"to": [14, 9, 10],
+			"faces": {
+				"up": {"uv": [0, 0, 12, 14], "texture": "#3"},
+				"down": {"uv": [0, 14, 12, 0], "texture": "#3"}
+			}
+		},
+		{
+			"name": "left",
+			"from": [13, 8, -4],
+			"to": [14, 14, 10],
+			"faces": {
+				"east": {"uv": [14, 0, 0, 6], "texture": "#5"},
+				"west": {"uv": [0, 0, 14, 6], "texture": "#5"},
+				"up": {"uv": [11, 0, 12, 14], "texture": "#3"}
+			}
+		},
+		{
+			"name": "right",
+			"from": [2, 8, -4],
+			"to": [3, 14, 10],
+			"faces": {
+				"east": {"uv": [14, 0, 0, 6], "texture": "#5"},
+				"west": {"uv": [0, 0, 14, 6], "texture": "#5"},
+				"up": {"uv": [0, 0, 1, 14], "texture": "#3"}
+			}
+		},
+		{
+			"name": "back",
+			"from": [2, 8, 9],
+			"to": [14, 14, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 12, 6], "texture": "#6"},
+				"south": {"uv": [0, 0, 12, 6], "texture": "#6"},
+				"up": {"uv": [0, 13, 12, 14], "texture": "#3"}
+			}
+		},
+		{
+			"name": "front",
+			"from": [1, 8, -5],
+			"to": [15, 15, -4],
+			"faces": {
+				"north": {"uv": [1, 1, 15, 8], "texture": "#0"},
+				"east": {"uv": [1, 1, 2, 8], "texture": "#0"},
+				"south": {"uv": [1, 1, 15, 8], "texture": "#4"},
+				"west": {"uv": [14, 1, 15, 8], "texture": "#0"},
+				"up": {"uv": [1, 1, 15, 2], "texture": "#0"},
+				"down": {"uv": [1, 7, 15, 8], "texture": "#0"}
+			}
+		},
+		{
+			"name": "bottom",
+			"from": [2, 1, -8],
+			"to": [14, 2, 6],
+			"faces": {
+				"up": {"uv": [0, 0, 12, 14], "texture": "#7"},
+				"down": {"uv": [0, 14, 12, 0], "texture": "#7"}
+			}
+		},
+		{
+			"name": "left",
+			"from": [13, 1, -8],
+			"to": [14, 7, 6],
+			"faces": {
+				"east": {"uv": [14, 6, 0, 12], "texture": "#5"},
+				"west": {"uv": [0, 6, 14, 12], "texture": "#5"},
+				"up": {"uv": [11, 0, 12, 14], "texture": "#7"}
+			}
+		},
+		{
+			"name": "right",
+			"from": [2, 1, -8],
+			"to": [3, 7, 6],
+			"faces": {
+				"east": {"uv": [14, 6, 0, 12], "texture": "#5"},
+				"west": {"uv": [0, 6, 14, 12], "texture": "#5"},
+				"up": {"uv": [0, 0, 1, 14], "texture": "#7"}
+			}
+		},
+		{
+			"name": "back",
+			"from": [2, 1, 5],
+			"to": [14, 7, 6],
+			"faces": {
+				"north": {"uv": [0, 6, 12, 12], "texture": "#6"},
+				"south": {"uv": [0, 6, 12, 12], "texture": "#6"},
+				"up": {"uv": [0, 13, 12, 14], "texture": "#7"}
+			}
+		},
+		{
+			"name": "front",
+			"from": [1, 1, -9],
+			"to": [15, 8, -8],
+			"faces": {
+				"north": {"uv": [1, 8, 15, 15], "texture": "#0"},
+				"east": {"uv": [1, 8, 2, 15], "texture": "#0"},
+				"south": {"uv": [1, 8, 15, 15], "texture": "#4"},
+				"west": {"uv": [14, 8, 15, 15], "texture": "#0"},
+				"up": {"uv": [1, 8, 15, 9], "texture": "#0"},
+				"down": {"uv": [1, 14, 15, 15], "texture": "#0"}
+			}
+		}
+	],
+	"display": {},
+	"groups": [
+		{
+			"name": "cabinet",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [0, 1, 2, 3, 4]
+		},
+		{
+			"name": "top",
+			"origin": [8, 8, 8],
+			"color": 1,
+			"children": [5, 6, 7, 8, 9]
+		},
+		{
+			"name": "bottom",
+			"origin": [8, 8, 8],
+			"color": 2,
+			"children": [10, 11, 12, 13, 14]
+		}
+	]
+}

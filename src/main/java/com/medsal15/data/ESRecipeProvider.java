@@ -1709,7 +1709,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(Items.CHEST).or().input(MSItems.CRUXITE_DOWEL)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.DOWEL_STORAGE)
-                .grist(GristTypes.BUILD, 216)
+                .grist(GristTypes.BUILD, 216).grist(GristTypes.COBALT, 1)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.CARD_STORAGE)
+                .input(Items.BARREL).or().input(Items.PAPER)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.CARD_STORAGE)
+                .grist(GristTypes.BUILD, 216).grist(GristTypes.CHALK, 1)
                 .build(output);
         // #endregion Machines
 

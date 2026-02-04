@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
+import com.medsal15.blocks.ESBlockShapes;
 import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.block.machine.SmallMachineBlock;
 import com.mraof.minestuck.player.IdentifierHandler;

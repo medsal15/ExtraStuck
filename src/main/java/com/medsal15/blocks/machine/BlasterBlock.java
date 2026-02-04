@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 
 import com.medsal15.blockentities.BlasterBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
+import com.medsal15.blocks.ESBlockShapes;
 import com.mraof.minestuck.block.machine.SmallMachineBlock;
 
 import net.minecraft.core.BlockPos;

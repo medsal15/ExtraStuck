@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "extrastuck:block/card_storage",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "extrastuck:block/card_storage"
+    },
+    "facing=south": {
+      "model": "extrastuck:block/card_storage",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "extrastuck:block/card_storage",
+      "y": 270
+    }
+  }
+}
