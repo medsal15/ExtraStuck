@@ -18,7 +18,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 
 public class FlameArrow extends AbstractArrow {
     public FlameArrow(EntityType<? extends FlameArrow> entityType, Level level) {
@@ -64,22 +63,22 @@ public class FlameArrow extends AbstractArrow {
             BlockPos target;
 
             switch (result.getDirection()) {
-                case Direction.UP:
+                case UP:
                     target = result.getBlockPos().above();
                     break;
-                case Direction.DOWN:
+                case DOWN:
                     target = result.getBlockPos().below();
                     break;
-                case Direction.EAST:
+                case EAST:
                     target = result.getBlockPos().east();
                     break;
-                case Direction.WEST:
+                case WEST:
                     target = result.getBlockPos().west();
                     break;
-                case Direction.NORTH:
+                case NORTH:
                     target = result.getBlockPos().north();
                     break;
-                case Direction.SOUTH:
+                case SOUTH:
                     target = result.getBlockPos().south();
                     break;
                 default:

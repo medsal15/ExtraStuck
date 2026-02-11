@@ -36,6 +36,9 @@ public class CuriosCapabilities {
     }
 
     private static void tick(SlotContext context) {
+        if (context.cosmetic())
+            return;
+
         int limit = ConfigServer.VISION_LIMIT.get();
         if (limit == 0)
             return;

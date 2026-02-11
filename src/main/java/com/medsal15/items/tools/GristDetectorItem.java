@@ -53,13 +53,13 @@ public class GristDetectorItem extends Item {
                 GristLayer layer = stack.getOrDefault(ESDataComponents.GRIST_LAYER, GristLayer.COMMON);
                 GristTypeLayer layerInfo = null;
                 switch (layer) {
-                    case GristLayer.UNCOMMON:
+                    case UNCOMMON:
                         layerInfo = info.getUncommonGristLayer();
                         break;
-                    case GristLayer.ANY:
+                    case ANY:
                         layerInfo = info.getAnyGristLayer();
                         break;
-                    case GristLayer.COMMON:
+                    case COMMON:
                     default:
                         layerInfo = info.getCommonGristLayer();
                         break;

@@ -123,22 +123,22 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
 
             AABB area = new AABB(worldPosition.relative(direction));
             switch (direction) {
-                case Direction.NORTH:
+                case NORTH:
                     area = area.expandTowards(0, 0, -dist);
                     break;
-                case Direction.SOUTH:
+                case SOUTH:
                     area = area.expandTowards(0, 0, dist);
                     break;
-                case Direction.EAST:
+                case EAST:
                     area = area.expandTowards(dist, 0, 0);
                     break;
-                case Direction.WEST:
+                case WEST:
                     area = area.expandTowards(-dist, 0, 0);
                     break;
-                case Direction.UP:
+                case UP:
                     area = area.expandTowards(0, dist, 0);
                     break;
-                case Direction.DOWN:
+                case DOWN:
                     area = area.expandTowards(0, -dist, 0);
                     break;
                 default:

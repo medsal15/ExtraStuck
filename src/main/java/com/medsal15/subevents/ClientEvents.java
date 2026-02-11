@@ -226,12 +226,12 @@ public final class ClientEvents {
                             ESDataComponents.MOON_CAKE_SLICE_COLOR,
                             MoonCakeSliceColor.DUAL);
                     switch (color) {
-                        case MoonCakeSliceColor.DUAL:
+                        case DUAL:
                         default:
                             return 0;
-                        case MoonCakeSliceColor.DERSE:
+                        case DERSE:
                             return .5F;
-                        case MoonCakeSliceColor.PROSPIT:
+                        case PROSPIT:
                             return 1;
                     }
                 });
