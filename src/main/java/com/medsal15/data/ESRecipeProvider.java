@@ -761,6 +761,15 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output.withConditions(new ModLoadedCondition("create")));
         // #endregion Crossbows
 
+        // #region Bows
+        CombinationRecipeBuilder.of(ESItems.BOWWOB)
+                .input(Items.BOW).and().input(MSItems.MIRROR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BOWWOB)
+                .grist(GristTypes.BUILD, 30).grist(GristTypes.MERCURY, 12)
+                .build(output);
+        // #endregion Bows
+
         // #region Throwables
         CombinationRecipeBuilder.of(ESItems.BEENADE)
                 .input(MSItems.BARBASOL_BOMB).and().input(Items.BEEHIVE)

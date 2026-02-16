@@ -288,12 +288,12 @@ public final class ESItemModelProvider extends ItemModelProvider {
         modelVision(ESItems.VISION_VOID, EnumAspect.VOID);
     }
 
-    private ItemModelBuilder modelVision(DeferredItem<Item> vision, EnumAspect aspect) {
-        return modelVision(vision, aspect.name());
+    private void modelVision(DeferredItem<Item> vision, EnumAspect aspect) {
+        modelVision(vision, aspect.name());
     }
 
-    private ItemModelBuilder modelVision(DeferredItem<Item> vision, String aspect) {
-        return getBuilder(vision.getId().toString())
+    private void modelVision(DeferredItem<Item> vision, String aspect) {
+        getBuilder(vision.getId().toString())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", ExtraStuck.modid("item/vision/" + aspect.toLowerCase()));
     }

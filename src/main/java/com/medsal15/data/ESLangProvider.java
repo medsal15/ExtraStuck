@@ -85,6 +85,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String VISION_HINT_MANY = ExtraStuck.MODID + ".vision.hint_nocurios";
     public static final String VISION_TUNE = ExtraStuck.MODID + ".vision.tune";
     public static final String VISION_TUNE_FAIL = ExtraStuck.MODID + ".vision.tune_fail";
+    public static final String VISION_TUNE_POWERLESS = ExtraStuck.MODID + ".vision.tune_powerless";
 
     public static final String GRIST_DETECTOR_LOCATED = ExtraStuck.MODID + ".grist_detector.located";
     public static final String GRIST_DETECTOR_MODE = ExtraStuck.MODID + ".grist_detector.mode";
@@ -401,6 +402,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.INCOMPLETE_MECHANICAL_RADBOW, "You can tell this is a great idea");
         addItem(ESItems.MECHANICAL_RADBOW, "Mechanical Radbow");
         addItemTooltip(ESItems.MECHANICAL_RADBOW, "An engineer's weapon of choice");
+        // Bows
+        addItem(ESItems.BOWWOB, "BowwoB");
         // Throwables
         addItem(ESItems.BEENADE, "Beenade");
         add(BEENADE_LOADED, "It buzzes softly");
@@ -582,6 +585,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(VISION_HINT_MANY, "Wearing more than %s visions at once will cause interferences between them");
         add(VISION_TUNE, "You resonate with the Vision and change it");
         add(VISION_TUNE_FAIL, "You try to resonate with the Vision but only dull it");
+        add(VISION_TUNE_POWERLESS, "You try to resonate with the Vision but without enough power nothing happens");
         addItem(ESItems.VISION_BLANK, "Blank Vision");
         addItemTooltip(ESItems.VISION_BLANK, "It resonates with you");
         addItem(ESItems.VISION_DULL, "Dull Vision");

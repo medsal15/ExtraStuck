@@ -121,7 +121,10 @@ public final class ConfigServer {
             .define("vision.safe_tuning", false);
     public static final ConfigValue<Integer> VISION_LIMIT = BUILDER
             .comment("How many visions can be active at once for a player", "This is limited to the amount of aspects")
-            .defineInRange("vision.limit.creative_shock_survival", 1, 0, 12);
+            .defineInRange("vision.limit", 1, 0, 12);
+    public static final ConfigValue<Integer> VISION_RUNG = BUILDER
+            .comment("Minimum rung needed to attune a vision", "Set to -1 for no minimum")
+            .define("vision.rung", -1);
 
     public static final ConfigValue<Integer> ISS_CREATIVE_SHOCK_SURVIVAL = BUILDER
             .comment("Which amplifier of Creative Shock should prevent spell casting for non-creative players",

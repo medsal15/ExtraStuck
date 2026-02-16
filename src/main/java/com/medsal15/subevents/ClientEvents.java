@@ -201,12 +201,9 @@ public final class ClientEvents {
         addBrush(ESItems.OLD_BRUSH);
         addBrush(ESItems.BROOM);
 
-        for (DeferredItem<Item> shield : ESItems.getShields()) {
-            addBlocking(shield);
-        }
-        for (DeferredItem<Item> crossbow : ESItems.getCrossbows()) {
-            addCrossbow(crossbow);
-        }
+        ESItems.getShields().forEach(ClientEvents::addBlocking);
+        ESItems.getCrossbows().forEach(ClientEvents::addCrossbow);
+        ESItems.getBows().forEach(ClientEvents::addBow);
 
         ItemProperties.register(ESItems.FLUX_SHIELD.get(), ExtraStuck.modid("charged"),
                 (stack, world, entity, entityId) -> {
@@ -263,6 +260,20 @@ public final class ClientEvents {
                 });
         ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"), (stack, world,
                 entity, entityId) -> RadBowItem.isCharged(stack) ? 1F : 0F);
+    }
+
+    private static void addBow(DeferredItem<Item> item) {
+        ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("pulling"),
+                (stack, world, entity,
+                        entityId) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F
+                                : 0.0F);
+        ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("pull"),
+                (stack, world, entity, entityId) -> {
+                    if (entity == null)
+                        return 0.0F;
+                    return entity.getUseItem() != stack ? 0.0F
+                            : (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F;
+                });
     }
 
     private static void addBrush(DeferredItem<Item> item) {

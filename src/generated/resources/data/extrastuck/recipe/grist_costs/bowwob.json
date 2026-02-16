@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 30,
+    "minestuck:mercury": 12
+  },
+  "ingredient": {
+    "item": "extrastuck:bowwob"
+  }
+}

@@ -40,6 +40,7 @@ import com.medsal15.items.armor.DarkKnightArmorItem;
 import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.armor.SalesmanGogglesItem;
 import com.medsal15.items.armor.SaleswomanGogglesItem;
+import com.medsal15.items.bows.DoublingBowItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
 import com.medsal15.items.components.MoonCakeSliceColor;
@@ -547,7 +548,6 @@ public final class ESItems {
     public static final DeferredItem<Item> STOCKS_UPTICKER = ITEMS.register("stocks_upticker", () -> new WeaponItem(
             new WeaponItem.Builder(Tiers.GOLD, 4, -1F).efficiency(2F).set(MSItemTypes.BATON_TOOL),
             new MSItemProperties().durability(1326)));
-    // TODO stocks downticker (drains boondollars from players)
     // #endregion Batons
     // #region Swords
     public static final DeferredItem<Item> SUN_REAVER = ITEMS.register("sun_reaver", () -> new WeaponItem(
@@ -634,6 +634,11 @@ public final class ESItems {
     public static final DeferredItem<Item> MECHANICAL_RADBOW = ITEMS.register("mechanical_radbow",
             () -> new MechanicalRadBowItem(new Properties().durability(933).stacksTo(1)));
     // #endregion Crossbows
+    // #region Bows
+    // TODO guide
+    public static final DeferredItem<Item> BOWWOB = ITEMS.register("bowwob",
+            () -> new DoublingBowItem(new Properties().durability(515)));
+    // #endregion Bows
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
             () -> new ESGun(
@@ -1314,9 +1319,8 @@ public final class ESItems {
     public static Collection<DeferredItem<Item>> getRangedWeapons() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.addAll(getMagicWeapons());
-
-        list.add(RADBOW);
-        list.add(MECHANICAL_RADBOW);
+        list.addAll(getCrossbows());
+        list.addAll(getBows());
 
         list.add(YIN_YANG_ORB);
 
@@ -1337,6 +1341,12 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(RADBOW);
         list.add(MECHANICAL_RADBOW);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getBows() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(BOWWOB);
         return list;
     }
 

@@ -144,6 +144,12 @@ public final class ESTagsProvider {
                 tag(ItemTags.DURABILITY_ENCHANTABLE).add(crossbow.get());
                 tag(ItemTags.VANISHING_ENCHANTABLE).add(crossbow.get());
             }
+            for (DeferredItem<Item> bow : ESItems.getBows()) {
+                tag(Tags.Items.TOOLS_BOW).add(bow.get());
+                tag(ItemTags.BOW_ENCHANTABLE).add(bow.get());
+                tag(ItemTags.DURABILITY_ENCHANTABLE).add(bow.get());
+                tag(ItemTags.VANISHING_ENCHANTABLE).add(bow.get());
+            }
             for (DeferredItem<Item> spellbook : ESISSItems.getSpellbooks()) {
                 tag(ESTags.Items.ISS_SPELLBOOKS).add(spellbook.get());
             }

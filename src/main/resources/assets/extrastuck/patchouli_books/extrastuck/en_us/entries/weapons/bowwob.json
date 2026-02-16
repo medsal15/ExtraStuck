@@ -1,0 +1,23 @@
+{
+    "name": "BowwoB",
+    "icon": "extrastuck:bowwob",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:bowwob"
+            },
+            "text": "Turns out, combining a bow with a mirror does not duplicate the bow, but the arrows.$(br2)$(3)$(l)Special:$() Shoots two arrows instead of one. The second arrow is a copy of the first and cannot be picked up."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Bow and a Mirror in a Totem Lathe.",
+            "left": "minecraft:bow",
+            "mode": "&&",
+            "right": "minestuck:mirror",
+            "result": "extrastuck:bowwob"
+        }
+    ]
+}

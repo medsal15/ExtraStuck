@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.ESItems;
+import com.mraof.minestuck.player.Echeladder;
 import com.mraof.minestuck.player.Title;
 
 import net.minecraft.core.Holder;
@@ -29,10 +30,13 @@ public class UntunedVisionItem extends Item {
             @Nonnull InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (ConfigServer.VISION_TUNING.getAsBoolean() && player instanceof ServerPlayer serverPlayer) {
+            int min = ConfigServer.VISION_RUNG.get();
             Optional<Title> otitle = Title.getTitle(serverPlayer);
             ItemStack result = ItemStack.EMPTY;
             Component message = null;
-            if (otitle.isPresent()) {
+            if (min >= 0 && Echeladder.get(serverPlayer).getRung() < min) {
+                player.sendSystemMessage(Component.translatable(ESLangProvider.VISION_TUNE_POWERLESS));
+            } else if (otitle.isPresent()) {
                 Title title = otitle.get();
                 Holder<Item> item = switch (title.heroAspect()) {
                     case SPACE -> ESItems.VISION_SPACE;
