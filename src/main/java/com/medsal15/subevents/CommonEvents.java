@@ -1,7 +1,5 @@
 package com.medsal15.subevents;
 
-import org.jetbrains.annotations.Nullable;
-
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
@@ -32,10 +30,7 @@ import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.network.MSPacket;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -54,8 +49,6 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.RegisterItemDecorationsEvent;
-import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
@@ -259,31 +252,5 @@ public final class CommonEvents {
                 && entity.getRandom().nextFloat() < .2) {
             event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
         }
-    }
-
-    @SubscribeEvent
-    public static void registerItemDecorations(final RegisterItemDecorationsEvent event) {
-        event.register(ESItems.FLUX_SHIELD, CommonEvents::renderFEBar);
-        event.register(ESItems.OVERCHARGED_MAGNEFORK, CommonEvents::renderFEBar);
-        event.register(ESItems.UNDERCHARGED_MAGNEFORK, CommonEvents::renderFEBar);
-        event.register(ESItems.FIELD_CHARGER, CommonEvents::renderFEBar);
-    }
-
-    private static boolean renderFEBar(GuiGraphics guiGraphics, Font font, ItemStack stack, int x, int y) {
-        @SuppressWarnings("null")
-        @Nullable
-        IEnergyStorage energyHandler = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
-        if (energyHandler != null && energyHandler.getMaxEnergyStored() > 0 && energyHandler.getEnergyStored() > 0) {
-            int startx = x + 2;
-            int starty = y + 11;
-            // Lowers FE bar when damage is hidden
-            if (!stack.isBarVisible())
-                starty += 2;
-            int width = Math
-                    .round((float) energyHandler.getEnergyStored() * 13F / (float) energyHandler.getMaxEnergyStored());
-            guiGraphics.fill(RenderType.GUI_OVERLAY, startx, starty, startx + 13, starty + 2, -16777216);
-            guiGraphics.fill(RenderType.GUI_OVERLAY, startx, starty, startx + width, starty + 1, 0xFFFFFF00);
-        }
-        return false;
     }
 }

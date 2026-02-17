@@ -46,7 +46,10 @@ import com.simibubi.create.compat.jei.ConversionRecipe;
 import com.simibubi.create.compat.jei.category.MysteriousItemConversionCategory;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.language.I18n;
@@ -73,6 +76,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDef
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterItemDecorationsEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
@@ -459,5 +463,31 @@ public final class ClientEvents {
 
     private static void registerConvertion(ItemLike from, ItemLike to) {
         MysteriousItemConversionCategory.RECIPES.add(ConversionRecipe.create(new ItemStack(from), new ItemStack(to)));
+    }
+
+    @SubscribeEvent
+    public static void registerItemDecorations(final RegisterItemDecorationsEvent event) {
+        event.register(ESItems.FLUX_SHIELD, ClientEvents::renderFEBar);
+        event.register(ESItems.OVERCHARGED_MAGNEFORK, ClientEvents::renderFEBar);
+        event.register(ESItems.UNDERCHARGED_MAGNEFORK, ClientEvents::renderFEBar);
+        event.register(ESItems.FIELD_CHARGER, ClientEvents::renderFEBar);
+    }
+
+    private static boolean renderFEBar(GuiGraphics guiGraphics, Font font, ItemStack stack, int x, int y) {
+        @SuppressWarnings("null")
+        @Nullable
+        IEnergyStorage energyHandler = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
+        if (energyHandler != null && energyHandler.getMaxEnergyStored() > 0 && energyHandler.getEnergyStored() > 0) {
+            int startx = x + 2;
+            int starty = y + 11;
+            // Lowers FE bar when damage is hidden
+            if (!stack.isBarVisible())
+                starty += 2;
+            int width = Math
+                    .round((float) energyHandler.getEnergyStored() * 13F / (float) energyHandler.getMaxEnergyStored());
+            guiGraphics.fill(RenderType.GUI_OVERLAY, startx, starty, startx + 13, starty + 2, -16777216);
+            guiGraphics.fill(RenderType.GUI_OVERLAY, startx, starty, startx + width, starty + 1, 0xFFFFFF00);
+        }
+        return false;
     }
 }
