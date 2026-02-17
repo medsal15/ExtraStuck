@@ -1,0 +1,7 @@
+{
+  "type": "extrastuck:land_loot_modifier",
+  "conditions": [],
+  "inject": "extrastuck:chests/inject/medium_cake",
+  "target": "minestuck:chests/medium_basic",
+  "title": "minestuck:cake"
+}

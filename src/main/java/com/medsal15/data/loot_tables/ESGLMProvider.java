@@ -45,6 +45,10 @@ public class ESGLMProvider extends GlobalLootModifierProvider {
                 new ESLandLootModifier(new LootItemCondition[0], modid("chests/inject/medium_thunder"),
                         Minestuck.id("chests/medium_basic"), Optional.empty(), Optional.of(LandTypes.THUNDER.get())),
                 List.of());
+        add("medium_cake",
+                new ESLandLootModifier(new LootItemCondition[0], modid("chests/inject/medium_cake"),
+                        Minestuck.id("chests/medium_basic"), Optional.empty(), Optional.of(LandTypes.CAKE.get())),
+                List.of());
         // #endregion Land Titles
 
         add("perfectly_unique_spellbook", new ESLandLootModifier(new LootItemCondition[0],

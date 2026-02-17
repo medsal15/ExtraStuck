@@ -68,6 +68,10 @@ public class ESLootSubProvider implements LootTableSubProvider {
         consumer.accept(key("chests/inject/medium_thunder"),
                 LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0, 1))
                         .add(LootItem.lootTableItem(ESItems.LIGHTNING_ARROW).setQuality(1).apply(rangeAmount(0, 8)))));
+        consumer.accept(key("chests/inject/medium_cake"),
+                LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ESItems.LEMON_CAKE).setQuality(1))
+                        .add(EmptyLootItem.emptyItem().setWeight(12))));
         // #endregion Land Titles
 
         consumer.accept(key("chests/inject/unique_spellbook"),
