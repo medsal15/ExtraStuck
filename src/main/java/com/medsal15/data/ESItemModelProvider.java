@@ -320,6 +320,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.NEGATIVE_CAKE_SLICE.get());
         basicItem(ESItems.CARROT_CAKE_SLICE.get());
         basicItem(ESItems.CHOCOLATEY_CAKE_SLICE.get());
+        basicItem(ESItems.LEMON_CAKE_SLICE.get());
         basicItem(ESItems.MORTAL_TEMPTATION_BLOCK.get());
         basicItem(ESItems.MORTAL_TEMPTATION.get());
         basicItem(ESItems.CANDY_CRUNCH.get());
@@ -327,6 +328,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.SOUR_BOMB_CANDY.get());
         basicItem(ESItems.COSMIC_SPOREO.get());
         basicItem(ESItems.SPAM.get());
+        basicItem(ESItems.LEMON_CAKE.get());
 
         basicItem(ESItems.DESERT_JUICE.get());
         basicItem(ESItems.ROCKET_JUMP.get());

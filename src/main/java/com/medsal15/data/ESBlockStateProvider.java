@@ -3,14 +3,19 @@ package com.medsal15.data;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.ModelFile.ExistingModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
@@ -80,6 +85,8 @@ public class ESBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ESBlocks.CARD_STORAGE.get(),
                 new ExistingModelFile(ExtraStuck.modid("block/card_storage"), fileHelper));
 
+        cakeBlock(ESBlocks.LEMON_CAKE);
+
         simpleBlock(ESBlocks.CARD_ORE.get());
     }
 
@@ -133,5 +140,58 @@ public class ESBlockStateProvider extends BlockStateProvider {
                 ? this.models().trapdoorOrientableOpen(baseName + "_open", texture).renderType("translucent")
                 : this.models().trapdoorOpen(baseName + "_open", texture).renderType("translucent");
         trapdoorBlock(block.get(), bottom, top, open, orientable);
+    }
+
+    public void cakeBlock(DeferredBlock<?> cake) {
+        ResourceLocation id = cake.getId();
+        getVariantBuilder(cake.get()).forAllStates(state -> {
+            int bites = state.getValue(CakeBlock.BITES);
+            return ConfiguredModel.builder().modelFile(cakeModel(id, bites)).build();
+        });
+    }
+
+    public ModelFile cakeModel(ResourceLocation id, int bites) {
+        if (bites == 0) {
+            return models().getBuilder(id.getPath() + "_uneaten")
+                    .texture("particle", texture(id.withSuffix("_side")))
+                    .texture("bottom", texture(id.withSuffix("_bottom")))
+                    .texture("top", texture(id.withSuffix("_top")))
+                    .texture("side", texture(id.withSuffix("_side")))
+                    .element()
+                    .from(1, 0, 1).to(15, 8, 15)
+                    .allFaces((direction, faceBuilder) -> {
+                        if (direction == Direction.UP)
+                            faceBuilder.texture("#top");
+                        else if (direction == Direction.DOWN)
+                            faceBuilder.texture("#bottom").cullface(Direction.DOWN);
+                        else
+                            faceBuilder.texture("#side");
+                    })
+                    .end();
+        } else {
+            return models().getBuilder(id.getPath() + "_slice" + bites)
+                    .texture("particle", texture(id.withSuffix("_side")))
+                    .texture("bottom", texture(id.withSuffix("_bottom")))
+                    .texture("top", texture(id.withSuffix("_top")))
+                    .texture("side", texture(id.withSuffix("_side")))
+                    .texture("inside", texture(id.withSuffix("_inner")))
+                    .element()
+                    .from(1 + 2 * bites, 0, 1).to(15, 8, 15)
+                    .allFaces((direction, faceBuilder) -> {
+                        if (direction == Direction.UP)
+                            faceBuilder.texture("#top");
+                        else if (direction == Direction.DOWN)
+                            faceBuilder.texture("#bottom").cullface(Direction.DOWN);
+                        else if (direction == Direction.WEST)
+                            faceBuilder.texture("#inside");
+                        else
+                            faceBuilder.texture("#side");
+                    })
+                    .end();
+        }
+    }
+
+    public static ResourceLocation texture(ResourceLocation id) {
+        return id.withPrefix(ModelProvider.BLOCK_FOLDER + "/");
     }
 }

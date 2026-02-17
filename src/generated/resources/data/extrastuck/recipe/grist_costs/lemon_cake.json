@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 21,
+    "minestuck:marble": 11,
+    "minestuck:sulfur": 9
+  },
+  "ingredient": {
+    "item": "extrastuck:lemon_cake"
+  }
+}

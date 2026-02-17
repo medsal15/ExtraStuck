@@ -9,6 +9,7 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
+import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.curios.CuriosCapabilities;
 import com.medsal15.compat.curios.items.ESCuriosUtils;
 import com.medsal15.datamaps.ReactorFuel;
@@ -240,7 +241,8 @@ public final class CommonEvents {
     }
 
     /**
-     * Rolls the CancelsEffectArmor::chanceToCancel
+     * Cancels application for Poison, Cosmic Plague, and Wither with valid Cosmic
+     * Plague Armor
      */
     private static void handleCosmicPlagueArmor(final MobEffectEvent.Applicable event) {
         Entity entity = event.getEntity();
@@ -284,17 +286,18 @@ public final class CommonEvents {
             handleCakeCutting(event);
     }
 
-    private static final Map<Holder<Block>, Holder<Item>> SUPPORTED_CAKES = Map.of(
-            MSBlocks.APPLE_CAKE, ESItems.APPLE_CAKE_SLICE,
-            MSBlocks.BLUE_CAKE, ESItems.BLUE_CAKE_SLICE,
-            MSBlocks.COLD_CAKE, ESItems.COLD_CAKE_SLICE,
-            MSBlocks.RED_CAKE, ESItems.RED_CAKE_SLICE,
-            MSBlocks.HOT_CAKE, ESItems.HOT_CAKE_SLICE,
-            MSBlocks.REVERSE_CAKE, ESItems.REVERSE_CAKE_SLICE,
-            MSBlocks.FUCHSIA_CAKE, ESItems.FUCHSIA_CAKE_SLICE,
-            MSBlocks.NEGATIVE_CAKE, ESItems.NEGATIVE_CAKE_SLICE,
-            MSBlocks.CARROT_CAKE, ESItems.CARROT_CAKE_SLICE,
-            MSBlocks.CHOCOLATEY_CAKE, ESItems.CHOCOLATEY_CAKE_SLICE);
+    private static final Map<Holder<Block>, Holder<Item>> SUPPORTED_CAKES = Map.ofEntries(
+            Map.entry(MSBlocks.APPLE_CAKE, ESItems.APPLE_CAKE_SLICE),
+            Map.entry(MSBlocks.BLUE_CAKE, ESItems.BLUE_CAKE_SLICE),
+            Map.entry(MSBlocks.COLD_CAKE, ESItems.COLD_CAKE_SLICE),
+            Map.entry(MSBlocks.RED_CAKE, ESItems.RED_CAKE_SLICE),
+            Map.entry(MSBlocks.HOT_CAKE, ESItems.HOT_CAKE_SLICE),
+            Map.entry(MSBlocks.REVERSE_CAKE, ESItems.REVERSE_CAKE_SLICE),
+            Map.entry(MSBlocks.FUCHSIA_CAKE, ESItems.FUCHSIA_CAKE_SLICE),
+            Map.entry(MSBlocks.NEGATIVE_CAKE, ESItems.NEGATIVE_CAKE_SLICE),
+            Map.entry(MSBlocks.CARROT_CAKE, ESItems.CARROT_CAKE_SLICE),
+            Map.entry(MSBlocks.CHOCOLATEY_CAKE, ESItems.CHOCOLATEY_CAKE_SLICE),
+            Map.entry(ESBlocks.LEMON_CAKE, ESItems.LEMON_CAKE_SLICE));
 
     /**
      * Handles cake cutting using either items tagged with farmer's delight knives

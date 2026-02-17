@@ -11,7 +11,9 @@ import com.medsal15.blocks.machine.ChargerBlock;
 import com.medsal15.blocks.machine.DowelStorageBlock;
 import com.medsal15.blocks.machine.PrinterBlock;
 import com.medsal15.blocks.machine.ReactorBlock;
+import com.mraof.minestuck.block.SimpleCakeBlock;
 
+import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
@@ -44,6 +46,11 @@ public final class ESBlocks {
             .registerBlock("mortal_temptation_block", MortalTemptationBlock::new,
                     BlockBehaviour.Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.0F)
                             .noOcclusion());
+    public static final DeferredBlock<Block> LEMON_CAKE = BLOCKS.register("lemon_cake",
+            () -> new SimpleCakeBlock(ofFullCopy(Blocks.CAKE), 2, 0.5f, player -> {
+                player.level().explode(null, player.getX(), player.getY(), player.getZ(), .1F,
+                        ExplosionInteraction.NONE);
+            }));
     // #endregion Food
 
     public static final DeferredBlock<CardOreBlock> CARD_ORE = BLOCKS.registerBlock("card_ore", CardOreBlock::new,

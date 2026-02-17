@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:apple_cake"
+  },
+  "input2": {
+    "item": "extrastuck:lemonnade"
+  },
+  "mode": "and",
+  "output": "extrastuck:lemon_cake"
+}

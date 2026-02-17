@@ -1,0 +1,44 @@
+{
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#bottom"
+        },
+        "east": {
+          "texture": "#side"
+        },
+        "north": {
+          "texture": "#side"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "west": {
+          "texture": "#inside"
+        }
+      },
+      "from": [
+        7,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        8,
+        15
+      ]
+    }
+  ],
+  "textures": {
+    "bottom": "extrastuck:block/lemon_cake_bottom",
+    "inside": "extrastuck:block/lemon_cake_inner",
+    "particle": "extrastuck:block/lemon_cake_side",
+    "side": "extrastuck:block/lemon_cake_side",
+    "top": "extrastuck:block/lemon_cake_top"
+  }
+}

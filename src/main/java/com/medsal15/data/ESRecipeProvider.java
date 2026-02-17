@@ -1457,6 +1457,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.APPLE_CAKE_SLICE, 7)
                 .unlockedBy("has_apple_cake_slice", has(ESItems.APPLE_CAKE_SLICE))
                 .save(output, modid("shapeless/apple_cake"));
+        SourceGristCostBuilder.of(ESItems.APPLE_CAKE_SLICE)
+                .source(MSItems.APPLE_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.BLUE_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.BLUE_CAKE_SLICE.get(), 7)
@@ -1468,6 +1472,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.BLUE_CAKE_SLICE, 7)
                 .unlockedBy("has_blue_cake_slice", has(ESItems.BLUE_CAKE_SLICE))
                 .save(output, modid("shapeless/blue_cake"));
+        SourceGristCostBuilder.of(ESItems.BLUE_CAKE_SLICE)
+                .source(MSItems.BLUE_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.COLD_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.COLD_CAKE_SLICE.get(), 7)
@@ -1482,6 +1490,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.COLD_CAKE_SLICE, 7)
                 .unlockedBy("has_cold_cake_slice", has(ESItems.COLD_CAKE_SLICE))
                 .save(output, modid("shapeless/cold_cake"));
+        SourceGristCostBuilder.of(ESItems.COLD_CAKE_SLICE)
+                .source(MSItems.COLD_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.RED_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.RED_CAKE_SLICE.get(), 7)
@@ -1496,6 +1508,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.RED_CAKE_SLICE, 7)
                 .unlockedBy("has_red_cake_slice", has(ESItems.RED_CAKE_SLICE))
                 .save(output, modid("shapeless/red_cake"));
+        SourceGristCostBuilder.of(ESItems.RED_CAKE_SLICE)
+                .source(MSItems.RED_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.HOT_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.HOT_CAKE_SLICE.get(), 7)
@@ -1513,6 +1529,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.HOT_CAKE_SLICE, 7)
                 .unlockedBy("has_hot_cake_slice", has(ESItems.HOT_CAKE_SLICE))
                 .save(output, modid("shapeless/hot_cake"));
+        SourceGristCostBuilder.of(ESItems.HOT_CAKE_SLICE)
+                .source(MSItems.HOT_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.REVERSE_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.REVERSE_CAKE_SLICE.get(), 7)
@@ -1527,6 +1547,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.REVERSE_CAKE_SLICE, 7)
                 .unlockedBy("has_reverse_cake_slice", has(ESItems.REVERSE_CAKE_SLICE))
                 .save(output, modid("shapeless/reverse_cake"));
+        SourceGristCostBuilder.of(ESItems.REVERSE_CAKE_SLICE)
+                .source(MSItems.REVERSE_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.FUCHSIA_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.FUCHSIA_CAKE_SLICE.get(), 7)
@@ -1535,6 +1559,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.FUCHSIA_CAKE_SLICE, 7)
                 .unlockedBy("has_fuchsia_cake_slice", has(ESItems.FUCHSIA_CAKE_SLICE))
                 .save(output, modid("shapeless/fuchsia_cake"));
+        SourceGristCostBuilder.of(ESItems.FUCHSIA_CAKE_SLICE)
+                .source(MSItems.FUCHSIA_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.NEGATIVE_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.NEGATIVE_CAKE_SLICE.get(), 7)
@@ -1546,6 +1574,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.NEGATIVE_CAKE_SLICE, 7)
                 .unlockedBy("has_negative_cake_slice", has(ESItems.NEGATIVE_CAKE_SLICE))
                 .save(output, modid("shapeless/negative_cake"));
+        SourceGristCostBuilder.of(ESItems.NEGATIVE_CAKE_SLICE)
+                .source(MSItems.NEGATIVE_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.CARROT_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.CARROT_CAKE_SLICE.get(), 7)
@@ -1557,6 +1589,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.CARROT_CAKE_SLICE, 7)
                 .unlockedBy("has_carrot_cake_slice", has(ESItems.CARROT_CAKE_SLICE))
                 .save(output, modid("shapeless/carrot_cake"));
+        SourceGristCostBuilder.of(ESItems.CARROT_CAKE_SLICE)
+                .source(MSItems.CARROT_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.CHOCOLATEY_CAKE),
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.CHOCOLATEY_CAKE_SLICE.get(), 7)
@@ -1568,6 +1604,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.CHOCOLATEY_CAKE_SLICE, 7)
                 .unlockedBy("has_chocolatey_cake_slice", has(ESItems.CHOCOLATEY_CAKE_SLICE))
                 .save(output, modid("shapeless/chocolatey_cake"));
+        SourceGristCostBuilder.of(ESItems.CHOCOLATEY_CAKE_SLICE)
+                .source(MSItems.CHOCOLATEY_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CombinationRecipeBuilder.of(ESItems.MOON_CAKE_SLICE)
                 .input(ModItems.CAKE_SLICE.get()).or().input(ItemTags.BEDS)
@@ -1576,6 +1616,25 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESItems.MOON_CAKE_SLICE, 7)
                 .unlockedBy("has_moon_cake_slice", has(ESItems.MOON_CAKE_SLICE))
                 .save(output, modid("shapeless/moon_cake"));
+        SourceGristCostBuilder.of(ESItems.MOON_CAKE_SLICE)
+                .source(MSItems.MOON_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ESItems.LEMON_CAKE),
+                Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.LEMON_CAKE_SLICE.get(), 7)
+                .build(fdOutput, modid("lemon_cake"));
+        CombinationRecipeBuilder.of(ESItems.LEMON_CAKE_SLICE)
+                .input(ESItems.APPLE_CAKE_SLICE).and().input(ESItems.LEMONNADE)
+                .build(fdOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ESItems.LEMON_CAKE)
+                .requires(ESItems.LEMON_CAKE_SLICE, 7)
+                .unlockedBy("has_lemon_cake_slice", has(ESItems.LEMON_CAKE_SLICE))
+                .save(output, modid("shapeless/lemon_cake"));
+        SourceGristCostBuilder.of(ESItems.LEMON_CAKE_SLICE)
+                .source(ESItems.LEMON_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
         // #endregion Cake Slice
 
         CookingPotRecipeBuilder.cookingPotRecipe(ESItems.MORTAL_TEMPTATION_BLOCK, 1, 200, .5F, Items.CAULDRON)
@@ -1647,6 +1706,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.SPAM)
                 .grist(GristTypes.IODINE, 8).grist(GristTypes.RUST, 4).grist(GristTypes.CHALK, 2)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.LEMON_CAKE)
+                .input(MSItems.APPLE_CAKE).and().input(ESItems.LEMONNADE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.LEMON_CAKE)
+                .grist(GristTypes.AMBER, 21).grist(GristTypes.MARBLE, 11).grist(GristTypes.SULFUR, 9)
                 .build(output);
     }
 

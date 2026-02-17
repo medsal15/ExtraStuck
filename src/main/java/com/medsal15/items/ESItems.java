@@ -53,7 +53,7 @@ import com.medsal15.items.food.HotCakeSlice;
 import com.medsal15.items.food.LootFood;
 import com.medsal15.items.food.MortalTemptation;
 import com.medsal15.items.food.RocketJump;
-import com.medsal15.items.food.SourBombCandy;
+import com.medsal15.items.food.ExplosiveFood;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.AttributeWeapon;
@@ -863,6 +863,8 @@ public final class ESItems {
     public static final DeferredItem<Item> MOON_CAKE_SLICE = ITEMS.registerItem("moon_cake_slice",
             p -> new Item(p.food(ESFoods.MOON_CAKE_SLICE).component(ESDataComponents.MOON_CAKE_SLICE_COLOR,
                     MoonCakeSliceColor.DUAL)));
+    public static final DeferredItem<Item> LEMON_CAKE_SLICE = ITEMS.registerItem("lemon_cake_slice",
+            p -> new ExplosiveFood(p.food(ESFoods.LEMON_CAKE_SLICE)));
     // #endregion Cake Slices
     public static final DeferredItem<BlockItem> MORTAL_TEMPTATION_BLOCK = ITEMS
             .registerSimpleBlockItem(ESBlocks.MORTAL_TEMPTATION_BLOCK);
@@ -874,12 +876,14 @@ public final class ESItems {
     public static final DeferredItem<Item> HOME_DONUT = ITEMS.registerItem("home_donut",
             p -> new HomeDonut(p.food(ESFoods.HOME_DONUT)));
     public static final DeferredItem<Item> SOUR_BOMB_CANDY = ITEMS.registerItem("sour_bomb_candy",
-            p -> new SourBombCandy(p.food(ESFoods.SOUR_BOMB_CANDY)));
+            p -> new ExplosiveFood(p.food(ESFoods.SOUR_BOMB_CANDY)));
     public static final DeferredItem<Item> COSMIC_SPOREO = ITEMS.registerItem("cosmic_sporeo",
             p -> new Item(p.food(ESFoods.COSMIC_SPOREO)));
     public static final DeferredItem<Item> SPAM = ITEMS.registerItem("spam", p -> new LootFood(
             p.food(ESFoods.SPAM).component(ESDataComponents.GIFT_TABLE, ESLootSubProvider.SPAM_LOOT_TABLE),
             Component.translatable(ESLangProvider.SPAM_FOOD)));
+    public static final DeferredItem<BlockItem> LEMON_CAKE = ITEMS.registerSimpleBlockItem(ESBlocks.LEMON_CAKE,
+            new Item.Properties().stacksTo(1));
     // #endregion Food
 
     // #region Drinks
@@ -1481,6 +1485,8 @@ public final class ESItems {
         list.add(CARROT_CAKE_SLICE);
         list.add(CHOCOLATEY_CAKE_SLICE);
         list.add(MOON_CAKE_SLICE);
+        list.add(LEMON_CAKE);
+        list.add(LEMON_CAKE_SLICE);
         list.add(MORTAL_TEMPTATION_BLOCK);
         list.add(MORTAL_TEMPTATION);
         list.add(CANDY_CRUNCH);
