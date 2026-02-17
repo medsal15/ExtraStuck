@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "irons_spellbooks:music_disc_flame_still_burns"
+  },
+  "input2": {
+    "item": "minestuck:cassette_player"
+  },
+  "mode": "or",
+  "output": "extrastuck:cassette_flame_still_burns"
+}

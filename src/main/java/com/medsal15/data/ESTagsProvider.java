@@ -208,6 +208,10 @@ public final class ESTagsProvider {
                 tag(ESTags.Items.ACTIVE_VISION).add(vision.get());
             }
 
+            for (DeferredItem<Item> cassette : ESItems.getCassettes()) {
+                tag(MSTags.Items.CASSETTES).add(cassette.get());
+            }
+
             tag(ESTags.Items.AMMO).addTag(ESTags.Items.AMMO_HANDGUN);
             tag(ESTags.Items.AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
             tag(ESTags.Items.SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get(), ESItems.SALESWOMAN_GLASSES.get());

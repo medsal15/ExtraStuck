@@ -183,6 +183,14 @@ public final class ESISSItems {
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(37))));
     // #endregion Armory
 
+    // TODO add cassette data with next update
+    public static final DeferredItem<Item> CASSETTE_DEAD_KING_LULLABY = ITEMS.register("cassette_dead_king_lullaby",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> CASSETTE_FLAME_STILL_BURNS = ITEMS.register("cassette_flame_still_burns",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> CASSETTE_WHISPERS_OF_ICE = ITEMS.register("cassette_whispers_of_ice",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
     // TODO thorn ring (strong ice bonus + health malus, unremovable)
     // * will probably require a pair of classes for curios loading/missing
 
@@ -280,6 +288,16 @@ public final class ESISSItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(COSMIC_PLAGUE_BOOTS);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getCassettes() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(CASSETTE_DEAD_KING_LULLABY);
+        list.add(CASSETTE_FLAME_STILL_BURNS);
+        list.add(CASSETTE_WHISPERS_OF_ICE);
 
         return list;
     }

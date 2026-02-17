@@ -1033,6 +1033,9 @@ public final class ESItems {
         for (DeferredItem<Item> vision : ESItems.getVisions()) {
             output.accept(vision.get());
         }
+        for (DeferredItem<Item> cassette : ESItems.getCassettes()) {
+            output.accept(cassette);
+        }
 
         for (DeferredItem<Item> item : ESItems.getShields()) {
             output.accept(item.get());
@@ -1127,6 +1130,14 @@ public final class ESItems {
         list.add(FIELD_CHARGER);
 
         list.addAll(getShovels());
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getCassettes() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            list.addAll(ESISSItems.getCassettes());
+        }
         return list;
     }
 

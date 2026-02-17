@@ -2554,6 +2554,32 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 25).grist(GristTypes.RUBY, 4)
                 .grist(GristTypes.GOLD, 8).grist(GristTypes.TAR, 15)
                 .build(gristCosts, modid("disc_fragment_flame_still_burns").withPrefix(pathPrefix));
+        GristCostRecipeBuilder.of(ItemRegistry.MUSIC_DISC_WHISPERS_OF_ICE.get())
+                .grist(GristTypes.BUILD, 15).grist(GristTypes.CAULK, 8)
+                .grist(GristTypes.CHALK, 5).grist(GristTypes.DIAMOND, 5)
+                .build(gristCosts, modid("music_disc_whispers_of_ice").withPrefix(pathPrefix));
+
+        CombinationRecipeBuilder.of(ESISSItems.CASSETTE_DEAD_KING_LULLABY)
+                .input(ItemRegistry.MUSIC_DISC_DEAD_KING_LULLABY.get()).or().input(MSItems.CASSETTE_PLAYER)
+                .build(output.withConditions(ISS_LOADED));
+        GristCostRecipeBuilder.of(ESISSItems.CASSETTE_DEAD_KING_LULLABY)
+                .grist(GristTypes.BUILD, 15).grist(GristTypes.CAULK, 8)
+                .grist(GristTypes.IODINE, 5).grist(GristTypes.RUST, 5)
+                .build(output.withConditions(ISS_LOADED));
+        CombinationRecipeBuilder.of(ESISSItems.CASSETTE_FLAME_STILL_BURNS)
+                .input(ItemRegistry.MUSIC_DISC_FLAME_STILL_BURNS.get()).or().input(MSItems.CASSETTE_PLAYER)
+                .build(output.withConditions(ISS_LOADED));
+        GristCostRecipeBuilder.of(ESISSItems.CASSETTE_FLAME_STILL_BURNS)
+                .grist(GristTypes.BUILD, 15).grist(GristTypes.CAULK, 8)
+                .grist(GristTypes.GOLD, 5).grist(GristTypes.GARNET, 5)
+                .build(output.withConditions(ISS_LOADED));
+        CombinationRecipeBuilder.of(ESISSItems.CASSETTE_WHISPERS_OF_ICE)
+                .input(ItemRegistry.MUSIC_DISC_WHISPERS_OF_ICE.get()).or().input(MSItems.CASSETTE_PLAYER)
+                .build(output.withConditions(ISS_LOADED));
+        GristCostRecipeBuilder.of(ESISSItems.CASSETTE_WHISPERS_OF_ICE)
+                .grist(GristTypes.BUILD, 15).grist(GristTypes.CAULK, 8)
+                .grist(GristTypes.CHALK, 5).grist(GristTypes.DIAMOND, 5)
+                .build(output.withConditions(ISS_LOADED));
     }
 
     private ICondition not(ICondition condition) {

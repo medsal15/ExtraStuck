@@ -37,6 +37,9 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.BEE_LARVA.get());
         basicItem(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
         basicItem(ESItems.COSMIC_PLAGUE_SPORE.get());
+        basicItem(ESISSItems.CASSETTE_DEAD_KING_LULLABY.get());
+        basicItem(ESISSItems.CASSETTE_FLAME_STILL_BURNS.get());
+        basicItem(ESISSItems.CASSETTE_WHISPERS_OF_ICE.get());
     }
 
     private void registerShields() {

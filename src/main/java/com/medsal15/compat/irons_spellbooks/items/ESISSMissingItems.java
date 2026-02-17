@@ -127,6 +127,19 @@ public final class ESISSMissingItems {
                 () -> new MissingModItem(new Item.Properties().stacksTo(1),
                         "Iron's Spells & Spellbooks",
                         "irons_spellbooks"));
+
+        ITEMS.register("cassette_dead_king_lullaby",
+                () -> new MissingModItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE),
+                        "Iron's Spells & Spellbooks",
+                        "irons_spellbooks"));
+        ITEMS.register("cassette_flame_still_burns",
+                () -> new MissingModItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE),
+                        "Iron's Spells & Spellbooks",
+                        "irons_spellbooks"));
+        ITEMS.register("cassette_whispers_of_ice",
+                () -> new MissingModItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE),
+                        "Iron's Spells & Spellbooks",
+                        "irons_spellbooks"));
     }
 
     public static Collection<DeferredItem<Item>> getStaves() {
