@@ -66,13 +66,17 @@ public final class ConfigServer {
             .comment("How many charges a radbow gets from an uranium rod")
             .defineInRange("radbow_charge", 10, 1, Integer.MAX_VALUE);
 
-    public static final ConfigValue<List<? extends String>> COSMIC_DIMENSIONS = BUILDER
+    public static final ConfigValue<List<? extends String>> COSMIC_SPORE_DIMENSIONS = BUILDER
             .comment("Determines which dimensions trigger the Cosmic Plague Spore's inventory effect",
-                    "That is, give Poison V for 5 seconds",
                     "This is separate from the \"extrastuck:cosmic_dimension_types\" tag and should only be used in case multiple dimensions use the same type",
                     " Default: []")
-            .defineList("cosmic_spore_dimensions", List.of(), () -> "minecraft:overworld",
+            .defineList("cosmic_spore.dimensions", List.of(), () -> "minecraft:overworld",
                     s -> s instanceof String str && str.contains(":"));
+    public static final ModConfigSpec.BooleanValue COSMIC_SPORE_HARDMODE = BUILDER
+            .comment(
+                    "If enabled, Cosmic Plague Spore will give Cosmic Plague II, which can spread to nearby entities",
+                    "Otherwise, it will only give Poison V")
+            .define("cosmic_spore.hard_mode", false);
 
     public static final ModConfigSpec.BooleanValue COSMIC_PLAGUE_SPREAD = BUILDER
             .comment(
