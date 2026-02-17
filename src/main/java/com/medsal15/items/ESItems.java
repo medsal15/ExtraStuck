@@ -635,7 +635,6 @@ public final class ESItems {
             () -> new MechanicalRadBowItem(new Properties().durability(933).stacksTo(1)));
     // #endregion Crossbows
     // #region Bows
-    // TODO guide
     public static final DeferredItem<Item> BOWWOB = ITEMS.register("bowwob",
             () -> new DoublingBowItem(new Properties().durability(515)));
     // #endregion Bows

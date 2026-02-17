@@ -24,6 +24,8 @@ public final class ESTags {
                 .create(ExtraStuck.modid("interpreters_ignore_byproduct/cutting"));
         public static final TagKey<Item> DROPS_BOONDOLLARS = ItemTags.create(ExtraStuck.modid("drops_boondollars"));
         public static final TagKey<Item> COSMIC_PLAGUE_ARMOR = ItemTags.create(ExtraStuck.modid("armor/cosmic_plague"));
+        public static final TagKey<Item> COSMIC_PLAGUE_CURIOS = ItemTags
+                .create(ExtraStuck.modid("curios/cosmic_plague"));
         public static final TagKey<Item> VISION = ItemTags.create(ExtraStuck.modid("vision"));
         public static final TagKey<Item> ACTIVE_VISION = ItemTags.create(ExtraStuck.modid("vision/active"));
 

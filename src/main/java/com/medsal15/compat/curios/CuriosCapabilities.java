@@ -28,14 +28,14 @@ public class CuriosCapabilities {
             };
 
             public void curioTick(SlotContext slotContext) {
-                tick(slotContext);
+                visionTick(slotContext);
             };
         }, ESItems.VISION_SPACE, ESItems.VISION_TIME, ESItems.VISION_MIND, ESItems.VISION_HEART, ESItems.VISION_HOPE,
                 ESItems.VISION_RAGE, ESItems.VISION_BREATH, ESItems.VISION_BLOOD, ESItems.VISION_LIFE,
                 ESItems.VISION_DOOM, ESItems.VISION_LIGHT, ESItems.VISION_VOID);
     }
 
-    private static void tick(SlotContext context) {
+    private static void visionTick(SlotContext context) {
         if (context.cosmetic())
             return;
 

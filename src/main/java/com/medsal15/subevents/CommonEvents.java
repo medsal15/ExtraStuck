@@ -9,6 +9,7 @@ import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
 import com.medsal15.compat.curios.CuriosCapabilities;
+import com.medsal15.compat.curios.items.ESCuriosUtils;
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
@@ -242,6 +243,9 @@ public final class CommonEvents {
             if (armorStack.is(ESTags.Items.COSMIC_PLAGUE_ARMOR)) {
                 count++;
             }
+        }
+        if (ModList.get().isLoaded("curios")) {
+            count += ESCuriosUtils.countCosmicPlagueImmune(livingEntity);
         }
 
         if (count <= 0)
