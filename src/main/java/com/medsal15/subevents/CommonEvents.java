@@ -1,5 +1,8 @@
 package com.medsal15.subevents;
 
+import java.util.List;
+import java.util.Map;
+
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
@@ -11,6 +14,8 @@ import com.medsal15.compat.curios.items.ESCuriosUtils;
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.components.ESDataComponents;
+import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.guns.GunContainer;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuNext;
@@ -25,17 +30,24 @@ import com.medsal15.network.ESPackets.MastermindReset;
 import com.medsal15.network.ESPackets.SyncBoondollarValues;
 import com.medsal15.network.ESPackets.ToggleMode;
 import com.medsal15.utils.ESTags;
+import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.item.BoondollarsItem;
+import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.MSItems;
+import com.mraof.minestuck.item.weapon.MSToolType;
+import com.mraof.minestuck.item.weapon.WeaponItem;
 import com.mraof.minestuck.network.MSPacket;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -44,6 +56,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CakeBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -52,6 +67,7 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -251,6 +267,87 @@ public final class CommonEvents {
                 && count >= 4
                 && entity.getRandom().nextFloat() < .2) {
             event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onRightClickBlock(final PlayerInteractEvent.RightClickBlock event) {
+        ItemStack stack = event.getEntity().getItemInHand(event.getHand());
+
+        boolean cake_cuttable = stack.is(ESTags.Items.FD_KNIVES);
+        if (stack.getItem() instanceof WeaponItem weaponItem) {
+            List<MSToolType> types = weaponItem.getToolTypes();
+            if (types != null && types.contains(MSItemTypes.KNIFE_TOOL))
+                cake_cuttable = true;
+        }
+        if (cake_cuttable)
+            handleCakeCutting(event);
+    }
+
+    private static final Map<Holder<Block>, Holder<Item>> SUPPORTED_CAKES = Map.of(
+            MSBlocks.APPLE_CAKE, ESItems.APPLE_CAKE_SLICE,
+            MSBlocks.BLUE_CAKE, ESItems.BLUE_CAKE_SLICE,
+            MSBlocks.COLD_CAKE, ESItems.COLD_CAKE_SLICE,
+            MSBlocks.RED_CAKE, ESItems.RED_CAKE_SLICE,
+            MSBlocks.HOT_CAKE, ESItems.HOT_CAKE_SLICE,
+            MSBlocks.REVERSE_CAKE, ESItems.REVERSE_CAKE_SLICE,
+            MSBlocks.FUCHSIA_CAKE, ESItems.FUCHSIA_CAKE_SLICE,
+            MSBlocks.NEGATIVE_CAKE, ESItems.NEGATIVE_CAKE_SLICE,
+            MSBlocks.CARROT_CAKE, ESItems.CARROT_CAKE_SLICE,
+            MSBlocks.CHOCOLATEY_CAKE, ESItems.CHOCOLATEY_CAKE_SLICE);
+
+    /**
+     * Handles cake cutting using either items tagged with farmer's delight knives
+     * or minestuck weapons that are daggers
+     */
+    private static void handleCakeCutting(final PlayerInteractEvent.RightClickBlock event) {
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
+        BlockState state = event.getLevel().getBlockState(pos);
+
+        for (Map.Entry<Holder<Block>, Holder<Item>> entry : SUPPORTED_CAKES.entrySet()) {
+            Holder<Block> block = entry.getKey();
+            if (state.is(block)) {
+                int bites = state.getValue(CakeBlock.BITES);
+                if (bites < 6) {
+                    level.setBlock(pos, state.setValue(CakeBlock.BITES, bites + 1), 3);
+                } else {
+                    level.removeBlock(pos, false);
+                }
+
+                ItemEntity itemEntity = new ItemEntity(level, pos.getX() + (bites * .1), pos.getY() + .2,
+                        pos.getZ() + 0.5,
+                        new ItemStack(entry.getValue()));
+                itemEntity.setDeltaMovement(-.05, 0, 0);
+                level.addFreshEntity(itemEntity);
+                level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
+
+                event.setCancellationResult(InteractionResult.SUCCESS);
+                event.setCanceled(true);
+                break;
+            }
+        }
+
+        // Special handling for moon cake, as there are 3 colors for the slices
+        if (state.is(MSBlocks.MOON_CAKE)) {
+            int bites = state.getValue(CakeBlock.BITES);
+            ItemStack slice = ESItems.MOON_CAKE_SLICE.toStack();
+            if (bites < 6) {
+                level.setBlock(pos, state.setValue(CakeBlock.BITES, bites + 1), 3);
+                slice.set(ESDataComponents.MOON_CAKE_SLICE_COLOR,
+                        bites % 2 == 1 ? MoonCakeSliceColor.DERSE : MoonCakeSliceColor.PROSPIT);
+            } else {
+                level.removeBlock(pos, false);
+            }
+
+            ItemEntity itemEntity = new ItemEntity(level, pos.getX() + (bites * .1), pos.getY() + .2,
+                    pos.getZ() + 0.5, slice);
+            itemEntity.setDeltaMovement(-.05, 0, 0);
+            level.addFreshEntity(itemEntity);
+            level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
+
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            event.setCanceled(true);
         }
     }
 }

@@ -44,6 +44,8 @@ public final class ESTags {
                 .create(ResourceLocation.fromNamespaceAndPath("irons_spellbooks", "staff"));
         public static final TagKey<Item> CURIOS_CURIO = ItemTags
                 .create(ResourceLocation.fromNamespaceAndPath("curios", "curio"));
+        public static final TagKey<Item> FD_KNIVES = ItemTags
+                .create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "tools/knives"));
     }
 
     public static final class Blocks {
