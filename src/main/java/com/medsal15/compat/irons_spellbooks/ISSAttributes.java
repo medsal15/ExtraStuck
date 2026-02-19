@@ -82,7 +82,7 @@ public final class ISSAttributes {
                                 .modid("lich_crown_armor_red"), -.25F,
                                 Operation.ADD_MULTIPLIED_BASE),
                         EquipmentSlotGroup.HEAD)
-                .add(Attributes.ARMOR,
+                .add(Attributes.ARMOR_TOUGHNESS,
                         new AttributeModifier(ExtraStuck
                                 .modid("lich_crown_armor_toughness"), 3F,
                                 Operation.ADD_VALUE),
