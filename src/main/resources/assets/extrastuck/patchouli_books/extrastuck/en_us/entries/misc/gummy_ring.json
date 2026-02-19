@@ -1,0 +1,23 @@
+{
+    "name": "Gummy Ring",
+    "icon": "extrastuck:gummy_ring",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:gummy_ring"
+            },
+            "text": "A delicious ring made of candy.$(br2)If Curios is installed, it can be equipped to ensure underlings always drop candy."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine any candy weapon and String in a Totem Lathe.",
+            "left": "tag:extrastuck:candy_weapon",
+            "mode": "&&",
+            "right": "minecraft:string",
+            "result": "extrastuck:gummy_ring"
+        }
+    ]
+}

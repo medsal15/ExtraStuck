@@ -1,21 +1,8 @@
 {
   "values": [
-    "extrastuck:vision_blank",
-    "extrastuck:vision_dull",
-    "extrastuck:vision_space",
-    "extrastuck:vision_time",
-    "extrastuck:vision_mind",
-    "extrastuck:vision_heart",
-    "extrastuck:vision_hope",
-    "extrastuck:vision_rage",
-    "extrastuck:vision_breath",
-    "extrastuck:vision_blood",
-    "extrastuck:vision_life",
-    "extrastuck:vision_doom",
-    "extrastuck:vision_light",
-    "extrastuck:vision_void",
     "extrastuck:anti_die",
     "extrastuck:perfectly_unique_spellbook",
+    "#extrastuck:vision",
     {
       "id": "irons_spellbooks:divine_soulshard",
       "required": false

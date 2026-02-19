@@ -53,6 +53,7 @@ import com.medsal15.items.food.HotCakeSlice;
 import com.medsal15.items.food.LootFood;
 import com.medsal15.items.food.MortalTemptation;
 import com.medsal15.items.food.RocketJump;
+import com.medsal15.items.food.ESFoods;
 import com.medsal15.items.food.ExplosiveFood;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
@@ -884,6 +885,8 @@ public final class ESItems {
             Component.translatable(ESLangProvider.SPAM_FOOD)));
     public static final DeferredItem<BlockItem> LEMON_CAKE = ITEMS.registerSimpleBlockItem(ESBlocks.LEMON_CAKE,
             new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> GUMMY_RING = ITEMS.registerItem("gummy_ring",
+            p -> new Item(p.stacksTo(1).food(ESFoods.GUMMY_RING)));
     // #endregion Food
 
     // #region Drinks
@@ -1494,6 +1497,7 @@ public final class ESItems {
         list.add(SOUR_BOMB_CANDY);
         list.add(COSMIC_SPOREO);
         list.add(SPAM);
+        list.add(GUMMY_RING);
         return list;
     }
 

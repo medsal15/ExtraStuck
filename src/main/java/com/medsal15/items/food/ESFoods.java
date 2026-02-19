@@ -1,4 +1,4 @@
-package com.medsal15.items;
+package com.medsal15.items.food;
 
 import com.medsal15.mobeffects.ESMobEffects;
 
@@ -92,5 +92,8 @@ public final class ESFoods {
             .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 100), .1F)
             .build();
     public static final FoodProperties SPAM = new FoodProperties.Builder().nutrition(4).saturationModifier(.6F)
+            .fast().alwaysEdible().build();
+    public static final FoodProperties GUMMY_RING = new FoodProperties.Builder().nutrition(10).saturationModifier(.3F)
+            .effect(() -> new MobEffectInstance(MobEffects.SATURATION, 100), 1)
             .fast().alwaysEdible().build();
 }

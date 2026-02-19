@@ -33,6 +33,12 @@ public class CuriosCapabilities {
         }, ESItems.VISION_SPACE, ESItems.VISION_TIME, ESItems.VISION_MIND, ESItems.VISION_HEART, ESItems.VISION_HOPE,
                 ESItems.VISION_RAGE, ESItems.VISION_BREATH, ESItems.VISION_BLOOD, ESItems.VISION_LIFE,
                 ESItems.VISION_DOOM, ESItems.VISION_LIGHT, ESItems.VISION_VOID);
+
+        event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+            public ItemStack getStack() {
+                return stack;
+            };
+        }, ESItems.GUMMY_RING);
     }
 
     private static void visionTick(SlotContext context) {

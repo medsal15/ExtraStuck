@@ -14,6 +14,7 @@ import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.fluid.MSFluids;
+import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
 
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
@@ -44,6 +45,7 @@ import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
+import top.theillusivec4.curios.api.CuriosTags;
 
 public final class ESTagsProvider {
     public static void gatherData(DataGenerator gen, PackOutput output,
@@ -200,8 +202,7 @@ public final class ESTagsProvider {
             }
 
             for (DeferredItem<Item> vision : ESItems.getVisions()) {
-                tag(MSTags.Items.UNREADABLE).add(vision.get());
-                tag(ESTags.Items.CURIOS_CURIO).add(vision.get());
+                tag(CuriosTags.CURIO).add(vision.get());
                 tag(ESTags.Items.VISION).add(vision.get());
             }
             for (DeferredItem<Item> vision : ESItems.getActiveVisions()) {
@@ -221,6 +222,12 @@ public final class ESTagsProvider {
             tag(ESTags.Items.COSMIC_PLAGUE_ARMOR).add(ESISSItems.COSMIC_PLAGUE_HELMET.get(),
                     ESISSItems.COSMIC_PLAGUE_CHESTPLATE.get(), ESISSItems.COSMIC_PLAGUE_LEGGINGS.get(),
                     ESISSItems.COSMIC_PLAGUE_BOOTS.get());
+            tag(ESTags.Items.CANDY_WEAPONS).add(MSItems.CINNAMON_SWORD.get(), MSItems.CANDY_KEY.get(),
+                    MSItems.CANDY_BATTLEAXE.get(), MSItems.STEEL_EDGE_CANDYCUTTER.get(), MSItems.CAKESAW.get(),
+                    MSItems.LANCELOTS_LOLLY.get(), MSItems.CANDY_FAN.get(), MSItems.CANDY_SICKLE.get(),
+                    MSItems.MARASCHINO_CHERRY_SCYTHE.get(), MSItems.TOFFEE_CLUB.get(), MSItems.CANDY_CANE.get(),
+                    MSItems.SHARP_CANDY_CANE.get(), MSItems.CANDY_FORK.get(), ESItems.JAWBITER.get(),
+                    ESItems.CAN_DIE.get());
 
             tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 
@@ -238,6 +245,7 @@ public final class ESTagsProvider {
             tag(ItemTags.BREAKS_DECORATED_POTS).add(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
             tag(Tags.Items.TOOLS_BRUSH).add(ESItems.OLD_BRUSH.get(), ESItems.BROOM.get());
             tag(Tags.Items.TOOLS_IGNITER).add(ESItems.LEAFBURNER.get());
+            tag(CuriosTags.RING).add(ESItems.GUMMY_RING.get());
 
             tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get());
 
@@ -255,6 +263,7 @@ public final class ESTagsProvider {
             tag(ItemTags.BOOKSHELF_BOOKS).add(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
 
             tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get(), ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK.get())
+                    .addTag(ESTags.Items.VISION)
                     .addOptional(ItemRegistry.DIVINE_SOULSHARD.getId()).addOptional(ItemRegistry.PYRIUM_INGOT.getId())
                     .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())
                     .addOptional(ItemRegistry.ELDRITCH_PAGE.getId());

@@ -272,6 +272,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         // Misc
         basicItem(ESItems.MAGNET.get());
         basicItem(ESItems.FIELD_CHARGER.get());
+        basicItem(ESItems.GUMMY_RING.get());
         // Shovels
         basicItem(ESItems.GOLD_DIGGER.get());
         // Visions

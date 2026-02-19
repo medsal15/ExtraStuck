@@ -11,6 +11,7 @@ import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.curios.CuriosCapabilities;
+import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.curios.items.ESCuriosUtils;
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESEnergyStorage;
@@ -124,19 +125,23 @@ public final class CommonEvents {
 
     @SubscribeEvent
     public static void onDeath(final LivingDeathEvent event) {
-        handleAntiDie(event);
-        if (event.isCanceled())
+        if (handleAntiDie(event))
             return;
 
         dropBoondollars(event);
+        if (ModList.get().isLoaded("curios")) {
+            ESCuriosEventsHandlers.handleGummyRing(event);
+        }
     }
 
     /**
      * Prevents death when holding an Anti Die
      * <p>
      * Heals from 1 to 6 (both inclusive) health, cancelling the event
+     *
+     * @return <code>true</code> if the event is cancelled
      */
-    private static void handleAntiDie(final LivingDeathEvent event) {
+    private static boolean handleAntiDie(final LivingDeathEvent event) {
         LivingEntity entity = event.getEntity();
 
         InteractionHand hand;
@@ -146,7 +151,7 @@ public final class CommonEvents {
             hand = InteractionHand.OFF_HAND;
         } else {
             // Not holding anti die
-            return;
+            return false;
         }
 
         // Prevent death and consume anti die
@@ -158,6 +163,7 @@ public final class CommonEvents {
         event.setCanceled(true);
         entity.setItemInHand(hand, ItemStack.EMPTY);
         entity.setHealth(entity.getRandom().nextFloat() * 5 + 1);
+        return true;
     }
 
     /**

@@ -584,6 +584,8 @@ public final class ESLangProvider extends LanguageProvider {
         add(GRIST_DETECTOR_ANY, "any");
         add(GRIST_DETECTOR_COMMON, "common");
         add(GRIST_DETECTOR_UNCOMMON, "uncommon");
+        addItem(ESItems.GUMMY_RING, "Gummy Ring");
+        addItemTooltip(ESItems.GUMMY_RING, "Never go hungry");
         // Shovels
         addItem(ESItems.GOLD_DIGGER, "Gold Digger");
         addItemTooltip(ESItems.GOLD_DIGGER, "There's money everywhere!");
@@ -785,8 +787,10 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.Items.IGNORE_BYPRODUCT_CUTTING, "Ignored Cutting Byproducts");
         add(ESTags.Items.DROPS_BOONDOLLARS, "Drops Boondollars on Kill");
         add(ESTags.Items.COSMIC_PLAGUE_ARMOR, "Cosmic Plague Armor");
+        add(ESTags.Items.COSMIC_PLAGUE_CURIOS, "Cosmic Plague Curios");
         add(ESTags.Items.VISION, "Visions");
         add(ESTags.Items.ACTIVE_VISION, "Activated Visions");
+        add(ESTags.Items.CANDY_WEAPONS, "Candy Weapons");
 
         add(ESTags.Blocks.PRYABLE, "Pryable with the Iron Crowbar");
 

@@ -1347,11 +1347,19 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.VISION_BLANK)
                 // As one could expect, these are in reference to Genshin Impact's release date
-                // (28/10) and first beta test (21/6, but the other way)
+                // (28/10) and first beta test (21/6, but the US way)
                 .grist(GristTypes.BUILD, 2810)
                 .grist(GristTypes.URANIUM, 621)
                 // And the 12 aspects of course!
                 .grist(GristTypes.ZILLIUM, 12)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.GUMMY_RING)
+                .input(ESTags.Items.CANDY_WEAPONS).and().input(Items.STRING)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.GUMMY_RING)
+                .grist(GristTypes.IODINE, 34).grist(GristTypes.AMBER, 23).grist(GristTypes.CHALK, 12)
+                .grist(GristTypes.RUST, 3).grist(GristTypes.GOLD, 2).grist(GristTypes.RUBY, 1)
                 .build(output);
     }
 
