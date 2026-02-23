@@ -421,6 +421,8 @@
   "item.extrastuck.radbow": "Radbow",
   "item.extrastuck.radbow.tooltip": "Silent, deadly, and quite radioactive!",
   "item.extrastuck.radburger": "Big Rad",
+  "item.extrastuck.rainbow_bow": "Rainbow Bow",
+  "item.extrastuck.rainbow_bow.tooltip": "A unique flavor for each arrow",
   "item.extrastuck.rainbow_d7": "Rainbow D7",
   "item.extrastuck.red_cake_slice": "Slice of Red Cake",
   "item.extrastuck.return_to_sender": "Return to Sender",
@@ -522,5 +524,6 @@
   "tag.item.extrastuck.vision": "Visions",
   "tag.item.extrastuck.vision.active": "Activated Visions",
   "tag.mob_effect.extrastuck.cosmic_plague.immunity": "Prevented with cosmic plague armor",
-  "tag.mob_effect.extrastuck.cosmic_plague.partial_immunity": "Sometimes prevented with cosmic plague armor"
+  "tag.mob_effect.extrastuck.cosmic_plague.partial_immunity": "Sometimes prevented with cosmic plague armor",
+  "tag.mob_effect.extrastuck.rainbowbow_effects": "Applied with Rainbow Bow"
 }

@@ -8,8 +8,10 @@ import com.mraof.minestuck.player.EnumAspect;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -213,9 +215,38 @@ public final class ESItemModelProvider extends ItemModelProvider {
         knifeWeapon(ESISSItems.AMETHYST_BACKSTABBER);
     }
 
+    private void bowWeapon(DeferredItem<Item> bow) {
+        String path = bow.getId().getPath().toString();
+        ItemModelBuilder builder = withExistingParent(path, "item/generated")
+                .texture("layer0", ExtraStuck.modid("item/" + path));
+        ModelBuilder<ItemModelBuilder>.TransformsBuilder transforms = builder.transforms();
+        transforms.transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(-80, 260, -40)
+                .translation(-1, -2, 2.5f).scale(.9f);
+        transforms.transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND).rotation(-80, -280, 40)
+                .translation(-1, -2, 2.5f).scale(.9f);
+        transforms.transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND).rotation(0, -90, 25)
+                .translation(1.13f, 3.2f, 1.13f).scale(.68f);
+        transforms.transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND).rotation(0, 90, -25)
+                .translation(1.13f, 3.2f, 1.13f).scale(.68f);
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
+                .model(withExistingParent(path + "_pulling_0", "item/bow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_pulling_0")));
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), .65f)
+                .model(withExistingParent(path + "_pulling_1", "item/bow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_pulling_1")));
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), .9f)
+                .model(withExistingParent(path + "_pulling_2", "item/bow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_pulling_2")));
+    }
+
     private void registerRangedWeapons() {
         handheldItem(ESItems.INCOMPLETE_MECHANICAL_RADBOW.get());
         handheldItem(ESItems.HANDGUN.get());
+
+        bowWeapon(ESItems.BOWWOB);
+        bowWeapon(ESItems.RAINBOW_BOW);
 
         handheldItem(ESItems.BEENADE.get());
         handheldItem(ESItems.LEMONNADE.get());

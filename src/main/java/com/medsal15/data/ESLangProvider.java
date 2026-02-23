@@ -411,6 +411,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.MECHANICAL_RADBOW, "An engineer's weapon of choice");
         // Bows
         addItem(ESItems.BOWWOB, "BowwoB");
+        addItem(ESItems.RAINBOW_BOW, "Rainbow Bow");
+        addItemTooltip(ESItems.RAINBOW_BOW, "A unique flavor for each arrow");
         // Throwables
         addItem(ESItems.BEENADE, "Beenade");
         add(BEENADE_LOADED, "It buzzes softly");
@@ -799,6 +801,7 @@ public final class ESLangProvider extends LanguageProvider {
 
         add(ESTags.MobEffects.COSMIC_PLAGUE_IMMUNITY, "Prevented with cosmic plague armor");
         add(ESTags.MobEffects.COSMIC_PLAGUE_PARTIAL_IMMUNITY, "Sometimes prevented with cosmic plague armor");
+        add(ESTags.MobEffects.RAINBOW_BOW_EFFECTS, "Applied with Rainbow Bow");
 
         add(ESTags.DimensionTypes.COSMIC_DIMENSION_TYPES, "Dimensions triggering the Cosmic Plague Spore effect");
     }

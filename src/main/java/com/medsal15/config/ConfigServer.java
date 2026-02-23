@@ -129,6 +129,10 @@ public final class ConfigServer {
     public static final ConfigValue<Integer> VISION_RUNG = BUILDER
             .comment("Minimum rung needed to attune a vision", "Set to -1 for no minimum")
             .define("vision.rung", -1);
+    public static final ModConfigSpec.BooleanValue RAINBOW_WHITELIST = BUILDER
+            .comment(
+                    "If true, the Rainbow Bow will pick effects from the \"extrastuck:rainbowbow_effects\" tag instead of being fully random")
+            .define("rainbowbow_whitelist", false);
 
     public static final ConfigValue<Integer> ISS_CREATIVE_SHOCK_SURVIVAL = BUILDER
             .comment("Which amplifier of Creative Shock should prevent spell casting for non-creative players",

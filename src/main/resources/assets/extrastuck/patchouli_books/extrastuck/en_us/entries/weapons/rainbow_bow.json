@@ -1,0 +1,23 @@
+{
+    "name": "Rainbow Bow",
+    "icon": "extrastuck:rainbow_bow",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:rainbow_bow"
+            },
+            "text": "It's Pride Month (is it? I'm just a book), so you know what that means.$(br2)$(3)$(l)Special:$() Normal arrows shot with this bow will be converted to tipped arrows with a random effect but cannot be picked up."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Bow and a Bucket of Paint in a Totem Lathe.",
+            "left": "minecraft:bow",
+            "mode": "&&",
+            "right": "minestuck:water_colors_bucket",
+            "result": "extrastuck:rainbow_bow"
+        }
+    ]
+}

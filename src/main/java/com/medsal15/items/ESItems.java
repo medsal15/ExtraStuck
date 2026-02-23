@@ -41,6 +41,7 @@ import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.armor.SalesmanGogglesItem;
 import com.medsal15.items.armor.SaleswomanGogglesItem;
 import com.medsal15.items.bows.DoublingBowItem;
+import com.medsal15.items.bows.RainbowBowItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
 import com.medsal15.items.components.MoonCakeSliceColor;
@@ -638,6 +639,13 @@ public final class ESItems {
     // #region Bows
     public static final DeferredItem<Item> BOWWOB = ITEMS.register("bowwob",
             () -> new DoublingBowItem(new Properties().durability(515)));
+    public static final DeferredItem<Item> RAINBOW_BOW = ITEMS.register("rainbow_bow",
+            () -> new RainbowBowItem(new Properties().durability(789)));
+    /**
+     * TODO Make It Rain (bow)
+     * special arrow that disappears on hit
+     * -> summons multiple of the real arrow in the air above
+     */
     // #endregion Bows
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
@@ -1364,6 +1372,7 @@ public final class ESItems {
     public static Collection<DeferredItem<Item>> getBows() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(BOWWOB);
+        list.add(RAINBOW_BOW);
         return list;
     }
 

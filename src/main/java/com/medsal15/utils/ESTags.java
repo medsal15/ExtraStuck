@@ -73,6 +73,7 @@ public final class ESTags {
     public static final class MobEffects {
         public static final TagKey<MobEffect> COSMIC_PLAGUE_IMMUNITY = create("cosmic_plague/immunity");
         public static final TagKey<MobEffect> COSMIC_PLAGUE_PARTIAL_IMMUNITY = create("cosmic_plague/partial_immunity");
+        public static final TagKey<MobEffect> RAINBOW_BOW_EFFECTS = create("rainbowbow_effects");
 
         private static TagKey<MobEffect> create(String name) {
             return TagKey.create(Registries.MOB_EFFECT, ExtraStuck.modid(name));

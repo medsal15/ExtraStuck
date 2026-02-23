@@ -1,0 +1,13 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 78,
+    "minestuck:marble": 24,
+    "minestuck:ruby": 24,
+    "minestuck:shale": 24,
+    "minestuck:sulfur": 24
+  },
+  "ingredient": {
+    "item": "extrastuck:rainbow_bow"
+  }
+}

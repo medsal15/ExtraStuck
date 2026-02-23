@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "extrastuck:item/bowwob_pulling_2"
+  }
+}

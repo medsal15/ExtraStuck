@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:blindness",
+    "minecraft:nausea",
+    "minecraft:mining_fatigue",
+    "minecraft:glowing",
+    "minecraft:instant_damage",
+    "minecraft:hunger",
+    "minecraft:slowness",
+    "minecraft:poison",
+    "minecraft:weakness"
+  ]
+}

@@ -338,6 +338,10 @@ public final class ESTagsProvider {
             tag(ESTags.MobEffects.COSMIC_PLAGUE_IMMUNITY).add(MobEffects.POISON.getKey(),
                     ESMobEffects.COSMIC_PLAGUE.getKey());
             tag(ESTags.MobEffects.COSMIC_PLAGUE_PARTIAL_IMMUNITY).add(MobEffects.WITHER.getKey());
+            tag(ESTags.MobEffects.RAINBOW_BOW_EFFECTS).add(MobEffects.BLINDNESS.getKey(), MobEffects.CONFUSION.getKey(),
+                    MobEffects.DIG_SLOWDOWN.getKey(), MobEffects.GLOWING.getKey(), MobEffects.HARM.getKey(),
+                    MobEffects.HUNGER.getKey(), MobEffects.MOVEMENT_SLOWDOWN.getKey(), MobEffects.POISON.getKey(),
+                    MobEffects.WEAKNESS.getKey());
 
             tag(MSTags.Effects.SOPOR_SICKNESS_WHITELIST).add(ESMobEffects.COSMIC_PLAGUE.getKey());
         }

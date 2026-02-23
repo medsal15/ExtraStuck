@@ -768,6 +768,15 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.BOWWOB)
                 .grist(GristTypes.BUILD, 30).grist(GristTypes.MERCURY, 12)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.RAINBOW_BOW)
+                .input(Items.BOW).and().input(MSItems.WATER_COLORS_BUCKET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.RAINBOW_BOW)
+                .grist(GristTypes.BUILD, 78)
+                .grist(GristTypes.SULFUR, 24).grist(GristTypes.MARBLE, 24).grist(GristTypes.SHALE, 24)
+                .grist(GristTypes.RUBY, 24)
+                .build(output);
         // #endregion Bows
 
         // #region Throwables
