@@ -2,6 +2,7 @@ package com.medsal15.interpreters.create;
 
 import java.util.List;
 
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.config.ConfigCommon;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -18,7 +19,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.neoforged.fml.ModList;
 
 /**
  * Generic interpreter for create recipes that works for most of them
@@ -56,7 +56,7 @@ public record CreateBasicInterpreter(GristSet.Immutable processCost, String opti
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return null;
-        if (!ModList.get().isLoaded("create")
+        if (!ESCompatUtils.isLoaded("create")
                 || !(recipe instanceof ProcessingRecipe))
             return null;
 
@@ -95,7 +95,7 @@ public record CreateBasicInterpreter(GristSet.Immutable processCost, String opti
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return;
-        if (!ModList.get().isLoaded("create") || !(recipe instanceof ProcessingRecipe))
+        if (!ESCompatUtils.isLoaded("create") || !(recipe instanceof ProcessingRecipe))
             return;
 
         ProcessingRecipe<?, ?> proc = (ProcessingRecipe<?, ?>) recipe;

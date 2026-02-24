@@ -1,0 +1,22 @@
+{
+    "name": "Lemon Cake",
+    "icon": "extrastuck:lemon_cake",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:lemon_cake"
+            },
+            "text": "Science isn't about WHY. It's about WHY NOT.$(br)Explodes when eaten."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Apple Cake and a LemonNade in a Totem Lathe.",
+            "left": "minestuck:apple_cake",
+            "mode": "&&",
+            "right": "extrastuck:lemonnade",
+            "result": "extrastuck:lemon_cake"
+        }
+    ]
+}

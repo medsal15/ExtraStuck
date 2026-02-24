@@ -12,6 +12,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
@@ -38,7 +39,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
@@ -86,7 +86,7 @@ public class VisionItem extends Item implements IVision {
     public void inventoryTick(@Nonnull ItemStack stack, @Nonnull Level level, @Nonnull Entity entity, int slotId,
             boolean isSelected) {
         // Handled in CommonEvents.java
-        if (ModList.get().isLoaded("curios"))
+        if (ESCompatUtils.isLoaded("curios"))
             return;
         if (!(entity instanceof LivingEntity livingEntity) || aspect == null || level.isClientSide)
             return;

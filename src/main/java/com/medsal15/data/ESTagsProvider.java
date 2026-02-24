@@ -268,7 +268,7 @@ public final class ESTagsProvider {
                     .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())
                     .addOptional(ItemRegistry.ELDRITCH_PAGE.getId());
             tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get(), ESISSItems.BRANCH_OF_YGGDRASIL.get(),
-                    ESISSItems.STAFF_OF_YGGDRASIL.get(), ESItems.END_OF_CIVILIZATION.get());
+                    ESISSItems.STAFF_OF_YGGDRASIL.get(), ESItems.END_OF_CIVILIZATION.get(), ESItems.MAKE_IT_RAIN.get());
 
             tag(ESTags.Items.IGNORE_BYPRODUCT_CUTTING).add(Items.BONE_MEAL);
         }

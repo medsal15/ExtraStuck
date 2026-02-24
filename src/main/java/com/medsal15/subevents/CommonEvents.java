@@ -10,9 +10,11 @@ import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.compat.curios.CuriosCapabilities;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.curios.items.ESCuriosUtils;
+import com.medsal15.data.ESLangProvider;
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
@@ -45,6 +47,7 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -62,7 +65,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
@@ -108,7 +110,7 @@ public final class CommonEvents {
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ESBlockEntities.REACTOR.get(),
                 ReactorBlockEntity::getFluidHandler);
 
-        if (ModList.get().isLoaded("curios")) {
+        if (ESCompatUtils.isLoaded("curios")) {
             CuriosCapabilities.registerCuriosCapabilities(event);
         }
     }
@@ -129,7 +131,7 @@ public final class CommonEvents {
             return;
 
         dropBoondollars(event);
-        if (ModList.get().isLoaded("curios")) {
+        if (ESCompatUtils.isLoaded("curios")) {
             ESCuriosEventsHandlers.handleGummyRing(event);
         }
     }
@@ -162,7 +164,9 @@ public final class CommonEvents {
         renderer.displayItemActivation(ESItems.ANTI_DIE.toStack());
         event.setCanceled(true);
         entity.setItemInHand(hand, ItemStack.EMPTY);
-        entity.setHealth(entity.getRandom().nextFloat() * 5 + 1);
+        int health = entity.getRandom().nextInt(5) + 1;
+        entity.setHealth(health);
+        entity.sendSystemMessage(Component.translatable(ESLangProvider.ANTIDIE_HEAL, health));
         return true;
     }
 
@@ -261,7 +265,7 @@ public final class CommonEvents {
                 count++;
             }
         }
-        if (ModList.get().isLoaded("curios")) {
+        if (ESCompatUtils.isLoaded("curios")) {
             count += ESCuriosUtils.countCosmicPlagueImmune(livingEntity);
         }
 

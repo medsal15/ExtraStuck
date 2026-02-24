@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.medsal15.compat.ESCompatUtils;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 
 import net.minecraft.core.component.DataComponents;
@@ -13,7 +14,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tiers;
-import net.neoforged.fml.ModList;
 
 public class MechanicalRadBowItem extends RadBowItem {
     public MechanicalRadBowItem(Properties properties) {
@@ -25,7 +25,7 @@ public class MechanicalRadBowItem extends RadBowItem {
             @SuppressWarnings("null") @Nullable T entity,
             @Nonnull Consumer<Item> onBroken) {
         // Special support for create, consume backtank first
-        if (ModList.get().isLoaded("create") && stack.has(DataComponents.MAX_DAMAGE)) {
+        if (ESCompatUtils.isLoaded("create") && stack.has(DataComponents.MAX_DAMAGE)) {
             if (BacktankUtil.canAbsorbDamage(entity, stack.getOrDefault(DataComponents.MAX_DAMAGE, 1)))
                 return 0;
         }

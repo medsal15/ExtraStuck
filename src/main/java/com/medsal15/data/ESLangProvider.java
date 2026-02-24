@@ -80,6 +80,7 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String SPAM_DESC_1 = ESItems.SPAM.get().getDescriptionId() + ".desc.1";
     public static final String SPAM_DESC_2 = ESItems.SPAM.get().getDescriptionId() + ".desc.2";
     public static final String SPAM_DESC_3 = ESItems.SPAM.get().getDescriptionId() + ".desc.3";
+    public static final String ANTIDIE_HEAL = ESItems.ANTI_DIE.get().getDescriptionId() + ".heal";
 
     public static final String VISION_HINT_ONE = ExtraStuck.MODID + ".vision.hint_curios";
     public static final String VISION_HINT_MANY = ExtraStuck.MODID + ".vision.hint_nocurios";
@@ -144,6 +145,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemBookDescription(ESItems.GIFT,
                 "Often found under trees in december, this cardboard box wrapped in colorful paper tends to contain something you desire.");
         addItem(ESItems.ANTI_DIE, "Anti Die");
+        add(ANTIDIE_HEAL, "Anti Die rolled a %s");
         addItem(ESItems.LUCK_TOKEN, "Luck Token");
         addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
         addItem(ESItems.EMPTY_ENERGY_CORE, "Empty Energy Core");
@@ -277,6 +279,8 @@ public final class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.TELEPORT_ARROW, "Teleport Arrow");
         addItem(ESItems.DRAGON_ARROW, "Dragon Arrow");
         addEntityType(ESEntities.DRAGON_ARROW, "Dragon Arrow");
+        addItem(ESItems.RAIN_ARROW, "Rain Arrow");
+        addEntityType(ESEntities.RAIN_ARROW, "Rain Arrow");
     }
 
     private void addWeapons() {
@@ -413,6 +417,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.BOWWOB, "BowwoB");
         addItem(ESItems.RAINBOW_BOW, "Rainbow Bow");
         addItemTooltip(ESItems.RAINBOW_BOW, "A unique flavor for each arrow");
+        addItem(ESItems.MAKE_IT_RAIN, "Make It Rain");
+        addItemTooltip(ESItems.MAKE_IT_RAIN, "25x Arrow Combo");
         // Throwables
         addItem(ESItems.BEENADE, "Beenade");
         add(BEENADE_LOADED, "It buzzes softly");

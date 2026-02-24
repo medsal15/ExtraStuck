@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:anti_die"
             },
-            "text": "A strange die that clearly looks out of place. Rolls from integers -6 to -1.$(br2)$(3)$(l)Special:$() Prevents death when held. $(4)Does not heal!"
+            "text": "A strange die that clearly looks out of place. Rolls from integers -6 to -1.$(br2)$(3)$(l)Special:$() Sets health between 1 and 6 when dying."
         },
         {
             "type": "extrastuck:combination",

@@ -777,6 +777,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.SULFUR, 24).grist(GristTypes.MARBLE, 24).grist(GristTypes.SHALE, 24)
                 .grist(GristTypes.RUBY, 24)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.MAKE_IT_RAIN)
+                .input(ESItems.RAINBOW_BOW).and().input(Items.BEACON)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.MAKE_IT_RAIN)
+                .grist(GristTypes.COBALT, 15625).grist(GristTypes.CHALK, 625).grist(GristTypes.DIAMOND, 3125)
+                .build(output);
         // #endregion Bows
 
         // #region Throwables
@@ -1643,7 +1650,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(fdOutput, modid("lemon_cake"));
         CombinationRecipeBuilder.of(ESItems.LEMON_CAKE_SLICE)
                 .input(ESItems.APPLE_CAKE_SLICE).and().input(ESItems.LEMONNADE)
-                .build(fdOutput);
+                .build(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ESItems.LEMON_CAKE)
                 .requires(ESItems.LEMON_CAKE_SLICE, 7)
                 .unlockedBy("has_lemon_cake_slice", has(ESItems.LEMON_CAKE_SLICE))

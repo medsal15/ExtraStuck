@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.ESCompatUtils;
 import com.mraof.minestuck.entity.MSAttributes;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
@@ -12,13 +13,12 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.neoforged.fml.ModList;
 
 public final class ISSAttributes {
     public static List<ItemAttributeModifiers.Entry> ancientVaultOpener() {
         List<ItemAttributeModifiers.Entry> list = new ArrayList<>();
 
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.add(new ItemAttributeModifiers.Entry(AttributeRegistry.FIRE_SPELL_POWER,
                     new AttributeModifier(ExtraStuck.modid("ancient_vault_opener"), .1,
                             Operation.ADD_MULTIPLIED_BASE),
@@ -31,7 +31,7 @@ public final class ISSAttributes {
     public static List<ItemAttributeModifiers.Entry> vaultMelter() {
         List<ItemAttributeModifiers.Entry> list = new ArrayList<>();
 
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.add(new ItemAttributeModifiers.Entry(AttributeRegistry.FIRE_SPELL_POWER,
                     new AttributeModifier(ExtraStuck.modid("vault_melter_fire_sp"), .15,
                             Operation.ADD_MULTIPLIED_BASE),

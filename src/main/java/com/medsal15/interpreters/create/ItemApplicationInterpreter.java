@@ -2,6 +2,7 @@ package com.medsal15.interpreters.create;
 
 import java.util.List;
 
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.config.ConfigCommon;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -17,7 +18,6 @@ import com.simibubi.create.content.kinetics.deployer.ItemApplicationRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
-import net.neoforged.fml.ModList;
 
 public record ItemApplicationInterpreter(String option) implements RecipeInterpreter {
     public static final MapCodec<ItemApplicationInterpreter> CODEC = RecordCodecBuilder
@@ -43,7 +43,7 @@ public record ItemApplicationInterpreter(String option) implements RecipeInterpr
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return null;
-        if (!ModList.get().isLoaded("create") || !(recipe instanceof ItemApplicationRecipe))
+        if (!ESCompatUtils.isLoaded("create") || !(recipe instanceof ItemApplicationRecipe))
             return null;
 
         ItemApplicationRecipe apply = (ItemApplicationRecipe) recipe;
@@ -82,7 +82,7 @@ public record ItemApplicationInterpreter(String option) implements RecipeInterpr
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return;
-        if (!ModList.get().isLoaded("create") || !(recipe instanceof ItemApplicationRecipe))
+        if (!ESCompatUtils.isLoaded("create") || !(recipe instanceof ItemApplicationRecipe))
             return;
 
         ItemApplicationRecipe apply = (ItemApplicationRecipe) recipe;

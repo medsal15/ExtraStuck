@@ -2,6 +2,7 @@ package com.medsal15.interpreters.create;
 
 import java.util.List;
 
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.config.ConfigCommon;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -20,7 +21,6 @@ import com.simibubi.create.content.processing.sequenced.SequencedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.neoforged.fml.ModList;
 
 public record SequencedInterpreter(String option) implements RecipeInterpreter {
     public static final MapCodec<SequencedInterpreter> CODEC = RecordCodecBuilder
@@ -46,7 +46,7 @@ public record SequencedInterpreter(String option) implements RecipeInterpreter {
     public GristSet generateCost(Recipe<?> recipe, Item item, GeneratorCallback callback) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return null;
-        if (!ModList.get().isLoaded("create") || !(recipe instanceof SequencedAssemblyRecipe))
+        if (!ESCompatUtils.isLoaded("create") || !(recipe instanceof SequencedAssemblyRecipe))
             return null;
 
         SequencedAssemblyRecipe assembly = (SequencedAssemblyRecipe) recipe;
@@ -109,7 +109,7 @@ public record SequencedInterpreter(String option) implements RecipeInterpreter {
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return;
-        if (!ModList.get().isLoaded("create") || !(recipe instanceof SequencedAssemblyRecipe))
+        if (!ESCompatUtils.isLoaded("create") || !(recipe instanceof SequencedAssemblyRecipe))
             return;
 
         SequencedAssemblyRecipe assembly = (SequencedAssemblyRecipe) recipe;

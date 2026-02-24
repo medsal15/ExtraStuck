@@ -1,7 +1,7 @@
 {
     "name": "Rainbow Bow",
     "icon": "extrastuck:rainbow_bow",
-    "category": "extrastuck:weapons",
+    "category": "extrastuck:bows",
     "sortnum": 1,
     "pages": [
         {

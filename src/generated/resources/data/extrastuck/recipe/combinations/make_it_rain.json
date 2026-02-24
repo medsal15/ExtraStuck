@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:rainbow_bow"
+  },
+  "input2": {
+    "item": "minecraft:beacon"
+  },
+  "mode": "and",
+  "output": "extrastuck:make_it_rain"
+}

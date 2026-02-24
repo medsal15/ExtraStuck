@@ -18,6 +18,8 @@ import com.medsal15.client.model.armor.HeavyBootsModel;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
+import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
 import com.medsal15.computer.ESProgramTypes;
@@ -67,7 +69,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -119,6 +120,9 @@ public final class ClientEvents {
                     break;
                 }
             }
+            if (!show_value && ESCompatUtils.isLoaded("curios"))
+                show_value |= ESCuriosEventsHandlers.showValue(event);
+
             if (show_value && ConfigClient.boondollarDisplayMode != BoondollarDisplayMode.DISABLED) {
                 boolean update_last = false;
                 if (item != lastItem) {
@@ -339,6 +343,8 @@ public final class ClientEvents {
                 modid("textures/entity/arrow/teleport.png")));
         event.registerEntityRenderer(ESEntities.DRAGON_ARROW.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/arrow/dragon.png")));
+        event.registerEntityRenderer(ESEntities.RAIN_ARROW.get(), c -> new ESArrowRenderer(c,
+                modid("textures/entity/arrow/rain.png")));
 
         event.registerEntityRenderer(ESEntities.URANIUM_ROD.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/uranium_rod.png")));
@@ -433,8 +439,8 @@ public final class ClientEvents {
         event.registerReloadListener((ResourceManagerReloadListener) manager -> {
             if (registeredConvertions)
                 return;
-            if (ConfigClient.addConvertionRecipes && ModList.get().isLoaded("create")
-                    && ModList.get().isLoaded("jei")) {
+            if (ConfigClient.addConvertionRecipes && ESCompatUtils.isLoaded("create")
+                    && ESCompatUtils.isLoaded("jei")) {
                 registeredConvertions = true;
 
                 registerBiConvertion(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE,
@@ -444,7 +450,7 @@ public final class ClientEvents {
                 registerBiConvertion(ESItems.YELLOWCAKESAW, ESItems.YELLOWCAKESAW_LIPSTICK);
                 registerBiConvertion(ESItems.CASHGRABBERS, ESItems.CASHGRABBERS_SHEATHED);
 
-                if (ModList.get().isLoaded("irons_spellbooks")) {
+                if (ESCompatUtils.isLoaded("irons_spellbooks")) {
                     registerBiConvertion(ESISSItems.GEMINI_SPELLBOOK_BLUE, ESISSItems.GEMINI_SPELLBOOK_RED);
                     registerBiConvertion(ESISSItems.PROSPITIAN_WAND, ESISSItems.CAST_GOLD_SHIELD);
                     registerBiConvertion(ESISSItems.DERSITE_WAND, ESISSItems.AMETHYST_BACKSTABBER);

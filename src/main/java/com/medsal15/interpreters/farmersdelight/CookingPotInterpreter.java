@@ -2,6 +2,7 @@ package com.medsal15.interpreters.farmersdelight;
 
 import java.util.List;
 
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.config.ConfigCommon;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -17,7 +18,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.neoforged.fml.ModList;
 import vectorwing.farmersdelight.common.crafting.CookingPotRecipe;
 
 public record CookingPotInterpreter(GristSet.Immutable cookingCost, String option) implements RecipeInterpreter {
@@ -45,7 +45,7 @@ public record CookingPotInterpreter(GristSet.Immutable cookingCost, String optio
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return null;
-        if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CookingPotRecipe cook))
+        if (!ESCompatUtils.isLoaded("farmersdelight") || !(recipe instanceof CookingPotRecipe cook))
             return null;
 
         MutableGristSet totalCost = MutableGristSet.newDefault();
@@ -80,7 +80,7 @@ public record CookingPotInterpreter(GristSet.Immutable cookingCost, String optio
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return;
-        if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CookingPotRecipe cook))
+        if (!ESCompatUtils.isLoaded("farmersdelight") || !(recipe instanceof CookingPotRecipe cook))
             return;
 
         for (Ingredient ingredient : cook.getIngredients()) {

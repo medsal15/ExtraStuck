@@ -1,0 +1,7 @@
+{
+    "name": "Bows",
+    "sortnum": 1,
+    "description": "New bows (not for wearing)",
+    "icon": "minecraft:bow",
+    "parent": "extrastuck:weapons"
+}

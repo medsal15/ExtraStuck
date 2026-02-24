@@ -26,6 +26,7 @@ import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
+import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
@@ -77,6 +78,9 @@ public final class ESEntities {
             TeleportArrow::new);
     public static final Supplier<EntityType<DragonArrow>> DRAGON_ARROW = register("dragon_arrow",
             DragonArrow::new);
+    public static final Supplier<EntityType<RainArrow>> RAIN_ARROW = register("rain_arrow",
+            RainArrow::new);
+
     public static final Supplier<EntityType<UraniumRod>> URANIUM_ROD = register("uranium_rod",
             UraniumRod::new);
     // #endregion Arrows

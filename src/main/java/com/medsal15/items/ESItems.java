@@ -9,6 +9,7 @@ import java.util.Map;
 import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
@@ -32,6 +33,7 @@ import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
 import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
+import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.items.armor.CactusArmorItem;
@@ -41,6 +43,7 @@ import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.armor.SalesmanGogglesItem;
 import com.medsal15.items.armor.SaleswomanGogglesItem;
 import com.medsal15.items.bows.DoublingBowItem;
+import com.medsal15.items.bows.MakeRainItem;
 import com.medsal15.items.bows.RainbowBowItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
@@ -48,14 +51,14 @@ import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
+import com.medsal15.items.food.ESFoods;
+import com.medsal15.items.food.ExplosiveFood;
 import com.medsal15.items.food.FortuneCookie;
 import com.medsal15.items.food.HomeDonut;
 import com.medsal15.items.food.HotCakeSlice;
 import com.medsal15.items.food.LootFood;
 import com.medsal15.items.food.MortalTemptation;
 import com.medsal15.items.food.RocketJump;
-import com.medsal15.items.food.ESFoods;
-import com.medsal15.items.food.ExplosiveFood;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.AttributeWeapon;
@@ -128,7 +131,6 @@ import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -275,6 +277,8 @@ public final class ESItems {
             p -> new ESArrowItem(p, TeleportArrow::new, TeleportArrow::new));
     public static final DeferredItem<Item> DRAGON_ARROW = ITEMS.registerItem("dragon_arrow",
             p -> new ESArrowItem(p, DragonArrow::new, DragonArrow::new));
+    public static final DeferredItem<Item> RAIN_ARROW = ITEMS.registerItem("rain_arrow",
+            p -> new ESArrowItem(p, RainArrow::new, RainArrow::new));
     // #endregion Arrows
 
     // #region Weapons
@@ -641,11 +645,9 @@ public final class ESItems {
             () -> new DoublingBowItem(new Properties().durability(515)));
     public static final DeferredItem<Item> RAINBOW_BOW = ITEMS.register("rainbow_bow",
             () -> new RainbowBowItem(new Properties().durability(789)));
-    /**
-     * TODO Make It Rain (bow)
-     * special arrow that disappears on hit
-     * -> summons multiple of the real arrow in the air above
-     */
+    public static final DeferredItem<Item> MAKE_IT_RAIN = ITEMS.register("make_it_rain",
+            () -> new MakeRainItem(
+                    new Properties().durability(MSItemTypes.CORUNDUM_TIER.getUses()).rarity(Rarity.RARE)));
     // #endregion Bows
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
@@ -1032,7 +1034,7 @@ public final class ESItems {
 
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
-        if (ModList.get().isLoaded("patchouli")) {
+        if (ESCompatUtils.isLoaded("patchouli")) {
             output.accept(ItemModBook
                     .forBook(modid("extrastuck")));
         }
@@ -1070,7 +1072,7 @@ public final class ESItems {
         output.accept(BEENADE);
         output.accept(LEMONNADE);
 
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             for (DeferredItem<Item> item : ESISSItems.getSpellbooks()) {
                 output.accept(item.get());
             }
@@ -1150,7 +1152,7 @@ public final class ESItems {
 
     public static Collection<DeferredItem<Item>> getCassettes() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getCassettes());
         }
         return list;
@@ -1209,7 +1211,7 @@ public final class ESItems {
         list.add(GARNET_SHIELD);
         list.add(POGO_SHIELD);
         list.add(RETURN_TO_SENDER);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getShields());
         } else {
             list.addAll(ESISSMissingItems.getShields());
@@ -1291,7 +1293,7 @@ public final class ESItems {
         list.add(STOCKS_UPTICKER);
         // Swords
         list.add(SUN_REAVER);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getSwords());
         } else {
             list.addAll(ESISSMissingItems.getSwords());
@@ -1312,7 +1314,7 @@ public final class ESItems {
         list.add(CASHGRABBERS);
         list.add(CASHGRABBERS_SHEATHED);
         // Knives
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getKnives());
         } else {
             list.addAll(ESISSMissingItems.getKnives());
@@ -1373,6 +1375,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(BOWWOB);
         list.add(RAINBOW_BOW);
+        list.add(MAKE_IT_RAIN);
         return list;
     }
 
@@ -1404,7 +1407,7 @@ public final class ESItems {
         list.add(CACTUS_LEGGINGS);
         list.add(CACTUS_BOOTS);
 
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getArmor());
         } else {
             list.addAll(ESISSMissingItems.getArmor());
@@ -1422,7 +1425,7 @@ public final class ESItems {
         list.add(DARK_KNIGHT_HELMET);
         list.add(SALESWOMAN_GLASSES);
         list.add(CACTUS_HELMET);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getHelmets());
         } else {
             list.addAll(ESISSMissingItems.getHelmets());
@@ -1437,7 +1440,7 @@ public final class ESItems {
         list.add(CHEF_APRON);
         list.add(DARK_KNIGHT_CHESTPLATE);
         list.add(CACTUS_CHESTPLATE);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getChesplates());
         } else {
             list.addAll(ESISSMissingItems.getChesplates());
@@ -1451,7 +1454,7 @@ public final class ESItems {
 
         list.add(DARK_KNIGHT_LEGGINGS);
         list.add(CACTUS_LEGGINGS);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getLeggings());
         } else {
             list.addAll(ESISSMissingItems.getLeggings());
@@ -1466,7 +1469,7 @@ public final class ESItems {
         list.add(HEAVY_BOOTS);
         list.add(DARK_KNIGHT_BOOTS);
         list.add(CACTUS_BOOTS);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getBoots());
         } else {
             list.addAll(ESISSMissingItems.getBoots());

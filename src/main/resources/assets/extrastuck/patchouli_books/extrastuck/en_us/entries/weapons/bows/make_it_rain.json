@@ -1,0 +1,23 @@
+{
+    "name": "Make It Rain",
+    "icon": "extrastuck:make_it_rain",
+    "category": "extrastuck:bows",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:make_it_rain"
+            },
+            "text": "Perfect if you need more arrows on your enemy.$(br2)$(3)$(l)Special:$() Shoots a singular arrow that rains 25 copies of whichever arrow was used 15-20 blocks above. These cannot be picked up."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Rainbow Bow and a Beacon in a Totem Lathe.",
+            "left": "extrastuck:rainbow_bow",
+            "mode": "&&",
+            "right": "minecraft:beacon",
+            "result": "extrastuck:make_it_rain"
+        }
+    ]
+}

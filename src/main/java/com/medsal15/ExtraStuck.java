@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
@@ -33,7 +34,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -92,7 +92,7 @@ public class ExtraStuck {
         ESProgramTypes.PROGRAM_TYPES.register(modEventBus);
         ESSounds.SOUND_EVENTS.register(modEventBus);
 
-        if (ModList.get().isLoaded("irons_spellbooks")) {
+        if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             ESISSItems.ITEMS.register(modEventBus);
             ESISSComponents.DATA_COMPONENTS.register(modEventBus);
             NeoForge.EVENT_BUS.register(ISSCommonEvents.class);

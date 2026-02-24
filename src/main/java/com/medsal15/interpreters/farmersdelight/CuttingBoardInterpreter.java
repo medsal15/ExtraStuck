@@ -2,6 +2,7 @@ package com.medsal15.interpreters.farmersdelight;
 
 import java.util.List;
 
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.config.ConfigCommon;
 import com.medsal15.utils.ESTags;
 import com.mojang.serialization.Codec;
@@ -18,7 +19,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.neoforged.fml.ModList;
 import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipe;
 
 public record CuttingBoardInterpreter(String option) implements RecipeInterpreter {
@@ -45,7 +45,7 @@ public record CuttingBoardInterpreter(String option) implements RecipeInterprete
     public GristSet generateCost(Recipe<?> recipe, Item output, GeneratorCallback callback) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return null;
-        if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CuttingBoardRecipe cut))
+        if (!ESCompatUtils.isLoaded("farmersdelight") || !(recipe instanceof CuttingBoardRecipe cut))
             return null;
 
         int count = 0;
@@ -73,7 +73,7 @@ public record CuttingBoardInterpreter(String option) implements RecipeInterprete
     public void reportPreliminaryLookups(Recipe<?> recipe, LookupTracker tracker) {
         if (option != "" && !ConfigCommon.configEnabled(option))
             return;
-        if (!ModList.get().isLoaded("farmersdelight") || !(recipe instanceof CuttingBoardRecipe cut))
+        if (!ESCompatUtils.isLoaded("farmersdelight") || !(recipe instanceof CuttingBoardRecipe cut))
             return;
 
         for (Ingredient ingredient : cut.getIngredients()) {
