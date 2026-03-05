@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 30,
+    "minestuck:gold": 1
+  },
+  "ingredient": {
+    "item": "extrastuck:big_club"
+  }
+}

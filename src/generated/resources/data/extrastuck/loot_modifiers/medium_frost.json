@@ -1,7 +1,11 @@
 {
   "type": "extrastuck:land_loot_modifier",
-  "conditions": [],
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minestuck:chests/medium_basic"
+    }
+  ],
   "inject": "extrastuck:chests/inject/medium_frost",
-  "target": "minestuck:chests/medium_basic",
   "terrain": "minestuck:frost"
 }

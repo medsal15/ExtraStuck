@@ -476,6 +476,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.D8TH_M8CE)
                 .grist(GristTypes.COBALT, 888).grist(GristTypes.DIAMOND, 128).grist(GristTypes.MARBLE, 343)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BIG_CLUB)
+                .input(MSItems.DEUCE_CLUB).or().input(Items.SPYGLASS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BIG_CLUB)
+                .grist(GristTypes.BUILD, 30).grist(GristTypes.GOLD, 1)
+                .build(output);
         // #endregion Clubs
 
         // #region Keys

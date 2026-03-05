@@ -2,6 +2,8 @@ package com.medsal15.data;
 
 import java.util.concurrent.CompletableFuture;
 
+import javax.annotation.Nonnull;
+
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.item.MSItems;
@@ -18,7 +20,7 @@ public final class DataMapGenerator extends DataMapProvider {
     }
 
     @Override
-    protected void gather() {
+    protected void gather(@Nonnull HolderLookup.Provider provider) {
         builder(NeoForgeDataMaps.FURNACE_FUELS)
                 .add(ESItems.WOODEN_SHIELD, new FurnaceFuel(200), false)
                 .add(ESItems.ROLLING_PIN, new FurnaceFuel(200), false);

@@ -4,6 +4,7 @@ import static com.medsal15.ExtraStuck.modid;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import com.medsal15.ESSounds;
@@ -15,7 +16,7 @@ import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.data.ESLangProvider;
-import com.medsal15.data.loot_tables.ESLootSubProvider;
+import com.medsal15.data.ESLootTableProvider.TableSubProvider;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
@@ -440,6 +441,12 @@ public final class ESItems {
             new WeaponItem.Builder(Tiers.DIAMOND, 4, -2.8f).set(MSItemTypes.CLUB_TOOL)
                     .add(ESHitEffects.randomDamageMult(2, 0.25f)),
             new MSItemProperties().durability(888)));
+    public static final DeferredItem<Item> BIG_CLUB = ITEMS.register("big_club",
+            () -> new AttributeWeapon(new WeaponItem.Builder(Tiers.WOOD, 5, -3.4f).set(MSItemTypes.CLUB_TOOL),
+                    new Item.Properties(),
+                    () -> List.of(new ItemAttributeModifiers.Entry(Attributes.ENTITY_INTERACTION_RANGE,
+                            new AttributeModifier(ExtraStuck.modid("big_club_range"), 1.5, Operation.ADD_VALUE),
+                            EquipmentSlotGroup.MAINHAND))));
     // #endregion Clubs
     // #region Keys
     public static final DeferredItem<Item> KEY_OF_TRIALS = ITEMS.register("key_of_trials",
@@ -891,7 +898,7 @@ public final class ESItems {
     public static final DeferredItem<Item> COSMIC_SPOREO = ITEMS.registerItem("cosmic_sporeo",
             p -> new Item(p.food(ESFoods.COSMIC_SPOREO)));
     public static final DeferredItem<Item> SPAM = ITEMS.registerItem("spam", p -> new LootFood(
-            p.food(ESFoods.SPAM).component(ESDataComponents.GIFT_TABLE, ESLootSubProvider.SPAM_LOOT_TABLE),
+            p.food(ESFoods.SPAM).component(ESDataComponents.GIFT_TABLE, TableSubProvider.SPAM_LOOT_TABLE),
             Component.translatable(ESLangProvider.SPAM_FOOD)));
     public static final DeferredItem<BlockItem> LEMON_CAKE = ITEMS.registerSimpleBlockItem(ESBlocks.LEMON_CAKE,
             new Item.Properties().stacksTo(1));
@@ -1029,7 +1036,7 @@ public final class ESItems {
 
     public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
             (p) -> new GiftItem(
-                    p.component(ESDataComponents.GIFT_TABLE, ESLootSubProvider.GIFT_LOOT_TABLE)));
+                    p.component(ESDataComponents.GIFT_TABLE, TableSubProvider.GIFT_LOOT_TABLE)));
     public static final DeferredItem<Item> LUCK_TOKEN = ITEMS.registerItem("luck_token", p -> new Tokenitem(p));
 
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
@@ -1269,6 +1276,7 @@ public final class ESItems {
         list.add(DEATH_MACE);
         list.add(WITHERED_MACE);
         list.add(D8TH_M8CE);
+        list.add(BIG_CLUB);
         // Keys
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);

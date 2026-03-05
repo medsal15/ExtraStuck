@@ -1,0 +1,23 @@
+{
+    "name": "Big Club",
+    "icon": "extrastuck:big_club",
+    "category": "extrastuck:clubs",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:big_club"
+            },
+            "text": "An oversized club. Not sure what you expected here.$(br2)$(3)$(l)Special:$() 50% more attack range."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Deuce Club and a Spyglass in a Punch Designix.",
+            "left": "minestuck:deuce_club",
+            "mode": "||",
+            "right": "minecraft:spyglass",
+            "result": "extrastuck:big_club"
+        }
+    ]
+}

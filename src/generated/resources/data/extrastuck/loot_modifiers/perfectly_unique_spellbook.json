@@ -6,7 +6,11 @@
     }
   ],
   "type": "extrastuck:land_loot_modifier",
-  "conditions": [],
-  "inject": "extrastuck:chests/inject/unique_spellbook",
-  "target": "minestuck:chests/medium_basic"
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minestuck:chests/medium_basic"
+    }
+  ],
+  "inject": "extrastuck:chests/inject/unique_spellbook"
 }

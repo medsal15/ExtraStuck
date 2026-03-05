@@ -343,6 +343,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.DEATH_MACE, "Death Mace");
         addItem(ESItems.WITHERED_MACE, "Withered Mace");
         addItem(ESItems.D8TH_M8CE, "D8th M8ce");
+        addItem(ESItems.BIG_CLUB, "Big Club");
+        addItemTooltip(ESItems.BIG_CLUB, "Whoa");
         // Keys
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");

@@ -13,16 +13,9 @@ import com.mraof.minestuck.world.lands.terrain.TerrainLandType;
 import com.mraof.minestuck.world.lands.title.TitleLandType;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootParams.Builder;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
@@ -35,18 +28,15 @@ import net.neoforged.neoforge.common.loot.LootModifier;
  *
  * Effectively means that an empty terrain and title will always be rolled
  */
-public class ESLandLootModifier extends LootModifier {
+public class ESLandLootModifier extends ESLootModifier {
     /** Location of the table to inject */
     private final ResourceLocation inject;
-    /** Location of the table to watch */
-    private final ResourceLocation target;
     private final Optional<TerrainLandType> terrain;
     private final Optional<TitleLandType> title;
 
     public static final MapCodec<ESLandLootModifier> CODEC = RecordCodecBuilder
             .mapCodec(inst -> LootModifier.codecStart(inst).and(inst.group(
                     ResourceLocation.CODEC.fieldOf("inject").forGetter(e -> e.inject),
-                    ResourceLocation.CODEC.fieldOf("target").forGetter(e -> e.target),
                     LandTypes.TERRAIN_REGISTRY.byNameCodec().optionalFieldOf("terrain").forGetter(e -> e.terrain),
                     LandTypes.TITLE_REGISTRY.byNameCodec().optionalFieldOf("title").forGetter(e -> e.title)))
                     .apply(inst, ESLandLootModifier::new));
@@ -58,11 +48,10 @@ public class ESLandLootModifier extends LootModifier {
      * @param title      Title of the land
      * @param terrain    Terrain of the land
      */
-    public ESLandLootModifier(LootItemCondition[] conditions, ResourceLocation inject, ResourceLocation target,
+    public ESLandLootModifier(LootItemCondition[] conditions, ResourceLocation inject,
             Optional<TerrainLandType> terrain, Optional<TitleLandType> title) {
         super(conditions);
         this.inject = inject;
-        this.target = target;
         this.title = title;
         this.terrain = terrain;
     }
@@ -74,7 +63,7 @@ public class ESLandLootModifier extends LootModifier {
         TerrainLandType terrain = getTerrain(context);
         boolean title_correct = this.title.isEmpty() || this.title.get() == title;
         boolean terrain_correct = this.terrain.isEmpty() || this.terrain.get() == terrain;
-        if (title_correct && terrain_correct && context.getQueriedLootTableId().equals(target)) {
+        if (title_correct && terrain_correct) {
             generatedLoot.addAll(runTable(context.getLevel(), inject));
         }
         return generatedLoot;
@@ -99,14 +88,5 @@ public class ESLandLootModifier extends LootModifier {
         if (aspects != null)
             return aspects.getTerrain();
         return null;
-    }
-
-    public static ObjectArrayList<ItemStack> runTable(ServerLevel level, ResourceLocation loot_table) {
-        ResourceKey<LootTable> key = ResourceKey.create(Registries.LOOT_TABLE, loot_table);
-        LootTable table = level.getServer().reloadableRegistries().getLootTable(key);
-        Builder builder = new LootParams.Builder(level);
-        LootParams params = builder.create(LootContextParamSet.builder().build());
-        ObjectArrayList<ItemStack> rewards = table.getRandomItems(params);
-        return rewards;
     }
 }
