@@ -20,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
+import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -137,5 +138,26 @@ public final class ESRightClickBlockEffects {
             }
             return InteractionResult.sidedSuccess(level.isClientSide());
         }
+    }
+
+    /**
+     * Opens the clicked door
+     */
+    public static InteractionResult openDoor(UseOnContext context) {
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        BlockState target = level.getBlockState(pos);
+        if (target.getBlock() instanceof DoorBlock door) {
+            Player player = context.getPlayer();
+            door.setOpen(player, level, target, pos, !target.getValue(DoorBlock.OPEN));
+            if (player != null) {
+                ItemStack stack = context.getItemInHand();
+                InteractionHand hand = context.getHand();
+                stack.hurtAndBreak(25, player,
+                        hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+        return InteractionResult.PASS;
     }
 }

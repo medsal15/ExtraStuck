@@ -368,6 +368,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.OVERCHARGED_MAGNEFORK, "Overcharged Magnefork");
         addItemTooltip(ESItems.OVERCHARGED_MAGNEFORK, "Batteries sold separately");
         addItem(ESItems.UNDERCHARGED_MAGNEFORK, "Undercharged Magnefork");
+        addItem(ESItems.HEARTSTABBER, "Heartstabber");
         // Chainsaws & Lipsticks
         addItem(ESItems.YELLOWCAKESAW, "YellowcakeSaw");
         addItem(ESItems.YELLOWCAKESAW_LIPSTICK, "Glowing Lipstick");
@@ -406,6 +407,8 @@ public final class ESLangProvider extends LanguageProvider {
         // Knives
         addItem(ESISSItems.AMETHYST_BACKSTABBER, "Amethyst Backstabber");
         addItemTooltip(ESISSItems.AMETHYST_BACKSTABBER, "Intruder Alert! A Dersite Spy is in the base!");
+        // Spoons
+        addItem(ESItems.EXPLOSIVE_SCOOP, "Explosive Scoop");
         // Crossbows
         addItem(ESItems.RADBOW, "Radbow");
         addItemTooltip(ESItems.RADBOW, "Silent, deadly, and quite radioactive!");
@@ -599,6 +602,10 @@ public final class ESLangProvider extends LanguageProvider {
         // Shovels
         addItem(ESItems.GOLD_DIGGER, "Gold Digger");
         addItemTooltip(ESItems.GOLD_DIGGER, "There's money everywhere!");
+        // Pickaxes
+        addItem(ESItems.SHINEBREAKER, "Shinebreaker");
+        // Axes
+        addItem(ESItems.DOORBUSTER, "Doorbuster");
         // Visions
         add(VISION_HINT_ONE, "Wearing more than 1 vision at once will cause interferences between them");
         add(VISION_HINT_MANY, "Wearing more than %s visions at once will cause interferences between them");
@@ -621,6 +628,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.VISION_DOOM, "Moira Vision");
         addItem(ESItems.VISION_LIGHT, "Phoster Vision");
         addItem(ESItems.VISION_VOID, "Adeios Vision");
+        // Cards
+        addItem(ESItems.TWO_OF_HEARTS, "Two of Hearts");
+        addItem(ESItems.TWO_OF_DIAMONDS, "Two of Diamonds");
+        addItem(ESItems.TWO_OF_SPADES, "Two of Spades");
+        addItem(ESItems.TWO_OF_CLUBS, "Two of Clubs");
     }
 
     private void addBlockEntities() {

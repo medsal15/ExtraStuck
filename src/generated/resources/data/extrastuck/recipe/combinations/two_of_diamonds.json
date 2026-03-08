@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:ace_of_diamonds"
+  },
+  "input2": {
+    "item": "minestuck:mirror"
+  },
+  "mode": "and",
+  "output": "extrastuck:two_of_diamonds"
+}

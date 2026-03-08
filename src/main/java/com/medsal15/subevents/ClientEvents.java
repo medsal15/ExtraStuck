@@ -449,6 +449,10 @@ public final class ClientEvents {
                 registerBiConvertion(ESItems.OVERCHARGED_MAGNEFORK, ESItems.UNDERCHARGED_MAGNEFORK);
                 registerBiConvertion(ESItems.YELLOWCAKESAW, ESItems.YELLOWCAKESAW_LIPSTICK);
                 registerBiConvertion(ESItems.CASHGRABBERS, ESItems.CASHGRABBERS_SHEATHED);
+                registerBiConvertion(ESItems.TWO_OF_HEARTS, ESItems.HEARTSTABBER);
+                registerBiConvertion(ESItems.TWO_OF_DIAMONDS, ESItems.SHINEBREAKER);
+                registerBiConvertion(ESItems.TWO_OF_SPADES, ESItems.EXPLOSIVE_SCOOP);
+                registerBiConvertion(ESItems.TWO_OF_CLUBS, ESItems.DOORBUSTER);
 
                 if (ESCompatUtils.isLoaded("irons_spellbooks")) {
                     registerBiConvertion(ESISSItems.GEMINI_SPELLBOOK_BLUE, ESISSItems.GEMINI_SPELLBOOK_RED);

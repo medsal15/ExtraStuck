@@ -1,0 +1,23 @@
+{
+    "name": "Two of Hearts",
+    "icon": "extrastuck:two_of_hearts",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:two_of_hearts"
+            },
+            "text": "A large two of hearts.$(br2)$(3)$(l)Special:$() Heals 4 health (2 hearts) on use, at the cost of 50 durability. When used while crouching, turns into a $(l:extrastuck:weapons/heartstabber)Heartstabber$(/l)"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Ace of Hearts and an Mirror in a Totem Lathe.",
+            "left": "minestuck:ace_of_hearts",
+            "mode": "&&",
+            "right": "minestuck:mirror",
+            "result": "extrastuck:two_of_hearts"
+        }
+    ]
+}

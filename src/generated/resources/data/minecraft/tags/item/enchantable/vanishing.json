@@ -58,6 +58,7 @@
     "extrastuck:magnefork",
     "extrastuck:overcharged_magnefork",
     "extrastuck:undercharged_magnefork",
+    "extrastuck:heartstabber",
     "extrastuck:yellowcakesaw",
     "extrastuck:yellowcakesaw_lipstick",
     "extrastuck:the_sting",
@@ -75,6 +76,11 @@
     "extrastuck:cashgrabbers",
     "extrastuck:cashgrabbers_sheathed",
     "extrastuck:amethyst_backstabber",
+    "extrastuck:explosive_scoop",
+    "extrastuck:two_of_hearts",
+    "extrastuck:two_of_diamonds",
+    "extrastuck:two_of_spades",
+    "extrastuck:two_of_clubs",
     "extrastuck:baguette_magique",
     "extrastuck:money_magic",
     "extrastuck:radbow",
@@ -93,6 +99,8 @@
     "extrastuck:magnet",
     "extrastuck:field_charger",
     "extrastuck:gold_digger",
+    "extrastuck:shinebreaker",
+    "extrastuck:doorbuster",
     "extrastuck:captain_justice_shield_throwable"
   ]
 }

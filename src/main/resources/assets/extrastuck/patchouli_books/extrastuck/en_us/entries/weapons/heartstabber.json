@@ -1,0 +1,15 @@
+{
+    "name": "Heartstabber",
+    "icon": "extrastuck:heartstabber",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:heartstabber"
+            },
+            "text": "A heart-shaped trident.$(br2)$(3)$(l)Special:$() Heals 2 health (1 heart) on kill. Can be turned into a $(l:extrastuck:tools/two_of_hearts)Two of Hearts$(/l) when used while holding shift."
+        }
+    ]
+}

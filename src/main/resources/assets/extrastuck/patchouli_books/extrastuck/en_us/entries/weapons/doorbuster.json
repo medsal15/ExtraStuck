@@ -1,0 +1,15 @@
+{
+    "name": "Doorbuster",
+    "icon": "extrastuck:doorbuster",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:doorbuster"
+            },
+            "text": "Do you hate doors? This is the perfect weapon for you!$(br2)$(3)$(l)Special:$() Breaking a door grants 10 seconds of Haste and Strength. Can be turned into a $(l:extrastuck:tools/two_of_clubs)Two of Clubs$(/l) when used while holding shift."
+        }
+    ]
+}

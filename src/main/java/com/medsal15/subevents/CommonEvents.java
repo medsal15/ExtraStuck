@@ -131,6 +131,8 @@ public final class CommonEvents {
             return;
 
         dropBoondollars(event);
+        healAttacker(event);
+        explodeDead(event);
         if (ESCompatUtils.isLoaded("curios")) {
             ESCuriosEventsHandlers.handleGummyRing(event);
         }
@@ -207,6 +209,37 @@ public final class CommonEvents {
         boondollars = BoondollarsItem.setCount(boondollars, amount);
         ItemEntity drops = new ItemEntity(level, entity.getX(), entity.getY(), entity.getZ(), boondollars);
         entity.level().addFreshEntity(drops);
+    }
+
+    /**
+     * Heals 2 health to the attacker if using the Heartstabber
+     */
+    private static void healAttacker(final LivingDeathEvent event) {
+        Entity attacker = event.getSource().getEntity();
+        if (!(attacker instanceof LivingEntity livingEntity))
+            return;
+
+        ItemStack weapon = event.getSource().getWeaponItem();
+        if (weapon == null || !weapon.is(ESItems.HEARTSTABBER))
+            return;
+
+        livingEntity.heal(2);
+    }
+
+    /**
+     * Creates an explosion if using the Explosive Scoop
+     */
+    private static void explodeDead(final LivingDeathEvent event) {
+        ItemStack weapon = event.getSource().getWeaponItem();
+        if (weapon == null || !weapon.is(ESItems.EXPLOSIVE_SCOOP))
+            return;
+
+        Entity entity = event.getEntity();
+        if (!entity.level().isClientSide) {
+            Entity attacker = event.getSource().getEntity();
+            entity.level().explode(attacker, entity.getX(), entity.getEyeY(), entity.getZ(), 4,
+                    Level.ExplosionInteraction.NONE);
+        }
     }
 
     @SubscribeEvent

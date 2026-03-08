@@ -188,6 +188,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.MAGNEFORK.get());
         handheldItem(ESItems.OVERCHARGED_MAGNEFORK.get());
         handheldItem(ESItems.UNDERCHARGED_MAGNEFORK.get());
+        handheldItem(ESItems.HEARTSTABBER.get());
         // Chainsaws & Lipsticks
         handheldItem(ESItems.YELLOWCAKESAW.get());
         handheldItem(ESItems.YELLOWCAKESAW_LIPSTICK.get());
@@ -213,6 +214,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.CASHGRABBERS_SHEATHED.get());
         // Knives
         knifeWeapon(ESISSItems.AMETHYST_BACKSTABBER);
+        // Spoons
+        handheldItem(ESItems.EXPLOSIVE_SCOOP.get());
     }
 
     private void bowWeapon(DeferredItem<Item> bow) {
@@ -307,6 +310,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.GUMMY_RING.get());
         // Shovels
         basicItem(ESItems.GOLD_DIGGER.get());
+        // Pickaxes
+        handheldItem(ESItems.SHINEBREAKER.get());
+        // Axes
+        handheldItem(ESItems.DOORBUSTER.get());
         // Visions
         modelVision(ESItems.VISION_BLANK, "blank");
         modelVision(ESItems.VISION_DULL, "dull");
@@ -322,6 +329,11 @@ public final class ESItemModelProvider extends ItemModelProvider {
         modelVision(ESItems.VISION_DOOM, EnumAspect.DOOM);
         modelVision(ESItems.VISION_LIGHT, EnumAspect.LIGHT);
         modelVision(ESItems.VISION_VOID, EnumAspect.VOID);
+        // Misc
+        basicItem(ESItems.TWO_OF_HEARTS.get());
+        basicItem(ESItems.TWO_OF_DIAMONDS.get());
+        basicItem(ESItems.TWO_OF_SPADES.get());
+        basicItem(ESItems.TWO_OF_CLUBS.get());
     }
 
     private void modelVision(DeferredItem<Item> vision, EnumAspect aspect) {

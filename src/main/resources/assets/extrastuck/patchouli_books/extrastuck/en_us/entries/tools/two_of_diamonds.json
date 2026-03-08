@@ -1,0 +1,23 @@
+{
+    "name": "Two of Diamonds",
+    "icon": "extrastuck:two_of_diamonds",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:two_of_diamonds"
+            },
+            "text": "A large two of diamonds.$(br2)$(3)$(l)Special:$() Drops between 2 and 2000 boondollars, at the cost of 50 durability. When used while crouching, turns into a $(l:extrastuck:tools/shinebreaker)Shinebreaker$(/l)"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Ace of Diamonds and an Mirror in a Totem Lathe.",
+            "left": "minestuck:ace_of_diamonds",
+            "mode": "&&",
+            "right": "minestuck:mirror",
+            "result": "extrastuck:two_of_diamonds"
+        }
+    ]
+}

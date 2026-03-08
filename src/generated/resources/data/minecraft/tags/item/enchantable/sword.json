@@ -36,6 +36,7 @@
     "extrastuck:magnefork",
     "extrastuck:overcharged_magnefork",
     "extrastuck:undercharged_magnefork",
+    "extrastuck:heartstabber",
     "extrastuck:yellowcakesaw",
     "extrastuck:yellowcakesaw_lipstick",
     "extrastuck:the_sting",
@@ -52,6 +53,11 @@
     "extrastuck:investlance",
     "extrastuck:cashgrabbers",
     "extrastuck:cashgrabbers_sheathed",
-    "extrastuck:amethyst_backstabber"
+    "extrastuck:amethyst_backstabber",
+    "extrastuck:explosive_scoop",
+    "extrastuck:two_of_hearts",
+    "extrastuck:two_of_diamonds",
+    "extrastuck:two_of_spades",
+    "extrastuck:two_of_clubs"
   ]
 }

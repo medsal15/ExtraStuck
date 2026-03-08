@@ -10,8 +10,11 @@ import javax.annotation.Nullable;
 
 import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
 import com.medsal15.config.ConfigServer;
+import com.medsal15.data.ESLootTableProvider.TableSubProvider;
+import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
+import com.medsal15.loot_modifiers.ESLootModifier;
 import com.mraof.minestuck.client.util.MagicEffect;
 import com.mraof.minestuck.client.util.MagicEffect.AOEType;
 import com.mraof.minestuck.client.util.MagicEffect.RangedType;
@@ -23,6 +26,7 @@ import com.mraof.minestuck.player.PlayerData;
 import com.mraof.minestuck.player.Title;
 import com.mraof.minestuck.util.MSAttachments;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -172,6 +176,93 @@ public final class ESRightClickEffects {
 
             return InteractionResultHolder.pass(stack);
         };
+    }
+
+    /**
+     * Swaps to a Heartstabber when holding shift, heals 2 hearts at the cost of 50
+     * durability otherwise
+     *
+     * @param level
+     * @param player
+     * @param hand
+     * @return
+     */
+    public static InteractionResultHolder<ItemStack> twoOfHearts(Level level, Player player, InteractionHand hand) {
+        if (player.isShiftKeyDown()) {
+            return ItemRightClickEffect.switchTo(ESItems.HEARTSTABBER).onRightClick(level, player, hand);
+        } else {
+            ItemStack stack = player.getItemInHand(hand);
+
+            if (player instanceof ServerPlayer) {
+                player.heal(4);
+                stack.hurtAndBreak(25, player,
+                        hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+            }
+
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+        }
+    }
+
+    /**
+     * Swaps to a Shinebreaker when holding shift, gives 2-2000 (by default)
+     * boondollars at the cost of 50 durability otherwise
+     *
+     * @param level
+     * @param player
+     * @param hand
+     * @return
+     */
+    public static InteractionResultHolder<ItemStack> twoOfDiamonds(Level level, Player player, InteractionHand hand) {
+        if (player.isShiftKeyDown()) {
+            return ItemRightClickEffect.switchTo(ESItems.SHINEBREAKER).onRightClick(level, player, hand);
+        } else {
+            ItemStack stack = player.getItemInHand(hand);
+
+            if (level instanceof ServerLevel serverLevel) {
+                List<ItemStack> loot = ESLootModifier.runTable(serverLevel,
+                        TableSubProvider.TWO_OF_DIAMONDS.location());
+                for (ItemStack lootStack : loot) {
+                    if (!player.getInventory().add(lootStack))
+                        player.drop(lootStack, false);
+                }
+                if (loot.size() > 0)
+                    stack.hurtAndBreak(25, player,
+                            hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+            }
+
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+        }
+    }
+
+    /**
+     * Swaps to a Shinebreaker when holding shift, gives 2-2000 (by default)
+     * boondollars at the cost of 50 durability otherwise
+     *
+     * @param level
+     * @param player
+     * @param hand
+     * @return
+     */
+    public static InteractionResultHolder<ItemStack> twoOfSpades(Level level, Player player, InteractionHand hand) {
+        if (player.isShiftKeyDown()) {
+            return ItemRightClickEffect.switchTo(ESItems.EXPLOSIVE_SCOOP).onRightClick(level, player, hand);
+        } else {
+            ItemStack stack = player.getItemInHand(hand);
+
+            if (level instanceof ServerLevel serverLevel) {
+                List<ItemStack> loot = ESLootModifier.runTable(serverLevel,
+                        TableSubProvider.TWO_OF_SPADES.location());
+                for (ItemStack lootStack : loot) {
+                    if (!player.getInventory().add(lootStack))
+                        player.drop(lootStack, false);
+                }
+                if (loot.size() > 0)
+                    stack.hurtAndBreak(25, player,
+                            hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+            }
+
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+        }
     }
 
     /**

@@ -1,0 +1,15 @@
+{
+    "name": "Explosive Scoop",
+    "icon": "extrastuck:explosive_scoop",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:explosive_scoop"
+            },
+            "text": "You're gonna be on the news!$(br2)$(3)$(l)Special:$() Explodes the enemy on kill. Can be turned into a $(l:extrastuck:tools/two_of_spades)Two of Spades$(/l) when used while holding shift."
+        }
+    ]
+}

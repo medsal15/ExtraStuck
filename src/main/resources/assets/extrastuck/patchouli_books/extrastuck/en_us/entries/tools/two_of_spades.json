@@ -1,0 +1,23 @@
+{
+    "name": "Two of Spades",
+    "icon": "extrastuck:two_of_spades",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:two_of_spades"
+            },
+            "text": "A large two of spades.$(br2)$(3)$(l)Special:$() Drops 2 explosives, at the cost of 50 durability. When used while crouching, turns into an $(l:extrastuck:weapons/explosive_scoop)Explosive Scoop$(/l)"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Ace of Spades and an Mirror in a Totem Lathe.",
+            "left": "minestuck:ace_of_spades",
+            "mode": "&&",
+            "right": "minestuck:mirror",
+            "result": "extrastuck:two_of_spades"
+        }
+    ]
+}

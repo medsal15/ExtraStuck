@@ -1,0 +1,15 @@
+{
+    "name": "Shinebreaker",
+    "icon": "extrastuck:shinebreaker",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:shinebreaker"
+            },
+            "text": "An expensive-looking pickaxe.$(br2)$(3)$(l)Special:$() Converts mined blocks into boondollars (when possible). When used while crouching, turns into a $(l:extrastuck:tools/two_of_diamonds)Two of Diamonds$(/l)"
+        }
+    ]
+}

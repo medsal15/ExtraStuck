@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:barbasol_bomb"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "extrastuck:lemonnade"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:tnt"
+        }
+      ],
+      "rolls": 2.0
+    }
+  ],
+  "random_sequence": "extrastuck:gameplay/two_of_spades"
+}

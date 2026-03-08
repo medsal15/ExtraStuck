@@ -1,0 +1,23 @@
+{
+    "name": "Two of Clubs",
+    "icon": "extrastuck:two_of_clubs",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:two_of_clubs"
+            },
+            "text": "A large two of clubs.$(br2)$(3)$(l)Special:$() Opens any door, at the cost of 50 durability. When used while crouching, turns into a $(l:extrastuck:weapons/doorbuster)Doorbuster$(/l)"
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Ace of Clubs and an Mirror in a Totem Lathe.",
+            "left": "minestuck:ace_of_clubs",
+            "mode": "&&",
+            "right": "minestuck:mirror",
+            "result": "extrastuck:two_of_clubs"
+        }
+    ]
+}

@@ -83,6 +83,7 @@ import com.medsal15.items.tools.MagnetItem;
 import com.medsal15.items.tools.Tokenitem;
 import com.medsal15.items.tools.UntunedVisionItem;
 import com.medsal15.items.tools.VisionItem;
+import com.medsal15.items.weaponeffects.ESDestroyBlockEffects;
 import com.medsal15.items.weaponeffects.ESHitEffects;
 import com.medsal15.items.weaponeffects.ESInventoryTickEffects;
 import com.medsal15.items.weaponeffects.ESRightClickBlockEffects;
@@ -532,6 +533,11 @@ public final class ESItems {
                                     .switchTo(ESItems.OVERCHARGED_MAGNEFORK)),
                     new MSItemProperties().durability(750)
                             .component(ESDataComponents.ENERGY_STORAGE, 30_000)));
+    // The healing is handled in CommonEvents.java
+    public static final DeferredItem<Item> HEARTSTABBER = ITEMS.register("heartstabber", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.IRON, 3, -2.4F).set(MSItemTypes.FORK_TOOL).efficiency(2F)
+                    .set(ItemRightClickEffect.switchTo(ESItems.TWO_OF_HEARTS)),
+            new MSItemProperties().durability(500)));
     // #endregion Forks
     // #region Chainsaws
     public static final DeferredItem<Item> YELLOWCAKESAW = ITEMS.register("yellowcakesaw", () -> new WeaponItem(
@@ -637,6 +643,13 @@ public final class ESItems {
                             .set(ItemRightClickEffect.switchTo(ESItems.CASHGRABBERS)),
                     new MSItemProperties().durability(1326)));
     // #endregion Claws
+    // #region Spoons
+    // The exploding is handled in CommonEvents.java
+    public static final DeferredItem<Item> EXPLOSIVE_SCOOP = ITEMS.register("explosive_scoop", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.IRON, 3, -2.4F).set(MSItemTypes.SPOON_TOOL).efficiency(2F)
+                    .set(ItemRightClickEffect.switchTo(ESItems.TWO_OF_SPADES)),
+            new MSItemProperties().durability(500)));
+    // #endregion Spoons
 
     // Staves and Spellbooks are handled in the ISS compat package
     // See the ESISSItems and ESMissingItems classes
@@ -761,6 +774,12 @@ public final class ESItems {
      * TODO axolotl armor
      * regen on damage
      * prismarine armor && axolotl bucket/ghast tear?
+     * TODO maid clothing
+     * bonus to maid players
+     * TODO silver maid chestplate
+     * immunity to time stop
+     * TODO clown shoes
+     * honks when walking
      */
     // #endregion Armors
 
@@ -773,11 +792,26 @@ public final class ESItems {
             p -> new ChargerItem(p.stacksTo(1).component(ESDataComponents.ENERGY_STORAGE, 50_000)));
     public static final DeferredItem<Item> GRIST_DETECTOR = ITEMS.registerItem("grist_detector",
             p -> new GristDetectorItem(p.component(ESDataComponents.GRIST_LAYER, GristLayer.COMMON)));
+
     // #region Shovels
     public static final DeferredItem<Item> GOLD_DIGGER = ITEMS.register("gold_digger",
             () -> new WeaponItem(new WeaponItem.Builder(Tiers.GOLD, 3, -2.4F).set(MSItemTypes.SHOVEL_TOOL)
                     .add(ESItemTypes.BOONDOLLAR_MINING), new MSItemProperties().durability(1326)));
     // #endregion Shovels
+    // #region Pickaxes
+    public static final DeferredItem<Item> SHINEBREAKER = ITEMS.register("shinebreaker", () -> new InnateEnchantsWeapon(
+            new WeaponItem.Builder(Tiers.DIAMOND, 0, -2.8f).set(MSItemTypes.PICKAXE_TOOL)
+                    .add(ESItemTypes.BOONDOLLAR_MINING).set(ItemRightClickEffect.switchTo(ESItems.TWO_OF_DIAMONDS)),
+            new MSItemProperties().durability(500), Map.of(Enchantments.FORTUNE, 1)));
+    // #endregion Pickaxes
+    // #region Axes
+    public static final DeferredItem<Item> DOORBUSTER = ITEMS.register("doorbuster", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.DIAMOND, 5, -3f).set(MSItemTypes.AXE_TOOL).efficiency(12)
+                    .set(ItemRightClickEffect.switchTo(ESItems.TWO_OF_CLUBS))
+                    .set(ESDestroyBlockEffects::buffOnDoorBreak),
+            new MSItemProperties().durability(500)));
+    // #endregion Axes
+
     // #region Visions
     public static final DeferredItem<Item> VISION_BLANK = ITEMS.registerItem("vision_blank", UntunedVisionItem::new,
             new Item.Properties().stacksTo(1));
@@ -808,6 +842,24 @@ public final class ESItems {
     public static final DeferredItem<Item> VISION_VOID = ITEMS.registerItem("vision_void",
             p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.VOID));
     // #endregion Visions
+    // #region Cards
+    public static final DeferredItem<Item> TWO_OF_HEARTS = ITEMS.register("two_of_hearts", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
+                    .set(ESRightClickEffects::twoOfHearts),
+            new MSItemProperties().durability(500)));
+    public static final DeferredItem<Item> TWO_OF_DIAMONDS = ITEMS.register("two_of_diamonds", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
+                    .set(ESRightClickEffects::twoOfDiamonds),
+            new MSItemProperties().durability(500)));
+    public static final DeferredItem<Item> TWO_OF_SPADES = ITEMS.register("two_of_spades", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
+                    .set(ESRightClickEffects::twoOfSpades),
+            new MSItemProperties().durability(500)));
+    public static final DeferredItem<Item> TWO_OF_CLUBS = ITEMS.register("two_of_clubs", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
+                    .set(ESRightClickBlockEffects::openDoor).set(ItemRightClickEffect.switchTo(ESItems.DOORBUSTER)),
+            new MSItemProperties().durability(500)));
+    // #endregion Cards
     // #endregion Tools
 
     // #region Modus
@@ -1154,6 +1206,8 @@ public final class ESItems {
         list.add(FIELD_CHARGER);
 
         list.addAll(getShovels());
+        list.addAll(getPickaxes());
+        list.addAll(getAxes());
         return list;
     }
 
@@ -1293,6 +1347,7 @@ public final class ESItems {
         list.add(MAGNEFORK);
         list.add(OVERCHARGED_MAGNEFORK);
         list.add(UNDERCHARGED_MAGNEFORK);
+        list.add(HEARTSTABBER);
         // Chainsaws
         list.add(YELLOWCAKESAW);
         list.add(YELLOWCAKESAW_LIPSTICK);
@@ -1327,6 +1382,13 @@ public final class ESItems {
         } else {
             list.addAll(ESISSMissingItems.getKnives());
         }
+        // Spoons
+        list.add(EXPLOSIVE_SCOOP);
+        // Misc
+        list.add(TWO_OF_HEARTS);
+        list.add(TWO_OF_DIAMONDS);
+        list.add(TWO_OF_SPADES);
+        list.add(TWO_OF_CLUBS);
         return list;
     }
 
@@ -1339,7 +1401,12 @@ public final class ESItems {
 
         list.add(YELLOWCAKESAW);
 
+        list.add(TWO_OF_DIAMONDS);
+        list.add(TWO_OF_CLUBS);
+
         list.addAll(getShovels());
+        list.addAll(getPickaxes());
+        list.addAll(getAxes());
         return list;
     }
 
@@ -1347,6 +1414,22 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(GOLD_DIGGER);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getPickaxes() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(SHINEBREAKER);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getAxes() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(DOORBUSTER);
 
         return list;
     }

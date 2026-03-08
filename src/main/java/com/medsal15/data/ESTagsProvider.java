@@ -161,11 +161,18 @@ public final class ESTagsProvider {
             }
 
             for (DeferredItem<Item> tool : ESItems.getMiningTools()) {
+                tag(Tags.Items.MINING_TOOL_TOOLS).add(tool.get());
                 tag(ItemTags.MINING_ENCHANTABLE).add(tool.get());
                 tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(tool.get());
             }
             for (DeferredItem<Item> shovel : ESItems.getShovels()) {
                 tag(ItemTags.SHOVELS).add(shovel.get());
+            }
+            for (DeferredItem<Item> pickaxe : ESItems.getPickaxes()) {
+                tag(ItemTags.PICKAXES).add(pickaxe.get());
+            }
+            for (DeferredItem<Item> axe : ESItems.getAxes()) {
+                tag(ItemTags.AXES).add(axe.get());
             }
 
             for (DeferredItem<Item> armor : ESItems.getArmor()) {
@@ -218,7 +225,7 @@ public final class ESTagsProvider {
             tag(ESTags.Items.SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get(), ESItems.SALESWOMAN_GLASSES.get());
             tag(ESTags.Items.DROPS_BOONDOLLARS).add(ESItems.DEBT_REAPER.get(), ESItems.STOCKS_UPTICKER.get(),
                     ESItems.PIRATE_HOOK.get(), ESItems.NONE_OF_YOUR_BUSINESS.get(), ESItems.INVESTLANCE.get(),
-                    ESItems.MONEY_MAGIC.get(), ESItems.CASHGRABBERS.get());
+                    ESItems.MONEY_MAGIC.get(), ESItems.CASHGRABBERS.get(), ESItems.SHINEBREAKER.get());
             tag(ESTags.Items.COSMIC_PLAGUE_ARMOR).add(ESISSItems.COSMIC_PLAGUE_HELMET.get(),
                     ESISSItems.COSMIC_PLAGUE_CHESTPLATE.get(), ESISSItems.COSMIC_PLAGUE_LEGGINGS.get(),
                     ESISSItems.COSMIC_PLAGUE_BOOTS.get());

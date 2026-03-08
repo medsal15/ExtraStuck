@@ -931,6 +931,36 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Spellbooks
 
+        // #region Cards
+        CombinationRecipeBuilder.of(ESItems.TWO_OF_HEARTS)
+                .input(MSItems.ACE_OF_HEARTS).and().input(MSItems.MIRROR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TWO_OF_HEARTS)
+                .grist(GristTypes.MARBLE, 540).grist(GristTypes.RUBY, 75).grist(GristTypes.DIAMOND, 5)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.TWO_OF_DIAMONDS)
+                .input(MSItems.ACE_OF_DIAMONDS).and().input(MSItems.MIRROR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TWO_OF_DIAMONDS)
+                .grist(GristTypes.MARBLE, 540).grist(GristTypes.DIAMOND, 75).grist(GristTypes.GOLD, 5)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.TWO_OF_SPADES)
+                .input(MSItems.ACE_OF_SPADES).and().input(MSItems.MIRROR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TWO_OF_SPADES)
+                .grist(GristTypes.MARBLE, 540).grist(GristTypes.SULFUR, 75).grist(GristTypes.DIAMOND, 5)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.TWO_OF_CLUBS)
+                .input(MSItems.ACE_OF_CLUBS).and().input(MSItems.MIRROR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TWO_OF_CLUBS)
+                .grist(GristTypes.MARBLE, 540).grist(GristTypes.DIAMOND, 75).grist(GristTypes.RUST, 5)
+                .build(output);
+        // #endregion Cards
+
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);

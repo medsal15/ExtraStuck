@@ -14,6 +14,7 @@ import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.items.ESItems;
 import com.medsal15.loot_functions.TurnToCardFunction;
 import com.mraof.minestuck.item.MSItems;
+import com.mraof.minestuck.item.loot.functions.SetBoondollarCount;
 import com.mraof.minestuck.util.MSTags;
 
 import net.minecraft.ChatFormatting;
@@ -57,6 +58,10 @@ public class ESLootTableProvider extends LootTableProvider {
 
         public static ResourceKey<LootTable> GIFT_LOOT_TABLE = key("gameplay/gift");
         public static ResourceKey<LootTable> SPAM_LOOT_TABLE = key("gameplay/spam");
+
+        public static ResourceKey<LootTable> TWO_OF_DIAMONDS = key("gameplay/two_of_diamonds");
+        public static ResourceKey<LootTable> TWO_OF_SPADES = key("gameplay/two_of_spades");
+
         public static ResourceKey<LootTable> INJECT_PUSB = key("chests/inject/unique_spellbook");
 
         public static ResourceKey<LootTable> INJECT_TERRAIN_END = key("chests/inject/medium_end");
@@ -112,6 +117,17 @@ public class ESLootTableProvider extends LootTableProvider {
             // Gift
             consumer.accept(GIFT_LOOT_TABLE, giftLootTable());
             consumer.accept(SPAM_LOOT_TABLE, spamLootTable());
+
+            // Cards
+            consumer.accept(TWO_OF_DIAMONDS, LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                            .add(LootItem.lootTableItem(MSItems.BOONDOLLARS)
+                                    .apply(SetBoondollarCount.builder(UniformGenerator.between(2, 2000))))));
+            consumer.accept(TWO_OF_SPADES, LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(2))
+                            .add(LootItem.lootTableItem(MSItems.BARBASOL_BOMB))
+                            .add(LootItem.lootTableItem(ESItems.LEMONNADE))
+                            .add(LootItem.lootTableItem(Items.TNT))));
         }
 
         private static LootTable.Builder giftLootTable() {
