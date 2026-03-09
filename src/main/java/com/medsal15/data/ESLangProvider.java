@@ -139,6 +139,7 @@ public final class ESLangProvider extends LanguageProvider {
         addFood();
         addTags();
         addMobEffects();
+        addPonder();
 
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
@@ -826,6 +827,64 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.DimensionTypes.COSMIC_DIMENSION_TYPES, "Dimensions triggering the Cosmic Plague Spore effect");
     }
 
+    private void addPonder() {
+        addPonderEntry("cruxtruder", "header", "Getting Cruxite Dowels out of your Cruxtruder");
+        addPonderEntry("cruxtruder", "text_1", "This is the Cruxtruder, which is the source of cruxite dowels");
+        addPonderEntry("cruxtruder", "text_2", "Start by removing that pesky Lid");
+        addPonderEntry("cruxtruder", "text_3", "(You may need to feed raw cruxite to the pipe)");
+        addPonderEntry("cruxtruder", "text_4", "Turn the wheel in front of the pipe...");
+        addPonderEntry("cruxtruder", "text_5", "...to get the dowel out");
+        addPonderEntry("cruxtruder", "text_6", "Just click (or punch) the dowel to drop it");
+
+        addPonderEntry("punch_designix", "header", "Puching Cards through the Punch Designix");
+        addPonderEntry("punch_designix", "text_1",
+                "This is the Punch Designix, which allows punching items into cards");
+        addPonderEntry("punch_designix", "text_2", "Place a card (preferably empty) in the slot");
+        addPonderEntry("punch_designix", "text_3", "Input a different card's code in the keyboard to punch it");
+        addPonderEntry("punch_designix", "text_4", "You may also use the card directly on the keyboard to prefill it");
+        addPonderEntry("punch_designix", "text_5", "Retrieve the punched card");
+
+        addPonderEntry("totem_lathe", "header", "Lathing Dowels using the Totem Lathe");
+        addPonderEntry("totem_lathe", "text_1", "This is the Totem Lathe, which allows carving items onto dowels");
+        addPonderEntry("totem_lathe", "text_2", "Place an uncarved dowel on the rod");
+        addPonderEntry("totem_lathe", "text_3", "Add a punched card");
+        addPonderEntry("totem_lathe", "text_4", "Activate the Lathe...");
+        addPonderEntry("totem_lathe", "text_5", "...to carve the dowel");
+        addPonderEntry("totem_lathe", "text_6", "You may now take back the card and the (carved) dowel");
+
+        addPonderEntry("alchemiter", "header", "Alchemizing with the Alchemiter");
+        addPonderEntry("alchemiter", "text_1", "This is the Alchemiter, which allows making items from dowels");
+        addPonderEntry("alchemiter", "text_2", "Place a carved dowel on the pad");
+        addPonderEntry("alchemiter", "text_3", "And use your grist to alchemize your new item");
+
+        addPonderEntry("intellibeam", "header", "Reading the unreadable with the Intellibeam Laserstation");
+        addPonderEntry("intellibeam", "text_1", "Some items' captcha codes are too complex to be read normally");
+        addPonderEntry("intellibeam", "text_2", "The Intellibeam Laserstation can decipher these codes");
+        addPonderEntry("intellibeam", "text_3", "Just put the card in...");
+        addPonderEntry("intellibeam", "text_4", "...click it a few times...");
+        addPonderEntry("intellibeam", "text_5", "...and the card's captcha code is finally readable");
+
+        addPonderEntry("or_alchemy", "header", "Combining items with the Punch Designix");
+        addPonderEntry("or_alchemy", "text_1", "It is possible to create new items using the Punch Designix");
+        addPonderEntry("or_alchemy", "text_2", "Use the two cards you wish to combine");
+        addPonderEntry("or_alchemy", "text_3", "And take the punched dowel back");
+
+        addPonderEntry("and_alchemy", "header", "Combining items with the Totem Lathe");
+        addPonderEntry("and_alchemy", "text_1", "It is possible to create new items using the Totem Lathe");
+        addPonderEntry("and_alchemy", "text_2", "Place the two punched cards you wish to combine");
+        addPonderEntry("and_alchemy", "text_3", "Activate the Lathe to carve the dowel");
+        addPonderEntry("and_alchemy", "text_4", "And take the carved dowel back");
+
+        addPonderEntry("holopad", "header", "Decorating your home with a Holopad");
+        addPonderEntry("holopad", "text_1", "The Holopad allows displaying what is in a punched card");
+        addPonderEntry("holopad", "text_2", "Just place a punched card, and enjoy!");
+
+        add("extrastuck.ponder.tag.alchemy", "Alchemy Machines");
+        add("extrastuck.ponder.tag.alchemy.description", "Machines for alchemizing more items");
+        add("extrastuck.ponder.tag.alchemy/recipes", "Alchemy Recipes");
+        add("extrastuck.ponder.tag.alchemy/recipes.description", "How to alchemize new items");
+    }
+
     private void addItemTooltip(Supplier<? extends Item> key, String text) {
         addItemExtra(key, "tooltip", text);
     }
@@ -870,5 +929,9 @@ public final class ESLangProvider extends LanguageProvider {
             String key = location.getNamespace() + ".program." + location.getPath();
             add(key, text);
         }
+    }
+
+    private void addPonderEntry(String sceneId, String title, String text) {
+        add(String.format("%s.ponder.%s.%s", ExtraStuck.MODID, sceneId, title), text);
     }
 }

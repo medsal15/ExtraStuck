@@ -30,11 +30,15 @@ public class ConfigClient {
             .comment("If enabled, infused visions will include a warning about the use limit")
             .define("tooltip.vision_warning", true);
     private static final ModConfigSpec.BooleanValue ADD_MISSING_MOD_TOOLTIP = BUILDER
-            .comment("Whether to show in compat items that the required mod is missing")
+            .comment("If enabled, compat items which require a specific mod will mention it in their tooltip")
             .define("tooltip.missing_mod", true);
     private static final ModConfigSpec.BooleanValue ADD_CONVERTION_RECIPES = BUILDER
-            .comment("Whether to add mysterious convertion recipes when create is loaded or not")
+            .comment(
+                    "If enabled and Create is installed, mysterious convertion recipes will be added for Extrastuck items")
             .define("compat.convertion_recipes", true);
+    private static final ModConfigSpec.BooleanValue ADD_MINESTUCK_PONDER = BUILDER
+            .comment("If enabled and Ponder is installed, Minestuck machines will have ponder entries")
+            .define("compat.ponder_minestuck_machines", true);
 
     public static enum BoondollarDisplayMode {
         DISABLED,
@@ -51,6 +55,7 @@ public class ConfigClient {
     public static boolean displayVisionWarning;
     public static boolean addConvertionRecipes;
     public static boolean addMissingModTooltip;
+    public static boolean addPonderMinestuckEntries;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
@@ -60,5 +65,6 @@ public class ConfigClient {
         boondollarDisplayMode = BOONDOLLAR_DISPLAY_MODE.get();
         addConvertionRecipes = ADD_CONVERTION_RECIPES.get();
         addMissingModTooltip = ADD_MISSING_MOD_TOOLTIP.get();
+        addPonderMinestuckEntries = ADD_MINESTUCK_PONDER.get();
     }
 }
