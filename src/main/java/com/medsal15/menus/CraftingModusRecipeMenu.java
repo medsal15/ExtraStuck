@@ -20,8 +20,10 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.NonInteractiveResultSlot;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CraftingRecipe;
@@ -127,6 +129,20 @@ public class CraftingModusRecipeMenu extends AbstractContainerMenu {
                         new CustomPacketPayload[0]);
             }
         }
+    }
+
+    @Override
+    public void clicked(int slotId, int button, @Nonnull ClickType clickType, @Nonnull Player player) {
+        if (slotId != -999) {
+            Slot slot = getSlot(slotId);
+            if (slot instanceof GhostItemSlot && !slot.getItem().isEmpty()
+                    && (clickType == ClickType.PICKUP || clickType == ClickType.PICKUP_ALL)) {
+                // TODO test if this removes
+                slot.set(ItemStack.EMPTY);
+                return;
+            }
+        }
+        super.clicked(slotId, button, clickType, player);
     }
 
     @SuppressWarnings("null")
