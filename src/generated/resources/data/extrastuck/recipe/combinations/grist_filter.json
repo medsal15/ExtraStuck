@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "create:filter"
+  },
+  "input2": {
+    "item": "minestuck:raw_cruxite"
+  },
+  "mode": "or",
+  "output": "extrastuck:grist_filter"
+}

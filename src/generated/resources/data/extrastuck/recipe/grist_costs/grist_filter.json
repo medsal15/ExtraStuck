@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 8,
+    "minestuck:chalk": 4
+  },
+  "ingredient": {
+    "item": "extrastuck:grist_filter"
+  }
+}

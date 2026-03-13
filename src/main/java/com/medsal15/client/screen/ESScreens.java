@@ -17,6 +17,8 @@ import com.medsal15.client.screen.modus.MastermindModusScreen;
 import com.medsal15.client.screen.modus.OreModusScreen;
 import com.medsal15.client.screen.modus.PileModusScreen;
 import com.medsal15.client.screen.modus.VoidModusScreen;
+import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.create.client.screens.ESCreateScreens;
 import com.medsal15.menus.ESMenuTypes;
 import com.medsal15.modus.ESModus;
 
@@ -30,7 +32,7 @@ import static com.mraof.minestuck.client.gui.MSScreenFactories.registerSylladexF
 @EventBusSubscriber(value = Dist.CLIENT, modid = ExtraStuck.MODID)
 public final class ESScreens {
     @SubscribeEvent
-    public static void registerScreenFactories(RegisterMenuScreensEvent event) {
+    public static void registerScreenFactories(final RegisterMenuScreensEvent event) {
         event.register(ESMenuTypes.PRINTER.get(), PrinterScreen::new);
         event.register(ESMenuTypes.CHARGER.get(), ChargerScreen::new);
         event.register(ESMenuTypes.REACTOR.get(), ReactorScreen::new);
@@ -52,5 +54,9 @@ public final class ESScreens {
         registerSylladexFactory(ESModus.FURNACE_MODUS, FurnaceModusScreen::new);
         registerSylladexFactory(ESModus.COMPACT_MODUS, CompactModusScreen::new);
         registerSylladexFactory(ESModus.CRAFTING_MODUS, CraftingModusScreen::new);
+
+        if (ESCompatUtils.isLoaded("create")) {
+            ESCreateScreens.registerScreenFactories(event);
+        }
     }
 }

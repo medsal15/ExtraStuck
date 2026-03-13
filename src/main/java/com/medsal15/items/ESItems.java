@@ -11,6 +11,7 @@ import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.create.items.ESCreateItems;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
@@ -1106,6 +1107,11 @@ public final class ESItems {
         }
         output.accept(GRIST_DETECTOR);
         output.accept(MASTERMIND_DISK);
+        if (ESCompatUtils.isLoaded("create")) {
+            for (DeferredItem<Item> miscTool : ESCreateItems.getMiscTools()) {
+                output.accept(miscTool.get());
+            }
+        }
         for (DeferredItem<Item> vision : ESItems.getVisions()) {
             output.accept(vision.get());
         }

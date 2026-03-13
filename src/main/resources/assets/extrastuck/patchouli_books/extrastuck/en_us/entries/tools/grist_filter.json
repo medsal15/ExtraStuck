@@ -1,0 +1,24 @@
+{
+    "name": "Grist Filter",
+    "icon": "extrastuck:grist_filter",
+    "flag": "mod:create",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:grist_filter"
+            },
+            "text": "The Grist Filter allows Create to filter items by grist costs.$(br)Only items that pass all checks will be accepted.$(br)Additionally, items with no grist cost will always be rejected."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a List Filter and Raw Cruxite in a Punch Designix.",
+            "left": "create:filter",
+            "mode": "||",
+            "right": "minestuck:raw_cruxite",
+            "result": "extrastuck:grist_filter"
+        }
+    ]
+}

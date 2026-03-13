@@ -1,6 +1,7 @@
 package com.medsal15.data;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.create.items.ESCreateItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.player.EnumAspect;
@@ -334,6 +335,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.TWO_OF_DIAMONDS.get());
         basicItem(ESItems.TWO_OF_SPADES.get());
         basicItem(ESItems.TWO_OF_CLUBS.get());
+        basicItem(ESCreateItems.GRIST_FILTER.get());
     }
 
     private void modelVision(DeferredItem<Item> vision, EnumAspect aspect) {

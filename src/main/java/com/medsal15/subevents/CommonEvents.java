@@ -11,6 +11,7 @@ import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.create.network.ESCreatePackets;
 import com.medsal15.compat.curios.CuriosCapabilities;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.curios.items.ESCuriosUtils;
@@ -263,13 +264,17 @@ public final class CommonEvents {
                 CommonEvents::execClient);
         registrar.playToClient(CraftingModusRecipeMenuQuit.ID, CraftingModusRecipeMenuQuit.STREAM_CODEC,
                 CommonEvents::execClient);
+
+        if (ESCompatUtils.isLoaded("create")) {
+            ESCreatePackets.registerPayloadHandlers(event);
+        }
     }
 
-    private static void exec(MSPacket.PlayToServer packet, IPayloadContext context) {
+    public static void exec(MSPacket.PlayToServer packet, IPayloadContext context) {
         packet.execute(context, (ServerPlayer) context.player());
     }
 
-    private static void execClient(MSPacket.PlayToClient packet, IPayloadContext context) {
+    public static void execClient(MSPacket.PlayToClient packet, IPayloadContext context) {
         packet.execute(context);
     }
 

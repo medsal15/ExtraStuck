@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.create.items.ESCreateItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.conditions.ConfigCondition;
 import com.medsal15.items.ESItems;
@@ -19,6 +20,7 @@ import com.mraof.minestuck.data.recipe.IrradiatingRecipeBuilder;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder;
@@ -1414,6 +1416,17 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.IODINE, 34).grist(GristTypes.AMBER, 23).grist(GristTypes.CHALK, 12)
                 .grist(GristTypes.RUST, 3).grist(GristTypes.GOLD, 2).grist(GristTypes.RUBY, 1)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESCreateItems.GRIST_FILTER)
+                .input(AllItems.FILTER).or().input(MSItems.RAW_CRUXITE)
+                .build(output.withConditions(CREATE_LOADED));
+        GristCostRecipeBuilder.of(ESCreateItems.GRIST_FILTER)
+                .grist(GristTypes.BUILD, 8).grist(GristTypes.CHALK, 4)
+                .build(output.withConditions(CREATE_LOADED));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESCreateItems.GRIST_FILTER)
+                .requires(ESCreateItems.GRIST_FILTER)
+                .unlockedBy("has_grist_filter", has(ESCreateItems.GRIST_FILTER))
+                .save(output.withConditions(CREATE_LOADED), modid("shapeless/grist_filter_reset"));
     }
 
     private void foodRecipes(@Nonnull RecipeOutput output) {

@@ -15,6 +15,11 @@ import com.medsal15.client.gui.LoopButton;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.screen.computer.MastermindDecodeScreen;
 import com.medsal15.client.screen.computer.MastermindEncodeScreen;
+import com.medsal15.compat.create.client.menus.GristFilterMenu;
+import com.medsal15.compat.create.client.screens.GristFilterScreen;
+import com.medsal15.compat.create.items.ESCreateItems;
+import com.medsal15.compat.create.items.GristFilterItem;
+import com.medsal15.compat.create.items.GristFilterItem.GristFilterEntry;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.entities.ESEntities;
@@ -101,6 +106,11 @@ public final class ESLangProvider extends LanguageProvider {
             + ".strict.off";
     public static final String CRAFTING_MODUS_ADD_RECIPE = ESItems.CRAFTING_MODUS_CARD.get().getDescriptionId()
             + ".add_recipe";
+    public static final String GRIST_FILTER_SUMMARY = ESCreateItems.GRIST_FILTER.get().getDescriptionId() + ".summary";
+    public static final String GRIST_FILTER_CONDITION = ESCreateItems.GRIST_FILTER.get().getDescriptionId()
+            + ".condition";
+    public static final String GRIST_FILTER_BEHAVIOR = ESCreateItems.GRIST_FILTER.get().getDescriptionId()
+            + ".behavior";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
@@ -634,6 +644,31 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.TWO_OF_DIAMONDS, "Two of Diamonds");
         addItem(ESItems.TWO_OF_SPADES, "Two of Spades");
         addItem(ESItems.TWO_OF_CLUBS, "Two of Clubs");
+        // Grist Filter
+        addItem(ESCreateItems.GRIST_FILTER, "Grist Filter");
+        add(GristFilterItem.LIST_TITLE, "Matches All Following");
+        add(GristFilterMenu.GRIST_FILTER_LIST, "Selected Grist Filters");
+        add(GristFilterEntry.ComparingMode.GREATER_THAN_EQUAL.key(), "at least %1$s %2$s");
+        add(GristFilterEntry.ComparingMode.GREATER_THAN_EQUAL.symbol(), "≥");
+        add(GristFilterEntry.ComparingMode.GREATER_THAN.key(), "over %1$s %2$s");
+        add(GristFilterEntry.ComparingMode.GREATER_THAN.symbol(), ">");
+        add(GristFilterEntry.ComparingMode.EQUAL.key(), "exactly %1$s %2$s");
+        add(GristFilterEntry.ComparingMode.EQUAL.symbol(), "=");
+        add(GristFilterEntry.ComparingMode.NOT_EQUAL.key(), "not %1$s %2$s");
+        add(GristFilterEntry.ComparingMode.NOT_EQUAL.symbol(), "≠");
+        add(GristFilterEntry.ComparingMode.LESS_THAN_EQUAL.key(), "at most %1$s %2$s");
+        add(GristFilterEntry.ComparingMode.LESS_THAN_EQUAL.symbol(), "≤");
+        add(GristFilterEntry.ComparingMode.LESS_THAN.key(), "under %1$s %2$s");
+        add(GristFilterEntry.ComparingMode.LESS_THAN.symbol(), "<");
+        add(GristFilterScreen.ADD_DESC, "Add grist to List");
+        add(GristFilterScreen.GRIST_TYPE, "Grist");
+        add(GristFilterScreen.MODE, "Comparison");
+        add(GristFilterScreen.LIST_SELECTED, "Grist filters:");
+        add(GristFilterScreen.LIST_EMPTY, "No grist filters");
+        add(GRIST_FILTER_SUMMARY,
+                "_Matches items' grist values_ against a list of predicates. Can be used in _Filter Slots_ of Create's Components");
+        add(GRIST_FILTER_CONDITION, "When R-Clicked");
+        add(GRIST_FILTER_BEHAVIOR, "Opens the _configuration interface_.");
     }
 
     private void addBlockEntities() {
