@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:two_of_spades"
             },
-            "text": "A large two of spades.$(br2)$(3)$(l)Special:$() Drops 2 explosives, at the cost of 50 durability. When used while crouching, turns into an $(l:extrastuck:weapons/explosive_scoop)Explosive Scoop$(/l)"
+            "text": "A large two of spades.$(br2)$(3)$(l)Special:$() Drops 2 explosives, at the cost of 25 durability. When used while crouching, turns into an $(l:extrastuck:weapons/explosive_scoop)Explosive Scoop$(/l)"
         },
         {
             "type": "extrastuck:combination",

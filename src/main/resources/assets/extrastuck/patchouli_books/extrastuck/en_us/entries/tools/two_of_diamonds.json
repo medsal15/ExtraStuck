@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:two_of_diamonds"
             },
-            "text": "A large two of diamonds.$(br2)$(3)$(l)Special:$() Drops between 2 and 2000 boondollars, at the cost of 50 durability. When used while crouching, turns into a $(l:extrastuck:tools/shinebreaker)Shinebreaker$(/l)"
+            "text": "A large two of diamonds.$(br2)$(3)$(l)Special:$() Drops between 2 and 2000 boondollars, at the cost of 25 durability. When used while crouching, turns into a $(l:extrastuck:tools/shinebreaker)Shinebreaker$(/l)"
         },
         {
             "type": "extrastuck:combination",

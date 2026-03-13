@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:two_of_hearts"
             },
-            "text": "A large two of hearts.$(br2)$(3)$(l)Special:$() Heals 4 health (2 hearts) on use, at the cost of 50 durability. When used while crouching, turns into a $(l:extrastuck:weapons/heartstabber)Heartstabber$(/l)"
+            "text": "A large two of hearts.$(br2)$(3)$(l)Special:$() Heals 4 health (2 hearts) on use, at the cost of 25 durability. When used while crouching, turns into a $(l:extrastuck:weapons/heartstabber)Heartstabber$(/l)"
         },
         {
             "type": "extrastuck:combination",

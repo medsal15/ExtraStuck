@@ -9,7 +9,7 @@
             "item": {
                 "item": "extrastuck:two_of_clubs"
             },
-            "text": "A large two of clubs.$(br2)$(3)$(l)Special:$() Opens any door, at the cost of 50 durability. When used while crouching, turns into a $(l:extrastuck:weapons/doorbuster)Doorbuster$(/l)"
+            "text": "A large two of clubs.$(br2)$(3)$(l)Special:$() Opens any door, at the cost of 25 durability. When used while crouching, turns into a $(l:extrastuck:weapons/doorbuster)Doorbuster$(/l)"
         },
         {
             "type": "extrastuck:combination",
