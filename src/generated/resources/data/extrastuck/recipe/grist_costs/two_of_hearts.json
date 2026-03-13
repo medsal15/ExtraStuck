@@ -1,9 +1,9 @@
 {
   "type": "minestuck:grist_cost",
   "grist_cost": {
-    "minestuck:diamond": 5,
-    "minestuck:marble": 540,
-    "minestuck:ruby": 75
+    "minestuck:diamond": 15,
+    "minestuck:marble": 1080,
+    "minestuck:ruby": 125
   },
   "ingredient": {
     "item": "extrastuck:two_of_hearts"
