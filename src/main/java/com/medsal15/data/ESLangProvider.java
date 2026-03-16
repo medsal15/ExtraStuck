@@ -106,11 +106,9 @@ public final class ESLangProvider extends LanguageProvider {
             + ".strict.off";
     public static final String CRAFTING_MODUS_ADD_RECIPE = ESItems.CRAFTING_MODUS_CARD.get().getDescriptionId()
             + ".add_recipe";
-    public static final String GRIST_FILTER_SUMMARY = ESCreateItems.GRIST_FILTER.get().getDescriptionId() + ".summary";
-    public static final String GRIST_FILTER_CONDITION = ESCreateItems.GRIST_FILTER.get().getDescriptionId()
-            + ".condition";
-    public static final String GRIST_FILTER_BEHAVIOR = ESCreateItems.GRIST_FILTER.get().getDescriptionId()
-            + ".behavior";
+    public static final String GRIST_FILTER_SUMMARY = ExtraStuck.MODID + ".grist_filter.summary";
+    public static final String GRIST_FILTER_CONDITION = ExtraStuck.MODID + ".grist_filter.condition";
+    public static final String GRIST_FILTER_BEHAVIOR = ExtraStuck.MODID + ".grist_filter.behavior";
 
     public static final String ENERGY_STORAGE_KEY = ExtraStuck.MODID + ".energy_storage";
     public static final String FLUID_STORAGE_KEY = ExtraStuck.MODID + ".fluid_storage";
