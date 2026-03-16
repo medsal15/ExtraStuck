@@ -33,7 +33,6 @@ import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.structures.processors.ESProcessors;
 import com.mojang.logging.LogUtils;
 
-import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -127,7 +126,7 @@ public class ExtraStuck {
         });
 
         if (ESCompatUtils.isLoaded("ponder")) {
-            PonderIndex.addPlugin(new ESPonderPlugin());
+            ESPonderPlugin.register();
         }
     }
 }
