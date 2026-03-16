@@ -14,7 +14,7 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
-import com.medsal15.client.model.armor.HeavyBootsModel;
+import com.medsal15.client.model.armor.ESArmorModels;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
@@ -66,6 +66,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -379,7 +380,7 @@ public final class ClientEvents {
             public HumanoidModel<?> getHumanoidArmorModel(@Nonnull LivingEntity livingEntity,
                     @Nonnull ItemStack itemStack, @Nonnull EquipmentSlot equipmentSlot,
                     @Nonnull HumanoidModel<?> original) {
-                return new HumanoidModel<>(HeavyBootsModel.createBodyLayer().bakeRoot());
+                return new HumanoidModel<>(ESArmorModels.heavyBootsModel().bakeRoot());
             }
         }, ESItems.HEAVY_BOOTS);
     }
@@ -410,6 +411,8 @@ public final class ClientEvents {
             }
             return -1;
         }, ESItems.GRIST_DETECTOR.get());
+        event.register((stack, index) -> index > 0 ? -1 : DyedItemColor.getOrDefault(stack, 0xFFFFFFFF),
+                ESItems.CHEF_HAT.get(), ESItems.CHEF_APRON.get());
     }
 
     @SubscribeEvent

@@ -18,6 +18,11 @@
 				{
 					"name": "armorHead",
 					"parent": "bipedHead",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "dye_head",
+					"parent": "armorHead",
 					"pivot": [0, 24, 0],
 					"cubes": [
 						{"origin": [-5, 30, -5], "size": [10, 2, 10], "uv": [0, 0]},
@@ -31,7 +36,12 @@
 				{
 					"name": "armorBody",
 					"parent": "bipedBody",
-					"pivot": [0, 24, 0],
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "dye_body",
+					"parent": "armorBody",
+					"pivot": [0, 0, 0],
 					"cubes": [
 						{"origin": [-4, 12, -3], "size": [8, 11, 1], "uv": [0, 29]},
 						{"origin": [3, 22, -2], "size": [1, 1, 4], "uv": [18, 29]},

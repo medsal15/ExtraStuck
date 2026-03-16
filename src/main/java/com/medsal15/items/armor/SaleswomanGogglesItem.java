@@ -4,10 +4,11 @@ import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.medsal15.client.model.armor.SaleswomanGogglesModel;
+import com.medsal15.ExtraStuck;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
@@ -21,6 +22,7 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager.ControllerRegistrar;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.constant.DefaultAnimations;
+import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
@@ -52,9 +54,26 @@ public class SaleswomanGogglesItem extends ArmorItem implements GeoItem {
             public <T extends LivingEntity> @Nullable HumanoidModel<?> getGeoArmorRenderer(@Nullable T livingEntity,
                     ItemStack itemStack, @Nullable EquipmentSlot equipmentSlot, @Nullable HumanoidModel<T> original) {
                 if (this.renderer == null)
-                    renderer = new GeoArmorRenderer<>(new SaleswomanGogglesModel());
+                    renderer = new GeoArmorRenderer<>(new Model());
                 return renderer;
             }
         });
+    }
+
+    public static class Model extends GeoModel<SaleswomanGogglesItem> {
+        @Override
+        public ResourceLocation getModelResource(SaleswomanGogglesItem animatable) {
+            return ExtraStuck.modid("geo/saleswoman_glasses.geo.json");
+        }
+
+        @Override
+        public ResourceLocation getTextureResource(SaleswomanGogglesItem animatable) {
+            return ExtraStuck.modid("textures/models/armor/saleswoman_glasses.png");
+        }
+
+        @Override
+        public ResourceLocation getAnimationResource(SaleswomanGogglesItem animatable) {
+            return ExtraStuck.modid("animations/none.animation.json");
+        }
     }
 }

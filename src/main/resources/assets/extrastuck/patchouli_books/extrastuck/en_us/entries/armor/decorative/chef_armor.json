@@ -7,7 +7,7 @@
         {
             "type": "patchouli:spotlight",
             "item": "extrastuck:chef_hat,extrastuck:chef_apron",
-            "text": "A fancy chef hat and assorted apron. Suspiciously clean."
+            "text": "A fancy chef hat and assorted apron. Suspiciously clean.$(br)Can be dyed in your favorite color(s)."
         },
         {
             "type": "extrastuck:combination",

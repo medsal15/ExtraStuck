@@ -240,6 +240,7 @@ public final class ESTagsProvider {
 
             tag(ItemTags.PIGLIN_LOVED).add(ESItems.GOLD_SHIELD.get(), ESItems.GOLDEN_PAN.get(),
                     ESItems.GOLD_COIN.get());
+            tag(ItemTags.DYEABLE).add(ESItems.CHEF_APRON.get(), ESItems.CHEF_HAT.get());
 
             tag(ESTags.Items.TOOLS_ROLLING_PIN).add(ESItems.ROLLING_PIN.get());
             tag(Tags.Items.TOOLS).addTag(ESTags.Items.TOOLS_ROLLING_PIN);
