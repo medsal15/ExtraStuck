@@ -38,7 +38,6 @@ public class DoublingBowItem extends BowItem {
             return;
         }
         float spread = EnchantmentHelper.processProjectileSpread(level, weapon, shooter, 0.0F);
-        // TODO test if this changes anything
         float f1 = copies == 1 ? 0.0F : 2.0F * spread / (float) copies;
         float f2 = (float) (copies % 2) * f1 / 2.0F;
         float f3 = 1.0F;

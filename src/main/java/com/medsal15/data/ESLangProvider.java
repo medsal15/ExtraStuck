@@ -433,6 +433,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.RAINBOW_BOW, "A unique flavor for each arrow");
         addItem(ESItems.MAKE_IT_RAIN, "Make It Rain");
         addItemTooltip(ESItems.MAKE_IT_RAIN, "25x Arrow Combo");
+        addItem(ESItems.SHOOTING_STAR, "Shooting Star");
         // Throwables
         addItem(ESItems.BEENADE, "Beenade");
         add(BEENADE_LOADED, "It buzzes softly");

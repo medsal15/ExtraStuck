@@ -252,6 +252,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         bowWeapon(ESItems.BOWWOB);
         bowWeapon(ESItems.RAINBOW_BOW);
         bowWeapon(ESItems.MAKE_IT_RAIN);
+        bowWeapon(ESItems.SHOOTING_STAR);
 
         handheldItem(ESItems.BEENADE.get());
         handheldItem(ESItems.LEMONNADE.get());

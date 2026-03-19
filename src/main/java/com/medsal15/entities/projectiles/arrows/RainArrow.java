@@ -45,16 +45,20 @@ public class RainArrow extends AbstractArrow {
         if (projectileItem != null) {
             ItemStack ammo = getPickupItem().getOrDefault(DataComponents.CONTAINER,
                     ItemContainerContents.EMPTY).getStackInSlot(0);
-            Vec3 location = result.getLocation();
-            for (int i = 0; i < 25; i++) {
-                double x = location.x() + getRandom().nextDouble() * (double) i / 5d - (double) i / 10d;
-                double y = location.y() + getRandom().nextDouble() * 5d + 15d;
-                double z = location.z() + getRandom().nextDouble() * (double) i / 5d - (double) i / 10d;
-                Projectile projectile = projectileItem.asProjectile(level(), new Vec3(x, y, z), ammo, Direction.DOWN);
-                projectile.setOwner(getOwner());
-                if (projectile instanceof AbstractArrow arrow)
-                    arrow.pickup = Pickup.CREATIVE_ONLY;
-                level().addFreshEntity(projectile);
+            // Shouldn't happen, but just in case
+            if (!ammo.isEmpty()) {
+                Vec3 location = result.getLocation();
+                for (int i = 0; i < 25; i++) {
+                    double x = location.x() + getRandom().nextDouble() * (double) i / 5d - (double) i / 10d;
+                    double y = location.y() + getRandom().nextDouble() * 5d + 15d;
+                    double z = location.z() + getRandom().nextDouble() * (double) i / 5d - (double) i / 10d;
+                    Projectile projectile = projectileItem.asProjectile(level(), new Vec3(x, y, z), ammo,
+                            Direction.DOWN);
+                    projectile.setOwner(getOwner());
+                    if (projectile instanceof AbstractArrow arrow)
+                        arrow.pickup = Pickup.CREATIVE_ONLY;
+                    level().addFreshEntity(projectile);
+                }
             }
         }
 

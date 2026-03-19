@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:bow"
+  },
+  "input2": {
+    "item": "minecraft:firework_star"
+  },
+  "mode": "or",
+  "output": "extrastuck:shooting_star"
+}

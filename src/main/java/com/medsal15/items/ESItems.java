@@ -45,6 +45,7 @@ import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.armor.SalesmanGogglesItem;
 import com.medsal15.items.armor.SaleswomanGogglesItem;
 import com.medsal15.items.bows.DoublingBowItem;
+import com.medsal15.items.bows.FastBowItem;
 import com.medsal15.items.bows.MakeRainItem;
 import com.medsal15.items.bows.RainbowBowItem;
 import com.medsal15.items.components.ESDataComponents;
@@ -669,6 +670,8 @@ public final class ESItems {
     public static final DeferredItem<Item> MAKE_IT_RAIN = ITEMS.register("make_it_rain",
             () -> new MakeRainItem(
                     new Properties().durability(MSItemTypes.CORUNDUM_TIER.getUses()).rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> SHOOTING_STAR = ITEMS.register("shooting_star",
+            () -> new FastBowItem(new Properties().durability(Tiers.DIAMOND.getUses())));
     // #endregion Bows
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
@@ -776,11 +779,11 @@ public final class ESItems {
      * regen on damage
      * prismarine armor && axolotl bucket/ghast tear?
      * TODO maid clothing
+     * dyable
      * bonus to maid players
      * TODO silver maid chestplate
+     * dyable
      * immunity to time stop
-     * TODO clown shoes
-     * honks when walking
      */
     // #endregion Armors
 
@@ -1473,6 +1476,7 @@ public final class ESItems {
         list.add(BOWWOB);
         list.add(RAINBOW_BOW);
         list.add(MAKE_IT_RAIN);
+        list.add(SHOOTING_STAR);
         return list;
     }
 
