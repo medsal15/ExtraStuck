@@ -278,6 +278,8 @@ public final class ESTagsProvider {
             tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get(), ESISSItems.BRANCH_OF_YGGDRASIL.get(),
                     ESISSItems.STAFF_OF_YGGDRASIL.get(), ESItems.END_OF_CIVILIZATION.get(), ESItems.MAKE_IT_RAIN.get());
 
+            tag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS).add(ESItems.RAIN_ARROW.get());
+
             tag(ESTags.Items.IGNORE_BYPRODUCT_CUTTING).add(Items.BONE_MEAL);
         }
 
