@@ -27,7 +27,6 @@ import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Unit;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
@@ -316,7 +315,7 @@ public final class ESISSItems {
                 ItemStack shield = player.getUseItem();
                 String slot;
 
-                if (player.getItemInHand(InteractionHand.MAIN_HAND).equals(shield)) {
+                if (player.getMainHandItem().equals(shield)) {
                     slot = SpellSelectionManager.MAINHAND;
                 } else {
                     slot = SpellSelectionManager.OFFHAND;

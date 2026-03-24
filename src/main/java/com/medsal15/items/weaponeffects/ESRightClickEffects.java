@@ -37,7 +37,6 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
@@ -111,9 +110,7 @@ public final class ESRightClickEffects {
                 level.addFreshEntity(fireball);
 
                 player.getCooldowns().addCooldown(stack.getItem(), 20);
-                stack.hurtAndBreak(2, player,
-                        player.getUsedItemHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND
-                                : EquipmentSlot.OFFHAND);
+                stack.hurtAndBreak(2, player, LivingEntity.getSlotForHand(hand));
             }
 
             return InteractionResultHolder.pass(stack);
@@ -135,8 +132,7 @@ public final class ESRightClickEffects {
                 if (player.isCreative() || Title.isPlayerOfAspect(serverPlayer, EnumAspect.VOID))
                     duration = 400;
                 player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, duration));
-                stack.hurtAndBreak(1, player,
-                        hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+                stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
             }
 
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
@@ -165,12 +161,7 @@ public final class ESRightClickEffects {
                 }
             }
 
-            EquipmentSlot slot;
-            if (hand == InteractionHand.MAIN_HAND)
-                slot = EquipmentSlot.MAINHAND;
-            else
-                slot = EquipmentSlot.OFFHAND;
-            stack.hurtAndBreak(radius * 10, player, slot);
+            stack.hurtAndBreak(radius * 10, player, LivingEntity.getSlotForHand(hand));
 
             player.getCooldowns().addCooldown(stack.getItem(), 300);
 
@@ -195,8 +186,7 @@ public final class ESRightClickEffects {
 
             if (player instanceof ServerPlayer) {
                 player.heal(4);
-                stack.hurtAndBreak(25, player,
-                        hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+                stack.hurtAndBreak(25, player, LivingEntity.getSlotForHand(hand));
             }
 
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
@@ -226,8 +216,7 @@ public final class ESRightClickEffects {
                         player.drop(lootStack, false);
                 }
                 if (loot.size() > 0)
-                    stack.hurtAndBreak(25, player,
-                            hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+                    stack.hurtAndBreak(25, player, LivingEntity.getSlotForHand(hand));
             }
 
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
@@ -257,8 +246,7 @@ public final class ESRightClickEffects {
                         player.drop(lootStack, false);
                 }
                 if (loot.size() > 0)
-                    stack.hurtAndBreak(25, player,
-                            hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+                    stack.hurtAndBreak(25, player, LivingEntity.getSlotForHand(hand));
             }
 
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);

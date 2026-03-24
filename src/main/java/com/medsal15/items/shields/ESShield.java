@@ -357,9 +357,7 @@ public class ESShield extends ShieldItem {
                 level.addFreshEntity(fireball);
 
                 player.getCooldowns().addCooldown(itemStack.getItem(), 20);
-                itemStack.hurtAndBreak(2, player,
-                        player.getUsedItemHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND
-                                : EquipmentSlot.OFFHAND);
+                itemStack.hurtAndBreak(2, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
             }
 
             return true;

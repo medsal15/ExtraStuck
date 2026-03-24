@@ -62,7 +62,7 @@ public final class ESPackets {
 
         @Override
         public void execute(IPayloadContext context, ServerPlayer player) {
-            ItemStack card = player.getItemInHand(InteractionHand.MAIN_HAND);
+            ItemStack card = player.getMainHandItem();
             if (card.getItem() != ESItems.MASTERMIND_CARD.get())
                 return;
             List<Integer> attempts = new ArrayList<>();
@@ -91,7 +91,7 @@ public final class ESPackets {
 
         @Override
         public void execute(IPayloadContext context, ServerPlayer player) {
-            ItemStack card = player.getItemInHand(InteractionHand.MAIN_HAND);
+            ItemStack card = player.getMainHandItem();
             if (card.getItem() != ESItems.MASTERMIND_CARD.get())
                 return;
             if (drop && card.has(DataComponents.CONTAINER)) {
@@ -130,7 +130,7 @@ public final class ESPackets {
 
         @Override
         public void execute(IPayloadContext context, ServerPlayer player) {
-            ItemStack card = player.getItemInHand(InteractionHand.MAIN_HAND);
+            ItemStack card = player.getMainHandItem();
             if (card.getItem() != ESItems.MASTERMIND_CARD.get())
                 return;
             if (card.has(ESDataComponents.ATTEMPTS))
@@ -153,7 +153,7 @@ public final class ESPackets {
 
         @Override
         public void execute(IPayloadContext context, ServerPlayer player) {
-            ItemStack modus = player.getItemInHand(InteractionHand.MAIN_HAND);
+            ItemStack modus = player.getMainHandItem();
             if (modus.getItem() == ESItems.MASTERMIND_MODUS_CARD.get()
                     && ConfigServer.MASTERMIND_CHANGE_PC.getAsBoolean()) {
                 modus.set(ESDataComponents.DIFFICULTY, difficulty);

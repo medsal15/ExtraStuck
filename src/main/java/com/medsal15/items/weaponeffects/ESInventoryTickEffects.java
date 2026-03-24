@@ -5,7 +5,6 @@ import java.util.function.Supplier;
 
 import com.mraof.minestuck.item.weapon.InventoryTickEffect;
 
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -26,7 +25,7 @@ public final class ESInventoryTickEffects {
         return (ItemStack stack, Level level, Entity entity, int slot, boolean selected) -> {
             if (!selected || !(entity instanceof Player player))
                 return;
-            if (valid.test(player.getItemInHand(InteractionHand.OFF_HAND))) {
+            if (valid.test(player.getOffhandItem())) {
                 player.addEffect(effect.get());
             }
         };

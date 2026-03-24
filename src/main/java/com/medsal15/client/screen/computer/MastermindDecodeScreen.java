@@ -14,7 +14,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.gui.widget.ExtendedButton;
@@ -87,7 +86,7 @@ public class MastermindDecodeScreen extends ThemedScreen {
         Player player = Minecraft.getInstance().player;
         if (player == null)
             return;
-        ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
+        ItemStack stack = player.getMainHandItem();
         if (stack.getItem() != ESItems.MASTERMIND_CARD.get() || !stack.has(ESDataComponents.DIFFICULTY)
                 || !stack.has(ESDataComponents.MASTERMIND_CODE))
             return;

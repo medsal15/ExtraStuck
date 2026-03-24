@@ -10,7 +10,6 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -123,7 +122,7 @@ public class PizzaBlock extends Block {
             if (eat(level, pos, state, player).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }
-            if (player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
+            if (player.getMainHandItem().isEmpty()) {
                 return InteractionResult.CONSUME;
             }
         }

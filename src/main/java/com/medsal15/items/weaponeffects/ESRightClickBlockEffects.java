@@ -13,7 +13,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -36,9 +35,7 @@ public final class ESRightClickBlockEffects {
             boolean complete = brushable.brush(level.getGameTime(), player, context.getClickedFace());
             if (complete) {
                 ItemStack stack = context.getItemInHand();
-                EquipmentSlot slot = context.getHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND
-                        : EquipmentSlot.OFFHAND;
-                stack.hurtAndBreak(1, player, slot);
+                stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
             }
             return InteractionResult.CONSUME;
         }
@@ -55,11 +52,9 @@ public final class ESRightClickBlockEffects {
 
             if (level.getBlockState(pos).is(ESTags.Blocks.PRYABLE) && player.canInteractWithBlock(pos, 0)) {
                 ItemStack stack = context.getItemInHand();
-                EquipmentSlot slot = context.getHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND
-                        : EquipmentSlot.OFFHAND;
 
                 level.destroyBlock(pos, true);
-                stack.hurtAndBreak(1, player, slot);
+                stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
 
                 return InteractionResult.CONSUME;
             }
@@ -153,8 +148,7 @@ public final class ESRightClickBlockEffects {
             if (player != null) {
                 ItemStack stack = context.getItemInHand();
                 InteractionHand hand = context.getHand();
-                stack.hurtAndBreak(25, player,
-                        hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+                stack.hurtAndBreak(25, player, LivingEntity.getSlotForHand(hand));
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }

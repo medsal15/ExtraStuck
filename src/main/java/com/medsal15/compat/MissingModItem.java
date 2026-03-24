@@ -29,7 +29,7 @@ public class MissingModItem extends Item {
             @Nonnull List<Component> tooltipComponents, @Nonnull TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
-        if (ConfigClient.addMissingModTooltip) {
+        if (ConfigClient.addMissingModTooltip && !ESCompatUtils.isLoaded(modid)) {
             if (tooltipFlag.isAdvanced()) {
                 tooltipComponents.add(Component.translatable(ESLangProvider.MISSING_MOD_KEY_ADVANCED, modname, modid)
                         .withStyle(ChatFormatting.DARK_RED));

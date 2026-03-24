@@ -10,8 +10,8 @@ import com.mraof.minestuck.entity.item.VitalityGelEntity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -56,14 +56,7 @@ public class MagnetItem extends TieredItem {
         }
 
         if (success) {
-            EquipmentSlot slot = null;
-            if (usedHand == InteractionHand.MAIN_HAND)
-                slot = EquipmentSlot.MAINHAND;
-            else if (usedHand == InteractionHand.OFF_HAND)
-                slot = EquipmentSlot.OFFHAND;
-            if (slot != null) {
-                player.getItemInHand(usedHand).hurtAndBreak(1, player, slot);
-            }
+            player.getItemInHand(usedHand).hurtAndBreak(1, player, LivingEntity.getSlotForHand(usedHand));
 
             return InteractionResultHolder.consume(player.getItemInHand(usedHand));
         }
