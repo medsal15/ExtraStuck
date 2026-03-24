@@ -11,13 +11,18 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.CardOreBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
+import com.medsal15.entitysubpredicates.LandFishingHookPredicate;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.loot.conditions.ESTerrainCondition;
+import com.medsal15.items.loot.conditions.ESTitlecondition;
 import com.medsal15.loot_functions.TurnToCardFunction;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.item.loot.functions.SetBoondollarCount;
 import com.mraof.minestuck.util.MSTags;
+import com.mraof.minestuck.world.lands.LandTypes;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -31,17 +36,22 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootContext.EntityTarget;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.entries.TagEntry;
+import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.SetComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemDamageFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -53,7 +63,10 @@ public class ESLootTableProvider extends LootTableProvider {
     }
 
     public static class TableSubProvider implements LootTableSubProvider {
+        private final HolderLookup.Provider provider;
+
         public TableSubProvider(HolderLookup.Provider provider) {
+            this.provider = provider;
         }
 
         public static ResourceKey<LootTable> GIFT_LOOT_TABLE = key("gameplay/gift");
@@ -72,6 +85,11 @@ public class ESLootTableProvider extends LootTableProvider {
 
         public static ResourceKey<LootTable> INJECT_TITLE_THUNDER = key("chests/inject/medium_thunder");
         public static ResourceKey<LootTable> INJECT_TITLE_CAKE = key("chests/inject/medium_cake");
+
+        public static ResourceKey<LootTable> LAND_FISHING = key("gameplay/fishing/land");
+        public static ResourceKey<LootTable> LAND_FISHING_TREASURE = key("gameplay/fishing/land/treasure");
+        public static ResourceKey<LootTable> LAND_FISHING_JUNK = key("gameplay/fishing/land/junk");
+        public static ResourceKey<LootTable> LAND_FISHING_FISH = key("gameplay/fishing/land/fish");
 
         @Override
         public void generate(@Nonnull BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
@@ -114,7 +132,7 @@ public class ESLootTableProvider extends LootTableProvider {
                                     .apply(TurnToCardFunction.builder(true)))
                             .add(EmptyLootItem.emptyItem().setWeight(99))));
 
-            // Gift
+            // Misc
             consumer.accept(GIFT_LOOT_TABLE, giftLootTable());
             consumer.accept(SPAM_LOOT_TABLE, spamLootTable());
 
@@ -128,6 +146,21 @@ public class ESLootTableProvider extends LootTableProvider {
                             .add(LootItem.lootTableItem(MSItems.BARBASOL_BOMB))
                             .add(LootItem.lootTableItem(ESItems.LEMONNADE))
                             .add(LootItem.lootTableItem(Items.TNT))));
+
+            // Fishing
+            consumer.accept(LAND_FISHING_TREASURE, fishingTreasureLootTable());
+            consumer.accept(LAND_FISHING_JUNK, fishingJunkLootTable());
+            consumer.accept(LAND_FISHING_FISH, fishingFishLootTable());
+            consumer.accept(LAND_FISHING, LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                            .add(NestedLootTable.lootTableReference(LAND_FISHING_TREASURE).setQuality(2).setWeight(5)
+                                    .when(LootItemEntityPropertyCondition.hasProperties(
+                                            EntityTarget.THIS,
+                                            EntityPredicate.Builder.entity()
+                                                    .subPredicate(LandFishingHookPredicate.inOpenFluids(true)))))
+                            .add(NestedLootTable.lootTableReference(LAND_FISHING_JUNK).setQuality(-2).setWeight(10))
+                            .add(NestedLootTable.lootTableReference(LAND_FISHING_FISH).setQuality(-1)
+                                    .setWeight(85))));
         }
 
         private static LootTable.Builder giftLootTable() {
@@ -168,6 +201,80 @@ public class ESLootTableProvider extends LootTableProvider {
                                             .withStyle(ChatFormatting.GRAY)))))));
         }
 
+        private LootTable.Builder fishingTreasureLootTable() {
+            return LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                            .add(LootItem.lootTableItem(ESItems.SOLID_FISHING_ROD).apply(rangeDamage(0f, .25f))
+                                    .apply(enchantWithLevel(30)))
+                            .add(LootItem.lootTableItem(Items.BOOK).apply(enchantWithLevel(30)))
+                            .add(TagEntry.expandTag(MSTags.Items.GRIST_CANDY).apply(rangeAmount(1, 5)))
+                            .add(LootItem.lootTableItem(MSItems.GLUB_CLUB).apply(rangeDamage(.25f, .75f)))
+                            .add(LootItem.lootTableItem(MSItems.BOONDOLLARS)
+                                    .apply(SetBoondollarCount.builder(UniformGenerator.between(10, 500))))
+                            .add(LootItem.lootTableItem(MSItems.MUSIC_DISC_RETRO_BATTLE))
+                            // funny dialogue reference
+                            .add(LootItem.lootTableItem(ESItems.GUMMY_RING))
+                            // Plushes
+                            .add(LootItem.lootTableItem(MSItems.PLUSH_NAKAGATOR).when(AnyOfCondition.anyOf(
+                                    () -> new ESTerrainCondition(LandTypes.END.get()),
+                                    () -> new ESTerrainCondition(LandTypes.HEAT.get()),
+                                    () -> new ESTerrainCondition(LandTypes.ROCK.get()))))
+                            .add(LootItem.lootTableItem(MSItems.PLUSH_IGUANA).when(AnyOfCondition.anyOf(
+                                    () -> new ESTerrainCondition(LandTypes.FLORA.get()),
+                                    () -> new ESTerrainCondition(LandTypes.FOREST.get()),
+                                    () -> new ESTerrainCondition(LandTypes.FROST.get()))))
+                            .add(LootItem.lootTableItem(MSItems.PLUSH_SALAMANDER).when(AnyOfCondition.anyOf(
+                                    () -> new ESTerrainCondition(LandTypes.FUNGI.get()),
+                                    () -> new ESTerrainCondition(LandTypes.SHADE.get()),
+                                    () -> new ESTerrainCondition(LandTypes.WOOD.get()))))
+                            .add(LootItem.lootTableItem(MSItems.PLUSH_TURTLE).when(AnyOfCondition.anyOf(
+                                    () -> new ESTerrainCondition(LandTypes.RAIN.get()),
+                                    () -> new ESTerrainCondition(LandTypes.RAINBOW.get()),
+                                    () -> new ESTerrainCondition(LandTypes.SAND.get()),
+                                    () -> new ESTerrainCondition(LandTypes.SANDSTONE.get())))));
+        }
+
+        private static LootTable.Builder fishingJunkLootTable() {
+            return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                    .add(LootItem.lootTableItem(MSItems.STONE_TABLET).setWeight(15))
+                    .add(LootItem.lootTableItem(MSItems.CRUMPLY_HAT).setWeight(10))
+                    .add(LootItem.lootTableItem(MSItems.RAW_CRUXITE).apply(rangeAmount(1, 8)).setWeight(10))
+                    .add(LootItem.lootTableItem(MSItems.GRASSHOPPER).apply(rangeAmount(1, 5)).setWeight(10))
+                    .add(LootItem.lootTableItem(MSItems.CICADA).apply(rangeAmount(1, 5)).setWeight(10))
+                    .add(LootItem.lootTableItem(MSItems.TAB).apply(rangeAmount(1, 3)).setWeight(8))
+                    .add(LootItem.lootTableItem(MSItems.SOPOR_SLIME_PIE).setWeight(5))
+                    .add(LootItem.lootTableItem(Items.BAMBOO).setWeight(3))
+                    .add(LootItem.lootTableItem(Items.STRING).setWeight(3))
+                    .add(LootItem.lootTableItem(MSItems.BARBASOL))
+                    .add(LootItem.lootTableItem(MSItems.CLOTHES_IRON))
+                    .add(LootItem.lootTableItem(MSItems.INK_SQUID_PRO_QUO))
+                    // Terrain-specific
+                    .add(LootItem.lootTableItem(Items.OAK_PLANKS).apply(rangeAmount(1, 5))
+                            .setWeight(5).when(() -> new ESTerrainCondition(LandTypes.FOREST.get())))
+                    .add(LootItem.lootTableItem(Items.BIRCH_PLANKS).apply(rangeAmount(1, 5))
+                            .setWeight(5).when(() -> new ESTerrainCondition(LandTypes.FOREST.get())))
+                    .add(LootItem.lootTableItem(MSItems.ROCK_COOKIE)
+                            .when(AnyOfCondition.anyOf(() -> new ESTerrainCondition(LandTypes.ROCK.get()),
+                                    () -> new ESTerrainCondition(LandTypes.PETRIFICATION.get())))
+                            .apply(rangeAmount(1, 5)).setWeight(5))
+                    .add(LootItem.lootTableItem(MSItems.WOODEN_CARROT).setWeight(5)
+                            .when(() -> new ESTerrainCondition(LandTypes.WOOD.get())))
+                    // Title-specific
+                    .add(LootItem.lootTableItem(MSItems.CAKE_MIX)
+                            .when(() -> new ESTitlecondition(LandTypes.CAKE.get()))));
+        }
+
+        private static LootTable.Builder fishingFishLootTable() {
+            // TODO actual land-based fishes to use here
+            // Copy of vanilla loot table
+            return LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                            .add(LootItem.lootTableItem(Items.COD).setWeight(60))
+                            .add(LootItem.lootTableItem(Items.SALMON).setWeight(25))
+                            .add(LootItem.lootTableItem(Items.TROPICAL_FISH).setWeight(2))
+                            .add(LootItem.lootTableItem(Items.PUFFERFISH).setWeight(13)));
+        }
+
         public static ResourceKey<LootTable> key(String path) {
             return ResourceKey.create(Registries.LOOT_TABLE, ExtraStuck.modid(path));
         }
@@ -178,6 +285,10 @@ public class ESLootTableProvider extends LootTableProvider {
 
         public static LootItemFunction.Builder rangeDamage(float min, float max) {
             return SetItemDamageFunction.setDamage(UniformGenerator.between(min, max));
+        }
+
+        public LootItemFunction.Builder enchantWithLevel(int level) {
+            return EnchantWithLevelsFunction.enchantWithLevels(provider, ConstantValue.exactly(level));
         }
     }
 

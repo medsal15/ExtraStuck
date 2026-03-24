@@ -1,0 +1,192 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.25,
+                "min": 0.0
+              },
+              "function": "minecraft:set_damage"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 30.0,
+              "options": "#minecraft:on_random_loot"
+            }
+          ],
+          "name": "extrastuck:solid_fishing_rod"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 30.0,
+              "options": "#minecraft:on_random_loot"
+            }
+          ],
+          "name": "minecraft:book"
+        },
+        {
+          "type": "minecraft:tag",
+          "expand": true,
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 5.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minestuck:grist_candy"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.75,
+                "min": 0.25
+              },
+              "function": "minecraft:set_damage"
+            }
+          ],
+          "name": "minestuck:glub_club"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 500.0,
+                "min": 10.0
+              },
+              "function": "minestuck:set_boondollar_count"
+            }
+          ],
+          "name": "minestuck:boondollars"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:music_disc_retro_battle"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "extrastuck:gummy_ring"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:end"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:heat"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:rock"
+                }
+              ]
+            }
+          ],
+          "name": "minestuck:plush_nakagator"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:flora"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:forest"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:frost"
+                }
+              ]
+            }
+          ],
+          "name": "minestuck:plush_iguana"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:fungi"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:shade"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:wood"
+                }
+              ]
+            }
+          ],
+          "name": "minestuck:plush_salamander"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:rain"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:rainbow"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:sand"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:sandstone"
+                }
+              ]
+            }
+          ],
+          "name": "minestuck:plush_turtle"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "extrastuck:gameplay/fishing/land/treasure"
+}

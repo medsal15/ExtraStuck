@@ -609,6 +609,8 @@ public final class ESLangProvider extends LanguageProvider {
         add(GRIST_DETECTOR_UNCOMMON, "uncommon");
         addItem(ESItems.GUMMY_RING, "Gummy Ring");
         addItemTooltip(ESItems.GUMMY_RING, "Never go hungry");
+        addItem(ESItems.SOLID_FISHING_ROD, "Solid Fishing Rod");
+        addItemTooltip(ESItems.SOLID_FISHING_ROD, "Can fish in more liquids!");
         // Shovels
         addItem(ESItems.GOLD_DIGGER, "Gold Digger");
         addItemTooltip(ESItems.GOLD_DIGGER, "There's money everywhere!");
@@ -812,10 +814,6 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.SOUR_BOMB_CANDY, "Sour Bomb Candy");
         addItem(ESItems.COSMIC_SPOREO, "Cosmic Sporeo");
         addItemTooltip(ESItems.COSMIC_SPOREO, "A delicious quasar, now rid of all the toxins");
-
-        addItem(ESItems.DESERT_JUICE, "Desert Juice");
-        addItem(ESItems.ROCKET_JUMP, "Rocket Jump");
-        addItemTooltip(ESItems.ROCKET_JUMP, "Screamin' Eagles!");
         addItem(ESItems.SPAM, "Spam");
         add(SPAM_FOOD, "Looks like there's something else inside");
         add(SPAM_TITLE_1, "Big Sale! Everything 90%* off!");
@@ -824,6 +822,10 @@ public final class ESLangProvider extends LanguageProvider {
         add(SPAM_DESC_2, "All of our affiliate shops have everything on sale (up to) 75% off!");
         add(SPAM_TITLE_3, "Stained Paper");
         add(SPAM_DESC_3, "You can't make out the text, but you can tell there's a phone number.");
+
+        addItem(ESItems.DESERT_JUICE, "Desert Juice");
+        addItem(ESItems.ROCKET_JUMP, "Rocket Jump");
+        addItemTooltip(ESItems.ROCKET_JUMP, "Screamin' Eagles!");
     }
 
     private void addMobEffects() {
@@ -848,8 +850,11 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.Items.VISION, "Visions");
         add(ESTags.Items.ACTIVE_VISION, "Activated Visions");
         add(ESTags.Items.CANDY_WEAPONS, "Candy Weapons");
+        add(ESTags.Items.MAKE_IT_RAIN_FORBIDDEN, "Unaffected by Make it Rain");
 
         add(ESTags.Blocks.PRYABLE, "Pryable with the Iron Crowbar");
+
+        add(ESTags.Fluids.FISHABLE_FLUIDS, "Can be fished in with a Solid Fishing Rod");
 
         add(ESTags.EntityTypes.BEENADE_ACCEPTS, "Accepted by Beenades");
         add(ESTags.EntityTypes.COSMIC_PLAGUE_IMMUNE, "Immune to Cosmic Plague");
@@ -954,7 +959,7 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     private void addEffectDescription(Supplier<? extends MobEffect> effect, String desc) {
-        add(((MobEffect) effect.get()).getDescriptionId() + ".description", desc);
+        add(effect.get().getDescriptionId() + ".description", desc);
     }
 
     private void addProgram(Holder<ProgramType<?>> program, String text) {

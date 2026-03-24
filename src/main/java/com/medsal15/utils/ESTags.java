@@ -61,6 +61,7 @@ public final class ESTags {
 
     public static final class Fluids {
         public static final TagKey<Fluid> REACTOR_FLUIDS = FluidTags.create(ExtraStuck.modid("reactor_fluids"));
+        public static final TagKey<Fluid> FISHABLE_FLUIDS = FluidTags.create(ExtraStuck.modid("fishable_fluids"));
     }
 
     public static final class EntityTypes {

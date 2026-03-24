@@ -37,6 +37,7 @@ import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -45,6 +46,7 @@ import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
 import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
+import net.neoforged.neoforge.registries.DeferredItem;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.CommonTags;
@@ -1434,6 +1436,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ESCreateItems.GRIST_FILTER)
                 .unlockedBy("has_grist_filter", has(ESCreateItems.GRIST_FILTER))
                 .save(output.withConditions(CREATE_LOADED), modid("shapeless/grist_filter_reset"));
+
+        // Make it cheap to incentivise players to make it early
+        CombinationRecipeBuilder.of(ESItems.SOLID_FISHING_ROD)
+                .input(Items.FISHING_ROD).and().input(MSItems.RAW_CRUXITE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SOLID_FISHING_ROD)
+                .grist(GristTypes.RUST, 12).grist(GristTypes.CAULK, 8).grist(GristTypes.MARBLE, 4)
+                .build(output);
     }
 
     private void foodRecipes(@Nonnull RecipeOutput output) {
@@ -2731,5 +2741,20 @@ public final class ESRecipeProvider extends RecipeProvider {
 
     private ICondition not(ICondition condition) {
         return new NotCondition(condition);
+    }
+
+    private void foodCooking(DeferredItem<Item> raw, DeferredItem<Item> cooked, RecipeOutput output, float experience) {
+        SimpleCookingRecipeBuilder
+                .campfireCooking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, experience, 600)
+                .unlockedBy("has_raw", has(raw))
+                .save(output, modid(String.format("campfire/%s", cooked.getId().getPath())));
+        SimpleCookingRecipeBuilder
+                .smelting(Ingredient.of(raw), RecipeCategory.FOOD, cooked, experience, 200)
+                .unlockedBy("has_raw", has(raw))
+                .save(output, modid(String.format("smelting/%s", cooked.getId().getPath())));
+        SimpleCookingRecipeBuilder
+                .smoking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, experience, 100)
+                .unlockedBy("has_raw", has(raw))
+                .save(output, modid(String.format("smoking/%s", cooked.getId().getPath())));
     }
 }

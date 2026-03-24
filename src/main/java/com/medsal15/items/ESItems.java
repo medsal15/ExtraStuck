@@ -54,11 +54,11 @@ import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
+import com.medsal15.items.food.BurningFood;
 import com.medsal15.items.food.ESFoods;
 import com.medsal15.items.food.ExplosiveFood;
 import com.medsal15.items.food.FortuneCookie;
 import com.medsal15.items.food.HomeDonut;
-import com.medsal15.items.food.HotCakeSlice;
 import com.medsal15.items.food.LootFood;
 import com.medsal15.items.food.MortalTemptation;
 import com.medsal15.items.food.RocketJump;
@@ -81,6 +81,7 @@ import com.medsal15.items.throwables.SwapTrident;
 import com.medsal15.items.tools.ChargerItem;
 import com.medsal15.items.tools.GiftItem;
 import com.medsal15.items.tools.GristDetectorItem;
+import com.medsal15.items.tools.LandFishingRod;
 import com.medsal15.items.tools.MagnetItem;
 import com.medsal15.items.tools.Tokenitem;
 import com.medsal15.items.tools.UntunedVisionItem;
@@ -796,6 +797,8 @@ public final class ESItems {
             p -> new ChargerItem(p.stacksTo(1).component(ESDataComponents.ENERGY_STORAGE, 50_000)));
     public static final DeferredItem<Item> GRIST_DETECTOR = ITEMS.registerItem("grist_detector",
             p -> new GristDetectorItem(p.component(ESDataComponents.GRIST_LAYER, GristLayer.COMMON)));
+    public static final DeferredItem<Item> SOLID_FISHING_ROD = ITEMS.registerItem("solid_fishing_rod",
+            p -> new LandFishingRod(p), new MSItemProperties().stacksTo(1).durability(160));
 
     // #region Shovels
     public static final DeferredItem<Item> GOLD_DIGGER = ITEMS.register("gold_digger",
@@ -923,7 +926,7 @@ public final class ESItems {
     public static final DeferredItem<Item> RED_CAKE_SLICE = ITEMS.registerItem("red_cake_slice",
             p -> new Item(p.food(ESFoods.RED_CAKE_SLICE)));
     public static final DeferredItem<Item> HOT_CAKE_SLICE = ITEMS.registerItem("hot_cake_slice",
-            p -> new HotCakeSlice(p.food(ESFoods.HOT_CAKE_SLICE)));
+            p -> new BurningFood(p.food(ESFoods.HOT_CAKE_SLICE), 4));
     public static final DeferredItem<Item> REVERSE_CAKE_SLICE = ITEMS.registerItem("reverse_cake_slice",
             p -> new Item(p.food(ESFoods.REVERSE_CAKE_SLICE)));
     public static final DeferredItem<Item> FUCHSIA_CAKE_SLICE = ITEMS.registerItem("fuchsia_cake_slice",
@@ -1213,6 +1216,7 @@ public final class ESItems {
         list.add(OLD_BRUSH);
         list.add(MAGNET);
         list.add(FIELD_CHARGER);
+        list.add(SOLID_FISHING_ROD);
 
         list.addAll(getShovels());
         list.addAll(getPickaxes());

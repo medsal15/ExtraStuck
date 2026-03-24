@@ -30,6 +30,7 @@ public final class ESFoods {
             .saturationModifier(.3F)
             .effect(() -> new MobEffectInstance(ESMobEffects.BEE_ANGRY), 1)
             .build();
+    // #region Cake slices
     public static final FoodProperties APPLE_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
             .saturationModifier(.5F).fast().build();
     public static final FoodProperties BLUE_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
@@ -68,6 +69,7 @@ public final class ESFoods {
             .saturationModifier(.5F).fast().build();
     public static final FoodProperties LEMON_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
             .saturationModifier(.5F).fast().build();
+    // #endregion Cake slices
     public static final FoodProperties MORTAL_TEMPTATION = new FoodProperties.Builder().nutrition(5)
             .saturationModifier(.45F)
             .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600), 1F)
@@ -96,4 +98,23 @@ public final class ESFoods {
     public static final FoodProperties GUMMY_RING = new FoodProperties.Builder().nutrition(10).saturationModifier(.3F)
             .effect(() -> new MobEffectInstance(MobEffects.SATURATION, 100), 1)
             .fast().alwaysEdible().build();
+
+    public static class FoodBuilder extends FoodProperties.Builder {
+        private float eatSeconds = 0F;
+
+        public FoodBuilder setEatSeconds(float seconds) {
+            this.eatSeconds = seconds;
+            return this;
+        }
+
+        @Override
+        public FoodProperties build() {
+            FoodProperties base = super.build();
+            if (eatSeconds > 0) {
+                return new FoodProperties(base.nutrition(), base.saturation(), base.canAlwaysEat(), eatSeconds,
+                        base.usingConvertsTo(), base.effects());
+            }
+            return base;
+        }
+    }
 }

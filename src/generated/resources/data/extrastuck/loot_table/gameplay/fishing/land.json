@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "conditions": [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "type_specific": {
+                  "type": "extrastuck:land_fishing_hook",
+                  "in_open_fluids": true
+                }
+              }
+            }
+          ],
+          "quality": 2,
+          "value": "extrastuck:gameplay/fishing/land/treasure",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:loot_table",
+          "quality": -2,
+          "value": "extrastuck:gameplay/fishing/land/junk",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:loot_table",
+          "quality": -1,
+          "value": "extrastuck:gameplay/fishing/land/fish",
+          "weight": 85
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "extrastuck:gameplay/fishing/land"
+}

@@ -253,6 +253,8 @@ public final class ESTagsProvider {
             tag(ItemTags.BREAKS_DECORATED_POTS).add(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE.get());
             tag(Tags.Items.TOOLS_BRUSH).add(ESItems.OLD_BRUSH.get(), ESItems.BROOM.get());
             tag(Tags.Items.TOOLS_IGNITER).add(ESItems.LEAFBURNER.get());
+            tag(Tags.Items.TOOLS_FISHING_ROD).add(ESItems.SOLID_FISHING_ROD.get());
+            tag(ItemTags.FISHING_ENCHANTABLE).add(ESItems.SOLID_FISHING_ROD.get());
             tag(CuriosTags.RING).add(ESItems.GUMMY_RING.get());
 
             tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get());
@@ -317,6 +319,10 @@ public final class ESTagsProvider {
                             MSFluids.BRAIN_JUICE.get(), MSFluids.ENDER.get(), MSFluids.LIGHT_WATER.get(),
                             MSFluids.OIL.get(), MSFluids.WATER_COLORS.get(), MSFluids.CAULK.get())
                     .addTag(Tags.Fluids.WATER);
+            tag(ESTags.Fluids.FISHABLE_FLUIDS)
+                    .add(Fluids.WATER, MSFluids.BLOOD.get(), MSFluids.BRAIN_JUICE.get(), MSFluids.CAULK.get(),
+                            MSFluids.ENDER.get(), MSFluids.LIGHT_WATER.get(), MSFluids.MOLTEN_AMBER.get(),
+                            MSFluids.OIL.get(), MSFluids.WATER_COLORS.get());
         }
     }
 

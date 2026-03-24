@@ -104,6 +104,11 @@ public final class ESEntities {
             () -> EntityType.Builder.<LemonNade>of(LemonNade::new, MobCategory.MISC).sized(.25F, .25F)
                     .clientTrackingRange(4).updateInterval(20).build(ExtraStuck.modid("lemonnade").toString()));
 
+    public static final Supplier<EntityType<LandFishingHook>> LAND_FISHING_HOOK = ENTITIES.register("land_fishing_hook",
+            () -> EntityType.Builder.<LandFishingHook>of(LandFishingHook::new, MobCategory.MISC).fireImmune().noSave()
+                    .noSummon().sized(.25F, .25F).clientTrackingRange(4).updateInterval(5)
+                    .build(ExtraStuck.modid("land_fishing_hook").toString()));
+
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
         return ENTITIES.register(name, () -> EntityType.Builder.<T>of(fac, MobCategory.MISC)
                 .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20).build(ExtraStuck.modid(name).toString()));

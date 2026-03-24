@@ -27,6 +27,7 @@ import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigClient.BoondollarDisplayMode;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESEntities;
+import com.medsal15.entities.LandFishingHook;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
 import com.medsal15.items.ESItems;
@@ -37,6 +38,7 @@ import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.items.shields.ESShield.IBlock;
+import com.medsal15.items.tools.LandFishingRod;
 import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.particles.UraniumBlastParticle;
 import com.medsal15.storage.ESBoondollarValues;
@@ -245,6 +247,18 @@ public final class ClientEvents {
         addSteamBurning(ESItems.STEAM_HAMMER);
         addSteamBurning(ESItems.LEAFBURNER);
 
+        ItemProperties.register(ESItems.SOLID_FISHING_ROD.get(), ResourceLocation.withDefaultNamespace("cast"),
+                (stack, world, entity, entityId) -> {
+                    if (entity == null)
+                        return 0;
+                    boolean mainHand = entity.getMainHandItem() == stack;
+                    boolean offHand = entity.getOffhandItem() == stack;
+                    if (entity.getMainHandItem().getItem() instanceof LandFishingRod)
+                        offHand = false;
+
+                    return (mainHand || offHand) && entity instanceof Player player && player.fishing != null ? 1 : 0;
+                });
+
         ProgramGui.Registry.register(ESProgramTypes.MASTERMIND_CODEBREAKER, MastermindAppScreen::new);
     }
 
@@ -363,6 +377,7 @@ public final class ClientEvents {
         event.registerEntityRenderer(ESEntities.THROWN_BEE_LARVA.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ESEntities.THROWN_BEENADE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ESEntities.LEMONNADE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ESEntities.LAND_FISHING_HOOK.get(), LandFishingHook.Renderer::new);
 
         event.registerBlockEntityRenderer(ESBlockEntities.CHARGER.get(), ChargerBlockRenderer::new);
     }

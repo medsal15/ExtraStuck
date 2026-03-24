@@ -1,0 +1,23 @@
+{
+    "name": "Solid Fishing Rod",
+    "icon": "extrastuck:solid_fishing_rod",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:solid_fishing_rod"
+            },
+            "text": "An upgraded fishing rod.$(br2)$(3)$(l)Special:$() Fishes different items in lands."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Fishing Rod and Raw Cruxite in a Punch Designix.",
+            "left": "minecraft:fishing_rod",
+            "mode": "||",
+            "right": "minestuck:raw_cruxite",
+            "result": "extrastuck:solid_fishing_rod"
+        }
+    ]
+}

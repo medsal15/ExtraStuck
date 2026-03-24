@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:fishing_rod"
+  },
+  "input2": {
+    "item": "minestuck:raw_cruxite"
+  },
+  "mode": "and",
+  "output": "extrastuck:solid_fishing_rod"
+}

@@ -1,0 +1,209 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:stone_tablet",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:crumply_hat",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 8.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minestuck:raw_cruxite",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 5.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minestuck:grasshopper",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 5.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minestuck:cicada",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minestuck:tab",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:sopor_slime_pie",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bamboo",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:string",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:barbasol"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:clothes_iron"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minestuck:ink_squid_pro_quo"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "extrastuck:land_terrain",
+              "terrain": "minestuck:forest"
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 5.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:oak_planks",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "extrastuck:land_terrain",
+              "terrain": "minestuck:forest"
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 5.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:birch_planks",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:rock"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "minestuck:petrification"
+                }
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 5.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minestuck:rock_cookie",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "extrastuck:land_terrain",
+              "terrain": "minestuck:wood"
+            }
+          ],
+          "name": "minestuck:wooden_carrot",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "extrastuck:land_title",
+              "title": "minestuck:cake"
+            }
+          ],
+          "name": "minestuck:cake_mix"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "extrastuck:gameplay/fishing/land/junk"
+}
