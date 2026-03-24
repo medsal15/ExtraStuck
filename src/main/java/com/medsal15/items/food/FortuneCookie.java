@@ -2,8 +2,6 @@ package com.medsal15.items.food;
 
 import javax.annotation.Nonnull;
 
-import com.medsal15.ExtraStuck;
-
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -25,7 +23,6 @@ public class FortuneCookie extends Item {
         if (stack.has(DataComponents.CONTAINER)) {
             ItemContainerContents contents = stack.get(DataComponents.CONTAINER);
             if (contents != null) {
-                ExtraStuck.LOGGER.info("contents {}", contents.nonEmptyItems());
                 if (entity instanceof Player player) {
                     for (ItemStack item : contents.nonEmptyItems()) {
                         if (!player.getInventory().add(item)) {
