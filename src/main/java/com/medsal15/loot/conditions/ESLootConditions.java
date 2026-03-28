@@ -1,4 +1,4 @@
-package com.medsal15.items.loot.conditions;
+package com.medsal15.loot.conditions;
 
 import java.util.function.Supplier;
 

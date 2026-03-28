@@ -1,6 +1,6 @@
-package com.medsal15.items.loot.conditions;
+package com.medsal15.loot.conditions;
 
-import com.medsal15.loot_modifiers.ESLandLootModifier;
+import com.medsal15.loot.modifiers.ESLandLootModifier;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mraof.minestuck.world.lands.title.TitleLandType;

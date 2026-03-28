@@ -1,4 +1,4 @@
-package com.medsal15.loot_modifiers;
+package com.medsal15.loot.modifiers;
 
 import java.util.List;
 

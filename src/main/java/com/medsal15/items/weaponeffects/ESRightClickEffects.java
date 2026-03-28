@@ -14,7 +14,7 @@ import com.medsal15.data.ESLootTableProvider.TableSubProvider;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
-import com.medsal15.loot_modifiers.ESLootModifier;
+import com.medsal15.loot.modifiers.ESLootModifier;
 import com.mraof.minestuck.client.util.MagicEffect;
 import com.mraof.minestuck.client.util.MagicEffect.AOEType;
 import com.mraof.minestuck.client.util.MagicEffect.RangedType;
