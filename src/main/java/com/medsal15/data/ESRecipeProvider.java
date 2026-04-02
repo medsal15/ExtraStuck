@@ -802,6 +802,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.SHOOTING_STAR)
                 .grist(GristTypes.GOLD, 320).grist(GristTypes.AMBER, 160).grist(GristTypes.URANIUM, 1)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BWO)
+                .input(Items.BOW).or().input(MSItems.SBAHJ_POSTER)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BWO)
+                .grist(GristTypes.ARTIFACT, 3)
+                .build(output);
         // #endregion Bows
 
         // #region Throwables

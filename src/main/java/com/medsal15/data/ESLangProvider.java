@@ -213,7 +213,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.HALT_SHIELD, "Forces your enemies to turn back");
         addItem(ESItems.LIGHT_SHIELD, "Light Shield");
         addItem(ESItems.NON_CONTACT_CONTRACT, "Non-Contact Contract");
-        addItemTooltip(ESItems.NON_CONTACT_CONTRACT, "This piece of paper has the ability to prevent contact with you");
+        addItemTooltip(ESItems.NON_CONTACT_CONTRACT,
+                "This piece of paper has the ability to prevent contact with you");
         addItem(ESItems.GIFT_OF_PROTECTION, "Gift of Protection");
         add(GIFT_PROTECTION_GIFT_KEY, "You found a gift!");
         addItem(ESItems.SLIED, "slied");
@@ -221,9 +222,11 @@ public final class ESLangProvider extends LanguageProvider {
         add(SLIED_DROP_KEY, "Expectedly, it could not");
         addItem(ESItems.RIOT_SHIELD, "Riot Shield");
         addItem(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE, "Captain Justice's Shield Throwable");
-        addItemTooltip(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE, "Straight from a comic book and ready to throw down!");
+        addItemTooltip(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE,
+                "Straight from a comic book and ready to throw down!");
         addItem(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD, "Captain Justice's Throwable Shield");
-        addItemTooltip(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD, "Straight from a comic book and ready to protect!");
+        addItemTooltip(ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD,
+                "Straight from a comic book and ready to protect!");
         addEntityType(ESEntities.CAPTAIN_JUSTICE_SHIELD, "Captain Justice Shield");
         addItem(ESItems.CAPITASHIELD, "Capitashield");
         addItemTooltip(ESItems.CAPITASHIELD, "Protects you, at a cost");
@@ -428,6 +431,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.MECHANICAL_RADBOW, "Mechanical Radbow");
         addItemTooltip(ESItems.MECHANICAL_RADBOW, "An engineer's weapon of choice");
         // Bows
+        addItem(ESItems.BWO, "Bwo");
         addItem(ESItems.BOWWOB, "BowwoB");
         addItem(ESItems.RAINBOW_BOW, "Rainbow Bow");
         addItemTooltip(ESItems.RAINBOW_BOW, "A unique flavor for each arrow");
@@ -590,8 +594,9 @@ public final class ESLangProvider extends LanguageProvider {
 
         addItem(ESItems.CRAFTING_MODUS_CARD, "Crafting Modus");
         addItemTooltip(ESItems.CRAFTING_MODUS_CARD, "Portable workbench");
-        addItemBookDescription(ESItems.CRAFTING_MODUS_CARD, "The Crafting Modus does not store items, but recipes."
-                + " Ingredients will be pulled straight from your inventory.");
+        addItemBookDescription(ESItems.CRAFTING_MODUS_CARD,
+                "The Crafting Modus does not store items, but recipes."
+                        + " Ingredients will be pulled straight from your inventory.");
         add(CRAFTING_MODUS_ADD_RECIPE, "Add Recipe");
     }
 
@@ -623,7 +628,8 @@ public final class ESLangProvider extends LanguageProvider {
         add(VISION_HINT_MANY, "Wearing more than %s visions at once will cause interferences between them");
         add(VISION_TUNE, "You resonate with the Vision and change it");
         add(VISION_TUNE_FAIL, "You try to resonate with the Vision but only dull it");
-        add(VISION_TUNE_POWERLESS, "You try to resonate with the Vision but without enough power nothing happens");
+        add(VISION_TUNE_POWERLESS,
+                "You try to resonate with the Vision but without enough power nothing happens");
         addItem(ESItems.VISION_BLANK, "Blank Vision");
         addItemTooltip(ESItems.VISION_BLANK, "It resonates with you");
         addItem(ESItems.VISION_DULL, "Dull Vision");
@@ -863,7 +869,8 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.MobEffects.COSMIC_PLAGUE_PARTIAL_IMMUNITY, "Sometimes prevented with cosmic plague armor");
         add(ESTags.MobEffects.RAINBOW_BOW_EFFECTS, "Applied with Rainbow Bow");
 
-        add(ESTags.DimensionTypes.COSMIC_DIMENSION_TYPES, "Dimensions triggering the Cosmic Plague Spore effect");
+        add(ESTags.DimensionTypes.COSMIC_DIMENSION_TYPES,
+                "Dimensions triggering the Cosmic Plague Spore effect");
     }
 
     private void addPonder() {
@@ -880,11 +887,13 @@ public final class ESLangProvider extends LanguageProvider {
                 "This is the Punch Designix, which allows punching items into cards");
         addPonderEntry("punch_designix", "text_2", "Place a card (preferably empty) in the slot");
         addPonderEntry("punch_designix", "text_3", "Input a different card's code in the keyboard to punch it");
-        addPonderEntry("punch_designix", "text_4", "You may also use the card directly on the keyboard to prefill it");
+        addPonderEntry("punch_designix", "text_4",
+                "You may also use the card directly on the keyboard to prefill it");
         addPonderEntry("punch_designix", "text_5", "Retrieve the punched card");
 
         addPonderEntry("totem_lathe", "header", "Lathing Dowels using the Totem Lathe");
-        addPonderEntry("totem_lathe", "text_1", "This is the Totem Lathe, which allows carving items onto dowels");
+        addPonderEntry("totem_lathe", "text_1",
+                "This is the Totem Lathe, which allows carving items onto dowels");
         addPonderEntry("totem_lathe", "text_2", "Place an uncarved dowel on the rod");
         addPonderEntry("totem_lathe", "text_3", "Add a punched card");
         addPonderEntry("totem_lathe", "text_4", "Activate the Lathe...");
@@ -897,7 +906,8 @@ public final class ESLangProvider extends LanguageProvider {
         addPonderEntry("alchemiter", "text_3", "And use your grist to alchemize your new item");
 
         addPonderEntry("intellibeam", "header", "Reading the unreadable with the Intellibeam Laserstation");
-        addPonderEntry("intellibeam", "text_1", "Some items' captcha codes are too complex to be read normally");
+        addPonderEntry("intellibeam", "text_1",
+                "Some items' captcha codes are too complex to be read normally");
         addPonderEntry("intellibeam", "text_2", "The Intellibeam Laserstation can decipher these codes");
         addPonderEntry("intellibeam", "text_3", "Just put the card in...");
         addPonderEntry("intellibeam", "text_4", "...click it a few times...");

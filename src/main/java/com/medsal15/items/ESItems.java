@@ -48,6 +48,7 @@ import com.medsal15.items.bows.DoublingBowItem;
 import com.medsal15.items.bows.FastBowItem;
 import com.medsal15.items.bows.MakeRainItem;
 import com.medsal15.items.bows.RainbowBowItem;
+import com.medsal15.items.bows.BwoItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
 import com.medsal15.items.components.MoonCakeSliceColor;
@@ -284,6 +285,8 @@ public final class ESItems {
             p -> new ESArrowItem(p, DragonArrow::new, DragonArrow::new));
     public static final DeferredItem<Item> RAIN_ARROW = ITEMS.registerItem("rain_arrow",
             p -> new ESArrowItem(p, RainArrow::new, RainArrow::new));
+    // TODO punch arrow (extra knockback)
+    // TODO phantom arrow (goes through blocks)
     // #endregion Arrows
 
     // #region Weapons
@@ -673,6 +676,8 @@ public final class ESItems {
                     new Properties().durability(MSItemTypes.CORUNDUM_TIER.getUses()).rarity(Rarity.RARE)));
     public static final DeferredItem<Item> SHOOTING_STAR = ITEMS.register("shooting_star",
             () -> new FastBowItem(new Properties().durability(Tiers.DIAMOND.getUses())));
+    public static final DeferredItem<Item> BWO = ITEMS.register("bwo",
+            () -> new BwoItem(new Properties().durability(MSItemTypes.SBAHJ_TIER.getUses())));
     // #endregion Bows
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
@@ -1477,6 +1482,7 @@ public final class ESItems {
 
     public static Collection<DeferredItem<Item>> getBows() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        list.add(BWO);
         list.add(BOWWOB);
         list.add(RAINBOW_BOW);
         list.add(MAKE_IT_RAIN);

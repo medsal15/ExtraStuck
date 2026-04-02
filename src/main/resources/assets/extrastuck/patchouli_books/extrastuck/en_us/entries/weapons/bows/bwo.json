@@ -1,0 +1,23 @@
+{
+    "name": "Bwo",
+    "icon": "extrastuck:bwo",
+    "category": "extrastuck:bows",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:bwo"
+            },
+            "text": "The worst bow in existence.$(br2)$(3)$(l)Special:$() Arrows are shot a quarter of their normal speed and are never critical shots."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Bow and a SBaHJ Poster in a Punch Designix.",
+            "left": "minecraft:bow",
+            "mode": "||",
+            "right": "minestuck:sbahj_poster",
+            "result": "extrastuck:bwo"
+        }
+    ]
+}

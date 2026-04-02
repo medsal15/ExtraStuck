@@ -6,6 +6,7 @@ import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.projectiles.IAsProjectile;
 import com.medsal15.items.projectiles.ICreateArrow;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
@@ -17,6 +18,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
 public class ESBullet extends AbstractArrow {
+    protected int life = 0;
+
     public ESBullet(EntityType<? extends ESBullet> type, Level level) {
         super(type, level);
         this.setNoGravity(true);
@@ -43,6 +46,20 @@ public class ESBullet extends AbstractArrow {
         }
     }
 
+    @Override
+    public void addAdditionalSaveData(@Nonnull CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+
+        compound.putShort("bullet_life", (short) life);
+    }
+
+    @Override
+    public void readAdditionalSaveData(@Nonnull CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+
+        life = compound.getShort("bullet_life");
+    }
+
     public static ICreateArrow createArrow(EntityType<? extends ESBullet> type) {
         return (Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) -> new ESBullet(type, level, ammo,
                 shooter, weapon);
@@ -59,6 +76,14 @@ public class ESBullet extends AbstractArrow {
         setBaseDamage(damage / this.getDeltaMovement().length());
         super.onHitEntity(result);
         setBaseDamage(damage);
+    }
+
+    @Override
+    protected void tickDespawn() {
+        super.tickDespawn();
+        life++;
+        if (life >= 200)
+            discard();
     }
 
     @Override
