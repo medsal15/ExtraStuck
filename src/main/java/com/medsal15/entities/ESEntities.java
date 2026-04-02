@@ -24,7 +24,9 @@ import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MiningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
+import com.medsal15.entities.projectiles.arrows.PhantomArrow;
 import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
+import com.medsal15.entities.projectiles.arrows.PunchArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
@@ -80,6 +82,10 @@ public final class ESEntities {
             DragonArrow::new);
     public static final Supplier<EntityType<RainArrow>> RAIN_ARROW = registerArrow("rain_arrow",
             RainArrow::new);
+    public static final Supplier<EntityType<PunchArrow>> PUNCH_ARROW = registerArrow("punch_arrow",
+            PunchArrow::new);
+    public static final Supplier<EntityType<PhantomArrow>> PHANTOM_ARROW = registerArrow("phantom_arrow",
+            PhantomArrow::new);
 
     public static final Supplier<EntityType<UraniumRod>> URANIUM_ROD = registerArrow("uranium_rod",
             UraniumRod::new);
@@ -133,6 +139,9 @@ public final class ESEntities {
         list.add(END_ARROW.get());
         list.add(TELEPORT_ARROW.get());
         list.add(DRAGON_ARROW.get());
+        list.add(RAIN_ARROW.get());
+        list.add(PUNCH_ARROW.get());
+        list.add(PHANTOM_ARROW.get());
         return list;
     }
 }

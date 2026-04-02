@@ -1,0 +1,23 @@
+{
+    "name": "Blank Arrow",
+    "icon": "extrastuck:blank_arrow",
+    "category": "extrastuck:arrows",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:blank_arrow"
+            },
+            "text": "This arrow does not exist.$(br2)$(3)$(l)Special:$() Goes through blocks."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine missed you and a Phantom Membrane in a Totem Lathe.",
+            "left": "extrastuck:missed_you",
+            "mode": "&&",
+            "right": "minecraft:phantom_membrane",
+            "result": "extrastuck:blank_arrow"
+        }
+    ]
+}

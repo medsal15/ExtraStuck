@@ -1110,6 +1110,20 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.DRAGON_ARROW)
                 .grist(GristTypes.URANIUM, 15).grist(GristTypes.RUBY, 4)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.PUNCH_ARROW)
+                .input(Items.ARROW).or().input(MSItems.BEAR_POKING_STICK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.PUNCH_ARROW)
+                .grist(GristTypes.IODINE, 14).grist(GristTypes.BUILD, 3)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BLANK_ARROW)
+                .input(ESItems.MISSED_YOU).and().input(Items.PHANTOM_MEMBRANE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BLANK_ARROW)
+                .grist(GristTypes.MERCURY, 10).grist(GristTypes.CAULK, 13)
+                .build(output);
     }
 
     private void ammoRecipes(@Nonnull RecipeOutput output) {

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:missed_you"
+  },
+  "input2": {
+    "item": "minecraft:phantom_membrane"
+  },
+  "mode": "and",
+  "output": "extrastuck:blank_arrow"
+}

@@ -293,6 +293,11 @@ public final class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.DRAGON_ARROW, "Dragon Arrow");
         addItem(ESItems.RAIN_ARROW, "Rain Arrow");
         addEntityType(ESEntities.RAIN_ARROW, "Rain Arrow");
+        addItem(ESItems.PUNCH_ARROW, "Punch Arrow");
+        addItemTooltip(ESItems.PUNCH_ARROW, "Shoo");
+        addEntityType(ESEntities.PUNCH_ARROW, "Punch Arrow");
+        addItem(ESItems.BLANK_ARROW, "Blank Arrow");
+        addEntityType(ESEntities.PHANTOM_ARROW, "Phantom Arrow");
     }
 
     private void addWeapons() {

@@ -16,6 +16,9 @@
     "extrastuck:healing_arrow",
     "extrastuck:end_arrow",
     "extrastuck:teleport_arrow",
-    "extrastuck:dragon_arrow"
+    "extrastuck:dragon_arrow",
+    "extrastuck:rain_arrow",
+    "extrastuck:punch_arrow",
+    "extrastuck:phantom_arrow"
   ]
 }

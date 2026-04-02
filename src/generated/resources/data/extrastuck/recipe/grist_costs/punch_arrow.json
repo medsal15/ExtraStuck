@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 3,
+    "minestuck:iodine": 14
+  },
+  "ingredient": {
+    "item": "extrastuck:punch_arrow"
+  }
+}

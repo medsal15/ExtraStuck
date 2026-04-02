@@ -360,6 +360,10 @@ public final class ClientEvents {
                 modid("textures/entity/arrow/dragon.png")));
         event.registerEntityRenderer(ESEntities.RAIN_ARROW.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/arrow/rain.png")));
+        event.registerEntityRenderer(ESEntities.PUNCH_ARROW.get(), c -> new ESArrowRenderer(c,
+                modid("textures/entity/arrow/punch.png")));
+        event.registerEntityRenderer(ESEntities.PHANTOM_ARROW.get(), c -> new ESArrowRenderer(c,
+                modid("textures/entity/arrow/phantom.png")));
 
         event.registerEntityRenderer(ESEntities.URANIUM_ROD.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/uranium_rod.png")));

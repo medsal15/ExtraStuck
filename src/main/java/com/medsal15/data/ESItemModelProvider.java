@@ -128,6 +128,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.END_ARROW.get());
         basicItem(ESItems.TELERROW.get());
         basicItem(ESItems.DRAGON_ARROW.get());
+        basicItem(ESItems.PUNCH_ARROW.get());
+        basicItem(ESItems.BLANK_ARROW.get());
 
         basicItem(ESItems.HANDGUN_BULLET.get());
         basicItem(ESItems.HEAVY_HANDGUN_BULLET.get());

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:arrow"
+  },
+  "input2": {
+    "item": "minestuck:bear_poking_stick"
+  },
+  "mode": "or",
+  "output": "extrastuck:punch_arrow"
+}

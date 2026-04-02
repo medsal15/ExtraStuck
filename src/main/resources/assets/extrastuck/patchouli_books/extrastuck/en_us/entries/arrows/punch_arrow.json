@@ -1,0 +1,23 @@
+{
+    "name": "Punch Arrow",
+    "icon": "extrastuck:punch_arrow",
+    "category": "extrastuck:arrows",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:punch_arrow"
+            },
+            "text": "You put a glove at the end of an arrow.$(br2)$(3)$(l)Special:$() Has extra knockback."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Arrow and a Bear-Poking Stick in a Punch Designix.",
+            "left": "minecraft:arrow",
+            "mode": "||",
+            "right": "minestuck:bear_poking_stick",
+            "result": "extrastuck:punch_arrow"
+        }
+    ]
+}

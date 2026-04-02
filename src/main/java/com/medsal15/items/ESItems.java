@@ -33,7 +33,9 @@ import com.medsal15.entities.projectiles.arrows.LightningArrow;
 import com.medsal15.entities.projectiles.arrows.MiningArrow;
 import com.medsal15.entities.projectiles.arrows.MissedArrow;
 import com.medsal15.entities.projectiles.arrows.NetherArrow;
+import com.medsal15.entities.projectiles.arrows.PhantomArrow;
 import com.medsal15.entities.projectiles.arrows.PrismarineArrow;
+import com.medsal15.entities.projectiles.arrows.PunchArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
@@ -285,8 +287,10 @@ public final class ESItems {
             p -> new ESArrowItem(p, DragonArrow::new, DragonArrow::new));
     public static final DeferredItem<Item> RAIN_ARROW = ITEMS.registerItem("rain_arrow",
             p -> new ESArrowItem(p, RainArrow::new, RainArrow::new));
-    // TODO punch arrow (extra knockback)
-    // TODO phantom arrow (goes through blocks)
+    public static final DeferredItem<Item> PUNCH_ARROW = ITEMS.registerItem("punch_arrow",
+            p -> new ESArrowItem(p, PunchArrow::new, PunchArrow::new));
+    public static final DeferredItem<Item> BLANK_ARROW = ITEMS.registerItem("blank_arrow",
+            p -> new ESArrowItem(p, PhantomArrow::new, PhantomArrow::new));
     // #endregion Arrows
 
     // #region Weapons
@@ -1317,6 +1321,8 @@ public final class ESItems {
         list.add(END_ARROW);
         list.add(TELERROW);
         list.add(DRAGON_ARROW);
+        list.add(PUNCH_ARROW);
+        list.add(BLANK_ARROW);
         return list;
     }
 

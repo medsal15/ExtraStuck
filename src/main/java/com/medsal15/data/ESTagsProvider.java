@@ -129,6 +129,7 @@ public final class ESTagsProvider {
             for (DeferredItem<Item> arrow : ESItems.getArrows()) {
                 tag(ItemTags.ARROWS).add(arrow.get());
             }
+            tag(ItemTags.ARROWS).add(ESItems.RAIN_ARROW.get());
 
             for (DeferredItem<Item> weapon : ESItems.getMeleeWeapons()) {
                 tagWeapon(weapon);
