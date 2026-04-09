@@ -43,6 +43,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -77,6 +78,7 @@ public class ExtraStuck {
     public ExtraStuck(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::clientSetup);
 
         // Register the Deferred Register to the mod event bus so items get registered
         CREATIVE_MODE_TABS.register(modEventBus);
@@ -129,7 +131,9 @@ public class ExtraStuck {
         event.enqueueWork(() -> {
             ESKindAbstratus.registerTypes();
         });
+    }
 
+    private void clientSetup(final FMLClientSetupEvent event) {
         if (ESCompatUtils.isLoaded("ponder")) {
             ESPonderPlugin.register();
         }
