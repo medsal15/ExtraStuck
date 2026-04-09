@@ -5,11 +5,14 @@ import static com.medsal15.ExtraStuck.modid;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.medsal15.ESAttachements;
+import com.medsal15.ESAttachements.ESGristLayerInfo;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
@@ -25,6 +28,7 @@ import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigClient.BoondollarDisplayMode;
+import com.medsal15.config.ConfigClient.DisplayLocation;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.LandFishingHook;
@@ -50,6 +54,8 @@ import com.simibubi.create.compat.jei.ConversionRecipe;
 import com.simibubi.create.compat.jei.category.MysteriousItemConversionCategory;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.model.HumanoidModel;
@@ -80,10 +86,12 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDef
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterItemDecorationsEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -520,6 +528,106 @@ public final class ClientEvents {
             guiGraphics.fill(RenderType.GUI_OVERLAY, startx, starty, startx + 13, starty + 2, -16777216);
             guiGraphics.fill(RenderType.GUI_OVERLAY, startx, starty, startx + width, starty + 1, 0xFFFFFF00);
         }
+        return false;
+    }
+
+    @SubscribeEvent
+    public static void registerGuiLayers(final RegisterGuiLayersEvent event) {
+        event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ExtraStuck.modid("grist_layers"),
+                ClientEvents::renderGristLayersInfo);
+    }
+
+    private static void renderGristLayersInfo(GuiGraphics graphics, DeltaTracker tracker) {
+        Minecraft instance = Minecraft.getInstance();
+        Player player = instance.player;
+        if (player == null || !player.hasData(ESAttachements.GRIST_LAYER) || instance.options.hideGui
+                || !canShowGrist(player))
+            return;
+
+        ESGristLayerInfo gristLayer = player.getData(ESAttachements.GRIST_LAYER);
+        GristType any = Objects.requireNonNull(gristLayer.any()),
+                common = Objects.requireNonNull(gristLayer.common()),
+                uncommon = Objects.requireNonNull(gristLayer.uncommon());
+        Font font = instance.font;
+        boolean colored = ConfigClient.gristDisplayColored;
+        boolean name = ConfigClient.gristDisplayName;
+
+        Component anyLine = Component.translatable(ESLangProvider.GRIST_VIEWERS_ANY,
+                name ? Component.translatable(any.getTranslationKey()) : ""),
+                commonLine = Component.translatable(ESLangProvider.GRIST_VIEWERS_COMMON,
+                        name ? Component.translatable(common.getTranslationKey()) : ""),
+                uncommonLine = Component.translatable(ESLangProvider.GRIST_VIEWERS_UNCOMMON,
+                        name ? Component.translatable(uncommon.getTranslationKey()) : "");
+        int anyY = getGristDisplayY(anyLine, 0, 3),
+                anyX = getGristDisplayX(anyLine),
+                commonY = getGristDisplayY(commonLine, 1, 3),
+                commonX = getGristDisplayX(commonLine),
+                uncommonY = getGristDisplayY(uncommonLine, 2, 3),
+                uncommonX = getGristDisplayX(uncommonLine);
+
+        graphics.drawString(font, anyLine, anyX, anyY, colored ? (any.getUnderlingColor() | 0xff000000) : 0xffffffff);
+        graphics.drawString(font, commonLine, commonX, commonY,
+                colored ? (common.getUnderlingColor() | 0xff000000) : 0xffffffff);
+        graphics.drawString(font, uncommonLine, uncommonX, uncommonY,
+                colored ? (uncommon.getUnderlingColor() | 0xff000000) : 0xffffffff);
+
+        if (ConfigClient.gristDisplayTexture) {
+            graphics.blit(any.getIcon(), anyX + font.width(anyLine) + 1, anyY, 0, 0, 0, font.lineHeight,
+                    font.lineHeight, font.lineHeight, font.lineHeight);
+            graphics.blit(common.getIcon(), commonX + font.width(commonLine) + 1, commonY, 0, 0, 0, font.lineHeight,
+                    font.lineHeight, font.lineHeight, font.lineHeight);
+            graphics.blit(uncommon.getIcon(), uncommonX + font.width(uncommonLine) + 1, uncommonY, 0, 0, 0,
+                    font.lineHeight, font.lineHeight, font.lineHeight, font.lineHeight);
+        }
+    }
+
+    private static int getGristDisplayX(Component line) {
+        DisplayLocation location = ConfigClient.gristDisplayLocation;
+        Font font = Minecraft.getInstance().font;
+        int width, x;
+        if (ConfigClient.gristDisplayCustom) {
+            width = 0;
+            x = ConfigClient.gristDisplayCustomX;
+        } else {
+            // Add 5 pixels of padding
+            width = Minecraft.getInstance().getWindow().getGuiScaledWidth() - 10;
+            x = 5;
+        }
+        int lineWidth = font.width(line);
+
+        if (ConfigClient.gristDisplayTexture) {
+            lineWidth += 2 + font.lineHeight;
+        }
+
+        return location.getX(width, lineWidth) + x;
+    }
+
+    private static int getGristDisplayY(Component line, int index, int lines) {
+        DisplayLocation location = ConfigClient.gristDisplayLocation;
+        Font font = Minecraft.getInstance().font;
+        int height, y;
+        if (ConfigClient.gristDisplayCustom) {
+            height = 0;
+            y = ConfigClient.gristDisplayCustomY;
+        } else {
+            // Add 5 pixels of padding
+            height = Minecraft.getInstance().getWindow().getGuiScaledHeight() - 10;
+            y = 5;
+        }
+        int lineHeight = font.lineHeight + 1;
+
+        return location.getY(height, lineHeight * lines) + y + lineHeight * index;
+    }
+
+    private static boolean canShowGrist(Player player) {
+        for (ItemStack armor : player.getArmorSlots()) {
+            if (armor.is(ESTags.Items.SHOW_GRIST))
+                return true;
+        }
+
+        if (ESCompatUtils.isLoaded("curios") && ESCuriosEventsHandlers.showGrist(player))
+            return true;
+
         return false;
     }
 }

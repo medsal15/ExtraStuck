@@ -3,6 +3,8 @@ package com.medsal15.subevents;
 import java.util.List;
 import java.util.Map;
 
+import com.medsal15.ESAttachements;
+import com.medsal15.ESAttachements.ESGristLayerInfo;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
@@ -28,6 +30,8 @@ import com.medsal15.network.ESPackets.CraftingModusRecipeMenuOpen;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuQuit;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuSave;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuSync;
+import com.medsal15.network.ESPackets.GristLayerInfoData;
+import com.medsal15.network.ESPackets.GristLayerInfoDelete;
 import com.medsal15.network.ESPackets.MastermindAddAttempt;
 import com.medsal15.network.ESPackets.MastermindDestroy;
 import com.medsal15.network.ESPackets.MastermindDifficulty;
@@ -42,6 +46,7 @@ import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.item.weapon.MSToolType;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 import com.mraof.minestuck.network.MSPacket;
+import com.mraof.minestuck.world.lands.GristLayerInfo;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
@@ -50,6 +55,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -76,6 +82,8 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -268,6 +276,9 @@ public final class CommonEvents {
         registrar.playToClient(CraftingModusRecipeMenuQuit.ID, CraftingModusRecipeMenuQuit.STREAM_CODEC,
                 CommonEvents::execClient);
 
+        registrar.playToClient(GristLayerInfoDelete.ID, GristLayerInfoDelete.STREAM_CODEC, CommonEvents::execClient);
+        registrar.playToClient(GristLayerInfoData.ID, GristLayerInfoData.STREAM_CODEC, CommonEvents::execClient);
+
         if (ESCompatUtils.isLoaded("create")) {
             ESCreatePackets.registerPayloadHandlers(event);
         }
@@ -411,6 +422,35 @@ public final class CommonEvents {
         for (var item : ESItems.ITEMS.getEntries()) {
             if (item.is(ItemTags.DYEABLE)) {
                 map.put(item.get(), CauldronInteraction.DYED_ITEM);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void registerPlayerTick(final PlayerTickEvent.Pre event) {
+        Player player = event.getEntity();
+        if (player instanceof ServerPlayer serverPlayer) {
+            GristLayerInfo info = GristLayerInfo.get(serverPlayer.serverLevel()).orElse(null);
+            if (info != null) {
+                ESGristLayerInfo layerInfo = ESGristLayerInfo.fromGristLayerInfo(info, player.getBlockX(),
+                        player.getBlockZ());
+                if (player.hasData(ESAttachements.GRIST_LAYER)) {
+                    var old = player.getData(ESAttachements.GRIST_LAYER);
+                    if (!old.equals(layerInfo)) {
+                        player.setData(ESAttachements.GRIST_LAYER, layerInfo);
+                        PacketDistributor.sendToPlayer(serverPlayer,
+                                new GristLayerInfoData(layerInfo.any(), layerInfo.common(), layerInfo.uncommon()),
+                                new CustomPacketPayload[0]);
+                    }
+                } else {
+                    player.setData(ESAttachements.GRIST_LAYER, layerInfo);
+                    PacketDistributor.sendToPlayer(serverPlayer,
+                            new GristLayerInfoData(layerInfo.any(), layerInfo.common(), layerInfo.uncommon()),
+                            new CustomPacketPayload[0]);
+                }
+            } else if (player.hasData(ESAttachements.GRIST_LAYER)) {
+                player.removeData(ESAttachements.GRIST_LAYER);
+                PacketDistributor.sendToPlayer(serverPlayer, GristLayerInfoDelete.INSTANCE, new CustomPacketPayload[0]);
             }
         }
     }

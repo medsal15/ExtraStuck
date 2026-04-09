@@ -1304,6 +1304,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 6).grist(GristTypes.TAR, 250)
                 .build(output);
         // #endregion Cosmic Plague Armor
+
+        CombinationRecipeBuilder.of(ESItems.GRIST_VIEWERS)
+                .input(Items.GLASS_PANE).and().input(ESItems.GRIST_DETECTOR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.GRIST_VIEWERS)
+                .grist(GristTypes.QUARTZ, 14).grist(GristTypes.MARBLE, 59).grist(GristTypes.URANIUM, 1)
+                .build(output);
     }
 
     private void modusRecipes(@Nonnull RecipeOutput output) {
@@ -2764,6 +2771,7 @@ public final class ESRecipeProvider extends RecipeProvider {
         return new NotCondition(condition);
     }
 
+    @SuppressWarnings("unused")
     private void foodCooking(DeferredItem<Item> raw, DeferredItem<Item> cooked, RecipeOutput output, float experience) {
         SimpleCookingRecipeBuilder
                 .campfireCooking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, experience, 600)

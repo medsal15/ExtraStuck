@@ -82,6 +82,7 @@ public class ExtraStuck {
         CREATIVE_MODE_TABS.register(modEventBus);
 
         ESArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
+        ESAttachements.ATTACHMENT_TYPES.register(modEventBus);
         ESBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ESBlocks.BLOCKS.register(modEventBus);
         ESConditions.CONDITIONS.register(modEventBus);

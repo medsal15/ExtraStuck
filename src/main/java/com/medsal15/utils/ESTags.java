@@ -20,6 +20,7 @@ public final class ESTags {
         public static final TagKey<Item> AMMO = ItemTags.create(ExtraStuck.modid("ammo"));
         public static final TagKey<Item> AMMO_HANDGUN = ItemTags.create(ExtraStuck.modid("ammo/handgun"));
         public static final TagKey<Item> SHOW_VALUE = ItemTags.create(ExtraStuck.modid("show_value"));
+        public static final TagKey<Item> SHOW_GRIST = ItemTags.create(ExtraStuck.modid("show_grist"));
         public static final TagKey<Item> IGNORE_BYPRODUCT_CUTTING = ItemTags
                 .create(ExtraStuck.modid("interpreters_ignore_byproduct/cutting"));
         public static final TagKey<Item> DROPS_BOONDOLLARS = ItemTags.create(ExtraStuck.modid("drops_boondollars"));

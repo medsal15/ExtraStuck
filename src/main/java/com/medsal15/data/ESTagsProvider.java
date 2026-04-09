@@ -224,6 +224,7 @@ public final class ESTagsProvider {
             tag(ESTags.Items.AMMO).addTag(ESTags.Items.AMMO_HANDGUN);
             tag(ESTags.Items.AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
             tag(ESTags.Items.SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get(), ESItems.SALESWOMAN_GLASSES.get());
+            tag(ESTags.Items.SHOW_GRIST).add(ESItems.GRIST_VIEWERS.get());
             tag(ESTags.Items.DROPS_BOONDOLLARS).add(ESItems.DEBT_REAPER.get(), ESItems.STOCKS_UPTICKER.get(),
                     ESItems.PIRATE_HOOK.get(), ESItems.NONE_OF_YOUR_BUSINESS.get(), ESItems.INVESTLANCE.get(),
                     ESItems.MONEY_MAGIC.get(), ESItems.CASHGRABBERS.get(), ESItems.SHINEBREAKER.get());
@@ -284,6 +285,8 @@ public final class ESTagsProvider {
             tag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS).add(ESItems.RAIN_ARROW.get());
 
             tag(ESTags.Items.IGNORE_BYPRODUCT_CUTTING).add(Items.BONE_MEAL);
+
+            tag(CuriosTags.HEAD).add(ESItems.GRIST_VIEWERS.get());
         }
 
         private void tagShield(DeferredItem<Item> item) {

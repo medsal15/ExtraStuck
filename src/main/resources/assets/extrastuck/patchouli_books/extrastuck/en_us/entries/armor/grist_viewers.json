@@ -1,0 +1,21 @@
+{
+    "name": "Grist Viewers",
+    "icon": "extrastuck:grist_viewers",
+    "category": "extrastuck:armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:grist_viewers",
+            "text": "These smart glasses remove the need to hold a grist detector.$(br2)$(3)$(l)Special:$() Show local grist in your GUI (when possible)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Glass Pane and a Grist Detector in a Totem Lathe.",
+            "left": "minecraft:glass_pane",
+            "mode": "&&",
+            "right": "extrastuck:grist_detector",
+            "result": "extrastuck:grist_viewers"
+        }
+    ]
+}

@@ -43,6 +43,7 @@ import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.items.armor.CactusArmorItem;
 import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.DarkKnightArmorItem;
+import com.medsal15.items.armor.GristViewersItem;
 import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.armor.SalesmanGogglesItem;
 import com.medsal15.items.armor.SaleswomanGogglesItem;
@@ -756,6 +757,9 @@ public final class ESItems {
     public static final DeferredItem<Item> SALESWOMAN_GLASSES = ITEMS.register("saleswoman_glasses",
             () -> new SaleswomanGogglesItem(ESArmorMaterials.SALESMAN_GLASSES, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(13))));
+    public static final DeferredItem<Item> GRIST_VIEWERS = ITEMS.register("grist_viewers",
+            () -> new GristViewersItem(ESArmorMaterials.SALESMAN_GLASSES, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(10))));
     // #region Dark Knight
     public static final DeferredItem<Item> DARK_KNIGHT_HELMET = ITEMS.register("dark_knight_helmet",
             () -> new DarkKnightArmorItem(ESArmorMaterials.DARK_KNIGHT, ArmorItem.Type.HELMET,
@@ -1513,6 +1517,7 @@ public final class ESItems {
         list.add(HEAVY_BOOTS);
         list.add(SALESMAN_GOGGLES);
         list.add(SALESWOMAN_GLASSES);
+        list.add(GRIST_VIEWERS);
 
         list.add(DARK_KNIGHT_HELMET);
         list.add(DARK_KNIGHT_CHESTPLATE);
@@ -1542,6 +1547,7 @@ public final class ESItems {
         list.add(DARK_KNIGHT_HELMET);
         list.add(SALESWOMAN_GLASSES);
         list.add(CACTUS_HELMET);
+        list.add(GRIST_VIEWERS);
         if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             list.addAll(ESISSItems.getHelmets());
         } else {

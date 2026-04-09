@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:glass_pane"
+  },
+  "input2": {
+    "item": "extrastuck:grist_detector"
+  },
+  "mode": "and",
+  "output": "extrastuck:grist_viewers"
+}

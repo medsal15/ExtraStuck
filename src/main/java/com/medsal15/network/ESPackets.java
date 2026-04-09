@@ -3,7 +3,9 @@ package com.medsal15.network;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.medsal15.ESAttachements;
 import com.medsal15.ExtraStuck;
+import com.medsal15.ESAttachements.ESGristLayerInfo;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
@@ -11,6 +13,7 @@ import com.medsal15.menus.ChargerMenu;
 import com.medsal15.menus.CraftingModusRecipeMenu;
 import com.medsal15.storage.ESBoondollarValues;
 import com.medsal15.storage.ESBoondollarValues.BoondollarValue;
+import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.client.gui.MSScreenFactories;
 import com.mraof.minestuck.network.MSPacket;
 import com.mraof.minestuck.player.ClientPlayerData;
@@ -288,6 +291,45 @@ public final class ESPackets {
         @Override
         public void execute(IPayloadContext context) {
             ESBoondollarValues.fromList(values);
+        }
+    }
+
+    public enum GristLayerInfoDelete implements MSPacket.PlayToClient {
+        INSTANCE;
+
+        public static final Type<GristLayerInfoDelete> ID = new Type<>(ExtraStuck.modid("gristlayerinfo/delete"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, GristLayerInfoDelete> STREAM_CODEC = StreamCodec
+                .unit(INSTANCE);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context) {
+            context.player().removeData(ESAttachements.GRIST_LAYER);
+        }
+    }
+
+    public record GristLayerInfoData(GristType any, GristType common, GristType uncommon)
+            implements MSPacket.PlayToClient {
+        public static final Type<GristLayerInfoData> ID = new Type<>(ExtraStuck.modid("gristlayerinfo/data"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, GristLayerInfoData> STREAM_CODEC = StreamCodec
+                .composite(
+                        GristType.STREAM_CODEC, GristLayerInfoData::any,
+                        GristType.STREAM_CODEC, GristLayerInfoData::common,
+                        GristType.STREAM_CODEC, GristLayerInfoData::uncommon,
+                        GristLayerInfoData::new);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context) {
+            context.player().setData(ESAttachements.GRIST_LAYER, new ESGristLayerInfo(any, common, uncommon));
         }
     }
 }

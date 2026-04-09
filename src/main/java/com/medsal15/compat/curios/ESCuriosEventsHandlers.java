@@ -59,4 +59,19 @@ public final class ESCuriosEventsHandlers {
         }
         return false;
     }
+
+    public static boolean showGrist(final Player player) {
+        Optional<ICuriosItemHandler> oinventory = CuriosApi.getCuriosInventory(player);
+        if (oinventory.isEmpty())
+            return false;
+
+        ICuriosItemHandler inventory = oinventory.get();
+        int slots = inventory.getEquippedCurios().getSlots();
+        for (int i = 0; i < slots; i++) {
+            if (inventory.getEquippedCurios().getStackInSlot(i).is(ESTags.Items.SHOW_GRIST)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

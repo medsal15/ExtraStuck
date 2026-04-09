@@ -98,6 +98,9 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String GRIST_DETECTOR_ANY = ExtraStuck.MODID + ".grist_detector.any";
     public static final String GRIST_DETECTOR_COMMON = ExtraStuck.MODID + ".grist_detector.common";
     public static final String GRIST_DETECTOR_UNCOMMON = ExtraStuck.MODID + ".grist_detector.uncommon";
+    public static final String GRIST_VIEWERS_ANY = ExtraStuck.MODID + ".grist_viewers.any";
+    public static final String GRIST_VIEWERS_COMMON = ExtraStuck.MODID + ".grist_viewers.common";
+    public static final String GRIST_VIEWERS_UNCOMMON = ExtraStuck.MODID + ".grist_viewers.uncommon";
     public static final String MASTERMIND_GRIST_BASE = ExtraStuck.MODID + ".mastermind.grist.";
     public static final String FURNACE_MODUS_FUEL = ESItems.FURNACE_MODUS_CARD.get().getDescriptionId() + ".fuel";
     public static final String COMPACT_MODUS_STRICT_ON = ESItems.COMPACT_MODUS_CARD.get().getDescriptionId()
@@ -523,6 +526,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESISSItems.COSMIC_PLAGUE_CHESTPLATE, "Cosmic Plague Chestplate");
         addItem(ESISSItems.COSMIC_PLAGUE_LEGGINGS, "Cosmic Plague Leggings");
         addItem(ESISSItems.COSMIC_PLAGUE_BOOTS, "Cosmic Plague Boots");
+
+        addItem(ESItems.GRIST_VIEWERS, "Grist Viewers");
+        add(GRIST_VIEWERS_ANY, "Any: %s");
+        add(GRIST_VIEWERS_COMMON, "Common: %s");
+        add(GRIST_VIEWERS_UNCOMMON, "Uncommon: %s");
     }
 
     private void addModuses() {
@@ -854,6 +862,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.Items.AMMO, "Ammunition");
         add(ESTags.Items.AMMO_HANDGUN, "Handgun Ammunition");
         add(ESTags.Items.SHOW_VALUE, "Armors Displaying Value");
+        add(ESTags.Items.SHOW_GRIST, "Armors Displaying Local Grists");
         add(ESTags.Items.IGNORE_BYPRODUCT_CUTTING, "Ignored Cutting Byproducts");
         add(ESTags.Items.DROPS_BOONDOLLARS, "Drops Boondollars on Kill");
         add(ESTags.Items.COSMIC_PLAGUE_ARMOR, "Cosmic Plague Armor");
