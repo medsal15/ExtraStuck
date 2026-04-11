@@ -10,6 +10,7 @@ import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.item.components.CardStoredItemComponent;
 import com.mraof.minestuck.item.components.EncodedItemComponent;
 import com.mraof.minestuck.item.components.MSItemComponents;
+import com.mraof.minestuck.util.ColorHandler;
 
 import net.createmod.ponder.api.registration.PonderPlugin;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
@@ -79,7 +80,7 @@ public class ESPonderPlugin implements PonderPlugin {
     }
 
     public static ItemStack carvedDowel(Item contained) {
-        return EncodedItemComponent.createEncoded(MSItems.CRUXITE_DOWEL, contained);
+        return ColorHandler.setDefaultColor(EncodedItemComponent.createEncoded(MSItems.CRUXITE_DOWEL, contained));
     }
 
     public static ItemStack punchedCard(Item punched) {

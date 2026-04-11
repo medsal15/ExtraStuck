@@ -9,6 +9,7 @@ import com.mraof.minestuck.block.machine.TotemLatheBlock;
 import com.mraof.minestuck.blockentity.machine.AlchemiterBlockEntity;
 import com.mraof.minestuck.blockentity.machine.TotemLatheBlockEntity;
 import com.mraof.minestuck.item.MSItems;
+import com.mraof.minestuck.util.ColorHandler;
 
 import net.createmod.catnip.math.Pointing;
 import net.createmod.ponder.api.scene.SceneBuilder;
@@ -100,7 +101,7 @@ public final class AlchemyScenes {
         scene.overlay().showControls(dowelSelection, Pointing.DOWN, 15).withItem(MSItems.CRUXITE_DOWEL.toStack());
         scene.idle(15);
         scene.world().modifyBlockEntity(slotPos, TotemLatheBlockEntity.class,
-                be -> be.setDowel(MSItems.CRUXITE_DOWEL.toStack()));
+                be -> be.setDowel(ColorHandler.setDefaultColor(MSItems.CRUXITE_DOWEL.toStack())));
         scene.idle(35);
 
         // Add Card
@@ -153,7 +154,7 @@ public final class AlchemyScenes {
         // Place & describe Totem Lathe
         scene.world().showIndependentSection(util.select().fromTo(1, 1, 1, 3, 5, 3), Direction.DOWN);
         scene.world().modifyBlockEntity(slotPos, TotemLatheBlockEntity.class,
-                be -> be.setDowel(MSItems.CRUXITE_DOWEL.toStack()));
+                be -> be.setDowel(ColorHandler.setDefaultColor(MSItems.CRUXITE_DOWEL.toStack())));
         scene.idle(25);
 
         scene.overlay().showText(40).text("and_alchemy.text_1").attachKeyFrame().placeNearTarget()
