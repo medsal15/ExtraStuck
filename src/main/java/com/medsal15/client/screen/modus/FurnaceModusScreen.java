@@ -10,12 +10,13 @@ import com.mraof.minestuck.inventory.captchalogue.Modus;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
 
 public class FurnaceModusScreen extends BaseModusScreen {
     protected FurnaceModus modus;
 
-    public FurnaceModusScreen(Modus modus) {
-        super(modus);
+    public FurnaceModusScreen(int windowId, Inventory inventory, Modus modus) {
+        super(windowId, inventory, modus);
         this.modus = (FurnaceModus) modus;
         textureIndex = 7;
     }
@@ -62,13 +63,13 @@ public class FurnaceModusScreen extends BaseModusScreen {
         }
 
         @Override
-        protected void drawTooltip(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        public void drawTooltip(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY) {
             guiGraphics.renderTooltip(font, Component.translatable(ESLangProvider.FURNACE_MODUS_FUEL, fuel), mouseX,
                     mouseY);
         }
 
         @Override
-        protected void drawItem(@Nonnull GuiGraphics graphics) {
+        public void drawItem(@Nonnull GuiGraphics graphics) {
             String fuelAmount = String.valueOf(fuel);
             int x = this.xPos - mapX + 11 - font.width(fuelAmount);
             int y = this.yPos - mapY + 13;

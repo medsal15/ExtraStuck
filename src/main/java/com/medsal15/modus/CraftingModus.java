@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.mraof.minestuck.MinestuckConfig;
 import com.mraof.minestuck.inventory.captchalogue.CaptchaDeckHandler;
 import com.mraof.minestuck.inventory.captchalogue.Modus;
 import com.mraof.minestuck.inventory.captchalogue.ModusType;
@@ -15,6 +14,7 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.item.ItemStack;
@@ -87,7 +87,10 @@ public class CraftingModus extends Modus {
     }
 
     protected void fillRecipes(NonNullList<CraftingModusRecipe> list) {
-        recipes.clear();
+        if (recipes != null)
+            recipes.clear();
+        else
+            recipes = NonNullList.create();
         for (CraftingModusRecipe recipe : list) {
             recipes.add(recipe);
         }
@@ -161,8 +164,10 @@ public class CraftingModus extends Modus {
 
     @Override
     public boolean increaseSize(ServerPlayer player) {
-        if (MinestuckConfig.SERVER.modusMaxSize.get() > 0 && size >= MinestuckConfig.SERVER.modusMaxSize.get())
+        if (hasHitMaxCards(player, size)) {
+            player.displayClientMessage(Component.translatable(CAPTCHA_LIMIT), true);
             return false;
+        }
 
         size++;
         markDirty();

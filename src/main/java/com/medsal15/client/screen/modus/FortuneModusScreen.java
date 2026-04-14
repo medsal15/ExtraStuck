@@ -3,11 +3,12 @@ package com.medsal15.client.screen.modus;
 import com.mraof.minestuck.inventory.captchalogue.Modus;
 
 import net.minecraft.core.NonNullList;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 
 public class FortuneModusScreen extends BaseModusScreen {
-    public FortuneModusScreen(Modus modus) {
-        super(modus);
+    public FortuneModusScreen(int windowId, Inventory inventory, Modus modus) {
+        super(windowId, inventory, modus);
         textureIndex = 1;
     }
 

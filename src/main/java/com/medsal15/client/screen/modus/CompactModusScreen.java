@@ -1,9 +1,9 @@
 package com.medsal15.client.screen.modus;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.modus.CompactModus;
@@ -16,6 +16,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.gui.widget.ExtendedButton;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -25,8 +26,8 @@ public class CompactModusScreen extends BaseModusScreen {
 
     protected Button modeButton;
 
-    public CompactModusScreen(Modus modus) {
-        super(modus);
+    public CompactModusScreen(int windowId, Inventory inventory, Modus modus) {
+        super(windowId, inventory, modus);
         this.modus = (CompactModus) modus;
         textureIndex = 9;
     }
@@ -35,40 +36,59 @@ public class CompactModusScreen extends BaseModusScreen {
     public void init() {
         super.init();
 
-        modeButton = new ExtendedButton((width - GUI_WIDTH) / 2 + 15, (height - GUI_HEIGHT) / 2 + 175, 120, 20,
-                Component.empty(), button -> changeSetting());
+        modeButton = new ExtendedButton(xOffset + BUTTON_X_OFFSET, yOffset + BUTTON_Y_OFFSET + BUTTON_HEIGHT * 2 + 6,
+                BUTTON_WIDTH, BUTTON_HEIGHT, Component.empty(), button -> changeSetting());
         addRenderableWidget(modeButton);
     }
 
     @Override
-    public void render(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         modeButton.setMessage(Component.translatable(
                 modus.isStrict() ? ESLangProvider.COMPACT_MODUS_STRICT_ON : ESLangProvider.COMPACT_MODUS_STRICT_OFF));
 
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
-        if (isMouseInContainer(mouseX, mouseY)) {
-            ArrayList<GuiCard> visibleCards = new ArrayList<>();
-            for (GuiCard card : cards)
-                if (card.xPos + CARD_WIDTH > mapX && card.xPos < mapX + mapWidth
-                        && card.yPos + CARD_HEIGHT > mapY && card.yPos < mapY + mapHeight)
-                    visibleCards.add(card);
+        /*
+         * if (isMouseInContainer(mouseX, mouseY)) {
+         * ArrayList<GuiCard> visibleCards = new ArrayList<>();
+         * for (GuiCard card : cards)
+         * if (card.xPos + CARD_WIDTH > mapX && card.xPos < mapX + mapWidth
+         * && card.yPos + CARD_HEIGHT > mapY && card.yPos < mapY + mapHeight)
+         * visibleCards.add(card);
+         *
+         * int xOffset = (width - GUI_WIDTH) / 2;
+         * int yOffset = (height - GUI_HEIGHT) / 2;
+         *
+         * int translX = (int) ((mouseX - xOffset - X_OFFSET) * scroll);
+         * int translY = (int) ((mouseY - yOffset - Y_OFFSET) * scroll);
+         *
+         * // Draw topmost card's tooltip
+         * for (GuiCard card : visibleCards)
+         * if (translX >= card.xPos + 2 - mapX && translX < card.xPos + 18 - mapX &&
+         * translY >= card.yPos + 7 - mapY && translY < card.yPos + 23 - mapY &&
+         * card instanceof PileCard pileCard && !pileCard.background) {
+         * pileCard.realDrawTooltip(guiGraphics, mouseX, mouseY);
+         * break;
+         * }
+         * }
+         */
+    }
 
-            int xOffset = (width - GUI_WIDTH) / 2;
-            int yOffset = (height - GUI_HEIGHT) / 2;
+    @Override
+    @Nullable
+    protected GuiCard getCardAt(double xcor, double ycor, @Nonnull List<GuiCard> visibleCards) {
+        if (isMouseInContainer(xcor, ycor)) {
+            int translX = (int) ((xcor - xOffset - X_OFFSET) * scroll);
+            int translY = (int) ((ycor - yOffset - Y_OFFSET) * scroll);
 
-            int translX = (int) ((mouseX - xOffset - X_OFFSET) * scroll);
-            int translY = (int) ((mouseY - yOffset - Y_OFFSET) * scroll);
-
-            // Draw topmost card's tooltip
             for (GuiCard card : visibleCards)
                 if (translX >= card.xPos + 2 - mapX && translX < card.xPos + 18 - mapX &&
                         translY >= card.yPos + 7 - mapY && translY < card.yPos + 23 - mapY &&
                         card instanceof PileCard pileCard && !pileCard.background) {
-                    pileCard.realDrawTooltip(guiGraphics, mouseX, mouseY);
-                    break;
+                    return pileCard;
                 }
         }
+        return super.getCardAt(xcor, ycor, visibleCards);
     }
 
     @Override
@@ -117,9 +137,7 @@ public class CompactModusScreen extends BaseModusScreen {
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
-        if (isMouseInContainer(mouseX, mouseY)) {
-            int xOffset = (width - GUI_WIDTH) / 2;
-            int yOffset = (height - GUI_HEIGHT) / 2;
+        if (isMouseInContainer(mouseX, mouseY) && scrollY != 0) {
             int translX = (int) ((mouseX - xOffset - X_OFFSET) * scroll);
             int translY = (int) ((mouseY - yOffset - Y_OFFSET) * scroll);
 
@@ -130,9 +148,6 @@ public class CompactModusScreen extends BaseModusScreen {
                     continue;
                 // Check for PileCard
                 if (!(gcard instanceof PileCard card))
-                    continue;
-                // Check for vertical scrolling
-                if (scrollY == 0)
                     continue;
 
                 PacketDistributor.sendToServer(
@@ -149,8 +164,6 @@ public class CompactModusScreen extends BaseModusScreen {
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
         if (isMouseInContainer(mouseX, mouseY)) {
-            int xOffset = (width - GUI_WIDTH) / 2;
-            int yOffset = (height - GUI_HEIGHT) / 2;
             int translX = (int) ((mouseX - xOffset - X_OFFSET) * scroll);
             int translY = (int) ((mouseY - yOffset - Y_OFFSET) * scroll);
             for (GuiCard card : this.cards) {
@@ -162,8 +175,6 @@ public class CompactModusScreen extends BaseModusScreen {
                     return true;
                 }
             }
-            mousePressed = true;
-            return true;
         }
 
         return super.mouseClicked(mouseX, mouseY, mouseButton);
@@ -195,19 +206,9 @@ public class CompactModusScreen extends BaseModusScreen {
         }
 
         @Override
-        protected void drawItem(@Nonnull GuiGraphics graphics) {
+        public void drawItem(@Nonnull GuiGraphics graphics) {
             if (!background)
                 super.drawItem(graphics);
-        }
-
-        @Override
-        protected void drawTooltip(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY) {
-            // Prevents double tooltip drawing
-            return;
-        }
-
-        public void realDrawTooltip(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY) {
-            super.drawTooltip(guiGraphics, mouseX, mouseY);
         }
     }
 }

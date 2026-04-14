@@ -212,7 +212,7 @@ public class ESShield extends ShieldItem {
             if (!oPlayerData.isPresent())
                 return false;
             PlayerData playerData = oPlayerData.get();
-            if (!PlayerBoondollars.tryTakeBoondollars(playerData, (long) event.getBlockedDamage()))
+            if (!PlayerBoondollars.tryTakeBoondollars(playerData, (long) event.getBlockedDamage(), true))
                 return false;
 
             event.setShieldDamage(0);

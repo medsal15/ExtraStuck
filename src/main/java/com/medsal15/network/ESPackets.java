@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.medsal15.ESAttachements;
-import com.medsal15.ExtraStuck;
 import com.medsal15.ESAttachements.ESGristLayerInfo;
+import com.medsal15.ExtraStuck;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
@@ -14,9 +14,8 @@ import com.medsal15.menus.CraftingModusRecipeMenu;
 import com.medsal15.storage.ESBoondollarValues;
 import com.medsal15.storage.ESBoondollarValues.BoondollarValue;
 import com.mraof.minestuck.api.alchemy.GristType;
-import com.mraof.minestuck.client.gui.MSScreenFactories;
+import com.mraof.minestuck.client.gui.playerStats.PlayerStatsScreen;
 import com.mraof.minestuck.network.MSPacket;
-import com.mraof.minestuck.player.ClientPlayerData;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
@@ -272,7 +271,7 @@ public final class ESPackets {
 
         @Override
         public void execute(IPayloadContext context) {
-            MSScreenFactories.displaySylladexScreen(ClientPlayerData.getModus());
+            PlayerStatsScreen.openGui(true);
         }
     }
 

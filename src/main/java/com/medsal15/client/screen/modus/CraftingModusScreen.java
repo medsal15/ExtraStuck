@@ -18,6 +18,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.game.ServerboundContainerClosePacket;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.neoforged.neoforge.client.gui.widget.ExtendedButton;
@@ -28,8 +29,8 @@ public class CraftingModusScreen extends BaseModusScreen {
 
     protected Button addRecipeButton;
 
-    public CraftingModusScreen(Modus modus) {
-        super(modus);
+    public CraftingModusScreen(int windowId, Inventory inventory, Modus modus) {
+        super(windowId, inventory, modus);
         this.modus = (CraftingModus) modus;
         textureIndex = 11;
     }
@@ -39,8 +40,10 @@ public class CraftingModusScreen extends BaseModusScreen {
     public void init() {
         super.init();
 
-        addRecipeButton = new ExtendedButton((width - GUI_WIDTH) / 2 + 15, (height - GUI_HEIGHT) / 2 + 175, 120, 20,
-                Component.translatable(ESLangProvider.CRAFTING_MODUS_ADD_RECIPE), button -> {
+        addRecipeButton = new ExtendedButton(xOffset + BUTTON_X_OFFSET,
+                yOffset + BUTTON_Y_OFFSET + BUTTON_HEIGHT * 2 + 6,
+                BUTTON_WIDTH, BUTTON_HEIGHT, Component.translatable(ESLangProvider.CRAFTING_MODUS_ADD_RECIPE),
+                button -> {
                     minecraft.player.connection
                             .send(new ServerboundContainerClosePacket(minecraft.player.containerMenu.containerId));
                     PacketDistributor.sendToServer(CraftingModusRecipeMenuOpen.INSTANCE, new CustomPacketPayload[0]);
@@ -49,7 +52,7 @@ public class CraftingModusScreen extends BaseModusScreen {
     }
 
     @Override
-    public void render(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         addRecipeButton.active = modus.remainingCards() >= 10;
 
         super.render(guiGraphics, mouseX, mouseY, partialTick);

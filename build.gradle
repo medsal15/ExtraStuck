@@ -171,7 +171,7 @@ dependencies {
     implementation "software.bernie.geckolib:geckolib-${mc_gecko_version}"
     implementation "net.commoble.infiniverse:${infiniverse_branch}:${infiniverse_version}"
 
-    implementation "curse.maven:minestuck-224635:6996619"
+    implementation "curse.maven:minestuck-224635:7923789"
 
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")

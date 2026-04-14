@@ -8,15 +8,14 @@ import com.mraof.minestuck.inventory.captchalogue.Modus;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 
 public abstract class BaseModusScreen extends SylladexScreen {
     protected static final ResourceLocation CARDS_TEXTURES = ExtraStuck.modid("textures/gui/cards.png");
 
-    protected Modus modus;
-
-    public BaseModusScreen(Modus modus) {
-        this.modus = modus;
+    public BaseModusScreen(int windowId, Inventory inventory, Modus modus) {
+        super(windowId, inventory, modus);
     }
 
     @Override
@@ -51,12 +50,5 @@ public abstract class BaseModusScreen extends SylladexScreen {
                         starty - (i / width) * (CARD_HEIGHT + 5)));
             }
         }
-    }
-
-    protected boolean isMouseInContainer(double xcor, double ycor) {
-        int xOffset = (this.width - 256) / 2;
-        int yOffset = (this.height - 202) / 2;
-        return xcor >= (double) (xOffset + 16) && xcor < (double) (xOffset + 16 + 224)
-                && ycor >= (double) (yOffset + 17) && ycor < (double) (yOffset + 17 + 153);
     }
 }

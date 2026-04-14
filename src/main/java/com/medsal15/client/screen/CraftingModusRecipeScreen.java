@@ -8,8 +8,7 @@ import com.medsal15.menus.CraftingModusRecipeMenu;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuNext;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuSave;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mraof.minestuck.client.gui.MSScreenFactories;
-import com.mraof.minestuck.player.ClientPlayerData;
+import com.mraof.minestuck.client.gui.playerStats.PlayerStatsScreen;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -47,7 +46,7 @@ public class CraftingModusRecipeScreen extends AbstractContainerScreen<CraftingM
                 }, BACKGROUND_TEXTURE, MINI_X, MINI_Y));
         addRenderableWidget(
                 new ImageButton(leftPos + 112, topPos + 94, MINI_WIDTH, MINI_HEIGHT, b -> {
-                    MSScreenFactories.displaySylladexScreen(ClientPlayerData.getModus());
+                    PlayerStatsScreen.openGui(true);
                 }, BACKGROUND_TEXTURE, MINI_X, MINI_Y + MINI_HEIGHT));
         addRenderableWidget(
                 new ImageButton(leftPos + 106, topPos + 41, MINI_WIDTH, MINI_HEIGHT, b -> {
