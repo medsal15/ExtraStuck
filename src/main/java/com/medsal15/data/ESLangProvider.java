@@ -439,7 +439,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.MECHANICAL_RADBOW, "Mechanical Radbow");
         addItemTooltip(ESItems.MECHANICAL_RADBOW, "An engineer's weapon of choice");
         // Bows
-        addItem(ESItems.BWO, "Bwo");
+        addItem(ESItems.BWO, "bwo");
         addItem(ESItems.BOWWOB, "BowwoB");
         addItem(ESItems.RAINBOW_BOW, "Rainbow Bow");
         addItemTooltip(ESItems.RAINBOW_BOW, "A unique flavor for each arrow");
