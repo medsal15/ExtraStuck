@@ -176,11 +176,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.COSMIC_PLAGUE_SPORE, "Extremely toxic in airless environements");
 
         addItem(ESISSItems.CASSETTE_DEAD_KING_LULLABY, "Cassette");
-        addItemTooltip(ESISSItems.CASSETTE_DEAD_KING_LULLABY, "Not Implemented");
         addItem(ESISSItems.CASSETTE_FLAME_STILL_BURNS, "Cassette");
-        addItemTooltip(ESISSItems.CASSETTE_FLAME_STILL_BURNS, "Not Implemented");
         addItem(ESISSItems.CASSETTE_WHISPERS_OF_ICE, "Cassette");
-        addItemTooltip(ESISSItems.CASSETTE_WHISPERS_OF_ICE, "Not Implemented");
 
         add("strife." + ESKindAbstratus.DICE, "Dicekind");
         add("strife." + ESKindAbstratus.SHIELD, "Shieldkind");

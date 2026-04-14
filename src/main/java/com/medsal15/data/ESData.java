@@ -51,6 +51,7 @@ public final class ESData {
         gen.addProvider(event.includeServer(), new ESPriceProvider(output));
         gen.addProvider(event.includeServer(), new ESVisionEffectsProvider(output, ExtraStuck.MODID));
         gen.addProvider(event.includeServer(), ESAdvancementsProvider.create(output, lookupProvider, fileHelper));
+        gen.addProvider(event.includeServer(), new ESCassetteSongsProvider(output));
 
         ESTagsProvider.gatherData(gen, output, lookupProvider, fileHelper, datapackProvider);
     }

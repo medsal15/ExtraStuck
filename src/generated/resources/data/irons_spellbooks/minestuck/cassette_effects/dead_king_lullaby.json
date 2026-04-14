@@ -1,0 +1,17 @@
+{
+  "effect": {
+    "applying_chance": 1.0,
+    "effect": {
+      "amplifier": 1,
+      "duration": 100,
+      "id": "irons_spellbooks:blight",
+      "neoforge:cures": [
+        "milk",
+        "protected_by_totem"
+      ],
+      "show_icon": true
+    },
+    "on_hit": true
+  },
+  "jukebox_song": "irons_spellbooks:dead_king_lullaby"
+}

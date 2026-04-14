@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.data.ESCassetteSongsProvider;
 import com.medsal15.items.ESItemTiers;
 import com.medsal15.items.shields.ESShield;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
+import com.mraof.minestuck.item.components.CassettePlayable;
+import com.mraof.minestuck.item.components.MSItemComponents;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.item.weapon.WeaponItem;
@@ -184,11 +187,14 @@ public final class ESISSItems {
 
     // TODO add cassette data with next update
     public static final DeferredItem<Item> CASSETTE_DEAD_KING_LULLABY = ITEMS.register("cassette_dead_king_lullaby",
-            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(
+                    MSItemComponents.CASSETTE_SONG, new CassettePlayable(ESCassetteSongsProvider.DEAD_KING_LULLABY))));
     public static final DeferredItem<Item> CASSETTE_FLAME_STILL_BURNS = ITEMS.register("cassette_flame_still_burns",
-            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(
+                    MSItemComponents.CASSETTE_SONG, new CassettePlayable(ESCassetteSongsProvider.FLAME_STILL_BURNS))));
     public static final DeferredItem<Item> CASSETTE_WHISPERS_OF_ICE = ITEMS.register("cassette_whispers_of_ice",
-            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(
+                    MSItemComponents.CASSETTE_SONG, new CassettePlayable(ESCassetteSongsProvider.WHISPERS_OF_ICE))));
 
     // TODO thorn ring (strong ice bonus + health malus, unremovable)
     // * will probably require a pair of classes for curios loading/missing
