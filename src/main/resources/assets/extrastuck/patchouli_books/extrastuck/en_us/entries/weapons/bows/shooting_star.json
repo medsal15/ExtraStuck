@@ -1,0 +1,23 @@
+{
+    "name": "Shooting Star",
+    "icon": "extrastuck:shooting_star",
+    "category": "extrastuck:bows",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:shooting_star"
+            },
+            "text": "Now this is a fast bow!$(br2)$(3)$(l)Special:$() Shoots arrows twice as fast."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Bow and a Mirror in a Punch Designix.",
+            "left": "minecraft:bow",
+            "mode": "||",
+            "right": "minecraft:firework_star",
+            "result": "extrastuck:shooting_star"
+        }
+    ]
+}
