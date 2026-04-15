@@ -49,7 +49,7 @@ public class PileModus extends BaseModus {
 
         if (id == CaptchaDeckHandler.EMPTY_SYLLADEX) {
             for (ItemStack item : list) {
-                CaptchaDeckHandler.launchAnyItem(player, item);
+                CaptchaDeckHandler.ejectAnyItem(player, item);
             }
             list.clear();
             markDirty();

@@ -927,7 +927,7 @@ public final class ESLangProvider extends LanguageProvider {
         addPonderEntry("or_alchemy", "header", "Combining items with the Punch Designix");
         addPonderEntry("or_alchemy", "text_1", "It is possible to create new items using the Punch Designix");
         addPonderEntry("or_alchemy", "text_2", "Use the two cards you wish to combine");
-        addPonderEntry("or_alchemy", "text_3", "And take the punched dowel back");
+        addPonderEntry("or_alchemy", "text_3", "And take the punched card back");
 
         addPonderEntry("and_alchemy", "header", "Combining items with the Totem Lathe");
         addPonderEntry("and_alchemy", "text_1", "It is possible to create new items using the Totem Lathe");

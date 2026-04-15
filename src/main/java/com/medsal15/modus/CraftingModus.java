@@ -138,7 +138,7 @@ public class CraftingModus extends Modus {
                         int max = Math.min(stack.getCount(), istack.getCount());
                         ItemStack remainder = stack.getCraftingRemainingItem();
                         if (!remainder.isEmpty())
-                            CaptchaDeckHandler.launchAnyItem(player, remainder);
+                            CaptchaDeckHandler.ejectAnyItem(player, remainder);
                         istack.shrink(max);
                         stack.shrink(max);
                     }

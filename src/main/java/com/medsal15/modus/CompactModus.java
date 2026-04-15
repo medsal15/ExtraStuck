@@ -156,7 +156,7 @@ public class CompactModus extends BaseModus {
 
         if (slot == CaptchaDeckHandler.EMPTY_SYLLADEX) {
             for (ItemStack item : list) {
-                CaptchaDeckHandler.launchAnyItem(player, item);
+                CaptchaDeckHandler.ejectAnyItem(player, item);
             }
             list.clear();
             groups.clear();

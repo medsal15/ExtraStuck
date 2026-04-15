@@ -109,7 +109,7 @@ public class BaseModus extends Modus {
 
         if (slot == CaptchaDeckHandler.EMPTY_SYLLADEX) {
             for (ItemStack item : list) {
-                CaptchaDeckHandler.launchAnyItem(player, item);
+                CaptchaDeckHandler.ejectAnyItem(player, item);
             }
             list.clear();
             markDirty();
