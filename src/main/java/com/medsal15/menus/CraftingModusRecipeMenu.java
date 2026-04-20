@@ -133,11 +133,10 @@ public class CraftingModusRecipeMenu extends AbstractContainerMenu {
 
     @Override
     public void clicked(int slotId, int button, @Nonnull ClickType clickType, @Nonnull Player player) {
-        if (slotId != -999) {
+        if (slotId >= 0 && slotId < 9) {
             Slot slot = getSlot(slotId);
             if (slot instanceof GhostItemSlot && !slot.getItem().isEmpty()
                     && (clickType == ClickType.PICKUP || clickType == ClickType.PICKUP_ALL)) {
-                // TODO test if this removes
                 slot.set(ItemStack.EMPTY);
                 return;
             }

@@ -125,11 +125,7 @@ public class CraftingModus extends Modus {
 
         if (player.hasInfiniteMaterials()) {
             result = recipe.result.copy();
-        }
-        // Check if craftable
-        // Does not work if an ingredient is not fully present as a stack
-        else if (recipe.sum.stream().allMatch(stack -> player.getInventory().contains(s -> !s.isEmpty()
-                && ItemStack.isSameItemSameComponents(stack, s) && s.getCount() >= stack.getCount()))) {
+        } else if (canCraftRecipe(player, recipe)) {
             List<ItemStack> subsum = recipe.sum.stream().map(stack -> stack.copy()).toList();
             for (ItemStack stack : subsum) {
                 for (ItemStack istack : player.getInventory().items) {
@@ -201,6 +197,20 @@ public class CraftingModus extends Modus {
         list.add(recipe);
         changed = true;
         markDirty();
+    }
+
+    protected boolean canCraftRecipe(ServerPlayer player, CraftingModusRecipe recipe) {
+        var allneeded = recipe.sum.stream().map(stack -> stack.copy()).toList();
+
+        for (ItemStack needed : allneeded) {
+            player.getInventory().items.forEach(stack -> {
+                if (!needed.isEmpty() && ItemStack.isSameItemSameComponents(stack, needed)) {
+                    needed.shrink(stack.getCount());
+                }
+            });
+        }
+
+        return allneeded.stream().allMatch(stack -> stack.isEmpty());
     }
 
     public static class CraftingModusRecipe {
