@@ -144,7 +144,7 @@ public class CraftingModus extends Modus {
             player.awardStat(Stats.ITEM_CRAFTED.get(result.getItem()));
         }
 
-        if (asCard && remainingCards() > 0) {
+        if (asCard && !result.isEmpty() && remainingCards() > 0) {
             size--;
             markDirty();
             result = CaptchaCardItem.createCardWithItem(result, player.server);
