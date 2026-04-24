@@ -18,6 +18,7 @@
             "mode": "||",
             "right": "minecraft:yellow_dye",
             "result": "extrastuck:lemonnade"
-        }
+        },
+        "If Create is installed, LemonNades can be used as Potato Cannon ammo. They explode when hitting entities."
     ]
 }

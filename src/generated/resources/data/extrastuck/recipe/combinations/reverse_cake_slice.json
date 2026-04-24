@@ -10,7 +10,7 @@
     "item": "farmersdelight:cake_slice"
   },
   "input2": {
-    "item": "minecraft:glass"
+    "item": "minestuck:mirror"
   },
   "mode": "or",
   "output": "extrastuck:reverse_cake_slice"

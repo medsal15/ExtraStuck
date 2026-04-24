@@ -1657,11 +1657,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 Ingredient.of(CommonTags.TOOLS_KNIFE), ESItems.REVERSE_CAKE_SLICE.get(), 7)
                 .build(fdOutput, modid("reverse_cake"));
         CombinationRecipeBuilder.of(ESItems.REVERSE_CAKE_SLICE)
-                .input(ModItems.CAKE_SLICE.get()).or().input(Items.GLASS_PANE)
-                .build(fdOutput, modid("reverse_cake_slice_pane"));
-        CombinationRecipeBuilder.of(ESItems.REVERSE_CAKE_SLICE)
-                .input(ModItems.CAKE_SLICE.get()).or().input(Items.GLASS)
-                .build(fdOutput, modid("reverse_cake_slice_glass"));
+                .input(ModItems.CAKE_SLICE.get()).or().input(MSItems.MIRROR)
+                .build(fdOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.REVERSE_CAKE)
                 .requires(ESItems.REVERSE_CAKE_SLICE, 7)
                 .unlockedBy("has_reverse_cake_slice", has(ESItems.REVERSE_CAKE_SLICE))

@@ -1,0 +1,14 @@
+{
+    "damage": 20,
+    "items": "extrastuck:lemonnade",
+    "knockback": 0.5,
+    "on_entity_hit": {
+        "type": "extrastuck:explode",
+        "radius": 4
+    },
+    "reload_ticks": 40,
+    "render_mode": {
+        "type": "create:tumble"
+    },
+    "velocity_multiplier": 1
+}

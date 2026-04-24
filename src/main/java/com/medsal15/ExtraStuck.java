@@ -9,6 +9,7 @@ import com.medsal15.compat.create.client.menus.ESCreateMenuTypes;
 import com.medsal15.compat.create.items.ESCreateComponents;
 import com.medsal15.compat.create.items.ESCreateItems;
 import com.medsal15.compat.create.items.ESCreateMissingItems;
+import com.medsal15.compat.create.potatoCannon.ESPotatoEntityHitActions;
 import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
 import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
@@ -116,6 +117,7 @@ public class ExtraStuck {
             ESCreateComponents.DATA_COMPONENTS.register(modEventBus);
             ESCreateItems.ITEMS.register(modEventBus);
             ESCreateMenuTypes.MENU_TYPES.register(modEventBus);
+            ESPotatoEntityHitActions.POTATO_PROJECTILE_ENTITY_HIT_ACTIONS.register(modEventBus);
         } else {
             ESCreateMissingItems.ITEMS.register(modEventBus);
         }
