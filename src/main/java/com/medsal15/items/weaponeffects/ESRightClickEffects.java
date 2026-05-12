@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
-import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
+import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLootTableProvider.TableSubProvider;
 import com.medsal15.items.ESItems;
@@ -96,7 +96,7 @@ public final class ESRightClickEffects {
      */
     public static InteractionResultHolder<ItemStack> prospitianWand(Level level, Player player, InteractionHand hand) {
         if (player.isShiftKeyDown()) {
-            return ItemRightClickEffect.switchTo(ESISSMissingItems.CAST_GOLD_SHIELD).onRightClick(level, player, hand);
+            return ItemRightClickEffect.switchTo(ISSESMissingItems.CAST_GOLD_SHIELD).onRightClick(level, player, hand);
         } else {
             ItemStack stack = player.getItemInHand(hand);
             level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLAZE_SHOOT,
@@ -122,7 +122,7 @@ public final class ESRightClickEffects {
      */
     public static InteractionResultHolder<ItemStack> dersiteWand(Level level, Player player, InteractionHand hand) {
         if (player.isShiftKeyDown()) {
-            return ItemRightClickEffect.switchTo(ESISSMissingItems.AMETHYST_BACKSTABBER).onRightClick(level, player,
+            return ItemRightClickEffect.switchTo(ISSESMissingItems.AMETHYST_BACKSTABBER).onRightClick(level, player,
                     hand);
         } else {
             ItemStack stack = player.getItemInHand(hand);

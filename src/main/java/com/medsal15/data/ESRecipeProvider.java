@@ -7,8 +7,8 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
-import com.medsal15.compat.create.items.ESCreateItems;
-import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
+import com.medsal15.compat.create.items.CreateESItems;
+import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.conditions.ConfigCondition;
 import com.medsal15.items.ESItems;
 import com.medsal15.utils.ESTags;
@@ -117,7 +117,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(MSItems.FUNGAL_SPORE).or().input(Items.DRAGON_HEAD)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.COSMIC_PLAGUE_SPORE)
-                .grist(GristTypes.SHALE, 66).grist(GristTypes.URANIUM, 23).grist(GristTypes.AMETHYST, 11)
+                .grist(GristTypes.SHALE, 66).grist(GristTypes.URANIUM, 23)
+                .grist(GristTypes.AMETHYST, 11)
                 .build(output);
     }
 
@@ -276,19 +277,19 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.AMBER, 1225).grist(GristTypes.IODINE, 606)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESISSItems.CAST_GOLD_SHIELD)
+        CombinationRecipeBuilder.of(ISSESItems.CAST_GOLD_SHIELD)
                 .input(ESItems.GOLD_SHIELD).and().input(MSItems.CAST_IRON)
                 .build(output);
-        GristCostRecipeBuilder.of(ESISSItems.CAST_GOLD_SHIELD)
+        GristCostRecipeBuilder.of(ISSESItems.CAST_GOLD_SHIELD)
                 .grist(GristTypes.GOLD, 512).grist(GristTypes.RUST, 201).grist(GristTypes.TAR, 1115)
                 .build(output);
-        GristCostRecipeBuilder.of(ESISSItems.PROSPITIAN_WAND)
+        GristCostRecipeBuilder.of(ISSESItems.PROSPITIAN_WAND)
                 .grist(GristTypes.GOLD, 512).grist(GristTypes.RUST, 201).grist(GristTypes.TAR, 1115)
                 .build(output);
         // Add swapping for ISS
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ESISSItems.CAST_GOLD_SHIELD.toStack())
-                .requires(ESISSItems.PROSPITIAN_WAND)
-                .unlockedBy("has_prospitian_wand", has(ESISSItems.PROSPITIAN_WAND))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ISSESItems.CAST_GOLD_SHIELD.toStack())
+                .requires(ISSESItems.PROSPITIAN_WAND)
+                .unlockedBy("has_prospitian_wand", has(ISSESItems.PROSPITIAN_WAND))
                 .save(output.withConditions(ISS_LOADED), modid("shapeless/prospitian_wand_swap"));
     }
 
@@ -485,7 +486,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(ESItems.D8_NIGHT).and().input(ESItems.DEATH_MACE)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.D8TH_M8CE)
-                .grist(GristTypes.COBALT, 888).grist(GristTypes.DIAMOND, 128).grist(GristTypes.MARBLE, 343)
+                .grist(GristTypes.COBALT, 888).grist(GristTypes.DIAMOND, 128)
+                .grist(GristTypes.MARBLE, 343)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.BIG_CLUB)
@@ -523,7 +525,8 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         CombinationRecipeBuilder.of(ESItems.ANCIENT_VAULT_OPENER)
                 .input(ESItems.KEY_OF_TRIALS).or().input(ItemRegistry.DECREPIT_KEY.get())
-                .build(output.withConditions(ISS_LOADED), ExtraStuck.modid("ancient_vault_opener_irons_spellbooks"));
+                .build(output.withConditions(ISS_LOADED),
+                        ExtraStuck.modid("ancient_vault_opener_irons_spellbooks"));
         CombinationRecipeBuilder.of(ESItems.ANCIENT_VAULT_OPENER)
                 .input(ESItems.KEY_OF_TRIALS).or().input(Items.NETHERITE_SCRAP)
                 .build(output.withConditions(not(ISS_LOADED)));
@@ -539,7 +542,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GOLD, 150).grist(GristTypes.AMBER, 250)
                 .build(output.withConditions(not(ISS_LOADED)));
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(ItemRegistry.TIMELESS_SLURRY.get()),
-                Ingredient.of(ESItems.ANCIENT_VAULT_OPENER.get()), Ingredient.of(ItemRegistry.PYRIUM_INGOT.get()),
+                Ingredient.of(ESItems.ANCIENT_VAULT_OPENER.get()),
+                Ingredient.of(ItemRegistry.PYRIUM_INGOT.get()),
                 RecipeCategory.COMBAT, ESItems.VAULT_MELTER.get())
                 .unlocks("vault_melter", has(ESItems.ANCIENT_VAULT_OPENER))
                 .save(output.withConditions(ISS_LOADED), modid("smithing/vault_melter"));
@@ -609,7 +613,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(MSItems.CAKESAW).and().input(ESItems.YELLOWCAKE_SLICE)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.YELLOWCAKESAW)
-                .grist(GristTypes.SULFUR, 90).grist(GristTypes.MERCURY, 36).grist(GristTypes.URANIUM, 12)
+                .grist(GristTypes.SULFUR, 90).grist(GristTypes.MERCURY, 36)
+                .grist(GristTypes.URANIUM, 12)
                 .build(output);
         SourceGristCostBuilder.of(ESItems.YELLOWCAKESAW_LIPSTICK)
                 .source(ESItems.YELLOWCAKESAW.get())
@@ -643,13 +648,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.TAR, 400).grist(GristTypes.SHALE, 158).grist(GristTypes.COBALT, 914)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESISSItems.LEADER_SWORD)
+        CombinationRecipeBuilder.of(ISSESItems.LEADER_SWORD)
                 .input(MSItems.ANGEL_APOCALYPSE).and().input(ItemRegistry.DIVINE_PEARL.get())
                 .build(issOutput, modid("leader_sword_iss"));
-        CombinationRecipeBuilder.of(ESISSItems.LEADER_SWORD)
+        CombinationRecipeBuilder.of(ISSESItems.LEADER_SWORD)
                 .input(MSItems.ANGEL_APOCALYPSE).and().input(MSItems.MIRROR)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.LEADER_SWORD)
+        GristCostRecipeBuilder.of(ISSESItems.LEADER_SWORD)
                 .grist(GristTypes.RUBY, 88).grist(GristTypes.URANIUM, 150).grist(GristTypes.AMBER, 1511)
                 .build(output);
         // #endregion Swords
@@ -680,7 +685,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(ESItems.BLIGHT).and().input(ESItems.COSMIC_PLAGUE_SPORE)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.END_OF_CIVILIZATION)
-                .grist(GristTypes.AMETHYST, 3929).grist(GristTypes.DIAMOND, 1352).grist(GristTypes.URANIUM, 420)
+                .grist(GristTypes.AMETHYST, 3929).grist(GristTypes.DIAMOND, 1352)
+                .grist(GristTypes.URANIUM, 420)
                 .build(output);
         // #endregion Sickles
 
@@ -689,7 +695,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(MSItems.PROSPECTING_PICKSCYTHE).or().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.DEBT_REAPER)
-                .grist(GristTypes.GOLD, 600).grist(GristTypes.AMBER, 1400).grist(GristTypes.DIAMOND, 250)
+                .grist(GristTypes.GOLD, 600).grist(GristTypes.AMBER, 1400)
+                .grist(GristTypes.DIAMOND, 250)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.LEAFBURNER)
@@ -705,7 +712,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(MSItems.FIRESTARTER).and().input(ESItems.BOONDOLLARS_FOR_IDIOTS)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.NONE_OF_YOUR_BUSINESS)
-                .grist(GristTypes.AMETHYST, 440).grist(GristTypes.SHALE, 880).grist(GristTypes.DIAMOND, 220)
+                .grist(GristTypes.AMETHYST, 440).grist(GristTypes.SHALE, 880)
+                .grist(GristTypes.DIAMOND, 220)
                 .build(output);
         // #endregion Fans
 
@@ -731,23 +739,25 @@ public final class ESRecipeProvider extends RecipeProvider {
         // #endregion Claws
 
         // #region Knives
-        CombinationRecipeBuilder.of(ESISSItems.AMETHYST_BACKSTABBER)
+        CombinationRecipeBuilder.of(ISSESItems.AMETHYST_BACKSTABBER)
                 .input(MSItems.SHADOWRAZOR).and().input(Items.AMETHYST_BLOCK)
                 .build(output);
-        GristCostRecipeBuilder.of(ESISSItems.AMETHYST_BACKSTABBER)
-                .grist(GristTypes.AMETHYST, 264).grist(GristTypes.SHALE, 512).grist(GristTypes.TAR, 1128)
+        GristCostRecipeBuilder.of(ISSESItems.AMETHYST_BACKSTABBER)
+                .grist(GristTypes.AMETHYST, 264).grist(GristTypes.SHALE, 512)
+                .grist(GristTypes.TAR, 1128)
                 .build(output);
-        GristCostRecipeBuilder.of(ESISSItems.DERSITE_WAND)
-                .grist(GristTypes.AMETHYST, 264).grist(GristTypes.SHALE, 512).grist(GristTypes.TAR, 1128)
+        GristCostRecipeBuilder.of(ISSESItems.DERSITE_WAND)
+                .grist(GristTypes.AMETHYST, 264).grist(GristTypes.SHALE, 512)
+                .grist(GristTypes.TAR, 1128)
                 .build(output);
         // Add swapping for ISS
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ESISSItems.AMETHYST_BACKSTABBER.toStack())
-                .requires(ESISSItems.DERSITE_WAND)
-                .unlockedBy("has_dersite_wand", has(ESISSItems.DERSITE_WAND))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ISSESItems.AMETHYST_BACKSTABBER.toStack())
+                .requires(ISSESItems.DERSITE_WAND)
+                .unlockedBy("has_dersite_wand", has(ISSESItems.DERSITE_WAND))
                 .save(output.withConditions(ISS_LOADED), modid("shapeless/dersite_wand_swap"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ESISSItems.DERSITE_WAND.toStack())
-                .requires(ESISSItems.AMETHYST_BACKSTABBER)
-                .unlockedBy("has_dersite_wand", has(ESISSItems.AMETHYST_BACKSTABBER))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ISSESItems.DERSITE_WAND.toStack())
+                .requires(ISSESItems.AMETHYST_BACKSTABBER)
+                .unlockedBy("has_dersite_wand", has(ISSESItems.AMETHYST_BACKSTABBER))
                 .save(output.withConditions(ISS_LOADED), modid("shapeless/amethyst_backstabber_swap"));
         // #endregion Knives
 
@@ -800,7 +810,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(ESItems.RAINBOW_BOW).and().input(Items.BEACON)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.MAKE_IT_RAIN)
-                .grist(GristTypes.COBALT, 15625).grist(GristTypes.CHALK, 625).grist(GristTypes.DIAMOND, 3125)
+                .grist(GristTypes.COBALT, 15625).grist(GristTypes.CHALK, 625)
+                .grist(GristTypes.DIAMOND, 3125)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.SHOOTING_STAR)
@@ -850,106 +861,112 @@ public final class ESRecipeProvider extends RecipeProvider {
         // #endregion Throwables
 
         // #region Staves
-        CombinationRecipeBuilder.of(ESISSItems.CURSED_CAT_STAFF)
+        CombinationRecipeBuilder.of(ISSESItems.CURSED_CAT_STAFF)
                 .input(ItemRegistry.BLOOD_STAFF.get()).and().input(ESItems.NORMAL_CAT_PLUSH)
                 .build(issOutput, ExtraStuck.modid("cursed_cat_staff_from_blood_staff"));
-        CombinationRecipeBuilder.of(ESISSItems.CURSED_CAT_STAFF)
+        CombinationRecipeBuilder.of(ISSESItems.CURSED_CAT_STAFF)
                 .input(MSItems.POOL_CUE_WAND).and().input(ESItems.NORMAL_CAT_PLUSH)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.CURSED_CAT_STAFF)
-                .grist(GristTypes.TAR, 1000).grist(GristTypes.DIAMOND, 500).grist(GristTypes.COBALT, 900)
+        GristCostRecipeBuilder.of(ISSESItems.CURSED_CAT_STAFF)
+                .grist(GristTypes.TAR, 1000).grist(GristTypes.DIAMOND, 500)
+                .grist(GristTypes.COBALT, 900)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESISSItems.BLESSED_CAT_STAFF)
+        CombinationRecipeBuilder.of(ISSESItems.BLESSED_CAT_STAFF)
                 .input(ItemRegistry.BLOOD_STAFF.get()).or().input(ESItems.NORMAL_CAT_PLUSH)
                 .build(issOutput, ExtraStuck.modid("blessed_cat_staff_from_blood_staff"));
-        CombinationRecipeBuilder.of(ESISSItems.BLESSED_CAT_STAFF)
+        CombinationRecipeBuilder.of(ISSESItems.BLESSED_CAT_STAFF)
                 .input(MSItems.WAND).or().input(ESItems.NORMAL_CAT_PLUSH)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.BLESSED_CAT_STAFF)
+        GristCostRecipeBuilder.of(ISSESItems.BLESSED_CAT_STAFF)
                 .grist(GristTypes.MARBLE, 1200).grist(GristTypes.GOLD, 250).grist(GristTypes.CHALK, 800)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESISSItems.BRANCH_OF_YGGDRASIL)
+        CombinationRecipeBuilder.of(ISSESItems.BRANCH_OF_YGGDRASIL)
                 .input(ItemRegistry.ARTIFICER_STAFF.get()).and().input(MSItems.CUEBALL)
                 .build(issOutput, ExtraStuck.modid("branch_of_yggdrasil_iss"));
-        CombinationRecipeBuilder.of(ESISSItems.BRANCH_OF_YGGDRASIL)
+        CombinationRecipeBuilder.of(ISSESItems.BRANCH_OF_YGGDRASIL)
                 .input(MSItems.THORN_OF_OGLOGOTH).and().input(MSItems.CUEBALL)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.BRANCH_OF_YGGDRASIL)
-                .grist(GristTypes.BUILD, 5983).grist(GristTypes.MARBLE, 3723).grist(GristTypes.QUARTZ, 2700)
+        GristCostRecipeBuilder.of(ISSESItems.BRANCH_OF_YGGDRASIL)
+                .grist(GristTypes.BUILD, 5983).grist(GristTypes.MARBLE, 3723)
+                .grist(GristTypes.QUARTZ, 2700)
                 .build(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESISSItems.STAFF_OF_YGGDRASIL.toStack())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ISSESItems.STAFF_OF_YGGDRASIL.toStack())
                 .pattern("fGi")
                 .pattern("lBe")
                 .pattern("bGn")
                 .define('G', Tags.Items.STORAGE_BLOCKS_GOLD)
-                .define('B', ESISSItems.BRANCH_OF_YGGDRASIL)
+                .define('B', ISSESItems.BRANCH_OF_YGGDRASIL)
                 .define('f', ItemRegistry.FIRE_RUNE.get())
                 .define('i', ItemRegistry.ICE_RUNE.get())
                 .define('l', ItemRegistry.LIGHTNING_RUNE.get())
                 .define('e', ItemRegistry.ENDER_RUNE.get())
                 .define('b', ItemRegistry.BLOOD_RUNE.get())
                 .define('n', ItemRegistry.NATURE_RUNE.get())
-                .unlockedBy("has_yggdrasil_branch", has(ESISSItems.BRANCH_OF_YGGDRASIL))
+                .unlockedBy("has_yggdrasil_branch", has(ISSESItems.BRANCH_OF_YGGDRASIL))
                 .save(issOutput, modid("shaped/staff_of_yggdrasil_iss"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESISSItems.STAFF_OF_YGGDRASIL.toStack())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ISSESItems.STAFF_OF_YGGDRASIL.toStack())
                 .pattern("lGe")
                 .pattern("fBn")
                 .pattern("bGi")
                 .define('G', Tags.Items.STORAGE_BLOCKS_GOLD)
-                .define('B', ESISSItems.BRANCH_OF_YGGDRASIL)
+                .define('B', ISSESItems.BRANCH_OF_YGGDRASIL)
                 .define('f', Items.BLAZE_ROD)
                 .define('i', Items.BLUE_ICE)
                 .define('l', Items.CREEPER_HEAD)
                 .define('e', Items.DRAGON_HEAD)
                 .define('b', MSItems.COAGULATED_BLOOD)
                 .define('n', Items.SPIDER_EYE)
-                .unlockedBy("has_yggdrasil_branch", has(ESISSItems.BRANCH_OF_YGGDRASIL))
+                .unlockedBy("has_yggdrasil_branch", has(ISSESItems.BRANCH_OF_YGGDRASIL))
                 .save(output.withConditions(not(ISS_LOADED)), modid("shaped/staff_of_yggdrasil"));
         // #endregion Staves
 
         // #region Spellbooks
-        CombinationRecipeBuilder.of(ESISSItems.GRIMOIRE)
+        CombinationRecipeBuilder.of(ISSESItems.GRIMOIRE)
                 .input(MSItems.GRIMOIRE).and().input(ItemRegistry.GOLD_SPELL_BOOK.get())
                 .build(issOutput);
-        GristCostRecipeBuilder.of(ESISSItems.GRIMOIRE)
-                .grist(GristTypes.MARBLE, 66).grist(GristTypes.AMETHYST, 666).grist(GristTypes.GARNET, 133)
+        GristCostRecipeBuilder.of(ISSESItems.GRIMOIRE)
+                .grist(GristTypes.MARBLE, 66).grist(GristTypes.AMETHYST, 666)
+                .grist(GristTypes.GARNET, 133)
                 .build(issOutput);
 
-        CombinationRecipeBuilder.of(ESISSItems.GEMINI_SPELLBOOK_BLUE)
+        CombinationRecipeBuilder.of(ISSESItems.GEMINI_SPELLBOOK_BLUE)
                 .input(ItemRegistry.DIAMOND_SPELL_BOOK.get()).or().input(MSItems.MIRROR)
                 .build(issOutput);
-        GristCostRecipeBuilder.of(ESISSItems.GEMINI_SPELLBOOK_BLUE)
-                .grist(GristTypes.BUILD, 160).grist(GristTypes.COBALT, 200).grist(GristTypes.GARNET, 100)
+        GristCostRecipeBuilder.of(ISSESItems.GEMINI_SPELLBOOK_BLUE)
+                .grist(GristTypes.BUILD, 160).grist(GristTypes.COBALT, 200)
+                .grist(GristTypes.GARNET, 100)
                 .grist(GristTypes.DIAMOND, 32).grist(GristTypes.AMBER, 64)
                 .build(issOutput);
-        GristCostRecipeBuilder.of(ESISSItems.GEMINI_SPELLBOOK_RED)
-                .grist(GristTypes.BUILD, 160).grist(GristTypes.COBALT, 200).grist(GristTypes.GARNET, 100)
+        GristCostRecipeBuilder.of(ISSESItems.GEMINI_SPELLBOOK_RED)
+                .grist(GristTypes.BUILD, 160).grist(GristTypes.COBALT, 200)
+                .grist(GristTypes.GARNET, 100)
                 .grist(GristTypes.DIAMOND, 32).grist(GristTypes.AMBER, 64)
                 .build(issOutput);
 
-        CombinationRecipeBuilder.of(ESISSItems.MAGE_GUY)
+        CombinationRecipeBuilder.of(ISSESItems.MAGE_GUY)
                 .input(ItemRegistry.IRON_SPELL_BOOK.get()).and().input(MSItems.WISEGUY)
                 .build(issOutput);
-        GristCostRecipeBuilder.of(ESISSItems.MAGE_GUY)
+        GristCostRecipeBuilder.of(ISSESItems.MAGE_GUY)
                 .grist(GristTypes.SULFUR, 12).grist(GristTypes.CHALK, 18).grist(GristTypes.IODINE, 12)
                 .grist(GristTypes.SHALE, 21)
                 .build(issOutput);
 
-        GristCostRecipeBuilder.of(ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK)
-                .grist(GristTypes.BUILD, 93475).grist(GristTypes.URANIUM, 31).grist(GristTypes.AMETHYST, 866578)
+        GristCostRecipeBuilder.of(ISSESItems.PERFECTLY_UNIQUE_SPELLBOOK)
+                .grist(GristTypes.BUILD, 93475).grist(GristTypes.URANIUM, 31)
+                .grist(GristTypes.AMETHYST, 866578)
                 .grist(GristTypes.ZILLIUM, 3).grist(GristTypes.CAULK, 30)
                 .build(issOutput);
 
-        CombinationRecipeBuilder.of(ESISSItems.SBURBDB)
+        CombinationRecipeBuilder.of(ISSESItems.SBURBDB)
                 .input(ItemRegistry.IRON_SPELL_BOOK.get()).and().input(MSItems.COMPLETED_SBURB_CODE)
                 .build(issOutput, modid("sburbdb_iss"));
-        CombinationRecipeBuilder.of(ESISSItems.SBURBDB)
+        CombinationRecipeBuilder.of(ISSESItems.SBURBDB)
                 .input(Items.SPYGLASS).and().input(MSItems.COMPLETED_SBURB_CODE)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.SBURBDB)
+        GristCostRecipeBuilder.of(ISSESItems.SBURBDB)
                 .grist(GristTypes.BUILD, 160).grist(GristTypes.MERCURY, 20)
                 .grist(GristTypes.CAULK, 8).grist(GristTypes.SHALE, 8).grist(GristTypes.RUST, 8)
                 .grist(GristTypes.URANIUM, 8)
@@ -961,28 +978,32 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(MSItems.ACE_OF_HEARTS).and().input(MSItems.MIRROR)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.TWO_OF_HEARTS)
-                .grist(GristTypes.MARBLE, 1080).grist(GristTypes.RUBY, 125).grist(GristTypes.DIAMOND, 15)
+                .grist(GristTypes.MARBLE, 1080).grist(GristTypes.RUBY, 125)
+                .grist(GristTypes.DIAMOND, 15)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.TWO_OF_DIAMONDS)
                 .input(MSItems.ACE_OF_DIAMONDS).and().input(MSItems.MIRROR)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.TWO_OF_DIAMONDS)
-                .grist(GristTypes.MARBLE, 1080).grist(GristTypes.DIAMOND, 125).grist(GristTypes.GOLD, 15)
+                .grist(GristTypes.MARBLE, 1080).grist(GristTypes.DIAMOND, 125)
+                .grist(GristTypes.GOLD, 15)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.TWO_OF_SPADES)
                 .input(MSItems.ACE_OF_SPADES).and().input(MSItems.MIRROR)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.TWO_OF_SPADES)
-                .grist(GristTypes.MARBLE, 1080).grist(GristTypes.SULFUR, 125).grist(GristTypes.DIAMOND, 15)
+                .grist(GristTypes.MARBLE, 1080).grist(GristTypes.SULFUR, 125)
+                .grist(GristTypes.DIAMOND, 15)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.TWO_OF_CLUBS)
                 .input(MSItems.ACE_OF_CLUBS).and().input(MSItems.MIRROR)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.TWO_OF_CLUBS)
-                .grist(GristTypes.MARBLE, 1080).grist(GristTypes.DIAMOND, 125).grist(GristTypes.RUST, 15)
+                .grist(GristTypes.MARBLE, 1080).grist(GristTypes.DIAMOND, 125)
+                .grist(GristTypes.RUST, 15)
                 .build(output);
         // #endregion Cards
 
@@ -1186,7 +1207,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(Items.YELLOW_STAINED_GLASS_PANE).and().input(Items.MAGENTA_STAINED_GLASS_PANE)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.SALESMAN_GOGGLES)
-                .grist(GristTypes.AMETHYST, 19).grist(GristTypes.GOLD, 19).grist(GristTypes.ARTIFACT, 97)
+                .grist(GristTypes.AMETHYST, 19).grist(GristTypes.GOLD, 19)
+                .grist(GristTypes.ARTIFACT, 97)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.SALESWOMAN_GLASSES)
@@ -1260,55 +1282,67 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Cactus Armor
 
-        CombinationRecipeBuilder.of(ESISSItems.LICH_CROWN)
+        CombinationRecipeBuilder.of(ISSESItems.LICH_CROWN)
                 .input(ItemRegistry.TARNISHED_CROWN.get()).and().input(MSItems.GARNET_TWIX)
                 .build(output.withConditions(ISS_LOADED), modid("lich_crown_irons_spellbooks"));
-        CombinationRecipeBuilder.of(ESISSItems.LICH_CROWN)
+        CombinationRecipeBuilder.of(ISSESItems.LICH_CROWN)
                 .input(Items.IRON_HELMET).and().input(MSItems.GARNET_TWIX)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.LICH_CROWN)
-                .grist(GristTypes.GARNET, 18).grist(GristTypes.MERCURY, 420).grist(GristTypes.CAULK, 249)
+        GristCostRecipeBuilder.of(ISSESItems.LICH_CROWN)
+                .grist(GristTypes.GARNET, 18).grist(GristTypes.MERCURY, 420)
+                .grist(GristTypes.CAULK, 249)
                 .build(output);
 
         // #region Cosmic Plague Armor
-        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_HELMET)
-                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(ItemRegistry.NETHERITE_MAGE_HELMET.get())
-                .build(output.withConditions(ISS_LOADED), modid("cosmic_plague_helmet_irons_spellbooks"));
-        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_HELMET)
+        CombinationRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_HELMET)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and()
+                .input(ItemRegistry.NETHERITE_MAGE_HELMET.get())
+                .build(output.withConditions(ISS_LOADED),
+                        modid("cosmic_plague_helmet_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_HELMET)
                 .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(Items.NETHERITE_HELMET)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_HELMET)
-                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 7).grist(GristTypes.DIAMOND, 250)
+        GristCostRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_HELMET)
+                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 7)
+                .grist(GristTypes.DIAMOND, 250)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_CHESTPLATE)
-                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(ItemRegistry.NETHERITE_MAGE_CHESTPLATE.get())
-                .build(output.withConditions(ISS_LOADED), modid("cosmic_plague_chestplate_irons_spellbooks"));
-        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_CHESTPLATE)
+        CombinationRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_CHESTPLATE)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and()
+                .input(ItemRegistry.NETHERITE_MAGE_CHESTPLATE.get())
+                .build(output.withConditions(ISS_LOADED),
+                        modid("cosmic_plague_chestplate_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_CHESTPLATE)
                 .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(Items.NETHERITE_CHESTPLATE)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_CHESTPLATE)
-                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 10).grist(GristTypes.URANIUM, 250)
+        GristCostRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_CHESTPLATE)
+                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 10)
+                .grist(GristTypes.URANIUM, 250)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_LEGGINGS)
-                .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(ItemRegistry.NETHERITE_MAGE_LEGGINGS.get())
-                .build(output.withConditions(ISS_LOADED), modid("cosmic_plague_leggings_irons_spellbooks"));
-        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_LEGGINGS)
+        CombinationRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_LEGGINGS)
+                .input(ESItems.COSMIC_PLAGUE_SPORE).and()
+                .input(ItemRegistry.NETHERITE_MAGE_LEGGINGS.get())
+                .build(output.withConditions(ISS_LOADED),
+                        modid("cosmic_plague_leggings_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_LEGGINGS)
                 .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(Items.NETHERITE_LEGGINGS)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_LEGGINGS)
-                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 9).grist(GristTypes.MERCURY, 250)
+        GristCostRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_LEGGINGS)
+                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 9)
+                .grist(GristTypes.MERCURY, 250)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_BOOTS)
+        CombinationRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_BOOTS)
                 .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(ItemRegistry.NETHERITE_MAGE_BOOTS.get())
-                .build(output.withConditions(ISS_LOADED), modid("cosmic_plague_boots_irons_spellbooks"));
-        CombinationRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_BOOTS)
+                .build(output.withConditions(ISS_LOADED),
+                        modid("cosmic_plague_boots_irons_spellbooks"));
+        CombinationRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_BOOTS)
                 .input(ESItems.COSMIC_PLAGUE_SPORE).and().input(Items.NETHERITE_BOOTS)
                 .build(output.withConditions(not(ISS_LOADED)));
-        GristCostRecipeBuilder.of(ESISSItems.COSMIC_PLAGUE_BOOTS)
-                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 6).grist(GristTypes.TAR, 250)
+        GristCostRecipeBuilder.of(ISSESItems.COSMIC_PLAGUE_BOOTS)
+                .grist(GristTypes.SHALE, 1250).grist(GristTypes.AMETHYST, 150 * 6)
+                .grist(GristTypes.TAR, 250)
                 .build(output);
         // #endregion Cosmic Plague Armor
 
@@ -1391,7 +1425,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(MSItems.SET_MODUS_CARD).and().input(Items.BARREL)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.COMPACT_MODUS_CARD)
-                .grist(GristTypes.BUILD, 1650).grist(GristTypes.QUARTZ, 149).grist(GristTypes.DIAMOND, 12)
+                .grist(GristTypes.BUILD, 1650).grist(GristTypes.QUARTZ, 149)
+                .grist(GristTypes.DIAMOND, 12)
                 .build(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ESItems.CRAFTING_MODUS_CARD.toStack())
@@ -1461,15 +1496,15 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.RUST, 3).grist(GristTypes.GOLD, 2).grist(GristTypes.RUBY, 1)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESCreateItems.GRIST_FILTER)
+        CombinationRecipeBuilder.of(CreateESItems.GRIST_FILTER)
                 .input(AllItems.FILTER).or().input(MSItems.RAW_CRUXITE)
                 .build(output.withConditions(CREATE_LOADED));
-        GristCostRecipeBuilder.of(ESCreateItems.GRIST_FILTER)
+        GristCostRecipeBuilder.of(CreateESItems.GRIST_FILTER)
                 .grist(GristTypes.BUILD, 8).grist(GristTypes.CHALK, 4)
                 .build(output.withConditions(CREATE_LOADED));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESCreateItems.GRIST_FILTER)
-                .requires(ESCreateItems.GRIST_FILTER)
-                .unlockedBy("has_grist_filter", has(ESCreateItems.GRIST_FILTER))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, CreateESItems.GRIST_FILTER)
+                .requires(CreateESItems.GRIST_FILTER)
+                .unlockedBy("has_grist_filter", has(CreateESItems.GRIST_FILTER))
                 .save(output.withConditions(CREATE_LOADED), modid("shapeless/grist_filter_reset"));
 
         // Make it cheap to incentivise players to make it early
@@ -1549,7 +1584,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         IrradiatingRecipeBuilder
-                .irradiating(Ingredient.of(ModItems.CAKE_SLICE.get()), ESItems.YELLOWCAKE_SLICE, .1F, 20)
+                .irradiating(Ingredient.of(ModItems.CAKE_SLICE.get()), ESItems.YELLOWCAKE_SLICE, .1F,
+                        20)
                 .save(fdOutput, modid("irradiating/yellowcake_slice"));
         CombinationRecipeBuilder.of(ESItems.YELLOWCAKE_SLICE)
                 .input(Items.CAKE).or().input(MSItems.RAW_URANIUM)
@@ -1559,16 +1595,19 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
 
         SimpleCookingRecipeBuilder
-                .campfireCooking(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD, ESItems.COOKED_BEE_LARVA, .35F,
+                .campfireCooking(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD,
+                        ESItems.COOKED_BEE_LARVA, .35F,
                         600)
                 .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
                 .save(output, modid("campfire/cooked_bee_larva"));
         SimpleCookingRecipeBuilder
-                .smelting(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD, ESItems.COOKED_BEE_LARVA, .35F, 200)
+                .smelting(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD,
+                        ESItems.COOKED_BEE_LARVA, .35F, 200)
                 .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
                 .save(output, modid("smelting/cooked_bee_larva"));
         SimpleCookingRecipeBuilder
-                .smoking(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD, ESItems.COOKED_BEE_LARVA, .35F, 100)
+                .smoking(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD,
+                        ESItems.COOKED_BEE_LARVA, .35F, 100)
                 .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
                 .save(output, modid("smoking/cooked_bee_larva"));
 
@@ -1793,7 +1832,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         SourceGristCostBuilder.of(ESItems.CANDY_CRUNCH)
                 .grist(GristTypes.BUILD, 2).grist(GristTypes.AMBER, 3)
-                .source(MSItems.CANDY_CORN.get()).source(MSItems.TUIX_BAR.get()).source(MSItems.SPOREO.get())
+                .source(MSItems.CANDY_CORN.get()).source(MSItems.TUIX_BAR.get())
+                .source(MSItems.SPOREO.get())
                 .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
 
         CombinationRecipeBuilder.of(ESItems.HOME_DONUT)
@@ -2490,7 +2530,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(combinations, modid("teleportation_amulet").withPrefix(pathPrefix));
 
         GristCostRecipeBuilder.of(ItemRegistry.INVISIBILITY_RING.get())
-                .grist(GristTypes.QUARTZ, 75).grist(GristTypes.MERCURY, 55).grist(GristTypes.ARTIFACT, 35)
+                .grist(GristTypes.QUARTZ, 75).grist(GristTypes.MERCURY, 55)
+                .grist(GristTypes.ARTIFACT, 35)
                 .build(gristCosts, modid("invisibility_ring").withPrefix(pathPrefix));
         CombinationRecipeBuilder.of(ItemRegistry.INVISIBILITY_RING.get())
                 .input(ItemRegistry.VISIBILITY_RING.get()).and().input(Items.TINTED_GLASS)
@@ -2656,7 +2697,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .input(Items.NETHER_STAR).or().input(Items.ECHO_SHARD)
                 .build(lootCombinations, modid("divine_soulshard").withPrefix(pathPrefix));
         GristCostRecipeBuilder.of(ItemRegistry.DIVINE_SOULSHARD.get())
-                .grist(GristTypes.RUBY, 97).grist(GristTypes.AMETHYST, 150).grist(GristTypes.QUARTZ, 344)
+                .grist(GristTypes.RUBY, 97).grist(GristTypes.AMETHYST, 150)
+                .grist(GristTypes.QUARTZ, 344)
                 .build(gristCosts, modid("divine_soulshard").withPrefix(pathPrefix));
 
         CombinationRecipeBuilder.of(ItemRegistry.PYRIUM_INGOT.get())
@@ -2729,10 +2771,12 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(lootCombinations, modid("tarnished_crown").withPrefix(pathPrefix));
 
         GristCostRecipeBuilder.of(ItemRegistry.HITHER_THITHER_WAND.get())
-                .grist(GristTypes.AMETHYST, 664).grist(GristTypes.GOLD, 200).grist(GristTypes.BUILD, 400)
+                .grist(GristTypes.AMETHYST, 664).grist(GristTypes.GOLD, 200)
+                .grist(GristTypes.BUILD, 400)
                 .build(gristCosts, modid("hither_thither_wand").withPrefix(pathPrefix));
         CombinationRecipeBuilder.of(ItemRegistry.HITHER_THITHER_WAND.get())
-                .input(ItemRegistry.GRAYBEARD_STAFF.get()).and().input(ItemRegistry.PORTAL_FRAME_ITEM.get())
+                .input(ItemRegistry.GRAYBEARD_STAFF.get()).and()
+                .input(ItemRegistry.PORTAL_FRAME_ITEM.get())
                 .build(combinations, modid("hither_thither_wand").withPrefix(pathPrefix));
 
         GristCostRecipeBuilder.of(ItemRegistry.MUSIC_DISC_DEAD_KING_LULLABY.get())
@@ -2748,24 +2792,27 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.CHALK, 5).grist(GristTypes.DIAMOND, 5)
                 .build(gristCosts, modid("music_disc_whispers_of_ice").withPrefix(pathPrefix));
 
-        CombinationRecipeBuilder.of(ESISSItems.CASSETTE_DEAD_KING_LULLABY)
-                .input(ItemRegistry.MUSIC_DISC_DEAD_KING_LULLABY.get()).or().input(MSItems.CASSETTE_PLAYER)
+        CombinationRecipeBuilder.of(ISSESItems.CASSETTE_DEAD_KING_LULLABY)
+                .input(ItemRegistry.MUSIC_DISC_DEAD_KING_LULLABY.get()).or()
+                .input(MSItems.CASSETTE_PLAYER)
                 .build(output.withConditions(ISS_LOADED));
-        GristCostRecipeBuilder.of(ESISSItems.CASSETTE_DEAD_KING_LULLABY)
+        GristCostRecipeBuilder.of(ISSESItems.CASSETTE_DEAD_KING_LULLABY)
                 .grist(GristTypes.BUILD, 15).grist(GristTypes.CAULK, 8)
                 .grist(GristTypes.IODINE, 5).grist(GristTypes.RUST, 5)
                 .build(output.withConditions(ISS_LOADED));
-        CombinationRecipeBuilder.of(ESISSItems.CASSETTE_FLAME_STILL_BURNS)
-                .input(ItemRegistry.MUSIC_DISC_FLAME_STILL_BURNS.get()).or().input(MSItems.CASSETTE_PLAYER)
+        CombinationRecipeBuilder.of(ISSESItems.CASSETTE_FLAME_STILL_BURNS)
+                .input(ItemRegistry.MUSIC_DISC_FLAME_STILL_BURNS.get()).or()
+                .input(MSItems.CASSETTE_PLAYER)
                 .build(output.withConditions(ISS_LOADED));
-        GristCostRecipeBuilder.of(ESISSItems.CASSETTE_FLAME_STILL_BURNS)
+        GristCostRecipeBuilder.of(ISSESItems.CASSETTE_FLAME_STILL_BURNS)
                 .grist(GristTypes.BUILD, 15).grist(GristTypes.CAULK, 8)
                 .grist(GristTypes.GOLD, 5).grist(GristTypes.GARNET, 5)
                 .build(output.withConditions(ISS_LOADED));
-        CombinationRecipeBuilder.of(ESISSItems.CASSETTE_WHISPERS_OF_ICE)
-                .input(ItemRegistry.MUSIC_DISC_WHISPERS_OF_ICE.get()).or().input(MSItems.CASSETTE_PLAYER)
+        CombinationRecipeBuilder.of(ISSESItems.CASSETTE_WHISPERS_OF_ICE)
+                .input(ItemRegistry.MUSIC_DISC_WHISPERS_OF_ICE.get()).or()
+                .input(MSItems.CASSETTE_PLAYER)
                 .build(output.withConditions(ISS_LOADED));
-        GristCostRecipeBuilder.of(ESISSItems.CASSETTE_WHISPERS_OF_ICE)
+        GristCostRecipeBuilder.of(ISSESItems.CASSETTE_WHISPERS_OF_ICE)
                 .grist(GristTypes.BUILD, 15).grist(GristTypes.CAULK, 8)
                 .grist(GristTypes.CHALK, 5).grist(GristTypes.DIAMOND, 5)
                 .build(output.withConditions(ISS_LOADED));
@@ -2776,7 +2823,8 @@ public final class ESRecipeProvider extends RecipeProvider {
     }
 
     @SuppressWarnings("unused")
-    private void foodCooking(DeferredItem<Item> raw, DeferredItem<Item> cooked, RecipeOutput output, float experience) {
+    private void foodCooking(DeferredItem<Item> raw, DeferredItem<Item> cooked, RecipeOutput output,
+            float experience) {
         SimpleCookingRecipeBuilder
                 .campfireCooking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, experience, 600)
                 .unlockedBy("has_raw", has(raw))

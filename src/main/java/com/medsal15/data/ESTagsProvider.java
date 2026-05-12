@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
-import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
+import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.medsal15.mobeffects.ESMobEffects;
@@ -153,10 +153,10 @@ public final class ESTagsProvider {
                 tag(ItemTags.DURABILITY_ENCHANTABLE).add(bow.get());
                 tag(ItemTags.VANISHING_ENCHANTABLE).add(bow.get());
             }
-            for (DeferredItem<Item> spellbook : ESISSItems.getSpellbooks()) {
+            for (DeferredItem<Item> spellbook : ISSESItems.getSpellbooks()) {
                 tag(ESTags.Items.ISS_SPELLBOOKS).add(spellbook.get());
             }
-            for (DeferredItem<Item> staff : ESISSItems.getStaves()) {
+            for (DeferredItem<Item> staff : ISSESItems.getStaves()) {
                 tag(ESTags.Items.ISS_STAVES).add(staff.get());
                 tag(MSTags.Items.MAGIC_WEAPON).add(staff.get());
             }
@@ -228,9 +228,9 @@ public final class ESTagsProvider {
             tag(ESTags.Items.DROPS_BOONDOLLARS).add(ESItems.DEBT_REAPER.get(), ESItems.STOCKS_UPTICKER.get(),
                     ESItems.PIRATE_HOOK.get(), ESItems.NONE_OF_YOUR_BUSINESS.get(), ESItems.INVESTLANCE.get(),
                     ESItems.MONEY_MAGIC.get(), ESItems.CASHGRABBERS.get(), ESItems.SHINEBREAKER.get());
-            tag(ESTags.Items.COSMIC_PLAGUE_ARMOR).add(ESISSItems.COSMIC_PLAGUE_HELMET.get(),
-                    ESISSItems.COSMIC_PLAGUE_CHESTPLATE.get(), ESISSItems.COSMIC_PLAGUE_LEGGINGS.get(),
-                    ESISSItems.COSMIC_PLAGUE_BOOTS.get());
+            tag(ESTags.Items.COSMIC_PLAGUE_ARMOR).add(ISSESItems.COSMIC_PLAGUE_HELMET.get(),
+                    ISSESItems.COSMIC_PLAGUE_CHESTPLATE.get(), ISSESItems.COSMIC_PLAGUE_LEGGINGS.get(),
+                    ISSESItems.COSMIC_PLAGUE_BOOTS.get());
             tag(ESTags.Items.CANDY_WEAPONS).add(MSItems.CINNAMON_SWORD.get(), MSItems.CANDY_KEY.get(),
                     MSItems.CANDY_BATTLEAXE.get(), MSItems.STEEL_EDGE_CANDYCUTTER.get(), MSItems.CAKESAW.get(),
                     MSItems.LANCELOTS_LOLLY.get(), MSItems.CANDY_FAN.get(), MSItems.CANDY_SICKLE.get(),
@@ -274,13 +274,13 @@ public final class ESTagsProvider {
 
             tag(ItemTags.BOOKSHELF_BOOKS).add(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
 
-            tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get(), ESISSItems.PERFECTLY_UNIQUE_SPELLBOOK.get())
+            tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get(), ISSESItems.PERFECTLY_UNIQUE_SPELLBOOK.get())
                     .addTag(ESTags.Items.VISION)
                     .addOptional(ItemRegistry.DIVINE_SOULSHARD.getId()).addOptional(ItemRegistry.PYRIUM_INGOT.getId())
                     .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())
                     .addOptional(ItemRegistry.ELDRITCH_PAGE.getId());
-            tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get(), ESISSItems.BRANCH_OF_YGGDRASIL.get(),
-                    ESISSItems.STAFF_OF_YGGDRASIL.get(), ESItems.END_OF_CIVILIZATION.get(), ESItems.MAKE_IT_RAIN.get());
+            tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get(), ISSESItems.BRANCH_OF_YGGDRASIL.get(),
+                    ISSESItems.STAFF_OF_YGGDRASIL.get(), ESItems.END_OF_CIVILIZATION.get(), ESItems.MAKE_IT_RAIN.get());
 
             tag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS).add(ESItems.RAIN_ARROW.get());
 

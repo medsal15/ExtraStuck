@@ -23,8 +23,8 @@ import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
 import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
-import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
-import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
+import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
+import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigClient.BoondollarDisplayMode;
@@ -485,12 +485,12 @@ public final class ClientEvents {
                 registerBiConvertion(ESItems.TWO_OF_CLUBS, ESItems.DOORBUSTER);
 
                 if (ESCompatUtils.isLoaded("irons_spellbooks")) {
-                    registerBiConvertion(ESISSItems.GEMINI_SPELLBOOK_BLUE, ESISSItems.GEMINI_SPELLBOOK_RED);
-                    registerBiConvertion(ESISSItems.PROSPITIAN_WAND, ESISSItems.CAST_GOLD_SHIELD);
-                    registerBiConvertion(ESISSItems.DERSITE_WAND, ESISSItems.AMETHYST_BACKSTABBER);
+                    registerBiConvertion(ISSESItems.GEMINI_SPELLBOOK_BLUE, ISSESItems.GEMINI_SPELLBOOK_RED);
+                    registerBiConvertion(ISSESItems.PROSPITIAN_WAND, ISSESItems.CAST_GOLD_SHIELD);
+                    registerBiConvertion(ISSESItems.DERSITE_WAND, ISSESItems.AMETHYST_BACKSTABBER);
                 } else {
-                    registerBiConvertion(ESISSMissingItems.PROSPITIAN_WAND, ESISSMissingItems.CAST_GOLD_SHIELD);
-                    registerBiConvertion(ESISSMissingItems.DERSITE_WAND, ESISSMissingItems.AMETHYST_BACKSTABBER);
+                    registerBiConvertion(ISSESMissingItems.PROSPITIAN_WAND, ISSESMissingItems.CAST_GOLD_SHIELD);
+                    registerBiConvertion(ISSESMissingItems.DERSITE_WAND, ISSESMissingItems.AMETHYST_BACKSTABBER);
                 }
             }
         });

@@ -46,7 +46,7 @@ import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public final class ESISSItems {
+public final class ISSESItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
 
     // #region Staves
@@ -101,7 +101,7 @@ public final class ESISSItems {
                                     Operation.ADD_MULTIPLIED_BASE),
                             new AttributeContainer(AttributeRegistry.HOLY_SPELL_POWER, .2,
                                     Operation.ADD_MULTIPLIED_BASE)))),
-                    ESISSItems.CAST_GOLD_SHIELD));
+                    ISSESItems.CAST_GOLD_SHIELD));
     public static final DeferredItem<Item> DERSITE_WAND = ITEMS.register("dersite_wand",
             () -> new SwappableStaffItem(ItemPropertiesHelper.equipment(1)
                     .attributes(ExtendedSwordItem.createAttributes(new StaffTier(6, -3F,
@@ -109,7 +109,7 @@ public final class ESISSItems {
                                     Operation.ADD_MULTIPLIED_BASE),
                             new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, .2,
                                     Operation.ADD_MULTIPLIED_BASE)))),
-                    ESISSItems.AMETHYST_BACKSTABBER));
+                    ISSESItems.AMETHYST_BACKSTABBER));
     // #endregion Staves
 
     // #region Spellbooks
@@ -118,11 +118,11 @@ public final class ESISSItems {
                     new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, .1666,
                             Operation.ADD_MULTIPLIED_BASE)));
     public static final DeferredItem<Item> GEMINI_SPELLBOOK_RED = ITEMS.register("gemini_spellbook_red",
-            () -> new DoubleSpellbook(6, ESISSItems.GEMINI_SPELLBOOK_BLUE)
+            () -> new DoubleSpellbook(6, ISSESItems.GEMINI_SPELLBOOK_BLUE)
                     .withSpellbookAttributes(
                             new AttributeContainer(AttributeRegistry.MAX_MANA, 300, Operation.ADD_VALUE)));
     public static final DeferredItem<Item> GEMINI_SPELLBOOK_BLUE = ITEMS.register("gemini_spellbook_blue",
-            () -> new DoubleSpellbook(6, ESISSItems.GEMINI_SPELLBOOK_RED)
+            () -> new DoubleSpellbook(6, ISSESItems.GEMINI_SPELLBOOK_RED)
                     .withSpellbookAttributes(
                             new AttributeContainer(AttributeRegistry.MAX_MANA, 300, Operation.ADD_VALUE)));
     public static final DeferredItem<Item> MAGE_GUY = ITEMS.register("mage_guy",
@@ -154,7 +154,7 @@ public final class ESISSItems {
                     }));
     public static final DeferredItem<Item> CAST_GOLD_SHIELD = ITEMS.register("cast_gold_shield",
             () -> new ESShield(
-                    new ESShield.Builder().setOther(ESISSItems.PROSPITIAN_WAND).addBlock(ESISSItems::shieldCastSpell)
+                    new ESShield.Builder().setOther(ISSESItems.PROSPITIAN_WAND).addBlock(ISSESItems::shieldCastSpell)
                             .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_GOLD)),
                     new Item.Properties().durability(1200).attributes(ItemAttributeModifiers.builder()
                             .add(AttributeRegistry.HOLY_SPELL_POWER,
@@ -165,7 +165,7 @@ public final class ESISSItems {
     public static final DeferredItem<Item> AMETHYST_BACKSTABBER = ITEMS.register("amethyst_backstabber",
             () -> new WeaponItem(
                     new WeaponItem.Builder(ESItemTiers.AMETHYST_TIER, 1, -2F).set(MSItemTypes.KNIFE_TOOL)
-                            .add(OnHitEffect.backstab(7)).set(ItemRightClickEffect.switchTo(ESISSItems.DERSITE_WAND)),
+                            .add(OnHitEffect.backstab(7)).set(ItemRightClickEffect.switchTo(ISSESItems.DERSITE_WAND)),
                     new MSItemProperties().durability(1200).component(ComponentRegistry.CASTING_IMPLEMENT,
                             Unit.INSTANCE)));
     public static final DeferredItem<Item> LICH_CROWN = ITEMS.register("lich_crown", () -> new LichCrownISS());

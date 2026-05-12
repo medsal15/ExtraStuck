@@ -7,12 +7,12 @@ import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.compat.create.client.menus.ESCreateMenuTypes;
 import com.medsal15.compat.create.items.ESCreateComponents;
-import com.medsal15.compat.create.items.ESCreateItems;
-import com.medsal15.compat.create.items.ESCreateMissingItems;
+import com.medsal15.compat.create.items.CreateESItems;
+import com.medsal15.compat.create.items.CreateESMissingItems;
 import com.medsal15.compat.create.potatoCannon.ESPotatoEntityHitActions;
 import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
-import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
-import com.medsal15.compat.irons_spellbooks.items.ESISSMissingItems;
+import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
+import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.compat.irons_spellbooks.subevents.ISSCommonEvents;
 import com.medsal15.compat.ponder.ESPonderPlugin;
 import com.medsal15.computer.ESProgramTypes;
@@ -106,20 +106,20 @@ public class ExtraStuck {
         ESSounds.SOUND_EVENTS.register(modEventBus);
 
         if (ESCompatUtils.isLoaded("irons_spellbooks")) {
-            ESISSItems.ITEMS.register(modEventBus);
+            ISSESItems.ITEMS.register(modEventBus);
             ESISSComponents.DATA_COMPONENTS.register(modEventBus);
             NeoForge.EVENT_BUS.register(ISSCommonEvents.class);
         } else {
-            ESISSMissingItems.ITEMS.register(modEventBus);
+            ISSESMissingItems.ITEMS.register(modEventBus);
         }
 
         if (ESCompatUtils.isLoaded("create")) {
             ESCreateComponents.DATA_COMPONENTS.register(modEventBus);
-            ESCreateItems.ITEMS.register(modEventBus);
+            CreateESItems.ITEMS.register(modEventBus);
             ESCreateMenuTypes.MENU_TYPES.register(modEventBus);
             ESPotatoEntityHitActions.POTATO_PROJECTILE_ENTITY_HIT_ACTIONS.register(modEventBus);
         } else {
-            ESCreateMissingItems.ITEMS.register(modEventBus);
+            CreateESMissingItems.ITEMS.register(modEventBus);
         }
 
         // Register our mod's ModConfigSpec so that FML can create and load the config

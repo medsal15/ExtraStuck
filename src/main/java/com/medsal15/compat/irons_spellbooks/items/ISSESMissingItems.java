@@ -25,7 +25,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public final class ESISSMissingItems {
+public final class ISSESMissingItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
 
     // #region Misc
@@ -40,7 +40,7 @@ public final class ESISSMissingItems {
                     new MSItemProperties().durability(1500).rarity(Rarity.UNCOMMON)));
 
     public static final DeferredItem<Item> CAST_GOLD_SHIELD = ITEMS.register("cast_gold_shield",
-            () -> new ESShield(new ESShield.Builder().setOther(ESISSMissingItems.PROSPITIAN_WAND)
+            () -> new ESShield(new ESShield.Builder().setOther(ISSESMissingItems.PROSPITIAN_WAND)
                     .addBlock(ESShield.IBlock::shootFireball).setRepairMaterial(
                             stack -> stack.is(Tags.Items.INGOTS_GOLD)),
                     new Item.Properties().durability(1200)));
@@ -49,7 +49,7 @@ public final class ESISSMissingItems {
             () -> new WeaponItem(
                     new WeaponItem.Builder(ESItemTiers.AMETHYST_TIER, 1, -2F).set(MSItemTypes.KNIFE_TOOL)
                             .add(OnHitEffect.backstab(7))
-                            .set(ItemRightClickEffect.switchTo(ESISSMissingItems.DERSITE_WAND)),
+                            .set(ItemRightClickEffect.switchTo(ISSESMissingItems.DERSITE_WAND)),
                     new MSItemProperties().durability(1200)));
 
     public static final DeferredItem<Item> LICH_CROWN = ITEMS.register("lich_crown",

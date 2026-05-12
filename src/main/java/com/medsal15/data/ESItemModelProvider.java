@@ -1,8 +1,8 @@
 package com.medsal15.data;
 
 import com.medsal15.ExtraStuck;
-import com.medsal15.compat.create.items.ESCreateItems;
-import com.medsal15.compat.irons_spellbooks.items.ESISSItems;
+import com.medsal15.compat.create.items.CreateESItems;
+import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.player.EnumAspect;
 
@@ -41,9 +41,9 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
         basicItem(ESItems.COSMIC_PLAGUE_SPORE.get());
 
-        basicItem(ESISSItems.CASSETTE_DEAD_KING_LULLABY.get());
-        basicItem(ESISSItems.CASSETTE_FLAME_STILL_BURNS.get());
-        basicItem(ESISSItems.CASSETTE_WHISPERS_OF_ICE.get());
+        basicItem(ISSESItems.CASSETTE_DEAD_KING_LULLABY.get());
+        basicItem(ISSESItems.CASSETTE_FLAME_STILL_BURNS.get());
+        basicItem(ISSESItems.CASSETTE_WHISPERS_OF_ICE.get());
     }
 
     private void registerShields() {
@@ -64,7 +64,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         modelShieldHandle(ESItems.GARNET_SHIELD);
         modelShieldHandle(ESItems.POGO_SHIELD, "metal_shield_handle");
         modelShieldHandle(ESItems.RETURN_TO_SENDER);
-        modelShieldHandle(ESISSItems.CAST_GOLD_SHIELD, "cast_iron_handle");
+        modelShieldHandle(ISSESItems.CAST_GOLD_SHIELD, "cast_iron_handle");
     }
 
     private void modelShield(DeferredItem<Item> shield, String texture, String base, String handle) {
@@ -202,7 +202,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.STOCKS_UPTICKER.get());
         // Swords
         handheldItem(ESItems.SUN_REAVER.get());
-        handheldItem(ESISSItems.LEADER_SWORD.get());
+        handheldItem(ISSESItems.LEADER_SWORD.get());
         // Sickles
         handheldItem(ESItems.NEW_MOON.get());
         handheldItem(ESItems.PIRATE_HOOK.get());
@@ -218,7 +218,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.CASHGRABBERS.get());
         handheldItem(ESItems.CASHGRABBERS_SHEATHED.get());
         // Knives
-        knifeWeapon(ESISSItems.AMETHYST_BACKSTABBER);
+        knifeWeapon(ISSESItems.AMETHYST_BACKSTABBER);
         // Spoons
         handheldItem(ESItems.EXPLOSIVE_SCOOP.get());
     }
@@ -285,13 +285,13 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.CACTUS_LEGGINGS.get());
         basicItem(ESItems.CACTUS_BOOTS.get());
 
-        basicItem(ESISSItems.LICH_CROWN.get());
-        basicItem(ESISSItems.NETHER_LICH_CROWN.get());
+        basicItem(ISSESItems.LICH_CROWN.get());
+        basicItem(ISSESItems.NETHER_LICH_CROWN.get());
 
-        basicItem(ESISSItems.COSMIC_PLAGUE_HELMET.get());
-        basicItem(ESISSItems.COSMIC_PLAGUE_CHESTPLATE.get());
-        basicItem(ESISSItems.COSMIC_PLAGUE_LEGGINGS.get());
-        basicItem(ESISSItems.COSMIC_PLAGUE_BOOTS.get());
+        basicItem(ISSESItems.COSMIC_PLAGUE_HELMET.get());
+        basicItem(ISSESItems.COSMIC_PLAGUE_CHESTPLATE.get());
+        basicItem(ISSESItems.COSMIC_PLAGUE_LEGGINGS.get());
+        basicItem(ISSESItems.COSMIC_PLAGUE_BOOTS.get());
     }
 
     private void registerModus() {
@@ -342,7 +342,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.TWO_OF_DIAMONDS.get());
         basicItem(ESItems.TWO_OF_SPADES.get());
         basicItem(ESItems.TWO_OF_CLUBS.get());
-        basicItem(ESCreateItems.GRIST_FILTER.get());
+        basicItem(CreateESItems.GRIST_FILTER.get());
     }
 
     private void modelVision(DeferredItem<Item> vision, EnumAspect aspect) {

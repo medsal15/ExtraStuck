@@ -6,7 +6,7 @@ import com.medsal15.compat.MissingModItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class ESCreateMissingItems {
+public class CreateESMissingItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
 
     static {
