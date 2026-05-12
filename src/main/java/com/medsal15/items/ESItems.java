@@ -321,6 +321,13 @@ public final class ESItems {
                     .set(ESRightClickEffects::steamWeapon),
             new MSItemProperties().durability(600)
                     .component(ESDataComponents.STEAM_FUEL, SteamFuelComponent.empty())));
+    public static final DeferredItem<Item> TOY_HAMMER = ITEMS.register("toy_hammer",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.SBAHJ_TIER, 1, -3.2f)
+                            .set(MSItemTypes.HAMMER_TOOL)
+                            .add(OnHitEffect.playSound(MSSoundEvents.ITEM_HORN_USE)
+                                    .and(ESHitEffects.explosionChance(.05f, 5))),
+                    new Item.Properties()));
     // #endregion Hammers
     // #region Dice
     public static final DeferredItem<Item> GOLD_COIN = ITEMS.register("gold_coin",
@@ -1337,6 +1344,7 @@ public final class ESItems {
         list.add(BELL_HAMMER);
         list.add(BLIND_HAMMER);
         list.add(STEAM_HAMMER);
+        list.add(TOY_HAMMER);
         // Dice
         list.add(GOLD_COIN);
         list.add(STICKY_DIE);

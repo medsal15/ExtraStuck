@@ -319,6 +319,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.BLIND_HAMMER, "With you in the dark");
         addItem(ESItems.STEAM_HAMMER, "Steam-Powered Warhammer");
         addItemTooltip(ESItems.STEAM_HAMMER, "Stoke the Forge");
+        addItem(ESItems.TOY_HAMMER, "Toy Hammer");
         // Dice
         addItem(ESItems.GOLD_COIN, "Gold Coin");
         addItem(ESItems.STICKY_DIE, "Sticky Die");

@@ -330,6 +330,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         CombinationRecipeBuilder.of(MSItems.QUENCH_CRUSHER)
                 .input(MSItems.COPSE_CRUSHER).or().input(ESItems.DESERT_JUICE)
                 .build(output, modid("quench_crusher"));
+
+        CombinationRecipeBuilder.of(ESItems.TOY_HAMMER)
+                .input(MSItems.POGO_HAMMER).or().input(MSItems.HORN)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TOY_HAMMER)
+                .grist(GristTypes.AMBER, 64).grist(GristTypes.AMETHYST, 1).grist(GristTypes.URANIUM, 1)
+                .build(output);
         // #endregion Hammers
 
         // #region Dice

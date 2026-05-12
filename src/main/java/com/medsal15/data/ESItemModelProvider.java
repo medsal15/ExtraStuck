@@ -157,6 +157,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
     private void registerMeleeWeapons() {
         // Hammers
         handheldItem(ESItems.GEM_BREAKER.get());
+        handheldItem(ESItems.TOY_HAMMER.get());
         // Dice
         handheldItem(ESItems.GOLD_COIN.get());
         modelDie(ESItems.D_ICE, "item/dice/ice");

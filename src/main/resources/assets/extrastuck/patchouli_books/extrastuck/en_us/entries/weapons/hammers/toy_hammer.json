@@ -1,0 +1,23 @@
+{
+    "name": "Toy Hammer",
+    "icon": "extrastuck:toy_hammer",
+    "category": "extrastuck:hammers",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:toy_hammer"
+            },
+            "text": "A squeaky weapon. Makes an infuriating noise on every hit.$(br2)$(3)$(l)Special:$() Has a 5% chance to create an explosion on hit."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Pogo Hammer and a Horn in a Punch Designix.",
+            "left": "minestuck:pogo_hammer",
+            "mode": "||",
+            "right": "minestuck:horn",
+            "result": "extrastuck:toy_hammer"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amber": 64,
+    "minestuck:amethyst": 1,
+    "minestuck:uranium": 1
+  },
+  "ingredient": {
+    "item": "extrastuck:toy_hammer"
+  }
+}

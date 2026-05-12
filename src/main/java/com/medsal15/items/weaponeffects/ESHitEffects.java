@@ -42,6 +42,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
@@ -505,6 +506,20 @@ public final class ESHitEffects {
             }
 
             target.hurt(source, damage * mult);
+        };
+    }
+
+    /**
+     * Has a <code>chance</code>% chance to explode with a <code>radius</code> block
+     * radius
+     */
+    public static OnHitEffect explosionChance(float chance, float radius) {
+        return (stack, target, attacker) -> {
+            if (attacker.getRandom().nextFloat() >= chance)
+                return;
+
+            attacker.level().explode(attacker, target.getX(), target.getY(), target.getZ(), radius,
+                    ExplosionInteraction.NONE);
         };
     }
 }
