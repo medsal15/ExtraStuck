@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 49,
+    "minestuck:chalk": 7,
+    "minestuck:rust": 1
+  },
+  "ingredient": {
+    "item": "extrastuck:toolbox"
+  }
+}

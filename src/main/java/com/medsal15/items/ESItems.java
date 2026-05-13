@@ -73,6 +73,7 @@ import com.medsal15.items.melee.BrushWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
 import com.medsal15.items.melee.JackpotWeapon;
 import com.medsal15.items.melee.SteamWeaponItem;
+import com.medsal15.items.melee.StorageWeapon;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.items.projectiles.ESArrowItem;
 import com.medsal15.items.projectiles.ESBulletItem;
@@ -274,6 +275,7 @@ public final class ESItems {
                             IBlock.itemDropChance(() -> ESItems.GIFT.toStack(), .1f,
                                     () -> ESLangProvider.GIFT_PROTECTION_GIFT_KEY)),
                     p.durability(624)));
+    // TODO eternal shield (totem of undying & buffs on break)
     // #endregion Shields
 
     // #region Arrows
@@ -321,6 +323,16 @@ public final class ESItems {
     // #endregion Arrows
 
     // #region Weapons
+    // #region Misc
+    public static final DeferredItem<Item> TOOLBOX = ITEMS.register("toolbox",
+            () -> new StorageWeapon(
+                    new WeaponItem.Builder(Tiers.IRON, 0, -3f).set(MSItemTypes.MISC_TOOL)
+                            .add(OnHitEffect.enemyKnockback(2f)
+                                    .and(OnHitEffect.enemyPotionEffect(
+                                            () -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30)))),
+                    new MSItemProperties().durability(500).component(DataComponents.CONTAINER,
+                            ItemContainerContents.EMPTY)));
+    // #endregion Misc
     // #region Hammers
     public static final DeferredItem<Item> GEM_BREAKER = ITEMS.register("gem_breaker",
             () -> new InnateEnchantsWeapon(
@@ -1464,6 +1476,7 @@ public final class ESItems {
         list.add(TWO_OF_DIAMONDS);
         list.add(TWO_OF_SPADES);
         list.add(TWO_OF_CLUBS);
+        list.add(TOOLBOX);
         return list;
     }
 

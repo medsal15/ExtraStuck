@@ -242,7 +242,7 @@ public final class ESTagsProvider {
 
             tag(ItemTags.PIGLIN_LOVED).add(ESItems.GOLD_SHIELD.get(), ESItems.GOLDEN_PAN.get(),
                     ESItems.GOLD_COIN.get());
-            tag(ItemTags.DYEABLE).add(ESItems.CHEF_APRON.get(), ESItems.CHEF_HAT.get());
+            tag(ItemTags.DYEABLE).add(ESItems.CHEF_APRON.get(), ESItems.CHEF_HAT.get(), ESItems.TOOLBOX.get());
 
             tag(ESTags.Items.TOOLS_ROLLING_PIN).add(ESItems.ROLLING_PIN.get());
             tag(Tags.Items.TOOLS).addTag(ESTags.Items.TOOLS_ROLLING_PIN);
@@ -285,6 +285,7 @@ public final class ESTagsProvider {
             tag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS).add(ESItems.RAIN_ARROW.get());
 
             tag(ESTags.Items.IGNORE_BYPRODUCT_CUTTING).add(Items.BONE_MEAL);
+            tag(ESTags.Items.TOOLBOX_FORBIDDEN).add(ESItems.TOOLBOX.get());
 
             tag(CuriosTags.HEAD).add(ESItems.GRIST_VIEWERS.get());
         }

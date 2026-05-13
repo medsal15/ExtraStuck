@@ -21,6 +21,8 @@ import com.medsal15.client.model.armor.ESArmorModels;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
+import com.medsal15.client.tooltips.ContainerTooltip;
+import com.medsal15.client.tooltips.ContainerTooltipComponent;
 import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
@@ -85,6 +87,7 @@ import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
+import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterItemDecorationsEvent;
@@ -440,6 +443,8 @@ public final class ClientEvents {
         }, ESItems.GRIST_DETECTOR.get());
         event.register((stack, index) -> index > 0 ? -1 : DyedItemColor.getOrDefault(stack, 0xFFFFFFFF),
                 ESItems.CHEF_HAT.get(), ESItems.CHEF_APRON.get());
+        event.register((stack, index) -> index > 0 ? -1 : DyedItemColor.getOrDefault(stack, 0xFFFF0000),
+                ESItems.TOOLBOX.get());
     }
 
     @SubscribeEvent
@@ -629,5 +634,10 @@ public final class ClientEvents {
             return true;
 
         return false;
+    }
+
+    @SubscribeEvent
+    public static void registerTooltipComponentFactories(final RegisterClientTooltipComponentFactoriesEvent event) {
+        event.register(ContainerTooltip.class, container -> new ContainerTooltipComponent(container.contents()));
     }
 }

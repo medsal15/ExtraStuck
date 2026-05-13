@@ -135,7 +135,7 @@ public class ESGun extends ProjectileWeaponItem implements GunContainer.Filter {
                     if (!itemStack.isEmpty()) {
                         access.set(itemStack);
                     }
-                } else {
+                } else if (handler.isItemValid(0, other)) {
                     ItemStack itemStack = handler.insertItem(0, other, false);
                     access.set(itemStack);
                 }

@@ -24,6 +24,7 @@ import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.guns.GunContainer;
+import com.medsal15.items.melee.StorageWeapon;
 import com.medsal15.items.shields.ESShield;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuNext;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuOpen;
@@ -102,6 +103,8 @@ public final class CommonEvents {
                 // TODO move to a subclass & method to get
                 (stack, u) -> new GunContainer(1, stack),
                 ESItems.HANDGUN.get());
+        event.registerItem(Capabilities.ItemHandler.ITEM,
+                (stack, u) -> new StorageWeapon.Container(stack, 7), ESItems.TOOLBOX.get());
 
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.PRINTER.get(),
                 PrinterBlockEntity::getItemHandler);

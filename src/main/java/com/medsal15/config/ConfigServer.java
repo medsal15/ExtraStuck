@@ -66,6 +66,13 @@ public final class ConfigServer {
             .comment("How many charges a radbow gets from an uranium rod")
             .defineInRange("radbow_charge", 10, 1, Integer.MAX_VALUE);
 
+    public static final ConfigValue<List<? extends String>> TOOLBOX_FORBIDDEN_COMPONENTS = BUILDER
+            .comment("Determines which components prevent adding an item to a toolbox",
+                    " Default: []")
+            .defineList("toolbox_forbidden_components", List.of(),
+                    () -> "minecraft:container",
+                    s -> s instanceof String str && str.contains(":"));
+
     public static final ConfigValue<List<? extends String>> COSMIC_SPORE_DIMENSIONS = BUILDER
             .comment("Determines which dimensions trigger the Cosmic Plague Spore's inventory effect",
                     "This is separate from the \"extrastuck:cosmic_dimension_types\" tag and should only be used in case multiple dimensions use the same type",

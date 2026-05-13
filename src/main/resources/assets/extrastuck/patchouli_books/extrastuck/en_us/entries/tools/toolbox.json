@@ -1,0 +1,23 @@
+{
+    "name": "Toolbox",
+    "icon": "extrastuck:toolbox",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:toolbox"
+            },
+            "text": "This toolbox can hold up to 7 items! It's like a bundle, but not limited to a stack.$(br)It can even be dyed, how nice.$(br2)You can attack with it, which will slighly slow enemies, but all its contents will fly out when it's destroyed."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Chest and Iron Bars in a Punch Designix.",
+            "left": "minecraft:chest",
+            "mode": "||",
+            "right": "minecraft:iron_bars",
+            "result": "extrastuck:toolbox"
+        }
+    ]
+}

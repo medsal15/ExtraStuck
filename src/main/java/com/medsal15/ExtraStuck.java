@@ -10,6 +10,8 @@ import com.medsal15.compat.create.items.ESCreateComponents;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.create.items.CreateESMissingItems;
 import com.medsal15.compat.create.potatoCannon.ESPotatoEntityHitActions;
+import com.medsal15.compat.curios.items.CuriosESItems;
+import com.medsal15.compat.curios.items.CuriosESMissingItems;
 import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
@@ -120,6 +122,12 @@ public class ExtraStuck {
             ESPotatoEntityHitActions.POTATO_PROJECTILE_ENTITY_HIT_ACTIONS.register(modEventBus);
         } else {
             CreateESMissingItems.ITEMS.register(modEventBus);
+        }
+
+        if (ESCompatUtils.isLoaded("curios")) {
+            CuriosESItems.ITEMS.register(modEventBus);
+        } else {
+            CuriosESMissingItems.ITEMS.register(modEventBus);
         }
 
         // Register our mod's ModConfigSpec so that FML can create and load the config

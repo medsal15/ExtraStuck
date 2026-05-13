@@ -1010,6 +1010,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.TOOLBOX)
+                .input(Items.CHEST).or().input(Items.IRON_BARS)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TOOLBOX)
+                .grist(GristTypes.BUILD, 49).grist(GristTypes.CHALK, 7).grist(GristTypes.RUST, 1)
+                .build(output);
     }
 
     private void arrowRecipes(@Nonnull RecipeOutput output) {

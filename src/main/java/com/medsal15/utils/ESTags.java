@@ -32,6 +32,7 @@ public final class ESTags {
         public static final TagKey<Item> CANDY_WEAPONS = ItemTags.create(ExtraStuck.modid("candy_weapons"));
         public static final TagKey<Item> MAKE_IT_RAIN_FORBIDDEN = ItemTags
                 .create(ExtraStuck.modid("make_it_rain_forbidden"));
+        public static final TagKey<Item> TOOLBOX_FORBIDDEN = ItemTags.create(ExtraStuck.modid("toolbox_forbidden"));
 
         public static final TagKey<Item> TOOLS_ROLLING_PIN = ItemTags.create(common("tools/rolling_pin"));
         public static final TagKey<Item> URANIUM_RODS = ItemTags.create(common("rods/uranium"));
