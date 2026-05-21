@@ -322,6 +322,9 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.SHINEBREAKER.get());
         // Axes
         handheldItem(ESItems.DOORBUSTER.get());
+        // Curios
+        basicItem(ESItems.SILVER_WATCH.get());
+        basicItem(ESItems.BROKEN_WATCH.get());
         // Visions
         modelVision(ESItems.VISION_BLANK, "blank");
         modelVision(ESItems.VISION_DULL, "dull");

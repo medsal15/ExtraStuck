@@ -1,26 +1,39 @@
 package com.medsal15.compat.curios.items;
 
-import java.util.Optional;
+import java.util.function.Predicate;
 
-import com.medsal15.utils.ESTags;
-
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotResult;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 public class ESCuriosUtils {
-    /**
-     * Counts the amount of cosmic plague immunity curios equipped
-     *
-     * @param livingEntity
-     * @return
-     */
-    public static int countCosmicPlagueImmune(LivingEntity livingEntity) {
-        Optional<ICuriosItemHandler> oinventory = CuriosApi.getCuriosInventory(livingEntity);
-        if (oinventory.isPresent()) {
-            ICuriosItemHandler inventory = oinventory.get();
-            return inventory.findCurios(stack -> stack.is(ESTags.Items.COSMIC_PLAGUE_CURIOS)).size();
+    public static int countWornItems(LivingEntity livingEntity, Predicate<ItemStack> filter) {
+        ICuriosItemHandler inventory = CuriosApi.getCuriosInventory(livingEntity).orElse(null);
+        if (inventory != null) {
+            return inventory.findCurios(filter).size();
         }
         return 0;
+    }
+
+    public static boolean wearsItem(LivingEntity livingEntity, Predicate<ItemStack> filter) {
+        ICuriosItemHandler inventory = CuriosApi.getCuriosInventory(livingEntity).orElse(null);
+        if (inventory != null) {
+            return inventory.isEquipped(filter);
+        }
+        return false;
+    }
+
+    public static void hurtAndBreakFirst(ServerPlayer serverPlayer, Predicate<ItemStack> filter, int damage) {
+        ICuriosItemHandler inventory = CuriosApi.getCuriosInventory(serverPlayer).orElse(null);
+        if (inventory != null) {
+            SlotResult slot = inventory.findFirstCurio(filter).orElse(null);
+            if (slot != null) {
+                slot.stack().hurtAndBreak(damage, serverPlayer.serverLevel(), serverPlayer,
+                        s -> CuriosApi.broadcastCurioBreakEvent(slot.slotContext()));
+            }
+        }
     }
 }

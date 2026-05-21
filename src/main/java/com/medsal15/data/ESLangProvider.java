@@ -635,6 +635,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.SHINEBREAKER, "Shinebreaker");
         // Axes
         addItem(ESItems.DOORBUSTER, "Doorbuster");
+        // Curios
+        addItem(ESItems.SILVER_WATCH, "Silver Watch");
+        addItemTooltip(ESItems.SILVER_WATCH, "A second passes every second");
+        addItem(ESItems.BROKEN_WATCH, "Broken Watch");
+        addItemTooltip(ESItems.BROKEN_WATCH, "Right twice a day");
         // Visions
         add(VISION_HINT_ONE, "Wearing more than 1 vision at once will cause interferences between them");
         add(VISION_HINT_MANY, "Wearing more than %s visions at once will cause interferences between them");
@@ -882,6 +887,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(ESTags.MobEffects.COSMIC_PLAGUE_IMMUNITY, "Prevented with cosmic plague armor");
         add(ESTags.MobEffects.COSMIC_PLAGUE_PARTIAL_IMMUNITY, "Sometimes prevented with cosmic plague armor");
         add(ESTags.MobEffects.RAINBOW_BOW_EFFECTS, "Applied with Rainbow Bow");
+        add(ESTags.MobEffects.SILVER_WATCH_BLOCKS, "Prevented with a silver watch");
 
         add(ESTags.DimensionTypes.COSMIC_DIMENSION_TYPES,
                 "Dimensions triggering the Cosmic Plague Spore effect");

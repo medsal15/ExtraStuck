@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:mercury": 64,
+    "minestuck:quartz": 16,
+    "minestuck:rust": 32
+  },
+  "ingredient": {
+    "item": "extrastuck:silver_watch"
+  }
+}

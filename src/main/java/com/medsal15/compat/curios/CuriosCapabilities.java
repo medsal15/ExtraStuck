@@ -9,9 +9,15 @@ import com.medsal15.items.ESItems;
 import com.medsal15.items.tools.IVision;
 import com.medsal15.items.tools.VisionItem.VisionEffect;
 import com.medsal15.utils.ESTags;
+import com.mraof.minestuck.player.EnumAspect;
+import com.mraof.minestuck.player.Title;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -38,7 +44,40 @@ public class CuriosCapabilities {
             public ItemStack getStack() {
                 return stack;
             };
-        }, ESItems.GUMMY_RING);
+        }, ESItems.GUMMY_RING, ESItems.SILVER_WATCH);
+
+        event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+            public ItemStack getStack() {
+                return stack;
+            };
+
+            public void curioTick(SlotContext slotContext) {
+                if (!(slotContext.entity() instanceof Player player) || player.level().isClientSide
+                        || player.getCooldowns().isOnCooldown(stack.getItem()))
+                    return;
+
+                double luck = player.getAttributeValue(Attributes.LUCK);
+                double chanceBonus = 1;
+                double chanceMalus = 1;
+
+                if (luck > 0)
+                    chanceBonus += luck;
+                else
+                    chanceMalus += luck;
+                if (Title.isPlayerOfAspect((ServerPlayer) player, EnumAspect.TIME))
+                    chanceBonus *= 2;
+
+                if (player.getRandom().nextDouble() > chanceBonus / (chanceBonus + chanceMalus)) {
+                    player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 600));
+                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600));
+                } else {
+                    player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 600));
+                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600));
+                }
+
+                player.getCooldowns().addCooldown(stack.getItem(), 2400);
+            };
+        }, ESItems.BROKEN_WATCH);
     }
 
     private static void visionTick(SlotContext context) {

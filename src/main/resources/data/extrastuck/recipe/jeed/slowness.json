@@ -16,6 +16,9 @@
         },
         {
             "item": "extrastuck:sticky_die"
+        },
+        {
+            "item": "extrastuck:broken_watch"
         }
     ]
 }

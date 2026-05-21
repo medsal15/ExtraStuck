@@ -64,6 +64,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -303,6 +304,7 @@ public final class CommonEvents {
     @SubscribeEvent
     public static void onEffectApplicable(final MobEffectEvent.Applicable event) {
         handleCosmicPlagueArmor(event);
+        handleSilverWatch(event);
     }
 
     /**
@@ -321,7 +323,7 @@ public final class CommonEvents {
             }
         }
         if (ESCompatUtils.isLoaded("curios")) {
-            count += ESCuriosUtils.countCosmicPlagueImmune(livingEntity);
+            count += ESCuriosUtils.countWornItems(livingEntity, stack -> stack.is(ESTags.Items.COSMIC_PLAGUE_CURIOS));
         }
 
         if (count <= 0)
@@ -334,6 +336,37 @@ public final class CommonEvents {
                 && count >= 4
                 && entity.getRandom().nextFloat() < .2) {
             event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+        }
+    }
+
+    /**
+     * Cancels application for silver watch prevented effects
+     */
+    private static void handleSilverWatch(final MobEffectEvent.Applicable event) {
+        Entity entity = event.getEntity();
+        if (!(entity instanceof LivingEntity livingEntity)
+                || !event.getEffectInstance().getEffect().is(ESTags.MobEffects.SILVER_WATCH_BLOCKS))
+            return;
+
+        boolean prevent = livingEntity.getMainHandItem().is(ESItems.SILVER_WATCH)
+                || livingEntity.getOffhandItem().is(ESItems.SILVER_WATCH);
+        if (ESCompatUtils.isLoaded("curios")
+                && ESCuriosUtils.wearsItem(livingEntity, stack -> stack.is(ESItems.SILVER_WATCH))) {
+            prevent = true;
+        }
+        if (prevent) {
+            event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+
+            ItemStack silverWatch = ItemStack.EMPTY;
+            if (livingEntity.getMainHandItem().is(ESItems.SILVER_WATCH)) {
+                silverWatch = livingEntity.getMainHandItem();
+                silverWatch.hurtAndBreak(1, livingEntity, EquipmentSlot.MAINHAND);
+            } else if (livingEntity.getOffhandItem().is(ESItems.SILVER_WATCH)) {
+                silverWatch = livingEntity.getOffhandItem();
+                silverWatch.hurtAndBreak(1, livingEntity, EquipmentSlot.OFFHAND);
+            } else if (ESCompatUtils.isLoaded("curios") && livingEntity instanceof ServerPlayer serverPlayer) {
+                ESCuriosUtils.hurtAndBreakFirst(serverPlayer, stack -> stack.is(ESItems.SILVER_WATCH), 1);
+            }
         }
     }
 
@@ -432,28 +465,33 @@ public final class CommonEvents {
     @SubscribeEvent
     public static void registerPlayerTick(final PlayerTickEvent.Pre event) {
         Player player = event.getEntity();
+
         if (player instanceof ServerPlayer serverPlayer) {
-            GristLayerInfo info = GristLayerInfo.get(serverPlayer.serverLevel()).orElse(null);
-            if (info != null) {
-                ESGristLayerInfo layerInfo = ESGristLayerInfo.fromGristLayerInfo(info, player.getBlockX(),
-                        player.getBlockZ());
-                if (player.hasData(ESAttachements.GRIST_LAYER)) {
-                    var old = player.getData(ESAttachements.GRIST_LAYER);
-                    if (!old.equals(layerInfo)) {
+            // Sync GristLayerInfo every 10 seconds
+            if (player.getCommandSenderWorld().getGameTime() % 200 == 0) {
+                GristLayerInfo info = GristLayerInfo.get(serverPlayer.serverLevel()).orElse(null);
+                if (info != null) {
+                    ESGristLayerInfo layerInfo = ESGristLayerInfo.fromGristLayerInfo(info, player.getBlockX(),
+                            player.getBlockZ());
+                    if (player.hasData(ESAttachements.GRIST_LAYER)) {
+                        var old = player.getData(ESAttachements.GRIST_LAYER);
+                        if (!old.equals(layerInfo)) {
+                            player.setData(ESAttachements.GRIST_LAYER, layerInfo);
+                            PacketDistributor.sendToPlayer(serverPlayer,
+                                    new GristLayerInfoData(layerInfo.any(), layerInfo.common(), layerInfo.uncommon()),
+                                    new CustomPacketPayload[0]);
+                        }
+                    } else {
                         player.setData(ESAttachements.GRIST_LAYER, layerInfo);
                         PacketDistributor.sendToPlayer(serverPlayer,
                                 new GristLayerInfoData(layerInfo.any(), layerInfo.common(), layerInfo.uncommon()),
                                 new CustomPacketPayload[0]);
                     }
-                } else {
-                    player.setData(ESAttachements.GRIST_LAYER, layerInfo);
-                    PacketDistributor.sendToPlayer(serverPlayer,
-                            new GristLayerInfoData(layerInfo.any(), layerInfo.common(), layerInfo.uncommon()),
+                } else if (player.hasData(ESAttachements.GRIST_LAYER)) {
+                    player.removeData(ESAttachements.GRIST_LAYER);
+                    PacketDistributor.sendToPlayer(serverPlayer, GristLayerInfoDelete.INSTANCE,
                             new CustomPacketPayload[0]);
                 }
-            } else if (player.hasData(ESAttachements.GRIST_LAYER)) {
-                player.removeData(ESAttachements.GRIST_LAYER);
-                PacketDistributor.sendToPlayer(serverPlayer, GristLayerInfoDelete.INSTANCE, new CustomPacketPayload[0]);
             }
         }
     }

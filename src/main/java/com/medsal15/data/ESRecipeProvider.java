@@ -1503,6 +1503,26 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.RUST, 3).grist(GristTypes.GOLD, 2).grist(GristTypes.RUBY, 1)
                 .build(output);
 
+        // Make it cheap to incentivise players to make it early
+        CombinationRecipeBuilder.of(ESItems.SOLID_FISHING_ROD)
+                .input(Items.FISHING_ROD).and().input(MSItems.RAW_CRUXITE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SOLID_FISHING_ROD)
+                .grist(GristTypes.RUST, 12).grist(GristTypes.CAULK, 8).grist(GristTypes.MARBLE, 4)
+                .build(output);
+
+        // #region Curios
+        CombinationRecipeBuilder.of(ESItems.SILVER_WATCH)
+                .input(Items.CLOCK).and().input(MSItems.MIRROR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SILVER_WATCH)
+                .grist(GristTypes.RUST, 32).grist(GristTypes.MERCURY, 64).grist(GristTypes.QUARTZ, 16)
+                .build(output);
+        SourceGristCostBuilder.of(ESItems.BROKEN_WATCH)
+                .source(ESItems.SILVER_WATCH.get()).multiplier(.5f)
+                .build(output);
+        // #endregion Curios
+
         CombinationRecipeBuilder.of(CreateESItems.GRIST_FILTER)
                 .input(AllItems.FILTER).or().input(MSItems.RAW_CRUXITE)
                 .build(output.withConditions(CREATE_LOADED));
@@ -1513,14 +1533,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(CreateESItems.GRIST_FILTER)
                 .unlockedBy("has_grist_filter", has(CreateESItems.GRIST_FILTER))
                 .save(output.withConditions(CREATE_LOADED), modid("shapeless/grist_filter_reset"));
-
-        // Make it cheap to incentivise players to make it early
-        CombinationRecipeBuilder.of(ESItems.SOLID_FISHING_ROD)
-                .input(Items.FISHING_ROD).and().input(MSItems.RAW_CRUXITE)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.SOLID_FISHING_ROD)
-                .grist(GristTypes.RUST, 12).grist(GristTypes.CAULK, 8).grist(GristTypes.MARBLE, 4)
-                .build(output);
     }
 
     private void foodRecipes(@Nonnull RecipeOutput output) {

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:source_grist_cost",
+  "grist_cost": {},
+  "ingredient": {
+    "item": "extrastuck:broken_watch"
+  },
+  "multiplier": 0.5,
+  "sources": [
+    "extrastuck:silver_watch"
+  ]
+}

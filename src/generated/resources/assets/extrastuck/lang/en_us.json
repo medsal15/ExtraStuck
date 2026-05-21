@@ -281,6 +281,8 @@
   "item.extrastuck.bowwob": "BowwoB",
   "item.extrastuck.branch_of_yggdrasil": "Branch of Yggdrasil",
   "item.extrastuck.branch_of_yggdrasil.tooltip": "Snapped straight off the World Tree",
+  "item.extrastuck.broken_watch": "Broken Watch",
+  "item.extrastuck.broken_watch.tooltip": "Right twice a day",
   "item.extrastuck.broom": "Broom",
   "item.extrastuck.broom.tooltip": "Sweep sweep sweep",
   "item.extrastuck.bwo": "bwo",
@@ -528,6 +530,8 @@
   "item.extrastuck.shooting_star": "Shooting Star",
   "item.extrastuck.silver_bat": "Silver Bat",
   "item.extrastuck.silver_bat.tooltip": "Purify all your enemies",
+  "item.extrastuck.silver_watch": "Silver Watch",
+  "item.extrastuck.silver_watch.tooltip": "A second passes every second",
   "item.extrastuck.slice_and_dice": "Slice and Dice",
   "item.extrastuck.slied": "slied",
   "item.extrastuck.slied.drop": "Expectedly, it could not",
@@ -625,5 +629,6 @@
   "tag.item.extrastuck.vision.active": "Activated Visions",
   "tag.mob_effect.extrastuck.cosmic_plague.immunity": "Prevented with cosmic plague armor",
   "tag.mob_effect.extrastuck.cosmic_plague.partial_immunity": "Sometimes prevented with cosmic plague armor",
-  "tag.mob_effect.extrastuck.rainbowbow_effects": "Applied with Rainbow Bow"
+  "tag.mob_effect.extrastuck.rainbowbow_effects": "Applied with Rainbow Bow",
+  "tag.mob_effect.extrastuck.silver_watch_blocks": "Prevented with a silver watch"
 }

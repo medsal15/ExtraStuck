@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:clock"
+  },
+  "input2": {
+    "item": "minestuck:mirror"
+  },
+  "mode": "and",
+  "output": "extrastuck:silver_watch"
+}

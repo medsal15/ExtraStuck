@@ -257,7 +257,11 @@ public final class ESTagsProvider {
             tag(Tags.Items.TOOLS_IGNITER).add(ESItems.LEAFBURNER.get());
             tag(Tags.Items.TOOLS_FISHING_ROD).add(ESItems.SOLID_FISHING_ROD.get());
             tag(ItemTags.FISHING_ENCHANTABLE).add(ESItems.SOLID_FISHING_ROD.get());
+            tag(ItemTags.DURABILITY_ENCHANTABLE).add(ESItems.SILVER_WATCH.get());
+
             tag(CuriosTags.RING).add(ESItems.GUMMY_RING.get());
+            tag(CuriosTags.CHARM).add(ESItems.SILVER_WATCH.get(), ESItems.BROKEN_WATCH.get());
+            tag(CuriosTags.HEAD).add(ESItems.GRIST_VIEWERS.get());
 
             tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get());
 
@@ -286,8 +290,6 @@ public final class ESTagsProvider {
 
             tag(ESTags.Items.IGNORE_BYPRODUCT_CUTTING).add(Items.BONE_MEAL);
             tag(ESTags.Items.TOOLBOX_FORBIDDEN).add(ESItems.TOOLBOX.get());
-
-            tag(CuriosTags.HEAD).add(ESItems.GRIST_VIEWERS.get());
         }
 
         private void tagShield(DeferredItem<Item> item) {
@@ -363,6 +365,8 @@ public final class ESTagsProvider {
                     MobEffects.DIG_SLOWDOWN.getKey(), MobEffects.GLOWING.getKey(), MobEffects.HARM.getKey(),
                     MobEffects.HUNGER.getKey(), MobEffects.MOVEMENT_SLOWDOWN.getKey(), MobEffects.POISON.getKey(),
                     MobEffects.WEAKNESS.getKey());
+            tag(ESTags.MobEffects.SILVER_WATCH_BLOCKS).add(MobEffects.DIG_SLOWDOWN.getKey(),
+                    MobEffects.MOVEMENT_SLOWDOWN.getKey(), ESMobEffects.TIME_STOP.getKey());
 
             tag(MSTags.Effects.SOPOR_SICKNESS_WHITELIST).add(ESMobEffects.COSMIC_PLAGUE.getKey());
         }

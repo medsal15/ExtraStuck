@@ -83,11 +83,13 @@ import com.medsal15.items.throwables.BeeLarvaItem;
 import com.medsal15.items.throwables.BeenadeItem;
 import com.medsal15.items.throwables.LemonNadeItem;
 import com.medsal15.items.throwables.SwapTrident;
+import com.medsal15.items.tools.BrokenWatchItem;
 import com.medsal15.items.tools.ChargerItem;
 import com.medsal15.items.tools.GiftItem;
 import com.medsal15.items.tools.GristDetectorItem;
 import com.medsal15.items.tools.LandFishingRod;
 import com.medsal15.items.tools.MagnetItem;
+import com.medsal15.items.tools.ConvertOnDestroyItem;
 import com.medsal15.items.tools.Tokenitem;
 import com.medsal15.items.tools.UntunedVisionItem;
 import com.medsal15.items.tools.VisionItem;
@@ -888,6 +890,31 @@ public final class ESItems {
             new MSItemProperties().durability(500)));
     // #endregion Axes
 
+    // #region Cards
+    public static final DeferredItem<Item> TWO_OF_HEARTS = ITEMS.register("two_of_hearts", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
+                    .set(ESRightClickEffects::twoOfHearts),
+            new MSItemProperties().durability(500)));
+    public static final DeferredItem<Item> TWO_OF_DIAMONDS = ITEMS.register("two_of_diamonds", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
+                    .set(ESRightClickEffects::twoOfDiamonds),
+            new MSItemProperties().durability(500)));
+    public static final DeferredItem<Item> TWO_OF_SPADES = ITEMS.register("two_of_spades", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
+                    .set(ESRightClickEffects::twoOfSpades),
+            new MSItemProperties().durability(500)));
+    public static final DeferredItem<Item> TWO_OF_CLUBS = ITEMS.register("two_of_clubs", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
+                    .set(ESRightClickBlockEffects::openDoor)
+                    .set(ItemRightClickEffect.switchTo(ESItems.DOORBUSTER)),
+            new MSItemProperties().durability(500)));
+    // #endregion Cards
+    // #region Curios
+    public static final DeferredItem<Item> SILVER_WATCH = ITEMS.registerItem("silver_watch",
+            p -> new ConvertOnDestroyItem(p.stacksTo(1).durability(64), () -> ESItems.BROKEN_WATCH.toStack()));
+    public static final DeferredItem<Item> BROKEN_WATCH = ITEMS.registerItem("broken_watch", BrokenWatchItem::new,
+            new Item.Properties().stacksTo(1));
+
     // #region Visions
     public static final DeferredItem<Item> VISION_BLANK = ITEMS.registerItem("vision_blank", UntunedVisionItem::new,
             new Item.Properties().stacksTo(1));
@@ -918,25 +945,7 @@ public final class ESItems {
     public static final DeferredItem<Item> VISION_VOID = ITEMS.registerItem("vision_void",
             p -> new VisionItem(p.stacksTo(1).rarity(Rarity.RARE), EnumAspect.VOID));
     // #endregion Visions
-    // #region Cards
-    public static final DeferredItem<Item> TWO_OF_HEARTS = ITEMS.register("two_of_hearts", () -> new WeaponItem(
-            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
-                    .set(ESRightClickEffects::twoOfHearts),
-            new MSItemProperties().durability(500)));
-    public static final DeferredItem<Item> TWO_OF_DIAMONDS = ITEMS.register("two_of_diamonds", () -> new WeaponItem(
-            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
-                    .set(ESRightClickEffects::twoOfDiamonds),
-            new MSItemProperties().durability(500)));
-    public static final DeferredItem<Item> TWO_OF_SPADES = ITEMS.register("two_of_spades", () -> new WeaponItem(
-            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
-                    .set(ESRightClickEffects::twoOfSpades),
-            new MSItemProperties().durability(500)));
-    public static final DeferredItem<Item> TWO_OF_CLUBS = ITEMS.register("two_of_clubs", () -> new WeaponItem(
-            new WeaponItem.Builder(MSItemTypes.PAPER_TIER, 0, -1.8f).efficiency(0)
-                    .set(ESRightClickBlockEffects::openDoor)
-                    .set(ItemRightClickEffect.switchTo(ESItems.DOORBUSTER)),
-            new MSItemProperties().durability(500)));
-    // #endregion Cards
+    // #endregion Curios
     // #endregion Tools
 
     // #region Modus
@@ -1184,6 +1193,9 @@ public final class ESItems {
         }
         output.accept(GRIST_DETECTOR);
         output.accept(MASTERMIND_DISK);
+        for (DeferredItem<Item> curio : ESItems.getCurios()) {
+            output.accept(curio.get());
+        }
         if (ESCompatUtils.isLoaded("create")) {
             for (DeferredItem<Item> miscTool : CreateESItems.getMiscTools()) {
                 output.accept(miscTool.get());
@@ -1292,6 +1304,15 @@ public final class ESItems {
         list.addAll(getShovels());
         list.addAll(getPickaxes());
         list.addAll(getAxes());
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getCurios() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(SILVER_WATCH);
+        list.add(BROKEN_WATCH);
+
         return list;
     }
 

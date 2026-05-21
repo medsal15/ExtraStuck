@@ -1,0 +1,23 @@
+{
+    "name": "Silver Watch",
+    "icon": "extrastuck:silver_watch",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:silver_watch"
+            },
+            "text": "A pocket watch with strange time-related effects. Shares an origin with an oven. Must be held or worn to be active.$(br2)$(3)$(l)Special:$() Prevents the application of slowing effects."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Clock and an Mirror in a Totem Lathe.",
+            "left": "minecraft:clock",
+            "mode": "&&",
+            "right": "minestuck:mirror",
+            "result": "extrastuck:silver_watch"
+        }
+    ]
+}

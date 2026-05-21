@@ -10,6 +10,9 @@
     "providers": [
         {
             "item": "extrastuck:jackpot"
+        },
+        {
+            "item": "extrastuck:broken_watch"
         }
     ]
 }

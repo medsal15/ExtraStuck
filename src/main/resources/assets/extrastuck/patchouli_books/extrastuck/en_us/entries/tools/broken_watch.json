@@ -1,0 +1,15 @@
+{
+    "name": "Broken Watch",
+    "icon": "extrastuck:broken_watch",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:broken_watch"
+            },
+            "text": "Remains of an overused silver watch. Must be held or worn to be active.$(br2)$(3)$(l)Special:$() Applies either Slowness and Mining Fatigue, or Speed and Haste for 30 seconds every 2 minutes. This is luck-dependant, and Time player have better odds."
+        }
+    ]
+}

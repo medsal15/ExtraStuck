@@ -6,11 +6,8 @@
         }
     ],
     "type": "jeed:effect_provider",
-    "effect": "minecraft:speed",
+    "effect": "minecraft:mining_fatigue",
     "providers": [
-        {
-            "item": "extrastuck:rainbow_d7"
-        },
         {
             "item": "extrastuck:broken_watch"
         }
