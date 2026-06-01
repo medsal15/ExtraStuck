@@ -60,6 +60,7 @@ public class CraftingModusScreen extends BaseModusScreen {
 
     @Override
     public void updateContent() {
+        super.updateContent();
         NonNullList<CraftingModusRecipe> recipes = modus.getRecipes();
         this.maxWidth = Math.max(mapWidth, 10 + (recipes.size() * CARD_WIDTH * 5 + (recipes.size() - 1) * 5));
         this.maxHeight = mapHeight;
