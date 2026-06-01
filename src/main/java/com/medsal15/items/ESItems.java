@@ -47,11 +47,11 @@ import com.medsal15.items.armor.GristViewersItem;
 import com.medsal15.items.armor.PropellerHatItem;
 import com.medsal15.items.armor.SalesmanGogglesItem;
 import com.medsal15.items.armor.SaleswomanGogglesItem;
+import com.medsal15.items.bows.BwoItem;
 import com.medsal15.items.bows.DoublingBowItem;
 import com.medsal15.items.bows.FastBowItem;
 import com.medsal15.items.bows.MakeRainItem;
 import com.medsal15.items.bows.RainbowBowItem;
-import com.medsal15.items.bows.BwoItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
 import com.medsal15.items.components.MoonCakeSliceColor;
@@ -85,11 +85,11 @@ import com.medsal15.items.throwables.LemonNadeItem;
 import com.medsal15.items.throwables.SwapTrident;
 import com.medsal15.items.tools.BrokenWatchItem;
 import com.medsal15.items.tools.ChargerItem;
+import com.medsal15.items.tools.ConvertOnDestroyItem;
 import com.medsal15.items.tools.GiftItem;
 import com.medsal15.items.tools.GristDetectorItem;
 import com.medsal15.items.tools.LandFishingRod;
 import com.medsal15.items.tools.MagnetItem;
-import com.medsal15.items.tools.ConvertOnDestroyItem;
 import com.medsal15.items.tools.Tokenitem;
 import com.medsal15.items.tools.UntunedVisionItem;
 import com.medsal15.items.tools.VisionItem;
@@ -914,6 +914,12 @@ public final class ESItems {
             p -> new ConvertOnDestroyItem(p.stacksTo(1).durability(64), () -> ESItems.BROKEN_WATCH.toStack()));
     public static final DeferredItem<Item> BROKEN_WATCH = ITEMS.registerItem("broken_watch", BrokenWatchItem::new,
             new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> GAMBLERS_RING = ITEMS.registerItem("gamblers_ring", Item::new,
+            new Item.Properties().stacksTo(1));
+    // TODO frost ring (increases freeze time & frost spell power (with iss))
+    // TODO fire ring (increases burn time & fire spell power (with iss))
+    // TODO thermal ring (consumes burn/freeze time to increase damage & increases
+    // fire/frost spell power (with iss))
 
     // #region Visions
     public static final DeferredItem<Item> VISION_BLANK = ITEMS.registerItem("vision_blank", UntunedVisionItem::new,
@@ -1312,6 +1318,7 @@ public final class ESItems {
 
         list.add(SILVER_WATCH);
         list.add(BROKEN_WATCH);
+        list.add(GAMBLERS_RING);
 
         return list;
     }

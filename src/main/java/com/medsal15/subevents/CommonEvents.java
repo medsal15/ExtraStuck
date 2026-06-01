@@ -18,7 +18,6 @@ import com.medsal15.compat.curios.CuriosCapabilities;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.curios.items.ESCuriosUtils;
 import com.medsal15.data.ESLangProvider;
-import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
@@ -47,6 +46,8 @@ import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.item.weapon.MSToolType;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 import com.mraof.minestuck.network.MSPacket;
+import com.mraof.minestuck.player.EnumAspect;
+import com.mraof.minestuck.player.Title;
 import com.mraof.minestuck.world.lands.GristLayerInfo;
 
 import net.minecraft.client.Minecraft;
@@ -66,6 +67,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -80,6 +82,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
@@ -89,7 +92,6 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
 @EventBusSubscriber(modid = ExtraStuck.MODID)
 public final class CommonEvents {
@@ -297,11 +299,6 @@ public final class CommonEvents {
     }
 
     @SubscribeEvent
-    public static void registerDataMapTypes(final RegisterDataMapTypesEvent event) {
-        event.register(ReactorFuel.REACTOR_MAP);
-    }
-
-    @SubscribeEvent
     public static void onEffectApplicable(final MobEffectEvent.Applicable event) {
         handleCosmicPlagueArmor(event);
         handleSilverWatch(event);
@@ -493,6 +490,51 @@ public final class CommonEvents {
                             new CustomPacketPayload[0]);
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onDamageDealt(final LivingDamageEvent.Pre event) {
+        handleGambersRing(event);
+    }
+
+    /**
+     * Has a 50% chance to multiply damage by amount of gambler's ring + 1
+     * <p>
+     * Failure divides it by that amount instead
+     * <p>
+     * Boosted by attacker's luck
+     */
+    private static void handleGambersRing(final LivingDamageEvent.Pre event) {
+        Entity entity = event.getSource().getEntity();
+        if (!(entity instanceof LivingEntity attacker))
+            return;
+
+        float gambling = 0;
+        if (attacker.getMainHandItem().is(ESItems.GAMBLERS_RING))
+            gambling++;
+        if (attacker.getOffhandItem().is(ESItems.GAMBLERS_RING))
+            gambling++;
+        if (ESCompatUtils.isLoaded("curios"))
+            gambling += ESCuriosUtils.countWornItems(attacker, stack -> stack.is(ESItems.GAMBLERS_RING));
+
+        if (gambling <= 0)
+            return;
+
+        double luck = attacker.getAttributeValue(Attributes.LUCK);
+        double chanceBonus = 1;
+        double chanceMalus = 1;
+        if (luck > 0)
+            chanceBonus += luck;
+        else
+            chanceMalus += luck;
+        if (attacker instanceof ServerPlayer player && Title.isPlayerOfAspect(player, EnumAspect.LIGHT))
+            chanceBonus *= 2;
+
+        if (attacker.getRandom().nextDouble() > chanceBonus / (chanceBonus + chanceMalus)) {
+            event.setNewDamage(event.getNewDamage() * (gambling + 1));
+        } else {
+            event.setNewDamage(event.getNewDamage() / (gambling + 1));
         }
     }
 }

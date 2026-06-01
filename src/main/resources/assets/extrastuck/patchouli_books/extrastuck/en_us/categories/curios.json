@@ -1,0 +1,7 @@
+{
+    "name": "Curios",
+    "sortnum": 1,
+    "description": "Curios not included",
+    "icon": "minestuck:white_queens_ring",
+    "parent": "extrastuck:tools"
+}

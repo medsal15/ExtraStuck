@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:gold_coin"
+  },
+  "input2": {
+    "item": "extrastuck:luck_token"
+  },
+  "mode": "or",
+  "output": "extrastuck:gamblers_ring"
+}

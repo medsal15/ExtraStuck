@@ -1518,8 +1518,16 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.SILVER_WATCH)
                 .grist(GristTypes.RUST, 32).grist(GristTypes.MERCURY, 64).grist(GristTypes.QUARTZ, 16)
                 .build(output);
+
         SourceGristCostBuilder.of(ESItems.BROKEN_WATCH)
                 .source(ESItems.SILVER_WATCH.get()).multiplier(.5f)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.GAMBLERS_RING)
+                .input(ESItems.GOLD_COIN).or().input(ESItems.LUCK_TOKEN)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.GAMBLERS_RING)
+                .grist(GristTypes.RUBY, 640).grist(GristTypes.GARNET, 160).grist(GristTypes.GOLD, 256)
                 .build(output);
         // #endregion Curios
 

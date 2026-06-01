@@ -1,7 +1,7 @@
 {
     "name": "Broken Watch",
     "icon": "extrastuck:broken_watch",
-    "category": "extrastuck:tools",
+    "category": "extrastuck:curios",
     "sortnum": 1,
     "pages": [
         {

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:garnet": 160,
+    "minestuck:gold": 256,
+    "minestuck:ruby": 640
+  },
+  "ingredient": {
+    "item": "extrastuck:gamblers_ring"
+  }
+}

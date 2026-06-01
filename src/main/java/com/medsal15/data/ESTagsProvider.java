@@ -259,7 +259,7 @@ public final class ESTagsProvider {
             tag(ItemTags.FISHING_ENCHANTABLE).add(ESItems.SOLID_FISHING_ROD.get());
             tag(ItemTags.DURABILITY_ENCHANTABLE).add(ESItems.SILVER_WATCH.get());
 
-            tag(CuriosTags.RING).add(ESItems.GUMMY_RING.get());
+            tag(CuriosTags.RING).add(ESItems.GUMMY_RING.get(), ESItems.GAMBLERS_RING.get());
             tag(CuriosTags.CHARM).add(ESItems.SILVER_WATCH.get(), ESItems.BROKEN_WATCH.get());
             tag(CuriosTags.HEAD).add(ESItems.GRIST_VIEWERS.get());
 

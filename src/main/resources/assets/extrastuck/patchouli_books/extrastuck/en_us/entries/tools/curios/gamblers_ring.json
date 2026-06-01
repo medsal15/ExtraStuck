@@ -1,0 +1,23 @@
+{
+    "name": "Gambler's Ring",
+    "icon": "extrastuck:gamblers_ring",
+    "category": "extrastuck:curios",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:gamblers_ring"
+            },
+            "text": "A shiny ring made of ruby.$(br2)$(3)$(l)Special:$() When held or equipped, has a 50% chance to increase/decrease damage."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Gold Coin and a Luck Token in a Punch Designix.",
+            "left": "extrastuck:gold_coin",
+            "mode": "||",
+            "right": "extrastuck:luck_token",
+            "result": "extrastuck:gamblers_ring"
+        }
+    ]
+}

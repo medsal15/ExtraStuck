@@ -44,7 +44,7 @@ public class CuriosCapabilities {
             public ItemStack getStack() {
                 return stack;
             };
-        }, ESItems.GUMMY_RING, ESItems.SILVER_WATCH);
+        }, ESItems.GUMMY_RING, ESItems.SILVER_WATCH, ESItems.GAMBLERS_RING);
 
         event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
             public ItemStack getStack() {
