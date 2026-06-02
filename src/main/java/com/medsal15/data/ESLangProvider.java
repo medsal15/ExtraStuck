@@ -640,8 +640,11 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.SILVER_WATCH, "A second passes every second");
         addItem(ESItems.BROKEN_WATCH, "Broken Watch");
         addItemTooltip(ESItems.BROKEN_WATCH, "Right twice a day");
+        addItem(ESItems.METAL_RING, "Metal Ring");
+        addItem(ESItems.HEAVY_METAL_RING, "Heavy Metal Ring");
         addItem(ESItems.GAMBLERS_RING, "Gambler's Ring");
         addItemTooltip(ESItems.GAMBLERS_RING, "Feelin' lucky?");
+        addItem(ESItems.FROST_RING, "Frost Ring");
         // Visions
         add(VISION_HINT_ONE, "Wearing more than 1 vision at once will cause interferences between them");
         add(VISION_HINT_MANY, "Wearing more than %s visions at once will cause interferences between them");

@@ -914,10 +914,20 @@ public final class ESItems {
             p -> new ConvertOnDestroyItem(p.stacksTo(1).durability(64), () -> ESItems.BROKEN_WATCH.toStack()));
     public static final DeferredItem<Item> BROKEN_WATCH = ITEMS.registerItem("broken_watch", BrokenWatchItem::new,
             new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> METAL_RING = ITEMS.registerItem("metal_ring", Item::new,
+            new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> HEAVY_METAL_RING = ITEMS.registerItem("heavy_metal_ring", Item::new,
+            new Item.Properties().stacksTo(1)
+                    .attributes(ItemAttributeModifiers.builder()
+                            .add(Attributes.GRAVITY,
+                                    new AttributeModifier(ExtraStuck.modid("heavy_metal_ring_gravity"), .01F,
+                                            Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.HAND)
+                            .build()));
     public static final DeferredItem<Item> GAMBLERS_RING = ITEMS.registerItem("gamblers_ring", Item::new,
             new Item.Properties().stacksTo(1));
-    // TODO frost ring (increases freeze time & frost spell power (with iss))
-    // TODO fire ring (increases burn time & fire spell power (with iss))
+    public static final DeferredItem<Item> FROST_RING = ITEMS.registerItem("frost_ring", Item::new,
+            new Item.Properties().stacksTo(1));
     // TODO thermal ring (consumes burn/freeze time to increase damage & increases
     // fire/frost spell power (with iss))
 
@@ -1318,7 +1328,10 @@ public final class ESItems {
 
         list.add(SILVER_WATCH);
         list.add(BROKEN_WATCH);
+        list.add(METAL_RING);
+        list.add(HEAVY_METAL_RING);
         list.add(GAMBLERS_RING);
+        list.add(FROST_RING);
 
         return list;
     }

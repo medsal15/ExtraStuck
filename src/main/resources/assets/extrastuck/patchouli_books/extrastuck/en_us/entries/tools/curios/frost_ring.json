@@ -1,0 +1,23 @@
+{
+    "name": "Frost Ring",
+    "icon": "extrastuck:frost_ring",
+    "category": "extrastuck:curios",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:frost_ring"
+            },
+            "text": "A ring made of ice. Cool.$(br2)$(3)$(l)Special:$() Attacks freeze enemies when held (or equipped)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Iron Ring and a Powder Snow Bucket in a Totem Lathe.",
+            "left": "minecraft:powder_snow_bucket",
+            "mode": "&&",
+            "right": "extrastuck:metal_ring",
+            "result": "extrastuck:frost_ring"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Metal Ring",
+    "icon": "extrastuck:metal_ring",
+    "category": "extrastuck:curios",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:metal_ring"
+            },
+            "text": "A simple armored ring.$(br2)$(3)$(l)Special:$() With Curios installed, grants extra armor when equipped."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Iron Helmet and a Blank Disk in a Punch Designix.",
+            "left": "minecraft:iron_helmet",
+            "mode": "||",
+            "right": "minestuck:blank_disk",
+            "result": "extrastuck:metal_ring"
+        }
+    ]
+}

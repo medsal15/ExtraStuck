@@ -1523,11 +1523,32 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .source(ESItems.SILVER_WATCH.get()).multiplier(.5f)
                 .build(output);
 
+        CombinationRecipeBuilder.of(ESItems.METAL_RING)
+                .input(Items.IRON_HELMET).or().input(MSItems.BLANK_DISK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.METAL_RING)
+                .grist(GristTypes.MERCURY, 50).grist(GristTypes.RUST, 10)
+                .build(output);
+
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                Ingredient.of(ESItems.METAL_RING), Ingredient.of(Items.NETHERITE_INGOT),
+                RecipeCategory.COMBAT,
+                ESItems.HEAVY_METAL_RING.get())
+                .unlocks("metal_ring", has(ESItems.METAL_RING))
+                .save(output, modid("smithing/heavy_metal_ring"));
+
         CombinationRecipeBuilder.of(ESItems.GAMBLERS_RING)
-                .input(ESItems.GOLD_COIN).or().input(ESItems.LUCK_TOKEN)
+                .input(ESItems.GOLD_COIN).or().input(ESItems.METAL_RING)
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.GAMBLERS_RING)
                 .grist(GristTypes.RUBY, 640).grist(GristTypes.GARNET, 160).grist(GristTypes.GOLD, 256)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.FROST_RING)
+                .input(ESItems.METAL_RING).and().input(Items.POWDER_SNOW_BUCKET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.FROST_RING)
+                .grist(GristTypes.COBALT, 400).grist(GristTypes.CHALK, 40)
                 .build(output);
         // #endregion Curios
 

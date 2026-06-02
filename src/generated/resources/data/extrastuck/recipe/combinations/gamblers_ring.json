@@ -4,7 +4,7 @@
     "item": "extrastuck:gold_coin"
   },
   "input2": {
-    "item": "extrastuck:luck_token"
+    "item": "extrastuck:metal_ring"
   },
   "mode": "or",
   "output": "extrastuck:gamblers_ring"

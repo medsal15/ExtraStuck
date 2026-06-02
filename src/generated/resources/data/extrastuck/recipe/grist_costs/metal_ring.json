@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:mercury": 50,
+    "minestuck:rust": 10
+  },
+  "ingredient": {
+    "item": "extrastuck:metal_ring"
+  }
+}

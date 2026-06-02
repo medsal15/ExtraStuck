@@ -325,7 +325,10 @@ public final class ESItemModelProvider extends ItemModelProvider {
         // Curios
         basicItem(ESItems.SILVER_WATCH.get());
         basicItem(ESItems.BROKEN_WATCH.get());
+        basicItem(ESItems.METAL_RING.get());
+        basicItem(ESItems.HEAVY_METAL_RING.get());
         basicItem(ESItems.GAMBLERS_RING.get());
+        basicItem(ESItems.FROST_RING.get());
         // Visions
         modelVision(ESItems.VISION_BLANK, "blank");
         modelVision(ESItems.VISION_DULL, "dull");

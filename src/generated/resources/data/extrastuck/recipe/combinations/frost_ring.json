@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:metal_ring"
+  },
+  "input2": {
+    "item": "minecraft:powder_snow_bucket"
+  },
+  "mode": "and",
+  "output": "extrastuck:frost_ring"
+}

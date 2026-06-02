@@ -64,6 +64,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -494,8 +496,13 @@ public final class CommonEvents {
     }
 
     @SubscribeEvent
-    public static void onDamageDealt(final LivingDamageEvent.Pre event) {
+    public static void onDamageDealtPre(final LivingDamageEvent.Pre event) {
         handleGambersRing(event);
+    }
+
+    @SubscribeEvent
+    public static void onDamageDealtPost(final LivingDamageEvent.Post event) {
+        handleFrostRing(event);
     }
 
     /**
@@ -535,6 +542,27 @@ public final class CommonEvents {
             event.setNewDamage(event.getNewDamage() * (gambling + 1));
         } else {
             event.setNewDamage(event.getNewDamage() / (gambling + 1));
+        }
+    }
+
+    private static void handleFrostRing(final LivingDamageEvent.Post event) {
+        Entity entity = event.getSource().getEntity();
+        if (!(entity instanceof LivingEntity attacker))
+            return;
+
+        int freeze = 0;
+        if (attacker.getMainHandItem().is(ESItems.FROST_RING))
+            freeze++;
+        if (attacker.getOffhandItem().is(ESItems.FROST_RING))
+            freeze++;
+        if (ESCompatUtils.isLoaded("curios"))
+            freeze += ESCuriosUtils.countWornItems(attacker, stack -> stack.is(ESItems.FROST_RING));
+
+        if (freeze > 0) {
+            LivingEntity target = event.getEntity();
+            target.setTicksFrozen(Math.min(400, target.getTicksFrozen() + freeze * 40));
+            target.setIsInPowderSnow(true);
+            target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, freeze - 1));
         }
     }
 }

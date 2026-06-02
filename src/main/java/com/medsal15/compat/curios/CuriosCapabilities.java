@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.Multimap;
+import com.medsal15.ExtraStuck;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.tools.IVision;
@@ -12,11 +15,16 @@ import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.player.EnumAspect;
 import com.mraof.minestuck.player.Title;
 
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
@@ -45,6 +53,41 @@ public class CuriosCapabilities {
                 return stack;
             };
         }, ESItems.GUMMY_RING, ESItems.SILVER_WATCH, ESItems.GAMBLERS_RING);
+
+        event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+            public ItemStack getStack() {
+                return stack;
+            };
+
+            public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
+                    SlotContext slotContext, ResourceLocation id) {
+                Multimap<Holder<Attribute>, AttributeModifier> map = LinkedHashMultimap.create();
+                map.put(Attributes.ARMOR,
+                        new AttributeModifier(ExtraStuck.modid("metal_ring_armor"), 1, Operation.ADD_VALUE));
+                return map;
+            };
+        }, ESItems.METAL_RING);
+
+        event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+            public ItemStack getStack() {
+                return stack;
+            };
+
+            public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
+                    SlotContext slotContext, ResourceLocation id) {
+                Multimap<Holder<Attribute>, AttributeModifier> map = LinkedHashMultimap.create();
+                map.put(Attributes.ARMOR,
+                        new AttributeModifier(ExtraStuck.modid("heavy_metal_ring_armor"), 2, Operation.ADD_VALUE));
+                map.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(
+                        ExtraStuck.modid("heavy_metal_ring_armor_toughness"), .5f, Operation.ADD_VALUE));
+                map.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(
+                        ExtraStuck.modid("heavy_metal_ring_knockback_resistance"), .1f, Operation.ADD_VALUE));
+                map.put(Attributes.GRAVITY,
+                        new AttributeModifier(ExtraStuck.modid("heavy_metal_ring_gravity_curio"), .01f,
+                                Operation.ADD_VALUE));
+                return map;
+            };
+        }, ESItems.HEAVY_METAL_RING);
 
         event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
             public ItemStack getStack() {

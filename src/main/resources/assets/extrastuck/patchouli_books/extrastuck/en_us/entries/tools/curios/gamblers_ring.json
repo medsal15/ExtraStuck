@@ -13,10 +13,10 @@
         },
         {
             "type": "extrastuck:combination",
-            "text": "Combine a Gold Coin and a Luck Token in a Punch Designix.",
+            "text": "Combine a Gold Coin and a Metal Ring in a Punch Designix.",
             "left": "extrastuck:gold_coin",
             "mode": "||",
-            "right": "extrastuck:luck_token",
+            "right": "extrastuck:metal_ring",
             "result": "extrastuck:gamblers_ring"
         }
     ]

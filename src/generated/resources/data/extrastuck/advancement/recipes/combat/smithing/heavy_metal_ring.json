@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extrastuck:smithing/heavy_metal_ring"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "metal_ring": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:metal_ring"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "metal_ring"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extrastuck:smithing/heavy_metal_ring"
+    ]
+  }
+}

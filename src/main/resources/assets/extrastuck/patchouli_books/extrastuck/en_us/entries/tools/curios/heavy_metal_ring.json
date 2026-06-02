@@ -1,0 +1,20 @@
+{
+    "name": "Metal Ring",
+    "icon": "extrastuck:heavy_metal_ring",
+    "category": "extrastuck:curios",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:heavy_metal_ring"
+            },
+            "text": "A heavy armored ring.$(br2)$(3)$(l)Special:$() With Curios installed, grants extra armor, armor toughness and knockback resistance when equipped."
+        },
+        {
+            "type": "patchouli:smithing",
+            "recipe": "extrastuck:smithing/heavy_metal_ring",
+            "text": "Upgrade your Metal Ring like a diamond tool in a smithing table."
+        }
+    ]
+}
