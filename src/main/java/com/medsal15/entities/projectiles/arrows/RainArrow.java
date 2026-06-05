@@ -8,10 +8,12 @@ import com.medsal15.items.ESItems;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.item.component.ItemContainerContents;
@@ -52,11 +54,18 @@ public class RainArrow extends AbstractArrow {
                     double x = location.x() + getRandom().nextDouble() * (double) i / 5d - (double) i / 10d;
                     double y = location.y() + getRandom().nextDouble() * 5d + 15d;
                     double z = location.z() + getRandom().nextDouble() * (double) i / 5d - (double) i / 10d;
-                    Projectile projectile = projectileItem.asProjectile(level(), new Vec3(x, y, z), ammo,
-                            Direction.DOWN);
-                    projectile.setOwner(getOwner());
-                    if (projectile instanceof AbstractArrow arrow)
+                    Projectile projectile;
+                    Entity owner = getOwner();
+                    if (projectileItem instanceof ArrowItem arrowItem && owner != null
+                            && owner instanceof LivingEntity) {
+                        AbstractArrow arrow = arrowItem.createArrow(level(), new ItemStack(arrowItem),
+                                (LivingEntity) owner, getWeaponItem());
                         arrow.pickup = Pickup.CREATIVE_ONLY;
+                        projectile = arrow;
+                    } else {
+                        projectile = projectileItem.asProjectile(level(), new Vec3(x, y, z), ammo, Direction.DOWN);
+                    }
+                    projectile.setOwner(getOwner());
                     level().addFreshEntity(projectile);
                 }
             }
