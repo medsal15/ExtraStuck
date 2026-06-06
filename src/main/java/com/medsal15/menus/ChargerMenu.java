@@ -6,7 +6,7 @@ import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.mraof.minestuck.inventory.ContainerHelper;
 import com.mraof.minestuck.inventory.MachineContainerMenu;
-import com.mraof.minestuck.inventory.slot.InputSlot;
+import com.mraof.minestuck.inventory.slot.UraniumPowerSlot;
 import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.BlockPos;
@@ -63,7 +63,7 @@ public class ChargerMenu extends MachineContainerMenu {
         addSlot(new SlotItemHandler(
                 new RangedWrapper(inventory, ChargerBlockEntity.SLOT_IN, ChargerBlockEntity.SLOT_IN + 1),
                 ChargerBlockEntity.SLOT_IN, INPUT_X, INPUT_Y));
-        addSlot(new InputSlot(inventory, ChargerBlockEntity.SLOT_FUEL, FUEL_X, FUEL_Y, MSItems.RAW_URANIUM.get()));
+        addSlot(new UraniumPowerSlot(inventory, ChargerBlockEntity.SLOT_FUEL, FUEL_X, FUEL_Y));
         addDataSlot(fuelHolder);
         addDataSlot(chargeHolder);
         addDataSlot(modeHolder);

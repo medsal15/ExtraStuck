@@ -55,6 +55,10 @@ public final class ConfigServer {
     public static final ConfigValue<Integer> CHARGER_TRANSFER_TICK = BUILDER
             .comment("How much FE is transferred between storage and item per tick", "Mostly to make charging fancier")
             .defineInRange("charger.fe_transfer", 1_000, 1, Integer.MAX_VALUE);
+    public static final ConfigValue<Integer> CHARGER_TRANSFER_TICK_URANIUM = BUILDER
+            .comment("How much Uranium power is transferred between storage and item per tick",
+                    "Mostly to make charging fancier")
+            .defineInRange("charger.uranium_transfer", 1, 1, Integer.MAX_VALUE);
 
     public static final ConfigValue<Integer> BLASTER_URANIUM_STORAGE = BUILDER
             .comment("How much uranium power should a blaster hold",

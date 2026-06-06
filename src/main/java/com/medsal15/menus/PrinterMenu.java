@@ -11,6 +11,7 @@ import com.mraof.minestuck.inventory.ContainerHelper;
 import com.mraof.minestuck.inventory.MachineContainerMenu;
 import com.mraof.minestuck.inventory.slot.InputSlot;
 import com.mraof.minestuck.inventory.slot.OutputSlot;
+import com.mraof.minestuck.inventory.slot.UraniumPowerSlot;
 import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.BlockPos;
@@ -62,7 +63,7 @@ public class PrinterMenu extends MachineContainerMenu {
         addSlot(new InputSlot(inventory, PrinterBlockEntity.SLOT_IN, INPUT_X, INPUT_Y,
                 MSBlocks.CRUXITE_DOWEL.get().asItem()));
         addSlot(new OutputSlot(inventory, PrinterBlockEntity.SLOT_OUT, OUTPUT_X, OUTPUT_Y));
-        addSlot(new InputSlot(inventory, PrinterBlockEntity.SLOT_FUEL, FUEL_X, FUEL_Y, MSItems.RAW_URANIUM.get()));
+        addSlot(new UraniumPowerSlot(inventory, PrinterBlockEntity.SLOT_FUEL, FUEL_X, FUEL_Y));
         addDataSlot(wildcardHolder);
         addDataSlot(fuelHolder);
 

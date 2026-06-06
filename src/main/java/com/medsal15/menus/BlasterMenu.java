@@ -6,7 +6,7 @@ import com.medsal15.blockentities.BlasterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.mraof.minestuck.inventory.ContainerHelper;
 import com.mraof.minestuck.inventory.MachineContainerMenu;
-import com.mraof.minestuck.inventory.slot.InputSlot;
+import com.mraof.minestuck.inventory.slot.UraniumPowerSlot;
 import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.BlockPos;
@@ -45,7 +45,7 @@ public class BlasterMenu extends MachineContainerMenu {
 
         assertItemHandlerSize(inventory, 1);
         this.fuelHolder = fuelHolder;
-        addSlot(new InputSlot(inventory, BlasterBlockEntity.SLOT_FUEL, FUEL_X, FUEL_Y, MSItems.RAW_URANIUM.get()));
+        addSlot(new UraniumPowerSlot(inventory, BlasterBlockEntity.SLOT_FUEL, FUEL_X, FUEL_Y));
         addDataSlot(fuelHolder);
 
         ContainerHelper.addPlayerInventorySlots(this::addSlot, 8, 84, playerInventory);

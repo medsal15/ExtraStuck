@@ -9,11 +9,11 @@ import com.medsal15.blocks.machine.BlasterBlock;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.menus.BlasterMenu;
 import com.medsal15.particles.ESParticleTypes;
+import com.mraof.minestuck.api.uranium.IUraniumHandler;
+import com.mraof.minestuck.api.uranium.SimpleUraniumHandler;
+import com.mraof.minestuck.api.uranium.UraniumPower;
 import com.mraof.minestuck.block.machine.MachineBlock;
 import com.mraof.minestuck.blockentity.machine.MachineProcessBlockEntity;
-import com.mraof.minestuck.blockentity.machine.UraniumPowered;
-import com.mraof.minestuck.item.MSItems;
-import com.mraof.minestuck.util.ExtraModTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,11 +28,13 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -41,9 +43,16 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
-public class BlasterBlockEntity extends MachineProcessBlockEntity implements MenuProvider, UraniumPowered {
+public class BlasterBlockEntity extends MachineProcessBlockEntity implements MenuProvider {
     public static final String TITLE = "container.extrastuck.blaster";
     public static final int SLOT_FUEL = 0;
+
+    private final IUraniumHandler uraniumHandler = new SimpleUraniumHandler(ConfigServer.BLASTER_URANIUM_STORAGE::get,
+            () -> this.fuel, fuel -> this.fuel = fuel) {
+        public boolean canExtractUranium() {
+            return false;
+        }
+    };
 
     private final DataSlot fuelHolder = new DataSlot() {
         public int get() {
@@ -51,11 +60,11 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
         };
 
         public void set(int value) {
-            fuel = (short) value;
+            fuel = value;
         };
     };
 
-    private short fuel = 0;
+    private int fuel = 0;
     private boolean pulsed = false;
     private boolean particles = false;
 
@@ -67,7 +76,10 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
     protected void loadAdditional(CompoundTag nbt, Provider registries) {
         super.loadAdditional(nbt, registries);
 
-        fuel = nbt.getShort("fuel");
+        if (nbt.contains("fuel", 2))
+            fuel = nbt.getShort("fuel");
+        else
+            fuel = nbt.getInt("fuel");
         pulsed = nbt.getBoolean("pulsed");
         if (nbt.contains("particles"))
             particles = nbt.getBoolean("particles");
@@ -77,7 +89,7 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
     protected void saveAdditional(CompoundTag nbt, Provider registries) {
         super.saveAdditional(nbt, registries);
 
-        nbt.putShort("fuel", fuel);
+        nbt.putInt("fuel", fuel);
         nbt.putBoolean("pulsed", pulsed);
         if (particles)
             nbt.putBoolean("particles", particles);
@@ -85,6 +97,10 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
 
     public IItemHandler getItemHandler(@Nullable Direction side) {
         return new FuellessWrapper(itemHandler, SLOT_FUEL, SLOT_FUEL + 1, SLOT_FUEL);
+    }
+
+    public IUraniumHandler getUraniumHandler(@Nullable Direction side) {
+        return uraniumHandler;
     }
 
     private static int distInDirection(Level level, BlockPos from, Direction direction, int max) {
@@ -164,23 +180,37 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
         }
     }
 
-    public boolean canRefuel() {
-        return fuel <= ConfigServer.BLASTER_URANIUM_STORAGE.get() - FUEL_INCREASE;
+    public boolean canRefuel(ItemStack fuelStack) {
+        int amount = UraniumPower.getUraniumPower(fuelStack);
+        return fuel + amount <= ConfigServer.CHARGER_URANIUM_STORAGE.get();
+    }
+
+    public void addFuel(ItemStack fuelStack) {
+        int amount = UraniumPower.getUraniumPower(fuelStack);
+        fuel += amount;
     }
 
     // MachineProcessBlockEntity
     @Override
     protected void tick() {
-        if (canRefuel() && itemHandler.getStackInSlot(SLOT_FUEL).is(ExtraModTags.Items.URANIUM_CHUNKS)) {
-            addFuel((short) FUEL_INCREASE);
-            itemHandler.extractItem(SLOT_FUEL, 1, false);
+        ItemStack fuel = itemHandler.getStackInSlot(SLOT_FUEL);
+        Level l = level;
+
+        if (canRefuel(fuel)) {
+            addFuel(fuel);
+            ItemStack taken = itemHandler.extractItem(SLOT_FUEL, 1, false);
+            ItemStack remainder = taken.getCraftingRemainingItem();
+            if (!remainder.isEmpty() && l != null) {
+                ItemEntity remainderEntity = new ItemEntity(l, worldPosition.getX(), worldPosition.getY(),
+                        worldPosition.getZ(), remainder);
+                l.addFreshEntity(remainderEntity);
+            }
         }
 
-        Level l = level;
         if (l != null) {
             boolean prev = pulsed;
             if (l.hasNeighborSignal(worldPosition)) {
-                if (!pulsed && fuel > 0) {
+                if (!pulsed && this.fuel > 0) {
                     shoot(l.getBestNeighborSignal(worldPosition));
                     particles = true;
                 }
@@ -211,7 +241,7 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
 
     @Override
     protected ItemStackHandler createItemHandler() {
-        return new BEStackHandler(1, (slot, stack) -> slot == SLOT_FUEL ? (stack.is(MSItems.RAW_URANIUM)) : false,
+        return new BEStackHandler(1, (slot, stack) -> slot == SLOT_FUEL ? UraniumPower.hasUraniumPower(stack) : false,
                 this);
     }
 
@@ -231,16 +261,5 @@ public class BlasterBlockEntity extends MachineProcessBlockEntity implements Men
 
         return new BlasterMenu(containerId, playerInventory, itemHandler, fuelHolder,
                 ContainerLevelAccess.create(l, worldPosition), worldPosition);
-    }
-
-    // UraniumPowered
-    @Override
-    public boolean atMaxFuel() {
-        return fuel >= ConfigServer.BLASTER_URANIUM_STORAGE.get();
-    }
-
-    @Override
-    public void addFuel(short amount) {
-        fuel += amount;
     }
 }

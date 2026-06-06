@@ -6,6 +6,7 @@ import java.util.Map;
 import com.medsal15.ESAttachements;
 import com.medsal15.ESAttachements.ESGristLayerInfo;
 import com.medsal15.ExtraStuck;
+import com.medsal15.blockentities.BlasterBlockEntity;
 import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
@@ -39,6 +40,7 @@ import com.medsal15.network.ESPackets.MastermindReset;
 import com.medsal15.network.ESPackets.SyncBoondollarValues;
 import com.medsal15.network.ESPackets.ToggleMode;
 import com.medsal15.utils.ESTags;
+import com.mraof.minestuck.api.uranium.UraniumCapabilities;
 import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.item.BoondollarsItem;
 import com.mraof.minestuck.item.MSItemTypes;
@@ -129,6 +131,15 @@ public final class CommonEvents {
 
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ESBlockEntities.REACTOR.get(),
                 ReactorBlockEntity::getFluidHandler);
+
+        event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.REACTOR.get(),
+                ReactorBlockEntity::getUraniumHandler);
+        event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.PRINTER.get(),
+                PrinterBlockEntity::getUraniumHandler);
+        event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.CHARGER.get(),
+                ChargerBlockEntity::getUraniumHandler);
+        event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.BLASTER.get(),
+                BlasterBlockEntity::getUraniumHandler);
 
         if (ESCompatUtils.isLoaded("curios")) {
             CuriosCapabilities.registerCuriosCapabilities(event);

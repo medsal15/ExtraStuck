@@ -7,9 +7,11 @@ import com.medsal15.blockentities.handlers.BEStackHandler;
 import com.medsal15.blockentities.handlers.FuellessWrapper;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.menus.ChargerMenu;
+import com.mraof.minestuck.api.uranium.IUraniumHandler;
+import com.mraof.minestuck.api.uranium.SimpleUraniumHandler;
+import com.mraof.minestuck.api.uranium.UraniumCapabilities;
+import com.mraof.minestuck.api.uranium.UraniumPower;
 import com.mraof.minestuck.blockentity.machine.MachineProcessBlockEntity;
-import com.mraof.minestuck.blockentity.machine.UraniumPowered;
-import com.mraof.minestuck.util.ExtraModTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,11 +23,13 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -34,7 +38,7 @@ import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
-public class ChargerBlockEntity extends MachineProcessBlockEntity implements MenuProvider, UraniumPowered {
+public class ChargerBlockEntity extends MachineProcessBlockEntity implements MenuProvider {
     public static final String TITLE = "container.extrastuck.charger";
     public static final int SLOT_IN = 0, SLOT_FUEL = 1;
 
@@ -44,7 +48,7 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
         };
 
         public void set(int value) {
-            fuel = (short) value;
+            fuel = value;
         };
     };
     private final DataSlot chargeHolder = new DataSlot() {
@@ -66,7 +70,14 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
         };
     };
 
-    private short fuel = 0;
+    private final IUraniumHandler uraniumHandler = new SimpleUraniumHandler(ConfigServer.CHARGER_URANIUM_STORAGE::get,
+            () -> this.fuel, fuel -> this.fuel = fuel) {
+        public boolean canExtractUranium() {
+            return false;
+        }
+    };
+
+    private int fuel = 0;
     private int charge = 0;
     private boolean charging = true;
 
@@ -78,7 +89,10 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
     protected void loadAdditional(CompoundTag nbt, Provider pRegistries) {
         super.loadAdditional(nbt, pRegistries);
 
-        fuel = nbt.getShort("fuel");
+        if (nbt.contains("fuel", 2))
+            fuel = nbt.getShort("fuel");
+        else
+            fuel = nbt.getInt("fuel");
         charge = nbt.getInt("charge");
         charging = nbt.getBoolean("charging");
     }
@@ -87,7 +101,7 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
     protected void saveAdditional(CompoundTag nbt, Provider provider) {
         super.saveAdditional(nbt, provider);
 
-        nbt.putShort("fuel", fuel);
+        nbt.putInt("fuel", fuel);
         nbt.putInt("charge", charge);
         nbt.putBoolean("charging", charging);
     }
@@ -104,6 +118,10 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
         if (side == Direction.UP)
             return null;
         return new EnergyStorage();
+    }
+
+    public IUraniumHandler getUraniumHandler(@Nullable Direction side) {
+        return uraniumHandler;
     }
 
     private class EnergyStorage implements IEnergyStorage {
@@ -152,12 +170,18 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
         }
     }
 
-    public boolean canRefuel() {
-        return fuel <= ConfigServer.CHARGER_URANIUM_STORAGE.get() - FUEL_INCREASE;
+    public boolean canRefuel(ItemStack fuelStack) {
+        int amount = UraniumPower.getUraniumPower(fuelStack);
+        return fuel + amount <= ConfigServer.CHARGER_URANIUM_STORAGE.get();
     }
 
     public boolean canRecharge() {
         return charge <= ConfigServer.CHARGER_FE_STORAGE.get() - ConfigServer.CHARGER_CHARGE_TICK.get();
+    }
+
+    public void addFuel(ItemStack fuelStack) {
+        int amount = UraniumPower.getUraniumPower(fuelStack);
+        fuel += amount;
     }
 
     public int comparatorValue() {
@@ -207,33 +231,60 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
     @Override
     protected void tick() {
         boolean changed = false;
+        ItemStack fuel = itemHandler.getStackInSlot(SLOT_FUEL);
+
         // Refuel
-        if (canRefuel() && itemHandler.getStackInSlot(SLOT_FUEL).is(ExtraModTags.Items.URANIUM_CHUNKS)) {
-            addFuel((short) FUEL_INCREASE);
-            itemHandler.extractItem(SLOT_FUEL, 1, false);
+        if (canRefuel(fuel)) {
+            addFuel(fuel);
+            Level l = level;
+            ItemStack taken = itemHandler.extractItem(SLOT_FUEL, 1, false);
+            ItemStack remainder = taken.getCraftingRemainingItem();
+            if (!remainder.isEmpty() && l != null) {
+                ItemEntity remainderEntity = new ItemEntity(l, worldPosition.getX(), worldPosition.getY(),
+                        worldPosition.getZ(), remainder);
+                l.addFreshEntity(remainderEntity);
+            }
             changed = true;
         }
 
         // Recharge
-        if (canRecharge() && fuel > 0) {
+        if (canRecharge() && this.fuel > 0) {
             charge += ConfigServer.CHARGER_CHARGE_TICK.get();
-            fuel--;
+            this.fuel--;
             changed = true;
         }
 
         // (Dis)Charge item
-        if (!itemHandler.getStackInSlot(SLOT_IN).isEmpty()) {
+        ItemStack toCharge = itemHandler.getStackInSlot(SLOT_IN);
+        if (!toCharge.isEmpty()) {
             @SuppressWarnings("null")
-            IEnergyStorage handler = Capabilities.EnergyStorage.ITEM.getCapability(itemHandler.getStackInSlot(SLOT_IN),
-                    null);
-
-            if (handler != null) {
-                if (charging && handler.canReceive() && charge > 0) {
-                    charge -= handler.receiveEnergy(Math.min(charge, ConfigServer.CHARGER_TRANSFER_TICK.get()), false);
+            IEnergyStorage energyHandler = Capabilities.EnergyStorage.ITEM.getCapability(toCharge, null);
+            if (energyHandler != null) {
+                if (charging && energyHandler.canReceive() && charge > 0) {
+                    charge -= energyHandler.receiveEnergy(Math.min(charge, ConfigServer.CHARGER_TRANSFER_TICK.get()),
+                            false);
                     changed = true;
-                } else if (!charging && handler.canExtract() && charge < ConfigServer.CHARGER_FE_STORAGE.get()) {
+                } else if (!charging && energyHandler.canExtract()
+                        && charge < ConfigServer.CHARGER_FE_STORAGE.get()) {
                     int missing = ConfigServer.CHARGER_FE_STORAGE.get() - charge;
-                    charge += handler.extractEnergy(Math.min(missing, ConfigServer.CHARGER_TRANSFER_TICK.get()), false);
+                    charge += energyHandler.extractEnergy(Math.min(missing, ConfigServer.CHARGER_TRANSFER_TICK.get()),
+                            false);
+                    changed = true;
+                }
+            }
+
+            @SuppressWarnings("null")
+            IUraniumHandler uraniumHandler = UraniumCapabilities.ITEM.getCapability(toCharge, null);
+            if (uraniumHandler != null) {
+                if (charging && uraniumHandler.canReceiveUranium() && this.fuel > 0) {
+                    this.fuel -= uraniumHandler.receiveUranium(
+                            Math.min(this.fuel, ConfigServer.CHARGER_TRANSFER_TICK_URANIUM.get()), false);
+                    changed = true;
+                } else if (!charging && uraniumHandler.canExtractUranium()
+                        && this.fuel < ConfigServer.CHARGER_URANIUM_STORAGE.get()) {
+                    int missing = ConfigServer.CHARGER_URANIUM_STORAGE.get() - this.fuel;
+                    this.fuel += uraniumHandler
+                            .extractUranium(Math.min(missing, ConfigServer.CHARGER_TRANSFER_TICK_URANIUM.get()), false);
                     changed = true;
                 }
             }
@@ -252,7 +303,7 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
                 case SLOT_IN:
                     return Capabilities.EnergyStorage.ITEM.getCapability(stack, null) != null;
                 case SLOT_FUEL:
-                    return stack.is(ExtraModTags.Items.URANIUM_CHUNKS);
+                    return UraniumPower.hasUraniumPower(stack);
                 default:
                     return false;
             }
@@ -275,16 +326,5 @@ public class ChargerBlockEntity extends MachineProcessBlockEntity implements Men
 
         return new ChargerMenu(window, playerInventory, itemHandler, fuelHolder, chargeHolder, modeHolder,
                 ContainerLevelAccess.create(l, worldPosition), worldPosition);
-    }
-
-    // UraniumPowered
-    @Override
-    public boolean atMaxFuel() {
-        return fuel >= ConfigServer.CHARGER_URANIUM_STORAGE.get();
-    }
-
-    @Override
-    public void addFuel(short amount) {
-        fuel += amount;
     }
 }

@@ -15,6 +15,9 @@ import com.mraof.minestuck.api.alchemy.GristSet;
 import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.api.alchemy.GristTypes;
 import com.mraof.minestuck.api.alchemy.recipe.GristCostRecipe;
+import com.mraof.minestuck.api.uranium.IUraniumHandler;
+import com.mraof.minestuck.api.uranium.SimpleUraniumHandler;
+import com.mraof.minestuck.api.uranium.UraniumPower;
 import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.block.machine.MachineBlock;
 import com.mraof.minestuck.blockentity.IColored;
@@ -22,14 +25,12 @@ import com.mraof.minestuck.blockentity.machine.GristWildcardHolder;
 import com.mraof.minestuck.blockentity.machine.IOwnable;
 import com.mraof.minestuck.blockentity.machine.MachineProcessBlockEntity;
 import com.mraof.minestuck.blockentity.machine.ProgressTracker;
-import com.mraof.minestuck.blockentity.machine.UraniumPowered;
 import com.mraof.minestuck.event.AlchemyEvent;
 import com.mraof.minestuck.item.components.EncodedItemComponent;
 import com.mraof.minestuck.player.GristCache;
 import com.mraof.minestuck.player.IdentifierHandler;
 import com.mraof.minestuck.player.PlayerIdentifier;
 import com.mraof.minestuck.util.ColorHandler;
-import com.mraof.minestuck.util.ExtraModTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -45,6 +46,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -60,12 +62,19 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 
 public class PrinterBlockEntity extends MachineProcessBlockEntity
-        implements IOwnable, GristWildcardHolder, MenuProvider, IColored, UraniumPowered {
+        implements IOwnable, GristWildcardHolder, MenuProvider, IColored {
     public static final String TITLE = "container.extrastuck.printer";
     public static final String TITLE_DISPRINTER = "container.extrastuck.disprinter";
     public static final int SLOT_IN = 0, SLOT_OUT = 1, SLOT_FUEL = 2;
     public static final int MAX_PROGRESS = 200;
-    public static final short MAX_FUEL = 128;
+    public static final int MAX_FUEL = 128;
+
+    private final IUraniumHandler uraniumHandler = new SimpleUraniumHandler(() -> MAX_FUEL, () -> this.fuel,
+            fuel -> this.fuel = fuel) {
+        public boolean canExtractUranium() {
+            return false;
+        }
+    };
 
     private final ProgressTracker progressTracker = new ProgressTracker(ProgressTracker.RunType.ONCE_OR_LOOPING,
             MAX_PROGRESS, this::setChanged, this::contentsValid);
@@ -87,7 +96,7 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
         };
 
         public void set(int value) {
-            fuel = (short) value;
+            fuel = value;
         };
     };
 
@@ -95,7 +104,7 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
     @Nullable
     private PlayerIdentifier owner;
     private GristType wildcard = GristTypes.BUILD.get();
-    private short fuel = 0;
+    private int fuel = 0;
 
     public PrinterBlockEntity(BlockPos pos, BlockState state) {
         super(ESBlockEntities.PRINTER.get(), pos, state);
@@ -107,7 +116,10 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
 
         progressTracker.load(nbt);
 
-        fuel = nbt.getShort("fuel");
+        if (nbt.contains("fuel", 2))
+            fuel = nbt.getShort("fuel");
+        else
+            fuel = nbt.getInt("fuel");
         wildcard = GristHelper.parseGristType(nbt.get("wildcard")).orElseGet(GristTypes.BUILD);
         owner = IdentifierHandler.load(nbt, "owner").result().orElse(null);
     }
@@ -118,7 +130,7 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
 
         progressTracker.save(nbt);
 
-        nbt.putShort("fuel", fuel);
+        nbt.putInt("fuel", fuel);
         nbt.put("wildcard", GristHelper.encodeGristType(wildcard));
         if (owner != null)
             owner.saveToNBT(nbt, "owner");
@@ -134,6 +146,10 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
         return new FuellessWrapper(itemHandler, SLOT_OUT, SLOT_FUEL + 1, SLOT_FUEL);
     }
 
+    public IUraniumHandler getUraniumHandler(@Nullable Direction side) {
+        return uraniumHandler;
+    }
+
     public int comparatorValue() {
         // Unlike an alchemiter, we just want to know how full the output is
         ItemStack output = itemHandler.getStackInSlot(SLOT_OUT);
@@ -142,8 +158,14 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
         return Math.floorDiv(output.getCount() * 14, output.getMaxStackSize()) + 1;
     }
 
-    public boolean canRefuel() {
-        return fuel <= MAX_FUEL - FUEL_INCREASE;
+    public boolean canRefuel(ItemStack fuelStack) {
+        int amount = UraniumPower.getUraniumPower(fuelStack);
+        return fuel + amount <= MAX_FUEL;
+    }
+
+    public void addFuel(ItemStack fuelStack) {
+        int amount = UraniumPower.getUraniumPower(fuelStack);
+        fuel += amount;
     }
 
     // BlockEntity
@@ -192,18 +214,25 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
     // MachineProcessBlockEntity
     @Override
     protected void tick() {
+        ItemStack fuel = itemHandler.getStackInSlot(SLOT_FUEL);
+        Level l = level;
         // Refuel
-        if (canRefuel() && itemHandler.getStackInSlot(SLOT_FUEL).is(ExtraModTags.Items.URANIUM_CHUNKS)) {
-            addFuel((short) FUEL_INCREASE);
-            itemHandler.extractItem(SLOT_FUEL, 1, false);
+        if (canRefuel(fuel)) {
+            addFuel(fuel);
+            ItemStack taken = itemHandler.extractItem(SLOT_FUEL, 1, false);
+            ItemStack remainder = taken.getCraftingRemainingItem();
+            if (!remainder.isEmpty() && l != null) {
+                ItemEntity remainderEntity = new ItemEntity(l, worldPosition.getX(), worldPosition.getY(),
+                        worldPosition.getZ(), remainder);
+                l.addFreshEntity(remainderEntity);
+            }
         }
 
-        Level l = level;
         if (l != null && l.hasNeighborSignal(getBlockPos())) {
             // Enable on redstone signal
             progressTracker.set(ProgressTracker.RUN_INDEX, 1);
             progressTracker.set(ProgressTracker.LOOPING_INDEX, 1);
-        } else if (!this.contentsValid() || fuel <= 0) {
+        } else if (!this.contentsValid() || this.fuel <= 0) {
             // Halt if it can't work
             progressTracker.set(ProgressTracker.RUN_INDEX, 0);
             progressTracker.set(ProgressTracker.LOOPING_INDEX, 0);
@@ -226,7 +255,7 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
                         case SLOT_IN:
                             return stack.getItem() == MSBlocks.CRUXITE_DOWEL.get().asItem();
                         case SLOT_FUEL:
-                            return stack.is(ExtraModTags.Items.URANIUM_CHUNKS);
+                            return UraniumPower.hasUraniumPower(stack);
                         default:
                             return false;
                     }
@@ -348,16 +377,5 @@ public class PrinterBlockEntity extends MachineProcessBlockEntity
     @Override
     public int getColor() {
         return ColorHandler.getColorFromStack(itemHandler.getStackInSlot(SLOT_IN));
-    }
-
-    // UraniumPowered
-    @Override
-    public boolean atMaxFuel() {
-        return fuel >= MAX_FUEL;
-    }
-
-    @Override
-    public void addFuel(short amount) {
-        fuel += amount;
     }
 }

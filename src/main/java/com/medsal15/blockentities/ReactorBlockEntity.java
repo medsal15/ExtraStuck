@@ -11,8 +11,10 @@ import com.medsal15.config.ConfigServer;
 import com.medsal15.datamaps.ReactorFuel;
 import com.medsal15.menus.ReactorMenu;
 import com.medsal15.utils.ESTags;
+import com.mraof.minestuck.api.uranium.IUraniumHandler;
+import com.mraof.minestuck.api.uranium.SimpleUraniumHandler;
+import com.mraof.minestuck.api.uranium.UraniumCapabilities;
 import com.mraof.minestuck.blockentity.machine.MachineProcessBlockEntity;
-import com.mraof.minestuck.blockentity.machine.UraniumPowered;
 import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.BlockPos;
@@ -96,6 +98,13 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
             if (!fluid.isEmpty()) {
                 fluid.setAmount(value);
             }
+        };
+    };
+
+    private final IUraniumHandler uraniumHandler = new SimpleUraniumHandler(ConfigServer.REACTOR_URANIUM_STORAGE::get,
+            () -> this.uranium, uranium -> this.uranium = uranium) {
+        public boolean canReceiveUranium() {
+            return false;
         };
     };
 
@@ -418,9 +427,15 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
                     continue;
 
                 // Send uranium power to neighbors
-                if (uranium > 0 && neighbe instanceof UraniumPowered powered && !powered.atMaxFuel()) {
-                    powered.addFuel((short) Math.min(uranium, ConfigServer.REACTOR_MAX_URANIUM_TRANSFER.get()));
-                    uranium--;
+                if (uranium > 0) {
+                    int toSend = Math.min(uranium, ConfigServer.REACTOR_MAX_URANIUM_TRANSFER.get());
+                    @Nullable
+                    IUraniumHandler capability = UraniumCapabilities.BLOCK.getCapability(l, pos, neighstate, neighbe,
+                            dir.getOpposite());
+                    if (capability != null && capability.canReceiveUranium()) {
+                        int sent = capability.receiveUranium(toSend, false);
+                        uranium -= sent;
+                    }
                 }
 
                 // Send FE to neighbors
@@ -466,5 +481,9 @@ public class ReactorBlockEntity extends MachineProcessBlockEntity implements Men
             return null;
         return new ReactorMenu(window, playerInventory, itemHandler, fuelHolder, maxFuelHolder, uraniumHolder,
                 chargeHolder, fluidAmountHolder, ContainerLevelAccess.create(l, worldPosition), worldPosition);
+    }
+
+    public IUraniumHandler getUraniumHandler(@Nullable Direction side) {
+        return uraniumHandler;
     }
 }
