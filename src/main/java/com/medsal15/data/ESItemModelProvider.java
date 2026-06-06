@@ -329,6 +329,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.HEAVY_METAL_RING.get());
         basicItem(ESItems.GAMBLERS_RING.get());
         basicItem(ESItems.FROST_RING.get());
+        basicItem(ESItems.FIRE_RING.get());
         // Visions
         modelVision(ESItems.VISION_BLANK, "blank");
         modelVision(ESItems.VISION_DULL, "dull");

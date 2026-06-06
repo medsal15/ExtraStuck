@@ -7,6 +7,7 @@ import java.util.Optional;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.tools.IVision;
@@ -23,8 +24,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
@@ -88,6 +89,40 @@ public class CuriosCapabilities {
                 return map;
             };
         }, ESItems.HEAVY_METAL_RING);
+
+        event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+            public ItemStack getStack() {
+                return stack;
+            };
+
+            public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
+                    SlotContext slotContext, ResourceLocation id) {
+                Multimap<Holder<Attribute>, AttributeModifier> map = LinkedHashMultimap.create();
+                if (ESCompatUtils.isLoaded("irons_spellbooks")) {
+                    map.put(io.redspace.ironsspellbooks.api.registry.AttributeRegistry.ICE_SPELL_POWER,
+                            new AttributeModifier(ExtraStuck.modid("frost_ring_frost_spell_power"), .1f,
+                                    Operation.ADD_MULTIPLIED_BASE));
+                }
+                return map;
+            };
+        }, ESItems.FROST_RING);
+
+        event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+            public ItemStack getStack() {
+                return stack;
+            };
+
+            public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
+                    SlotContext slotContext, ResourceLocation id) {
+                Multimap<Holder<Attribute>, AttributeModifier> map = LinkedHashMultimap.create();
+                if (ESCompatUtils.isLoaded("irons_spellbooks")) {
+                    map.put(io.redspace.ironsspellbooks.api.registry.AttributeRegistry.FIRE_SPELL_POWER,
+                            new AttributeModifier(ExtraStuck.modid("fire_ring_fire_spell_power"), .1f,
+                                    Operation.ADD_MULTIPLIED_BASE));
+                }
+                return map;
+            };
+        }, ESItems.FIRE_RING);
 
         event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
             public ItemStack getStack() {

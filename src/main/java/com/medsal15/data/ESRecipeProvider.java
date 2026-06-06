@@ -1550,6 +1550,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.FROST_RING)
                 .grist(GristTypes.COBALT, 400).grist(GristTypes.CHALK, 40)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.FIRE_RING)
+                .input(ESItems.METAL_RING).and().input(Items.LAVA_BUCKET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.FIRE_RING)
+                .grist(GristTypes.TAR, 260).grist(GristTypes.GARNET, 40)
+                .build(output);
         // #endregion Curios
 
         CombinationRecipeBuilder.of(CreateESItems.GRIST_FILTER)

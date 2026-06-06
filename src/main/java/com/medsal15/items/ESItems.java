@@ -928,6 +928,8 @@ public final class ESItems {
             new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> FROST_RING = ITEMS.registerItem("frost_ring", Item::new,
             new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> FIRE_RING = ITEMS.registerItem("fire_ring", Item::new,
+            new Item.Properties().stacksTo(1));
     // TODO thermal ring (consumes burn/freeze time to increase damage & increases
     // fire/frost spell power (with iss))
 
@@ -1332,6 +1334,7 @@ public final class ESItems {
         list.add(HEAVY_METAL_RING);
         list.add(GAMBLERS_RING);
         list.add(FROST_RING);
+        list.add(FIRE_RING);
 
         return list;
     }

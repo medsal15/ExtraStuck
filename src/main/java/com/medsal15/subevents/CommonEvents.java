@@ -503,6 +503,7 @@ public final class CommonEvents {
     @SubscribeEvent
     public static void onDamageDealtPost(final LivingDamageEvent.Post event) {
         handleFrostRing(event);
+        handleFireRing(event);
     }
 
     /**
@@ -563,6 +564,25 @@ public final class CommonEvents {
             target.setTicksFrozen(Math.min(400, target.getTicksFrozen() + freeze * 40));
             target.setIsInPowderSnow(true);
             target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, freeze - 1));
+        }
+    }
+
+    private static void handleFireRing(final LivingDamageEvent.Post event) {
+        Entity entity = event.getSource().getEntity();
+        if (!(entity instanceof LivingEntity attacker))
+            return;
+
+        int fire = 0;
+        if (attacker.getMainHandItem().is(ESItems.FIRE_RING))
+            fire++;
+        if (attacker.getOffhandItem().is(ESItems.FIRE_RING))
+            fire++;
+        if (ESCompatUtils.isLoaded("curios"))
+            fire += ESCuriosUtils.countWornItems(attacker, stack -> stack.is(ESItems.FIRE_RING));
+
+        if (fire > 0) {
+            LivingEntity target = event.getEntity();
+            target.igniteForSeconds(fire * 10);
         }
     }
 }

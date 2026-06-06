@@ -1,0 +1,23 @@
+{
+    "name": "Fire Ring",
+    "icon": "extrastuck:fire_ring",
+    "category": "extrastuck:curios",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:fire_ring"
+            },
+            "text": "A ring covered in flames. How in the world?$(br2)$(3)$(l)Special:$() Attacks burn enemies when held (or equipped)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine an Iron Ring and a Lava Bucket in a Totem Lathe.",
+            "left": "minecraft:lava_bucket",
+            "mode": "&&",
+            "right": "extrastuck:metal_ring",
+            "result": "extrastuck:fire_ring"
+        }
+    ]
+}
