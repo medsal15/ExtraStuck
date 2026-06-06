@@ -60,6 +60,7 @@ public class RainArrow extends AbstractArrow {
                             && owner instanceof LivingEntity) {
                         AbstractArrow arrow = arrowItem.createArrow(level(), new ItemStack(arrowItem),
                                 (LivingEntity) owner, getWeaponItem());
+                        arrow.setPos(x, y, z);
                         arrow.pickup = Pickup.CREATIVE_ONLY;
                         projectile = arrow;
                     } else {
