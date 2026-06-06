@@ -1557,6 +1557,14 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.FIRE_RING)
                 .grist(GristTypes.TAR, 260).grist(GristTypes.GARNET, 40)
                 .build(output);
+
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                Ingredient.of(ESItems.FROST_RING), Ingredient.of(ESItems.FIRE_RING),
+                RecipeCategory.COMBAT,
+                ESItems.THERMAL_RING.get())
+                .unlocks("frost_ring", has(ESItems.FROST_RING))
+                .unlocks("fire_ring", has(ESItems.FIRE_RING))
+                .save(output, modid("smithing/thermal_ring"));
         // #endregion Curios
 
         CombinationRecipeBuilder.of(CreateESItems.GRIST_FILTER)

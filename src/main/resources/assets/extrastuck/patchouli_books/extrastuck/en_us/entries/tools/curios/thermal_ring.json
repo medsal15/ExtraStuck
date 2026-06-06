@@ -1,0 +1,20 @@
+{
+    "name": "Thermal Ring",
+    "icon": "extrastuck:thermal_ring",
+    "category": "extrastuck:curios",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:thermal_ring"
+            },
+            "text": "A ring both covered in fire and melting ice. How does that even work?$(br2)$(3)$(l)Special:$() Extinguishes and unfrosts enemies, dealing extra damage based on time left for both of these."
+        },
+        {
+            "type": "patchouli:smithing",
+            "recipe": "extrastuck:smithing/thermal_ring",
+            "text": "Combine your Fire Ring and Frost Ring in a smithing table."
+        }
+    ]
+}

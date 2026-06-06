@@ -509,12 +509,7 @@ public final class CommonEvents {
     @SubscribeEvent
     public static void onDamageDealtPre(final LivingDamageEvent.Pre event) {
         handleGambersRing(event);
-    }
-
-    @SubscribeEvent
-    public static void onDamageDealtPost(final LivingDamageEvent.Post event) {
-        handleFrostRing(event);
-        handleFireRing(event);
+        handleThermalRing(event);
     }
 
     /**
@@ -555,6 +550,39 @@ public final class CommonEvents {
         } else {
             event.setNewDamage(event.getNewDamage() / (gambling + 1));
         }
+    }
+
+    private static void handleThermalRing(final LivingDamageEvent.Pre event) {
+        Entity entity = event.getSource().getEntity();
+        if (!(entity instanceof LivingEntity attacker))
+            return;
+
+        boolean thermal = attacker.getMainHandItem().is(ESItems.THERMAL_RING)
+                || attacker.getOffhandItem().is(ESItems.THERMAL_RING);
+        if (ESCompatUtils.isLoaded("curios"))
+            thermal |= ESCuriosUtils.wearsItem(attacker, stack -> stack.is(ESItems.THERMAL_RING));
+
+        if (!thermal)
+            return;
+
+        LivingEntity target = event.getEntity();
+        float bonus = 1;
+        if (target.getTicksFrozen() > 40)
+            bonus++;
+        if (target.getRemainingFireTicks() > 20)
+            bonus++;
+        if (bonus == 1)
+            return;
+
+        target.setTicksFrozen(0);
+        target.extinguishFire();
+        event.setNewDamage(event.getNewDamage() * bonus);
+    }
+
+    @SubscribeEvent
+    public static void onDamageDealtPost(final LivingDamageEvent.Post event) {
+        handleFrostRing(event);
+        handleFireRing(event);
     }
 
     private static void handleFrostRing(final LivingDamageEvent.Post event) {

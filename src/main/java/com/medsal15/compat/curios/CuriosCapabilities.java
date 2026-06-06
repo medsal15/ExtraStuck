@@ -129,6 +129,26 @@ public class CuriosCapabilities {
                 return stack;
             };
 
+            public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
+                    SlotContext slotContext, ResourceLocation id) {
+                Multimap<Holder<Attribute>, AttributeModifier> map = LinkedHashMultimap.create();
+                if (ESCompatUtils.isLoaded("irons_spellbooks")) {
+                    map.put(io.redspace.ironsspellbooks.api.registry.AttributeRegistry.FIRE_SPELL_POWER,
+                            new AttributeModifier(ExtraStuck.modid("thermal_ring_fire_spell_power"), .1f,
+                                    Operation.ADD_MULTIPLIED_BASE));
+                    map.put(io.redspace.ironsspellbooks.api.registry.AttributeRegistry.ICE_SPELL_POWER,
+                            new AttributeModifier(ExtraStuck.modid("thermal_ring_ice_spell_power"), .1f,
+                                    Operation.ADD_MULTIPLIED_BASE));
+                }
+                return map;
+            };
+        }, ESItems.THERMAL_RING);
+
+        event.registerItem(CuriosCapability.ITEM, (stack, context) -> new ICurio() {
+            public ItemStack getStack() {
+                return stack;
+            };
+
             public void curioTick(SlotContext slotContext) {
                 if (!(slotContext.entity() instanceof Player player) || player.level().isClientSide
                         || player.getCooldowns().isOnCooldown(stack.getItem()))

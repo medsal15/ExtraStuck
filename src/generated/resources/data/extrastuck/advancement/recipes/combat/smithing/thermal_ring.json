@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "fire_ring": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:fire_ring"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "frost_ring": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extrastuck:frost_ring"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extrastuck:smithing/thermal_ring"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "frost_ring",
+      "fire_ring"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extrastuck:smithing/thermal_ring"
+    ]
+  }
+}

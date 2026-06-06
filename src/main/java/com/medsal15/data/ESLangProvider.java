@@ -646,6 +646,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.GAMBLERS_RING, "Feelin' lucky?");
         addItem(ESItems.FROST_RING, "Frost Ring");
         addItem(ESItems.FIRE_RING, "Fire Ring");
+        addItem(ESItems.THERMAL_RING, "Thermal Ring");
         // Visions
         add(VISION_HINT_ONE, "Wearing more than 1 vision at once will cause interferences between them");
         add(VISION_HINT_MANY, "Wearing more than %s visions at once will cause interferences between them");

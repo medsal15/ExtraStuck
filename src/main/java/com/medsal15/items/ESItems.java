@@ -930,8 +930,8 @@ public final class ESItems {
             new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> FIRE_RING = ITEMS.registerItem("fire_ring", Item::new,
             new Item.Properties().stacksTo(1));
-    // TODO thermal ring (consumes burn/freeze time to increase damage & increases
-    // fire/frost spell power (with iss))
+    public static final DeferredItem<Item> THERMAL_RING = ITEMS.registerItem("thermal_ring", Item::new,
+            new Item.Properties().stacksTo(1));
 
     // #region Visions
     public static final DeferredItem<Item> VISION_BLANK = ITEMS.registerItem("vision_blank", UntunedVisionItem::new,
@@ -1335,6 +1335,7 @@ public final class ESItems {
         list.add(GAMBLERS_RING);
         list.add(FROST_RING);
         list.add(FIRE_RING);
+        list.add(THERMAL_RING);
 
         return list;
     }
