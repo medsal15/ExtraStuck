@@ -49,14 +49,17 @@ public final class ESDataComponents {
 
     // Shields
     /** Flame shield burn duration in ticks */
+    @Deprecated
     public static final Supplier<DataComponentType<Integer>> BURN_DURATION = DATA_COMPONENTS
             .registerComponentType(
                     "burn_duration", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
     /** Flux shield RF cost per damage */
+    @Deprecated
     public static final Supplier<DataComponentType<Integer>> FLUX_MULTIPLIER = DATA_COMPONENTS
             .registerComponentType(
                     "flux_multiplier", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
     /** Thorn shield damage */
+    @Deprecated
     public static final Supplier<DataComponentType<Float>> SHIELD_DAMAGE = DATA_COMPONENTS
             .registerComponentType(
                     "shield_damage",

@@ -16,6 +16,7 @@ import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.computer.ESProgramTypes;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.data.ESLootTableProvider.TableSubProvider;
 import com.medsal15.entities.ESEntities;
@@ -153,8 +154,8 @@ public final class ESItems {
 
     // #region Shields
     public static final DeferredItem<Item> FLAME_SHIELD = ITEMS.registerItem("flame_shield",
-            p -> new ESShield(new ESShield.Builder().addBlock(IBlock::burn),
-                    p.durability(80).component(ESDataComponents.BURN_DURATION, 100)));
+            p -> new ESShield(new ESShield.Builder().addBlock(IBlock.burnFor(ConfigServer.FLAME_SHIELD_BURN)),
+                    p.durability(80)));
     public static final DeferredItem<Item> WOODEN_SHIELD = ITEMS.registerItem("wooden_shield",
             p -> new ESShield(
                     new ESShield.Builder()
@@ -181,7 +182,8 @@ public final class ESItems {
                             .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_IRON)),
                     p.durability(328)));
     public static final DeferredItem<Item> CAPITASHIELD = ITEMS.registerItem("capitashield",
-            p -> new ESShield(new ESShield.Builder().addBlock(IBlock::consumeBoondollars),
+            p -> new ESShield(
+                    new ESShield.Builder().addBlock(IBlock.consumeBoondollars(ConfigServer.CAPITASHIELD_DAMAGE_COST)),
                     p.durability(130)));
     public static final DeferredItem<Item> IRON_SHIELD = ITEMS.registerItem("iron_shield",
             p -> new ESShield(
@@ -239,29 +241,36 @@ public final class ESItems {
                     })), p.durability(1353)));
     public static final DeferredItem<Item> SPIKES_ON_A_SLAB = ITEMS.registerItem("spikes_on_a_slab",
             p -> new ESShield(
-                    new ESShield.Builder().addBlock(IBlock.DAMAGE)
-                            .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_IRON)),
-                    p.durability(732).component(ESDataComponents.SHIELD_DAMAGE, 6F)));
+                    new ESShield.Builder()
+                            .addBlock(IBlock.damageFor(ConfigServer.SPIKES_SLAB_DAMAGE))
+                            .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_IRON))
+                            .addTooltipLine(ESShield.damageLine(ConfigServer.SPIKES_SLAB_DAMAGE)),
+                    p.durability(732)));
     public static final DeferredItem<Item> JAWBITER = ITEMS.registerItem("jawbiter",
             p -> new ESShield(
-                    new ESShield.Builder().addBlock(IBlock.DAMAGE).addBlock(IBlock::dropCandy)
-                            .setRepairMaterial(stack -> stack.is(MSTags.Items.GRIST_CANDY)),
-                    p.durability(612).component(ESDataComponents.SHIELD_DAMAGE, 8F)));
+                    new ESShield.Builder()
+                            .addBlock(IBlock.damageFor(ConfigServer.JAWBITER_DAMAGE))
+                            .addBlock(IBlock::dropCandy)
+                            .setRepairMaterial(stack -> stack.is(MSTags.Items.GRIST_CANDY))
+                            .addTooltipLine(ESShield.damageLine(ConfigServer.JAWBITER_DAMAGE)),
+                    p.durability(612)));
     public static final DeferredItem<Item> FLUX_SHIELD = ITEMS.registerItem("flux_shield",
             p -> new ESShield(
-                    new ESShield.Builder().addBlock(IBlock::usePower)
-                            .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_GOLD)),
+                    new ESShield.Builder()
+                            .setRepairMaterial(stack -> stack.is(Tags.Items.INGOTS_GOLD))
+                            .setDamageMethod(ESShield.consumeEnergy(ConfigServer.FLUX_SHIELD_DAMAGE_COST)),
                     p.durability(490)
-                            .component(ESDataComponents.ENERGY_STORAGE, 100_000)
-                            .component(ESDataComponents.FLUX_MULTIPLIER, 100)));
+                            .component(ESDataComponents.ENERGY_STORAGE, 100_000)));
     public static final DeferredItem<Item> LIGHT_SHIELD = ITEMS.registerItem("light_shield",
-            p -> new ESShield(new ESShield.Builder().addBlock(IBlock::burn),
-                    p.durability(880).component(ESDataComponents.BURN_DURATION, 600)));
+            p -> new ESShield(new ESShield.Builder().addBlock(IBlock.burnFor(ConfigServer.LIGHT_SHIELD_BURN)),
+                    p.durability(880)));
     public static final DeferredItem<Item> ELDRITCH_SHIELD = ITEMS.registerItem("eldritch_shield",
             p -> new ESShield(
-                    new ESShield.Builder().addBlock(IBlock.DAMAGE)
-                            .addBlock(IBlock.gainEffect(MobEffects.DAMAGE_BOOST, 100)),
-                    p.durability(1441).component(ESDataComponents.SHIELD_DAMAGE, 10F)));
+                    new ESShield.Builder()
+                            .addBlock(IBlock.damageFor(ConfigServer.ELDRITCH_SHIELD_DAMAGE))
+                            .addBlock(IBlock.gainEffect(MobEffects.DAMAGE_BOOST, 100))
+                            .addTooltipLine(ESShield.damageLine(ConfigServer.ELDRITCH_SHIELD_DAMAGE)),
+                    p.durability(1441)));
     /** Shield variant */
     public static final DeferredItem<Item> CAPTAIN_JUSTICE_THROWABLE_SHIELD = ITEMS.registerItem(
             "captain_justice_throwable_shield",

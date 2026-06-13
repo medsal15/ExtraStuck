@@ -2,7 +2,10 @@ package com.medsal15.items.shields;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -10,11 +13,14 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.medsal15.ESDamageTypes;
+import com.medsal15.config.ConfigClient;
+import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.components.ESDataComponents;
 import com.mraof.minestuck.entity.underling.UnderlingEntity;
 import com.mraof.minestuck.player.PlayerBoondollars;
 import com.mraof.minestuck.player.PlayerData;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Holder.Reference;
 import net.minecraft.core.registries.Registries;
@@ -41,6 +47,7 @@ import net.minecraft.world.entity.projectile.ProjectileDeflection;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -53,19 +60,25 @@ public class ESShield extends ShieldItem {
     @Nullable
     private final DeferredItem<Item> swapWith;
     private final Predicate<ItemStack> isRepairMaterial;
+    private final Collection<Supplier<Component>> addedTooltip;
+    private final BiFunction<ItemStack, Integer, Integer> damager;
 
     public ESShield(Properties properties) {
         super(properties);
         onBlock = new ArrayList<>();
         swapWith = null;
         isRepairMaterial = s -> false;
+        addedTooltip = new ArrayList<>();
+        damager = (s, i) -> i;
     }
 
     public ESShield(Builder builder, Properties properties) {
         super(properties);
-        this.onBlock = builder.onBlock;
-        this.swapWith = builder.swapWith;
-        this.isRepairMaterial = builder.isRepairMaterial;
+        onBlock = builder.onBlock;
+        swapWith = builder.swapWith;
+        isRepairMaterial = builder.isRepairMaterial;
+        addedTooltip = builder.addedTooltip;
+        damager = builder.damager;
     }
 
     public boolean hasOnBlock(IBlock block) {
@@ -79,8 +92,6 @@ public class ESShield extends ShieldItem {
 
     public void onShieldBlock(LivingShieldBlockEvent event) {
         ItemStack shield = event.getEntity().getUseItem();
-        if (onBlock.size() == 0)
-            return;
 
         for (IBlock func : onBlock) {
             if (func.onBlock(event))
@@ -109,11 +120,32 @@ public class ESShield extends ShieldItem {
         return super.use(level, player, hand);
     }
 
+    @Override
+    public void appendHoverText(@Nonnull ItemStack stack, @Nonnull TooltipContext context,
+            @Nonnull List<Component> tooltipComponents, @Nonnull TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        for (Supplier<Component> toAdd : addedTooltip) {
+            Component line = toAdd.get();
+            if (line != null)
+                tooltipComponents.add(line);
+        }
+    }
+
+    @Override
+    public <T extends LivingEntity> int damageItem(@Nonnull ItemStack stack, int amount,
+            @SuppressWarnings("null") @org.jetbrains.annotations.Nullable T entity, @Nonnull Consumer<Item> onBroken) {
+        int baseDamage = super.damageItem(stack, amount, entity, onBroken);
+
+        return damager.apply(stack, baseDamage);
+    }
+
     public static class Builder {
         private final Collection<IBlock> onBlock = new ArrayList<>();
         @Nullable
         private DeferredItem<Item> swapWith;
         private Predicate<ItemStack> isRepairMaterial = s -> false;
+        private final Collection<Supplier<Component>> addedTooltip = new ArrayList<>();
+        private BiFunction<ItemStack, Integer, Integer> damager = (s, i) -> i;
 
         public Builder addBlock(IBlock onBlock) {
             this.onBlock.add(onBlock);
@@ -129,6 +161,17 @@ public class ESShield extends ShieldItem {
             this.isRepairMaterial = repair;
             return this;
         }
+
+        public Builder addTooltipLine(Supplier<Component> line) {
+            addedTooltip.add(line);
+            return this;
+        }
+
+        /** Alters the shield's durability loss */
+        public Builder setDamageMethod(BiFunction<ItemStack, Integer, Integer> damager) {
+            this.damager = damager;
+            return this;
+        }
     }
 
     public static interface IBlock {
@@ -141,6 +184,7 @@ public class ESShield extends ShieldItem {
 
         // #region DAMAGE
         // Must be a value so it can be equal to itself
+        @Deprecated
         ESShield.IBlock DAMAGE = event -> {
             ItemStack useItem = event.getEntity().getUseItem();
             if (!useItem.has(ESDataComponents.SHIELD_DAMAGE))
@@ -169,8 +213,36 @@ public class ESShield extends ShieldItem {
             livingEntity.hurt(retSource, damage);
             return false;
         };
-        // #endregion DAMAGE
 
+        // #endregion DAMAGE
+        public static IBlock damageFor(Supplier<Double> damage) {
+            return event -> {
+                float d = (float) ((double) damage.get());
+                if (d <= 0)
+                    return false;
+
+                // Ensure the damage is melee and does not bypass shields
+                DamageSource damageSource = event.getDamageSource();
+                if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD) || !damageSource.isDirect())
+                    return false;
+
+                // Ensure the attacker exists and can be damaged
+                Entity attacker = damageSource.getDirectEntity();
+                if (attacker == null || !(attacker instanceof LivingEntity livingEntity))
+                    return false;
+
+                // Hurt them
+                // This will crash at some point due to a null or whatever, no clue when or why
+                Level level = event.getEntity().level();
+                Reference<DamageType> type = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
+                        .getHolderOrThrow(ESDamageTypes.THORN_SHIELD);
+                DamageSource retSource = new DamageSource(type, event.getEntity());
+                livingEntity.hurt(retSource, d);
+                return false;
+            };
+        }
+
+        @Deprecated
         public static boolean usePower(LivingShieldBlockEvent event) {
             ItemStack item = event.getEntity().getUseItem();
 
@@ -197,6 +269,7 @@ public class ESShield extends ShieldItem {
             return false;
         }
 
+        @Deprecated
         public static boolean consumeBoondollars(LivingShieldBlockEvent event) {
             LivingEntity user = event.getEntity();
             // Only players get boondollars
@@ -219,7 +292,32 @@ public class ESShield extends ShieldItem {
             return false;
         }
 
-        public static ESShield.IBlock bounceProjectiles(ProjectileDeflection deflection) {
+        public static IBlock consumeBoondollars(Supplier<Long> costPerDamage) {
+            return event -> {
+                LivingEntity user = event.getEntity();
+                // Only players get boondollars
+                if (!(user instanceof ServerPlayer player))
+                    return false;
+
+                // Ensure the damage does not bypass shields
+                DamageSource damageSource = event.getDamageSource();
+                if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD))
+                    return false;
+
+                PlayerData playerData = PlayerData.get(player).orElse(null);
+                if (playerData == null)
+                    return false;
+
+                long cost = (long) event.getBlockedDamage() * costPerDamage.get();
+                if (!PlayerBoondollars.tryTakeBoondollars(playerData, cost, true))
+                    return false;
+
+                event.setShieldDamage(0);
+                return false;
+            };
+        }
+
+        public static IBlock bounceProjectiles(ProjectileDeflection deflection) {
             return e -> {
                 // Ensure the damage does not bypass shields
                 DamageSource damageSource = e.getDamageSource();
@@ -253,7 +351,7 @@ public class ESShield extends ShieldItem {
             return false;
         }
 
-        public static ESShield.IBlock replace(DeferredItem<Item> next, TagKey<DamageType> changer) {
+        public static IBlock replace(DeferredItem<Item> next, TagKey<DamageType> changer) {
             return event -> {
                 DamageSource damageSource = event.getDamageSource();
                 if (!damageSource.is(changer))
@@ -265,6 +363,7 @@ public class ESShield extends ShieldItem {
             };
         }
 
+        @Deprecated
         public static boolean burn(LivingShieldBlockEvent event) {
             ItemStack useItem = event.getEntity().getUseItem();
             if (!useItem.has(ESDataComponents.BURN_DURATION.get()))
@@ -288,6 +387,28 @@ public class ESShield extends ShieldItem {
             return false;
         }
 
+        public static IBlock burnFor(Supplier<Integer> ticks) {
+            return event -> {
+                int duration = ticks.get();
+                if (duration <= 0)
+                    return false;
+
+                // Ensure the damage is melee and does not bypass shields
+                DamageSource damageSource = event.getDamageSource();
+                if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD) || !damageSource.isDirect())
+                    return false;
+
+                // Ensure the attacker exists and can be damaged
+                Entity attacker = damageSource.getDirectEntity();
+                if (attacker == null || !(attacker instanceof LivingEntity target))
+                    return false;
+
+                if (target.getRemainingFireTicks() < duration)
+                    target.setRemainingFireTicks(duration);
+                return false;
+            };
+        }
+
         public static boolean strongerKnockback(LivingShieldBlockEvent event) {
             // Ensure the damage is melee and does not bypass shields
             DamageSource damageSource = event.getDamageSource();
@@ -305,7 +426,7 @@ public class ESShield extends ShieldItem {
             return false;
         }
 
-        public static ESShield.IBlock turn(float rot) {
+        public static IBlock turn(float rot) {
             return event -> {
                 // Ensure the damage is melee and does not bypass shields
                 DamageSource damageSource = event.getDamageSource();
@@ -324,7 +445,7 @@ public class ESShield extends ShieldItem {
         }
 
         /** Gives an effect to the user on blocking */
-        public static ESShield.IBlock gainEffect(Holder<MobEffect> effect, int duration) {
+        public static IBlock gainEffect(Holder<MobEffect> effect, int duration) {
             return event -> {
                 // Ensure the damage does not bypass shields
                 DamageSource damageSource = event.getDamageSource();
@@ -363,7 +484,7 @@ public class ESShield extends ShieldItem {
             return true;
         }
 
-        public static ESShield.IBlock selfDropChance(float chance, Supplier<String> message) {
+        public static IBlock selfDropChance(float chance, Supplier<String> message) {
             return event -> {
                 LivingEntity user = event.getEntity();
                 // Copied from minestuck
@@ -382,7 +503,7 @@ public class ESShield extends ShieldItem {
             };
         }
 
-        public static ESShield.IBlock itemDropChance(Supplier<ItemStack> stack, float chance,
+        public static IBlock itemDropChance(Supplier<ItemStack> stack, float chance,
                 Supplier<String> message) {
             return event -> {
                 LivingEntity user = event.getEntity();
@@ -397,5 +518,29 @@ public class ESShield extends ShieldItem {
                 return true;
             };
         }
+    }
+
+    public static Supplier<Component> damageLine(Supplier<Double> damage) {
+        return () -> {
+            if (!ConfigClient.displayShieldInfo)
+                return null;
+            return Component.translatable(ESLangProvider.SHIELD_DAMAGE_KEY, damage.get())
+                    .withStyle(ChatFormatting.GRAY);
+        };
+    }
+
+    public static BiFunction<ItemStack, Integer, Integer> consumeEnergy(Supplier<Integer> multiplier) {
+        return (stack, damage) -> {
+            @SuppressWarnings("null")
+            IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
+            if (energyStorage != null && energyStorage.canExtract()) {
+                int mult = multiplier.get();
+                int blocked = Math.min(energyStorage.getEnergyStored() / mult, damage);
+                int drain = blocked * mult;
+                energyStorage.extractEnergy(drain, false);
+                return Math.max(damage - blocked, 0);
+            }
+            return damage;
+        };
     }
 }

@@ -185,7 +185,6 @@ public final class ISSESItems {
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(37))));
     // #endregion Armory
 
-    // TODO add cassette data with next update
     public static final DeferredItem<Item> CASSETTE_DEAD_KING_LULLABY = ITEMS.register("cassette_dead_king_lullaby",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(
                     MSItemComponents.CASSETTE_SONG, new CassettePlayable(ESCassetteSongsProvider.DEAD_KING_LULLABY))));
@@ -197,7 +196,6 @@ public final class ISSESItems {
                     MSItemComponents.CASSETTE_SONG, new CassettePlayable(ESCassetteSongsProvider.WHISPERS_OF_ICE))));
 
     // TODO thorn ring (strong ice bonus + health malus, unremovable)
-    // * will probably require a pair of classes for curios loading/missing
 
     public static Collection<DeferredItem<Item>> getSpellbooks() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();

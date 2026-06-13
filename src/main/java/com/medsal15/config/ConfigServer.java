@@ -66,6 +66,30 @@ public final class ConfigServer {
                     "Shouldn't be lower than 32, as that would prevent uranium chunks from being used")
             .defineInRange("blaster.uranium_storage", 128, 1, Short.MAX_VALUE);
 
+    public static final ConfigValue<Integer> FLAME_SHIELD_BURN = BUILDER
+            .comment("How long, in ticks, does the Flame Shield burn enemies for", "0 means it won't")
+            .defineInRange("shield.flame_burn_duration", 100, 0, Integer.MAX_VALUE);
+    public static final ConfigValue<Integer> LIGHT_SHIELD_BURN = BUILDER
+            .comment("How long, in ticks, does the Light Shield burn enemies for", "0 means it won't")
+            .defineInRange("shield.light_burn_duration", 600, 0, Integer.MAX_VALUE);
+    public static final ConfigValue<Double> SPIKES_SLAB_DAMAGE = BUILDER
+            .comment("How much damage does the Spike on a Slab deals to enemies")
+            .defineInRange("shield.spikes_on_a_slab_damage", 6, 0, Float.MAX_VALUE);
+    public static final ConfigValue<Double> JAWBITER_DAMAGE = BUILDER
+            .comment("How much damage does the Jawbiter deals to enemies")
+            .defineInRange("shield.jawbiter_damage", 8, 0, Float.MAX_VALUE);
+    public static final ConfigValue<Double> ELDRITCH_SHIELD_DAMAGE = BUILDER
+            .comment("How much damage does the Eldritch Shield deals to enemies")
+            .defineInRange("shield.eldritch_shield_damage", 10, 0, Float.MAX_VALUE);
+    public static final ConfigValue<Integer> FLUX_SHIELD_DAMAGE_COST = BUILDER
+            .comment("Determines the proportion of durability to FE loss for the Flux Shield",
+                    "The default 100 means 100 FE per durability lost")
+            .defineInRange("shield.flux_shield_damage_cost", 100, 1, Integer.MAX_VALUE);
+    public static final ConfigValue<Long> CAPITASHIELD_DAMAGE_COST = BUILDER
+            .comment("Determines the proportion of damage to boondollars loss for the Capitashield",
+                    "The default 1 means 1 boondollar per damage blocked")
+            .defineInRange("shield.capitashield_damage_cost", 1, 1, Long.MAX_VALUE);
+
     public static final ConfigValue<Integer> RADBOW_CHARGES = BUILDER
             .comment("How many charges a radbow gets from an uranium rod")
             .defineInRange("radbow_charge", 10, 1, Integer.MAX_VALUE);

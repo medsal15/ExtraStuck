@@ -31,6 +31,7 @@ import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.config.ConfigClient.BoondollarDisplayMode;
 import com.medsal15.config.ConfigClient.DisplayLocation;
+import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.LandFishingHook;
@@ -42,8 +43,6 @@ import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.guns.ESGun;
-import com.medsal15.items.shields.ESShield;
-import com.medsal15.items.shields.ESShield.IBlock;
 import com.medsal15.items.tools.LandFishingRod;
 import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.particles.UraniumBlastParticle;
@@ -192,18 +191,6 @@ public final class ClientEvents {
             i++;
         }
 
-        // Shield info
-        if (ConfigClient.displayShieldInfo) {
-            if (item instanceof ESShield shield && shield.hasOnBlock(IBlock.DAMAGE)) {
-                tooltip.add(i,
-                        Component
-                                .translatable(ESLangProvider.SHIELD_DAMAGE_KEY,
-                                        stack.get(ESDataComponents.SHIELD_DAMAGE).intValue())
-                                .withStyle(ChatFormatting.GRAY));
-                i++;
-            }
-        }
-
         // RF
         @SuppressWarnings("null")
         IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(stack, null);
@@ -232,9 +219,7 @@ public final class ClientEvents {
                     @SuppressWarnings("null")
                     IEnergyStorage handler = Capabilities.EnergyStorage.ITEM.getCapability(stack,
                             null);
-                    if (handler != null
-                            && handler.getEnergyStored() >= stack.getOrDefault(
-                                    ESDataComponents.FLUX_MULTIPLIER, 100))
+                    if (handler != null && handler.getEnergyStored() >= ConfigServer.FLUX_SHIELD_DAMAGE_COST.get())
                         return 1;
                     return 0;
                 });
