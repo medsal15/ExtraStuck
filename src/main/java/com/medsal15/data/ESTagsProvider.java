@@ -280,13 +280,16 @@ public final class ESTagsProvider {
 
             tag(ItemTags.BOOKSHELF_BOOKS).add(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
 
-            tag(MSTags.Items.UNREADABLE).add(ESItems.ANTI_DIE.get(), ISSESItems.PERFECTLY_UNIQUE_SPELLBOOK.get())
+            tag(MSTags.Items.UNREADABLE)
+                    .add(ESItems.ANTI_DIE.get(), ISSESItems.PERFECTLY_UNIQUE_SPELLBOOK.get(),
+                            ESItems.ETERNAL_SHIELD.get())
                     .addTag(ESTags.Items.VISION)
                     .addOptional(ItemRegistry.DIVINE_SOULSHARD.getId()).addOptional(ItemRegistry.PYRIUM_INGOT.getId())
                     .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())
                     .addOptional(ItemRegistry.ELDRITCH_PAGE.getId());
             tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get(), ISSESItems.BRANCH_OF_YGGDRASIL.get(),
-                    ISSESItems.STAFF_OF_YGGDRASIL.get(), ESItems.END_OF_CIVILIZATION.get(), ESItems.MAKE_IT_RAIN.get());
+                    ISSESItems.STAFF_OF_YGGDRASIL.get(), ESItems.END_OF_CIVILIZATION.get(), ESItems.MAKE_IT_RAIN.get(),
+                    ESItems.ETERNAL_SHIELD.get());
 
             tag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS).add(ESItems.RAIN_ARROW.get());
 

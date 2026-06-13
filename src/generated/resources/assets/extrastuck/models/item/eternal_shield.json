@@ -1,0 +1,16 @@
+{
+  "parent": "extrastuck:item/base_shield",
+  "overrides": [
+    {
+      "model": "extrastuck:item/eternal_shield_blocking",
+      "predicate": {
+        "minecraft:blocking": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "0": "extrastuck:item/eternal_shield",
+    "1": "extrastuck:item/capitashield_handle",
+    "particle": "extrastuck:item/eternal_shield"
+  }
+}

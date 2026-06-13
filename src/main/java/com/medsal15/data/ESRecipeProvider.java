@@ -291,6 +291,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(ISSESItems.PROSPITIAN_WAND)
                 .unlockedBy("has_prospitian_wand", has(ISSESItems.PROSPITIAN_WAND))
                 .save(output.withConditions(ISS_LOADED), modid("shapeless/prospitian_wand_swap"));
+
+        CombinationRecipeBuilder.of(ESItems.ETERNAL_SHIELD)
+                .input(ESItems.RIOT_SHIELD).and().input(Items.TOTEM_OF_UNDYING)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.ETERNAL_SHIELD)
+                .grist(GristTypes.DIAMOND, 250).grist(GristTypes.RUBY, 250).grist(GristTypes.GOLD, 2700)
+                .grist(GristTypes.URANIUM, 3500)
+                .build(output);
     }
 
     private void weaponRecipes(@Nonnull RecipeOutput output) {
@@ -2885,7 +2893,6 @@ public final class ESRecipeProvider extends RecipeProvider {
         return new NotCondition(condition);
     }
 
-    @SuppressWarnings("unused")
     private void foodCooking(DeferredItem<Item> raw, DeferredItem<Item> cooked, RecipeOutput output,
             float experience) {
         SimpleCookingRecipeBuilder

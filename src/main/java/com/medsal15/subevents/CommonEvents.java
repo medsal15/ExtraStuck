@@ -64,7 +64,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -158,6 +157,8 @@ public final class CommonEvents {
 
     @SubscribeEvent
     public static void onDeath(final LivingDeathEvent event) {
+        if (handleEternalShield(event))
+            return;
         if (handleAntiDie(event))
             return;
 
@@ -170,6 +171,42 @@ public final class CommonEvents {
     }
 
     /**
+     * Prevents death when holding an Eternal Shield
+     * <p>
+     * Has the same effects as a totem of undying
+     *
+     * @return <code>true</code> if the event is cancelled
+     */
+    private static boolean handleEternalShield(final LivingDeathEvent event) {
+        LivingEntity entity = event.getEntity();
+
+        ItemStack stack;
+        if (entity.getMainHandItem().is(ESItems.ETERNAL_SHIELD)) {
+            stack = entity.getMainHandItem();
+        } else if (entity.getOffhandItem().is(ESItems.ETERNAL_SHIELD)) {
+            stack = entity.getOffhandItem();
+        } else {
+            // Not holding eternal shield
+            return false;
+        }
+
+        // Prevent death and consume eternal shield
+        entity.level().playSeededSound(null, (int) entity.getX(), (int) entity.getY(), (int) entity.getZ(),
+                SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1F, 1F, entity.level().random.nextLong());
+        Minecraft minecraft = Minecraft.getInstance();
+        GameRenderer renderer = minecraft.gameRenderer;
+        renderer.displayItemActivation(ESItems.ETERNAL_SHIELD.toStack());
+        event.setCanceled(true);
+        stack.consume(1, entity);
+        entity.setHealth(1);
+        entity.removeEffectsCuredBy(net.neoforged.neoforge.common.EffectCures.PROTECTED_BY_TOTEM);
+        entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
+        entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
+        entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
+        return true;
+    }
+
+    /**
      * Prevents death when holding an Anti Die
      * <p>
      * Heals from 1 to 6 (both inclusive) health, cancelling the event
@@ -179,11 +216,11 @@ public final class CommonEvents {
     private static boolean handleAntiDie(final LivingDeathEvent event) {
         LivingEntity entity = event.getEntity();
 
-        InteractionHand hand;
+        ItemStack stack;
         if (entity.getMainHandItem().is(ESItems.ANTI_DIE)) {
-            hand = InteractionHand.MAIN_HAND;
+            stack = entity.getMainHandItem();
         } else if (entity.getOffhandItem().is(ESItems.ANTI_DIE)) {
-            hand = InteractionHand.OFF_HAND;
+            stack = entity.getOffhandItem();
         } else {
             // Not holding anti die
             return false;
@@ -196,7 +233,7 @@ public final class CommonEvents {
         GameRenderer renderer = minecraft.gameRenderer;
         renderer.displayItemActivation(ESItems.ANTI_DIE.toStack());
         event.setCanceled(true);
-        entity.setItemInHand(hand, ItemStack.EMPTY);
+        stack.consume(1, entity);
         int health = entity.getRandom().nextInt(5) + 1;
         entity.setHealth(health);
         entity.sendSystemMessage(Component.translatable(ESLangProvider.ANTIDIE_HEAL, health));

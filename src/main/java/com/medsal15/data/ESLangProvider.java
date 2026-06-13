@@ -245,6 +245,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.RETURN_TO_SENDER, "The shield that shoots back!");
         addItem(ISSESItems.CAST_GOLD_SHIELD, "Cast Gold Shield");
         addItemTooltip(ISSESItems.CAST_GOLD_SHIELD, "Using Prospit's core has strange effects");
+        addItem(ESItems.ETERNAL_SHIELD, "Eternal Shield");
+        addItemTooltip(ESItems.ETERNAL_SHIELD, "Till death do you apart");
     }
 
     private void addArrows() {

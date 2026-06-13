@@ -1,0 +1,12 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:diamond": 250,
+    "minestuck:gold": 2700,
+    "minestuck:ruby": 250,
+    "minestuck:uranium": 3500
+  },
+  "ingredient": {
+    "item": "extrastuck:eternal_shield"
+  }
+}

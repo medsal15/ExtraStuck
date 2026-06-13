@@ -1,0 +1,23 @@
+{
+    "name": "Eternal Shield",
+    "icon": "extrastuck:eternal_shield",
+    "category": "extrastuck:shields",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:eternal_shield"
+            },
+            "text": "An unbreakable defense tool made of rare and valuable resources.$(br2)$(3)$(l)Special:$() Has the same effect as a Totem of Undying."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Riot Shield and a Totem of Undying in a Totem Lathe.",
+            "left": "extrastuck:riot_shield",
+            "mode": "&&",
+            "right": "minecraft:totem_of_undying",
+            "result": "extrastuck:eternal_shield"
+        }
+    ]
+}

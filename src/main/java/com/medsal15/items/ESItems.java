@@ -286,7 +286,9 @@ public final class ESItems {
                             IBlock.itemDropChance(() -> ESItems.GIFT.toStack(), .1f,
                                     () -> ESLangProvider.GIFT_PROTECTION_GIFT_KEY)),
                     p.durability(624)));
-    // TODO eternal shield (totem of undying & buffs on break)
+    public static final DeferredItem<Item> ETERNAL_SHIELD = ITEMS.registerItem("eternal_shield", ESShield::new,
+            new Item.Properties().stacksTo(1).component(DataComponents.UNBREAKABLE, new Unbreakable(false))
+                    .rarity(Rarity.EPIC));
     // #endregion Shields
 
     // #region Arrows
@@ -1415,6 +1417,7 @@ public final class ESItems {
         } else {
             list.addAll(ISSESMissingItems.getShields());
         }
+        list.add(ETERNAL_SHIELD);
         return list;
     }
 

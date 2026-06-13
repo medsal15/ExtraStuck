@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:riot_shield"
+  },
+  "input2": {
+    "item": "minecraft:totem_of_undying"
+  },
+  "mode": "and",
+  "output": "extrastuck:eternal_shield"
+}
