@@ -1665,22 +1665,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.IODINE, 2).grist(GristTypes.AMBER, 2).grist(GristTypes.URANIUM, 1)
                 .build(output);
 
-        SimpleCookingRecipeBuilder
-                .campfireCooking(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD,
-                        ESItems.COOKED_BEE_LARVA, .35F,
-                        600)
-                .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
-                .save(output, modid("campfire/cooked_bee_larva"));
-        SimpleCookingRecipeBuilder
-                .smelting(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD,
-                        ESItems.COOKED_BEE_LARVA, .35F, 200)
-                .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
-                .save(output, modid("smelting/cooked_bee_larva"));
-        SimpleCookingRecipeBuilder
-                .smoking(Ingredient.of(ESItems.BEE_LARVA), RecipeCategory.FOOD,
-                        ESItems.COOKED_BEE_LARVA, .35F, 100)
-                .unlockedBy("has_bee_egg", has(ESItems.BEE_LARVA))
-                .save(output, modid("smoking/cooked_bee_larva"));
+        foodCooking(ESItems.BEE_LARVA, ESItems.COOKED_BEE_LARVA, output, .35f);
 
         // #region Cake Slice
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(MSItems.APPLE_CAKE),
