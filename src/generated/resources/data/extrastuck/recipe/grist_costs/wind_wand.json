@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:caulk": 360,
+    "minestuck:marble": 150,
+    "minestuck:mercury": 450
+  },
+  "ingredient": {
+    "item": "extrastuck:wind_wand"
+  }
+}

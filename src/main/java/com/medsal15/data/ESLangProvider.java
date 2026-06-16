@@ -379,6 +379,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.BAGUETTE_MAGIQUE, "Un morceau de pain utilisé par les magiciens");
         addItem(ESItems.MONEY_MAGIC, "Money Magic");
         addItemTooltip(ESItems.MONEY_MAGIC, "Empowered by your bank account");
+        addItem(ESItems.WIND_WAND, "Wind Wand");
         // Canes
         addItem(ESItems.BROOM, "Broom");
         addItemTooltip(ESItems.BROOM, "Sweep sweep sweep");

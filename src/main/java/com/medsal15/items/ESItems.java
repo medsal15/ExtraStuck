@@ -565,6 +565,10 @@ public final class ESItems {
             new WeaponItem.Builder(Tiers.GOLD, 2, -1F).set(MSItemTypes.WAND_TOOL)
                     .set(ESRightClickEffects.CASH_MAGIC),
             new MSItemProperties().durability(1326)));
+    public static final DeferredItem<Item> WIND_WAND = ITEMS.register("wind_wand", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.IRON, 3, -1F).set(MSItemTypes.WAND_TOOL)
+                    .set(ESRightClickEffects::shootWindCharge),
+            new MSItemProperties().durability(1536)));
     // #endregion Wands
     // #region Canes
     public static final DeferredItem<Item> BROOM = ITEMS.register("broom",
@@ -1484,6 +1488,7 @@ public final class ESItems {
         // Wands
         list.add(BAGUETTE_MAGIQUE);
         list.add(MONEY_MAGIC);
+        list.add(WIND_WAND);
         // Canes
         list.add(BROOM);
         list.add(IRON_CROWBAR);
@@ -1596,6 +1601,7 @@ public final class ESItems {
 
         list.add(BAGUETTE_MAGIQUE);
         list.add(MONEY_MAGIC);
+        list.add(WIND_WAND);
 
         return list;
     }

@@ -188,6 +188,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         // Wands
         handheldItem(ESItems.BAGUETTE_MAGIQUE.get());
         handheldItem(ESItems.MONEY_MAGIC.get());
+        handheldItem(ESItems.WIND_WAND.get());
         // Canes
         handheldItem(ESItems.IRON_CROWBAR.get());
         // Forks

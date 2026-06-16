@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:zephyr_cane"
+  },
+  "input2": {
+    "item": "minecraft:wind_charge"
+  },
+  "mode": "or",
+  "output": "extrastuck:wind_wand"
+}

@@ -571,6 +571,16 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.MONEY_MAGIC)
                 .grist(GristTypes.RUBY, 120).grist(GristTypes.GOLD, 730).grist(GristTypes.COBALT, 1250)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.WIND_WAND)
+                .input(MSItems.ZEPHYR_CANE).or().input(Items.BREEZE_ROD)
+                .build(output, modid("wind_wand_breeze_rod"));
+        CombinationRecipeBuilder.of(ESItems.WIND_WAND)
+                .input(MSItems.ZEPHYR_CANE).or().input(Items.WIND_CHARGE)
+                .build(output, modid("wind_wand_wind_charge"));
+        GristCostRecipeBuilder.of(ESItems.WIND_WAND)
+                .grist(GristTypes.MERCURY, 450).grist(GristTypes.CAULK, 360).grist(GristTypes.MARBLE, 150)
+                .build(output);
         // #endregion Wands
 
         // #region Canes

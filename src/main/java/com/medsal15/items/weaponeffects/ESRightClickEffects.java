@@ -41,6 +41,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
+import net.minecraft.world.entity.projectile.windcharge.WindCharge;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -113,7 +114,7 @@ public final class ESRightClickEffects {
                 stack.hurtAndBreak(2, player, LivingEntity.getSlotForHand(hand));
             }
 
-            return InteractionResultHolder.pass(stack);
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
         }
     }
 
@@ -251,6 +252,29 @@ public final class ESRightClickEffects {
 
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
         }
+    }
+
+    public static InteractionResultHolder<ItemStack> shootWindCharge(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (player.getCooldowns().isOnCooldown(stack.getItem()))
+            return InteractionResultHolder.fail(stack);
+
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
+            WindCharge windcharge = new WindCharge(player, level, player.position().x(), player.getEyePosition().y(),
+                    player.position().z());
+            windcharge.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+            level.addFreshEntity(windcharge);
+            int damage = 10;
+            if (Title.isPlayerOfAspect(serverPlayer, EnumAspect.BREATH))
+                damage = 5;
+            stack.hurtAndBreak(damage, player, LivingEntity.getSlotForHand(hand));
+        }
+
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WIND_CHARGE_THROW,
+                SoundSource.NEUTRAL, 1.0F, 0.4F / (player.getRandom().nextFloat() * 0.4F + 0.8F));
+        player.getCooldowns().addCooldown(stack.getItem(), 10);
+
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
 
     /**
