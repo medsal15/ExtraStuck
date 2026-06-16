@@ -20,6 +20,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 
@@ -27,8 +28,8 @@ import top.theillusivec4.curios.api.SlotContext;
  * Spellbook equivalent of SburbDBWeapon
  */
 public class SburbDBSpellbook extends SpellBook {
-    public SburbDBSpellbook(int slots) {
-        super(slots);
+    public SburbDBSpellbook(int slots, Item.Properties properties) {
+        super(slots, properties);
         withSpellbookAttributes(
                 new AttributeContainer(AttributeRegistry.MAX_MANA, 80, Operation.ADD_VALUE),
                 new AttributeContainer(MSAttributes.UNDERLING_DAMAGE_MODIFIER, .1,

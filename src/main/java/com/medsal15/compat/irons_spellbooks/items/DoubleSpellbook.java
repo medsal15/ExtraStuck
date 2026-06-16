@@ -23,14 +23,8 @@ import top.theillusivec4.curios.api.SlotContext;
 public class DoubleSpellbook extends SpellBook {
     private final Holder<Item> other;
 
-    public DoubleSpellbook(Holder<Item> other) {
-        super();
-
-        this.other = other;
-    }
-
-    public DoubleSpellbook(int slots, Holder<Item> other) {
-        super(slots);
+    public DoubleSpellbook(int slots, Holder<Item> other, Item.Properties properties) {
+        super(slots, properties);
 
         this.other = other;
     }

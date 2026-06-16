@@ -27,7 +27,6 @@ import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.item.weapons.StaffTier;
 import io.redspace.ironsspellbooks.registries.ComponentRegistry;
-import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Unit;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -51,7 +50,7 @@ public final class ISSESItems {
 
     // #region Staves
     public static final DeferredItem<Item> CURSED_CAT_STAFF = ITEMS.register("cursed_cat_staff",
-            () -> new StaffItem(ItemPropertiesHelper.equipment(1)
+            () -> new StaffItem(new Item.Properties().stacksTo(1)
                     .attributes(ExtendedSwordItem.createAttributes(new StaffTier(7, -3F,
                             new AttributeContainer(AttributeRegistry.MANA_REGEN, .15, Operation.ADD_MULTIPLIED_BASE),
                             new AttributeContainer(AttributeRegistry.BLOOD_SPELL_POWER, .2,
@@ -59,7 +58,7 @@ public final class ISSESItems {
                             new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, .1,
                                     Operation.ADD_MULTIPLIED_BASE))))));
     public static final DeferredItem<Item> BLESSED_CAT_STAFF = ITEMS.register("blessed_cat_staff",
-            () -> new StaffItem(ItemPropertiesHelper.equipment(1)
+            () -> new StaffItem(new Item.Properties().stacksTo(1)
                     .attributes(ExtendedSwordItem.createAttributes(new StaffTier(7, -3F,
                             new AttributeContainer(AttributeRegistry.MANA_REGEN, .15, Operation.ADD_MULTIPLIED_BASE),
                             new AttributeContainer(AttributeRegistry.HOLY_SPELL_POWER, .15,
@@ -67,7 +66,7 @@ public final class ISSESItems {
                             new AttributeContainer(AttributeRegistry.LIGHTNING_SPELL_POWER, .15,
                                     Operation.ADD_MULTIPLIED_BASE))))));
     public static final DeferredItem<Item> BRANCH_OF_YGGDRASIL = ITEMS.register("branch_of_yggdrasil",
-            () -> new StaffItem(ItemPropertiesHelper.equipment(1)
+            () -> new StaffItem(new Item.Properties().stacksTo(1)
                     .attributes(ExtendedSwordItem.createAttributes(new StaffTier(8, -2.5F,
                             new AttributeContainer(AttributeRegistry.MANA_REGEN, .25, Operation.ADD_MULTIPLIED_BASE),
                             new AttributeContainer(AttributeRegistry.CAST_TIME_REDUCTION, .15,
@@ -75,7 +74,7 @@ public final class ISSESItems {
                             new AttributeContainer(AttributeRegistry.CASTING_MOVESPEED, .15,
                                     Operation.ADD_MULTIPLIED_BASE))))));
     public static final DeferredItem<Item> STAFF_OF_YGGDRASIL = ITEMS.register("staff_of_yggdrasil",
-            () -> new StaffItem(ItemPropertiesHelper.equipment(1)
+            () -> new StaffItem(new Item.Properties().stacksTo(1)
                     .attributes(ExtendedSwordItem.createAttributes(new StaffTier(8, -2.5F,
                             new AttributeContainer(AttributeRegistry.MANA_REGEN, .25, Operation.ADD_MULTIPLIED_BASE),
                             new AttributeContainer(AttributeRegistry.CAST_TIME_REDUCTION, .15,
@@ -95,7 +94,7 @@ public final class ISSESItems {
                             new AttributeContainer(AttributeRegistry.NATURE_SPELL_POWER, .2,
                                     Operation.ADD_MULTIPLIED_BASE))))));
     public static final DeferredItem<Item> PROSPITIAN_WAND = ITEMS.register("prospitian_wand",
-            () -> new SwappableStaffItem(ItemPropertiesHelper.equipment(1)
+            () -> new SwappableStaffItem(new Item.Properties().stacksTo(1)
                     .attributes(ExtendedSwordItem.createAttributes(new StaffTier(6, -3F,
                             new AttributeContainer(AttributeRegistry.CAST_TIME_REDUCTION, .15,
                                     Operation.ADD_MULTIPLIED_BASE),
@@ -103,7 +102,7 @@ public final class ISSESItems {
                                     Operation.ADD_MULTIPLIED_BASE)))),
                     ISSESItems.CAST_GOLD_SHIELD));
     public static final DeferredItem<Item> DERSITE_WAND = ITEMS.register("dersite_wand",
-            () -> new SwappableStaffItem(ItemPropertiesHelper.equipment(1)
+            () -> new SwappableStaffItem(new Item.Properties().stacksTo(1)
                     .attributes(ExtendedSwordItem.createAttributes(new StaffTier(6, -3F,
                             new AttributeContainer(AttributeRegistry.CASTING_MOVESPEED, .15,
                                     Operation.ADD_MULTIPLIED_BASE),
@@ -113,24 +112,30 @@ public final class ISSESItems {
     // #endregion Staves
 
     // #region Spellbooks
-    public static final DeferredItem<Item> GRIMOIRE = ITEMS.register("grimoire", () -> new SpellBook(8)
-            .withSpellbookAttributes(new AttributeContainer(AttributeRegistry.MAX_MANA, 266, Operation.ADD_VALUE),
-                    new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, .1666,
-                            Operation.ADD_MULTIPLIED_BASE)));
+    public static final DeferredItem<Item> GRIMOIRE = ITEMS.register("grimoire",
+            () -> new SpellBook(8, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON))
+                    .withSpellbookAttributes(
+                            new AttributeContainer(AttributeRegistry.MAX_MANA, 266, Operation.ADD_VALUE),
+                            new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, .1666,
+                                    Operation.ADD_MULTIPLIED_BASE)));
     public static final DeferredItem<Item> GEMINI_SPELLBOOK_RED = ITEMS.register("gemini_spellbook_red",
-            () -> new DoubleSpellbook(6, ISSESItems.GEMINI_SPELLBOOK_BLUE)
+            () -> new DoubleSpellbook(6, ISSESItems.GEMINI_SPELLBOOK_BLUE,
+                    new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON))
                     .withSpellbookAttributes(
                             new AttributeContainer(AttributeRegistry.MAX_MANA, 300, Operation.ADD_VALUE)));
     public static final DeferredItem<Item> GEMINI_SPELLBOOK_BLUE = ITEMS.register("gemini_spellbook_blue",
-            () -> new DoubleSpellbook(6, ISSESItems.GEMINI_SPELLBOOK_RED)
+            () -> new DoubleSpellbook(6, ISSESItems.GEMINI_SPELLBOOK_RED,
+                    new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON))
                     .withSpellbookAttributes(
                             new AttributeContainer(AttributeRegistry.MAX_MANA, 300, Operation.ADD_VALUE)));
     public static final DeferredItem<Item> MAGE_GUY = ITEMS.register("mage_guy",
-            () -> new SpellBook(6).withSpellbookAttributes(
+            () -> new SpellBook(6, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)).withSpellbookAttributes(
                     new AttributeContainer(AttributeRegistry.MAX_MANA, 50, Operation.ADD_VALUE)));
+    // TODO update ISS and include item properties
     public static final DeferredItem<Item> PERFECTLY_UNIQUE_SPELLBOOK = ITEMS.register("perfectly_unique_spellbook",
             PerfectlyUniqueSpellbook::new);
-    public static final DeferredItem<Item> SBURBDB = ITEMS.register("sburbdb", () -> new SburbDBSpellbook(4));
+    public static final DeferredItem<Item> SBURBDB = ITEMS.register("sburbdb",
+            () -> new SburbDBSpellbook(4, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     // #endregion Spellbooks
 
     // #region Armory
