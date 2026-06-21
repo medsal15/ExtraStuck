@@ -19,7 +19,7 @@ public class FortuneModus extends BaseModus {
     @Override
     public ItemStack getItem(ServerPlayer player, int id, boolean asCard) {
         ItemStack item = super.getItem(player, id, asCard);
-        if (!asCard) {
+        if (!asCard && !item.isEmpty()) {
             ItemContainerContents contents = ItemContainerContents.fromItems(List.of(item));
             ItemStack cookie = new ItemStack(ESItems.FORTUNE_COOKIE.get());
             cookie.set(DataComponents.CONTAINER, contents);
