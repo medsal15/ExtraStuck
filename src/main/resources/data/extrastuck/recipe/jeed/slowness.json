@@ -19,6 +19,9 @@
         },
         {
             "item": "extrastuck:broken_watch"
+        },
+        {
+            "item": "extrastuck:rewinding_totem"
         }
     ]
 }

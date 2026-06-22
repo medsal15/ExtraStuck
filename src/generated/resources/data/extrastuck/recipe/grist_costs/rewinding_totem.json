@@ -1,0 +1,12 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:artifact": 4321,
+    "minestuck:marble": 270,
+    "minestuck:quartz": 180,
+    "minestuck:ruby": 765
+  },
+  "ingredient": {
+    "item": "extrastuck:rewinding_totem"
+  }
+}

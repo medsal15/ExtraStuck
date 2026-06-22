@@ -158,6 +158,8 @@ public final class ESLangProvider extends LanguageProvider {
                 "Often found under trees in december, this cardboard box wrapped in colorful paper tends to contain something you desire.");
         addItem(ESItems.ANTI_DIE, "Anti Die");
         add(ANTIDIE_HEAL, "Anti Die rolled a %s");
+        addItem(ESItems.REWINDING_TOTEM, "Rewinding Totem");
+        addItemTooltip(ESItems.REWINDING_TOTEM, "It's ticking backwards");
         addItem(ESItems.LUCK_TOKEN, "Luck Token");
         addItemTooltip(ESItems.LUCK_TOKEN, "Just holding this makes you feel lucky!");
         addItem(ESItems.EMPTY_ENERGY_CORE, "Empty Energy Core");

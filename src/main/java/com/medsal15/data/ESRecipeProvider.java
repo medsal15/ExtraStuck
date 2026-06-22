@@ -78,6 +78,14 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         issRecipes(output);
 
+        CombinationRecipeBuilder.of(ESItems.ANTI_DIE)
+                .input(ESItems.STICKY_DIE).and().input(MSItems.MIRROR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.ANTI_DIE)
+                .grist(GristTypes.URANIUM, 166).grist(GristTypes.MERCURY, 333)
+                .grist(GristTypes.AMETHYST, 139)
+                .build(output);
+
         CombinationRecipeBuilder.of(ESItems.GIFT)
                 .input(Items.PAPER).and().input(MSItems.SURPRISE_EMBRYO)
                 .build(output);
@@ -119,6 +127,14 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.COSMIC_PLAGUE_SPORE)
                 .grist(GristTypes.SHALE, 66).grist(GristTypes.URANIUM, 23)
                 .grist(GristTypes.AMETHYST, 11)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.REWINDING_TOTEM)
+                .input(ESItems.SILVER_WATCH).and().input(Items.TOTEM_OF_UNDYING)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.REWINDING_TOTEM)
+                .grist(GristTypes.MARBLE, 270).grist(GristTypes.QUARTZ, 180)
+                .grist(GristTypes.ARTIFACT, 4321).grist(GristTypes.RUBY, 765)
                 .build(output);
     }
 
@@ -371,14 +387,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.STICKY_DIE)
                 .grist(GristTypes.CAULK, 33).grist(GristTypes.TAR, 3)
-                .build(output);
-
-        CombinationRecipeBuilder.of(ESItems.ANTI_DIE)
-                .input(ESItems.STICKY_DIE).and().input(MSItems.MIRROR)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.ANTI_DIE)
-                .grist(GristTypes.URANIUM, 166).grist(GristTypes.MERCURY, 333)
-                .grist(GristTypes.AMETHYST, 139)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.TOKEN_TETRAHEDRON)

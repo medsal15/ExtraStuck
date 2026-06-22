@@ -282,7 +282,7 @@ public final class ESTagsProvider {
 
             tag(MSTags.Items.UNREADABLE)
                     .add(ESItems.ANTI_DIE.get(), ISSESItems.PERFECTLY_UNIQUE_SPELLBOOK.get(),
-                            ESItems.ETERNAL_SHIELD.get())
+                            ESItems.ETERNAL_SHIELD.get(), ESItems.REWINDING_TOTEM.get())
                     .addTag(ESTags.Items.VISION)
                     .addOptional(ItemRegistry.DIVINE_SOULSHARD.getId()).addOptional(ItemRegistry.PYRIUM_INGOT.getId())
                     .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())

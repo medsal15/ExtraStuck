@@ -6,13 +6,10 @@
         }
     ],
     "type": "jeed:effect_provider",
-    "effect": "minecraft:resistance",
+    "effect": "minecraft:fire_resistance",
     "providers": [
         {
-            "item": "extrastuck:rainbow_d7"
-        },
-        {
-            "item": "extrastuck:jackpot"
+            "item": "extrastuck:eternal_shield"
         },
         {
             "item": "extrastuck:rewinding_totem"

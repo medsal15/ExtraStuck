@@ -1,0 +1,23 @@
+{
+    "name": "Rewinding Totem",
+    "icon": "extrastuck:rewinding_totem",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:rewinding_totem"
+            },
+            "text": "A strange totem with a clock for a face.$(br2)$(3)$(l)Special:$() Has better effects than a totem of undying, if you can get past the drawbacks...$(br)Time players get stronger effects and weaker drawbacks."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Silver Watch and an Totem of Undying in a Totem Lathe.",
+            "left": "extrastuck:silver_watch",
+            "mode": "&&",
+            "right": "minecraft:totem_of_undying",
+            "result": "extrastuck:rewinding_totem"
+        }
+    ]
+}

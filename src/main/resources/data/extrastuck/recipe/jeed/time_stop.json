@@ -10,6 +10,9 @@
     "providers": [
         {
             "item": "extrastuck:d10"
+        },
+        {
+            "item": "extrastuck:rewinding_totem"
         }
     ]
 }

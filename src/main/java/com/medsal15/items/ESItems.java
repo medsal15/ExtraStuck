@@ -398,7 +398,6 @@ public final class ESItems {
                                                     60, 2)))
                             .add(ESHitEffects.randomDamage(3)),
                     new MSItemProperties().durability(333)));
-    public static final DeferredItem<Item> ANTI_DIE = ITEMS.registerItem("anti_die", p -> new Item(p.stacksTo(1)));
     public static final DeferredItem<Item> TOKEN_TETRAHEDRON = ITEMS.register("token_tetrahedron",
             () -> new WeaponItem(
                     new WeaponItem.Builder(MSItemTypes.EMERALD_TIER, 1, -3F).efficiency(2F)
@@ -873,8 +872,9 @@ public final class ESItems {
     // #endregion Armors
 
     // #region Tools
-    public static final DeferredItem<Item> OLD_BRUSH = ITEMS.registerItem("old_brush", BrushItem::new,
-            new Item.Properties().stacksTo(1).durability(320));
+    public static final DeferredItem<Item> ANTI_DIE = ITEMS.registerItem("anti_die", p -> new Item(p.stacksTo(1)));
+    public static final DeferredItem<Item> OLD_BRUSH = ITEMS.registerItem("old_brush",
+            p -> new BrushItem(p.stacksTo(1).durability(320)));
     public static final DeferredItem<Item> MAGNET = ITEMS.registerItem("magnet", p -> new MagnetItem(Tiers.IRON, p),
             new MSItemProperties().stacksTo(1).durability(160));
     public static final DeferredItem<Item> FIELD_CHARGER = ITEMS.registerItem("field_charger",
@@ -882,7 +882,9 @@ public final class ESItems {
     public static final DeferredItem<Item> GRIST_DETECTOR = ITEMS.registerItem("grist_detector",
             p -> new GristDetectorItem(p.component(ESDataComponents.GRIST_LAYER, GristLayer.COMMON)));
     public static final DeferredItem<Item> SOLID_FISHING_ROD = ITEMS.registerItem("solid_fishing_rod",
-            p -> new LandFishingRod(p), new MSItemProperties().stacksTo(1).durability(160));
+            p -> new LandFishingRod(p.stacksTo(1).durability(160)));
+    public static final DeferredItem<Item> REWINDING_TOTEM = ITEMS.registerItem("rewinding_totem",
+            p -> new Item(p.stacksTo(1).rarity(Rarity.RARE)));
 
     // #region Shovels
     public static final DeferredItem<Item> GOLD_DIGGER = ITEMS.register("gold_digger",
@@ -1251,6 +1253,7 @@ public final class ESItems {
             output.accept(item.get());
         }
         output.accept(ANTI_DIE);
+        output.accept(REWINDING_TOTEM);
         output.accept(LUCK_TOKEN);
 
         for (DeferredItem<Item> item : ESItems.getRangedWeapons()) {

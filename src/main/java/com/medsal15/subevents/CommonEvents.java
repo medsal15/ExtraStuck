@@ -2,6 +2,8 @@ package com.medsal15.subevents;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 import com.medsal15.ESAttachements;
 import com.medsal15.ESAttachements.ESGristLayerInfo;
@@ -26,6 +28,7 @@ import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.guns.GunContainer;
 import com.medsal15.items.melee.StorageWeapon;
 import com.medsal15.items.shields.ESShield;
+import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuNext;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuOpen;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuQuit;
@@ -84,6 +87,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.common.EffectCures;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -155,19 +159,77 @@ public final class CommonEvents {
         }
     }
 
+    private static final List<Predicate<LivingDeathEvent>> preventDeathHandlers = List.of(
+            CommonEvents::handleTotemRewind,
+            CommonEvents::handleEternalShield,
+            CommonEvents::handleAntiDie);
+    private static final List<Consumer<LivingDeathEvent>> postDeathHandlers = List.of(
+            CommonEvents::dropBoondollars,
+            CommonEvents::healAttacker,
+            CommonEvents::explodeDead);
+
     @SubscribeEvent
     public static void onDeath(final LivingDeathEvent event) {
-        if (handleEternalShield(event))
-            return;
-        if (handleAntiDie(event))
-            return;
+        for (Predicate<LivingDeathEvent> handler : preventDeathHandlers) {
+            if (handler.test(event))
+                return;
+        }
 
-        dropBoondollars(event);
-        healAttacker(event);
-        explodeDead(event);
+        postDeathHandlers.forEach(handler -> handler.accept(event));
         if (ESCompatUtils.isLoaded("curios")) {
             ESCuriosEventsHandlers.handleGummyRing(event);
         }
+    }
+
+    /**
+     * Prevents death when holding a Rewinding Totem
+     * <p>
+     * Has stronger effects than a totem of undying, with a few seconds of Time Stop
+     * <p>
+     * Time players even get a few more bonuses
+     *
+     * @return <code>true</code> if the event is cancelled
+     */
+    private static boolean handleTotemRewind(final LivingDeathEvent event) {
+        LivingEntity entity = event.getEntity();
+
+        ItemStack stack;
+        if (entity.getMainHandItem().is(ESItems.REWINDING_TOTEM)) {
+            stack = entity.getMainHandItem();
+        } else if (entity.getOffhandItem().is(ESItems.REWINDING_TOTEM)) {
+            stack = entity.getOffhandItem();
+        } else {
+            // Not holding totem
+            return false;
+        }
+
+        boolean timePlayer = false;
+        if (entity instanceof ServerPlayer serverPlayer) {
+            timePlayer = Title.isPlayerOfAspect(serverPlayer, EnumAspect.TIME);
+        }
+
+        // Prevent death and consume totem
+        entity.level().playSeededSound(null, (int) entity.getX(), (int) entity.getY(), (int) entity.getZ(),
+                SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1F, 1F, entity.level().random.nextLong());
+        Minecraft minecraft = Minecraft.getInstance();
+        GameRenderer renderer = minecraft.gameRenderer;
+        renderer.displayItemActivation(stack.copyWithCount(1));
+        event.setCanceled(true);
+        stack.consume(1, entity);
+        entity.setHealth(timePlayer ? 3 : 1);
+        entity.removeEffectsCuredBy(EffectCures.PROTECTED_BY_TOTEM);
+        entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, timePlayer ? 2000 : 1000, 1));
+        entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, timePlayer ? 3 : 1));
+        entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, timePlayer ? 1500 : 1000, 0));
+        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 500, timePlayer ? 1 : 0));
+        if (!timePlayer) {
+            entity.addEffect(new MobEffectInstance(ESMobEffects.TIME_STOP, 100));
+        } else {
+            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 2));
+            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2));
+        }
+
+        return true;
     }
 
     /**
@@ -195,11 +257,11 @@ public final class CommonEvents {
                 SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1F, 1F, entity.level().random.nextLong());
         Minecraft minecraft = Minecraft.getInstance();
         GameRenderer renderer = minecraft.gameRenderer;
-        renderer.displayItemActivation(ESItems.ETERNAL_SHIELD.toStack());
+        renderer.displayItemActivation(stack.copyWithCount(1));
         event.setCanceled(true);
         stack.consume(1, entity);
         entity.setHealth(1);
-        entity.removeEffectsCuredBy(net.neoforged.neoforge.common.EffectCures.PROTECTED_BY_TOTEM);
+        entity.removeEffectsCuredBy(EffectCures.PROTECTED_BY_TOTEM);
         entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
         entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
         entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
