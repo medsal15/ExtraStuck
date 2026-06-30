@@ -66,7 +66,7 @@ public class MastermindDecodeScreen extends ThemedScreen {
                         yOffset + SCREEN_OFFSET_Y + 33, COMPUTER_WIDTH, 0xAA0000);
             } else {
                 graphics.drawWordWrap(font, Component.translatable(RESULT), xOffset + SCREEN_OFFSET_X + 8,
-                        yOffset + SCREEN_OFFSET_Y + 33, COMPUTER_WIDTH, 0);
+                        yOffset + SCREEN_OFFSET_Y + 33, COMPUTER_WIDTH, selectedTheme.data().textColor());
                 for (int i = 0; i < 4; i++) {
                     int grist = code[i];
                     int draw_x = xOffset + SCREEN_OFFSET_X + 8 + i * GRIST_WIDTH + GRIST_RENDER_X;
