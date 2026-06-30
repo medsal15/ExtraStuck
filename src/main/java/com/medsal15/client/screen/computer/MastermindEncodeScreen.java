@@ -73,7 +73,7 @@ public class MastermindEncodeScreen extends ThemedScreen {
         super.render(graphics, mouseX, mouseY, partialTick);
 
         graphics.drawWordWrap(font, Component.translatable(DIFFICULTY, difficulty), xOffset + SCREEN_OFFSET_X + 33,
-                yOffset + SCREEN_OFFSET_Y + 13, COMPUTER_WIDTH - 33, 0);
+                yOffset + SCREEN_OFFSET_Y + 13, COMPUTER_WIDTH - 33, selectedTheme.data().textColor());
 
         if (attempted) {
             Component text = Component.empty();
