@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "green_zillium_bricks",
+  "key": {
+    "G": {
+      "item": "extrastuck:green_zillium_bricks"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "GGG"
+  ],
+  "result": {
+    "count": 6,
+    "id": "extrastuck:green_zillium_brick_wall"
+  }
+}

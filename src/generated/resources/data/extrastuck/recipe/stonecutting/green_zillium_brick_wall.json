@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "green_zillium_bricks",
+  "ingredient": {
+    "item": "extrastuck:green_zillium_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "extrastuck:green_zillium_brick_wall"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "waxed_blue_zillium_bricks",
+  "key": {
+    "G": {
+      "item": "extrastuck:waxed_blue_zillium_bricks"
+    }
+  },
+  "pattern": [
+    "G  ",
+    "GG ",
+    "GGG"
+  ],
+  "result": {
+    "count": 4,
+    "id": "extrastuck:waxed_blue_zillium_brick_stairs"
+  }
+}

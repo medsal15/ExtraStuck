@@ -808,6 +808,42 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.ZILLIUM_BRICK_STAIRS, "Zillium Brick Stairs");
         addBlock(ESBlocks.ZILLIUM_BRICK_SLAB, "Zillium Brick Slab");
         addBlock(ESBlocks.ZILLIUM_BRICK_WALL, "Zillium Brick Wall");
+
+        addBlock(ESBlocks.GREEN_ZILLIUM_BRICKS, "Green Zillium Bricks");
+        addBlock(ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS, "Green Zillium Brick Stairs");
+        addBlock(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB, "Green Zillium Brick Slab");
+        addBlock(ESBlocks.GREEN_ZILLIUM_BRICK_WALL, "Green Zillium Brick Wall");
+        addBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICKS, "Waxed Green Zillium Bricks");
+        addBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS, "Waxed Green Zillium Brick Stairs");
+        addBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB, "Waxed Green Zillium Brick Slab");
+        addBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL, "Waxed Green Zillium Brick Wall");
+
+        addBlock(ESBlocks.BLUE_ZILLIUM_BRICKS, "Blue Zillium Bricks");
+        addBlock(ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS, "Blue Zillium Brick Stairs");
+        addBlock(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB, "Blue Zillium Brick Slab");
+        addBlock(ESBlocks.BLUE_ZILLIUM_BRICK_WALL, "Blue Zillium Brick Wall");
+        addBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICKS, "Waxed Blue Zillium Bricks");
+        addBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS, "Waxed Blue Zillium Brick Stairs");
+        addBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB, "Waxed Blue Zillium Brick Slab");
+        addBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL, "Waxed Blue Zillium Brick Wall");
+
+        addBlock(ESBlocks.PINK_ZILLIUM_BRICKS, "Pink Zillium Bricks");
+        addBlock(ESBlocks.PINK_ZILLIUM_BRICK_STAIRS, "Pink Zillium Brick Stairs");
+        addBlock(ESBlocks.PINK_ZILLIUM_BRICK_SLAB, "Pink Zillium Brick Slab");
+        addBlock(ESBlocks.PINK_ZILLIUM_BRICK_WALL, "Pink Zillium Brick Wall");
+        addBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICKS, "Waxed Pink Zillium Bricks");
+        addBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS, "Waxed Pink Zillium Brick Stairs");
+        addBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB, "Waxed Pink Zillium Brick Slab");
+        addBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL, "Waxed Pink Zillium Brick Wall");
+
+        addBlock(ESBlocks.SECONDARY_ZILLIUM_BRICKS, "Secondary Zillium Bricks");
+        addBlock(ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS, "Secondary Zillium Brick Stairs");
+        addBlock(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB, "Secondary Zillium Brick Slab");
+        addBlock(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL, "Secondary Zillium Brick Wall");
+        addBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICKS, "Waxed Secondary Zillium Bricks");
+        addBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS, "Waxed Secondary Zillium Brick Stairs");
+        addBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB, "Waxed Secondary Zillium Brick Slab");
+        addBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL, "Waxed Secondary Zillium Brick Wall");
     }
 
     private void addFood() {

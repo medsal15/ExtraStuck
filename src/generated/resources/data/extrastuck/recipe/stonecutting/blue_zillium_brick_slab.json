@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "blue_zillium_bricks",
+  "ingredient": {
+    "item": "extrastuck:blue_zillium_bricks"
+  },
+  "result": {
+    "count": 2,
+    "id": "extrastuck:blue_zillium_brick_slab"
+  }
+}

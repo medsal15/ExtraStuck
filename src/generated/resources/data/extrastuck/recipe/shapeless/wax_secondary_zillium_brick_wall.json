@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "waxed_zillium",
+  "ingredients": [
+    {
+      "item": "extrastuck:secondary_zillium_brick_wall"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:waxed_secondary_zillium_brick_wall"
+  }
+}

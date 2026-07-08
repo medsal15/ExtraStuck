@@ -89,6 +89,23 @@ public final class ESTagsProvider {
                     ESBlocks.MARBLE_BRICK_SLAB.get(), ESBlocks.MARBLE_BRICK_WALL.get(),
                     ESBlocks.ZILLIUM_BRICKS.get(), ESBlocks.ZILLIUM_BRICK_STAIRS.get(),
                     ESBlocks.ZILLIUM_BRICK_SLAB.get(), ESBlocks.ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.GREEN_ZILLIUM_BRICKS.get(), ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get(), ESBlocks.GREEN_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICKS.get(), ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get(), ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.BLUE_ZILLIUM_BRICKS.get(), ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get(), ESBlocks.BLUE_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICKS.get(), ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get(), ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.PINK_ZILLIUM_BRICKS.get(), ESBlocks.PINK_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.PINK_ZILLIUM_BRICK_SLAB.get(), ESBlocks.PINK_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICKS.get(), ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB.get(), ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.SECONDARY_ZILLIUM_BRICKS.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICKS.get(), ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get(),
                     ESBlocks.CARD_ORE.get(), ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
                     ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
                     ESBlocks.CARD_STORAGE.get());
@@ -99,7 +116,11 @@ public final class ESTagsProvider {
             tag(BlockTags.WALLS).add(ESBlocks.CUT_GARNET_WALL.get(), ESBlocks.GARNET_BRICK_WALL.get(),
                     ESBlocks.CUT_RUBY_WALL.get(), ESBlocks.RUBY_BRICK_WALL.get(), ESBlocks.SULFUROUS_STONE_WALL.get(),
                     ESBlocks.MARBLE_WALL.get(), ESBlocks.POLISHED_MARBLE_WALL.get(), ESBlocks.MARBLE_BRICK_WALL.get(),
-                    ESBlocks.ZILLIUM_BRICK_WALL.get());
+                    ESBlocks.ZILLIUM_BRICK_WALL.get(), ESBlocks.GREEN_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL.get(), ESBlocks.BLUE_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL.get(), ESBlocks.PINK_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get());
 
             tag(BlockTags.DOORS).add(ESBlocks.COBALT_DOOR.get());
             tag(BlockTags.TRAPDOORS).add(ESBlocks.COBALT_TRAPDOOR.get());

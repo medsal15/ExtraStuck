@@ -1,0 +1,52 @@
+{
+  "values": {
+    "extrastuck:blue_zillium_brick_slab": {
+      "next_color_stage": "extrastuck:pink_zillium_brick_slab"
+    },
+    "extrastuck:blue_zillium_brick_stairs": {
+      "next_color_stage": "extrastuck:pink_zillium_brick_stairs"
+    },
+    "extrastuck:blue_zillium_brick_wall": {
+      "next_color_stage": "extrastuck:pink_zillium_brick_wall"
+    },
+    "extrastuck:blue_zillium_bricks": {
+      "next_color_stage": "extrastuck:pink_zillium_bricks"
+    },
+    "extrastuck:green_zillium_brick_slab": {
+      "next_color_stage": "extrastuck:blue_zillium_brick_slab"
+    },
+    "extrastuck:green_zillium_brick_stairs": {
+      "next_color_stage": "extrastuck:blue_zillium_brick_stairs"
+    },
+    "extrastuck:green_zillium_brick_wall": {
+      "next_color_stage": "extrastuck:blue_zillium_brick_wall"
+    },
+    "extrastuck:green_zillium_bricks": {
+      "next_color_stage": "extrastuck:blue_zillium_bricks"
+    },
+    "extrastuck:pink_zillium_brick_slab": {
+      "next_color_stage": "extrastuck:secondary_zillium_brick_slab"
+    },
+    "extrastuck:pink_zillium_brick_stairs": {
+      "next_color_stage": "extrastuck:secondary_zillium_brick_stairs"
+    },
+    "extrastuck:pink_zillium_brick_wall": {
+      "next_color_stage": "extrastuck:secondary_zillium_brick_wall"
+    },
+    "extrastuck:pink_zillium_bricks": {
+      "next_color_stage": "extrastuck:secondary_zillium_bricks"
+    },
+    "extrastuck:secondary_zillium_brick_slab": {
+      "next_color_stage": "extrastuck:blue_zillium_brick_slab"
+    },
+    "extrastuck:secondary_zillium_brick_stairs": {
+      "next_color_stage": "extrastuck:blue_zillium_brick_stairs"
+    },
+    "extrastuck:secondary_zillium_brick_wall": {
+      "next_color_stage": "extrastuck:blue_zillium_brick_wall"
+    },
+    "extrastuck:secondary_zillium_bricks": {
+      "next_color_stage": "extrastuck:blue_zillium_bricks"
+    }
+  }
+}

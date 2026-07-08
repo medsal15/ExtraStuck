@@ -2487,51 +2487,173 @@ public final class ESRecipeProvider extends RecipeProvider {
         // #endregion Marble
 
         // #region Zillium
-        CombinationRecipeBuilder.of(ESItems.ZILLIUM_BRICKS)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.GREEN_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.ZILLIUM_BRICKS).unlockedBy("has_outdated", has(ESItems.ZILLIUM_BRICKS))
+                .save(output, modid("shapeless/update_zillium_bricks"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.GREEN_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.ZILLIUM_BRICK_STAIRS).unlockedBy("has_outdated", has(ESItems.ZILLIUM_BRICK_STAIRS))
+                .save(output, modid("shapeless/update_zillium_brick_stairs"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.GREEN_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.ZILLIUM_BRICK_SLAB).unlockedBy("has_outdated", has(ESItems.ZILLIUM_BRICK_SLAB))
+                .save(output, modid("shapeless/update_zillium_brick_slab"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.GREEN_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.ZILLIUM_BRICK_WALL).unlockedBy("has_outdated", has(ESItems.ZILLIUM_BRICK_WALL))
+                .save(output, modid("shapeless/update_zillium_brick_wall"));
+
+        CombinationRecipeBuilder.of(ESItems.GREEN_ZILLIUM_BRICKS)
                 .input(Items.STONE_BRICKS).and().input(MSItems.ZILLIUM_SKITTLES)
                 .build(output);
-        GristCostRecipeBuilder.of(ESItems.ZILLIUM_BRICKS)
+        GristCostRecipeBuilder.of(ESItems.GREEN_ZILLIUM_BRICKS)
+                .grist(GristTypes.ZILLIUM, 4)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BLUE_ZILLIUM_BRICKS)
+                .grist(GristTypes.ZILLIUM, 4)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.PINK_ZILLIUM_BRICKS)
+                .grist(GristTypes.ZILLIUM, 4)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SECONDARY_ZILLIUM_BRICKS)
                 .grist(GristTypes.ZILLIUM, 4)
                 .build(output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.ZILLIUM_BRICKS),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.ZILLIUM_BRICK_STAIRS)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("stonecutting/zillium_bricks_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.ZILLIUM_BRICK_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.ZILLIUM_BRICKS)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("shaped/zillium_bricks_stairs"));
+        // #region Green
+        blockShapes(ESItems.GREEN_ZILLIUM_BRICKS, ESItems.GREEN_ZILLIUM_BRICK_STAIRS, ESItems.GREEN_ZILLIUM_BRICK_SLAB,
+                ESItems.GREEN_ZILLIUM_BRICK_WALL, output);
+        blockShapes(ESItems.WAXED_GREEN_ZILLIUM_BRICKS, ESItems.WAXED_GREEN_ZILLIUM_BRICK_STAIRS,
+                ESItems.WAXED_GREEN_ZILLIUM_BRICK_SLAB, ESItems.WAXED_GREEN_ZILLIUM_BRICK_WALL, output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.ZILLIUM_BRICKS),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.ZILLIUM_BRICK_SLAB, 2)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("stonecutting/zillium_bricks_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.ZILLIUM_BRICK_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.ZILLIUM_BRICKS)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("shaped/zillium_bricks_slab"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_GREEN_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.GREEN_ZILLIUM_BRICKS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.GREEN_ZILLIUM_BRICKS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_green_zillium_bricks"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.GREEN_ZILLIUM_BRICK_STAIRS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.GREEN_ZILLIUM_BRICK_STAIRS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_green_zillium_brick_stairs"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_GREEN_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.GREEN_ZILLIUM_BRICK_SLAB)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.GREEN_ZILLIUM_BRICK_SLAB))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_green_zillium_brick_slab"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_GREEN_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.GREEN_ZILLIUM_BRICK_WALL)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.GREEN_ZILLIUM_BRICK_WALL))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_green_zillium_brick_wall"));
+        // #endregion Green
+        // #region Blue
+        blockShapes(ESItems.BLUE_ZILLIUM_BRICKS, ESItems.BLUE_ZILLIUM_BRICK_STAIRS, ESItems.BLUE_ZILLIUM_BRICK_SLAB,
+                ESItems.BLUE_ZILLIUM_BRICK_WALL, output);
+        blockShapes(ESItems.WAXED_BLUE_ZILLIUM_BRICKS, ESItems.WAXED_BLUE_ZILLIUM_BRICK_STAIRS,
+                ESItems.WAXED_BLUE_ZILLIUM_BRICK_SLAB, ESItems.WAXED_BLUE_ZILLIUM_BRICK_WALL, output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.ZILLIUM_BRICKS),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.ZILLIUM_BRICK_WALL)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("stonecutting/zillium_bricks_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.ZILLIUM_BRICK_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.ZILLIUM_BRICKS)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("shaped/zillium_bricks_wall"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_BLUE_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.BLUE_ZILLIUM_BRICKS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.BLUE_ZILLIUM_BRICKS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_blue_zillium_bricks"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.BLUE_ZILLIUM_BRICK_STAIRS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.BLUE_ZILLIUM_BRICK_STAIRS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_blue_zillium_brick_stairs"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_BLUE_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.BLUE_ZILLIUM_BRICK_SLAB)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.BLUE_ZILLIUM_BRICK_SLAB))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_blue_zillium_brick_slab"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_BLUE_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.BLUE_ZILLIUM_BRICK_WALL)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.BLUE_ZILLIUM_BRICK_WALL))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_blue_zillium_brick_wall"));
+        // #endregion Blue
+        // #region Pink
+        blockShapes(ESItems.PINK_ZILLIUM_BRICKS, ESItems.PINK_ZILLIUM_BRICK_STAIRS, ESItems.PINK_ZILLIUM_BRICK_SLAB,
+                ESItems.PINK_ZILLIUM_BRICK_WALL, output);
+        blockShapes(ESItems.WAXED_PINK_ZILLIUM_BRICKS, ESItems.WAXED_PINK_ZILLIUM_BRICK_STAIRS,
+                ESItems.WAXED_PINK_ZILLIUM_BRICK_SLAB, ESItems.WAXED_PINK_ZILLIUM_BRICK_WALL, output);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_PINK_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.PINK_ZILLIUM_BRICKS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.PINK_ZILLIUM_BRICKS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_pink_zillium_bricks"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_PINK_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.PINK_ZILLIUM_BRICK_STAIRS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.PINK_ZILLIUM_BRICK_STAIRS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_pink_zillium_brick_stairs"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_PINK_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.PINK_ZILLIUM_BRICK_SLAB)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.PINK_ZILLIUM_BRICK_SLAB))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_pink_zillium_brick_slab"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_PINK_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.PINK_ZILLIUM_BRICK_WALL)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.PINK_ZILLIUM_BRICK_WALL))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_pink_zillium_brick_wall"));
+        // #endregion Pink
+        // #region Secondary
+        blockShapes(ESItems.SECONDARY_ZILLIUM_BRICKS, ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS,
+                ESItems.SECONDARY_ZILLIUM_BRICK_SLAB,
+                ESItems.SECONDARY_ZILLIUM_BRICK_WALL, output);
+        blockShapes(ESItems.WAXED_SECONDARY_ZILLIUM_BRICKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS,
+                ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_WALL, output);
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.SECONDARY_ZILLIUM_BRICKS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.SECONDARY_ZILLIUM_BRICKS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_secondary_zillium_bricks"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_secondary_zillium_brick_stairs"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.SECONDARY_ZILLIUM_BRICK_SLAB)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.SECONDARY_ZILLIUM_BRICK_SLAB))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_secondary_zillium_brick_slab"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.SECONDARY_ZILLIUM_BRICK_WALL)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.SECONDARY_ZILLIUM_BRICK_WALL))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_secondary_zillium_brick_wall"));
+        // #endregion Secondary
         // #endregion Zillium
 
         GristCostRecipeBuilder.of(ESItems.NORMAL_CAT_PLUSH)
@@ -2910,5 +3032,47 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .smoking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, experience, 100)
                 .unlockedBy("has_raw", has(raw))
                 .save(output, modid(String.format("smoking/%s", cooked.getId().getPath())));
+    }
+
+    private void blockShapes(DeferredItem<? extends Item> full, DeferredItem<? extends Item> stairs,
+            DeferredItem<? extends Item> slab, DeferredItem<? extends Item> wall, RecipeOutput output) {
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(full), RecipeCategory.BUILDING_BLOCKS, stairs)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("stonecutting/%s", stairs.getId().getPath())));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, stairs.toStack(4))
+                .pattern("G  ")
+                .pattern("GG ")
+                .pattern("GGG")
+                .define('G', full)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("shaped/%s", stairs.getId().getPath())));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(full), RecipeCategory.BUILDING_BLOCKS, slab, 2)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("stonecutting/%s", slab.getId().getPath())));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, slab.toStack(6))
+                .pattern("GGG")
+                .define('G', full)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("shaped/%s", slab.getId().getPath())));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(full), RecipeCategory.BUILDING_BLOCKS, wall)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("stonecutting/%s", wall.getId().getPath())));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, wall.toStack(6))
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', full)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("shaped/%s", wall.getId().getPath())));
     }
 }

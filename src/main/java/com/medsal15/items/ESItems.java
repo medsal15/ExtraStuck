@@ -1203,6 +1203,83 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_SLAB);
     public static final DeferredItem<BlockItem> ZILLIUM_BRICK_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_WALL);
+
+    // #region Green Zillium
+    public static final DeferredItem<BlockItem> GREEN_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GREEN_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> GREEN_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> GREEN_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> GREEN_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GREEN_ZILLIUM_BRICK_WALL);
+
+    public static final DeferredItem<BlockItem> WAXED_GREEN_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_GREEN_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> WAXED_GREEN_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> WAXED_GREEN_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> WAXED_GREEN_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL);
+    // #endregion Green Zillium
+    // #region Blue Zillium
+    public static final DeferredItem<BlockItem> BLUE_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.BLUE_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> BLUE_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> BLUE_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> BLUE_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.BLUE_ZILLIUM_BRICK_WALL);
+
+    public static final DeferredItem<BlockItem> WAXED_BLUE_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_BLUE_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> WAXED_BLUE_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> WAXED_BLUE_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> WAXED_BLUE_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL);
+    // #endregion Blue Zillium
+    // #region Pink Zillium
+    public static final DeferredItem<BlockItem> PINK_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.PINK_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> PINK_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.PINK_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> PINK_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.PINK_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> PINK_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.PINK_ZILLIUM_BRICK_WALL);
+
+    public static final DeferredItem<BlockItem> WAXED_PINK_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_PINK_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> WAXED_PINK_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> WAXED_PINK_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> WAXED_PINK_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL);
+    // #endregion Pink Zillium
+    // #region Secondary Zillium
+    public static final DeferredItem<BlockItem> SECONDARY_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SECONDARY_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> SECONDARY_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> SECONDARY_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> SECONDARY_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL);
+
+    public static final DeferredItem<BlockItem> WAXED_SECONDARY_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> WAXED_SECONDARY_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> WAXED_SECONDARY_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL);
+    // #endregion Secondary Zillium
     // #endregion Zillium
     public static final DeferredItem<BlockItem> NORMAL_CAT_PLUSH = ITEMS
             .registerSimpleBlockItem(ESBlocks.NORMAL_CAT_PLUSH);
@@ -1823,10 +1900,41 @@ public final class ESItems {
         list.add(MARBLE_BRICK_SLAB);
         list.add(MARBLE_BRICK_WALL);
 
-        list.add(ZILLIUM_BRICKS);
-        list.add(ZILLIUM_BRICK_STAIRS);
-        list.add(ZILLIUM_BRICK_SLAB);
-        list.add(ZILLIUM_BRICK_WALL);
+        list.add(GREEN_ZILLIUM_BRICKS);
+        list.add(GREEN_ZILLIUM_BRICK_STAIRS);
+        list.add(GREEN_ZILLIUM_BRICK_SLAB);
+        list.add(GREEN_ZILLIUM_BRICK_WALL);
+        list.add(WAXED_GREEN_ZILLIUM_BRICKS);
+        list.add(WAXED_GREEN_ZILLIUM_BRICK_STAIRS);
+        list.add(WAXED_GREEN_ZILLIUM_BRICK_SLAB);
+        list.add(WAXED_GREEN_ZILLIUM_BRICK_WALL);
+
+        list.add(BLUE_ZILLIUM_BRICKS);
+        list.add(BLUE_ZILLIUM_BRICK_STAIRS);
+        list.add(BLUE_ZILLIUM_BRICK_SLAB);
+        list.add(BLUE_ZILLIUM_BRICK_WALL);
+        list.add(WAXED_BLUE_ZILLIUM_BRICKS);
+        list.add(WAXED_BLUE_ZILLIUM_BRICK_STAIRS);
+        list.add(WAXED_BLUE_ZILLIUM_BRICK_SLAB);
+        list.add(WAXED_BLUE_ZILLIUM_BRICK_WALL);
+
+        list.add(PINK_ZILLIUM_BRICKS);
+        list.add(PINK_ZILLIUM_BRICK_STAIRS);
+        list.add(PINK_ZILLIUM_BRICK_SLAB);
+        list.add(PINK_ZILLIUM_BRICK_WALL);
+        list.add(WAXED_PINK_ZILLIUM_BRICKS);
+        list.add(WAXED_PINK_ZILLIUM_BRICK_STAIRS);
+        list.add(WAXED_PINK_ZILLIUM_BRICK_SLAB);
+        list.add(WAXED_PINK_ZILLIUM_BRICK_WALL);
+
+        list.add(SECONDARY_ZILLIUM_BRICKS);
+        list.add(SECONDARY_ZILLIUM_BRICK_STAIRS);
+        list.add(SECONDARY_ZILLIUM_BRICK_SLAB);
+        list.add(SECONDARY_ZILLIUM_BRICK_WALL);
+        list.add(WAXED_SECONDARY_ZILLIUM_BRICKS);
+        list.add(WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS);
+        list.add(WAXED_SECONDARY_ZILLIUM_BRICK_SLAB);
+        list.add(WAXED_SECONDARY_ZILLIUM_BRICK_WALL);
 
         list.add(CARD_ORE);
 

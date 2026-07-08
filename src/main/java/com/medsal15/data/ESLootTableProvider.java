@@ -429,10 +429,51 @@ public class ESLootTableProvider extends LootTableProvider {
             add(ESBlocks.MARBLE_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.MARBLE_BRICK_SLAB.get()));
             dropSelf(ESBlocks.MARBLE_BRICK_WALL.get());
 
-            dropSelf(ESBlocks.ZILLIUM_BRICKS.get());
-            dropSelf(ESBlocks.ZILLIUM_BRICK_STAIRS.get());
-            add(ESBlocks.ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.ZILLIUM_BRICK_SLAB.get()));
-            dropSelf(ESBlocks.ZILLIUM_BRICK_WALL.get());
+            dropOther(ESBlocks.ZILLIUM_BRICKS.get(), ESItems.GREEN_ZILLIUM_BRICKS);
+            dropOther(ESBlocks.ZILLIUM_BRICK_STAIRS.get(), ESItems.GREEN_ZILLIUM_BRICKS);
+            add(ESBlocks.ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get()));
+            dropOther(ESBlocks.ZILLIUM_BRICK_WALL.get(), ESItems.GREEN_ZILLIUM_BRICKS);
+
+            dropSelf(ESBlocks.GREEN_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.GREEN_ZILLIUM_BRICK_WALL.get());
+            dropSelf(ESBlocks.WAXED_GREEN_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL.get());
+
+            dropSelf(ESBlocks.BLUE_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.BLUE_ZILLIUM_BRICK_WALL.get());
+            dropSelf(ESBlocks.WAXED_BLUE_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL.get());
+
+            dropSelf(ESBlocks.PINK_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.PINK_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.PINK_ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.PINK_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.PINK_ZILLIUM_BRICK_WALL.get());
+            dropSelf(ESBlocks.WAXED_PINK_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL.get());
+
+            dropSelf(ESBlocks.SECONDARY_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL.get());
+            dropSelf(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get());
 
             add(ESBlocks.PIZZA.get(), noDrop());
             dropOther(ESBlocks.DIVINE_TEMPTATION_BLOCK.get(), Items.CAULDRON);

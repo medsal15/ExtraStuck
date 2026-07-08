@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "pink_zillium_bricks",
+  "key": {
+    "G": {
+      "item": "extrastuck:pink_zillium_bricks"
+    }
+  },
+  "pattern": [
+    "GGG"
+  ],
+  "result": {
+    "count": 6,
+    "id": "extrastuck:pink_zillium_brick_slab"
+  }
+}

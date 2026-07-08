@@ -80,6 +80,50 @@ public class ESBlockStateProvider extends BlockStateProvider {
         slabBlock(ESBlocks.ZILLIUM_BRICK_SLAB.get(), modLoc("block/zillium_bricks"), modLoc("block/zillium_bricks"));
         wallBlock(ESBlocks.ZILLIUM_BRICK_WALL.get(), modLoc("block/zillium_bricks"));
 
+        simpleBlock(ESBlocks.GREEN_ZILLIUM_BRICKS.get());
+        stairsBlock(ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS.get(), modLoc("block/green_zillium_bricks"));
+        slabBlock(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get(), modLoc("block/green_zillium_bricks"),
+                modLoc("block/green_zillium_bricks"));
+        wallBlock(ESBlocks.GREEN_ZILLIUM_BRICK_WALL.get(), modLoc("block/green_zillium_bricks"));
+        simpleBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICKS.get(), cubeAll(ESBlocks.GREEN_ZILLIUM_BRICKS.get()));
+        stairsBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.get(), modLoc("block/green_zillium_bricks"));
+        slabBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get(), modLoc("block/green_zillium_bricks"),
+                modLoc("block/green_zillium_bricks"));
+        wallBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL.get(), modLoc("block/green_zillium_bricks"));
+
+        simpleBlock(ESBlocks.BLUE_ZILLIUM_BRICKS.get());
+        stairsBlock(ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS.get(), modLoc("block/blue_zillium_bricks"));
+        slabBlock(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get(), modLoc("block/blue_zillium_bricks"),
+                modLoc("block/blue_zillium_bricks"));
+        wallBlock(ESBlocks.BLUE_ZILLIUM_BRICK_WALL.get(), modLoc("block/blue_zillium_bricks"));
+        simpleBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICKS.get(), cubeAll(ESBlocks.BLUE_ZILLIUM_BRICKS.get()));
+        stairsBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.get(), modLoc("block/blue_zillium_bricks"));
+        slabBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get(), modLoc("block/blue_zillium_bricks"),
+                modLoc("block/blue_zillium_bricks"));
+        wallBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL.get(), modLoc("block/blue_zillium_bricks"));
+
+        simpleBlock(ESBlocks.PINK_ZILLIUM_BRICKS.get());
+        stairsBlock(ESBlocks.PINK_ZILLIUM_BRICK_STAIRS.get(), modLoc("block/pink_zillium_bricks"));
+        slabBlock(ESBlocks.PINK_ZILLIUM_BRICK_SLAB.get(), modLoc("block/pink_zillium_bricks"),
+                modLoc("block/pink_zillium_bricks"));
+        wallBlock(ESBlocks.PINK_ZILLIUM_BRICK_WALL.get(), modLoc("block/pink_zillium_bricks"));
+        simpleBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICKS.get(), cubeAll(ESBlocks.PINK_ZILLIUM_BRICKS.get()));
+        stairsBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS.get(), modLoc("block/pink_zillium_bricks"));
+        slabBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB.get(), modLoc("block/pink_zillium_bricks"),
+                modLoc("block/pink_zillium_bricks"));
+        wallBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL.get(), modLoc("block/pink_zillium_bricks"));
+
+        simpleBlock(ESBlocks.SECONDARY_ZILLIUM_BRICKS.get());
+        stairsBlock(ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS.get(), modLoc("block/secondary_zillium_bricks"));
+        slabBlock(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB.get(), modLoc("block/secondary_zillium_bricks"),
+                modLoc("block/secondary_zillium_bricks"));
+        wallBlock(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL.get(), modLoc("block/secondary_zillium_bricks"));
+        simpleBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICKS.get(), cubeAll(ESBlocks.SECONDARY_ZILLIUM_BRICKS.get()));
+        stairsBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.get(), modLoc("block/secondary_zillium_bricks"));
+        slabBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get(), modLoc("block/secondary_zillium_bricks"),
+                modLoc("block/secondary_zillium_bricks"));
+        wallBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get(), modLoc("block/secondary_zillium_bricks"));
+
         directionalBlock(ESBlocks.DOWEL_STORAGE.get(),
                 new ExistingModelFile(ExtraStuck.modid("block/dowel_storage"), fileHelper));
         horizontalBlock(ESBlocks.CARD_STORAGE.get(),

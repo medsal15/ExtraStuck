@@ -190,6 +190,7 @@ dependencies {
     runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
     implementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
+    // Farmer's Delight
     implementation "maven.modrinth:farmers-delight:${farmersdelight_version}"
 
     // Iron's Spellbooks

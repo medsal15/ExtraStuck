@@ -457,6 +457,60 @@ public final class ESItemModelProvider extends ItemModelProvider {
         withExistingParent(ESItems.ZILLIUM_BRICK_SLAB.getId().toString(), modLoc("block/zillium_brick_slab"));
         wallInventory(ESItems.ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/zillium_bricks"));
 
+        withExistingParent(ESItems.GREEN_ZILLIUM_BRICKS.getId().toString(), modLoc("block/green_zillium_bricks"));
+        withExistingParent(ESItems.GREEN_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/green_zillium_brick_stairs"));
+        withExistingParent(ESItems.GREEN_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/green_zillium_brick_slab"));
+        wallInventory(ESItems.GREEN_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/green_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_GREEN_ZILLIUM_BRICKS.getId().toString(), modLoc("block/green_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/green_zillium_brick_stairs"));
+        withExistingParent(ESItems.WAXED_GREEN_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/green_zillium_brick_slab"));
+        wallInventory(ESItems.WAXED_GREEN_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/green_zillium_bricks"));
+
+        withExistingParent(ESItems.BLUE_ZILLIUM_BRICKS.getId().toString(), modLoc("block/blue_zillium_bricks"));
+        withExistingParent(ESItems.BLUE_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/blue_zillium_brick_stairs"));
+        withExistingParent(ESItems.BLUE_ZILLIUM_BRICK_SLAB.getId().toString(), modLoc("block/blue_zillium_brick_slab"));
+        wallInventory(ESItems.BLUE_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/blue_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_BLUE_ZILLIUM_BRICKS.getId().toString(), modLoc("block/blue_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/blue_zillium_brick_stairs"));
+        withExistingParent(ESItems.WAXED_BLUE_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/blue_zillium_brick_slab"));
+        wallInventory(ESItems.WAXED_BLUE_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/blue_zillium_bricks"));
+
+        withExistingParent(ESItems.PINK_ZILLIUM_BRICKS.getId().toString(), modLoc("block/pink_zillium_bricks"));
+        withExistingParent(ESItems.PINK_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/pink_zillium_brick_stairs"));
+        withExistingParent(ESItems.PINK_ZILLIUM_BRICK_SLAB.getId().toString(), modLoc("block/pink_zillium_brick_slab"));
+        wallInventory(ESItems.PINK_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/pink_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_PINK_ZILLIUM_BRICKS.getId().toString(), modLoc("block/pink_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_PINK_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/pink_zillium_brick_stairs"));
+        withExistingParent(ESItems.WAXED_PINK_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/pink_zillium_brick_slab"));
+        wallInventory(ESItems.WAXED_PINK_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/pink_zillium_bricks"));
+
+        withExistingParent(ESItems.SECONDARY_ZILLIUM_BRICKS.getId().toString(),
+                modLoc("block/secondary_zillium_bricks"));
+        withExistingParent(ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/secondary_zillium_brick_stairs"));
+        withExistingParent(ESItems.SECONDARY_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/secondary_zillium_brick_slab"));
+        wallInventory(ESItems.SECONDARY_ZILLIUM_BRICK_WALL.getId().toString(),
+                modLoc("block/secondary_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_SECONDARY_ZILLIUM_BRICKS.getId().toString(),
+                modLoc("block/secondary_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/secondary_zillium_brick_stairs"));
+        withExistingParent(ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/secondary_zillium_brick_slab"));
+        wallInventory(ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.getId().toString(),
+                modLoc("block/secondary_zillium_bricks"));
+
         basicItem(ESItems.NORMAL_CAT_PLUSH.get());
     }
 }
