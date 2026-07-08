@@ -49,12 +49,12 @@ public final class DataMapGenerator extends DataMapProvider {
                         false)
                 .add(ESBlocks.PINK_ZILLIUM_BRICK_WALL, new Zilliable(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL.get()),
                         false)
-                .add(ESBlocks.SECONDARY_ZILLIUM_BRICKS, new Zilliable(ESBlocks.BLUE_ZILLIUM_BRICKS.get()), false)
-                .add(ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS, new Zilliable(ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS.get()),
+                .add(ESBlocks.SECONDARY_ZILLIUM_BRICKS, new Zilliable(ESBlocks.GREEN_ZILLIUM_BRICKS.get()), false)
+                .add(ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS, new Zilliable(ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS.get()),
                         false)
-                .add(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB, new Zilliable(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get()),
+                .add(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB, new Zilliable(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get()),
                         false)
-                .add(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL, new Zilliable(ESBlocks.BLUE_ZILLIUM_BRICK_WALL.get()),
+                .add(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL, new Zilliable(ESBlocks.GREEN_ZILLIUM_BRICK_WALL.get()),
                         false);
 
         builder(NeoForgeDataMaps.WAXABLES)

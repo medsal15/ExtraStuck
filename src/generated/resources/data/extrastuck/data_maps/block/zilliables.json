@@ -37,16 +37,16 @@
       "next_color_stage": "extrastuck:secondary_zillium_bricks"
     },
     "extrastuck:secondary_zillium_brick_slab": {
-      "next_color_stage": "extrastuck:blue_zillium_brick_slab"
+      "next_color_stage": "extrastuck:green_zillium_brick_slab"
     },
     "extrastuck:secondary_zillium_brick_stairs": {
-      "next_color_stage": "extrastuck:blue_zillium_brick_stairs"
+      "next_color_stage": "extrastuck:green_zillium_brick_stairs"
     },
     "extrastuck:secondary_zillium_brick_wall": {
-      "next_color_stage": "extrastuck:blue_zillium_brick_wall"
+      "next_color_stage": "extrastuck:green_zillium_brick_wall"
     },
     "extrastuck:secondary_zillium_bricks": {
-      "next_color_stage": "extrastuck:blue_zillium_bricks"
+      "next_color_stage": "extrastuck:green_zillium_bricks"
     }
   }
 }
