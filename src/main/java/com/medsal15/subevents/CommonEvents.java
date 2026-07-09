@@ -21,6 +21,7 @@ import com.medsal15.compat.curios.CuriosCapabilities;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.curios.items.ESCuriosUtils;
 import com.medsal15.data.ESLangProvider;
+import com.medsal15.data.ESLootTableProvider;
 import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
@@ -55,6 +56,7 @@ import com.mraof.minestuck.player.EnumAspect;
 import com.mraof.minestuck.player.Title;
 import com.mraof.minestuck.world.lands.GristLayerInfo;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
@@ -63,6 +65,8 @@ import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -84,6 +88,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -591,8 +598,21 @@ public final class CommonEvents {
             level.playSound(player, pos, SoundEvents.WARDEN_DIG, SoundSource.BLOCKS);
             player.getCooldowns().addCooldown(stack.getItem(), 1200);
 
-            if (!player.getInventory().add(ESItems.DEEPSLATE_REINFORCEMENT.toStack()))
-                player.drop(ESItems.DEEPSLATE_REINFORCEMENT.toStack(), false);
+            MinecraftServer server = level.getServer();
+            if (server != null && level instanceof ServerLevel serverLevel) {
+                LootTable table = server.reloadableRegistries()
+                        .getLootTable(ESLootTableProvider.TableSubProvider.DEEPSLATE_UNREINFORCING);
+                if (table != null) {
+                    LootParams.Builder builder = new LootParams.Builder(serverLevel).withLuck(player.getLuck());
+                    LootParams params = builder.create(LootContextParamSet.builder().build());
+                    ObjectArrayList<ItemStack> rewards = table.getRandomItems(params);
+                    for (ItemStack reward : rewards) {
+                        if (!player.getInventory().add(reward)) {
+                            player.drop(reward, false);
+                        }
+                    }
+                }
+            }
 
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);
