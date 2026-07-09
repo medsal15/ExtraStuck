@@ -72,6 +72,7 @@ public class ESLootTableProvider extends LootTableProvider {
 
         public static ResourceKey<LootTable> GIFT_LOOT_TABLE = key("gameplay/gift");
         public static ResourceKey<LootTable> SPAM_LOOT_TABLE = key("gameplay/spam");
+        public static ResourceKey<LootTable> DEEPSLATE_UNREINFORCING = key("gameplay/deepslate_unreinforcing");
 
         public static ResourceKey<LootTable> TWO_OF_DIAMONDS = key("gameplay/two_of_diamonds");
         public static ResourceKey<LootTable> TWO_OF_SPADES = key("gameplay/two_of_spades");
@@ -156,6 +157,9 @@ public class ESLootTableProvider extends LootTableProvider {
             // Misc
             consumer.accept(GIFT_LOOT_TABLE, giftLootTable());
             consumer.accept(SPAM_LOOT_TABLE, spamLootTable());
+            consumer.accept(DEEPSLATE_UNREINFORCING,
+                    LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                            .add(LootItem.lootTableItem(ESItems.DEEPSLATE_REINFORCEMENT))));
 
             // Cards
             consumer.accept(TWO_OF_DIAMONDS, LootTable.lootTable().withPool(

@@ -258,6 +258,7 @@ public final class ESTagsProvider {
                     MSItems.MARASCHINO_CHERRY_SCYTHE.get(), MSItems.TOFFEE_CLUB.get(), MSItems.CANDY_CANE.get(),
                     MSItems.SHARP_CANDY_CANE.get(), MSItems.CANDY_FORK.get(), ESItems.JAWBITER.get(),
                     ESItems.CAN_DIE.get());
+            tag(ESTags.Items.CAN_UNREINFORCE_DEEPSLATE).add(MSItems.CROWBAR.get());
 
             tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 
@@ -303,7 +304,8 @@ public final class ESTagsProvider {
 
             tag(MSTags.Items.UNREADABLE)
                     .add(ESItems.ANTI_DIE.get(), ISSESItems.PERFECTLY_UNIQUE_SPELLBOOK.get(),
-                            ESItems.ETERNAL_SHIELD.get(), ESItems.REWINDING_TOTEM.get())
+                            ESItems.ETERNAL_SHIELD.get(), ESItems.REWINDING_TOTEM.get(),
+                            ESItems.DEEPSLATE_REINFORCEMENT.get())
                     .addTag(ESTags.Items.VISION)
                     .addOptional(ItemRegistry.DIVINE_SOULSHARD.getId()).addOptional(ItemRegistry.PYRIUM_INGOT.getId())
                     .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())
@@ -393,6 +395,7 @@ public final class ESTagsProvider {
                     MobEffects.WEAKNESS.getKey());
             tag(ESTags.MobEffects.SILVER_WATCH_BLOCKS).add(MobEffects.DIG_SLOWDOWN.getKey(),
                     MobEffects.MOVEMENT_SLOWDOWN.getKey(), ESMobEffects.TIME_STOP.getKey());
+            tag(ESTags.MobEffects.NEEDED_TO_UNREINFORCE_DEEPSLATE).add(MobEffects.DAMAGE_BOOST.getKey());
 
             tag(MSTags.Effects.SOPOR_SICKNESS_WHITELIST).add(ESMobEffects.COSMIC_PLAGUE.getKey());
         }

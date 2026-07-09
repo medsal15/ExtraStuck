@@ -33,6 +33,8 @@ public final class ESTags {
         public static final TagKey<Item> MAKE_IT_RAIN_FORBIDDEN = ItemTags
                 .create(ExtraStuck.modid("make_it_rain_forbidden"));
         public static final TagKey<Item> TOOLBOX_FORBIDDEN = ItemTags.create(ExtraStuck.modid("toolbox_forbidden"));
+        public static final TagKey<Item> CAN_UNREINFORCE_DEEPSLATE = ItemTags
+                .create(ExtraStuck.modid("can_unreinforce_deepslate"));
 
         public static final TagKey<Item> TOOLS_ROLLING_PIN = ItemTags.create(common("tools/rolling_pin"));
         public static final TagKey<Item> URANIUM_RODS = ItemTags.create(common("rods/uranium"));
@@ -80,6 +82,8 @@ public final class ESTags {
         public static final TagKey<MobEffect> COSMIC_PLAGUE_PARTIAL_IMMUNITY = create("cosmic_plague/partial_immunity");
         public static final TagKey<MobEffect> RAINBOW_BOW_EFFECTS = create("rainbowbow_effects");
         public static final TagKey<MobEffect> SILVER_WATCH_BLOCKS = create("silver_watch_blocks");
+        public static final TagKey<MobEffect> NEEDED_TO_UNREINFORCE_DEEPSLATE = create(
+                "needed_to_unreinforce_deepslate");
 
         private static TagKey<MobEffect> create(String name) {
             return TagKey.create(Registries.MOB_EFFECT, ExtraStuck.modid(name));

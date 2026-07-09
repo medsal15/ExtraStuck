@@ -81,6 +81,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -491,6 +492,8 @@ public final class CommonEvents {
         }
         if (cake_cuttable)
             handleCakeCutting(event);
+
+        handleDeepslateUnreinforcing(event);
     }
 
     private static final Map<Holder<Block>, Holder<Item>> SUPPORTED_CAKES = Map.ofEntries(
@@ -555,6 +558,41 @@ public final class CommonEvents {
             itemEntity.setDeltaMovement(-.05, 0, 0);
             level.addFreshEntity(itemEntity);
             level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
+
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            event.setCanceled(true);
+        }
+    }
+
+    private static void handleDeepslateUnreinforcing(final PlayerInteractEvent.RightClickBlock event) {
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
+        BlockState state = event.getLevel().getBlockState(pos);
+        Player player = event.getEntity();
+        ItemStack stack = event.getItemStack();
+
+        if (player.getCooldowns().isOnCooldown(stack.getItem()))
+            return;
+
+        if (state.is(Blocks.REINFORCED_DEEPSLATE) && stack.is(ESTags.Items.CAN_UNREINFORCE_DEEPSLATE)) {
+            boolean hasNeededEffect = false;
+            for (MobEffectInstance effect : player.getActiveEffects()) {
+                if (effect.getEffect().is(ESTags.MobEffects.NEEDED_TO_UNREINFORCE_DEEPSLATE)) {
+                    hasNeededEffect = true;
+                    break;
+                }
+            }
+            if (!hasNeededEffect) {
+                player.displayClientMessage(Component.translatable(ESLangProvider.UNREINFORCE_MISSING_EFFECT), true);
+                return;
+            }
+            stack.hurtAndBreak(55, player, LivingEntity.getSlotForHand(event.getHand()));
+            level.setBlock(pos, Blocks.DEEPSLATE.defaultBlockState(), 3);
+            level.playSound(player, pos, SoundEvents.WARDEN_DIG, SoundSource.BLOCKS);
+            player.getCooldowns().addCooldown(stack.getItem(), 1200);
+
+            if (!player.getInventory().add(ESItems.DEEPSLATE_REINFORCEMENT.toStack()))
+                player.drop(ESItems.DEEPSLATE_REINFORCEMENT.toStack(), false);
 
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);

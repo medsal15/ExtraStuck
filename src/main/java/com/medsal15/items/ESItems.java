@@ -1099,6 +1099,8 @@ public final class ESItems {
             p -> new Item(p.stacksTo(1)));
     public static final DeferredItem<Item> COSMIC_PLAGUE_SPORE = ITEMS.registerItem("cosmic_plague_spore",
             CosmicPlagueSporeItem::new);
+    public static final DeferredItem<Item> DEEPSLATE_REINFORCEMENT = ITEMS.registerItem("deepslate_reinforcement",
+            Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
 
     // #region Blocks
     // #region Machines
@@ -1386,6 +1388,7 @@ public final class ESItems {
         output.accept(EMPTY_ENERGY_CORE);
         output.accept(BOONDOLLARS_FOR_IDIOTS);
         output.accept(COSMIC_PLAGUE_SPORE);
+        output.accept(DEEPSLATE_REINFORCEMENT);
 
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
             output.accept(item.get());

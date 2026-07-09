@@ -136,6 +136,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.MARBLE, 270).grist(GristTypes.QUARTZ, 180)
                 .grist(GristTypes.ARTIFACT, 4321).grist(GristTypes.RUBY, 765)
                 .build(output);
+
+        GristCostRecipeBuilder.of(ESItems.DEEPSLATE_REINFORCEMENT)
+                .grist(GristTypes.DIAMOND, 1200).grist(GristTypes.CHALK, 550).grist(GristTypes.ZILLIUM, 1)
+                .build(output);
     }
 
     private void shieldRecipes(@Nonnull RecipeOutput output) {

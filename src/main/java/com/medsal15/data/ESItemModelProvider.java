@@ -41,6 +41,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
         basicItem(ESItems.COSMIC_PLAGUE_SPORE.get());
         basicItem(ESItems.REWINDING_TOTEM.get());
+        basicItem(ESItems.DEEPSLATE_REINFORCEMENT.get());
 
         basicItem(ISSESItems.CASSETTE_DEAD_KING_LULLABY.get());
         basicItem(ISSESItems.CASSETTE_FLAME_STILL_BURNS.get());

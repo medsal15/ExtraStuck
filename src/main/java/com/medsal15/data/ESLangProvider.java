@@ -86,6 +86,8 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String SPAM_DESC_2 = ESItems.SPAM.get().getDescriptionId() + ".desc.2";
     public static final String SPAM_DESC_3 = ESItems.SPAM.get().getDescriptionId() + ".desc.3";
     public static final String ANTIDIE_HEAL = ESItems.ANTI_DIE.get().getDescriptionId() + ".heal";
+    public static final String UNREINFORCE_MISSING_EFFECT = ESItems.DEEPSLATE_REINFORCEMENT.get().getDescriptionId()
+            + ".missing_effect";
 
     public static final String VISION_HINT_ONE = ExtraStuck.MODID + ".vision.hint_curios";
     public static final String VISION_HINT_MANY = ExtraStuck.MODID + ".vision.hint_nocurios";
@@ -176,6 +178,10 @@ public final class ESLangProvider extends LanguageProvider {
                 "Contains all you need to know to become the richest player in the session");
         addItem(ESItems.COSMIC_PLAGUE_SPORE, "Cosmic Plague Spore");
         addItemTooltip(ESItems.COSMIC_PLAGUE_SPORE, "Extremely toxic in airless environements");
+        addItem(ESItems.DEEPSLATE_REINFORCEMENT, "Deepslate Reinforcement");
+        addItemTooltip(ESItems.DEEPSLATE_REINFORCEMENT, "Holy crap this thing is heavy");
+        add(UNREINFORCE_MISSING_EFFECT,
+                "You manage to fit your tool between the deepslate and the reinforcement, but fail to budge it");
 
         addItem(ISSESItems.CASSETTE_DEAD_KING_LULLABY, "Cassette");
         addItem(ISSESItems.CASSETTE_FLAME_STILL_BURNS, "Cassette");
