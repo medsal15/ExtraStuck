@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import com.medsal15.ESAttachements;
+import com.medsal15.ESSounds;
 import com.medsal15.ESAttachements.ESGristLayerInfo;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.BlasterBlockEntity;
@@ -595,7 +596,7 @@ public final class CommonEvents {
             }
             stack.hurtAndBreak(55, player, LivingEntity.getSlotForHand(event.getHand()));
             level.setBlock(pos, Blocks.DEEPSLATE.defaultBlockState(), 3);
-            level.playSound(player, pos, SoundEvents.WARDEN_DIG, SoundSource.BLOCKS);
+            level.playSound(player, pos, ESSounds.UNREINFORCE_DEEPSLATE.get(), SoundSource.BLOCKS);
             player.getCooldowns().addCooldown(stack.getItem(), 1200);
 
             MinecraftServer server = level.getServer();

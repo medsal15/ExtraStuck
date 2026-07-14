@@ -153,6 +153,7 @@ public final class ESLangProvider extends LanguageProvider {
         addTags();
         addMobEffects();
         addPonder();
+        addSoundsSubtitles();
 
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
@@ -1006,6 +1007,10 @@ public final class ESLangProvider extends LanguageProvider {
         add("extrastuck.ponder.tag.alchemy.description", "Machines for alchemizing more items");
         add("extrastuck.ponder.tag.alchemy/recipes", "Alchemy Recipes");
         add("extrastuck.ponder.tag.alchemy/recipes.description", "How to alchemize new items");
+    }
+
+    private void addSoundsSubtitles() {
+        add(ESSoundDefinitions.UNREINFORCE_DEEPSLATE, "Deepslate reinforcement is pried");
     }
 
     private void addItemTooltip(Supplier<? extends Item> key, String text) {

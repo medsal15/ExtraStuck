@@ -9,6 +9,8 @@ import net.neoforged.neoforge.common.data.SoundDefinition;
 import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 
 public class ESSoundDefinitions extends SoundDefinitionsProvider {
+    public static final String UNREINFORCE_DEEPSLATE = "subtitles.extrastuck.unreinforce_deepslate";
+
     public ESSoundDefinitions(PackOutput output, ExistingFileHelper fileHelper) {
         super(output, ExtraStuck.MODID, fileHelper);
     }
@@ -17,5 +19,7 @@ public class ESSoundDefinitions extends SoundDefinitionsProvider {
     public void registerSounds() {
         add(ESSounds.GOLDEN_PAN_HIT, SoundDefinition.definition().with(
                 sound(ExtraStuck.modid("golden_pan_hit")).volume(0.7)));
+        add(ESSounds.UNREINFORCE_DEEPSLATE, SoundDefinition.definition().subtitle(UNREINFORCE_DEEPSLATE).with(
+                sound(ExtraStuck.modid("unreinforce")).volume(0.5)));
     }
 }
