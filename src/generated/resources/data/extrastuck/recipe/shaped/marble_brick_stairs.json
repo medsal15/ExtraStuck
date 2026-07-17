@@ -1,17 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "marble_bricks",
   "key": {
     "G": {
       "item": "extrastuck:marble_bricks"
     }
   },
   "pattern": [
-    "GGG",
+    "G  ",
+    "GG ",
     "GGG"
   ],
   "result": {
-    "count": 6,
-    "id": "extrastuck:marble_brick_wall"
+    "count": 4,
+    "id": "extrastuck:marble_brick_stairs"
   }
 }

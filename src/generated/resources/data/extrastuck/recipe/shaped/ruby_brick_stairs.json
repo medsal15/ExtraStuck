@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "ruby_bricks",
   "key": {
     "G": {
       "item": "extrastuck:ruby_bricks"

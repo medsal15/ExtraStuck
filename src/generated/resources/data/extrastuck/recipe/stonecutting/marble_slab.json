@@ -1,5 +1,6 @@
 {
   "type": "minecraft:stonecutting",
+  "group": "marble",
   "ingredient": {
     "item": "extrastuck:marble"
   },

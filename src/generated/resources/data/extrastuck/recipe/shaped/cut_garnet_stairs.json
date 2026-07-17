@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "cut_garnet",
   "key": {
     "G": {
       "item": "extrastuck:cut_garnet"

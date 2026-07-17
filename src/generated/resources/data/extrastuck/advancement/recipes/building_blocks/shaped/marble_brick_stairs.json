@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_marble_bricks": {
+    "has_base": {
       "conditions": {
         "items": [
           {
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extrastuck:stonecutting/marble_bricks_wall"
+        "recipe": "extrastuck:shaped/marble_brick_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_marble_bricks"
+      "has_base"
     ]
   ],
   "rewards": {
     "recipes": [
-      "extrastuck:stonecutting/marble_bricks_wall"
+      "extrastuck:shaped/marble_brick_stairs"
     ]
   }
 }

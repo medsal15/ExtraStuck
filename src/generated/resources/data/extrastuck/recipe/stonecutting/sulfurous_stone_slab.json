@@ -1,5 +1,6 @@
 {
   "type": "minecraft:stonecutting",
+  "group": "sulfurous_stone",
   "ingredient": {
     "item": "extrastuck:sulfurous_stone"
   },

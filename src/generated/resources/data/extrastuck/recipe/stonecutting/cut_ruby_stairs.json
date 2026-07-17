@@ -1,5 +1,6 @@
 {
   "type": "minecraft:stonecutting",
+  "group": "cut_ruby",
   "ingredient": {
     "item": "extrastuck:cut_ruby"
   },
