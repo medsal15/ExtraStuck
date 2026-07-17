@@ -37,6 +37,7 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.LandFishingHook;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.entities.projectiles.orbs.OrbEntity;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;
@@ -319,6 +320,7 @@ public final class ClientEvents {
     public static void registerEntityRenderers(final RegisterRenderers event) {
         event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
                 CaptainJusticeShield.CJSRenderer::new);
+        event.registerEntityRenderer(ESEntities.LIGHT_ORB.get(), OrbEntity.Renderer::new);
 
         event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/arrow/flame.png")));
@@ -386,6 +388,8 @@ public final class ClientEvents {
     public static void registerEntityLayers(final RegisterLayerDefinitions event) {
         event.registerLayerDefinition(CaptainJusticeShield.CJSModel.LAYER_LOCATION,
                 CaptainJusticeShield.CJSModel::createLayer);
+        event.registerLayerDefinition(OrbEntity.Renderer.LAYER_LOCATION,
+                OrbEntity.Renderer::createBodyLayer);
     }
 
     @SubscribeEvent

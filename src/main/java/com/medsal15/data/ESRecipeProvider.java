@@ -593,6 +593,16 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.WIND_WAND)
                 .grist(GristTypes.MERCURY, 450).grist(GristTypes.CAULK, 360).grist(GristTypes.MARBLE, 150)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.WAND_OF_LIGHT)
+                .input(MSItems.NEEDLE_WAND).and().input(Items.GLOWSTONE)
+                .build(output, modid("wand_of_light_glowstone"));
+        CombinationRecipeBuilder.of(ESItems.WAND_OF_LIGHT)
+                .input(MSItems.NEEDLE_WAND).and().input(Items.GLOWSTONE_DUST)
+                .build(output, modid("wand_of_light_glowstone_dust"));
+        GristCostRecipeBuilder.of(ESItems.WAND_OF_LIGHT)
+                .grist(GristTypes.QUARTZ, 450).grist(GristTypes.GOLD, 180).grist(GristTypes.CHALK, 250)
+                .build(output);
         // #endregion Wands
 
         // #region Canes

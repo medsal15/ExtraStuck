@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLootTableProvider.TableSubProvider;
+import com.medsal15.entities.projectiles.orbs.LightOrb;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
@@ -264,6 +265,7 @@ public final class ESRightClickEffects {
                     player.position().z());
             windcharge.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
             level.addFreshEntity(windcharge);
+
             int damage = 10;
             if (Title.isPlayerOfAspect(serverPlayer, EnumAspect.BREATH))
                 damage = 5;
@@ -273,6 +275,28 @@ public final class ESRightClickEffects {
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WIND_CHARGE_THROW,
                 SoundSource.NEUTRAL, 1.0F, 0.4F / (player.getRandom().nextFloat() * 0.4F + 0.8F));
         player.getCooldowns().addCooldown(stack.getItem(), 10);
+
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+    }
+
+    public static InteractionResultHolder<ItemStack> shootLightOrb(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (player.getCooldowns().isOnCooldown(stack.getItem()))
+            return InteractionResultHolder.fail(stack);
+
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
+            LightOrb lightOrb = new LightOrb(player, level, player.position().x(), player.position().y() + 1,
+                    player.position().z());
+            lightOrb.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, .25F, 1);
+            level.addFreshEntity(lightOrb);
+
+            int damage = 10;
+            if (Title.isPlayerOfAspect(serverPlayer, EnumAspect.LIGHT))
+                damage = 5;
+            stack.hurtAndBreak(damage, player, LivingEntity.getSlotForHand(hand));
+        }
+
+        player.getCooldowns().addCooldown(stack.getItem(), 20);
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }

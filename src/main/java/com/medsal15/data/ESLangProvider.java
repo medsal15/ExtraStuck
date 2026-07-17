@@ -154,6 +154,7 @@ public final class ESLangProvider extends LanguageProvider {
         addMobEffects();
         addPonder();
         addSoundsSubtitles();
+        addEntities();
 
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
@@ -389,6 +390,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.MONEY_MAGIC, "Money Magic");
         addItemTooltip(ESItems.MONEY_MAGIC, "Empowered by your bank account");
         addItem(ESItems.WIND_WAND, "Wind Wand");
+        addItem(ESItems.WAND_OF_LIGHT, "Wand of Light");
+        addItemTooltip(ESItems.WAND_OF_LIGHT, "Despite the name, does not place lights");
         // Canes
         addItem(ESItems.BROOM, "Broom");
         addItemTooltip(ESItems.BROOM, "Sweep sweep sweep");
@@ -1011,6 +1014,10 @@ public final class ESLangProvider extends LanguageProvider {
 
     private void addSoundsSubtitles() {
         add(ESSoundDefinitions.UNREINFORCE_DEEPSLATE, "Deepslate reinforcement is pried");
+    }
+
+    private void addEntities() {
+        addEntityType(ESEntities.LIGHT_ORB, "Light Orb");
     }
 
     private void addItemTooltip(Supplier<? extends Item> key, String text) {

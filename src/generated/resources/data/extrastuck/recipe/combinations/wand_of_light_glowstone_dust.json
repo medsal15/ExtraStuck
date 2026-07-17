@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:needle_wand"
+  },
+  "input2": {
+    "item": "minecraft:glowstone_dust"
+  },
+  "mode": "and",
+  "output": "extrastuck:wand_of_light"
+}

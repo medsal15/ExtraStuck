@@ -32,6 +32,7 @@ import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.entities.projectiles.orbs.LightOrb;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -114,6 +115,11 @@ public final class ESEntities {
             () -> EntityType.Builder.<LandFishingHook>of(LandFishingHook::new, MobCategory.MISC).fireImmune().noSave()
                     .noSummon().sized(.25F, .25F).clientTrackingRange(4).updateInterval(5)
                     .build(ExtraStuck.modid("land_fishing_hook").toString()));
+
+    public static final Supplier<EntityType<LightOrb>> LIGHT_ORB = ENTITIES.register("light_orb",
+            () -> EntityType.Builder.<LightOrb>of(LightOrb::new, MobCategory.MISC).fireImmune()
+                    .sized(.75F, .75F).clientTrackingRange(16).updateInterval(Integer.MAX_VALUE)
+                    .build(ExtraStuck.modid("light_orb").toString()));
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
         return ENTITIES.register(name, () -> EntityType.Builder.<T>of(fac, MobCategory.MISC)

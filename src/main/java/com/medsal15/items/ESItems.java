@@ -568,6 +568,11 @@ public final class ESItems {
             new WeaponItem.Builder(Tiers.IRON, 3, -1F).set(MSItemTypes.WAND_TOOL)
                     .set(ESRightClickEffects::shootWindCharge),
             new MSItemProperties().durability(1536)));
+    // TODO test & guide
+    public static final DeferredItem<Item> WAND_OF_LIGHT = ITEMS.register("wand_of_light", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.GOLD, 3, -1F).set(MSItemTypes.WAND_TOOL)
+                    .set(ESRightClickEffects::shootLightOrb),
+            new MSItemProperties().durability(1536)));
     // #endregion Wands
     // #region Canes
     public static final DeferredItem<Item> BROOM = ITEMS.register("broom",
@@ -1572,6 +1577,7 @@ public final class ESItems {
         list.add(BAGUETTE_MAGIQUE);
         list.add(MONEY_MAGIC);
         list.add(WIND_WAND);
+        list.add(WAND_OF_LIGHT);
         // Canes
         list.add(BROOM);
         list.add(IRON_CROWBAR);
@@ -1685,6 +1691,7 @@ public final class ESItems {
         list.add(BAGUETTE_MAGIQUE);
         list.add(MONEY_MAGIC);
         list.add(WIND_WAND);
+        list.add(WAND_OF_LIGHT);
 
         return list;
     }
