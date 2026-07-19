@@ -57,4 +57,9 @@ public class LightOrb extends OrbEntity {
             }
         }
     }
+
+    @Override
+    public boolean fullBright() {
+        return true;
+    }
 }

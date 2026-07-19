@@ -55,7 +55,7 @@ public class ChefArmorItem extends ArmorItem implements GeoItem {
             public <T extends LivingEntity> @Nullable HumanoidModel<?> getGeoArmorRenderer(@Nullable T livingEntity,
                     ItemStack itemStack, @Nullable EquipmentSlot equipmentSlot, @Nullable HumanoidModel<T> original) {
                 if (this.renderer == null)
-                    renderer = new DyableArmorRenderer<>(new Model());
+                    renderer = new DyableArmorRenderer<>(new Model(), 0xFFFFFFFF);
                 return renderer;
             }
         });

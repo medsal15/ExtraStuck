@@ -204,6 +204,10 @@ public abstract class OrbEntity extends Projectile {
 
     public abstract ResourceLocation getTextureLocation();
 
+    public boolean fullBright() {
+        return false;
+    }
+
     /**
      * Generic OrbEntity renderer
      * <p>
@@ -231,15 +235,17 @@ public abstract class OrbEntity extends Projectile {
         @Override
         public void render(@Nonnull T orb, float yaw, float partialTicks, @Nonnull PoseStack poseStack,
                 @Nonnull MultiBufferSource buffer, int packedLight) {
-            renderCube(orb, partialTicks, poseStack, buffer);
+            renderCube(orb, partialTicks, poseStack, buffer, packedLight);
             // TODO figure out a way to render the symbol in front of the orb
 
             super.render(orb, yaw, partialTicks, poseStack, buffer, packedLight);
         }
 
         protected void renderCube(@Nonnull T orb, float partialTicks, @Nonnull PoseStack poseStack,
-                @Nonnull MultiBufferSource buffer) {
+                @Nonnull MultiBufferSource buffer, int packedLight) {
             float life = ((float) orb.life + partialTicks) * 3.0F;
+            if (orb.fullBright())
+                packedLight = LightTexture.FULL_BRIGHT;
 
             poseStack.pushPose();
             VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityCutoutNoCull(getTextureLocation(orb)));
@@ -248,7 +254,7 @@ public abstract class OrbEntity extends Projectile {
             poseStack.mulPose(new Quaternionf().setAngleAxis((float) (Math.PI / 3), SIN_45, 0.0F, SIN_45));
             poseStack.mulPose(Axis.YP.rotationDegrees(life));
             poseStack.mulPose(Axis.XP.rotationDegrees(life));
-            cube.render(poseStack, vertexConsumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
+            cube.render(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY);
             poseStack.popPose();
         }
 
