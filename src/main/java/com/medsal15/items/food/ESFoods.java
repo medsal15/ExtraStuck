@@ -69,6 +69,8 @@ public final class ESFoods {
             .saturationModifier(.5F).fast().build();
     public static final FoodProperties LEMON_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
             .saturationModifier(.5F).fast().build();
+    public static final FoodProperties PAN_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.5F).fast().build();
     // #endregion Cake slices
     public static final FoodProperties MORTAL_TEMPTATION = new FoodProperties.Builder().nutrition(5)
             .saturationModifier(.45F)

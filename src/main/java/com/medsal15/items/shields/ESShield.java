@@ -3,7 +3,6 @@ package com.medsal15.items.shields;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -15,7 +14,6 @@ import javax.annotation.Nullable;
 import com.medsal15.ESDamageTypes;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.data.ESLangProvider;
-import com.medsal15.items.components.ESDataComponents;
 import com.mraof.minestuck.entity.underling.UnderlingEntity;
 import com.mraof.minestuck.player.PlayerBoondollars;
 import com.mraof.minestuck.player.PlayerData;
@@ -182,39 +180,6 @@ public class ESShield extends ShieldItem {
          */
         public boolean onBlock(LivingShieldBlockEvent event);
 
-        // #region DAMAGE
-        // Must be a value so it can be equal to itself
-        @Deprecated
-        ESShield.IBlock DAMAGE = event -> {
-            ItemStack useItem = event.getEntity().getUseItem();
-            if (!useItem.has(ESDataComponents.SHIELD_DAMAGE))
-                return false;
-
-            float damage = useItem.get(ESDataComponents.SHIELD_DAMAGE);
-            if (damage <= 0)
-                return false;
-
-            // Ensure the damage is melee and does not bypass shields
-            DamageSource damageSource = event.getDamageSource();
-            if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD) || !damageSource.isDirect())
-                return false;
-
-            // Ensure the attacker exists and can be damaged
-            Entity attacker = damageSource.getDirectEntity();
-            if (attacker == null || !(attacker instanceof LivingEntity livingEntity))
-                return false;
-
-            // Hurt them
-            // This will crash at some point due to a null or whatever, no clue when or why
-            Level level = event.getEntity().level();
-            Reference<DamageType> type = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
-                    .getHolderOrThrow(ESDamageTypes.THORN_SHIELD);
-            DamageSource retSource = new DamageSource(type, event.getEntity());
-            livingEntity.hurt(retSource, damage);
-            return false;
-        };
-
-        // #endregion DAMAGE
         public static IBlock damageFor(Supplier<Double> damage) {
             return event -> {
                 float d = (float) ((double) damage.get());
@@ -240,56 +205,6 @@ public class ESShield extends ShieldItem {
                 livingEntity.hurt(retSource, d);
                 return false;
             };
-        }
-
-        @Deprecated
-        public static boolean usePower(LivingShieldBlockEvent event) {
-            ItemStack item = event.getEntity().getUseItem();
-
-            int mult = item.getOrDefault(ESDataComponents.FLUX_MULTIPLIER, 100);
-            if (mult < 0)
-                mult = 1;
-
-            // Ensure the damage does not bypass shields
-            DamageSource damageSource = event.getDamageSource();
-            if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD))
-                return false;
-
-            // Drain energy
-            @SuppressWarnings("null")
-            IEnergyStorage energyStorage = Capabilities.EnergyStorage.ITEM.getCapability(item, null);
-            if (energyStorage == null)
-                return false;
-            int drain = (int) (event.getBlockedDamage() * mult);
-            int extracted = energyStorage.extractEnergy(drain, false);
-            if (extracted > 0) {
-                event.setShieldDamage(0);
-            }
-
-            return false;
-        }
-
-        @Deprecated
-        public static boolean consumeBoondollars(LivingShieldBlockEvent event) {
-            LivingEntity user = event.getEntity();
-            // Only players get boondollars
-            if (!(user instanceof ServerPlayer player))
-                return false;
-
-            // Ensure the damage does not bypass shields
-            DamageSource damageSource = event.getDamageSource();
-            if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD))
-                return false;
-
-            Optional<PlayerData> oPlayerData = PlayerData.get(player);
-            if (!oPlayerData.isPresent())
-                return false;
-            PlayerData playerData = oPlayerData.get();
-            if (!PlayerBoondollars.tryTakeBoondollars(playerData, (long) event.getBlockedDamage(), true))
-                return false;
-
-            event.setShieldDamage(0);
-            return false;
         }
 
         public static IBlock consumeBoondollars(Supplier<Long> costPerDamage) {
@@ -361,30 +276,6 @@ public class ESShield extends ShieldItem {
                 entity.setItemInHand(entity.getUsedItemHand(), next.toStack());
                 return true;
             };
-        }
-
-        @Deprecated
-        public static boolean burn(LivingShieldBlockEvent event) {
-            ItemStack useItem = event.getEntity().getUseItem();
-            if (!useItem.has(ESDataComponents.BURN_DURATION.get()))
-                return false;
-            int duration = useItem.get(ESDataComponents.BURN_DURATION);
-            if (duration <= 0)
-                return false;
-
-            // Ensure the damage is melee and does not bypass shields
-            DamageSource damageSource = event.getDamageSource();
-            if (damageSource.is(DamageTypeTags.BYPASSES_SHIELD) || !damageSource.isDirect())
-                return false;
-
-            // Ensure the attacker exists and can be damaged
-            Entity attacker = damageSource.getDirectEntity();
-            if (attacker == null || !(attacker instanceof LivingEntity target))
-                return false;
-
-            if (target.getRemainingFireTicks() < duration)
-                target.setRemainingFireTicks(duration);
-            return false;
         }
 
         public static IBlock burnFor(Supplier<Integer> ticks) {

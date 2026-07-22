@@ -27,6 +27,7 @@ import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;
+import com.medsal15.items.components.PanCakeSliceColor;
 import com.medsal15.items.guns.GunContainer;
 import com.medsal15.items.melee.StorageWeapon;
 import com.medsal15.items.shields.ESShield;
@@ -557,6 +558,39 @@ public final class CommonEvents {
                 level.setBlock(pos, state.setValue(CakeBlock.BITES, bites + 1), 3);
                 slice.set(ESDataComponents.MOON_CAKE_SLICE_COLOR,
                         bites % 2 == 1 ? MoonCakeSliceColor.DERSE : MoonCakeSliceColor.PROSPIT);
+            } else {
+                level.removeBlock(pos, false);
+            }
+
+            ItemEntity itemEntity = new ItemEntity(level, pos.getX() + (bites * .1), pos.getY() + .2,
+                    pos.getZ() + 0.5, slice);
+            itemEntity.setDeltaMovement(-.05, 0, 0);
+            level.addFreshEntity(itemEntity);
+            level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
+
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            event.setCanceled(true);
+        }
+
+        // Special handling for pan cake, as there are 4 colors for the slices
+        if (state.is(MSBlocks.PAN_CAKE)) {
+            int bites = state.getValue(CakeBlock.BITES);
+            ItemStack slice = ESItems.PAN_CAKE_SLICE.toStack();
+            if (bites < 6) {
+                level.setBlock(pos, state.setValue(CakeBlock.BITES, bites + 1), 3);
+                PanCakeSliceColor color = PanCakeSliceColor.TRIPLE;
+                switch (bites % 3) {
+                    case 0:
+                        color = PanCakeSliceColor.MAGENTA;
+                        break;
+                    case 1:
+                        color = PanCakeSliceColor.YELLOW;
+                        break;
+                    case 2:
+                        color = PanCakeSliceColor.CYAN;
+                        break;
+                }
+                slice.set(ESDataComponents.PAN_CAKE_SLICE_COLOR, color);
             } else {
                 level.removeBlock(pos, false);
             }

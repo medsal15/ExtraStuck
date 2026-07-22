@@ -883,6 +883,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.LEMON_CAKE, "Lemon Cake");
         addItemTooltip(ESItems.LEMON_CAKE, "An explosive flavor!");
         addItem(ESItems.LEMON_CAKE_SLICE, "Slice of Lemon Cake");
+        addItem(ESItems.PAN_CAKE_SLICE, "Slice of PANCake");
         addBlock(ESBlocks.MORTAL_TEMPTATION_BLOCK, "Mortal Temptation");
         addBlockTooltip(ESBlocks.MORTAL_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
         addItem(ESItems.MORTAL_TEMPTATION, "Bowl of Mortal Temptation");

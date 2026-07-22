@@ -1885,6 +1885,15 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .source(ESItems.LEMON_CAKE.get())
                 .multiplier(1f / 7f)
                 .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.PAN_CAKE)
+                .requires(ESItems.PAN_CAKE_SLICE, 7)
+                .unlockedBy("has_pan_cake_slice", has(ESItems.PAN_CAKE_SLICE))
+                .save(output, modid("shapeless/pan_cake"));
+        SourceGristCostBuilder.of(ESItems.PAN_CAKE_SLICE)
+                .source(MSItems.PAN_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
         // #endregion Cake Slice
 
         CookingPotRecipeBuilder.cookingPotRecipe(ESItems.MORTAL_TEMPTATION_BLOCK, 1, 200, .5F, Items.CAULDRON)

@@ -56,6 +56,7 @@ import com.medsal15.items.bows.RainbowBowItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
 import com.medsal15.items.components.MoonCakeSliceColor;
+import com.medsal15.items.components.PanCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
@@ -568,7 +569,6 @@ public final class ESItems {
             new WeaponItem.Builder(Tiers.IRON, 3, -1F).set(MSItemTypes.WAND_TOOL)
                     .set(ESRightClickEffects::shootWindCharge),
             new MSItemProperties().durability(1536)));
-    // TODO test & guide
     public static final DeferredItem<Item> WAND_OF_LIGHT = ITEMS.register("wand_of_light", () -> new WeaponItem(
             new WeaponItem.Builder(Tiers.GOLD, 3, -1F).set(MSItemTypes.WAND_TOOL)
                     .set(ESRightClickEffects::shootLightOrb),
@@ -1061,6 +1061,9 @@ public final class ESItems {
                     MoonCakeSliceColor.DUAL)));
     public static final DeferredItem<Item> LEMON_CAKE_SLICE = ITEMS.registerItem("lemon_cake_slice",
             p -> new ExplosiveFood(p.food(ESFoods.LEMON_CAKE_SLICE)));
+    public static final DeferredItem<Item> PAN_CAKE_SLICE = ITEMS.registerItem("pan_cake_slice",
+            p -> new Item(p.food(ESFoods.PAN_CAKE_SLICE).component(ESDataComponents.PAN_CAKE_SLICE_COLOR,
+                    PanCakeSliceColor.TRIPLE)));
     // #endregion Cake Slices
     public static final DeferredItem<BlockItem> MORTAL_TEMPTATION_BLOCK = ITEMS
             .registerSimpleBlockItem(ESBlocks.MORTAL_TEMPTATION_BLOCK);
@@ -1384,6 +1387,17 @@ public final class ESItems {
                 ItemStack prospit = item.toStack();
                 prospit.set(ESDataComponents.MOON_CAKE_SLICE_COLOR, MoonCakeSliceColor.PROSPIT);
                 output.accept(prospit);
+            }
+            if (item.get() == PAN_CAKE_SLICE.get()) {
+                ItemStack magenta = item.toStack();
+                magenta.set(ESDataComponents.PAN_CAKE_SLICE_COLOR, PanCakeSliceColor.MAGENTA);
+                output.accept(magenta);
+                ItemStack yellow = item.toStack();
+                yellow.set(ESDataComponents.PAN_CAKE_SLICE_COLOR, PanCakeSliceColor.YELLOW);
+                output.accept(yellow);
+                ItemStack cyan = item.toStack();
+                cyan.set(ESDataComponents.PAN_CAKE_SLICE_COLOR, PanCakeSliceColor.CYAN);
+                output.accept(cyan);
             }
         }
         for (DeferredItem<? extends Item> item : ESItems.getDrinks()) {
@@ -1836,6 +1850,7 @@ public final class ESItems {
         list.add(CARROT_CAKE_SLICE);
         list.add(CHOCOLATEY_CAKE_SLICE);
         list.add(MOON_CAKE_SLICE);
+        list.add(PAN_CAKE_SLICE);
         list.add(LEMON_CAKE);
         list.add(LEMON_CAKE_SLICE);
         list.add(MORTAL_TEMPTATION_BLOCK);

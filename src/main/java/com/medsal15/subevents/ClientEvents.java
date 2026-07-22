@@ -41,6 +41,7 @@ import com.medsal15.entities.projectiles.orbs.OrbEntity;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;
+import com.medsal15.items.components.PanCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.guns.ESGun;
@@ -237,6 +238,24 @@ public final class ClientEvents {
                         case DERSE:
                             return .5F;
                         case PROSPIT:
+                            return 1;
+                    }
+                });
+
+        ItemProperties.register(ESItems.PAN_CAKE_SLICE.get(), ExtraStuck.modid("pan_cake"),
+                (stack, world, entity, entityId) -> {
+                    PanCakeSliceColor color = stack.getOrDefault(
+                            ESDataComponents.PAN_CAKE_SLICE_COLOR,
+                            PanCakeSliceColor.TRIPLE);
+                    switch (color) {
+                        case TRIPLE:
+                        default:
+                            return 0;
+                        case MAGENTA:
+                            return .3f;
+                        case YELLOW:
+                            return .7f;
+                        case CYAN:
                             return 1;
                     }
                 });

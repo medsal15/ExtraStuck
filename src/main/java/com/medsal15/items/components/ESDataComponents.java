@@ -47,24 +47,6 @@ public final class ESDataComponents {
             .registerComponentType("grist_type",
                     builder -> builder.persistent(GristType.CODEC).networkSynchronized(GristType.STREAM_CODEC));
 
-    // Shields
-    /** Flame shield burn duration in ticks */
-    @Deprecated
-    public static final Supplier<DataComponentType<Integer>> BURN_DURATION = DATA_COMPONENTS
-            .registerComponentType(
-                    "burn_duration", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
-    /** Flux shield RF cost per damage */
-    @Deprecated
-    public static final Supplier<DataComponentType<Integer>> FLUX_MULTIPLIER = DATA_COMPONENTS
-            .registerComponentType(
-                    "flux_multiplier", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
-    /** Thorn shield damage */
-    @Deprecated
-    public static final Supplier<DataComponentType<Float>> SHIELD_DAMAGE = DATA_COMPONENTS
-            .registerComponentType(
-                    "shield_damage",
-                    builder -> builder.persistent(Codec.FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
-
     // Weapons
     public static final Supplier<DataComponentType<Float>> AMMO_DAMAGE = DATA_COMPONENTS.registerComponentType(
             "ammo_damage", builder -> builder.persistent(Codec.FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
@@ -94,4 +76,8 @@ public final class ESDataComponents {
             .registerComponentType("moon_cake_slice_color", builder -> builder
                     .persistent(StringRepresentable.fromEnum(MoonCakeSliceColor::values))
                     .networkSynchronized(NeoForgeStreamCodecs.enumCodec(MoonCakeSliceColor.class)));
+    public static final Supplier<DataComponentType<PanCakeSliceColor>> PAN_CAKE_SLICE_COLOR = DATA_COMPONENTS
+            .registerComponentType("pan_cake_slice_color", builder -> builder
+                    .persistent(StringRepresentable.fromEnum(PanCakeSliceColor::values))
+                    .networkSynchronized(NeoForgeStreamCodecs.enumCodec(PanCakeSliceColor.class)));
 }

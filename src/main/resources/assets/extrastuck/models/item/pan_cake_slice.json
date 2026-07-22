@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:item/generated",
+    "overrides": [
+        {
+            "model": "extrastuck:item/pan_cake_slice_magenta",
+            "predicate": {
+                "extrastuck:pan_cake": 0.3
+            }
+        },
+        {
+            "model": "extrastuck:item/pan_cake_slice_yellow",
+            "predicate": {
+                "extrastuck:pan_cake": 0.7
+            }
+        },
+        {
+            "model": "extrastuck:item/pan_cake_slice_cyan",
+            "predicate": {
+                "extrastuck:pan_cake": 1.0
+            }
+        }
+    ],
+    "textures": {
+        "layer0": "extrastuck:item/pan_cake_slice"
+    }
+}
