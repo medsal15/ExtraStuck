@@ -1,0 +1,23 @@
+{
+    "name": "White Shard",
+    "icon": "extrastuck:white_shard",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:white_shard"
+            },
+            "text": "A large shard of reinforcement in the shape of a thick katana. Has enough durability to never need repairing.$(br2)$(3)$(l)Special:$() Basically ignores armor."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Shadow Katana and Deepslate Reinforcement in a Totem Lathe.",
+            "left": "extrastuck:shadow_katana",
+            "mode": "&&",
+            "right": "extrastuck:deepslate_reinforcement",
+            "result": "extrastuck:white_shard"
+        }
+    ]
+}

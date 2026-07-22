@@ -312,7 +312,7 @@ public final class ESTagsProvider {
                     .addOptional(ItemRegistry.ELDRITCH_PAGE.getId());
             tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get(), ISSESItems.BRANCH_OF_YGGDRASIL.get(),
                     ISSESItems.STAFF_OF_YGGDRASIL.get(), ESItems.END_OF_CIVILIZATION.get(), ESItems.MAKE_IT_RAIN.get(),
-                    ESItems.ETERNAL_SHIELD.get());
+                    ESItems.ETERNAL_SHIELD.get(), ESItems.WHITE_SHARD.get());
 
             tag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS).add(ESItems.RAIN_ARROW.get());
 

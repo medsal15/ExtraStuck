@@ -697,6 +697,20 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ISSESItems.LEADER_SWORD)
                 .grist(GristTypes.RUBY, 88).grist(GristTypes.URANIUM, 150).grist(GristTypes.AMBER, 1511)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SHADOW_KATANA)
+                .input(MSItems.KATANA).or().input(Items.SCULK_VEIN)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SHADOW_KATANA)
+                .grist(GristTypes.TAR, 333).grist(GristTypes.DIAMOND, 23).grist(GristTypes.COBALT, 500)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.WHITE_SHARD)
+                .input(ESItems.SHADOW_KATANA).and().input(ESItems.DEEPSLATE_REINFORCEMENT)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.WHITE_SHARD)
+                .grist(GristTypes.QUARTZ, 25000).grist(GristTypes.DIAMOND, 1999).grist(GristTypes.MARBLE, 5500)
+                .build(output);
         // #endregion Swords
 
         // #region Sickles

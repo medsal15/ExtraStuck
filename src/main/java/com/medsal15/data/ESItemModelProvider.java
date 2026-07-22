@@ -208,6 +208,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         // Swords
         handheldItem(ESItems.SUN_REAVER.get());
         handheldItem(ISSESItems.LEADER_SWORD.get());
+        handheldItem(ESItems.SHADOW_KATANA.get());
+        handheldItem(ESItems.WHITE_SHARD.get());
         // Sickles
         handheldItem(ESItems.NEW_MOON.get());
         handheldItem(ESItems.PIRATE_HOOK.get());

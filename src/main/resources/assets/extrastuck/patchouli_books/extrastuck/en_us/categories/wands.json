@@ -1,0 +1,7 @@
+{
+    "name": "Wands & Staves",
+    "sortnum": 1,
+    "description": "It's like magic",
+    "icon": "minestuck:wand",
+    "parent": "extrastuck:weapons"
+}

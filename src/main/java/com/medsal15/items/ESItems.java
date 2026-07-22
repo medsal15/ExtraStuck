@@ -659,6 +659,18 @@ public final class ESItems {
                             () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 0,
                                     false, false, false))),
             new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_KATANA = ITEMS.register("shadow_katana", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.DIAMOND, 2, -2.4F).efficiency(15F)
+                    .set(MSItemTypes.SWORD_TOOL)
+                    .add(OnHitEffect.SWEEP)
+                    .add(ESHitEffects.armorBypassDamage(10f)),
+            new Item.Properties()));
+    public static final DeferredItem<Item> WHITE_SHARD = ITEMS.register("white_shard", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.DENIZEN_TIER, 2, -2.6F).efficiency(15F)
+                    .set(MSItemTypes.SWORD_TOOL)
+                    .add(OnHitEffect.SWEEP)
+                    .add(ESHitEffects.armorBypassDamage(15f)),
+            new MSItemProperties().durability(MSItemTypes.DENIZEN_TIER.getUses() * 4).rarity(Rarity.RARE)));
     // #endregion Swords
     // #region Sickles
     public static final DeferredItem<Item> NEW_MOON = ITEMS.register("new_moon",
@@ -1613,6 +1625,8 @@ public final class ESItems {
         } else {
             list.addAll(ISSESMissingItems.getSwords());
         }
+        list.add(SHADOW_KATANA);
+        list.add(WHITE_SHARD);
         // Sickles
         list.add(NEW_MOON);
         list.add(PIRATE_HOOK);

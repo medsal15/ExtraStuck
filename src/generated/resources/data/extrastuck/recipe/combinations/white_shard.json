@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:shadow_katana"
+  },
+  "input2": {
+    "item": "extrastuck:deepslate_reinforcement"
+  },
+  "mode": "and",
+  "output": "extrastuck:white_shard"
+}

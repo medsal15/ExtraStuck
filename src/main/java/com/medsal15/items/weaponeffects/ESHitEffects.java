@@ -13,6 +13,7 @@ import com.medsal15.data.ESLangProvider;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.mobeffects.ESMobEffects;
+import com.mraof.minestuck.entity.MSAttributes;
 import com.mraof.minestuck.entity.item.GristEntity;
 import com.mraof.minestuck.entity.item.VitalityGelEntity;
 import com.mraof.minestuck.item.BoondollarsItem;
@@ -21,6 +22,7 @@ import com.mraof.minestuck.item.weapon.OnHitEffect;
 import com.mraof.minestuck.player.EnumAspect;
 import com.mraof.minestuck.player.EnumClass;
 import com.mraof.minestuck.player.Title;
+import com.mraof.minestuck.util.MSDamageSources;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -45,6 +47,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.common.util.FakePlayer;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 public final class ESHitEffects {
@@ -520,6 +523,23 @@ public final class ESHitEffects {
 
             attacker.level().explode(attacker, target.getX(), target.getY(), target.getZ(), radius,
                     ExplosionInteraction.NONE);
+        };
+    }
+
+    /**
+     * Deals <code>extraDamage</code> extra armor piercing damage
+     */
+    public static OnHitEffect armorBypassDamage(float targetDamage) {
+        return (stack, target, attacker) -> {
+            float damage = targetDamage;
+
+            if (attacker instanceof ServerPlayer serverPlayer && !(attacker instanceof FakePlayer)) {
+                float modifier = (float) serverPlayer.getAttributeValue(MSAttributes.UNDERLING_DAMAGE_MODIFIER);
+
+                damage *= modifier;
+            }
+
+            target.hurt(MSDamageSources.armorPierce(attacker.level().registryAccess(), attacker), damage);
         };
     }
 }

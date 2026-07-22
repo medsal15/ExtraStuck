@@ -416,6 +416,10 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.SUN_REAVER, "To kill a god...");
         addItem(ISSESItems.LEADER_SWORD, "Leader's Sword");
         addItemTooltip(ISSESItems.LEADER_SWORD, "Your reflection judges you");
+        addItem(ESItems.SHADOW_KATANA, "Shadow Katana");
+        addItemTooltip(ESItems.SHADOW_KATANA, "Must it really be upgraded to deal more damage?");
+        addItem(ESItems.WHITE_SHARD, "White Shard");
+        addItemTooltip(ESItems.WHITE_SHARD, "That can't be it");
         // Sickles
         addItem(ESItems.PIRATE_HOOK, "Pirate Hook");
         addItemTooltip(ESItems.PIRATE_HOOK, "Yarr! Thy booty is mine!");

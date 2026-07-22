@@ -1,7 +1,7 @@
 {
     "name": "Wand of Light",
     "icon": "extrastuck:wand_of_light",
-    "category": "extrastuck:weapons",
+    "category": "extrastuck:wands",
     "sortnum": 1,
     "pages": [
         {

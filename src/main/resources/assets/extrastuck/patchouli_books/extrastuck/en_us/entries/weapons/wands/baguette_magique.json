@@ -1,0 +1,23 @@
+{
+    "name": "Baguette Magique",
+    "icon": "extrastuck:baguette_magique",
+    "category": "extrastuck:wands",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:baguette_magique"
+            },
+            "text": "Je ne sais pas qui a à nouveau échangé les traductions, mais si je l'attrappe, je l'étrangle.$(br2)$(3)$(l)Spécial:$() Tire un sort, et a un chance to donner des miettes de pain en attaquant."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combiner une Baguette Rassise et une Baguette dans une tour à totem.",
+            "left": "minestuck:stale_baguette",
+            "mode": "&&",
+            "right": "minestuck:wand",
+            "result": "extrastuck:baguette_magique"
+        }
+    ]
+}

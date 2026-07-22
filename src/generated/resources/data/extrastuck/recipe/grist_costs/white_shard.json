@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:diamond": 1999,
+    "minestuck:marble": 5500,
+    "minestuck:quartz": 25000
+  },
+  "ingredient": {
+    "item": "extrastuck:white_shard"
+  }
+}

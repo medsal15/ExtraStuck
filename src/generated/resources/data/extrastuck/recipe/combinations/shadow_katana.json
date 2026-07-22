@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:katana"
+  },
+  "input2": {
+    "item": "minecraft:sculk_vein"
+  },
+  "mode": "or",
+  "output": "extrastuck:shadow_katana"
+}
