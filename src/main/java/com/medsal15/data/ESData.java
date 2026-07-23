@@ -21,6 +21,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 @EventBusSubscriber(modid = ExtraStuck.MODID)
@@ -32,7 +33,7 @@ public final class ESData {
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        gen.addProvider(event.includeClient(), new ESLangProvider(output));
+        LanguageProvider langProvider = gen.addProvider(event.includeClient(), new ESLangProvider(output));
         gen.addProvider(event.includeClient(), new ESBlockStateProvider(output, fileHelper));
         gen.addProvider(event.includeClient(), new ESItemModelProvider(output, fileHelper));
         gen.addProvider(event.includeClient(), new ESSoundDefinitions(output, fileHelper));
@@ -41,17 +42,23 @@ public final class ESData {
         DatapackBuiltinEntriesProvider datapackProvider = gen.addProvider(
                 event.includeServer(),
                 new DatapackBuiltinEntriesProvider(output, lookupProvider,
-                        new RegistrySetBuilder().add(Registries.DAMAGE_TYPE, ESData::registerDamageTypes),
+                        new RegistrySetBuilder().add(Registries.DAMAGE_TYPE,
+                                ESData::registerDamageTypes),
                         Set.of(ExtraStuck.MODID)));
         gen.addProvider(event.includeServer(), new ESRecipeProvider(output, lookupProvider));
         gen.addProvider(event.includeServer(), new DataMapGenerator(output, lookupProvider));
         gen.addProvider(event.includeServer(),
-                (DataProvider.Factory<ESLootTableProvider>) (o -> new ESLootTableProvider(o, lookupProvider)));
+                (DataProvider.Factory<ESLootTableProvider>) (o -> new ESLootTableProvider(o,
+                        lookupProvider)));
         gen.addProvider(event.includeServer(), new ESGLMProvider(output, lookupProvider));
         gen.addProvider(event.includeServer(), new ESPriceProvider(output));
         gen.addProvider(event.includeServer(), new ESVisionEffectsProvider(output, ExtraStuck.MODID));
-        gen.addProvider(event.includeServer(), ESAdvancementsProvider.create(output, lookupProvider, fileHelper));
+        gen.addProvider(event.includeServer(),
+                ESAdvancementsProvider.create(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(), new ESCassetteSongsProvider(output));
+        gen.addProvider(event.includeServer(), ESDialoguesProvider.consort(output, langProvider, lookupProvider));
+        gen.addProvider(event.includeServer(), ESDialoguesProvider.generalShop(output, langProvider, lookupProvider));
+        gen.addProvider(event.includeServer(), ESDialoguesProvider.foodShop(output, langProvider, lookupProvider));
 
         ESTagsProvider.gatherData(gen, output, lookupProvider, fileHelper, datapackProvider);
     }

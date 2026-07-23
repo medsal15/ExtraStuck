@@ -26,8 +26,10 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.utils.ESTags;
+import com.medsal15.world.land.terrains.DarkLandTerrain;
 import com.mraof.minestuck.computer.ProgramType;
 import com.mraof.minestuck.computer.ProgramTypes;
+import com.mraof.minestuck.data.MinestuckLanguageProvider;
 import com.mraof.minestuck.entity.MSAttributes;
 
 import net.minecraft.core.Holder;
@@ -36,12 +38,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public final class ESLangProvider extends LanguageProvider {
+public final class ESLangProvider extends MinestuckLanguageProvider {
     public ESLangProvider(PackOutput output) {
         super(output, ExtraStuck.MODID, "en_us");
     }
@@ -155,6 +156,7 @@ public final class ESLangProvider extends LanguageProvider {
         addPonder();
         addSoundsSubtitles();
         addEntities();
+        addLands();
 
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
@@ -169,7 +171,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.EMPTY_ENERGY_CORE, "Empty Energy Core");
         addItemTooltip(ESItems.EMPTY_ENERGY_CORE, "You forgot the uranium");
         addBlock(ESBlocks.NORMAL_CAT_PLUSH, "Normal Cat Plush");
-        addBlockTooltip(ESBlocks.NORMAL_CAT_PLUSH, "In what world is that normal?");
+        addEBlockTooltip(ESBlocks.NORMAL_CAT_PLUSH, "In what world is that normal?");
         addItem(ESItems.MASTERMIND_DISK, "Mastermind Codebreaker Disk");
         addItemTooltip(ESItems.MASTERMIND_DISK, "Screw that. Puzzles suck.");
         addItem(ESItems.BEE_LARVA, "Bee Larva");
@@ -731,7 +733,7 @@ public final class ESLangProvider extends LanguageProvider {
 
         // Disrinter
         addBlock(ESBlocks.DISPRINTER, "Disprinter");
-        addBlockTooltip(ESBlocks.DISPRINTER, "Is this really an upgrade?");
+        addEBlockTooltip(ESBlocks.DISPRINTER, "Is this really an upgrade?");
         add(PrinterBlockEntity.TITLE_DISPRINTER, "Disprinter");
 
         // Charger
@@ -740,7 +742,7 @@ public final class ESLangProvider extends LanguageProvider {
 
         // Reactor
         addBlock(ESBlocks.REACTOR, "Nuclear Reactor");
-        addBlockTooltip(ESBlocks.REACTOR,
+        addEBlockTooltip(ESBlocks.REACTOR,
                 "You don't think it's a good idea to contain so much power in such a small machine");
         add(ReactorBlockEntity.TITLE, "Nuclear Reactor");
         add(ESTags.Fluids.REACTOR_FLUIDS, "Reactor Coolants");
@@ -776,6 +778,9 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     private void addBlocks() {
+        addBlock(ESBlocks.DEEPSLATE_PILLAR, "Deepslate Pillar");
+        addBlock(ESBlocks.DEEPSLATE_CRUXITE_ORE, "Deepslate Cruxite Ore");
+
         addBlock(ESBlocks.CUT_GARNET, "Cut Garnet");
         addBlock(ESBlocks.CUT_GARNET_STAIRS, "Cut Garnet Stairs");
         addBlock(ESBlocks.CUT_GARNET_SLAB, "Cut Garnet Slab");
@@ -869,7 +874,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.SUSHROOM_STEW, "Is this stewmate trustworthy?");
         addItem(ESItems.RADBURGER, "Big Rad");
         addBlock(ESBlocks.DIVINE_TEMPTATION_BLOCK, "Divine Temptation");
-        addBlockTooltip(ESBlocks.DIVINE_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
+        addEBlockTooltip(ESBlocks.DIVINE_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
         addItem(ESItems.DIVINE_TEMPTATION, "Bowl of Divine Temptation");
         addItem(ESItems.YELLOWCAKE_SLICE, "Slice of Yellowcake");
         addItemTooltip(ESItems.YELLOWCAKE_SLICE, "It's cake, right?");
@@ -886,12 +891,12 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.CARROT_CAKE_SLICE, "Slice of Carrot Cake");
         addItem(ESItems.CHOCOLATEY_CAKE_SLICE, "Slice of Chocolatey Cake");
         addItem(ESItems.MOON_CAKE_SLICE, "Slice of Moon Cake");
-        addItem(ESItems.LEMON_CAKE, "Lemon Cake");
-        addItemTooltip(ESItems.LEMON_CAKE, "An explosive flavor!");
+        addBlock(ESBlocks.LEMON_CAKE, "Lemon Cake");
+        addBlockTooltip(ESBlocks.LEMON_CAKE, "An explosive flavor!");
         addItem(ESItems.LEMON_CAKE_SLICE, "Slice of Lemon Cake");
         addItem(ESItems.PAN_CAKE_SLICE, "Slice of PANCake");
         addBlock(ESBlocks.MORTAL_TEMPTATION_BLOCK, "Mortal Temptation");
-        addBlockTooltip(ESBlocks.MORTAL_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
+        addEBlockTooltip(ESBlocks.MORTAL_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
         addItem(ESItems.MORTAL_TEMPTATION, "Bowl of Mortal Temptation");
         addItemTooltip(ESItems.MORTAL_TEMPTATION, "Even consorts love it");
         addItem(ESItems.CANDY_CRUNCH, "Bowl of Candy Crunch");
@@ -1027,15 +1032,17 @@ public final class ESLangProvider extends LanguageProvider {
         addEntityType(ESEntities.LIGHT_ORB, "Light Orb");
     }
 
-    private void addItemTooltip(Supplier<? extends Item> key, String text) {
-        addItemExtra(key, "tooltip", text);
+    private void addLands() {
+        addLand(DarkLandTerrain.DARK, "Darkness");
+        addLand(DarkLandTerrain.DEEP, "Depths");
+
+        addStore(Items.AMETHYST_SHARD, "Pink Diamond Shard");
+        addStore(Items.DISC_FRAGMENT_5, "Mysterious Fragment");
+        addStoreTooltip(Items.DISC_FRAGMENT_5, "This valuable looking item seems to be a part of something bigger...");
+        addStore(Items.SOUL_LANTERN, "Blue Lantern");
     }
 
-    private void addItemExtra(Supplier<? extends Item> key, String extra, String text) {
-        add(((Item) (key.get())).getDescriptionId() + "." + extra, text);
-    }
-
-    private void addBlockTooltip(Supplier<? extends Block> key, String text) {
+    protected void addEBlockTooltip(Supplier<? extends Block> key, String text) {
         add(((Block) (key.get())).getDescriptionId() + ".tooltip", text);
     }
 
@@ -1059,10 +1066,6 @@ public final class ESLangProvider extends LanguageProvider {
 
     private void addBookDescription(ResourceLocation key, String text) {
         add(key.toString() + ".book_desc", text);
-    }
-
-    private void addEffectDescription(Supplier<? extends MobEffect> effect, String desc) {
-        add(effect.get().getDescriptionId() + ".description", desc);
     }
 
     private void addProgram(Holder<ProgramType<?>> program, String text) {

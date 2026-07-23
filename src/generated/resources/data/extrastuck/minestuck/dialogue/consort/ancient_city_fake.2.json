@@ -1,0 +1,10 @@
+{
+  "node": {
+    "animation": {
+      "emotion": "angry"
+    },
+    "gui": "minestuck:textures/gui/dialogue/dialogue.png",
+    "message": "extrastuck.dialogue.consort.ancient_city_fake.2",
+    "responses": []
+  }
+}

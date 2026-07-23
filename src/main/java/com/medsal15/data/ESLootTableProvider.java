@@ -1,5 +1,7 @@
 package com.medsal15.data;
 
+import static com.mraof.minestuck.data.loot_table.MSChestLootTables.locationForTerrain;
+
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -16,7 +18,11 @@ import com.medsal15.items.ESItems;
 import com.medsal15.loot.conditions.ESTerrainCondition;
 import com.medsal15.loot.conditions.ESTitlecondition;
 import com.medsal15.loot.functions.TurnToCardFunction;
+import com.medsal15.world.land.ESLandTypes;
+import com.mraof.minestuck.data.loot_table.MSChestLootTables;
+import com.mraof.minestuck.data.loot_table.MSGiftLootTables;
 import com.mraof.minestuck.item.MSItems;
+import com.mraof.minestuck.item.loot.MSLootTables;
 import com.mraof.minestuck.item.loot.functions.SetBoondollarCount;
 import com.mraof.minestuck.util.MSTags;
 import com.mraof.minestuck.world.lands.LandTypes;
@@ -32,9 +38,12 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemLore;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootContext.EntityTarget;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -44,6 +53,7 @@ import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.entries.TagEntry;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.SetComponentsFunction;
@@ -129,6 +139,51 @@ public class ESLootTableProvider extends LootTableProvider {
                                     .add(LootItem.lootTableItem(ESItems.PROJECDRILL)
                                             .setQuality(2)
                                             .apply(rangeAmount(0, 8)))));
+
+            // Dark
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSChestLootTables.WEAPON_ITEM_TABLE),
+                    LootTable.lootTable().withPool(LootPool.lootPool().name(MSChestLootTables.ITEM_POOL)
+                            .add(LootItem.lootTableItem(MSItems.DIAMOND_DAGGER).setWeight(10)
+                                    .apply(rangeDamage(.25f, .5f)))
+                            .add(LootItem.lootTableItem(MSItems.CLUBS_SUITARANG)
+                                    .apply(rangeAmount(1, 5)))));
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSChestLootTables.SUPPLY_ITEM_TABLE),
+                    LootTable.lootTable().withPool(LootPool.lootPool().name(MSChestLootTables.ITEM_POOL)
+                            .add(LootItem.lootTableItem(ESItems.SHINEBREAKER)
+                                    .apply(rangeDamage(.25f, .75f)).setQuality(5))
+                            .add(LootItem.lootTableItem(Items.SCULK_SENSOR)
+                                    .apply(rangeAmount(1, 5)).setQuality(3))));
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSChestLootTables.MISC_ITEM_TABLE),
+                    LootTable.lootTable().withPool(LootPool.lootPool().name(MSChestLootTables.ITEM_POOL)
+                            .add(LootItem.lootTableItem(Items.SCULK)
+                                    .apply(rangeAmount(2, 10)).setWeight(2))
+                            .add(LootItem.lootTableItem(Items.SCULK_VEIN)
+                                    .apply(rangeAmount(2, 10)).setWeight(4))));
+
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSLootTables.CONSORT_GENERAL_STOCK),
+                    LootTable.lootTable()
+                            .withPool(LootPool.lootPool().name(MSGiftLootTables.ITEM_POOL)
+                                    .add(LootItem.lootTableItem(Items.AMETHYST_SHARD).apply(rangeAmount(4, 10))
+                                            .setWeight(2))
+                                    .add(LootItem.lootTableItem(Items.DISC_FRAGMENT_5))
+                                    .add(LootItem.lootTableItem(Items.FEATHER).setWeight(6).apply(rangeAmount(5, 10))))
+                            .withPool(LootPool.lootPool().name(MSGiftLootTables.BLOCK_POOL)
+                                    .add(LootItem.lootTableItem(Items.SOUL_LANTERN).apply(rangeAmount(5, 15))
+                                            .setWeight(5))
+                                    .add(LootItem.lootTableItem(Items.DARK_OAK_LOG).setWeight(10)
+                                            .apply(rangeAmount(8, 20)))));
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSLootTables.CONSORT_FOOD_STOCK),
+                    LootTable.lootTable()
+                            .withPool(LootPool.lootPool().name(MSGiftLootTables.MAIN_POOL)
+                                    .add(LootItem.lootTableItem(MSItems.JAR_OF_BUGS.get()).setWeight(5)
+                                            .apply(rangeAmount(3, 10)))
+                                    .add(LootItem.lootTableItem(MSItems.CONE_OF_FLIES.get()).setWeight(8)
+                                            .apply(rangeAmount(3, 10)))
+                                    .add(LootItem.lootTableItem(Items.GLOW_BERRIES).setWeight(8)
+                                            .apply(rangeAmount(5, 15)))
+                                    .add(LootItem.lootTableItem(Items.APPLE).setWeight(5).apply(rangeAmount(1, 5))))
+                            .withPool(LootPool.lootPool().name(MSGiftLootTables.SPECIAL_POOL)
+                                    .add(LootItem.lootTableItem(Items.GOLDEN_APPLE).apply(rangeAmount(1, 2)))));
             // #endregion Land Terrains
 
             // #region Land Titles
@@ -357,6 +412,10 @@ public class ESLootTableProvider extends LootTableProvider {
             return ResourceKey.create(Registries.LOOT_TABLE, ExtraStuck.modid(path));
         }
 
+        public static ResourceKey<LootTable> key(String modid, String path) {
+            return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(modid, path));
+        }
+
         public static LootItemFunction.Builder rangeAmount(float min, float max) {
             return SetItemCountFunction.setCount(UniformGenerator.between(min, max));
         }
@@ -387,6 +446,9 @@ public class ESLootTableProvider extends LootTableProvider {
 
         @Override
         protected void generate() {
+            dropSelf(ESBlocks.DEEPSLATE_PILLAR.get());
+            add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get(), this::cruxiteOreDrop);
+
             dropSelf(ESBlocks.CUT_GARNET.get());
             dropSelf(ESBlocks.CUT_GARNET_STAIRS.get());
             add(ESBlocks.CUT_GARNET_SLAB.get(), createSlabItemTable(ESBlocks.CUT_GARNET_SLAB.get()));
@@ -497,10 +559,19 @@ public class ESLootTableProvider extends LootTableProvider {
             dropSelf(ESBlocks.NORMAL_CAT_PLUSH.get());
         }
 
-        private LootTable.Builder droppingWithOreItem(Block block) {
+        public LootTable.Builder droppingWithOreItem(Block block) {
             return LootTable.lootTable().withPool(applyExplosionCondition(block, LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1))
                     .add(DynamicLoot.dynamicEntry(CardOreBlockEntity.ITEM_DYNAMIC))));
+        }
+
+        public LootTable.Builder cruxiteOreDrop(Block block) {
+            HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries
+                    .lookupOrThrow(Registries.ENCHANTMENT);
+            return createSilkTouchDispatchTable(block, applyExplosionDecay(block,
+                    LootItem.lootTableItem(MSItems.RAW_CRUXITE.get())
+                            .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F)))
+                            .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
         }
     }
 }

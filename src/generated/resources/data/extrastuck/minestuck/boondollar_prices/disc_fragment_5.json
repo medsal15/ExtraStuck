@@ -1,0 +1,10 @@
+{
+  "ingredient": {
+    "item": "minecraft:disc_fragment_5"
+  },
+  "range": {
+    "type": "minecraft:uniform",
+    "max_inclusive": 500,
+    "min_inclusive": 250
+  }
+}

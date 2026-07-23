@@ -18,12 +18,15 @@ import com.medsal15.blocks.zillium.ZilliumStairBlock;
 import com.medsal15.blocks.zillium.ZilliumWallBlock;
 import com.mraof.minestuck.block.SimpleCakeBlock;
 
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
@@ -31,6 +34,7 @@ import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -64,6 +68,14 @@ public final class ESBlocks {
     public static final DeferredBlock<NormalCatBlock> NORMAL_CAT_PLUSH = BLOCKS.registerBlock("normal_cat_plush",
             NormalCatBlock::new,
             Block.Properties.of().mapColor(MapColor.SNOW).sound(SoundType.WOOL).strength(0.5F).noOcclusion());
+
+    public static final DeferredBlock<RotatedPillarBlock> DEEPSLATE_PILLAR = BLOCKS.registerBlock("deepslate_pillar",
+            RotatedPillarBlock::new, ofFullCopy(Blocks.DEEPSLATE));
+    // >:(
+    public static final DeferredBlock<Block> DEEPSLATE_CRUXITE_ORE = BLOCKS.register(
+            "deepslate_cruxite_ore",
+            () -> cruxiteOre(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)
+                    .strength(3.0F, 3.0F).requiresCorrectToolForDrops()));
 
     // #region Machines
     // Objectively worse than a miniature alchemiter
@@ -308,4 +320,8 @@ public final class ESBlocks {
                     () -> new WallBlock(ofFullCopy(SECONDARY_ZILLIUM_BRICKS.get())));
     // #endregion Secondary Zillium
     // #endregion Zillium
+
+    public static Block cruxiteOre(BlockBehaviour.Properties properties) {
+        return new DropExperienceBlock(UniformInt.of(2, 5), properties);
+    }
 }

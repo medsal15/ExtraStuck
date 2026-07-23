@@ -1140,6 +1140,12 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.DOWEL_STORAGE);
     public static final DeferredItem<BlockItem> CARD_STORAGE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_STORAGE);
     // #endregion Machines
+
+    public static final DeferredItem<BlockItem> DEEPSLATE_PILLAR = ITEMS
+            .registerSimpleBlockItem(ESBlocks.DEEPSLATE_PILLAR);
+    public static final DeferredItem<BlockItem> DEEPSLATE_CRUXITE_ORE = ITEMS
+            .registerSimpleBlockItem(ESBlocks.DEEPSLATE_CRUXITE_ORE);
+
     // #region Garnet
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
     public static final DeferredItem<BlockItem> CUT_GARNET_STAIRS = ITEMS
@@ -1902,6 +1908,9 @@ public final class ESItems {
         list.add(URANIUM_BLASTER);
         list.add(DOWEL_STORAGE);
         list.add(CARD_STORAGE);
+
+        list.add(DEEPSLATE_PILLAR);
+        list.add(DEEPSLATE_CRUXITE_ORE);
 
         list.add(CUT_GARNET);
         list.add(CUT_GARNET_STAIRS);

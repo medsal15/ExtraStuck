@@ -108,10 +108,13 @@ public final class ESTagsProvider {
                     ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get(),
                     ESBlocks.CARD_ORE.get(), ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
                     ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
-                    ESBlocks.CARD_STORAGE.get());
+                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_PILLAR.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
             tag(Tags.Blocks.NEEDS_WOOD_TOOL).add(ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
                     ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
-                    ESBlocks.CARD_STORAGE.get());
+                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
+            tag(MSTags.Blocks.CRUXITE_ORES).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
+            tag(Tags.Blocks.ORES).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
+            tag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
 
             tag(BlockTags.WALLS).add(ESBlocks.CUT_GARNET_WALL.get(), ESBlocks.GARNET_BRICK_WALL.get(),
                     ESBlocks.CUT_RUBY_WALL.get(), ESBlocks.RUBY_BRICK_WALL.get(), ESBlocks.SULFUROUS_STONE_WALL.get(),
@@ -287,7 +290,9 @@ public final class ESTagsProvider {
             tag(CuriosTags.CHARM).add(ESItems.SILVER_WATCH.get(), ESItems.BROKEN_WATCH.get());
             tag(CuriosTags.HEAD).add(ESItems.GRIST_VIEWERS.get());
 
-            tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get());
+            tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get(), ESItems.DEEPSLATE_CRUXITE_ORE.get());
+            tag(MSTags.Items.CRUXITE_ORES).add(ESItems.DEEPSLATE_CRUXITE_ORE.get());
+            tag(Tags.Items.ORES_IN_GROUND_DEEPSLATE).add(ESItems.DEEPSLATE_CRUXITE_ORE.get());
 
             tag(Tags.Items.FOODS).add(ESItems.SWEET_TOOTH.get());
             tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED).add(ESItems.PIZZA.get(), ESItems.DIVINE_TEMPTATION_BLOCK.get(),

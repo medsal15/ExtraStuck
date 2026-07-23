@@ -29,6 +29,9 @@ public class ESBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        axisBlock(ESBlocks.DEEPSLATE_PILLAR.get());
+        simpleBlock(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
+
         simpleBlock(ESBlocks.CUT_GARNET.get());
         stairsBlock(ESBlocks.CUT_GARNET_STAIRS.get(), modLoc("block/cut_garnet"));
         slabBlock(ESBlocks.CUT_GARNET_SLAB.get(), modLoc("block/cut_garnet"), modLoc("block/cut_garnet"));

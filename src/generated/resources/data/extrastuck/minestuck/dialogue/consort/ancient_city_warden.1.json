@@ -1,0 +1,18 @@
+{
+  "node": {
+    "animation": {},
+    "gui": "minestuck:textures/gui/dialogue/dialogue.png",
+    "message": "extrastuck.dialogue.consort.ancient_city_warden.1",
+    "responses": [
+      {
+        "condition": {
+          "type": "minestuck:always_true"
+        },
+        "hide_if_failed": true,
+        "message": "minestuck.arrow",
+        "next_dialogue": "extrastuck:consort/ancient_city_warden.2",
+        "triggers": []
+      }
+    ]
+  }
+}

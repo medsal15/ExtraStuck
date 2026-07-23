@@ -1,0 +1,10 @@
+{
+  "ingredient": {
+    "item": "minecraft:soul_lantern"
+  },
+  "range": {
+    "type": "minecraft:uniform",
+    "max_inclusive": 50,
+    "min_inclusive": 25
+  }
+}

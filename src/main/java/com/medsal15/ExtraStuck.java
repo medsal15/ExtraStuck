@@ -34,6 +34,7 @@ import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.modus.ESModus;
 import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.structures.processors.ESProcessors;
+import com.medsal15.world.land.ESLandTypes;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.core.registries.Registries;
@@ -94,6 +95,7 @@ public class ExtraStuck {
         ESEntityPredicates.ENTITY_PREDICATES.register(modEventBus);
         ESInterpretertypes.INTERPRETER_TYPES.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
+        ESLandTypes.TERRAINS.register(modEventBus);
         ESLootConditions.LOOT_CONDITIONS.register(modEventBus);
         ESLootFunctions.FUNCTIONS.register(modEventBus);
         ESLootModifiers.GLM_SERIALIZERS.register(modEventBus);

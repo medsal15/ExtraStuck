@@ -2087,6 +2087,20 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Machines
 
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(Items.COBBLED_DEEPSLATE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.DEEPSLATE_PILLAR)
+                .unlockedBy("has_cobbled_deepslate", has(Items.COBBLED_DEEPSLATE))
+                .save(output, modid("stonecutting/deepslate_pillar_from_cobbled_deepslate"));
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(Items.POLISHED_DEEPSLATE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.DEEPSLATE_PILLAR)
+                .unlockedBy("has_polished_deepslate", has(Items.POLISHED_DEEPSLATE))
+                .save(output, modid("stonecutting/deepslate_pillar_from_polished_deepslate"));
+        CombinationRecipeBuilder.of(ESItems.DEEPSLATE_PILLAR)
+                .input(MSItems.COARSE_STONE_COLUMN).or().input(Items.INK_SAC)
+                .build(output);
+
         // #region Garnet
         CombinationRecipeBuilder.of(ESItems.CUT_GARNET)
                 .input(Items.AMETHYST_BLOCK).or().input(Tags.Items.DYES_RED)

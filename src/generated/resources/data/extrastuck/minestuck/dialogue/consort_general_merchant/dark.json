@@ -1,0 +1,24 @@
+{
+  "node": {
+    "animation": {
+      "emotion": "happy"
+    },
+    "gui": "minestuck:textures/gui/dialogue/dialogue.png",
+    "message": "extrastuck.dialogue.consort_general_merchant.dark",
+    "responses": [
+      {
+        "condition": {
+          "type": "minestuck:always_true"
+        },
+        "hide_if_failed": true,
+        "message": "minestuck.arrow",
+        "triggers": [
+          {
+            "type": "minestuck:open_consort_merchant_gui",
+            "loot_table": "minestuck:gameplay/consort_food"
+          }
+        ]
+      }
+    ]
+  }
+}

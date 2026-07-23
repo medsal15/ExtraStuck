@@ -17,9 +17,12 @@ import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -92,5 +95,9 @@ public class ESAdvancementsProvider implements AdvancementProvider.AdvancementGe
 
     public static String desc(String name) {
         return "advancements." + name + ".description";
+    }
+
+    public static ResourceKey<Advancement> get(ResourceLocation location) {
+        return ResourceKey.create(Registries.ADVANCEMENT, location);
     }
 }
