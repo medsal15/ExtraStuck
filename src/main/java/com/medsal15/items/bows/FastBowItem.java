@@ -12,8 +12,18 @@ import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 
 public class FastBowItem extends BowItem {
+    private final float velocity;
+
     public FastBowItem(Properties properties) {
         super(properties);
+
+        velocity = 2;
+    }
+
+    public FastBowItem(Properties properties, float velocity) {
+        super(properties);
+
+        this.velocity = velocity;
     }
 
     @Override
@@ -21,6 +31,7 @@ public class FastBowItem extends BowItem {
             @Nonnull ItemStack weapon, @Nonnull List<ItemStack> projectileItems, float velocity, float inaccuracy,
             boolean isCrit,
             @Nullable LivingEntity target) {
-        super.shoot(level, shooter, hand, weapon, projectileItems, velocity * 2, inaccuracy, isCrit, target);
+        super.shoot(level, shooter, hand, weapon, projectileItems, velocity * this.velocity, inaccuracy, isCrit,
+                target);
     }
 }

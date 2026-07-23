@@ -66,6 +66,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -77,6 +78,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.ChargedProjectiles;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.api.distmarker.Dist;
@@ -216,6 +219,13 @@ public final class ClientEvents {
         ESItems.getCrossbows().forEach(ClientEvents::addCrossbow);
         ESItems.getBows().forEach(ClientEvents::addBow);
 
+        ItemProperties.register(ESItems.DEEP_CROSSBOW.get(), ResourceLocation.withDefaultNamespace("firework"),
+                (stack, world, entity, entityId) -> {
+                    ChargedProjectiles chargedprojectiles = stack.get(DataComponents.CHARGED_PROJECTILES);
+                    return chargedprojectiles != null && chargedprojectiles.contains(Items.FIREWORK_ROCKET) ? 1.0F
+                            : 0.0F;
+                });
+
         ItemProperties.register(ESItems.FLUX_SHIELD.get(), ExtraStuck.modid("charged"),
                 (stack, world, entity, entityId) -> {
                     @SuppressWarnings("null")
@@ -297,8 +307,13 @@ public final class ClientEvents {
                             - entity.getUseItemRemainingTicks())
                             / (float) (CrossbowItem.getChargeDuration(stack, entity));
                 });
-        ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"), (stack, world,
-                entity, entityId) -> RadBowItem.isCharged(stack) ? 1F : 0F);
+        if (item.get() instanceof RadBowItem) {
+            ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"), (stack, world,
+                    entity, entityId) -> RadBowItem.isCharged(stack) ? 1F : 0F);
+        } else {
+            ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"),
+                    (stack, world, entity, entityId) -> CrossbowItem.isCharged(stack) ? 1.0F : 0.0F);
+        }
     }
 
     private static void addBow(DeferredItem<Item> item) {

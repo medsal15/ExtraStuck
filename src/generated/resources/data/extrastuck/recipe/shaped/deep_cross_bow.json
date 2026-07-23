@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "extrastuck:silent_shot"
+    },
+    "I": {
+      "item": "extrastuck:deepslate_reinforcement"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "W": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "WIW",
+    "SCS",
+    " W "
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:deep_crossbow"
+  }
+}

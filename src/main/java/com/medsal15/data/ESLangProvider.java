@@ -456,6 +456,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.INCOMPLETE_MECHANICAL_RADBOW, "You can tell this is a great idea");
         addItem(ESItems.MECHANICAL_RADBOW, "Mechanical Radbow");
         addItemTooltip(ESItems.MECHANICAL_RADBOW, "An engineer's weapon of choice");
+        addItem(ESItems.DEEP_CROSSBOW, "Deep Crossbow");
         // Bows
         addItem(ESItems.BWO, "bwo");
         addItem(ESItems.BOWWOB, "BowwoB");
@@ -464,6 +465,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.MAKE_IT_RAIN, "Make It Rain");
         addItemTooltip(ESItems.MAKE_IT_RAIN, "25x Arrow Combo");
         addItem(ESItems.SHOOTING_STAR, "Shooting Star");
+        addItem(ESItems.SILENT_SHOT, "Silent Shot");
         // Throwables
         addItem(ESItems.BEENADE, "Beenade");
         add(BEENADE_LOADED, "It buzzes softly");

@@ -1,0 +1,23 @@
+{
+    "name": "Silent Shot",
+    "icon": "extrastuck:silent_shot",
+    "category": "extrastuck:bows",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:silent_shot"
+            },
+            "text": "This dark bow shoots without making a single noise.$(br2)$(3)$(l)Special:$() Shoots arrows twice as fast and has a free level of mending."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Shooting Star and a Sculk Catalyst in a Totem Lathe.",
+            "left": "extrastuck:shooting_star",
+            "mode": "&&",
+            "right": "minecraft:sculk_catalyst",
+            "result": "extrastuck:silent_shot"
+        }
+    ]
+}

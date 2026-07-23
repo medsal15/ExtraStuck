@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/crossbow",
+  "textures": {
+    "layer0": "extrastuck:item/deep_crossbow_loaded"
+  }
+}

@@ -841,6 +841,17 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addStep(DeployerApplicationRecipe::new, sub -> sub.require(ESTags.Items.BRASS_NUGGETS))
                 .addStep(PressingRecipe::new, sub -> sub)
                 .build(output.withConditions(new ModLoadedCondition("create")));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.DEEP_CROSSBOW.toStack())
+                .pattern("WIW")
+                .pattern("SCS")
+                .pattern(" W ")
+                .define('W', Items.STICK)
+                .define('S', Items.STRING)
+                .define('I', ESItems.DEEPSLATE_REINFORCEMENT)
+                .define('C', ESItems.SILENT_SHOT)
+                .unlockedBy("has_silent_shot", has(ESItems.SILENT_SHOT))
+                .save(output, modid("shaped/deep_cross_bow"));
         // #endregion Crossbows
 
         // #region Bows
@@ -880,6 +891,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.BWO)
                 .grist(GristTypes.ARTIFACT, 3)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SILENT_SHOT)
+                .input(ESItems.SHOOTING_STAR).and().input(Items.SCULK_CATALYST)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SILENT_SHOT)
+                .grist(GristTypes.QUARTZ, 900).grist(GristTypes.TAR, 360).grist(GristTypes.DIAMOND, 100)
                 .build(output);
         // #endregion Bows
 

@@ -235,6 +235,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         ItemModelBuilder builder = withExistingParent(path, "item/generated")
                 .texture("layer0", ExtraStuck.modid("item/" + path));
         ModelBuilder<ItemModelBuilder>.TransformsBuilder transforms = builder.transforms();
+
         transforms.transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(-80, 260, -40)
                 .translation(-1, -2, 2.5f).scale(.9f);
         transforms.transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND).rotation(-80, -280, 40)
@@ -243,6 +244,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
                 .translation(1.13f, 3.2f, 1.13f).scale(.68f);
         transforms.transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND).rotation(0, 90, -25)
                 .translation(1.13f, 3.2f, 1.13f).scale(.68f);
+
         builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
                 .model(withExistingParent(path + "_pulling_0", "item/bow").texture("layer0",
                         ExtraStuck.modid("item/" + path + "_pulling_0")));
@@ -256,15 +258,57 @@ public final class ESItemModelProvider extends ItemModelProvider {
                         ExtraStuck.modid("item/" + path + "_pulling_2")));
     }
 
+    private void crossbowWeapon(DeferredItem<Item> crossbow, boolean supportsFireworks) {
+        String path = crossbow.getId().getPath().toString();
+        ItemModelBuilder builder = withExistingParent(path, "item/crossbow")
+                .texture("layer0", ExtraStuck.modid("item/" + path));
+        ModelBuilder<ItemModelBuilder>.TransformsBuilder transforms = builder.transforms();
+
+        transforms.transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(-90, 0, -60).translation(2, .1f, -3)
+                .scale(.9f);
+        transforms.transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND).rotation(-90, 0, 30).translation(2, .1f, -3)
+                .scale(.9f);
+        transforms.transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND).rotation(-90, 0, -55)
+                .translation(1.13f, 3.2f, 1.13f).scale(.68f);
+        transforms.transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND).rotation(-90, 0, 35)
+                .translation(1.13f, 3.2f, 1.13f).scale(.68f);
+
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
+                .model(withExistingParent(path + "_pulling_0", "item/crossbow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_pulling_0")));
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), .58f)
+                .model(withExistingParent(path + "_pulling_1", "item/crossbow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_pulling_1")));
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), 1)
+                .model(withExistingParent(path + "_pulling_2", "item/crossbow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_pulling_2")));
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("charged"), 1)
+                .model(withExistingParent(path + "_loaded", "item/crossbow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_loaded")));
+        if (supportsFireworks) {
+            builder.override().predicate(ResourceLocation.withDefaultNamespace("charged"), 1)
+                    .predicate(ResourceLocation.withDefaultNamespace("firework"), 1)
+                    .model(withExistingParent(path + "_firework", "item/crossbow").texture("layer0",
+                            ExtraStuck.modid("item/" + path + "_firework")));
+        }
+    }
+
     private void registerRangedWeapons() {
         handheldItem(ESItems.INCOMPLETE_MECHANICAL_RADBOW.get());
         handheldItem(ESItems.HANDGUN.get());
+
+        crossbowWeapon(ESItems.RADBOW, false);
+        crossbowWeapon(ESItems.MECHANICAL_RADBOW, false);
+        crossbowWeapon(ESItems.DEEP_CROSSBOW, true);
 
         bowWeapon(ESItems.BOWWOB);
         bowWeapon(ESItems.RAINBOW_BOW);
         bowWeapon(ESItems.MAKE_IT_RAIN);
         bowWeapon(ESItems.SHOOTING_STAR);
         bowWeapon(ESItems.BWO);
+        bowWeapon(ESItems.SILENT_SHOT);
 
         handheldItem(ESItems.BEENADE.get());
         handheldItem(ESItems.LEMONNADE.get());

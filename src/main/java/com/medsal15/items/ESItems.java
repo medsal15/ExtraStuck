@@ -53,11 +53,13 @@ import com.medsal15.items.bows.DoublingBowItem;
 import com.medsal15.items.bows.FastBowItem;
 import com.medsal15.items.bows.MakeRainItem;
 import com.medsal15.items.bows.RainbowBowItem;
+import com.medsal15.items.bows.SilentShotBowItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
 import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.components.PanCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
+import com.medsal15.items.crossbow.DeepCrossbowItem;
 import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.food.BurningFood;
@@ -756,6 +758,8 @@ public final class ESItems {
             () -> new RadBowItem(new Properties().durability(350).stacksTo(1)));
     public static final DeferredItem<Item> MECHANICAL_RADBOW = ITEMS.register("mechanical_radbow",
             () -> new MechanicalRadBowItem(new Properties().durability(933).stacksTo(1)));
+    public static final DeferredItem<Item> DEEP_CROSSBOW = ITEMS.register("deep_crossbow",
+            () -> new DeepCrossbowItem(new Properties().durability(Tiers.DIAMOND.getUses() * 4), 2));
     // #endregion Crossbows
     // #region Bows
     public static final DeferredItem<Item> BOWWOB = ITEMS.register("bowwob",
@@ -770,6 +774,8 @@ public final class ESItems {
             () -> new FastBowItem(new Properties().durability(Tiers.DIAMOND.getUses())));
     public static final DeferredItem<Item> BWO = ITEMS.register("bwo",
             () -> new BwoItem(new Properties().durability(MSItemTypes.SBAHJ_TIER.getUses())));
+    public static final DeferredItem<Item> SILENT_SHOT = ITEMS.register("silent_shot",
+            () -> new SilentShotBowItem(new Properties().durability(Tiers.DIAMOND.getUses()), 2));
     // #endregion Bows
     // #region Guns
     public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
@@ -1728,6 +1734,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(RADBOW);
         list.add(MECHANICAL_RADBOW);
+        list.add(DEEP_CROSSBOW);
         return list;
     }
 
@@ -1738,6 +1745,7 @@ public final class ESItems {
         list.add(RAINBOW_BOW);
         list.add(MAKE_IT_RAIN);
         list.add(SHOOTING_STAR);
+        list.add(SILENT_SHOT);
         return list;
     }
 

@@ -1,0 +1,20 @@
+{
+    "name": "Deep Crossbow",
+    "icon": "extrastuck:deep_crossbow",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:deep_crossbow"
+            },
+            "text": "A silent bow, modified to become a crossbow.$(br2)$(3)$(l)Special:$() Shoots arrows and fireworks twice as fast and has a free level of mending."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shaped/deep_cross_bow",
+            "text": "Use Sticks, Strings, a piece of Deepslate Reinforcement and a Silent Shot to upgrade."
+        }
+    ]
+}

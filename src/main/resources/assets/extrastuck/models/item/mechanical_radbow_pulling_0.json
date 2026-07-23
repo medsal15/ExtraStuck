@@ -1,6 +1,0 @@
-{
-    "parent": "item/crossbow",
-    "textures": {
-        "layer0": "extrastuck:item/mechanical_radbow_pulling_0"
-    }
-}

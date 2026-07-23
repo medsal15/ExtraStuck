@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:shooting_star"
+  },
+  "input2": {
+    "item": "minecraft:sculk_catalyst"
+  },
+  "mode": "and",
+  "output": "extrastuck:silent_shot"
+}

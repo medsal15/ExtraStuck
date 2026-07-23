@@ -1,4 +1,4 @@
-package com.medsal15.items.melee;
+package com.medsal15.items.armor;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +9,6 @@ import javax.annotation.Nonnull;
 import com.medsal15.config.ConfigClient;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.utils.ESLangHelper;
-import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -18,18 +17,21 @@ import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 
-public class InnateEnchantsWeapon extends WeaponItem {
+public class InnateEnchantArmorItem extends ArmorItem {
     private final Map<ResourceKey<Enchantment>, Integer> innate;
 
-    public InnateEnchantsWeapon(WeaponItem.Builder builder, Properties properties,
+    public InnateEnchantArmorItem(Holder<ArmorMaterial> material, ArmorItem.Type type, Properties properties,
             Map<ResourceKey<Enchantment>, Integer> enchants) {
-        super(builder, properties);
-        this.innate = enchants;
+        super(material, type, properties);
+
+        innate = enchants;
     }
 
     @Override
