@@ -1,7 +1,5 @@
 package com.medsal15.items;
 
-import static com.medsal15.ExtraStuck.modid;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -15,6 +13,7 @@ import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
+import com.medsal15.compat.patchouli.items.ESPItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
@@ -150,7 +149,6 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import vazkii.patchouli.common.item.ItemModBook;
 
 public final class ESItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
@@ -1327,8 +1325,7 @@ public final class ESItems {
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
         if (ESCompatUtils.isLoaded("patchouli")) {
-            output.accept(ItemModBook
-                    .forBook(modid("extrastuck")));
+            output.accept(ESPItems.getGuideBook());
         }
 
         for (DeferredItem<Item> card : ESItems.getModusCards()) {

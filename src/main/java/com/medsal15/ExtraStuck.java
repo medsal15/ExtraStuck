@@ -14,6 +14,7 @@ import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.compat.irons_spellbooks.subevents.ISSCommonEvents;
+import com.medsal15.compat.patchouli.items.ESPItems;
 import com.medsal15.compat.ponder.ESPonderPlugin;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.conditions.ESConditions;
@@ -108,6 +109,10 @@ public class ExtraStuck {
         ESProcessors.PROCESSORS.register(modEventBus);
         ESProgramTypes.PROGRAM_TYPES.register(modEventBus);
         ESSounds.SOUND_EVENTS.register(modEventBus);
+
+        if (ESCompatUtils.isLoaded("patchouli")) {
+            ESPItems.ITEMS.register(modEventBus);
+        }
 
         if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             ISSESItems.ITEMS.register(modEventBus);

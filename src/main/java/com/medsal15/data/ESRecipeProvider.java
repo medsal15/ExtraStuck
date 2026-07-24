@@ -9,6 +9,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.ExtraStuck;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
+import com.medsal15.compat.patchouli.items.ESPItems;
 import com.medsal15.conditions.ConfigCondition;
 import com.medsal15.items.ESItems;
 import com.medsal15.utils.ESTags;
@@ -47,6 +48,7 @@ import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
 import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 import net.neoforged.neoforge.registries.DeferredItem;
+import vazkii.patchouli.common.item.PatchouliDataComponents;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.CommonTags;
@@ -77,6 +79,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         blockRecipes(output);
 
         issRecipes(output);
+
+        ItemStack guide = ESPItems.GUIDE.toStack();
+        guide.set(PatchouliDataComponents.BOOK, ExtraStuck.modid("extrastuck"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, guide).requires(Items.BOOK)
+                .requires(MSItems.CRUXITE_BLOCK)
+                .unlockedBy("has_cruxite", has(MSItems.RAW_CRUXITE))
+                .save(output.withConditions(new ModLoadedCondition("patchouli")), modid("shapeless/guide"));
 
         CombinationRecipeBuilder.of(ESItems.ANTI_DIE)
                 .input(ESItems.STICKY_DIE).and().input(MSItems.MIRROR)

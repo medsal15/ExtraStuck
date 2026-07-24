@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "patchouli"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "minestuck:cruxite_block"
+    }
+  ],
+  "result": {
+    "components": {
+      "patchouli:book": "extrastuck:extrastuck"
+    },
+    "count": 1,
+    "id": "extrastuck:guide"
+  }
+}

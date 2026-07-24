@@ -3,6 +3,7 @@ package com.medsal15.data;
 import com.medsal15.ExtraStuck;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
+import com.medsal15.compat.patchouli.items.ESPItems;
 import com.medsal15.items.ESItems;
 import com.mraof.minestuck.player.EnumAspect;
 
@@ -46,6 +47,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ISSESItems.CASSETTE_DEAD_KING_LULLABY.get());
         basicItem(ISSESItems.CASSETTE_FLAME_STILL_BURNS.get());
         basicItem(ISSESItems.CASSETTE_WHISPERS_OF_ICE.get());
+
+        basicItem(ESPItems.GUIDE.get());
     }
 
     private void registerShields() {
