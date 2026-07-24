@@ -1,0 +1,403 @@
+{
+  "carvers": [
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "carver": "minecraft:cave",
+      "step": "air"
+    },
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "carver": "minecraft:cave_extra_underground",
+      "step": "air"
+    },
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "carver": "minecraft:canyon",
+      "step": "air"
+    }
+  ],
+  "features": [
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "feature": "minecraft:amethyst_geode",
+      "step": "local_modifications"
+    },
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "feature": "minecraft:sculk_vein",
+      "step": "underground_decoration"
+    },
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "feature": {
+        "feature": {
+          "type": "extrastuck:safe_sculk_patch",
+          "config": {
+            "amount_per_charge": 4,
+            "catalyst_chance": 0.1,
+            "charge_count": 10,
+            "extra_rare_growths": 0,
+            "growth_rounds": 0,
+            "spread_attempts": 32,
+            "spread_rounds": 1
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max_inclusive": 125,
+              "min_inclusive": 100
+            }
+          },
+          {
+            "type": "minecraft:in_square"
+          },
+          {
+            "type": "minecraft:height_range",
+            "height": {
+              "type": "minecraft:uniform",
+              "max_inclusive": {
+                "above_bottom": 100
+              },
+              "min_inclusive": {
+                "above_bottom": 10
+              }
+            }
+          },
+          {
+            "type": "minecraft:biome"
+          }
+        ]
+      },
+      "step": "underground_decoration"
+    },
+    {
+      "biome_types": [
+        "rough"
+      ],
+      "feature": {
+        "feature": {
+          "type": "extrastuck:safe_sculk_patch",
+          "config": {
+            "amount_per_charge": 4,
+            "catalyst_chance": 0.1,
+            "charge_count": 10,
+            "extra_rare_growths": 0,
+            "growth_rounds": 0,
+            "spread_attempts": 32,
+            "spread_rounds": 1
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max_inclusive": 27,
+              "min_inclusive": 20
+            }
+          },
+          {
+            "type": "minecraft:in_square"
+          },
+          {
+            "type": "minecraft:height_range",
+            "height": {
+              "type": "minecraft:uniform",
+              "max_inclusive": {
+                "below_top": 80
+              },
+              "min_inclusive": {
+                "above_bottom": 80
+              }
+            }
+          },
+          {
+            "type": "minecraft:biome"
+          }
+        ]
+      },
+      "step": "underground_decoration"
+    },
+    {
+      "biome_types": [
+        "rough",
+        "normal"
+      ],
+      "feature": "minecraft:glow_lichen",
+      "step": "vegetal_decoration"
+    },
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "feature": {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 0.0,
+            "size": 33,
+            "targets": [
+              {
+                "state": {
+                  "Name": "minecraft:gravel"
+                },
+                "target": {
+                  "block_state": {
+                    "Name": "minecraft:deepslate",
+                    "Properties": {
+                      "axis": "y"
+                    }
+                  },
+                  "predicate_type": "minecraft:blockstate_match"
+                }
+              }
+            ]
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:count",
+            "count": 10
+          },
+          {
+            "type": "minecraft:in_square"
+          },
+          {
+            "type": "minecraft:height_range",
+            "height": {
+              "type": "minecraft:uniform",
+              "max_inclusive": {
+                "absolute": 256
+              },
+              "min_inclusive": {
+                "above_bottom": 0
+              }
+            }
+          },
+          {
+            "type": "minecraft:biome"
+          }
+        ]
+      },
+      "step": "underground_ores"
+    },
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "feature": {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 0.0,
+            "size": 8,
+            "targets": [
+              {
+                "state": {
+                  "Name": "minecraft:deepslate_iron_ore"
+                },
+                "target": {
+                  "block_state": {
+                    "Name": "minecraft:deepslate",
+                    "Properties": {
+                      "axis": "y"
+                    }
+                  },
+                  "predicate_type": "minecraft:blockstate_match"
+                }
+              }
+            ]
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:count",
+            "count": 40
+          },
+          {
+            "type": "minecraft:in_square"
+          },
+          {
+            "type": "minecraft:height_range",
+            "height": {
+              "type": "minecraft:uniform",
+              "max_inclusive": {
+                "absolute": 64
+              },
+              "min_inclusive": {
+                "above_bottom": 0
+              }
+            }
+          },
+          {
+            "type": "minecraft:biome"
+          }
+        ]
+      },
+      "step": "underground_ores"
+    },
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "feature": {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 0.0,
+            "size": 9,
+            "targets": [
+              {
+                "state": {
+                  "Name": "minecraft:deepslate_gold_ore"
+                },
+                "target": {
+                  "block_state": {
+                    "Name": "minecraft:deepslate",
+                    "Properties": {
+                      "axis": "y"
+                    }
+                  },
+                  "predicate_type": "minecraft:blockstate_match"
+                }
+              }
+            ]
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:count",
+            "count": 12
+          },
+          {
+            "type": "minecraft:in_square"
+          },
+          {
+            "type": "minecraft:height_range",
+            "height": {
+              "type": "minecraft:uniform",
+              "max_inclusive": {
+                "absolute": 32
+              },
+              "min_inclusive": {
+                "above_bottom": 0
+              }
+            }
+          },
+          {
+            "type": "minecraft:biome"
+          }
+        ]
+      },
+      "step": "underground_ores"
+    },
+    {
+      "biome_types": [
+        "normal",
+        "rough",
+        "ocean"
+      ],
+      "feature": {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 0.0,
+            "size": 6,
+            "targets": [
+              {
+                "state": {
+                  "Name": "minecraft:deepslate_diamond_ore"
+                },
+                "target": {
+                  "block_state": {
+                    "Name": "minecraft:deepslate",
+                    "Properties": {
+                      "axis": "y"
+                    }
+                  },
+                  "predicate_type": "minecraft:blockstate_match"
+                }
+              }
+            ]
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:count",
+            "count": 11
+          },
+          {
+            "type": "minecraft:in_square"
+          },
+          {
+            "type": "minecraft:height_range",
+            "height": {
+              "type": "minecraft:uniform",
+              "max_inclusive": {
+                "absolute": 24
+              },
+              "min_inclusive": {
+                "above_bottom": 0
+              }
+            }
+          },
+          {
+            "type": "minecraft:biome"
+          }
+        ]
+      },
+      "step": "underground_ores"
+    }
+  ],
+  "structure_sets": [
+    {
+      "structure_set": {
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 880027512,
+          "separation": 8,
+          "spacing": 24
+        },
+        "structures": [
+          {
+            "structure": "minecraft:ancient_city",
+            "weight": 1
+          }
+        ]
+      }
+    }
+  ]
+}

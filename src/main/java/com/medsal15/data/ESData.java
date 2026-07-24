@@ -59,6 +59,7 @@ public final class ESData {
         gen.addProvider(event.includeServer(), ESDialoguesProvider.consort(output, langProvider, lookupProvider));
         gen.addProvider(event.includeServer(), ESDialoguesProvider.generalShop(output, langProvider, lookupProvider));
         gen.addProvider(event.includeServer(), ESDialoguesProvider.foodShop(output, langProvider, lookupProvider));
+        gen.addProvider(event.includeServer(), new ESLandTypeExtensionProvider(output, lookupProvider));
 
         ESTagsProvider.gatherData(gen, output, lookupProvider, fileHelper, datapackProvider);
     }

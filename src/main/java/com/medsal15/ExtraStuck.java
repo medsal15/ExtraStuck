@@ -34,6 +34,7 @@ import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.modus.ESModus;
 import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.structures.processors.ESProcessors;
+import com.medsal15.world.features.ESFeatures;
 import com.medsal15.world.land.ESLandTypes;
 import com.mojang.logging.LogUtils;
 
@@ -93,6 +94,7 @@ public class ExtraStuck {
         ESDataComponents.DATA_COMPONENTS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
         ESEntityPredicates.ENTITY_PREDICATES.register(modEventBus);
+        ESFeatures.FEATURES.register(modEventBus);
         ESInterpretertypes.INTERPRETER_TYPES.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
         ESLandTypes.TERRAINS.register(modEventBus);
