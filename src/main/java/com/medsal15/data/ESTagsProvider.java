@@ -128,6 +128,9 @@ public final class ESTagsProvider {
             tag(BlockTags.DOORS).add(ESBlocks.COBALT_DOOR.get());
             tag(BlockTags.TRAPDOORS).add(ESBlocks.COBALT_TRAPDOOR.get());
 
+            tag(BlockTags.SCULK_REPLACEABLE_WORLD_GEN).add(ESBlocks.DEEPSLATE_PILLAR.get());
+            tag(BlockTags.ANCIENT_CITY_REPLACEABLE).add(ESBlocks.DEEPSLATE_PILLAR.get());
+
             tag(BlockTags.INFINIBURN_OVERWORLD).add(ESBlocks.SULFUROUS_STONE.get(),
                     ESBlocks.SULFUROUS_STONE_STAIRS.get(),
                     ESBlocks.SULFUROUS_STONE_SLAB.get(), ESBlocks.SULFUROUS_STONE_WALL.get());
