@@ -4,6 +4,7 @@ import com.mraof.minestuck.inventory.captchalogue.CaptchaDeckHandler;
 import com.mraof.minestuck.inventory.captchalogue.Modus;
 import com.mraof.minestuck.inventory.captchalogue.ModusType;
 import com.mraof.minestuck.item.MSItems;
+import com.mraof.minestuck.util.MSSoundEvents;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
@@ -12,6 +13,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.PlayerEnderChestContainer;
 import net.minecraft.world.item.Item;
@@ -109,8 +111,12 @@ public class EnderModus extends Modus {
 
     @Override
     public ItemStack getItem(ServerPlayer player, int slot, boolean asCard) {
-        if (slot == CaptchaDeckHandler.EMPTY_SYLLADEX || list.isEmpty())
+        if (slot == CaptchaDeckHandler.EMPTY_SYLLADEX || list.isEmpty()) {
+            if (slot == CaptchaDeckHandler.EMPTY_SYLLADEX)
+                player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                        MSSoundEvents.EVENT_CAPTCHALOGUE_SHUFFLE.get(), SoundSource.AMBIENT, 1F, 1F);
             return ItemStack.EMPTY;
+        }
 
         if (slot == CaptchaDeckHandler.EMPTY_CARD || asCard) {
             if (cards > 0) {
