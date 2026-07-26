@@ -34,11 +34,4 @@ Grist map: map that is colored based on location grists, variants between common
 
 ## Textures
 
-Improve all shields' models and textures
-
-- Add custom handles where it makes sense
-- Make the halt shield look more like Halt, from Doors
-- Animate the flame shield to look like it's on fire
-
 Improve all blocks textures
-
