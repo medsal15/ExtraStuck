@@ -3,6 +3,7 @@ package com.medsal15.world.land.terrains;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.world.features.ESFeatures;
+import com.medsal15.world.structures.ESStructures;
 import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.entity.MSEntityTypes;
 import com.mraof.minestuck.world.biome.LandBiomeType;
@@ -34,7 +35,6 @@ import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
@@ -165,7 +165,7 @@ public class DarkLandTerrain extends TerrainLandType {
                         BiomeFilter.biome()),
                 LandBiomeType.any());
 
-        addStructureExtension(new StructureSet(structures.getOrThrow(BuiltinStructures.ANCIENT_CITY),
+        addStructureExtension(new StructureSet(structures.getOrThrow(ESStructures.ANCIENT_CITY),
                 new RandomSpreadStructurePlacement(24, 8, RandomSpreadType.LINEAR, 880027512)));
 
         addCarverExtension(GenerationStep.Carving.AIR, carvers.getOrThrow(Carvers.CAVE), LandBiomeType.any());

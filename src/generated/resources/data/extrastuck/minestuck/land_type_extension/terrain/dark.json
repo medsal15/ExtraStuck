@@ -393,7 +393,7 @@
         },
         "structures": [
           {
-            "structure": "minecraft:ancient_city",
+            "structure": "extrastuck:ancient_city",
             "weight": 1
           }
         ]
