@@ -51,6 +51,7 @@ public final class ESData {
         DataGenerator gen = event.getGenerator();
         PackOutput output = gen.getPackOutput();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         LanguageProvider langProvider = gen.addProvider(event.includeClient(), new ESLangProvider(output));
         gen.addProvider(event.includeClient(), new ESBlockStateProvider(output, fileHelper));
@@ -60,12 +61,12 @@ public final class ESData {
 
         DatapackBuiltinEntriesProvider datapackProvider = gen.addProvider(
                 event.includeServer(),
-                new DatapackBuiltinEntriesProvider(output, event.getLookupProvider(),
+                new DatapackBuiltinEntriesProvider(output, lookupProvider,
                         new RegistrySetBuilder()
                                 .add(Registries.DAMAGE_TYPE, ESData::registerDamageTypes)
                                 .add(Registries.STRUCTURE, ESData::registerStructures),
                         Set.of(ExtraStuck.MODID)));
-        CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
+        CompletableFuture<HolderLookup.Provider> datapackLookupProvider = datapackProvider.getRegistryProvider();
 
         gen.addProvider(event.includeServer(), new ESRecipeProvider(output, lookupProvider));
         gen.addProvider(event.includeServer(), new DataMapGenerator(output, lookupProvider));
@@ -77,13 +78,10 @@ public final class ESData {
         gen.addProvider(event.includeServer(),
                 ESAdvancementsProvider.create(output, lookupProvider, fileHelper));
         gen.addProvider(event.includeServer(), new ESCassetteSongsProvider(output));
-        gen.addProvider(event.includeServer(),
-                ESDialoguesProvider.consort(output, langProvider, event.getLookupProvider()));
-        gen.addProvider(event.includeServer(),
-                ESDialoguesProvider.generalShop(output, langProvider, event.getLookupProvider()));
-        gen.addProvider(event.includeServer(),
-                ESDialoguesProvider.foodShop(output, langProvider, event.getLookupProvider()));
-        gen.addProvider(event.includeServer(), new ESLandTypeExtensionProvider(output, lookupProvider));
+        gen.addProvider(event.includeServer(), ESDialoguesProvider.consort(output, langProvider, lookupProvider));
+        gen.addProvider(event.includeServer(), ESDialoguesProvider.generalShop(output, langProvider, lookupProvider));
+        gen.addProvider(event.includeServer(), ESDialoguesProvider.foodShop(output, langProvider, lookupProvider));
+        gen.addProvider(event.includeServer(), new ESLandTypeExtensionProvider(output, datapackLookupProvider));
 
         ESTagsProvider.gatherData(gen, output, lookupProvider, fileHelper, datapackProvider);
     }
