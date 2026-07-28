@@ -64,7 +64,7 @@ public class UntunedVisionItem extends Item {
                 if (message != null)
                     player.sendSystemMessage(message);
                 if (!player.getInventory().add(result)) {
-                    player.drop(stack, false);
+                    player.drop(result, false);
                 }
                 return InteractionResultHolder.consume(stack);
             }
