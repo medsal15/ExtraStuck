@@ -436,6 +436,8 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         addItem(ESItems.DEBT_REAPER, "Debt Reaper");
         addItemTooltip(ESItems.DEBT_REAPER, "You can't escape taxes");
         addItem(ESItems.LEAFBURNER, "Leafburner");
+        addItem(ESItems.BLACK_MOONSHINE_COLLECTOR, "Black Moonshine Collector");
+        addItemTooltip(ESItems.BLACK_MOONSHINE_COLLECTOR, "Does not howl");
         // Fans
         addItem(ESItems.NONE_OF_YOUR_BUSINESS, "None of Your Business");
         addItemTooltip(ESItems.NONE_OF_YOUR_BUSINESS, "Privacy first");
@@ -660,6 +662,8 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         addItem(ESItems.SHINEBREAKER, "Shinebreaker");
         // Axes
         addItem(ESItems.DOORBUSTER, "Doorbuster");
+        // Hoes
+        addItem(ESItems.TILL_SILENCE, "Till Silence");
         // Curios
         addItem(ESItems.SILVER_WATCH, "Silver Watch");
         addItemTooltip(ESItems.SILVER_WATCH, "A second passes every second");

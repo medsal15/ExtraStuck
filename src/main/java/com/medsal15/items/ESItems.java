@@ -714,6 +714,12 @@ public final class ESItems {
                     .add(ESHitEffects.steamPowered(true, OnHitEffect.setOnFire(15)))
                     .set(ESRightClickEffects::steamWeapon),
             new Item.Properties().component(ESDataComponents.STEAM_FUEL, SteamFuelComponent.empty())));
+    public static final DeferredItem<Item> BLACK_MOONSHINE_COLLECTOR = ITEMS.register("black_moonshine_collector",
+            () -> new InnateEnchantsWeapon(
+                    new WeaponItem.Builder(MSItemTypes.DENIZEN_TIER, 8, -2.6F).efficiency(15).disableShield()
+                            .set(MSItemTypes.SCYTHE_TOOL)
+                            .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 100))),
+                    new Item.Properties(), Map.of(Enchantments.MENDING, 1)));
     // #endregion Scythes
     // #region Fans
     public static final DeferredItem<Item> NONE_OF_YOUR_BUSINESS = ITEMS.register("none_of_your_business",
@@ -747,6 +753,13 @@ public final class ESItems {
                     .set(ItemRightClickEffect.switchTo(ESItems.TWO_OF_SPADES)),
             new MSItemProperties().durability(500)));
     // #endregion Spoons
+    // #region Hoes
+    public static final DeferredItem<Item> TILL_SILENCE = ITEMS.register("till_silence",
+            () -> new InnateEnchantsWeapon(
+                    new WeaponItem.Builder(Tiers.DIAMOND, 0, 0).set(ESItemTypes.HOE_TOOL)
+                            .set(ESRightClickBlockEffects::till),
+                    new Item.Properties(), Map.of(Enchantments.MENDING, 1)));
+    // #endregion Hoes
 
     // Staves and Spellbooks are handled in the ISS compat package
     // See the ESISSItems and ESMissingItems classes
@@ -1462,6 +1475,7 @@ public final class ESItems {
         list.addAll(getShovels());
         list.addAll(getPickaxes());
         list.addAll(getAxes());
+        list.addAll(getHoes());
         return list;
     }
 
@@ -1646,6 +1660,7 @@ public final class ESItems {
         // Scythes
         list.add(DEBT_REAPER);
         list.add(LEAFBURNER);
+        list.add(BLACK_MOONSHINE_COLLECTOR);
         // Fans
         list.add(NONE_OF_YOUR_BUSINESS);
         // Lances
@@ -1685,6 +1700,7 @@ public final class ESItems {
         list.addAll(getShovels());
         list.addAll(getPickaxes());
         list.addAll(getAxes());
+        list.addAll(getHoes());
         return list;
     }
 
@@ -1708,6 +1724,14 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(DOORBUSTER);
+
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getHoes() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(TILL_SILENCE);
 
         return list;
     }

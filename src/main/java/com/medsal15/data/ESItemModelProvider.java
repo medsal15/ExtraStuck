@@ -220,6 +220,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.END_OF_CIVILIZATION.get());
         // Scythes
         handheldItem(ESItems.DEBT_REAPER.get());
+        handheldItem(ESItems.BLACK_MOONSHINE_COLLECTOR.get());
         // Fans
         handheldItem(ESItems.NONE_OF_YOUR_BUSINESS.get());
         // Lances
@@ -376,6 +377,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.SHINEBREAKER.get());
         // Axes
         handheldItem(ESItems.DOORBUSTER.get());
+        // Hoes
+        handheldItem(ESItems.TILL_SILENCE.get());
         // Curios
         basicItem(ESItems.SILVER_WATCH.get());
         basicItem(ESItems.BROKEN_WATCH.get());

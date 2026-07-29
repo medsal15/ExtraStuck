@@ -768,6 +768,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.LEAFBURNER)
                 .grist(GristTypes.AMBER, 767).grist(GristTypes.TAR, 500).grist(GristTypes.BUILD, 750)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BLACK_MOONSHINE_COLLECTOR)
+                .input(ESItems.TILL_SILENCE).or().input(ESItems.NEW_MOON)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BLACK_MOONSHINE_COLLECTOR)
+                .grist(GristTypes.TAR, 2666).grist(GristTypes.QUARTZ, 750).grist(GristTypes.AMETHYST, 450)
+                .build(output);
         // #endregion Scythes
 
         // #region Fans
@@ -1658,6 +1665,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(CreateESItems.GRIST_FILTER)
                 .unlockedBy("has_grist_filter", has(CreateESItems.GRIST_FILTER))
                 .save(output.withConditions(CREATE_LOADED), modid("shapeless/grist_filter_reset"));
+
+        CombinationRecipeBuilder.of(ESItems.TILL_SILENCE)
+                .input(Items.DIAMOND_HOE).and().input(Items.SCULK_SENSOR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TILL_SILENCE)
+                .grist(GristTypes.TAR, 133).grist(GristTypes.DIAMOND, 33)
+                .build(output);
     }
 
     private void foodRecipes(@Nonnull RecipeOutput output) {

@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:diamond": 33,
+    "minestuck:tar": 133
+  },
+  "ingredient": {
+    "item": "extrastuck:till_silence"
+  }
+}

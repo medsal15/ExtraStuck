@@ -1,5 +1,7 @@
 package com.medsal15.items.weaponeffects;
 
+import java.util.function.Consumer;
+
 import com.medsal15.config.ConfigServer;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;
@@ -15,6 +17,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -23,6 +26,7 @@ import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.neoforged.neoforge.common.ItemAbilities;
 
 public final class ESRightClickBlockEffects {
     public static InteractionResult brush(UseOnContext context) {
@@ -153,5 +157,30 @@ public final class ESRightClickBlockEffects {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return InteractionResult.PASS;
+    }
+
+    /**
+     * Tills the ground
+     * <p>
+     * Mostly a copy of HoeItem.useOn
+     */
+    public static InteractionResult till(UseOnContext context) {
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        BlockState newState = level.getBlockState(pos).getToolModifiedState(context, ItemAbilities.HOE_TILL, false);
+        if (newState == null)
+            return InteractionResult.PASS;
+
+        Consumer<UseOnContext> consumer = HoeItem.changeIntoState(newState);
+        Player player = context.getPlayer();
+        level.playSound(player, pos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (!level.isClientSide) {
+            consumer.accept(context);
+            if (player != null) {
+                context.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+            }
+        }
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 }

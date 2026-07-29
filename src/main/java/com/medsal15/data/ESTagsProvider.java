@@ -202,6 +202,9 @@ public final class ESTagsProvider {
             for (DeferredItem<Item> axe : ESItems.getAxes()) {
                 tag(ItemTags.AXES).add(axe.get());
             }
+            for (DeferredItem<Item> hoe : ESItems.getHoes()) {
+                tag(ItemTags.HOES).add(hoe.get());
+            }
 
             for (DeferredItem<Item> armor : ESItems.getArmor()) {
                 tag(ItemTags.ARMOR_ENCHANTABLE).add(armor.get());

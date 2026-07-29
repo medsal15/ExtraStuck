@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:till_silence"
+  },
+  "input2": {
+    "item": "extrastuck:new_moon"
+  },
+  "mode": "or",
+  "output": "extrastuck:black_moonshine_collector"
+}
