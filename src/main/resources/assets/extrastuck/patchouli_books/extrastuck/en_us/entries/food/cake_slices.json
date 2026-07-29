@@ -1,10 +1,9 @@
 {
     "name": "Slices of Cake",
-    "icon": "farmersdelight:cake_slice",
-    "flag": "mod:farmersdelight",
+    "icon": "extrastuck:apple_cake_slice",
     "category": "extrastuck:food",
     "pages": [
-        "All these brand new cake slices can be obtained by cutting their respective cakes with a cutting board.$(br)You can also use alchemy with cake slices instead of cake for the respective slices.",
+        "All these brand new cake slices can be obtained by cutting their respective cakes with a knife.$(br)You can also use alchemy with cake slices instead of cake for the respective slices.",
         {
             "type": "patchouli:spotlight",
             "item": "extrastuck:apple_cake_slice",
@@ -63,8 +62,7 @@
         {
             "type": "patchouli:spotlight",
             "item": "extrastuck:pan_cake_slice,extrastuck:pan_cake_slice[extrastuck:pan_cake_slice_color=magenta],extrastuck:pan_cake_slice[extrastuck:pan_cake_slice_color=yellow],extrastuck:pan_cake_slice[extrastuck:pan_cake_slice_color=cyan]",
-            "text": "Come in 4 flavors, tripel, magenta, yellow and cyan.$(br)We all know which one is superior."
+            "text": "Come in 4 flavors, triple, magenta, yellow and cyan.$(br)We all know which one is superior."
         }
     ]
 }
-
