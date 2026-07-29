@@ -8,7 +8,7 @@ import com.medsal15.compat.MissingModItem;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.items.ESItemTiers;
 import com.medsal15.items.melee.SburbDBWeapon;
-import com.medsal15.items.shields.ESShield;
+import com.medsal15.items.ESShield;
 import com.medsal15.items.weaponeffects.ESRightClickEffects;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
