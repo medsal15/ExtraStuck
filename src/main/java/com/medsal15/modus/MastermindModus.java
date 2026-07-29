@@ -50,24 +50,27 @@ public class MastermindModus extends BaseModus {
     @Override
     public ItemStack getItem(ServerPlayer player, int slot, boolean asCard) {
         ItemStack item = super.getItem(player, slot, asCard);
-        int difficulty;
-        if (ConfigServer.MASTERMIND_HARDER.getAsBoolean() && item.has(ESDataComponents.DIFFICULTY)) {
-            // Imagine captchaloguing a locked card
-            difficulty = Math.min(item.get(ESDataComponents.DIFFICULTY) + 1, 6);
-        } else if (this.difficulty > 0 && this.difficulty <= 6 && ConfigServer.MASTERMIND_CHANGE.getAsBoolean()) {
-            difficulty = this.difficulty;
-        } else {
-            difficulty = ConfigServer.MASTERMIND_DIFFICULTY.get();
+        if (!item.isEmpty()) {
+            int difficulty;
+            if (ConfigServer.MASTERMIND_HARDER.getAsBoolean() && item.has(ESDataComponents.DIFFICULTY)) {
+                // Imagine captchaloguing a locked card
+                difficulty = Math.min(item.get(ESDataComponents.DIFFICULTY) + 1, 6);
+            } else if (this.difficulty > 0 && this.difficulty <= 6 && ConfigServer.MASTERMIND_CHANGE.getAsBoolean()) {
+                difficulty = this.difficulty;
+            } else {
+                difficulty = ConfigServer.MASTERMIND_DIFFICULTY.get();
+            }
+
+            int code = MastermindCardItem.generateCode(difficulty, player.getRandom());
+
+            ItemStack lock = ESItems.MASTERMIND_CARD.toStack();
+            lock.set(ESDataComponents.DIFFICULTY, difficulty);
+            lock.set(ESDataComponents.MASTERMIND_CODE, code);
+            lock.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(List.of(item)));
+
+            return lock;
         }
-
-        int code = MastermindCardItem.generateCode(difficulty, player.getRandom());
-
-        ItemStack lock = ESItems.MASTERMIND_CARD.toStack();
-        lock.set(ESDataComponents.DIFFICULTY, difficulty);
-        lock.set(ESDataComponents.MASTERMIND_CODE, code);
-        lock.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(List.of(item)));
-
-        return lock;
+        return item;
     }
 
     @Override
