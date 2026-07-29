@@ -1,4 +1,4 @@
-package com.medsal15.items.shields;
+package com.medsal15.items;
 
 import java.util.ArrayList;
 import java.util.Collection;

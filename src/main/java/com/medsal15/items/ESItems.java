@@ -40,6 +40,7 @@ import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
+import com.medsal15.items.ESShield.IBlock;
 import com.medsal15.items.armor.CactusArmorItem;
 import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.DarkKnightArmorItem;
@@ -80,8 +81,6 @@ import com.medsal15.items.melee.StorageWeapon;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.items.projectiles.ESArrowItem;
 import com.medsal15.items.projectiles.ESBulletItem;
-import com.medsal15.items.shields.ESShield;
-import com.medsal15.items.shields.ESShield.IBlock;
 import com.medsal15.items.throwables.BeeLarvaItem;
 import com.medsal15.items.throwables.BeenadeItem;
 import com.medsal15.items.throwables.LemonNadeItem;
@@ -868,6 +867,7 @@ public final class ESItems {
     public static final DeferredItem<Item> DARK_KNIGHT_HELMET = ITEMS.register("dark_knight_helmet",
             () -> new DarkKnightArmorItem(ESArmorMaterials.DARK_KNIGHT, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    // TODO titan helmet
     public static final DeferredItem<Item> DARK_KNIGHT_CHESTPLATE = ITEMS.register("dark_knight_chestplate",
             () -> new DarkKnightArmorItem(ESArmorMaterials.DARK_KNIGHT, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));

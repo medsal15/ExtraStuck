@@ -86,6 +86,7 @@ public final class ESBlocks {
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
     public static final DeferredBlock<ChargerBlock> CHARGER = BLOCKS.registerBlock("charger", ChargerBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
+    // TODO wireless charger (charges items in nearby player inventories)
     // Objectively better than a charger
     public static final DeferredBlock<ReactorBlock> REACTOR = BLOCKS.registerBlock("reactor", ReactorBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
