@@ -917,6 +917,8 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         add(SPAM_DESC_2, "All of our affiliate shops have everything on sale (up to) 75% off!");
         add(SPAM_TITLE_3, "Stained Paper");
         add(SPAM_DESC_3, "You can't make out the text, but you can tell there's a phone number.");
+        addItem(ESItems.SCULK_SOUP, "Sculk Soup");
+        addItemTooltip(ESItems.SCULK_SOUP, "Ewww");
 
         addItem(ESItems.DESERT_JUICE, "Desert Juice");
         addItem(ESItems.ROCKET_JUMP, "Rocket Jump");
@@ -932,6 +934,8 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         addEffect(ESMobEffects.COSMIC_PLAGUE, "Cosmic Plague");
         addEffectDescription(ESMobEffects.COSMIC_PLAGUE,
                 "Deals 2 damage every 2 seconds.\nEvery level halves the time between damage ticks.\nSpreads to nearby entities with one less level");
+        addEffect(ESMobEffects.SILENT, "Silent");
+        addEffectDescription(ESMobEffects.SILENT, "Negates vibrations from the user");
     }
 
     private void addTags() {

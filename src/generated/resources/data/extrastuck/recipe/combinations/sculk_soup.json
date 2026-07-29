@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:beetroot_soup"
+  },
+  "input2": {
+    "item": "minecraft:sculk"
+  },
+  "mode": "or",
+  "output": "extrastuck:sculk_soup"
+}

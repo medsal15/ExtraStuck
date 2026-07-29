@@ -2015,6 +2015,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.LEMON_CAKE)
                 .grist(GristTypes.AMBER, 21).grist(GristTypes.MARBLE, 11).grist(GristTypes.SULFUR, 9)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SCULK_SOUP)
+                .input(Items.BOWL).or().input(Items.SCULK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SCULK_SOUP)
+                .grist(GristTypes.BUILD, 1).grist(GristTypes.TAR, 10)
+                .build(output);
     }
 
     private void drinkRecipes(@Nonnull RecipeOutput output) {

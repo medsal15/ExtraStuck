@@ -1101,6 +1101,8 @@ public final class ESItems {
             new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> GUMMY_RING = ITEMS.registerItem("gummy_ring",
             p -> new Item(p.stacksTo(1).food(ESFoods.GUMMY_RING)));
+    public static final DeferredItem<Item> SCULK_SOUP = ITEMS.registerItem("sculk_soup",
+            p -> new Item(p.stacksTo(16).food(ESFoods.SCULK_SOUP)));
     // #endregion Food
 
     // #region Drinks
@@ -1886,6 +1888,7 @@ public final class ESItems {
         list.add(COSMIC_SPOREO);
         list.add(SPAM);
         list.add(GUMMY_RING);
+        list.add(SCULK_SOUP);
         return list;
     }
 
