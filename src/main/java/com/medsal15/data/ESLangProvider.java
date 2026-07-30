@@ -107,6 +107,8 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
     public static final String GRIST_VIEWERS_COMMON = ExtraStuck.MODID + ".grist_viewers.common";
     public static final String GRIST_VIEWERS_UNCOMMON = ExtraStuck.MODID + ".grist_viewers.uncommon";
     public static final String MASTERMIND_GRIST_BASE = ExtraStuck.MODID + ".mastermind.grist.";
+    public static final String MASTERMIND_DIFFICULTY = ExtraStuck.MODID + ".mastermind.difficulty";
+    public static final String MASTERMIND_DIFFICULTY_SET = ExtraStuck.MODID + ".mastermind.set_difficulty";
     public static final String FURNACE_MODUS_FUEL = ESItems.FURNACE_MODUS_CARD.get().getDescriptionId() + ".fuel";
     public static final String COMPACT_MODUS_STRICT_ON = ESItems.COMPACT_MODUS_CARD.get().getDescriptionId()
             + ".strict.on";
@@ -617,6 +619,8 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         add(MASTERMIND_GRIST_BASE + 4, "Citrine");
         add(MASTERMIND_GRIST_BASE + 5, "Antibuild");
         addItem(ESItems.MASTERMIND_CARD, "Mastermind Card");
+        add(MASTERMIND_DIFFICULTY_SET, "Set to %s");
+        add(MASTERMIND_DIFFICULTY, "Difficulty: %s");
 
         addItem(ESItems.FURNACE_MODUS_CARD, "Furnace Modus");
         addItemTooltip(ESItems.FURNACE_MODUS_CARD, "Portable smelter");

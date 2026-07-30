@@ -1500,6 +1500,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 260).grist(GristTypes.AMBER, 12).grist(GristTypes.CHALK, 12)
                 .grist(GristTypes.AMETHYST, 12).grist(GristTypes.GARNET, 12)
                 .build(output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.MASTERMIND_MODUS_CARD.toStack())
+                .requires(ESItems.MASTERMIND_MODUS_CARD)
+                .unlockedBy("has_modus_card", has(ESItems.MASTERMIND_MODUS_CARD))
+                .save(output, modid("shapeless/mastermind_modus_difficulty_reset"));
 
         CombinationRecipeBuilder.of(ESItems.MASTERMIND_DISK)
                 .input(MSItems.BLANK_DISK).and().input(ESItems.MASTERMIND_MODUS_CARD)

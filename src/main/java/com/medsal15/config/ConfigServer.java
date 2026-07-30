@@ -140,6 +140,9 @@ public final class ConfigServer {
             .comment("If true, Mastermind Codebreaker can change a Mastermind Modus Card's default difficulty",
                     "Only affects data components if change is disabled")
             .define("modus.mastermind.change_with_pc", true);
+    public static final ModConfigSpec.BooleanValue MASTERMIND_CHANGE_SYLLADEX = BUILDER
+            .comment("If true, Mastermind Modus difficulty can be changed in the Sylladex")
+            .define("modus.mastermind.change_with_sylladex", false);
 
     public static final ConfigValue<Integer> FURNACE_DEFAULT_COST = BUILDER
             .comment("How much fuel (in ticks) does it cost to extract an item from the Furnace Modus",

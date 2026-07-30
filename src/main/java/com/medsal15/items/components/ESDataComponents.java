@@ -34,9 +34,6 @@ public final class ESDataComponents {
     public static final Supplier<DataComponentType<ResourceKey<LootTable>>> GIFT_TABLE = DATA_COMPONENTS
             .registerComponentType("gift_table", builder -> builder.persistent(ResourceKey.codec(Registries.LOOT_TABLE))
                     .networkSynchronized(ResourceKey.streamCodec(Registries.LOOT_TABLE)));
-    /** Difficulty of the item */
-    public static final Supplier<DataComponentType<Integer>> DIFFICULTY = DATA_COMPONENTS.registerComponentType(
-            "difficulty", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
     // Grist detector
     public static final Supplier<DataComponentType<GristLayer>> GRIST_LAYER = DATA_COMPONENTS
@@ -70,6 +67,9 @@ public final class ESDataComponents {
     public static final Supplier<DataComponentType<List<Integer>>> ATTEMPTS = DATA_COMPONENTS
             .registerComponentType("attempts", builder -> builder.persistent(Codec.INT.listOf())
                     .networkSynchronized(ByteBufCodecs.INT.apply(ByteBufCodecs.list())));
+    /** Difficulty of the item */
+    public static final Supplier<DataComponentType<Integer>> DIFFICULTY = DATA_COMPONENTS.registerComponentType(
+            "difficulty", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
     // Food
     public static final Supplier<DataComponentType<MoonCakeSliceColor>> MOON_CAKE_SLICE_COLOR = DATA_COMPONENTS
