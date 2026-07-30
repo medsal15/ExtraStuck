@@ -131,6 +131,13 @@ public class ESBlockStateProvider extends BlockStateProvider {
                 new ExistingModelFile(ExtraStuck.modid("block/dowel_storage"), fileHelper));
         horizontalBlock(ESBlocks.CARD_STORAGE.get(),
                 new ExistingModelFile(ExtraStuck.modid("block/card_storage"), fileHelper));
+        horizontalBlock(ESBlocks.CHARGER.get(), new ExistingModelFile(ExtraStuck.modid("block/charger"), fileHelper));
+        horizontalBlock(ESBlocks.WIRELESS_CHARGER.get(),
+                new ExistingModelFile(ExtraStuck.modid("block/wireless_charger"), fileHelper));
+        horizontalBlock(ESBlocks.REACTOR.get(), new ExistingModelFile(ExtraStuck.modid("block/reactor"), fileHelper));
+
+        horizontalBlock(ESBlocks.NORMAL_CAT_PLUSH.get(),
+                new ExistingModelFile(ExtraStuck.modid("block/normal_cat_plush"), fileHelper));
 
         cakeBlock(ESBlocks.LEMON_CAKE);
 

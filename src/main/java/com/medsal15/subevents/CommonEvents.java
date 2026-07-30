@@ -15,6 +15,7 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
+import com.medsal15.blockentities.WirelessChargerBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.compat.create.network.ESCreatePackets;
@@ -130,6 +131,8 @@ public final class CommonEvents {
                 PrinterBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.CHARGER.get(),
                 ChargerBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.WIRELESS_CHARGER.get(),
+                WirelessChargerBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.REACTOR.get(),
                 ReactorBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.DOWEL_STORAGE.get(),
@@ -139,6 +142,8 @@ public final class CommonEvents {
 
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.CHARGER.get(),
                 ChargerBlockEntity::getEnergyHandler);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.WIRELESS_CHARGER.get(),
+                WirelessChargerBlockEntity::getEnergyHandler);
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.REACTOR.get(),
                 ReactorBlockEntity::getEnergyHandler);
 
@@ -151,6 +156,8 @@ public final class CommonEvents {
                 PrinterBlockEntity::getUraniumHandler);
         event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.CHARGER.get(),
                 ChargerBlockEntity::getUraniumHandler);
+        event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.WIRELESS_CHARGER.get(),
+                WirelessChargerBlockEntity::getUraniumHandler);
         event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.BLASTER.get(),
                 BlasterBlockEntity::getUraniumHandler);
 

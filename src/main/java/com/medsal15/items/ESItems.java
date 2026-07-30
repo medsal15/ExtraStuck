@@ -867,7 +867,6 @@ public final class ESItems {
     public static final DeferredItem<Item> DARK_KNIGHT_HELMET = ITEMS.register("dark_knight_helmet",
             () -> new DarkKnightArmorItem(ESArmorMaterials.DARK_KNIGHT, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(40))));
-    // TODO titan helmet
     public static final DeferredItem<Item> DARK_KNIGHT_CHESTPLATE = ITEMS.register("dark_knight_chestplate",
             () -> new DarkKnightArmorItem(ESArmorMaterials.DARK_KNIGHT, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
@@ -899,9 +898,12 @@ public final class ESItems {
      * TODO maid clothing
      * dyable
      * bonus to maid players
+     *
      * TODO silver maid chestplate
      * dyable
      * immunity to time stop
+     * TODO titan helmet
+     * negates first attack every (serverconfig)
      */
     // #endregion Armors
 
@@ -1146,6 +1148,8 @@ public final class ESItems {
     public static final DeferredItem<BlockItem> PRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.PRINTER);
     public static final DeferredItem<BlockItem> DISPRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.DISPRINTER);
     public static final DeferredItem<BlockItem> CHARGER = ITEMS.registerSimpleBlockItem(ESBlocks.CHARGER);
+    public static final DeferredItem<BlockItem> WIRELESS_CHARGER = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WIRELESS_CHARGER);
     public static final DeferredItem<BlockItem> REACTOR = ITEMS.registerSimpleBlockItem(ESBlocks.REACTOR);
     public static final DeferredItem<BlockItem> URANIUM_BLASTER = ITEMS
             .registerSimpleBlockItem(ESBlocks.URANIUM_BLASTER);
@@ -1928,6 +1932,7 @@ public final class ESItems {
         list.add(PRINTER);
         list.add(DISPRINTER);
         list.add(CHARGER);
+        list.add(WIRELESS_CHARGER);
         list.add(REACTOR);
         list.add(URANIUM_BLASTER);
         list.add(DOWEL_STORAGE);

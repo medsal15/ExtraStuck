@@ -108,10 +108,11 @@ public final class ESTagsProvider {
                     ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get(),
                     ESBlocks.CARD_ORE.get(), ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
                     ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
-                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_PILLAR.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
+                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_PILLAR.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get(),
+                    ESBlocks.WIRELESS_CHARGER.get());
             tag(Tags.Blocks.NEEDS_WOOD_TOOL).add(ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
                     ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
-                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
+                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get(), ESBlocks.WIRELESS_CHARGER.get());
             tag(MSTags.Blocks.CRUXITE_ORES).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
             tag(Tags.Blocks.ORES).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
             tag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
@@ -124,6 +125,24 @@ public final class ESTagsProvider {
                     ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL.get(), ESBlocks.PINK_ZILLIUM_BRICK_WALL.get(),
                     ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL.get(),
                     ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get());
+            tag(BlockTags.STAIRS).add(ESBlocks.CUT_GARNET_STAIRS.get(), ESBlocks.GARNET_BRICK_STAIRS.get(),
+                    ESBlocks.CUT_RUBY_STAIRS.get(), ESBlocks.RUBY_BRICK_STAIRS.get(),
+                    ESBlocks.SULFUROUS_STONE_STAIRS.get(),
+                    ESBlocks.MARBLE_STAIRS.get(), ESBlocks.POLISHED_MARBLE_STAIRS.get(),
+                    ESBlocks.MARBLE_BRICK_STAIRS.get(),
+                    ESBlocks.ZILLIUM_BRICK_STAIRS.get(), ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.get(), ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.get(), ESBlocks.PINK_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.get());
+            tag(BlockTags.SLABS).add(ESBlocks.CUT_GARNET_SLAB.get(), ESBlocks.GARNET_BRICK_SLAB.get(),
+                    ESBlocks.CUT_RUBY_SLAB.get(), ESBlocks.RUBY_BRICK_SLAB.get(), ESBlocks.SULFUROUS_STONE_SLAB.get(),
+                    ESBlocks.MARBLE_SLAB.get(), ESBlocks.POLISHED_MARBLE_SLAB.get(), ESBlocks.MARBLE_BRICK_SLAB.get(),
+                    ESBlocks.ZILLIUM_BRICK_SLAB.get(), ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get(), ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get(), ESBlocks.PINK_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get());
 
             tag(BlockTags.DOORS).add(ESBlocks.COBALT_DOOR.get());
             tag(BlockTags.TRAPDOORS).add(ESBlocks.COBALT_TRAPDOOR.get());
@@ -310,6 +329,32 @@ public final class ESTagsProvider {
 
             tag(ItemTags.DOORS).add(ESItems.COBALT_DOOR.get());
             tag(ItemTags.TRAPDOORS).add(ESItems.COBALT_TRAPDOOR.get());
+            tag(ItemTags.WALLS).add(ESItems.CUT_GARNET_WALL.get(), ESItems.GARNET_BRICK_WALL.get(),
+                    ESItems.CUT_RUBY_WALL.get(), ESItems.RUBY_BRICK_WALL.get(), ESItems.SULFUROUS_STONE_WALL.get(),
+                    ESItems.MARBLE_WALL.get(), ESItems.POLISHED_MARBLE_WALL.get(), ESItems.MARBLE_BRICK_WALL.get(),
+                    ESItems.ZILLIUM_BRICK_WALL.get(), ESItems.GREEN_ZILLIUM_BRICK_WALL.get(),
+                    ESItems.WAXED_GREEN_ZILLIUM_BRICK_WALL.get(), ESItems.BLUE_ZILLIUM_BRICK_WALL.get(),
+                    ESItems.WAXED_BLUE_ZILLIUM_BRICK_WALL.get(), ESItems.PINK_ZILLIUM_BRICK_WALL.get(),
+                    ESItems.WAXED_PINK_ZILLIUM_BRICK_WALL.get(), ESItems.SECONDARY_ZILLIUM_BRICK_WALL.get(),
+                    ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get());
+            tag(ItemTags.STAIRS).add(ESItems.CUT_GARNET_STAIRS.get(), ESItems.GARNET_BRICK_STAIRS.get(),
+                    ESItems.CUT_RUBY_STAIRS.get(), ESItems.RUBY_BRICK_STAIRS.get(),
+                    ESItems.SULFUROUS_STONE_STAIRS.get(),
+                    ESItems.MARBLE_STAIRS.get(), ESItems.POLISHED_MARBLE_STAIRS.get(),
+                    ESItems.MARBLE_BRICK_STAIRS.get(),
+                    ESItems.ZILLIUM_BRICK_STAIRS.get(), ESItems.GREEN_ZILLIUM_BRICK_STAIRS.get(),
+                    ESItems.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.get(), ESItems.BLUE_ZILLIUM_BRICK_STAIRS.get(),
+                    ESItems.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.get(), ESItems.PINK_ZILLIUM_BRICK_STAIRS.get(),
+                    ESItems.WAXED_PINK_ZILLIUM_BRICK_STAIRS.get(), ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS.get(),
+                    ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.get());
+            tag(ItemTags.SLABS).add(ESItems.CUT_GARNET_SLAB.get(), ESItems.GARNET_BRICK_SLAB.get(),
+                    ESItems.CUT_RUBY_SLAB.get(), ESItems.RUBY_BRICK_SLAB.get(), ESItems.SULFUROUS_STONE_SLAB.get(),
+                    ESItems.MARBLE_SLAB.get(), ESItems.POLISHED_MARBLE_SLAB.get(), ESItems.MARBLE_BRICK_SLAB.get(),
+                    ESItems.ZILLIUM_BRICK_SLAB.get(), ESItems.GREEN_ZILLIUM_BRICK_SLAB.get(),
+                    ESItems.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get(), ESItems.BLUE_ZILLIUM_BRICK_SLAB.get(),
+                    ESItems.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get(), ESItems.PINK_ZILLIUM_BRICK_SLAB.get(),
+                    ESItems.WAXED_PINK_ZILLIUM_BRICK_SLAB.get(), ESItems.SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get());
 
             tag(ItemTags.BOOKSHELF_BOOKS).add(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
 

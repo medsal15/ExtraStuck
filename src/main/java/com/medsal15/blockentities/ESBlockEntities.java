@@ -29,6 +29,11 @@ public final class ESBlockEntities {
             () -> BlockEntityType.Builder.<ChargerBlockEntity>of(ChargerBlockEntity::new, ESBlocks.CHARGER.get())
                     .build(null));
     @SuppressWarnings("null")
+    public static final Supplier<BlockEntityType<WirelessChargerBlockEntity>> WIRELESS_CHARGER = BLOCK_ENTITY_TYPES
+            .register("wireless_charger", () -> BlockEntityType.Builder
+                    .<WirelessChargerBlockEntity>of(WirelessChargerBlockEntity::new, ESBlocks.WIRELESS_CHARGER.get())
+                    .build(null));
+    @SuppressWarnings("null")
     public static final Supplier<BlockEntityType<ReactorBlockEntity>> REACTOR = BLOCK_ENTITY_TYPES.register("reactor",
             () -> BlockEntityType.Builder.<ReactorBlockEntity>of(ReactorBlockEntity::new, ESBlocks.REACTOR.get())
                     .build(null));

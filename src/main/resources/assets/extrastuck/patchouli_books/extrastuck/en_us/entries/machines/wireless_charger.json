@@ -1,0 +1,22 @@
+{
+    "name": "Wireless Charger",
+    "icon": "extrastuck:wireless_charger",
+    "category": "extrastuck:machines",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:wireless_charger",
+            "text": "A variant of the Charger that has no item storage. It instead charges items in nearby players' inventories. Includes armor, off-hand items and curios (if installed)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Charger and a Lightning Rod in a Punch Designix.",
+            "left": "extrastuck:charger",
+            "mode": "||",
+            "right": "minecraft:lightning_rod",
+            "result": "extrastuck:wireless_charger"
+        },
+        "Each piece of Uranium Lump produces 16'000 FE."
+    ]
+}

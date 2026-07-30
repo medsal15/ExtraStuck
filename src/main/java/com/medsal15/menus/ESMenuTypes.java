@@ -20,6 +20,9 @@ public final class ESMenuTypes {
     public static final Supplier<MenuType<ChargerMenu>> CHARGER = MENU_TYPES.register("charger",
             () -> new MenuType<>((IContainerFactory<ChargerMenu>) ChargerMenu::new,
                     FeatureFlags.DEFAULT_FLAGS));
+    public static final Supplier<MenuType<WirelessChargerMenu>> WIRELESS_CHARGER = MENU_TYPES.register(
+            "wireless_charger", () -> new MenuType<>((IContainerFactory<WirelessChargerMenu>) WirelessChargerMenu::new,
+                    FeatureFlags.DEFAULT_FLAGS));
     public static final Supplier<MenuType<ReactorMenu>> REACTOR = MENU_TYPES.register("reactor",
             () -> new MenuType<>((IContainerFactory<ReactorMenu>) ReactorMenu::new,
                     FeatureFlags.DEFAULT_FLAGS));

@@ -6,13 +6,13 @@ import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.mraof.minestuck.api.alchemy.GristType;
 import com.mraof.minestuck.api.alchemy.GristTypes;
+import com.mraof.minestuck.api.uranium.UraniumPower;
 import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.inventory.ContainerHelper;
 import com.mraof.minestuck.inventory.MachineContainerMenu;
 import com.mraof.minestuck.inventory.slot.InputSlot;
 import com.mraof.minestuck.inventory.slot.OutputSlot;
 import com.mraof.minestuck.inventory.slot.UraniumPowerSlot;
-import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -109,7 +109,7 @@ public class PrinterMenu extends MachineContainerMenu {
                     || index == PrinterBlockEntity.SLOT_FUEL) {
                 result = moveItemStackTo(original, 3, all, false);
             } else if (index == PrinterBlockEntity.SLOT_OUT) {
-                if (original.getItem() == MSItems.RAW_URANIUM.get()) {
+                if (UraniumPower.hasUraniumPower(original)) {
                     // go to fuel
                     result = moveItemStackTo(original, 2, 3, false);
                 } else {
@@ -119,7 +119,7 @@ public class PrinterMenu extends MachineContainerMenu {
                 // Inventory slot
                 if (original.getItem() == MSBlocks.CRUXITE_DOWEL.asItem()) {
                     result = moveItemStackTo(original, 0, 1, false);
-                } else if (original.getItem() == MSItems.RAW_URANIUM.asItem()) {
+                } else if (UraniumPower.hasUraniumPower(original)) {
                     // send to fuel
                     result = moveItemStackTo(original, 2, 3, false);
                 }

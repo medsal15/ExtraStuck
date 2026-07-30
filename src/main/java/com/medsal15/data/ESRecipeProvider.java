@@ -2086,6 +2086,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 50).grist(GristTypes.GOLD, 15).grist(GristTypes.URANIUM, 25)
                 .build(output);
 
+        CombinationRecipeBuilder.of(ESItems.WIRELESS_CHARGER)
+                .input(ESItems.CHARGER).or().input(Items.LIGHTNING_ROD)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.WIRELESS_CHARGER)
+                .grist(GristTypes.BUILD, 65).grist(GristTypes.GOLD, 20).grist(GristTypes.URANIUM, 35)
+                .grist(GristTypes.SHALE, 90)
+                .build(output);
+
         CombinationRecipeBuilder.of(ESItems.REACTOR)
                 .input(ESItems.CHARGER).and().input(MSItems.URANIUM_BLOCK)
                 .build(output);

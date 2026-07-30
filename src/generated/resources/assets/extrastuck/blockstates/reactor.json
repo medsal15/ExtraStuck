@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,waterlogged=false": {
+      "model": "extrastuck:block/reactor",
+      "y": 90
+    },
+    "facing=east,waterlogged=true": {
+      "model": "extrastuck:block/reactor",
+      "y": 90
+    },
+    "facing=north,waterlogged=false": {
+      "model": "extrastuck:block/reactor"
+    },
+    "facing=north,waterlogged=true": {
+      "model": "extrastuck:block/reactor"
+    },
+    "facing=south,waterlogged=false": {
+      "model": "extrastuck:block/reactor",
+      "y": 180
+    },
+    "facing=south,waterlogged=true": {
+      "model": "extrastuck:block/reactor",
+      "y": 180
+    },
+    "facing=west,waterlogged=false": {
+      "model": "extrastuck:block/reactor",
+      "y": 270
+    },
+    "facing=west,waterlogged=true": {
+      "model": "extrastuck:block/reactor",
+      "y": 270
+    }
+  }
+}

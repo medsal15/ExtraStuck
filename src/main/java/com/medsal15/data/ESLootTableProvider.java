@@ -551,6 +551,7 @@ public class ESLootTableProvider extends LootTableProvider {
             dropSelf(ESBlocks.PRINTER.get());
             dropSelf(ESBlocks.DISPRINTER.get());
             dropSelf(ESBlocks.CHARGER.get());
+            dropSelf(ESBlocks.WIRELESS_CHARGER.get());
             dropSelf(ESBlocks.REACTOR.get());
             dropSelf(ESBlocks.URANIUM_BLASTER.get());
             dropSelf(ESBlocks.DOWEL_STORAGE.get());

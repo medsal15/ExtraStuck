@@ -59,6 +59,9 @@ public final class ConfigServer {
             .comment("How much Uranium power is transferred between storage and item per tick",
                     "Mostly to make charging fancier")
             .defineInRange("charger.uranium_transfer", 1, 1, Integer.MAX_VALUE);
+    public static final ConfigValue<Integer> CHARGER_WIRELESS_RADIUS = BUILDER
+            .comment("The radius of effect for the Wireless Charger")
+            .defineInRange("charger.wireless_radius", 5, 1, Integer.MAX_VALUE);
 
     public static final ConfigValue<Integer> BLASTER_URANIUM_STORAGE = BUILDER
             .comment("How much uranium power should a blaster hold",

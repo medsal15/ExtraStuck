@@ -11,6 +11,7 @@ import com.medsal15.blocks.machine.ChargerBlock;
 import com.medsal15.blocks.machine.DowelStorageBlock;
 import com.medsal15.blocks.machine.PrinterBlock;
 import com.medsal15.blocks.machine.ReactorBlock;
+import com.medsal15.blocks.machine.WirelessChargerBlock;
 import com.medsal15.blocks.zillium.WeatheringZillium.ZilliumColors;
 import com.medsal15.blocks.zillium.ZilliumFullBlock;
 import com.medsal15.blocks.zillium.ZilliumSlabBlock;
@@ -86,7 +87,9 @@ public final class ESBlocks {
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
     public static final DeferredBlock<ChargerBlock> CHARGER = BLOCKS.registerBlock("charger", ChargerBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
-    // TODO wireless charger (charges items in nearby player inventories)
+    public static final DeferredBlock<WirelessChargerBlock> WIRELESS_CHARGER = BLOCKS.registerBlock("wireless_charger",
+            WirelessChargerBlock::new,
+            Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
     // Objectively better than a charger
     public static final DeferredBlock<ReactorBlock> REACTOR = BLOCKS.registerBlock("reactor", ReactorBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));

@@ -1,0 +1,12 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 65,
+    "minestuck:gold": 20,
+    "minestuck:shale": 90,
+    "minestuck:uranium": 35
+  },
+  "ingredient": {
+    "item": "extrastuck:wireless_charger"
+  }
+}

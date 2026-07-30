@@ -6,6 +6,10 @@ public final class ESBlockShapes {
     public static final CustomVoxelShape CHARGER = new CustomVoxelShape(new double[][] {
             { 0, 0, 0, 16, 8, 16 }
     });
+    public static final CustomVoxelShape WIRELESS_CHARGER = new CustomVoxelShape(new double[][] {
+            { 0, 0, 0, 16, 8, 16 },
+            { 6, 8, 6, 10, 16, 10 }
+    });
 
     public static final CustomVoxelShape PRINTER = new CustomVoxelShape(new double[][] {
             { 0, 0, 0, 16, 12, 16 }

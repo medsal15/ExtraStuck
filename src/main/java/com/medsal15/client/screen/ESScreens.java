@@ -7,6 +7,7 @@ import com.medsal15.client.screen.machine.ChargerScreen;
 import com.medsal15.client.screen.machine.DowelStorageScreen;
 import com.medsal15.client.screen.machine.PrinterScreen;
 import com.medsal15.client.screen.machine.ReactorScreen;
+import com.medsal15.client.screen.machine.WirelessChargerScreen;
 import com.medsal15.client.screen.modus.ArcheologyModusScreen;
 import com.medsal15.client.screen.modus.CompactModusScreen;
 import com.medsal15.client.screen.modus.CraftingModusScreen;
@@ -35,6 +36,7 @@ public final class ESScreens {
     public static void registerScreenFactories(final RegisterMenuScreensEvent event) {
         event.register(ESMenuTypes.PRINTER.get(), PrinterScreen::new);
         event.register(ESMenuTypes.CHARGER.get(), ChargerScreen::new);
+        event.register(ESMenuTypes.WIRELESS_CHARGER.get(), WirelessChargerScreen::new);
         event.register(ESMenuTypes.REACTOR.get(), ReactorScreen::new);
         event.register(ESMenuTypes.URANIUM_BLASTER.get(), BlasterScreen::new);
         event.register(ESMenuTypes.DOWEL_STORAGE.get(), DowelStorageScreen::new);

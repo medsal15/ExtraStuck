@@ -10,6 +10,7 @@ import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
+import com.medsal15.blockentities.WirelessChargerBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.gui.LoopButton;
 import com.medsal15.client.programs.MastermindAppScreen;
@@ -745,6 +746,11 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         // Charger
         addBlock(ESBlocks.CHARGER, "Charger");
         add(ChargerBlockEntity.TITLE, "Charger");
+
+        // Wireless Charger
+        addBlock(ESBlocks.WIRELESS_CHARGER, "Wireless Charger");
+        addEBlockTooltip(ESBlocks.WIRELESS_CHARGER, "There weren't any wires to begin with!");
+        add(WirelessChargerBlockEntity.TITLE, "Wireless Charger");
 
         // Reactor
         addBlock(ESBlocks.REACTOR, "Nuclear Reactor");
