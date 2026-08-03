@@ -36,7 +36,7 @@ public final class ESArmorMaterials {
                     ArmorItem.Type.HELMET, 4,
                     ArmorItem.Type.CHESTPLATE, 9,
                     ArmorItem.Type.LEGGINGS, 7,
-                    ArmorItem.Type.BOOTS, 4), 13, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> null,
+                    ArmorItem.Type.BOOTS, 4), 13, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(),
                     List.of(new ArmorMaterial.Layer(ExtraStuck.modid("knight_armor"))), 3F, .1F));
     public static final Holder<ArmorMaterial> CACTUS = ARMOR_MATERIALS.register("cactus",
             () -> new ArmorMaterial(Map.of(
