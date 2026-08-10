@@ -183,6 +183,9 @@ public final class ESTagsProvider {
             for (DeferredItem<Item> weapon : ESItems.getRangedWeapons()) {
                 tagRanged(weapon);
             }
+            for (DeferredItem<Item> weapon : ESItems.getThrowingWeapons()) {
+                tag(Tags.Items.RANGED_WEAPON_TOOLS).add(weapon.get());
+            }
             for (DeferredItem<Item> weapon : ESItems.getMagicWeapons()) {
                 tag(MSTags.Items.MAGIC_WEAPON).add(weapon.get());
             }

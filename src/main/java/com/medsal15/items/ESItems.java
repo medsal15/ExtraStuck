@@ -1386,8 +1386,9 @@ public final class ESItems {
         for (DeferredItem<Item> item : ESItems.getRangedWeapons()) {
             output.accept(item.get());
         }
-        output.accept(BEENADE);
-        output.accept(LEMONNADE);
+        for (DeferredItem<Item> item : ESItems.getThrowingWeapons()) {
+            output.accept(item.get());
+        }
 
         if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             for (DeferredItem<Item> item : ISSESItems.getSpellbooks()) {
@@ -1749,6 +1750,15 @@ public final class ESItems {
         list.add(YIN_YANG_ORB);
 
         list.add(HANDGUN);
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getThrowingWeapons() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(BEENADE);
+        list.add(LEMONNADE);
+
         return list;
     }
 

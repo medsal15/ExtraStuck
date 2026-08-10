@@ -1,4 +1,4 @@
-package com.medsal15.entities.projectiles.orbs;
+package com.medsal15.entities.projectiles.magic.orbs;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -77,13 +77,6 @@ public abstract class OrbEntity extends Projectile {
     @Override
     public boolean canBeHitByProjectile() {
         return true;
-    }
-
-    @Override
-    public void handleEntityEvent(byte id) {
-        // Removes poofing particles
-        if (id != 60)
-            super.handleEntityEvent(id);
     }
 
     @Override

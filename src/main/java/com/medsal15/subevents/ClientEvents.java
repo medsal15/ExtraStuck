@@ -37,7 +37,7 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.LandFishingHook;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
-import com.medsal15.entities.projectiles.orbs.OrbEntity;
+import com.medsal15.entities.projectiles.magic.orbs.OrbEntity;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;

@@ -96,6 +96,8 @@ public final class ESBlocks {
     public static final DeferredBlock<BlasterBlock> URANIUM_BLASTER = BLOCKS.registerBlock("uranium_blaster",
             BlasterBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
+    // TODO vending machine
+
     public static final DeferredBlock<DowelStorageBlock> DOWEL_STORAGE = BLOCKS.registerBlock("dowel_storage",
             DowelStorageBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));

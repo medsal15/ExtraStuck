@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLootTableProvider.TableSubProvider;
-import com.medsal15.entities.projectiles.orbs.LightOrb;
+import com.medsal15.entities.projectiles.magic.orbs.LightOrb;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.SteamFuelComponent;

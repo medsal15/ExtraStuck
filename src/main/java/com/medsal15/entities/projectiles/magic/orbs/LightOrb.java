@@ -1,4 +1,4 @@
-package com.medsal15.entities.projectiles.orbs;
+package com.medsal15.entities.projectiles.magic.orbs;
 
 import java.util.List;
 
