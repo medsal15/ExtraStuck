@@ -29,6 +29,9 @@ public class ConfigClient {
     private static final ModConfigSpec.BooleanValue DISPLAY_VISION_WARNING = BUILDER
             .comment("If enabled, infused visions will include a warning about the use limit")
             .define("tooltip.vision_warning", true);
+    private static final ModConfigSpec.BooleanValue DISPLAY_FOOD_EFFECTS = BUILDER
+            .comment("If enabled, food added by ExtraStuck will display their effects in their tooltips")
+            .define("tooltip.food_effects", true);
     private static final ModConfigSpec.BooleanValue ADD_MISSING_MOD_TOOLTIP = BUILDER
             .comment("If enabled, compat items which require a specific mod will mention it in their tooltip")
             .define("tooltip.missing_mod", true);
@@ -117,6 +120,7 @@ public class ConfigClient {
     public static boolean displayShieldInfo;
     public static boolean displayInnateEnchants;
     public static boolean displayVisionWarning;
+    public static boolean displayFoodEffects;
     public static boolean addConvertionRecipes;
     public static boolean addMissingModTooltip;
     public static boolean addPonderMinestuckEntries;
@@ -133,6 +137,7 @@ public class ConfigClient {
         displayShieldInfo = DISPLAY_SHIELD_INFO.get();
         displayInnateEnchants = DISPLAY_INNATE_ENCHANTMENTS.get();
         displayVisionWarning = DISPLAY_VISION_WARNING.get();
+        displayFoodEffects = DISPLAY_FOOD_EFFECTS.get();
         boondollarDisplayMode = BOONDOLLAR_DISPLAY_MODE.get();
         addConvertionRecipes = ADD_CONVERTION_RECIPES.get();
         addMissingModTooltip = ADD_MISSING_MOD_TOOLTIP.get();

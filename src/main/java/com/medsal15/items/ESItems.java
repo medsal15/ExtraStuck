@@ -63,6 +63,8 @@ import com.medsal15.items.crossbow.DeepCrossbowItem;
 import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.food.BurningFood;
+import com.medsal15.items.food.ESDrinkItem;
+import com.medsal15.items.food.ESFoodItem;
 import com.medsal15.items.food.ESFoods;
 import com.medsal15.items.food.ExplosiveFood;
 import com.medsal15.items.food.FortuneCookie;
@@ -106,7 +108,6 @@ import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.armor.MSArmorItem;
 import com.mraof.minestuck.item.components.MSItemComponents;
-import com.mraof.minestuck.item.foods.DrinkableItem;
 import com.mraof.minestuck.item.weapon.FarmineEffect;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
@@ -1051,7 +1052,7 @@ public final class ESItems {
     // #region Food
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
     public static final DeferredItem<Item> PIZZA_SLICE = ITEMS.registerItem("pizza_slice",
-            p -> new Item(p.food(ESFoods.PIZZA_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.PIZZA_SLICE)));
     public static final DeferredItem<Item> SUSHROOM_STEW = ITEMS.registerItem("sushroom_stew",
             p -> new Item(p.food(ESFoods.SUSHROOM_STEW).stacksTo(16).craftRemainder(Items.BOWL)));
     public static final DeferredItem<Item> RADBURGER = ITEMS.registerItem("radburger",
@@ -1059,41 +1060,41 @@ public final class ESItems {
     public static final DeferredItem<BlockItem> DIVINE_TEMPTATION_BLOCK = ITEMS
             .registerSimpleBlockItem(ESBlocks.DIVINE_TEMPTATION_BLOCK);
     public static final DeferredItem<Item> DIVINE_TEMPTATION = ITEMS.registerItem("divine_temptation",
-            p -> new Item(p.food(ESFoods.DIVINE_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
+            p -> new ESFoodItem(p.food(ESFoods.DIVINE_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> YELLOWCAKE_SLICE = ITEMS.registerItem("yellowcake_slice",
             p -> new Item(p.food(ESFoods.YELLOWCAKE_SLICE)));
     public static final DeferredItem<Item> BEE_LARVA = ITEMS.registerItem("bee_larva",
             p -> new BeeLarvaItem(p.stacksTo(16)));
     public static final DeferredItem<Item> COOKED_BEE_LARVA = ITEMS.registerItem("cooked_bee_larva",
-            p -> new Item(p.food(ESFoods.COOKED_BEE_LARVA)));
+            p -> new ESFoodItem(p.food(ESFoods.COOKED_BEE_LARVA)));
     // #region Cake Slices
     public static final DeferredItem<Item> APPLE_CAKE_SLICE = ITEMS.registerItem("apple_cake_slice",
-            p -> new Item(p.food(ESFoods.APPLE_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.APPLE_CAKE_SLICE)));
     public static final DeferredItem<Item> BLUE_CAKE_SLICE = ITEMS.registerItem("blue_cake_slice",
-            p -> new Item(p.food(ESFoods.BLUE_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.BLUE_CAKE_SLICE)));
     public static final DeferredItem<Item> COLD_CAKE_SLICE = ITEMS.registerItem("cold_cake_slice",
-            p -> new Item(p.food(ESFoods.COLD_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.COLD_CAKE_SLICE)));
     public static final DeferredItem<Item> RED_CAKE_SLICE = ITEMS.registerItem("red_cake_slice",
-            p -> new Item(p.food(ESFoods.RED_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.RED_CAKE_SLICE)));
     public static final DeferredItem<Item> HOT_CAKE_SLICE = ITEMS.registerItem("hot_cake_slice",
             p -> new BurningFood(p.food(ESFoods.HOT_CAKE_SLICE), 4));
     public static final DeferredItem<Item> REVERSE_CAKE_SLICE = ITEMS.registerItem("reverse_cake_slice",
-            p -> new Item(p.food(ESFoods.REVERSE_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.REVERSE_CAKE_SLICE)));
     public static final DeferredItem<Item> FUCHSIA_CAKE_SLICE = ITEMS.registerItem("fuchsia_cake_slice",
-            p -> new Item(p.food(ESFoods.FUCHSIA_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.FUCHSIA_CAKE_SLICE)));
     public static final DeferredItem<Item> NEGATIVE_CAKE_SLICE = ITEMS.registerItem("negative_cake_slice",
-            p -> new Item(p.food(ESFoods.NEGATIVE_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.NEGATIVE_CAKE_SLICE)));
     public static final DeferredItem<Item> CARROT_CAKE_SLICE = ITEMS.registerItem("carrot_cake_slice",
-            p -> new Item(p.food(ESFoods.CARROT_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.CARROT_CAKE_SLICE)));
     public static final DeferredItem<Item> CHOCOLATEY_CAKE_SLICE = ITEMS.registerItem("chocolatey_cake_slice",
-            p -> new Item(p.food(ESFoods.CHOCOLATEY_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.CHOCOLATEY_CAKE_SLICE)));
     public static final DeferredItem<Item> MOON_CAKE_SLICE = ITEMS.registerItem("moon_cake_slice",
-            p -> new Item(p.food(ESFoods.MOON_CAKE_SLICE).component(ESDataComponents.MOON_CAKE_SLICE_COLOR,
+            p -> new ESFoodItem(p.food(ESFoods.MOON_CAKE_SLICE).component(ESDataComponents.MOON_CAKE_SLICE_COLOR,
                     MoonCakeSliceColor.DUAL)));
     public static final DeferredItem<Item> LEMON_CAKE_SLICE = ITEMS.registerItem("lemon_cake_slice",
             p -> new ExplosiveFood(p.food(ESFoods.LEMON_CAKE_SLICE)));
     public static final DeferredItem<Item> PAN_CAKE_SLICE = ITEMS.registerItem("pan_cake_slice",
-            p -> new Item(p.food(ESFoods.PAN_CAKE_SLICE).component(ESDataComponents.PAN_CAKE_SLICE_COLOR,
+            p -> new ESFoodItem(p.food(ESFoods.PAN_CAKE_SLICE).component(ESDataComponents.PAN_CAKE_SLICE_COLOR,
                     PanCakeSliceColor.TRIPLE)));
     // #endregion Cake Slices
     public static final DeferredItem<BlockItem> MORTAL_TEMPTATION_BLOCK = ITEMS
@@ -1102,28 +1103,27 @@ public final class ESItems {
             p -> new MortalTemptation(
                     p.food(ESFoods.MORTAL_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> CANDY_CRUNCH = ITEMS.registerItem("candy_crunch",
-            p -> new Item(p.food(ESFoods.CANDY_CRUNCH).craftRemainder(Items.BOWL).stacksTo(16)));
+            p -> new ESFoodItem(p.food(ESFoods.CANDY_CRUNCH).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> HOME_DONUT = ITEMS.registerItem("home_donut",
             p -> new HomeDonut(p.food(ESFoods.HOME_DONUT)));
     public static final DeferredItem<Item> SOUR_BOMB_CANDY = ITEMS.registerItem("sour_bomb_candy",
             p -> new ExplosiveFood(p.food(ESFoods.SOUR_BOMB_CANDY)));
     public static final DeferredItem<Item> COSMIC_SPOREO = ITEMS.registerItem("cosmic_sporeo",
-            p -> new Item(p.food(ESFoods.COSMIC_SPOREO)));
+            p -> new ESFoodItem(p.food(ESFoods.COSMIC_SPOREO)));
     public static final DeferredItem<Item> SPAM = ITEMS.registerItem("spam", p -> new LootFood(
             p.food(ESFoods.SPAM).component(ESDataComponents.GIFT_TABLE, TableSubProvider.SPAM_LOOT_TABLE),
             Component.translatable(ESLangProvider.SPAM_FOOD)));
     public static final DeferredItem<BlockItem> LEMON_CAKE = ITEMS.registerSimpleBlockItem(ESBlocks.LEMON_CAKE,
             new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> GUMMY_RING = ITEMS.registerItem("gummy_ring",
-            p -> new Item(p.stacksTo(1).food(ESFoods.GUMMY_RING)));
+            p -> new ESFoodItem(p.stacksTo(1).food(ESFoods.GUMMY_RING)));
     public static final DeferredItem<Item> SCULK_SOUP = ITEMS.registerItem("sculk_soup",
-            p -> new Item(p.stacksTo(16).food(ESFoods.SCULK_SOUP)));
+            p -> new ESFoodItem(p.stacksTo(16).food(ESFoods.SCULK_SOUP)));
     // #endregion Food
 
     // #region Drinks
     public static final DeferredItem<Item> DESERT_JUICE = ITEMS.registerItem("desert_juice",
-            p -> new DrinkableItem(
-                    p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
+            p -> new ESDrinkItem(p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
     public static final DeferredItem<Item> ROCKET_JUMP = ITEMS.registerItem("rocket_jump",
             p -> new RocketJump(
                     p.food(ESFoods.ROCKET_JUMP).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));

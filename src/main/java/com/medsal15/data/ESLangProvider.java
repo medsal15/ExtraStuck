@@ -69,6 +69,7 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
     public static final String TOKEN_TETRAHEDRON_TOKEN_KEY = ESItems.TOKEN_TETRAHEDRON.get().getDescriptionId()
             + ".token_drop";
     public static final String SBURBDB_SECONDARIES_KEY = ExtraStuck.MODID + ".sburbdb.secondaries";
+    public static final String BURN_DURATION_SECONDS = ExtraStuck.MODID + ".burn_duration_seconds";
 
     public static final String GOLDEN_PAN_HIT = "sound." + ExtraStuck.MODID + ".golden_pan_hit";
     public static final String GUN_CONTENT_KEY = ExtraStuck.MODID + ".gun_content";
@@ -141,6 +142,7 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         add(BOONDOLLAR_RANGE_KEY, "Value: %1$s-%2$s ฿");
         add(MISSING_MOD_KEY, "Requires %s loaded to be useful");
         add(MISSING_MOD_KEY_ADVANCED, "Requires %1$s [%2$s] loaded to be useful");
+        add(BURN_DURATION_SECONDS, "Sets on fire for %s seconds");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
