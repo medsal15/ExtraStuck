@@ -329,6 +329,7 @@ public final class ESTagsProvider {
             tag(Tags.Items.EGGS).add(ESItems.BEE_LARVA.get());
             tag(ESTags.Items.BEE_EGGS).add(ESItems.BEE_LARVA.get());
             tag(MSTags.Items.BUGS).add(ESItems.COOKED_BEE_LARVA.get());
+            tag(Tags.Items.FOODS_BREAD).add(ESItems.DREAD.get());
 
             tag(ItemTags.DOORS).add(ESItems.COBALT_DOOR.get());
             tag(ItemTags.TRAPDOORS).add(ESItems.COBALT_TRAPDOOR.get());

@@ -8,7 +8,7 @@
             "item": {
                 "item": "extrastuck:radburger"
             },
-            "text": "A delicious(?)-looking hamburger made with an irradiated steak. Why does it glow in the dark?$(br2)Has a 60% chance to give Wither 2 for 5 seconds."
+            "text": "A delicious(?)-looking hamburger made with an irradiated steak. Why does it glow in the dark?$(br2)$(3)$(l)Special:$() Has a 60% chance to give Wither 2 for 5 seconds."
         },
         {
             "type": "extrastuck:combination",

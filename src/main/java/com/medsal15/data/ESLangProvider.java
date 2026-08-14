@@ -935,6 +935,7 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         add(SPAM_DESC_3, "You can't make out the text, but you can tell there's a phone number.");
         addItem(ESItems.SCULK_SOUP, "Sculk Soup");
         addItemTooltip(ESItems.SCULK_SOUP, "Ewww");
+        addItem(ESItems.DREAD, "Dread");
 
         addItem(ESItems.DESERT_JUICE, "Desert Juice");
         addItem(ESItems.ROCKET_JUMP, "Rocket Jump");

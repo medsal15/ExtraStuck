@@ -1,0 +1,22 @@
+{
+    "name": "Dread",
+    "icon": "extrastuck:dread",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:dread"
+            },
+            "text": "A dark colored bread with a strange glow.$(br2)$(3)$(l)Special:$() Has a 25% chance to give Silent for 10 seconds."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Bread and some Sculk Vein in a Punch Designix.",
+            "left": "minecraft:bread",
+            "mode": "||",
+            "right": "minecraft:sculk_vein",
+            "result": "extrastuck:dread"
+        }
+    ]
+}

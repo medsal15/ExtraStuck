@@ -2040,6 +2040,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.SCULK_SOUP)
                 .grist(GristTypes.BUILD, 1).grist(GristTypes.TAR, 10)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.DREAD)
+                .input(Items.BREAD).or().input(Items.SCULK_VEIN)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.DREAD)
+                .grist(GristTypes.TAR, 9).grist(GristTypes.QUARTZ, 1)
+                .build(output);
     }
 
     private void drinkRecipes(@Nonnull RecipeOutput output) {

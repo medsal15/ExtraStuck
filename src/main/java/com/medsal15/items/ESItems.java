@@ -1054,15 +1054,15 @@ public final class ESItems {
     public static final DeferredItem<Item> PIZZA_SLICE = ITEMS.registerItem("pizza_slice",
             p -> new ESFoodItem(p.food(ESFoods.PIZZA_SLICE)));
     public static final DeferredItem<Item> SUSHROOM_STEW = ITEMS.registerItem("sushroom_stew",
-            p -> new Item(p.food(ESFoods.SUSHROOM_STEW).stacksTo(16).craftRemainder(Items.BOWL)));
+            p -> new ESFoodItem(p.food(ESFoods.SUSHROOM_STEW).stacksTo(16).craftRemainder(Items.BOWL)));
     public static final DeferredItem<Item> RADBURGER = ITEMS.registerItem("radburger",
-            p -> new Item(p.food(ESFoods.RADBURGER)));
+            p -> new ESFoodItem(p.food(ESFoods.RADBURGER)));
     public static final DeferredItem<BlockItem> DIVINE_TEMPTATION_BLOCK = ITEMS
             .registerSimpleBlockItem(ESBlocks.DIVINE_TEMPTATION_BLOCK);
     public static final DeferredItem<Item> DIVINE_TEMPTATION = ITEMS.registerItem("divine_temptation",
             p -> new ESFoodItem(p.food(ESFoods.DIVINE_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> YELLOWCAKE_SLICE = ITEMS.registerItem("yellowcake_slice",
-            p -> new Item(p.food(ESFoods.YELLOWCAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.YELLOWCAKE_SLICE)));
     public static final DeferredItem<Item> BEE_LARVA = ITEMS.registerItem("bee_larva",
             p -> new BeeLarvaItem(p.stacksTo(16)));
     public static final DeferredItem<Item> COOKED_BEE_LARVA = ITEMS.registerItem("cooked_bee_larva",
@@ -1119,6 +1119,8 @@ public final class ESItems {
             p -> new ESFoodItem(p.stacksTo(1).food(ESFoods.GUMMY_RING)));
     public static final DeferredItem<Item> SCULK_SOUP = ITEMS.registerItem("sculk_soup",
             p -> new ESFoodItem(p.stacksTo(16).food(ESFoods.SCULK_SOUP)));
+    public static final DeferredItem<Item> DREAD = ITEMS.registerItem("dread",
+            p -> new ESFoodItem(p.food(ESFoods.DREAD)));
     // #endregion Food
 
     // #region Drinks
@@ -1927,6 +1929,7 @@ public final class ESItems {
         list.add(SPAM);
         list.add(GUMMY_RING);
         list.add(SCULK_SOUP);
+        list.add(DREAD);
         return list;
     }
 

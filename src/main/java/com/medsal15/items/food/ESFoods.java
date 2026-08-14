@@ -97,6 +97,9 @@ public final class ESFoods {
             .usingConvertsTo(Items.BOWL)
             .effect(() -> new MobEffectInstance(ESMobEffects.SILENT, 200), 1)
             .alwaysEdible().build();
+    public static final FoodProperties DREAD = new FoodProperties.Builder().nutrition(5).saturationModifier(.2F)
+            .effect(() -> new MobEffectInstance(ESMobEffects.SILENT, 200), .25F)
+            .build();
 
     public static final FoodProperties DESERT_JUICE = new FoodProperties.Builder().alwaysEdible()
             .usingConvertsTo(Items.GLASS_BOTTLE)
