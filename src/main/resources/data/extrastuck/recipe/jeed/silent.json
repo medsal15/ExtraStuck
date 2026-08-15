@@ -1,0 +1,19 @@
+{
+    "neoforge:conditions": [
+        {
+            "type": "neoforge:mod_loaded",
+            "modid": "jeed"
+        }
+    ],
+    "type": "jeed:effect_provider",
+    "effect": "extrastuck:silent",
+    "providers": [
+        {
+            "item": "extrastuck:dread"
+        },
+        {
+            "item": "extrastuck:sculk_soup"
+        }
+    ]
+}
+
