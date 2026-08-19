@@ -68,6 +68,7 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
     public static final String JACKPOT_ROLLED_6 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.6";
     public static final String TOKEN_TETRAHEDRON_TOKEN_KEY = ESItems.TOKEN_TETRAHEDRON.get().getDescriptionId()
             + ".token_drop";
+    public static final String SYRINGE_CONTENTS = ESItems.SYRINGE.get().getDescriptionId() + ".contents";
     public static final String SBURBDB_SECONDARIES_KEY = ExtraStuck.MODID + ".sburbdb.secondaries";
     public static final String BURN_DURATION_SECONDS = ExtraStuck.MODID + ".burn_duration_seconds";
 
@@ -420,6 +421,9 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         addItem(ESItems.THE_STING, "The Sting");
         addItem(ESItems.STOCKS_UPTICKER, "Stocks Upticker");
         addItemTooltip(ESItems.STOCKS_UPTICKER, "Looks like your investments are finally paying off!");
+        addItem(ESItems.SYRINGE, "Syringe");
+        addItemTooltip(ESItems.SYRINGE, "For the more... troublesome patients");
+        add(SYRINGE_CONTENTS, "Contents (%s doses):");
         // Swords
         addItem(ESItems.SUN_REAVER, "Sun Reaver");
         addItemTooltip(ESItems.SUN_REAVER, "To kill a god...");

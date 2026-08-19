@@ -27,6 +27,7 @@ import com.mraof.minestuck.player.PlayerData;
 import com.mraof.minestuck.player.Title;
 import com.mraof.minestuck.util.MSAttachments;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -44,6 +45,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.entity.projectile.windcharge.WindCharge;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -299,6 +301,43 @@ public final class ESRightClickEffects {
         player.getCooldowns().addCooldown(stack.getItem(), 20);
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+    }
+
+    public static InteractionResultHolder<ItemStack> useSyringe(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        PotionContents potion = stack.get(DataComponents.POTION_CONTENTS);
+        int applications = stack.getOrDefault(ESDataComponents.ENERGY, 0);
+        boolean clear = false;
+        if (potion != null) {
+            if (applications <= 0) {
+                clear = true;
+            } else {
+                potion.forEachEffect(effect -> {
+                    if (effect.getEffect().value().isInstantenous())
+                        effect.getEffect().value().applyInstantenousEffect(player, player, player,
+                                effect.getAmplifier(), 1);
+                    else
+                        player.addEffect(new MobEffectInstance(effect.getEffect(), effect.getDuration() / 3,
+                                effect.getAmplifier(), effect.isAmbient(), effect.isVisible(), effect.showIcon()));
+                });
+
+                if (applications > 1) {
+                    stack.set(ESDataComponents.ENERGY, applications - 1);
+                } else {
+                    stack.remove(DataComponents.POTION_CONTENTS);
+                    stack.remove(ESDataComponents.ENERGY);
+                }
+                return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+            }
+        } else if (applications > 0) {
+            clear = true;
+        }
+        if (clear) {
+            stack.remove(DataComponents.POTION_CONTENTS);
+            stack.remove(ESDataComponents.ENERGY);
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+        }
+        return InteractionResultHolder.pass(stack);
     }
 
     /**

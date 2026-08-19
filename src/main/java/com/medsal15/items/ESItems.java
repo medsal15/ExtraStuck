@@ -80,6 +80,7 @@ import com.medsal15.items.melee.InnateEnchantsWeapon;
 import com.medsal15.items.melee.JackpotWeapon;
 import com.medsal15.items.melee.SteamWeaponItem;
 import com.medsal15.items.melee.StorageWeapon;
+import com.medsal15.items.melee.SyringeWeapon;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.items.projectiles.ESArrowItem;
 import com.medsal15.items.projectiles.ESBulletItem;
@@ -648,6 +649,10 @@ public final class ESItems {
     public static final DeferredItem<Item> STOCKS_UPTICKER = ITEMS.register("stocks_upticker", () -> new WeaponItem(
             new WeaponItem.Builder(Tiers.GOLD, 4, -1F).efficiency(2F).set(MSItemTypes.BATON_TOOL),
             new MSItemProperties().durability(1326)));
+    public static final DeferredItem<Item> SYRINGE = ITEMS.register("syringe", () -> new SyringeWeapon(
+            new WeaponItem.Builder(Tiers.IRON, 3, -1F).efficiency(2F).set(MSItemTypes.BATON_TOOL)
+                    .add(ESHitEffects::applySyringeEffect).set(ESRightClickEffects::useSyringe),
+            new MSItemProperties().durability(1250)));
     // #endregion Batons
     // #region Swords
     public static final DeferredItem<Item> SUN_REAVER = ITEMS.register("sun_reaver", () -> new WeaponItem(
@@ -1650,6 +1655,7 @@ public final class ESItems {
         // Batons
         list.add(THE_STING);
         list.add(STOCKS_UPTICKER);
+        list.add(SYRINGE);
         // Swords
         list.add(SUN_REAVER);
         if (ESCompatUtils.isLoaded("irons_spellbooks")) {

@@ -41,6 +41,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -541,5 +542,37 @@ public final class ESHitEffects {
 
             target.hurt(MSDamageSources.armorPierce(attacker.level().registryAccess(), attacker), damage);
         };
+    }
+
+    public static void applySyringeEffect(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        PotionContents potion = stack.get(DataComponents.POTION_CONTENTS);
+        int applications = stack.getOrDefault(ESDataComponents.ENERGY, 0);
+        boolean clear = false;
+        if (potion != null) {
+            if (applications <= 0) {
+                clear = true;
+            } else {
+                potion.forEachEffect(effect -> {
+                    if (effect.getEffect().value().isInstantenous())
+                        effect.getEffect().value().applyInstantenousEffect(attacker, attacker, target,
+                                effect.getAmplifier(), 1);
+                    else
+                        target.addEffect(new MobEffectInstance(effect.getEffect(), effect.getDuration() / 3,
+                                effect.getAmplifier(), effect.isAmbient(), effect.isVisible(), effect.showIcon()));
+                });
+
+                if (applications > 1) {
+                    stack.set(ESDataComponents.ENERGY, applications - 1);
+                } else {
+                    clear = true;
+                }
+            }
+        } else if (applications > 0) {
+            clear = true;
+        }
+        if (clear) {
+            stack.remove(DataComponents.POTION_CONTENTS);
+            stack.remove(ESDataComponents.ENERGY);
+        }
     }
 }

@@ -1,0 +1,23 @@
+{
+    "name": "Syringe",
+    "icon": "extrastuck:syringe",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:syringe"
+            },
+            "text": "A large syringe that can hold doses of potions. Perfect for doctors!$(br2)$(3)$(l)Special:$() A potion effect can be inserted by right-clicking a potion on it. It is then delivered over 3 uses by attacking enemies or using it (each with a third of the base potion's duration)."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine The Sting and a Crusader Crossbolt in a Totem Lathe.",
+            "left": "extrastuck:the_sting",
+            "mode": "&&",
+            "right": "extrastuck:crusader_crossbolt",
+            "result": "extrastuck:syringe"
+        }
+    ]
+}

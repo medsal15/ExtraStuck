@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:mercury": 625,
+    "minestuck:quartz": 256,
+    "minestuck:rust": 1333
+  },
+  "ingredient": {
+    "item": "extrastuck:syringe"
+  }
+}
