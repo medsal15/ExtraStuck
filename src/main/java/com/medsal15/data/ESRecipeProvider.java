@@ -525,6 +525,17 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.BIG_CLUB)
                 .grist(GristTypes.BUILD, 30).grist(GristTypes.GOLD, 1)
                 .build(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.COPPER_MACE.toStack())
+                .pattern("B")
+                .pattern("R")
+                .define('B', Tags.Items.STORAGE_BLOCKS_COPPER)
+                .define('R', Items.LIGHTNING_ROD)
+                .unlockedBy("has_lightning_rod", has(Items.LIGHTNING_ROD))
+                .save(output, modid("shaped/copper_mace"));
+        CombinationRecipeBuilder.of(MSItems.MACE)
+                .input(ESItems.COPPER_MACE).or().input(Items.IRON_BLOCK)
+                .build(output, modid("mace"));
         // #endregion Clubs
 
         // #region Keys
@@ -863,7 +874,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addStep(DeployerApplicationRecipe::new, sub -> sub.require(MSItems.COMPUTER_PARTS))
                 .addStep(DeployerApplicationRecipe::new, sub -> sub.require(ESTags.Items.BRASS_NUGGETS))
                 .addStep(PressingRecipe::new, sub -> sub)
-                .build(output.withConditions(new ModLoadedCondition("create")));
+                .build(output.withConditions(CREATE_LOADED));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.DEEP_CROSSBOW.toStack())
                 .pattern("WIW")

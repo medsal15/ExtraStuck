@@ -386,6 +386,7 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         addItem(ESItems.BIG_CLUB, "Big Club");
         addItemTooltip(ESItems.BIG_CLUB, "Whoa");
         addItem(ESItems.TOOLBOX, "Toolbox");
+        addItem(ESItems.COPPER_MACE, "Copper Mace");
         // Keys
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");

@@ -522,6 +522,10 @@ public final class ESItems {
                             new AttributeModifier(ExtraStuck.modid("big_club_range"), 1.5,
                                     Operation.ADD_VALUE),
                             EquipmentSlotGroup.MAINHAND))));
+    public static final DeferredItem<Item> COPPER_MACE = ITEMS.register("copper_mace",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(ESItemTiers.COPPER_TIER, 1, -2.8F).set(MSItemTypes.CLUB_TOOL),
+                    new Item.Properties()));
     // #endregion Clubs
     // #region Keys
     public static final DeferredItem<Item> KEY_OF_TRIALS = ITEMS.register("key_of_trials",
@@ -1630,6 +1634,7 @@ public final class ESItems {
         list.add(WITHERED_MACE);
         list.add(D8TH_M8CE);
         list.add(BIG_CLUB);
+        list.add(COPPER_MACE);
         // Keys
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);

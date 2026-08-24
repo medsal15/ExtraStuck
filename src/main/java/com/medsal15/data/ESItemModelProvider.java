@@ -184,6 +184,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.DEATH_MACE.get());
         handheldItem(ESItems.WITHERED_MACE.get());
         handheldItem(ESItems.D8TH_M8CE.get());
+        handheldItem(ESItems.COPPER_MACE.get());
         // Keys
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
