@@ -533,9 +533,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .define('R', Items.LIGHTNING_ROD)
                 .unlockedBy("has_lightning_rod", has(Items.LIGHTNING_ROD))
                 .save(output, modid("shaped/copper_mace"));
-        CombinationRecipeBuilder.of(MSItems.MACE)
-                .input(ESItems.COPPER_MACE).or().input(Items.IRON_BLOCK)
-                .build(output, modid("mace"));
         // #endregion Clubs
 
         // #region Keys
