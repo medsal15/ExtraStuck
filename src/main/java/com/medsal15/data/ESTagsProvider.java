@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
@@ -16,6 +17,7 @@ import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.fluid.MSFluids;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
+import com.rosebushes.alchemyexpanded.data.AEItemTags;
 
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.HolderLookup;
@@ -273,8 +275,12 @@ public final class ESTagsProvider {
                 tag(MSTags.Items.CASSETTES).add(cassette.get());
             }
 
+            for (DeferredItem<Item> gun : AEESItems.getGuns()) {
+                tag(AEItemTags.GUN_ENCHANTABLE).add(gun.get());
+            }
+
             tag(ESTags.Items.AMMO).addTag(ESTags.Items.AMMO_HANDGUN);
-            tag(ESTags.Items.AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
+            tag(ESTags.Items.AMMO_HANDGUN).add(AEESItems.HANDGUN_BULLET.get(), AEESItems.HEAVY_HANDGUN_BULLET.get());
             tag(ESTags.Items.SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get(), ESItems.SALESWOMAN_GLASSES.get());
             tag(ESTags.Items.SHOW_GRIST).add(ESItems.GRIST_VIEWERS.get());
             tag(ESTags.Items.DROPS_BOONDOLLARS).add(ESItems.DEBT_REAPER.get(), ESItems.STOCKS_UPTICKER.get(),

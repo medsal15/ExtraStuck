@@ -205,6 +205,9 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${mc_jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${mc_jei_version}"
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${mc_jei_version}"
+
+    // Alchemy Expanded
+    implementation files("libs/alchemyexpanded-${alchemyexpanded_version}.jar")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

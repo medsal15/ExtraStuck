@@ -6,8 +6,8 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import com.medsal15.ESAttachements;
-import com.medsal15.ESSounds;
 import com.medsal15.ESAttachements.ESGristLayerInfo;
+import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.BlasterBlockEntity;
 import com.medsal15.blockentities.ChargerBlockEntity;
@@ -18,6 +18,8 @@ import com.medsal15.blockentities.StorageBlockEntity;
 import com.medsal15.blockentities.WirelessChargerBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.alchemyexpanded.items.AEESMissingItems;
+import com.medsal15.compat.alchemyexpanded.items.guns.GunContainer;
 import com.medsal15.compat.create.network.ESCreatePackets;
 import com.medsal15.compat.curios.CuriosCapabilities;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
@@ -30,7 +32,6 @@ import com.medsal15.items.ESShield;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.components.PanCakeSliceColor;
-import com.medsal15.items.guns.GunContainer;
 import com.medsal15.items.melee.StorageWeapon;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuNext;
@@ -120,10 +121,12 @@ public final class CommonEvents {
                 ESItems.FLUX_SHIELD.get(), ESItems.OVERCHARGED_MAGNEFORK.get(), ESItems.UNDERCHARGED_MAGNEFORK.get(),
                 ESItems.FIELD_CHARGER.get());
 
-        event.registerItem(Capabilities.ItemHandler.ITEM,
-                // TODO move to a subclass & method to get
-                (stack, u) -> new GunContainer(1, stack),
-                ESItems.HANDGUN.get());
+        if (!ESCompatUtils.isLoaded("alchemyexpanded")) {
+            event.registerItem(Capabilities.ItemHandler.ITEM,
+                    // TODO move to a subclass & method to get
+                    (stack, u) -> new GunContainer(1, stack),
+                    AEESMissingItems.HANDGUN.get());
+        }
         event.registerItem(Capabilities.ItemHandler.ITEM,
                 (stack, u) -> new StorageWeapon.Container(stack, 7), ESItems.TOOLBOX.get());
 

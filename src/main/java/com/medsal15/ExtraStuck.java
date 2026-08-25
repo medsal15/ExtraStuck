@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
+import com.medsal15.compat.alchemyexpanded.items.AEESMissingItems;
 import com.medsal15.compat.create.client.menus.ESCreateMenuTypes;
 import com.medsal15.compat.create.items.ESCreateComponents;
 import com.medsal15.compat.create.items.CreateESItems;
@@ -129,6 +131,12 @@ public class ExtraStuck {
             ESPotatoEntityHitActions.POTATO_PROJECTILE_ENTITY_HIT_ACTIONS.register(modEventBus);
         } else {
             CreateESMissingItems.ITEMS.register(modEventBus);
+        }
+
+        if (ESCompatUtils.isLoaded("alchemyexpanded")) {
+            AEESItems.ITEMS.register(modEventBus);
+        } else {
+            AEESMissingItems.ITEMS.register(modEventBus);
         }
 
         // Register our mod's ModConfigSpec so that FML can create and load the config

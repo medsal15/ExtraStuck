@@ -1,4 +1,13 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "alchemyexpanded"
+      }
+    }
+  ],
   "type": "minestuck:grist_cost",
   "grist_cost": {
     "minestuck:rust": 5,

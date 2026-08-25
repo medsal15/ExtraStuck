@@ -1,4 +1,4 @@
-package com.medsal15.items.guns;
+package com.medsal15.compat.alchemyexpanded.items.guns;
 
 import static com.medsal15.data.ESLangProvider.GUN_CONTENT_KEY;
 import static com.medsal15.data.ESLangProvider.GUN_EMPTY_KEY;

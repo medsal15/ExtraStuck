@@ -1,5 +1,5 @@
 {
     "package": "com.medsal15.mixin",
     "refmap": "mixins.extrastuck.refmap.json",
-    "mixins": ["EntityMixin"]
+    "mixins": ["EntityMixin", "AEGunFix"]
 }

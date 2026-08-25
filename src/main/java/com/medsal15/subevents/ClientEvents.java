@@ -24,6 +24,9 @@ import com.medsal15.client.renderers.ESArrowRenderer;
 import com.medsal15.client.tooltips.ContainerTooltip;
 import com.medsal15.client.tooltips.ContainerTooltipComponent;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.alchemyexpanded.AEESMUtils;
+import com.medsal15.compat.alchemyexpanded.AEESUtils;
+import com.medsal15.compat.alchemyexpanded.items.guns.ESGun;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
@@ -44,7 +47,6 @@ import com.medsal15.items.components.MoonCakeSliceColor;
 import com.medsal15.items.components.PanCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.RadBowItem;
-import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.tools.LandFishingRod;
 import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.particles.UraniumBlastParticle;
@@ -511,7 +513,11 @@ public final class ClientEvents {
 
                 registerBiConvertion(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE,
                         ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD);
-                registerBiConvertion(ESItems.OFFICE_KEY, ESItems.HANDGUN);
+                if (ESCompatUtils.isLoaded("alchemyexpanded")) {
+                    AEESUtils.registerConvertions();
+                } else {
+                    AEESMUtils.registerConvertions();
+                }
                 registerBiConvertion(ESItems.OVERCHARGED_MAGNEFORK, ESItems.UNDERCHARGED_MAGNEFORK);
                 registerBiConvertion(ESItems.YELLOWCAKESAW, ESItems.YELLOWCAKESAW_LIPSTICK);
                 registerBiConvertion(ESItems.CASHGRABBERS, ESItems.CASHGRABBERS_SHEATHED);
@@ -532,12 +538,12 @@ public final class ClientEvents {
         });
     }
 
-    private static void registerBiConvertion(ItemLike first, ItemLike second) {
+    public static void registerBiConvertion(ItemLike first, ItemLike second) {
         registerConvertion(first, second);
         registerConvertion(second, first);
     }
 
-    private static void registerConvertion(ItemLike from, ItemLike to) {
+    public static void registerConvertion(ItemLike from, ItemLike to) {
         MysteriousItemConversionCategory.RECIPES.add(ConversionRecipe.create(new ItemStack(from), new ItemStack(to)));
     }
 

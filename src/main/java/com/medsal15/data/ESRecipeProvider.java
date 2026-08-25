@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.patchouli.items.ESPItems;
@@ -60,6 +61,7 @@ public final class ESRecipeProvider extends RecipeProvider {
     private static final ICondition CREATE_LOADED = new ModLoadedCondition("create");
     private static final ICondition FARMERSDELIGHT_LOADED = new ModLoadedCondition("farmersdelight");
     private static final ICondition ISS_LOADED = new ModLoadedCondition("irons_spellbooks");
+    private static final ICondition ALEX_LOADED = new ModLoadedCondition("alchemyexpanded");
 
     public ESRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
@@ -553,10 +555,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GARNET, 6).grist(GristTypes.SHALE, 43)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESItems.OFFICE_KEY)
+        CombinationRecipeBuilder.of(AEESItems.OFFICE_KEY)
                 .input(MSItems.HOUSE_KEY).or().input(Items.IRON_DOOR)
                 .build(output);
-        GristCostRecipeBuilder.of(ESItems.OFFICE_KEY)
+        GristCostRecipeBuilder.of(AEESItems.OFFICE_KEY)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
 
@@ -1110,7 +1112,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Cards
 
-        GristCostRecipeBuilder.of(ESItems.HANDGUN)
+        GristCostRecipeBuilder.of(AEESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
 
@@ -1265,19 +1267,19 @@ public final class ESRecipeProvider extends RecipeProvider {
     }
 
     private void ammoRecipes(@Nonnull RecipeOutput output) {
-        CombinationRecipeBuilder.of(ESItems.HANDGUN_BULLET)
+        CombinationRecipeBuilder.of(AEESItems.HANDGUN_BULLET)
                 .input(Items.GUNPOWDER).and().input(Items.IRON_NUGGET)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.HANDGUN_BULLET)
+                .build(output.withConditions(not(ALEX_LOADED)));
+        GristCostRecipeBuilder.of(AEESItems.HANDGUN_BULLET)
                 .grist(GristTypes.CHALK, 3).grist(GristTypes.TAR, 1)
-                .build(output);
+                .build(output.withConditions(not(ALEX_LOADED)));
 
-        CombinationRecipeBuilder.of(ESItems.HEAVY_HANDGUN_BULLET)
-                .input(ESItems.HANDGUN_BULLET).and().input(Items.IRON_INGOT)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.HEAVY_HANDGUN_BULLET)
+        CombinationRecipeBuilder.of(AEESItems.HEAVY_HANDGUN_BULLET)
+                .input(AEESItems.HANDGUN_BULLET).and().input(Items.IRON_INGOT)
+                .build(output.withConditions(not(ALEX_LOADED)));
+        GristCostRecipeBuilder.of(AEESItems.HEAVY_HANDGUN_BULLET)
                 .grist(GristTypes.RUST, 5).grist(GristTypes.TAR, 2)
-                .build(output);
+                .build(output.withConditions(not(ALEX_LOADED)));
     }
 
     private void armorRecipes(@Nonnull RecipeOutput output) {

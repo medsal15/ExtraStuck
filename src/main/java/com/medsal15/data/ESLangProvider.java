@@ -16,6 +16,7 @@ import com.medsal15.client.gui.LoopButton;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.screen.computer.MastermindDecodeScreen;
 import com.medsal15.client.screen.computer.MastermindEncodeScreen;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.create.client.menus.GristFilterMenu;
 import com.medsal15.compat.create.client.screens.GristFilterScreen;
 import com.medsal15.compat.create.items.CreateESItems;
@@ -391,7 +392,7 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
         addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");
-        addItem(ESItems.OFFICE_KEY, "Office Key");
+        addItem(AEESItems.OFFICE_KEY, "Office Key");
         addItem(ESItems.ANCIENT_VAULT_OPENER, "Ancient Vault Opener");
         addItem(ESItems.VAULT_MELTER, "Vault Melter");
         addItemTooltip(ESItems.VAULT_MELTER, "No vault can stand the heat. What is the point?");
@@ -517,10 +518,10 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         // Other Ranged
         add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
         add(GUN_EMPTY_KEY, "Unloaded");
-        addItem(ESItems.HANDGUN, "Handgun");
-        addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
+        addItem(AEESItems.HANDGUN, "Handgun");
+        addItem(AEESItems.HANDGUN_BULLET, "Handgun Bullet");
         addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");
-        addItem(ESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
+        addItem(AEESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.ITEM_BULLET, "Item Bullet");
     }
