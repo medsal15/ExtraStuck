@@ -9,13 +9,13 @@ import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.MissingModItem;
 import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.alchemyexpanded.items.AEESMissingItems;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
-import com.medsal15.compat.patchouli.items.ESPItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
@@ -890,6 +890,7 @@ public final class ESItems {
     // #endregion Armors
 
     // #region Tools
+    public static final DeferredItem<Item> GUIDE;
     public static final DeferredItem<Item> ANTI_DIE = ITEMS.registerItem("anti_die", p -> new Item(p.stacksTo(1)));
     public static final DeferredItem<Item> OLD_BRUSH = ITEMS.registerItem("old_brush",
             p -> new BrushItem(p.stacksTo(1).durability(320)));
@@ -1126,6 +1127,15 @@ public final class ESItems {
     public static final DeferredItem<Item> DEEPSLATE_REINFORCEMENT = ITEMS.registerItem("deepslate_reinforcement",
             Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
 
+    static {
+        if (ESCompatUtils.isLoaded("patchouli")) {
+            GUIDE = ITEMS.register("guide", com.medsal15.compat.patchouli.items.GuideItem::new);
+        } else {
+            GUIDE = ITEMS.register("guide",
+                    () -> new MissingModItem(new Item.Properties().stacksTo(1), "Patchouli", "patchouli"));
+        }
+    }
+
     // #region Blocks
     // #region Machines
     public static final DeferredItem<BlockItem> PRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.PRINTER);
@@ -1327,7 +1337,7 @@ public final class ESItems {
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
         if (ESCompatUtils.isLoaded("patchouli")) {
-            output.accept(ESPItems.getGuideBook());
+            output.accept(GUIDE);
         }
 
         for (DeferredItem<Item> card : ESItems.getModusCards()) {

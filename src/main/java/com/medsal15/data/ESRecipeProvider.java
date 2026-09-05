@@ -10,7 +10,6 @@ import com.medsal15.ExtraStuck;
 import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
-import com.medsal15.compat.patchouli.items.ESPItems;
 import com.medsal15.conditions.ConfigCondition;
 import com.medsal15.items.ESItems;
 import com.medsal15.utils.ESTags;
@@ -82,7 +81,7 @@ public final class ESRecipeProvider extends RecipeProvider {
 
         issRecipes(output);
 
-        ItemStack guide = ESPItems.GUIDE.toStack();
+        ItemStack guide = ESItems.GUIDE.toStack();
         guide.set(PatchouliDataComponents.BOOK, ExtraStuck.modid("extrastuck"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, guide).requires(Items.BOOK)
                 .requires(MSItems.CRUXITE_BLOCK)

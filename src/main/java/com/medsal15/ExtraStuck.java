@@ -8,15 +8,14 @@ import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.alchemyexpanded.items.AEESMissingItems;
 import com.medsal15.compat.create.client.menus.ESCreateMenuTypes;
-import com.medsal15.compat.create.items.ESCreateComponents;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.create.items.CreateESMissingItems;
+import com.medsal15.compat.create.items.ESCreateComponents;
 import com.medsal15.compat.create.potatoCannon.ESPotatoEntityHitActions;
 import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.compat.irons_spellbooks.subevents.ISSCommonEvents;
-import com.medsal15.compat.patchouli.items.ESPItems;
 import com.medsal15.compat.ponder.ESPonderPlugin;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.conditions.ESConditions;
@@ -111,10 +110,6 @@ public class ExtraStuck {
         ESProcessors.PROCESSORS.register(modEventBus);
         ESProgramTypes.PROGRAM_TYPES.register(modEventBus);
         ESSounds.SOUND_EVENTS.register(modEventBus);
-
-        if (ESCompatUtils.isLoaded("patchouli")) {
-            ESPItems.ITEMS.register(modEventBus);
-        }
 
         if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             ISSESItems.ITEMS.register(modEventBus);

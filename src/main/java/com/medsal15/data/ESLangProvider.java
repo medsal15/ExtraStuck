@@ -23,7 +23,6 @@ import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.create.items.GristFilterItem;
 import com.medsal15.compat.create.items.GristFilterItem.GristFilterEntry;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
-import com.medsal15.compat.patchouli.items.ESPItems;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
@@ -194,7 +193,7 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         addItemTooltip(ESItems.DEEPSLATE_REINFORCEMENT, "Holy crap this thing is heavy");
         add(UNREINFORCE_MISSING_EFFECT,
                 "You manage to fit your tool between the deepslate and the reinforcement, but fail to budge it");
-        addItem(ESPItems.GUIDE, "ExtraStuck Guide");
+        addItem(ESItems.GUIDE, "ExtraStuck Guide");
 
         addItem(ISSESItems.CASSETTE_DEAD_KING_LULLABY, "Cassette");
         addItem(ISSESItems.CASSETTE_FLAME_STILL_BURNS, "Cassette");
