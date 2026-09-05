@@ -18,6 +18,7 @@ import com.mraof.minestuck.fluid.MSFluids;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
 import com.rosebushes.alchemyexpanded.data.AEItemTags;
+import com.rosebushes.alchemyexpanded.item.AEItems;
 
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.HolderLookup;
@@ -294,7 +295,8 @@ public final class ESTagsProvider {
                     MSItems.LANCELOTS_LOLLY.get(), MSItems.CANDY_FAN.get(), MSItems.CANDY_SICKLE.get(),
                     MSItems.MARASCHINO_CHERRY_SCYTHE.get(), MSItems.TOFFEE_CLUB.get(), MSItems.CANDY_CANE.get(),
                     MSItems.SHARP_CANDY_CANE.get(), MSItems.CANDY_FORK.get(), ESItems.JAWBITER.get(),
-                    ESItems.CAN_DIE.get());
+                    ESItems.CAN_DIE.get()).addOptional(AEItems.CANDY_CARBINE.getId())
+                    .addOptional(AEItems.SIXLET_SIXSHOOTER.getId());
             tag(ESTags.Items.CAN_UNREINFORCE_DEEPSLATE).add(MSItems.CROWBAR.get());
 
             tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);

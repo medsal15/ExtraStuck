@@ -14,6 +14,14 @@
     "minestuck:sharp_candy_cane",
     "minestuck:candy_fork",
     "extrastuck:jawbiter",
-    "extrastuck:can_die"
+    "extrastuck:can_die",
+    {
+      "id": "alchemyexpanded:candy_carbine",
+      "required": false
+    },
+    {
+      "id": "alchemyexpanded:sixlet_sixshooter",
+      "required": false
+    }
   ]
 }
