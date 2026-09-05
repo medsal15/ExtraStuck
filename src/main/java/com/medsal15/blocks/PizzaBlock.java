@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -64,6 +65,11 @@ public class PizzaBlock extends Block {
     @Override
     protected MapCodec<? extends Block> codec() {
         return CODEC;
+    }
+
+    @Override
+    public @Nullable PushReaction getPistonPushReaction(@Nonnull BlockState state) {
+        return PushReaction.DESTROY;
     }
 
     @Override
