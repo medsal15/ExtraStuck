@@ -30,6 +30,7 @@ import com.mraof.minestuck.world.lands.LandTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -39,15 +40,18 @@ import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ProblemReporter.Collector;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext.EntityTarget;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -71,6 +75,12 @@ public class ESLootTableProvider extends LootTableProvider {
                 new SubProviderEntry(BlockSubProvider::new, LootContextParamSets.BLOCK),
                 new SubProviderEntry(TableSubProvider::new, LootContextParamSets.CHEST)),
                 lookupProvider);
+    }
+
+    @Override
+    protected void validate(@Nonnull WritableRegistry<LootTable> writableregistry,
+            @Nonnull ValidationContext validationcontext, @Nonnull Collector problemreporter) {
+        // Stupid vanilla validation not being aware of vanilla loot tables
     }
 
     public static class TableSubProvider implements LootTableSubProvider {
@@ -232,7 +242,6 @@ public class ESLootTableProvider extends LootTableProvider {
             // Fishing
             consumer.accept(LAND_FISHING_TREASURE, fishingTreasureLootTable());
             consumer.accept(LAND_FISHING_JUNK, fishingJunkLootTable());
-            consumer.accept(LAND_FISHING_FISH, fishingFishLootTable());
             consumer.accept(LAND_FISHING, LootTable.lootTable().withPool(
                     LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                             .add(NestedLootTable.lootTableReference(LAND_FISHING_TREASURE)
@@ -246,7 +255,7 @@ public class ESLootTableProvider extends LootTableProvider {
                                                                     .inOpenFluids(true)))))
                             .add(NestedLootTable.lootTableReference(LAND_FISHING_JUNK)
                                     .setQuality(-2).setWeight(10))
-                            .add(NestedLootTable.lootTableReference(LAND_FISHING_FISH)
+                            .add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_FISH)
                                     .setQuality(-1)
                                     .setWeight(85))));
         }
@@ -401,11 +410,7 @@ public class ESLootTableProvider extends LootTableProvider {
             // TODO actual land-based fishes to use here
             // Copy of vanilla loot table
             return LootTable.lootTable().withPool(
-                    LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                            .add(LootItem.lootTableItem(Items.COD).setWeight(60))
-                            .add(LootItem.lootTableItem(Items.SALMON).setWeight(25))
-                            .add(LootItem.lootTableItem(Items.TROPICAL_FISH).setWeight(2))
-                            .add(LootItem.lootTableItem(Items.PUFFERFISH).setWeight(13)));
+                    LootPool.lootPool().add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_FISH)));
         }
 
         public static ResourceKey<LootTable> key(String path) {
