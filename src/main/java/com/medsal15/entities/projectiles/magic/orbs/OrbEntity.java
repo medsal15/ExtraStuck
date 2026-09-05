@@ -32,9 +32,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileDeflection;
@@ -87,12 +84,6 @@ public abstract class OrbEntity extends Projectile {
     @Override
     public boolean canBeCollidedWith() {
         return false;
-    }
-
-    public static AttributeSupplier.Builder defaultAttributes() {
-        return LivingEntity.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 1)
-                .add(Attributes.GRAVITY, 0);
     }
 
     @Override

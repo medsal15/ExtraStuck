@@ -40,6 +40,7 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.LandFishingHook;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.entities.projectiles.magic.circles.CircleEntity;
 import com.medsal15.entities.projectiles.magic.orbs.OrbEntity;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
@@ -359,6 +360,7 @@ public final class ClientEvents {
         event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
                 CaptainJusticeShield.CJSRenderer::new);
         event.registerEntityRenderer(ESEntities.LIGHT_ORB.get(), OrbEntity.Renderer::new);
+        event.registerEntityRenderer(ESEntities.LIFE_CIRCLE.get(), CircleEntity.CircleRenderer::new);
 
         event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/arrow/flame.png")));

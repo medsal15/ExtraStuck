@@ -11,6 +11,8 @@ import javax.annotation.Nullable;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLootTableProvider.TableSubProvider;
+import com.medsal15.entities.ESEntities;
+import com.medsal15.entities.projectiles.magic.circles.LifeCircle;
 import com.medsal15.entities.projectiles.magic.orbs.LightOrb;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
@@ -27,6 +29,7 @@ import com.mraof.minestuck.player.PlayerData;
 import com.mraof.minestuck.player.Title;
 import com.mraof.minestuck.util.MSAttachments;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -38,16 +41,13 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.entity.projectile.windcharge.WindCharge;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.util.FakePlayer;
 
@@ -143,34 +143,24 @@ public final class ESRightClickEffects {
         }
     }
 
-    public static ItemRightClickEffect healNearby(int radius) {
-        return (level, player, hand) -> {
-            ItemStack stack = player.getItemInHand(hand);
+    public static InteractionResultHolder<ItemStack> spawnLifeCircle(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        BlockPos pos = player.getOnPos().above();
 
-            AABB box = new AABB(player.blockPosition()).inflate(radius);
-            List<Entity> targets = level.getEntities(player, box);
-            targets.add(player);
+        LifeCircle circle = new LifeCircle(ESEntities.LIFE_CIRCLE.get(), level);
+        circle.setPos(player.getX(), pos.getY(), player.getZ());
+        circle.setOwner(player);
+        level.addFreshEntity(circle);
 
-            for (Entity entity : targets) {
-                if (!(entity instanceof LivingEntity livingEntity))
-                    continue;
-
-                boolean canHeal = entity == player ||
-                        (entity instanceof TamableAnimal tamableAnimal && tamableAnimal.isOwnedBy(player)) ||
-                        player.getTeam() == null ||
-                        entity.isAlliedTo(player);
-
-                if (canHeal) {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200));
-                }
-            }
-
-            stack.hurtAndBreak(radius * 10, player, LivingEntity.getSlotForHand(hand));
+        if (stack.getMaxDamage() > 0) {
+            stack.hurtAndBreak(50, player, LivingEntity.getSlotForHand(hand));
 
             player.getCooldowns().addCooldown(stack.getItem(), 300);
+        } else {
+            stack.consume(1, player);
+        }
 
-            return InteractionResultHolder.pass(stack);
-        };
+        return InteractionResultHolder.pass(stack);
     }
 
     /**

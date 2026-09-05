@@ -71,6 +71,8 @@ public final class ESTags {
     public static final class EntityTypes {
         public static final TagKey<EntityType<?>> BEENADE_ACCEPTS = create("beenade_accepts");
         public static final TagKey<EntityType<?>> COSMIC_PLAGUE_IMMUNE = create("cosmic_plague_immune");
+        public static final TagKey<EntityType<?>> ALWAYS_FRIENDLY = create("always_friendly");
+        public static final TagKey<EntityType<?>> ALWAYS_HOSTILE = create("always_hostile");
 
         private static TagKey<EntityType<?>> create(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, ExtraStuck.modid(name));

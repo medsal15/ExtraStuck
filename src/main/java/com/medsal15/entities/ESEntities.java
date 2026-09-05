@@ -33,6 +33,7 @@ import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.entities.projectiles.magic.circles.LifeCircle;
 import com.medsal15.entities.projectiles.magic.orbs.LightOrb;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -116,6 +117,10 @@ public final class ESEntities {
     // #region Magic
     public static final Supplier<EntityType<LightOrb>> LIGHT_ORB = register("light_orb", LightOrb::new,
             MobCategory.MISC, builder -> builder.fireImmune().sized(.75F, .75F).clientTrackingRange(16)
+                    .updateInterval(Integer.MAX_VALUE));
+
+    public static final Supplier<EntityType<LifeCircle>> LIFE_CIRCLE = register("life_circle", LifeCircle::new,
+            MobCategory.MISC, builder -> builder.fireImmune().sized(5F, .1F).clientTrackingRange(16)
                     .updateInterval(Integer.MAX_VALUE));
     // #endregion Magic
 

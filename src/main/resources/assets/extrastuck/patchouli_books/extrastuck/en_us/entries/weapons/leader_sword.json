@@ -10,7 +10,7 @@
             "item": {
                 "item": "extrastuck:leader_sword"
             },
-            "text": "A rapier with healing abilities.$(br2)$(3)$(l)Special:$() Using gives Regeneration for 10 seconds to nearby allies."
+            "text": "A rapier with healing abilities.$(br2)$(3)$(l)Special:$() Using spawns a Life circle that heals allies standing on it and lasts 10 seconds."
         },
         {
             "type": "extrastuck:combination",

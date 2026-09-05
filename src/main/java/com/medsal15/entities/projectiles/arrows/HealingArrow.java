@@ -4,11 +4,11 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
+import com.medsal15.utils.ESEntityUtils;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -54,11 +54,7 @@ public class HealingArrow extends AbstractArrow {
          */
         boolean canHeal = owner == null ||
                 owner.getTeam() == null ||
-                (owner instanceof LivingEntity lowner && ent instanceof TamableAnimal tame
-                        && tame.isOwnedBy(lowner))
-                ||
-                // todo? might make this a config option
-                entity.isAlliedTo(owner);
+                ESEntityUtils.areFriendly(owner, entity);
 
         if (canHeal) {
             entity.heal(5);

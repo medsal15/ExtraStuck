@@ -982,6 +982,8 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
 
         add(ESTags.EntityTypes.BEENADE_ACCEPTS, "Accepted by Beenades");
         add(ESTags.EntityTypes.COSMIC_PLAGUE_IMMUNE, "Immune to Cosmic Plague");
+        add(ESTags.EntityTypes.ALWAYS_FRIENDLY, "Always treated as friendly");
+        add(ESTags.EntityTypes.ALWAYS_HOSTILE, "Always treated as hostile");
 
         add(ESTags.MobEffects.COSMIC_PLAGUE_IMMUNITY, "Prevented with cosmic plague armor");
         add(ESTags.MobEffects.COSMIC_PLAGUE_PARTIAL_IMMUNITY, "Sometimes prevented with cosmic plague armor");
@@ -1059,6 +1061,7 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
 
     private void addEntities() {
         addEntityType(ESEntities.LIGHT_ORB, "Light Orb");
+        addEntityType(ESEntities.LIFE_CIRCLE, "Life Circle");
     }
 
     private void addLands() {
