@@ -36,9 +36,9 @@ import com.medsal15.menus.ESMenuTypes;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.modus.ESModus;
 import com.medsal15.particles.ESParticleTypes;
-import com.medsal15.structures.processors.ESProcessors;
 import com.medsal15.world.features.ESFeatures;
 import com.medsal15.world.land.ESLandTypes;
+import com.medsal15.world.structures.processors.ESProcessors;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.core.registries.Registries;

@@ -110,7 +110,7 @@ public final class ESData {
                         DeathMessageType.DEFAULT));
     }
 
-    public static void registerStructures(BootstrapContext<Structure> context) {
+    private static void registerStructures(BootstrapContext<Structure> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 

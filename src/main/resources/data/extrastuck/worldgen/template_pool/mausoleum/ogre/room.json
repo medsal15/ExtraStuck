@@ -1,0 +1,41 @@
+{
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:mausoleum/ogre/room/fight",
+                "projection": "rigid",
+                "processors": "minestuck:structure_block_registry"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:mausoleum/ogre/room/puzzle",
+                "projection": "rigid",
+                "processors": "minestuck:structure_block_registry"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:mausoleum/ogre/room/arena",
+                "projection": "rigid",
+                "processors": "minestuck:structure_block_registry"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:mausoleum/ogre/room/storage",
+                "projection": "rigid",
+                "processors": "minestuck:structure_block_registry"
+            }
+        }
+    ]
+}

@@ -9,6 +9,7 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 public final class ESStructures {
     /** Slightly altered version of the vanilla ancient city to allow lands */
     public static final ResourceKey<Structure> ANCIENT_CITY = key("ancient_city");
+    public static final ResourceKey<Structure> MAUSOLEUM = key("mausoleum");
 
     private static ResourceKey<Structure> key(String name) {
         return ResourceKey.create(Registries.STRUCTURE, ExtraStuck.modid(name));
