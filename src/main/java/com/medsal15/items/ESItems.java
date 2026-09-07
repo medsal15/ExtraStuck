@@ -1126,15 +1126,10 @@ public final class ESItems {
             CosmicPlagueSporeItem::new);
     public static final DeferredItem<Item> DEEPSLATE_REINFORCEMENT = ITEMS.registerItem("deepslate_reinforcement",
             Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
-
-    static {
-        if (ESCompatUtils.isLoaded("patchouli")) {
-            GUIDE = ITEMS.register("guide", com.medsal15.compat.patchouli.items.GuideItem::new);
-        } else {
-            GUIDE = ITEMS.register("guide",
-                    () -> new MissingModItem(new Item.Properties().stacksTo(1), "Patchouli", "patchouli"));
-        }
-    }
+    public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
+            (p) -> new GiftItem(
+                    p.component(ESDataComponents.GIFT_TABLE, TableSubProvider.GIFT_LOOT_TABLE)));
+    public static final DeferredItem<Item> LUCK_TOKEN = ITEMS.registerItem("luck_token", p -> new Tokenitem(p));
 
     // #region Blocks
     // #region Machines
@@ -1329,10 +1324,14 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.NORMAL_CAT_PLUSH);
     // #endregion Blocks
 
-    public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
-            (p) -> new GiftItem(
-                    p.component(ESDataComponents.GIFT_TABLE, TableSubProvider.GIFT_LOOT_TABLE)));
-    public static final DeferredItem<Item> LUCK_TOKEN = ITEMS.registerItem("luck_token", p -> new Tokenitem(p));
+    static {
+        if (ESCompatUtils.isLoaded("patchouli")) {
+            GUIDE = ITEMS.register("guide", com.medsal15.compat.patchouli.items.GuideItem::new);
+        } else {
+            GUIDE = ITEMS.register("guide",
+                    () -> new MissingModItem(new Item.Properties().stacksTo(1), "Patchouli", "patchouli"));
+        }
+    }
 
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
