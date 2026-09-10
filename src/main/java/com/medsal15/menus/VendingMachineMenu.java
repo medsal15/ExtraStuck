@@ -48,7 +48,6 @@ public final class VendingMachineMenu {
 
             assertItemHandlerSize(inventory, 3);
             this.costHolder = costHolder;
-            // TODO test captchaloguing
             addSlot(new SellSlot(inventory, VendingMachineBlockEntity.SLOT_STORAGE_OUT, SELL_X, SELL_Y));
             addDataSlot(costHolder);
 
@@ -115,7 +114,6 @@ public final class VendingMachineMenu {
             this.amountHolder = amountHolder;
             addSlot(new SlotItemHandler(inventory, VendingMachineBlockEntity.SLOT_STORAGE_IN, STORAGE_IN_X,
                     STORAGE_IN_Y));
-            // TODO test captchaloguing
             addSlot(output = new SlotItemHandler(inventory, VendingMachineBlockEntity.SLOT_STORAGE_OUT, STORAGE_OUT_X,
                     STORAGE_OUT_Y) {
                 @Override

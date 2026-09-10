@@ -291,6 +291,14 @@ public class VendingMachineBlockEntity extends MachineProcessBlockEntity impleme
         }
     }
 
+    // BlockEntity
+    @Override
+    public void setChanged() {
+        if (level != null)
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_IMMEDIATE);
+        super.setChanged();
+    }
+
     // These 4 below are required to update the client's item
     // Credit to @commoble on discord
     @Override
