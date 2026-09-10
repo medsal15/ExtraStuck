@@ -112,10 +112,11 @@ public final class ESTagsProvider {
                     ESBlocks.CARD_ORE.get(), ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
                     ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
                     ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_PILLAR.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get(),
-                    ESBlocks.WIRELESS_CHARGER.get());
+                    ESBlocks.WIRELESS_CHARGER.get(), ESBlocks.SMALL_VENDING_MACHINE.get());
             tag(Tags.Blocks.NEEDS_WOOD_TOOL).add(ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
                     ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
-                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get(), ESBlocks.WIRELESS_CHARGER.get());
+                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get(), ESBlocks.WIRELESS_CHARGER.get(),
+                    ESBlocks.SMALL_VENDING_MACHINE.get());
             tag(MSTags.Blocks.CRUXITE_ORES).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
             tag(Tags.Blocks.ORES).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
             tag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());

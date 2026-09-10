@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "extrastuck:block/small_vending_machine",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "extrastuck:block/small_vending_machine"
+    },
+    "facing=south": {
+      "model": "extrastuck:block/small_vending_machine",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "extrastuck:block/small_vending_machine",
+      "y": 270
+    }
+  }
+}

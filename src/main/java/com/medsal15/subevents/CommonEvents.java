@@ -15,6 +15,7 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
+import com.medsal15.blockentities.VendingMachineBlockEntity;
 import com.medsal15.blockentities.WirelessChargerBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
@@ -45,8 +46,10 @@ import com.medsal15.network.ESPackets.MastermindAddAttempt;
 import com.medsal15.network.ESPackets.MastermindDestroy;
 import com.medsal15.network.ESPackets.MastermindDifficulty;
 import com.medsal15.network.ESPackets.MastermindReset;
+import com.medsal15.network.ESPackets.VendingMachineSetCost;
 import com.medsal15.network.ESPackets.SyncBoondollarValues;
 import com.medsal15.network.ESPackets.ToggleMode;
+import com.medsal15.network.ESPackets.VendingMachinePurchase;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.api.uranium.UraniumCapabilities;
 import com.mraof.minestuck.block.MSBlocks;
@@ -142,6 +145,8 @@ public final class CommonEvents {
                 StorageBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.CARD_STORAGE.get(),
                 StorageBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.SMALL_VENDING_MACHINE.get(),
+                VendingMachineBlockEntity::getItemHandler);
 
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.CHARGER.get(),
                 ChargerBlockEntity::getEnergyHandler);
@@ -407,6 +412,8 @@ public final class CommonEvents {
                 CommonEvents::exec);
         registrar.playToServer(CraftingModusRecipeMenuSave.ID, CraftingModusRecipeMenuSave.STREAM_CODEC,
                 CommonEvents::exec);
+        registrar.playToServer(VendingMachineSetCost.ID, VendingMachineSetCost.STREAM_CODEC, CommonEvents::exec);
+        registrar.playToServer(VendingMachinePurchase.ID, VendingMachinePurchase.STREAM_CODEC, CommonEvents::exec);
 
         registrar.playToClient(SyncBoondollarValues.ID, SyncBoondollarValues.STREAM_CODEC, CommonEvents::execClient);
         registrar.playToClient(CraftingModusRecipeMenuSync.ID, CraftingModusRecipeMenuSync.STREAM_CODEC,

@@ -2137,6 +2137,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.URANIUM, 25)
                 .build(output);
 
+        CombinationRecipeBuilder.of(ESItems.SMALL_VENDING_MACHINE)
+                .input(Items.DROPPER).or().input(Items.GOLD_NUGGET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SMALL_VENDING_MACHINE)
+                .grist(GristTypes.GOLD, 8).grist(GristTypes.MARBLE, 32)
+                .grist(GristTypes.BUILD, 256)
+                .build(output);
+
         CombinationRecipeBuilder.of(ESItems.DOWEL_STORAGE)
                 .input(Items.CHEST).or().input(MSItems.CRUXITE_DOWEL)
                 .build(output);

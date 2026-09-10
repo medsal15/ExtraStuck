@@ -69,6 +69,10 @@ public final class ConfigServer {
                     "Shouldn't be lower than 32, as that would prevent uranium chunks from being used")
             .defineInRange("blaster.uranium_storage", 128, 1, Short.MAX_VALUE);
 
+    public static final ConfigValue<Integer> VENDING_MACHINE_STACKS = BUILDER
+            .comment("How many stacks of one item a Vending Machine can hold")
+            .defineInRange("vending_machine.stacks", 9, 1, Short.MAX_VALUE);
+
     public static final ConfigValue<Integer> FLAME_SHIELD_BURN = BUILDER
             .comment("How long, in ticks, does the Flame Shield burn enemies for", "0 means it won't")
             .defineInRange("shield.flame_burn_duration", 100, 0, Integer.MAX_VALUE);

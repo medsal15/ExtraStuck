@@ -138,6 +138,8 @@ public class ESBlockStateProvider extends BlockStateProvider {
 
         horizontalBlock(ESBlocks.NORMAL_CAT_PLUSH.get(),
                 new ExistingModelFile(ExtraStuck.modid("block/normal_cat_plush"), fileHelper));
+        horizontalBlock(ESBlocks.SMALL_VENDING_MACHINE.get(),
+                new ExistingModelFile(ExtraStuck.modid("block/small_vending_machine"), fileHelper));
 
         cakeBlock(ESBlocks.LEMON_CAKE);
 

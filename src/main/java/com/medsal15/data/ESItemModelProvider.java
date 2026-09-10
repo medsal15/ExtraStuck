@@ -464,6 +464,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         withExistingParent(ESItems.WIRELESS_CHARGER.getId().toString(), modLoc("block/wireless_charger"));
         withExistingParent(ESItems.REACTOR.getId().toString(), modLoc("block/reactor"));
         withExistingParent(ESItems.URANIUM_BLASTER.getId().toString(), modLoc("block/uranium_blaster"));
+        withExistingParent(ESItems.SMALL_VENDING_MACHINE.getId().toString(), modLoc("block/small_vending_machine"));
         withExistingParent(ESItems.DOWEL_STORAGE.getId().toString(), modLoc("block/dowel_storage"));
         withExistingParent(ESItems.CARD_STORAGE.getId().toString(), modLoc("block/card_storage_closed"));
 

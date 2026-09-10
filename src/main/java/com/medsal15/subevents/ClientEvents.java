@@ -21,6 +21,7 @@ import com.medsal15.client.model.armor.ESArmorModels;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
+import com.medsal15.client.renderers.VendingMachineRenderer;
 import com.medsal15.client.tooltips.ContainerTooltip;
 import com.medsal15.client.tooltips.ContainerTooltipComponent;
 import com.medsal15.compat.ESCompatUtils;
@@ -422,6 +423,7 @@ public final class ClientEvents {
         event.registerEntityRenderer(ESEntities.LAND_FISHING_HOOK.get(), LandFishingHook.Renderer::new);
 
         event.registerBlockEntityRenderer(ESBlockEntities.CHARGER.get(), ChargerBlockRenderer::new);
+        event.registerBlockEntityRenderer(ESBlockEntities.SMALL_VENDING_MACHINE.get(), VendingMachineRenderer::new);
     }
 
     @SubscribeEvent

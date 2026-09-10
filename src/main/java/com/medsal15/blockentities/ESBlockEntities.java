@@ -44,6 +44,13 @@ public final class ESBlockEntities {
                             .<BlasterBlockEntity>of(BlasterBlockEntity::new, ESBlocks.URANIUM_BLASTER.get())
                             .build(null));
     @SuppressWarnings("null")
+    public static final Supplier<BlockEntityType<VendingMachineBlockEntity>> SMALL_VENDING_MACHINE = BLOCK_ENTITY_TYPES
+            .register("small_vending_machine",
+                    () -> BlockEntityType.Builder
+                            .<VendingMachineBlockEntity>of(VendingMachineBlockEntity::new,
+                                    ESBlocks.SMALL_VENDING_MACHINE.get())
+                            .build(null));
+    @SuppressWarnings("null")
     public static final Supplier<BlockEntityType<StorageBlockEntity.Dowel>> DOWEL_STORAGE = BLOCK_ENTITY_TYPES
             .register("dowel_storage",
                     () -> BlockEntityType.Builder.<StorageBlockEntity.Dowel>of(StorageBlockEntity.Dowel::new,

@@ -1144,6 +1144,8 @@ public final class ESItems {
     public static final DeferredItem<BlockItem> DOWEL_STORAGE = ITEMS
             .registerSimpleBlockItem(ESBlocks.DOWEL_STORAGE);
     public static final DeferredItem<BlockItem> CARD_STORAGE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_STORAGE);
+    public static final DeferredItem<BlockItem> SMALL_VENDING_MACHINE = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SMALL_VENDING_MACHINE);
     // #endregion Machines
 
     public static final DeferredItem<BlockItem> DEEPSLATE_PILLAR = ITEMS
@@ -1949,6 +1951,7 @@ public final class ESItems {
         list.add(WIRELESS_CHARGER);
         list.add(REACTOR);
         list.add(URANIUM_BLASTER);
+        list.add(SMALL_VENDING_MACHINE);
         list.add(DOWEL_STORAGE);
         list.add(CARD_STORAGE);
 

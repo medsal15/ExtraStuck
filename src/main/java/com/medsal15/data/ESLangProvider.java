@@ -10,12 +10,14 @@ import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
+import com.medsal15.blockentities.VendingMachineBlockEntity;
 import com.medsal15.blockentities.WirelessChargerBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.gui.LoopButton;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.screen.computer.MastermindDecodeScreen;
 import com.medsal15.client.screen.computer.MastermindEncodeScreen;
+import com.medsal15.client.screen.machine.VendingMachineScreen;
 import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.create.client.menus.GristFilterMenu;
 import com.medsal15.compat.create.client.screens.GristFilterScreen;
@@ -773,6 +775,13 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         // Uranium Blaster
         addBlock(ESBlocks.URANIUM_BLASTER, "Uranium Blaster");
         add(BlasterBlockEntity.TITLE, "Uranium Blaster");
+
+        // Vending Machines
+        addBlock(ESBlocks.SMALL_VENDING_MACHINE, "Small Vending Machine");
+        add(VendingMachineBlockEntity.TITLE, "Vending Machine");
+        add(VendingMachineScreen.COST_TEXT, "Costs %s ฿");
+        add(VendingMachineScreen.STORAGE_TITLE, "Stored:");
+        add(VendingMachineScreen.STORAGE_TEXT, "%1$s / %2$s");
 
         // Storage Blocks
         addBlock(ESBlocks.DOWEL_STORAGE, "Dowel Drive");

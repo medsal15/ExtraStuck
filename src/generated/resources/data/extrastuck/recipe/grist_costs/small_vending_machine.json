@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:build": 256,
+    "minestuck:gold": 8,
+    "minestuck:marble": 32
+  },
+  "ingredient": {
+    "item": "extrastuck:small_vending_machine"
+  }
+}

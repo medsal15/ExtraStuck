@@ -11,6 +11,7 @@ import com.medsal15.blocks.machine.ChargerBlock;
 import com.medsal15.blocks.machine.DowelStorageBlock;
 import com.medsal15.blocks.machine.PrinterBlock;
 import com.medsal15.blocks.machine.ReactorBlock;
+import com.medsal15.blocks.machine.VendingMachineBlock;
 import com.medsal15.blocks.machine.WirelessChargerBlock;
 import com.medsal15.blocks.zillium.WeatheringZillium.ZilliumColors;
 import com.medsal15.blocks.zillium.ZilliumFullBlock;
@@ -19,7 +20,9 @@ import com.medsal15.blocks.zillium.ZilliumStairBlock;
 import com.medsal15.blocks.zillium.ZilliumWallBlock;
 import com.mraof.minestuck.block.SimpleCakeBlock;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -34,6 +37,7 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -96,7 +100,10 @@ public final class ESBlocks {
     public static final DeferredBlock<BlasterBlock> URANIUM_BLASTER = BLOCKS.registerBlock("uranium_blaster",
             BlasterBlock::new,
             Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F));
-    // TODO vending machine
+    public static final DeferredBlock<VendingMachineBlock> SMALL_VENDING_MACHINE = BLOCKS.registerBlock(
+            "small_vending_machine", VendingMachineBlock::new,
+            Block.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3F).noOcclusion()
+                    .isViewBlocking(ESBlocks::never));
 
     public static final DeferredBlock<DowelStorageBlock> DOWEL_STORAGE = BLOCKS.registerBlock("dowel_storage",
             DowelStorageBlock::new,
@@ -329,5 +336,9 @@ public final class ESBlocks {
 
     public static Block cruxiteOre(BlockBehaviour.Properties properties) {
         return new DropExperienceBlock(UniformInt.of(2, 5), properties);
+    }
+
+    protected static boolean never(BlockState state, BlockGetter level, BlockPos pos) {
+        return false;
     }
 }
