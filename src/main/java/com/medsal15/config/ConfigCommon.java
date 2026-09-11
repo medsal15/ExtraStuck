@@ -25,6 +25,12 @@ public class ConfigCommon {
                     "These include the Rotten Spell Book, Blood Staff, and Hither-Thither Wand",
                     "Basically, most non-craftable Iron's Spellbooks items")
             .define("integration.irons_spellbooks.loot_combinations", false);
+    public static final ModConfigSpec.BooleanValue AE_GUNFIX = BUILDER
+            .comment(
+                    "If enabled, uses a mixin to fix a bug with Alchemy Expanded",
+                    "The bug causes guns to lose enchantments and custom names when switched to non-gun forms",
+                    "Togglable, as there is a chance that it's already fixed (in which case do tell me)")
+            .define("integration.alchemyexpanded_gunfix", true);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 

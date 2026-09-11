@@ -1,0 +1,22 @@
+{
+    "name": "Small Vending Machine",
+    "icon": "extrastuck:small_vending_machine",
+    "category": "extrastuck:machines",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:small_vending_machine",
+            "text": "It's a vending machine. It allows anyone to easily trade using boondollars! The boondollars are stored in the machine, alongside its contents.$(br)It can hold up to 9 extra stacks of items in its internal buffer."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Dropper and a Gold Nugget in a Punch Designix.",
+            "left": "minecraft:dropper",
+            "mode": "||",
+            "right": "minecraft:gold_nugget",
+            "result": "extrastuck:small_vending_machine"
+        },
+        "To open the storage, you must be the machine's owner and crouch when right-clicking. You must also be the machine's owner to destroy it."
+    ]
+}

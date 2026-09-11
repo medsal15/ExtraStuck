@@ -34,9 +34,6 @@ public final class ESDataComponents {
     public static final Supplier<DataComponentType<ResourceKey<LootTable>>> GIFT_TABLE = DATA_COMPONENTS
             .registerComponentType("gift_table", builder -> builder.persistent(ResourceKey.codec(Registries.LOOT_TABLE))
                     .networkSynchronized(ResourceKey.streamCodec(Registries.LOOT_TABLE)));
-    /** Difficulty of the item */
-    public static final Supplier<DataComponentType<Integer>> DIFFICULTY = DATA_COMPONENTS.registerComponentType(
-            "difficulty", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
     // Grist detector
     public static final Supplier<DataComponentType<GristLayer>> GRIST_LAYER = DATA_COMPONENTS
@@ -46,24 +43,6 @@ public final class ESDataComponents {
     public static final Supplier<DataComponentType<GristType>> GRIST_FOUND = DATA_COMPONENTS
             .registerComponentType("grist_type",
                     builder -> builder.persistent(GristType.CODEC).networkSynchronized(GristType.STREAM_CODEC));
-
-    // Shields
-    /** Flame shield burn duration in ticks */
-    @Deprecated
-    public static final Supplier<DataComponentType<Integer>> BURN_DURATION = DATA_COMPONENTS
-            .registerComponentType(
-                    "burn_duration", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
-    /** Flux shield RF cost per damage */
-    @Deprecated
-    public static final Supplier<DataComponentType<Integer>> FLUX_MULTIPLIER = DATA_COMPONENTS
-            .registerComponentType(
-                    "flux_multiplier", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
-    /** Thorn shield damage */
-    @Deprecated
-    public static final Supplier<DataComponentType<Float>> SHIELD_DAMAGE = DATA_COMPONENTS
-            .registerComponentType(
-                    "shield_damage",
-                    builder -> builder.persistent(Codec.FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
 
     // Weapons
     public static final Supplier<DataComponentType<Float>> AMMO_DAMAGE = DATA_COMPONENTS.registerComponentType(
@@ -88,10 +67,17 @@ public final class ESDataComponents {
     public static final Supplier<DataComponentType<List<Integer>>> ATTEMPTS = DATA_COMPONENTS
             .registerComponentType("attempts", builder -> builder.persistent(Codec.INT.listOf())
                     .networkSynchronized(ByteBufCodecs.INT.apply(ByteBufCodecs.list())));
+    /** Difficulty of the item */
+    public static final Supplier<DataComponentType<Integer>> DIFFICULTY = DATA_COMPONENTS.registerComponentType(
+            "difficulty", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
     // Food
     public static final Supplier<DataComponentType<MoonCakeSliceColor>> MOON_CAKE_SLICE_COLOR = DATA_COMPONENTS
             .registerComponentType("moon_cake_slice_color", builder -> builder
                     .persistent(StringRepresentable.fromEnum(MoonCakeSliceColor::values))
                     .networkSynchronized(NeoForgeStreamCodecs.enumCodec(MoonCakeSliceColor.class)));
+    public static final Supplier<DataComponentType<PanCakeSliceColor>> PAN_CAKE_SLICE_COLOR = DATA_COMPONENTS
+            .registerComponentType("pan_cake_slice_color", builder -> builder
+                    .persistent(StringRepresentable.fromEnum(PanCakeSliceColor::values))
+                    .networkSynchronized(NeoForgeStreamCodecs.enumCodec(PanCakeSliceColor.class)));
 }

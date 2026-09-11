@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:dropper"
+  },
+  "input2": {
+    "item": "minecraft:gold_nugget"
+  },
+  "mode": "or",
+  "output": "extrastuck:small_vending_machine"
+}

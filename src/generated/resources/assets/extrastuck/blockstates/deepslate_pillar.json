@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "extrastuck:block/deepslate_pillar_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "extrastuck:block/deepslate_pillar"
+    },
+    "axis=z": {
+      "model": "extrastuck:block/deepslate_pillar_horizontal",
+      "x": 90
+    }
+  }
+}

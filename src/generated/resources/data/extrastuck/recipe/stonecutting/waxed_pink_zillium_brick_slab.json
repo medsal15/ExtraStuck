@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "waxed_pink_zillium_bricks",
+  "ingredient": {
+    "item": "extrastuck:waxed_pink_zillium_bricks"
+  },
+  "result": {
+    "count": 2,
+    "id": "extrastuck:waxed_pink_zillium_brick_slab"
+  }
+}

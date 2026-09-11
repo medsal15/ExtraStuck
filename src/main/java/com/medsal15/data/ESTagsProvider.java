@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import com.medsal15.ESDamageTypes;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
@@ -16,6 +17,8 @@ import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.fluid.MSFluids;
 import com.mraof.minestuck.item.MSItems;
 import com.mraof.minestuck.util.MSTags;
+import com.rosebushes.alchemyexpanded.data.AEItemTags;
+import com.rosebushes.alchemyexpanded.item.AEItems;
 
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.HolderLookup;
@@ -89,20 +92,67 @@ public final class ESTagsProvider {
                     ESBlocks.MARBLE_BRICK_SLAB.get(), ESBlocks.MARBLE_BRICK_WALL.get(),
                     ESBlocks.ZILLIUM_BRICKS.get(), ESBlocks.ZILLIUM_BRICK_STAIRS.get(),
                     ESBlocks.ZILLIUM_BRICK_SLAB.get(), ESBlocks.ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.GREEN_ZILLIUM_BRICKS.get(), ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get(), ESBlocks.GREEN_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICKS.get(), ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get(), ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.BLUE_ZILLIUM_BRICKS.get(), ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get(), ESBlocks.BLUE_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICKS.get(), ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get(), ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.PINK_ZILLIUM_BRICKS.get(), ESBlocks.PINK_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.PINK_ZILLIUM_BRICK_SLAB.get(), ESBlocks.PINK_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICKS.get(), ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB.get(), ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.SECONDARY_ZILLIUM_BRICKS.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICKS.get(), ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get(),
                     ESBlocks.CARD_ORE.get(), ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
                     ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
-                    ESBlocks.CARD_STORAGE.get());
+                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_PILLAR.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get(),
+                    ESBlocks.WIRELESS_CHARGER.get(), ESBlocks.SMALL_VENDING_MACHINE.get());
             tag(Tags.Blocks.NEEDS_WOOD_TOOL).add(ESBlocks.PRINTER.get(), ESBlocks.CHARGER.get(), ESBlocks.REACTOR.get(),
                     ESBlocks.URANIUM_BLASTER.get(), ESBlocks.DISPRINTER.get(), ESBlocks.DOWEL_STORAGE.get(),
-                    ESBlocks.CARD_STORAGE.get());
+                    ESBlocks.CARD_STORAGE.get(), ESBlocks.DEEPSLATE_CRUXITE_ORE.get(), ESBlocks.WIRELESS_CHARGER.get(),
+                    ESBlocks.SMALL_VENDING_MACHINE.get());
+            tag(MSTags.Blocks.CRUXITE_ORES).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
+            tag(Tags.Blocks.ORES).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
+            tag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE).add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get());
 
             tag(BlockTags.WALLS).add(ESBlocks.CUT_GARNET_WALL.get(), ESBlocks.GARNET_BRICK_WALL.get(),
                     ESBlocks.CUT_RUBY_WALL.get(), ESBlocks.RUBY_BRICK_WALL.get(), ESBlocks.SULFUROUS_STONE_WALL.get(),
                     ESBlocks.MARBLE_WALL.get(), ESBlocks.POLISHED_MARBLE_WALL.get(), ESBlocks.MARBLE_BRICK_WALL.get(),
-                    ESBlocks.ZILLIUM_BRICK_WALL.get());
+                    ESBlocks.ZILLIUM_BRICK_WALL.get(), ESBlocks.GREEN_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL.get(), ESBlocks.BLUE_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL.get(), ESBlocks.PINK_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get());
+            tag(BlockTags.STAIRS).add(ESBlocks.CUT_GARNET_STAIRS.get(), ESBlocks.GARNET_BRICK_STAIRS.get(),
+                    ESBlocks.CUT_RUBY_STAIRS.get(), ESBlocks.RUBY_BRICK_STAIRS.get(),
+                    ESBlocks.SULFUROUS_STONE_STAIRS.get(),
+                    ESBlocks.MARBLE_STAIRS.get(), ESBlocks.POLISHED_MARBLE_STAIRS.get(),
+                    ESBlocks.MARBLE_BRICK_STAIRS.get(),
+                    ESBlocks.ZILLIUM_BRICK_STAIRS.get(), ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.get(), ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.get(), ESBlocks.PINK_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.get());
+            tag(BlockTags.SLABS).add(ESBlocks.CUT_GARNET_SLAB.get(), ESBlocks.GARNET_BRICK_SLAB.get(),
+                    ESBlocks.CUT_RUBY_SLAB.get(), ESBlocks.RUBY_BRICK_SLAB.get(), ESBlocks.SULFUROUS_STONE_SLAB.get(),
+                    ESBlocks.MARBLE_SLAB.get(), ESBlocks.POLISHED_MARBLE_SLAB.get(), ESBlocks.MARBLE_BRICK_SLAB.get(),
+                    ESBlocks.ZILLIUM_BRICK_SLAB.get(), ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get(), ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get(), ESBlocks.PINK_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB.get(), ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get());
 
             tag(BlockTags.DOORS).add(ESBlocks.COBALT_DOOR.get());
             tag(BlockTags.TRAPDOORS).add(ESBlocks.COBALT_TRAPDOOR.get());
+
+            tag(BlockTags.SCULK_REPLACEABLE_WORLD_GEN).add(ESBlocks.DEEPSLATE_PILLAR.get());
+            tag(BlockTags.ANCIENT_CITY_REPLACEABLE).add(ESBlocks.DEEPSLATE_PILLAR.get());
 
             tag(BlockTags.INFINIBURN_OVERWORLD).add(ESBlocks.SULFUROUS_STONE.get(),
                     ESBlocks.SULFUROUS_STONE_STAIRS.get(),
@@ -136,6 +186,9 @@ public final class ESTagsProvider {
             }
             for (DeferredItem<Item> weapon : ESItems.getRangedWeapons()) {
                 tagRanged(weapon);
+            }
+            for (DeferredItem<Item> weapon : ESItems.getThrowingWeapons()) {
+                tag(Tags.Items.RANGED_WEAPON_TOOLS).add(weapon.get());
             }
             for (DeferredItem<Item> weapon : ESItems.getMagicWeapons()) {
                 tag(MSTags.Items.MAGIC_WEAPON).add(weapon.get());
@@ -174,6 +227,9 @@ public final class ESTagsProvider {
             }
             for (DeferredItem<Item> axe : ESItems.getAxes()) {
                 tag(ItemTags.AXES).add(axe.get());
+            }
+            for (DeferredItem<Item> hoe : ESItems.getHoes()) {
+                tag(ItemTags.HOES).add(hoe.get());
             }
 
             for (DeferredItem<Item> armor : ESItems.getArmor()) {
@@ -221,8 +277,12 @@ public final class ESTagsProvider {
                 tag(MSTags.Items.CASSETTES).add(cassette.get());
             }
 
+            for (DeferredItem<Item> gun : AEESItems.getGuns()) {
+                tag(AEItemTags.GUN_ENCHANTABLE).add(gun.get());
+            }
+
             tag(ESTags.Items.AMMO).addTag(ESTags.Items.AMMO_HANDGUN);
-            tag(ESTags.Items.AMMO_HANDGUN).add(ESItems.HANDGUN_BULLET.get(), ESItems.HEAVY_HANDGUN_BULLET.get());
+            tag(ESTags.Items.AMMO_HANDGUN).add(AEESItems.HANDGUN_BULLET.get(), AEESItems.HEAVY_HANDGUN_BULLET.get());
             tag(ESTags.Items.SHOW_VALUE).add(ESItems.SALESMAN_GOGGLES.get(), ESItems.SALESWOMAN_GLASSES.get());
             tag(ESTags.Items.SHOW_GRIST).add(ESItems.GRIST_VIEWERS.get());
             tag(ESTags.Items.DROPS_BOONDOLLARS).add(ESItems.DEBT_REAPER.get(), ESItems.STOCKS_UPTICKER.get(),
@@ -236,7 +296,9 @@ public final class ESTagsProvider {
                     MSItems.LANCELOTS_LOLLY.get(), MSItems.CANDY_FAN.get(), MSItems.CANDY_SICKLE.get(),
                     MSItems.MARASCHINO_CHERRY_SCYTHE.get(), MSItems.TOFFEE_CLUB.get(), MSItems.CANDY_CANE.get(),
                     MSItems.SHARP_CANDY_CANE.get(), MSItems.CANDY_FORK.get(), ESItems.JAWBITER.get(),
-                    ESItems.CAN_DIE.get());
+                    ESItems.CAN_DIE.get()).addOptional(AEItems.CANDY_CARBINE.getId())
+                    .addOptional(AEItems.SIXLET_SIXSHOOTER.getId());
+            tag(ESTags.Items.CAN_UNREINFORCE_DEEPSLATE).add(MSItems.CROWBAR.get());
 
             tagShield(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE);
 
@@ -265,7 +327,9 @@ public final class ESTagsProvider {
             tag(CuriosTags.CHARM).add(ESItems.SILVER_WATCH.get(), ESItems.BROKEN_WATCH.get());
             tag(CuriosTags.HEAD).add(ESItems.GRIST_VIEWERS.get());
 
-            tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get());
+            tag(Tags.Items.ORES).add(ESItems.CARD_ORE.get(), ESItems.DEEPSLATE_CRUXITE_ORE.get());
+            tag(MSTags.Items.CRUXITE_ORES).add(ESItems.DEEPSLATE_CRUXITE_ORE.get());
+            tag(Tags.Items.ORES_IN_GROUND_DEEPSLATE).add(ESItems.DEEPSLATE_CRUXITE_ORE.get());
 
             tag(Tags.Items.FOODS).add(ESItems.SWEET_TOOTH.get());
             tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED).add(ESItems.PIZZA.get(), ESItems.DIVINE_TEMPTATION_BLOCK.get(),
@@ -274,22 +338,50 @@ public final class ESTagsProvider {
             tag(Tags.Items.EGGS).add(ESItems.BEE_LARVA.get());
             tag(ESTags.Items.BEE_EGGS).add(ESItems.BEE_LARVA.get());
             tag(MSTags.Items.BUGS).add(ESItems.COOKED_BEE_LARVA.get());
+            tag(Tags.Items.FOODS_BREAD).add(ESItems.DREAD.get());
 
             tag(ItemTags.DOORS).add(ESItems.COBALT_DOOR.get());
             tag(ItemTags.TRAPDOORS).add(ESItems.COBALT_TRAPDOOR.get());
+            tag(ItemTags.WALLS).add(ESItems.CUT_GARNET_WALL.get(), ESItems.GARNET_BRICK_WALL.get(),
+                    ESItems.CUT_RUBY_WALL.get(), ESItems.RUBY_BRICK_WALL.get(), ESItems.SULFUROUS_STONE_WALL.get(),
+                    ESItems.MARBLE_WALL.get(), ESItems.POLISHED_MARBLE_WALL.get(), ESItems.MARBLE_BRICK_WALL.get(),
+                    ESItems.ZILLIUM_BRICK_WALL.get(), ESItems.GREEN_ZILLIUM_BRICK_WALL.get(),
+                    ESItems.WAXED_GREEN_ZILLIUM_BRICK_WALL.get(), ESItems.BLUE_ZILLIUM_BRICK_WALL.get(),
+                    ESItems.WAXED_BLUE_ZILLIUM_BRICK_WALL.get(), ESItems.PINK_ZILLIUM_BRICK_WALL.get(),
+                    ESItems.WAXED_PINK_ZILLIUM_BRICK_WALL.get(), ESItems.SECONDARY_ZILLIUM_BRICK_WALL.get(),
+                    ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get());
+            tag(ItemTags.STAIRS).add(ESItems.CUT_GARNET_STAIRS.get(), ESItems.GARNET_BRICK_STAIRS.get(),
+                    ESItems.CUT_RUBY_STAIRS.get(), ESItems.RUBY_BRICK_STAIRS.get(),
+                    ESItems.SULFUROUS_STONE_STAIRS.get(),
+                    ESItems.MARBLE_STAIRS.get(), ESItems.POLISHED_MARBLE_STAIRS.get(),
+                    ESItems.MARBLE_BRICK_STAIRS.get(),
+                    ESItems.ZILLIUM_BRICK_STAIRS.get(), ESItems.GREEN_ZILLIUM_BRICK_STAIRS.get(),
+                    ESItems.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.get(), ESItems.BLUE_ZILLIUM_BRICK_STAIRS.get(),
+                    ESItems.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.get(), ESItems.PINK_ZILLIUM_BRICK_STAIRS.get(),
+                    ESItems.WAXED_PINK_ZILLIUM_BRICK_STAIRS.get(), ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS.get(),
+                    ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.get());
+            tag(ItemTags.SLABS).add(ESItems.CUT_GARNET_SLAB.get(), ESItems.GARNET_BRICK_SLAB.get(),
+                    ESItems.CUT_RUBY_SLAB.get(), ESItems.RUBY_BRICK_SLAB.get(), ESItems.SULFUROUS_STONE_SLAB.get(),
+                    ESItems.MARBLE_SLAB.get(), ESItems.POLISHED_MARBLE_SLAB.get(), ESItems.MARBLE_BRICK_SLAB.get(),
+                    ESItems.ZILLIUM_BRICK_SLAB.get(), ESItems.GREEN_ZILLIUM_BRICK_SLAB.get(),
+                    ESItems.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get(), ESItems.BLUE_ZILLIUM_BRICK_SLAB.get(),
+                    ESItems.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get(), ESItems.PINK_ZILLIUM_BRICK_SLAB.get(),
+                    ESItems.WAXED_PINK_ZILLIUM_BRICK_SLAB.get(), ESItems.SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get());
 
             tag(ItemTags.BOOKSHELF_BOOKS).add(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
 
             tag(MSTags.Items.UNREADABLE)
                     .add(ESItems.ANTI_DIE.get(), ISSESItems.PERFECTLY_UNIQUE_SPELLBOOK.get(),
-                            ESItems.ETERNAL_SHIELD.get(), ESItems.REWINDING_TOTEM.get())
+                            ESItems.ETERNAL_SHIELD.get(), ESItems.REWINDING_TOTEM.get(),
+                            ESItems.DEEPSLATE_REINFORCEMENT.get())
                     .addTag(ESTags.Items.VISION)
                     .addOptional(ItemRegistry.DIVINE_SOULSHARD.getId()).addOptional(ItemRegistry.PYRIUM_INGOT.getId())
                     .addOptional(ItemRegistry.LOST_KNOWLEDGE_FRAGMENT.getId())
                     .addOptional(ItemRegistry.ELDRITCH_PAGE.getId());
             tag(MSTags.Items.LEGENDARY).add(ESItems.INFINI_DIE.get(), ISSESItems.BRANCH_OF_YGGDRASIL.get(),
                     ISSESItems.STAFF_OF_YGGDRASIL.get(), ESItems.END_OF_CIVILIZATION.get(), ESItems.MAKE_IT_RAIN.get(),
-                    ESItems.ETERNAL_SHIELD.get());
+                    ESItems.ETERNAL_SHIELD.get(), ESItems.WHITE_SHARD.get());
 
             tag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS).add(ESItems.RAIN_ARROW.get());
 
@@ -372,6 +464,7 @@ public final class ESTagsProvider {
                     MobEffects.WEAKNESS.getKey());
             tag(ESTags.MobEffects.SILVER_WATCH_BLOCKS).add(MobEffects.DIG_SLOWDOWN.getKey(),
                     MobEffects.MOVEMENT_SLOWDOWN.getKey(), ESMobEffects.TIME_STOP.getKey());
+            tag(ESTags.MobEffects.NEEDED_TO_UNREINFORCE_DEEPSLATE).add(MobEffects.DAMAGE_BOOST.getKey());
 
             tag(MSTags.Effects.SOPOR_SICKNESS_WHITELIST).add(ESMobEffects.COSMIC_PLAGUE.getKey());
         }

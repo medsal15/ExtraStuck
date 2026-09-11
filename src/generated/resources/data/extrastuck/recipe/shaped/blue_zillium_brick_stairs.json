@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "blue_zillium_bricks",
+  "key": {
+    "G": {
+      "item": "extrastuck:blue_zillium_bricks"
+    }
+  },
+  "pattern": [
+    "G  ",
+    "GG ",
+    "GGG"
+  ],
+  "result": {
+    "count": 4,
+    "id": "extrastuck:blue_zillium_brick_stairs"
+  }
+}

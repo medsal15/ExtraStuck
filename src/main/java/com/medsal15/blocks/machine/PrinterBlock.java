@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blocks.ESBlockShapes;
+import com.mojang.serialization.MapCodec;
 import com.mraof.minestuck.block.MSBlocks;
 import com.mraof.minestuck.block.machine.SmallMachineBlock;
 import com.mraof.minestuck.player.IdentifierHandler;
@@ -18,25 +19,34 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.items.IItemHandler;
 
-public class PrinterBlock extends SmallMachineBlock<PrinterBlockEntity> {
+public class PrinterBlock extends SmallMachineBlock<PrinterBlockEntity> implements SimpleWaterloggedBlock {
     private static Map<Direction, VoxelShape> doweled = null;
 
+    public static final MapCodec<PrinterBlock> CODEC = simpleCodec(PrinterBlock::new);
+
     public static final BooleanProperty HAS_DOWEL = BooleanProperty.create("has_dowel");
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public PrinterBlock(Properties properties) {
         super(ESBlockShapes.PRINTER.createRotatedShapes(), ESBlockEntities.PRINTER, properties);
-        registerDefaultState(this.stateDefinition.any().setValue(HAS_DOWEL, false));
+        registerDefaultState(this.stateDefinition.any().setValue(HAS_DOWEL, false).setValue(WATERLOGGED, false));
         doweled = ESBlockShapes.PRINTER.merge(ESBlockShapes.PRINTER_DOWEL).createRotatedShapes();
     }
 
@@ -51,9 +61,14 @@ public class PrinterBlock extends SmallMachineBlock<PrinterBlockEntity> {
     }
 
     @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
+    }
+
+    @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(HAS_DOWEL);
+        builder.add(HAS_DOWEL, WATERLOGGED);
     }
 
     @Override
@@ -97,5 +112,34 @@ public class PrinterBlock extends SmallMachineBlock<PrinterBlockEntity> {
         }
 
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+    }
+
+    @Override
+    @Nullable
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockState state = super.getStateForPlacement(context);
+
+        if (state != null) {
+            Level level = context.getLevel();
+            FluidState fluid = level.getFluidState(context.getClickedPos());
+            state = state.setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
+        }
+
+        return state;
+    }
+
+    @Override
+    protected BlockState updateShape(@Nonnull BlockState state, @Nonnull Direction direction,
+            @Nonnull BlockState neighborState, @Nonnull LevelAccessor level, @Nonnull BlockPos pos,
+            @Nonnull BlockPos neighborPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+        }
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+    }
+
+    @Override
+    public FluidState getFluidState(@Nonnull BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 }

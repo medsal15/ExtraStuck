@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 
 import com.medsal15.ESAttachements;
 import com.medsal15.ESAttachements.ESGristLayerInfo;
+import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blockentities.BlasterBlockEntity;
 import com.medsal15.blockentities.ChargerBlockEntity;
@@ -14,20 +15,25 @@ import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
+import com.medsal15.blockentities.VendingMachineBlockEntity;
+import com.medsal15.blockentities.WirelessChargerBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.alchemyexpanded.items.AEESMissingItems;
+import com.medsal15.compat.alchemyexpanded.items.guns.GunContainer;
 import com.medsal15.compat.create.network.ESCreatePackets;
 import com.medsal15.compat.curios.CuriosCapabilities;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.curios.items.ESCuriosUtils;
 import com.medsal15.data.ESLangProvider;
+import com.medsal15.data.ESLootTableProvider;
 import com.medsal15.items.ESEnergyStorage;
 import com.medsal15.items.ESItems;
+import com.medsal15.items.ESShield;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;
-import com.medsal15.items.guns.GunContainer;
+import com.medsal15.items.components.PanCakeSliceColor;
 import com.medsal15.items.melee.StorageWeapon;
-import com.medsal15.items.shields.ESShield;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuNext;
 import com.medsal15.network.ESPackets.CraftingModusRecipeMenuOpen;
@@ -40,8 +46,10 @@ import com.medsal15.network.ESPackets.MastermindAddAttempt;
 import com.medsal15.network.ESPackets.MastermindDestroy;
 import com.medsal15.network.ESPackets.MastermindDifficulty;
 import com.medsal15.network.ESPackets.MastermindReset;
+import com.medsal15.network.ESPackets.VendingMachineSetCost;
 import com.medsal15.network.ESPackets.SyncBoondollarValues;
 import com.medsal15.network.ESPackets.ToggleMode;
+import com.medsal15.network.ESPackets.VendingMachinePurchase;
 import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.api.uranium.UraniumCapabilities;
 import com.mraof.minestuck.block.MSBlocks;
@@ -55,6 +63,7 @@ import com.mraof.minestuck.player.EnumAspect;
 import com.mraof.minestuck.player.Title;
 import com.mraof.minestuck.world.lands.GristLayerInfo;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
@@ -63,6 +72,8 @@ import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -81,8 +92,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -109,10 +124,12 @@ public final class CommonEvents {
                 ESItems.FLUX_SHIELD.get(), ESItems.OVERCHARGED_MAGNEFORK.get(), ESItems.UNDERCHARGED_MAGNEFORK.get(),
                 ESItems.FIELD_CHARGER.get());
 
-        event.registerItem(Capabilities.ItemHandler.ITEM,
-                // TODO move to a subclass & method to get
-                (stack, u) -> new GunContainer(1, stack),
-                ESItems.HANDGUN.get());
+        if (!ESCompatUtils.isLoaded("alchemyexpanded")) {
+            event.registerItem(Capabilities.ItemHandler.ITEM,
+                    // TODO move to a subclass & method to get
+                    (stack, u) -> new GunContainer(1, stack),
+                    AEESMissingItems.HANDGUN.get());
+        }
         event.registerItem(Capabilities.ItemHandler.ITEM,
                 (stack, u) -> new StorageWeapon.Container(stack, 7), ESItems.TOOLBOX.get());
 
@@ -120,15 +137,21 @@ public final class CommonEvents {
                 PrinterBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.CHARGER.get(),
                 ChargerBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.WIRELESS_CHARGER.get(),
+                WirelessChargerBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.REACTOR.get(),
                 ReactorBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.DOWEL_STORAGE.get(),
                 StorageBlockEntity::getItemHandler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.CARD_STORAGE.get(),
                 StorageBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ESBlockEntities.SMALL_VENDING_MACHINE.get(),
+                VendingMachineBlockEntity::getItemHandler);
 
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.CHARGER.get(),
                 ChargerBlockEntity::getEnergyHandler);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.WIRELESS_CHARGER.get(),
+                WirelessChargerBlockEntity::getEnergyHandler);
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ESBlockEntities.REACTOR.get(),
                 ReactorBlockEntity::getEnergyHandler);
 
@@ -141,6 +164,8 @@ public final class CommonEvents {
                 PrinterBlockEntity::getUraniumHandler);
         event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.CHARGER.get(),
                 ChargerBlockEntity::getUraniumHandler);
+        event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.WIRELESS_CHARGER.get(),
+                WirelessChargerBlockEntity::getUraniumHandler);
         event.registerBlockEntity(UraniumCapabilities.BLOCK, ESBlockEntities.BLASTER.get(),
                 BlasterBlockEntity::getUraniumHandler);
 
@@ -387,6 +412,8 @@ public final class CommonEvents {
                 CommonEvents::exec);
         registrar.playToServer(CraftingModusRecipeMenuSave.ID, CraftingModusRecipeMenuSave.STREAM_CODEC,
                 CommonEvents::exec);
+        registrar.playToServer(VendingMachineSetCost.ID, VendingMachineSetCost.STREAM_CODEC, CommonEvents::exec);
+        registrar.playToServer(VendingMachinePurchase.ID, VendingMachinePurchase.STREAM_CODEC, CommonEvents::exec);
 
         registrar.playToClient(SyncBoondollarValues.ID, SyncBoondollarValues.STREAM_CODEC, CommonEvents::execClient);
         registrar.playToClient(CraftingModusRecipeMenuSync.ID, CraftingModusRecipeMenuSync.STREAM_CODEC,
@@ -491,6 +518,8 @@ public final class CommonEvents {
         }
         if (cake_cuttable)
             handleCakeCutting(event);
+
+        handleDeepslateUnreinforcing(event);
     }
 
     private static final Map<Holder<Block>, Holder<Item>> SUPPORTED_CAKES = Map.ofEntries(
@@ -555,6 +584,87 @@ public final class CommonEvents {
             itemEntity.setDeltaMovement(-.05, 0, 0);
             level.addFreshEntity(itemEntity);
             level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
+
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            event.setCanceled(true);
+        }
+
+        // Special handling for pan cake, as there are 4 colors for the slices
+        if (state.is(MSBlocks.PAN_CAKE)) {
+            int bites = state.getValue(CakeBlock.BITES);
+            ItemStack slice = ESItems.PAN_CAKE_SLICE.toStack();
+            if (bites < 6) {
+                level.setBlock(pos, state.setValue(CakeBlock.BITES, bites + 1), 3);
+                PanCakeSliceColor color = PanCakeSliceColor.TRIPLE;
+                switch (bites % 3) {
+                    case 0:
+                        color = PanCakeSliceColor.MAGENTA;
+                        break;
+                    case 1:
+                        color = PanCakeSliceColor.YELLOW;
+                        break;
+                    case 2:
+                        color = PanCakeSliceColor.CYAN;
+                        break;
+                }
+                slice.set(ESDataComponents.PAN_CAKE_SLICE_COLOR, color);
+            } else {
+                level.removeBlock(pos, false);
+            }
+
+            ItemEntity itemEntity = new ItemEntity(level, pos.getX() + (bites * .1), pos.getY() + .2,
+                    pos.getZ() + 0.5, slice);
+            itemEntity.setDeltaMovement(-.05, 0, 0);
+            level.addFreshEntity(itemEntity);
+            level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
+
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            event.setCanceled(true);
+        }
+    }
+
+    private static void handleDeepslateUnreinforcing(final PlayerInteractEvent.RightClickBlock event) {
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
+        BlockState state = event.getLevel().getBlockState(pos);
+        Player player = event.getEntity();
+        ItemStack stack = event.getItemStack();
+
+        if (player.getCooldowns().isOnCooldown(stack.getItem()))
+            return;
+
+        if (state.is(Blocks.REINFORCED_DEEPSLATE) && stack.is(ESTags.Items.CAN_UNREINFORCE_DEEPSLATE)) {
+            boolean hasNeededEffect = false;
+            for (MobEffectInstance effect : player.getActiveEffects()) {
+                if (effect.getEffect().is(ESTags.MobEffects.NEEDED_TO_UNREINFORCE_DEEPSLATE)) {
+                    hasNeededEffect = true;
+                    break;
+                }
+            }
+            if (!hasNeededEffect) {
+                player.displayClientMessage(Component.translatable(ESLangProvider.UNREINFORCE_MISSING_EFFECT), true);
+                return;
+            }
+            stack.hurtAndBreak(55, player, LivingEntity.getSlotForHand(event.getHand()));
+            level.setBlock(pos, Blocks.DEEPSLATE.defaultBlockState(), 3);
+            level.playSound(player, pos, ESSounds.UNREINFORCE_DEEPSLATE.get(), SoundSource.BLOCKS);
+            player.getCooldowns().addCooldown(stack.getItem(), 1200);
+
+            MinecraftServer server = level.getServer();
+            if (server != null && level instanceof ServerLevel serverLevel) {
+                LootTable table = server.reloadableRegistries()
+                        .getLootTable(ESLootTableProvider.TableSubProvider.DEEPSLATE_UNREINFORCING);
+                if (table != null) {
+                    LootParams.Builder builder = new LootParams.Builder(serverLevel).withLuck(player.getLuck());
+                    LootParams params = builder.create(LootContextParamSet.builder().build());
+                    ObjectArrayList<ItemStack> rewards = table.getRandomItems(params);
+                    for (ItemStack reward : rewards) {
+                        if (!player.getInventory().add(reward)) {
+                            player.drop(reward, false);
+                        }
+                    }
+                }
+            }
 
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);

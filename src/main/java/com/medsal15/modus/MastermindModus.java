@@ -18,6 +18,8 @@ import net.minecraft.world.item.component.ItemContainerContents;
 import net.neoforged.fml.LogicalSide;
 
 public class MastermindModus extends BaseModus {
+    public static final byte DIFFICULTY = 0;
+
     private int difficulty = 0;
 
     public MastermindModus(ModusType<? extends MastermindModus> type, LogicalSide side) {
@@ -81,5 +83,24 @@ public class MastermindModus extends BaseModus {
             return modus;
         }
         return super.getModusItem();
+    }
+
+    public int getDifficulty() {
+        if (difficulty == 0)
+            return ConfigServer.MASTERMIND_DIFFICULTY.get();
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        difficulty = Math.clamp(difficulty, 1, 6);
+        this.difficulty = difficulty;
+    }
+
+    @Override
+    public void setValue(ServerPlayer player, byte type, int value) {
+        if (type == DIFFICULTY) {
+            setDifficulty(value);
+            markDirty();
+        }
     }
 }

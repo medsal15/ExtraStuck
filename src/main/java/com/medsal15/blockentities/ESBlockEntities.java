@@ -29,6 +29,11 @@ public final class ESBlockEntities {
             () -> BlockEntityType.Builder.<ChargerBlockEntity>of(ChargerBlockEntity::new, ESBlocks.CHARGER.get())
                     .build(null));
     @SuppressWarnings("null")
+    public static final Supplier<BlockEntityType<WirelessChargerBlockEntity>> WIRELESS_CHARGER = BLOCK_ENTITY_TYPES
+            .register("wireless_charger", () -> BlockEntityType.Builder
+                    .<WirelessChargerBlockEntity>of(WirelessChargerBlockEntity::new, ESBlocks.WIRELESS_CHARGER.get())
+                    .build(null));
+    @SuppressWarnings("null")
     public static final Supplier<BlockEntityType<ReactorBlockEntity>> REACTOR = BLOCK_ENTITY_TYPES.register("reactor",
             () -> BlockEntityType.Builder.<ReactorBlockEntity>of(ReactorBlockEntity::new, ESBlocks.REACTOR.get())
                     .build(null));
@@ -37,6 +42,13 @@ public final class ESBlockEntities {
             .register("uranium_blaster",
                     () -> BlockEntityType.Builder
                             .<BlasterBlockEntity>of(BlasterBlockEntity::new, ESBlocks.URANIUM_BLASTER.get())
+                            .build(null));
+    @SuppressWarnings("null")
+    public static final Supplier<BlockEntityType<VendingMachineBlockEntity>> SMALL_VENDING_MACHINE = BLOCK_ENTITY_TYPES
+            .register("small_vending_machine",
+                    () -> BlockEntityType.Builder
+                            .<VendingMachineBlockEntity>of(VendingMachineBlockEntity::new,
+                                    ESBlocks.SMALL_VENDING_MACHINE.get())
                             .build(null));
     @SuppressWarnings("null")
     public static final Supplier<BlockEntityType<StorageBlockEntity.Dowel>> DOWEL_STORAGE = BLOCK_ENTITY_TYPES

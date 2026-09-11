@@ -1,6 +1,7 @@
 package com.medsal15.data;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.items.ESItems;
@@ -41,10 +42,13 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.BOONDOLLARS_FOR_IDIOTS.get());
         basicItem(ESItems.COSMIC_PLAGUE_SPORE.get());
         basicItem(ESItems.REWINDING_TOTEM.get());
+        basicItem(ESItems.DEEPSLATE_REINFORCEMENT.get());
 
         basicItem(ISSESItems.CASSETTE_DEAD_KING_LULLABY.get());
         basicItem(ISSESItems.CASSETTE_FLAME_STILL_BURNS.get());
         basicItem(ISSESItems.CASSETTE_WHISPERS_OF_ICE.get());
+
+        basicItem(ESItems.GUIDE.get());
     }
 
     private void registerShields() {
@@ -133,8 +137,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.PUNCH_ARROW.get());
         basicItem(ESItems.BLANK_ARROW.get());
 
-        basicItem(ESItems.HANDGUN_BULLET.get());
-        basicItem(ESItems.HEAVY_HANDGUN_BULLET.get());
+        basicItem(AEESItems.HANDGUN_BULLET.get());
+        basicItem(AEESItems.HEAVY_HANDGUN_BULLET.get());
     }
 
     private void modelDie(DeferredItem<Item> die, String path) {
@@ -180,16 +184,18 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.DEATH_MACE.get());
         handheldItem(ESItems.WITHERED_MACE.get());
         handheldItem(ESItems.D8TH_M8CE.get());
+        handheldItem(ESItems.COPPER_MACE.get());
         // Keys
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
-        handheldItem(ESItems.OFFICE_KEY.get());
+        handheldItem(AEESItems.OFFICE_KEY.get());
         handheldItem(ESItems.ANCIENT_VAULT_OPENER.get());
         handheldItem(ESItems.VAULT_MELTER.get());
         // Wands
         handheldItem(ESItems.BAGUETTE_MAGIQUE.get());
         handheldItem(ESItems.MONEY_MAGIC.get());
         handheldItem(ESItems.WIND_WAND.get());
+        handheldItem(ESItems.WAND_OF_LIGHT.get());
         // Canes
         handheldItem(ESItems.IRON_CROWBAR.get());
         // Forks
@@ -206,6 +212,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         // Swords
         handheldItem(ESItems.SUN_REAVER.get());
         handheldItem(ISSESItems.LEADER_SWORD.get());
+        handheldItem(ESItems.SHADOW_KATANA.get());
+        handheldItem(ESItems.WHITE_SHARD.get());
         // Sickles
         handheldItem(ESItems.NEW_MOON.get());
         handheldItem(ESItems.PIRATE_HOOK.get());
@@ -213,6 +221,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.END_OF_CIVILIZATION.get());
         // Scythes
         handheldItem(ESItems.DEBT_REAPER.get());
+        handheldItem(ESItems.BLACK_MOONSHINE_COLLECTOR.get());
         // Fans
         handheldItem(ESItems.NONE_OF_YOUR_BUSINESS.get());
         // Lances
@@ -231,6 +240,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         ItemModelBuilder builder = withExistingParent(path, "item/generated")
                 .texture("layer0", ExtraStuck.modid("item/" + path));
         ModelBuilder<ItemModelBuilder>.TransformsBuilder transforms = builder.transforms();
+
         transforms.transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(-80, 260, -40)
                 .translation(-1, -2, 2.5f).scale(.9f);
         transforms.transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND).rotation(-80, -280, 40)
@@ -239,6 +249,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
                 .translation(1.13f, 3.2f, 1.13f).scale(.68f);
         transforms.transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND).rotation(0, 90, -25)
                 .translation(1.13f, 3.2f, 1.13f).scale(.68f);
+
         builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
                 .model(withExistingParent(path + "_pulling_0", "item/bow").texture("layer0",
                         ExtraStuck.modid("item/" + path + "_pulling_0")));
@@ -252,15 +263,57 @@ public final class ESItemModelProvider extends ItemModelProvider {
                         ExtraStuck.modid("item/" + path + "_pulling_2")));
     }
 
+    private void crossbowWeapon(DeferredItem<Item> crossbow, boolean supportsFireworks) {
+        String path = crossbow.getId().getPath().toString();
+        ItemModelBuilder builder = withExistingParent(path, "item/crossbow")
+                .texture("layer0", ExtraStuck.modid("item/" + path));
+        ModelBuilder<ItemModelBuilder>.TransformsBuilder transforms = builder.transforms();
+
+        transforms.transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(-90, 0, -60).translation(2, .1f, -3)
+                .scale(.9f);
+        transforms.transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND).rotation(-90, 0, 30).translation(2, .1f, -3)
+                .scale(.9f);
+        transforms.transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND).rotation(-90, 0, -55)
+                .translation(1.13f, 3.2f, 1.13f).scale(.68f);
+        transforms.transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND).rotation(-90, 0, 35)
+                .translation(1.13f, 3.2f, 1.13f).scale(.68f);
+
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
+                .model(withExistingParent(path + "_pulling_0", "item/crossbow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_pulling_0")));
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), .58f)
+                .model(withExistingParent(path + "_pulling_1", "item/crossbow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_pulling_1")));
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("pulling"), 1)
+                .predicate(ResourceLocation.withDefaultNamespace("pull"), 1)
+                .model(withExistingParent(path + "_pulling_2", "item/crossbow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_pulling_2")));
+        builder.override().predicate(ResourceLocation.withDefaultNamespace("charged"), 1)
+                .model(withExistingParent(path + "_loaded", "item/crossbow").texture("layer0",
+                        ExtraStuck.modid("item/" + path + "_loaded")));
+        if (supportsFireworks) {
+            builder.override().predicate(ResourceLocation.withDefaultNamespace("charged"), 1)
+                    .predicate(ResourceLocation.withDefaultNamespace("firework"), 1)
+                    .model(withExistingParent(path + "_firework", "item/crossbow").texture("layer0",
+                            ExtraStuck.modid("item/" + path + "_firework")));
+        }
+    }
+
     private void registerRangedWeapons() {
         handheldItem(ESItems.INCOMPLETE_MECHANICAL_RADBOW.get());
-        handheldItem(ESItems.HANDGUN.get());
+        handheldItem(AEESItems.HANDGUN.get());
+
+        crossbowWeapon(ESItems.RADBOW, false);
+        crossbowWeapon(ESItems.MECHANICAL_RADBOW, false);
+        crossbowWeapon(ESItems.DEEP_CROSSBOW, true);
 
         bowWeapon(ESItems.BOWWOB);
         bowWeapon(ESItems.RAINBOW_BOW);
         bowWeapon(ESItems.MAKE_IT_RAIN);
         bowWeapon(ESItems.SHOOTING_STAR);
         bowWeapon(ESItems.BWO);
+        bowWeapon(ESItems.SILENT_SHOT);
 
         handheldItem(ESItems.BEENADE.get());
         handheldItem(ESItems.LEMONNADE.get());
@@ -325,6 +378,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         handheldItem(ESItems.SHINEBREAKER.get());
         // Axes
         handheldItem(ESItems.DOORBUSTER.get());
+        // Hoes
+        handheldItem(ESItems.TILL_SILENCE.get());
         // Curios
         basicItem(ESItems.SILVER_WATCH.get());
         basicItem(ESItems.BROKEN_WATCH.get());
@@ -395,6 +450,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.COSMIC_SPOREO.get());
         basicItem(ESItems.SPAM.get());
         basicItem(ESItems.LEMON_CAKE.get());
+        basicItem(ESItems.SCULK_SOUP.get());
+        basicItem(ESItems.DREAD.get());
 
         basicItem(ESItems.DESERT_JUICE.get());
         basicItem(ESItems.ROCKET_JUMP.get());
@@ -404,10 +461,15 @@ public final class ESItemModelProvider extends ItemModelProvider {
         withExistingParent(ESItems.PRINTER.getId().toString(), modLoc("block/printer"));
         withExistingParent(ESItems.DISPRINTER.getId().toString(), modLoc("block/disprinter"));
         withExistingParent(ESItems.CHARGER.getId().toString(), modLoc("block/charger"));
+        withExistingParent(ESItems.WIRELESS_CHARGER.getId().toString(), modLoc("block/wireless_charger"));
         withExistingParent(ESItems.REACTOR.getId().toString(), modLoc("block/reactor"));
         withExistingParent(ESItems.URANIUM_BLASTER.getId().toString(), modLoc("block/uranium_blaster"));
+        withExistingParent(ESItems.SMALL_VENDING_MACHINE.getId().toString(), modLoc("block/small_vending_machine"));
         withExistingParent(ESItems.DOWEL_STORAGE.getId().toString(), modLoc("block/dowel_storage"));
         withExistingParent(ESItems.CARD_STORAGE.getId().toString(), modLoc("block/card_storage_closed"));
+
+        withExistingParent(ESItems.DEEPSLATE_PILLAR.getId().toString(), modLoc("block/deepslate_pillar"));
+        withExistingParent(ESItems.DEEPSLATE_CRUXITE_ORE.getId().toString(), modLoc("block/deepslate_cruxite_ore"));
 
         withExistingParent(ESItems.CUT_GARNET.getId().toString(), modLoc("block/cut_garnet"));
         withExistingParent(ESItems.CUT_GARNET_STAIRS.getId().toString(), modLoc("block/cut_garnet_stairs"));
@@ -456,6 +518,60 @@ public final class ESItemModelProvider extends ItemModelProvider {
         withExistingParent(ESItems.ZILLIUM_BRICK_STAIRS.getId().toString(), modLoc("block/zillium_brick_stairs"));
         withExistingParent(ESItems.ZILLIUM_BRICK_SLAB.getId().toString(), modLoc("block/zillium_brick_slab"));
         wallInventory(ESItems.ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/zillium_bricks"));
+
+        withExistingParent(ESItems.GREEN_ZILLIUM_BRICKS.getId().toString(), modLoc("block/green_zillium_bricks"));
+        withExistingParent(ESItems.GREEN_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/green_zillium_brick_stairs"));
+        withExistingParent(ESItems.GREEN_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/green_zillium_brick_slab"));
+        wallInventory(ESItems.GREEN_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/green_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_GREEN_ZILLIUM_BRICKS.getId().toString(), modLoc("block/green_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/green_zillium_brick_stairs"));
+        withExistingParent(ESItems.WAXED_GREEN_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/green_zillium_brick_slab"));
+        wallInventory(ESItems.WAXED_GREEN_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/green_zillium_bricks"));
+
+        withExistingParent(ESItems.BLUE_ZILLIUM_BRICKS.getId().toString(), modLoc("block/blue_zillium_bricks"));
+        withExistingParent(ESItems.BLUE_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/blue_zillium_brick_stairs"));
+        withExistingParent(ESItems.BLUE_ZILLIUM_BRICK_SLAB.getId().toString(), modLoc("block/blue_zillium_brick_slab"));
+        wallInventory(ESItems.BLUE_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/blue_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_BLUE_ZILLIUM_BRICKS.getId().toString(), modLoc("block/blue_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/blue_zillium_brick_stairs"));
+        withExistingParent(ESItems.WAXED_BLUE_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/blue_zillium_brick_slab"));
+        wallInventory(ESItems.WAXED_BLUE_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/blue_zillium_bricks"));
+
+        withExistingParent(ESItems.PINK_ZILLIUM_BRICKS.getId().toString(), modLoc("block/pink_zillium_bricks"));
+        withExistingParent(ESItems.PINK_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/pink_zillium_brick_stairs"));
+        withExistingParent(ESItems.PINK_ZILLIUM_BRICK_SLAB.getId().toString(), modLoc("block/pink_zillium_brick_slab"));
+        wallInventory(ESItems.PINK_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/pink_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_PINK_ZILLIUM_BRICKS.getId().toString(), modLoc("block/pink_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_PINK_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/pink_zillium_brick_stairs"));
+        withExistingParent(ESItems.WAXED_PINK_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/pink_zillium_brick_slab"));
+        wallInventory(ESItems.WAXED_PINK_ZILLIUM_BRICK_WALL.getId().toString(), modLoc("block/pink_zillium_bricks"));
+
+        withExistingParent(ESItems.SECONDARY_ZILLIUM_BRICKS.getId().toString(),
+                modLoc("block/secondary_zillium_bricks"));
+        withExistingParent(ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/secondary_zillium_brick_stairs"));
+        withExistingParent(ESItems.SECONDARY_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/secondary_zillium_brick_slab"));
+        wallInventory(ESItems.SECONDARY_ZILLIUM_BRICK_WALL.getId().toString(),
+                modLoc("block/secondary_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_SECONDARY_ZILLIUM_BRICKS.getId().toString(),
+                modLoc("block/secondary_zillium_bricks"));
+        withExistingParent(ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.getId().toString(),
+                modLoc("block/secondary_zillium_brick_stairs"));
+        withExistingParent(ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.getId().toString(),
+                modLoc("block/secondary_zillium_brick_slab"));
+        wallInventory(ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.getId().toString(),
+                modLoc("block/secondary_zillium_bricks"));
 
         basicItem(ESItems.NORMAL_CAT_PLUSH.get());
     }

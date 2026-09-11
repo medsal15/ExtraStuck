@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "extrastuck:block/pink_zillium_bricks",
+    "side": "extrastuck:block/pink_zillium_bricks",
+    "top": "extrastuck:block/pink_zillium_bricks"
+  }
+}

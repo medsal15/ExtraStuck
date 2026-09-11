@@ -1,0 +1,23 @@
+{
+    "name": "Black Moonshine Collector",
+    "icon": "extrastuck:black_moonshine_collector",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:black_moonshine_collector"
+            },
+            "text": "A dark scythe that prevents enemies from seeing.$(br2)$(3)$(l)Special:$() Applies Blindness to enemies for 5 seconds on hit."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Till Silence and New Moon in a Punch Designix.",
+            "left": "extrastuck:till_silence",
+            "mode": "||",
+            "right": "extrastuck:new_moon",
+            "result": "extrastuck:black_moonshine_collector"
+        }
+    ]
+}

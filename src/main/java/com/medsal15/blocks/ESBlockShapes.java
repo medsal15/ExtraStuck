@@ -6,6 +6,10 @@ public final class ESBlockShapes {
     public static final CustomVoxelShape CHARGER = new CustomVoxelShape(new double[][] {
             { 0, 0, 0, 16, 8, 16 }
     });
+    public static final CustomVoxelShape WIRELESS_CHARGER = new CustomVoxelShape(new double[][] {
+            { 0, 0, 0, 16, 8, 16 },
+            { 6, 8, 6, 10, 16, 10 }
+    });
 
     public static final CustomVoxelShape PRINTER = new CustomVoxelShape(new double[][] {
             { 0, 0, 0, 16, 12, 16 }
@@ -19,6 +23,6 @@ public final class ESBlockShapes {
             { 3, 12, 3, 13, 16, 13 }
     });
 
-    public static final CustomVoxelShape URANIUM_BLASTER = new CustomVoxelShape(
+    public static final CustomVoxelShape FULL_BLOCK = new CustomVoxelShape(
             new double[][] { { 0, 0, 0, 16, 16, 16 } });
 }

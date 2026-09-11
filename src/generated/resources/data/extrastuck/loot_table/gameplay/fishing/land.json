@@ -31,7 +31,7 @@
         {
           "type": "minecraft:loot_table",
           "quality": -1,
-          "value": "extrastuck:gameplay/fishing/land/fish",
+          "value": "minecraft:gameplay/fishing/fish",
           "weight": 85
         }
       ],

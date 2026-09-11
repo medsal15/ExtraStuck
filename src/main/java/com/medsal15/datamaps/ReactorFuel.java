@@ -24,6 +24,6 @@ public record ReactorFuel(int duration, ItemStack result) {
 
     @SubscribeEvent
     public static void registerDataMapTypes(final RegisterDataMapTypesEvent event) {
-        event.register(ReactorFuel.REACTOR_MAP);
+        event.register(REACTOR_MAP);
     }
 }

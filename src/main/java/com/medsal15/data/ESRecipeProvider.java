@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nonnull;
 
 import com.medsal15.ExtraStuck;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.conditions.ConfigCondition;
@@ -47,6 +48,7 @@ import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
 import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 import net.neoforged.neoforge.registries.DeferredItem;
+import vazkii.patchouli.common.item.PatchouliDataComponents;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.CommonTags;
@@ -58,6 +60,7 @@ public final class ESRecipeProvider extends RecipeProvider {
     private static final ICondition CREATE_LOADED = new ModLoadedCondition("create");
     private static final ICondition FARMERSDELIGHT_LOADED = new ModLoadedCondition("farmersdelight");
     private static final ICondition ISS_LOADED = new ModLoadedCondition("irons_spellbooks");
+    private static final ICondition ALEX_LOADED = new ModLoadedCondition("alchemyexpanded");
 
     public ESRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
@@ -77,6 +80,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         blockRecipes(output);
 
         issRecipes(output);
+
+        ItemStack guide = ESItems.GUIDE.toStack();
+        guide.set(PatchouliDataComponents.BOOK, ExtraStuck.modid("extrastuck"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, guide).requires(Items.BOOK)
+                .requires(MSItems.CRUXITE_BLOCK)
+                .unlockedBy("has_cruxite", has(MSItems.RAW_CRUXITE))
+                .save(output.withConditions(new ModLoadedCondition("patchouli")), modid("shapeless/guide"));
 
         CombinationRecipeBuilder.of(ESItems.ANTI_DIE)
                 .input(ESItems.STICKY_DIE).and().input(MSItems.MIRROR)
@@ -135,6 +145,10 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.REWINDING_TOTEM)
                 .grist(GristTypes.MARBLE, 270).grist(GristTypes.QUARTZ, 180)
                 .grist(GristTypes.ARTIFACT, 4321).grist(GristTypes.RUBY, 765)
+                .build(output);
+
+        GristCostRecipeBuilder.of(ESItems.DEEPSLATE_REINFORCEMENT)
+                .grist(GristTypes.DIAMOND, 1200).grist(GristTypes.CHALK, 550).grist(GristTypes.ZILLIUM, 1)
                 .build(output);
     }
 
@@ -512,6 +526,14 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.BIG_CLUB)
                 .grist(GristTypes.BUILD, 30).grist(GristTypes.GOLD, 1)
                 .build(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.COPPER_MACE.toStack())
+                .pattern("B")
+                .pattern("R")
+                .define('B', Tags.Items.STORAGE_BLOCKS_COPPER)
+                .define('R', Items.LIGHTNING_ROD)
+                .unlockedBy("has_lightning_rod", has(Items.LIGHTNING_ROD))
+                .save(output, modid("shaped/copper_mace"));
         // #endregion Clubs
 
         // #region Keys
@@ -532,10 +554,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GARNET, 6).grist(GristTypes.SHALE, 43)
                 .build(output);
 
-        CombinationRecipeBuilder.of(ESItems.OFFICE_KEY)
+        CombinationRecipeBuilder.of(AEESItems.OFFICE_KEY)
                 .input(MSItems.HOUSE_KEY).or().input(Items.IRON_DOOR)
                 .build(output);
-        GristCostRecipeBuilder.of(ESItems.OFFICE_KEY)
+        GristCostRecipeBuilder.of(AEESItems.OFFICE_KEY)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
 
@@ -588,6 +610,16 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output, modid("wind_wand_wind_charge"));
         GristCostRecipeBuilder.of(ESItems.WIND_WAND)
                 .grist(GristTypes.MERCURY, 450).grist(GristTypes.CAULK, 360).grist(GristTypes.MARBLE, 150)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.WAND_OF_LIGHT)
+                .input(MSItems.NEEDLE_WAND).and().input(Items.GLOWSTONE)
+                .build(output, modid("wand_of_light_glowstone"));
+        CombinationRecipeBuilder.of(ESItems.WAND_OF_LIGHT)
+                .input(MSItems.NEEDLE_WAND).and().input(Items.GLOWSTONE_DUST)
+                .build(output, modid("wand_of_light_glowstone_dust"));
+        GristCostRecipeBuilder.of(ESItems.WAND_OF_LIGHT)
+                .grist(GristTypes.QUARTZ, 450).grist(GristTypes.GOLD, 180).grist(GristTypes.CHALK, 250)
                 .build(output);
         // #endregion Wands
 
@@ -664,6 +696,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.STOCKS_UPTICKER)
                 .grist(GristTypes.GOLD, 750).grist(GristTypes.GARNET, 400).grist(GristTypes.URANIUM, 25)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SYRINGE)
+                .input(ESItems.THE_STING).and().input(ESItems.CRUSADER_CROSSBOLT)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SYRINGE)
+                .grist(GristTypes.MERCURY, 625).grist(GristTypes.QUARTZ, 256).grist(GristTypes.RUST, 1333)
+                .build(output);
         // #endregion Batons
 
         // #region Swords
@@ -682,6 +721,20 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output.withConditions(not(ISS_LOADED)));
         GristCostRecipeBuilder.of(ISSESItems.LEADER_SWORD)
                 .grist(GristTypes.RUBY, 88).grist(GristTypes.URANIUM, 150).grist(GristTypes.AMBER, 1511)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SHADOW_KATANA)
+                .input(MSItems.KATANA).or().input(Items.SCULK_VEIN)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SHADOW_KATANA)
+                .grist(GristTypes.TAR, 333).grist(GristTypes.DIAMOND, 23).grist(GristTypes.COBALT, 500)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.WHITE_SHARD)
+                .input(ESItems.SHADOW_KATANA).and().input(ESItems.DEEPSLATE_REINFORCEMENT)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.WHITE_SHARD)
+                .grist(GristTypes.QUARTZ, 25000).grist(GristTypes.DIAMOND, 1999).grist(GristTypes.MARBLE, 5500)
                 .build(output);
         // #endregion Swords
 
@@ -730,6 +783,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.LEAFBURNER)
                 .grist(GristTypes.AMBER, 767).grist(GristTypes.TAR, 500).grist(GristTypes.BUILD, 750)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.BLACK_MOONSHINE_COLLECTOR)
+                .input(ESItems.TILL_SILENCE).or().input(ESItems.NEW_MOON)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BLACK_MOONSHINE_COLLECTOR)
+                .grist(GristTypes.TAR, 2666).grist(GristTypes.QUARTZ, 750).grist(GristTypes.AMETHYST, 450)
                 .build(output);
         // #endregion Scythes
 
@@ -812,7 +872,18 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .addStep(DeployerApplicationRecipe::new, sub -> sub.require(MSItems.COMPUTER_PARTS))
                 .addStep(DeployerApplicationRecipe::new, sub -> sub.require(ESTags.Items.BRASS_NUGGETS))
                 .addStep(PressingRecipe::new, sub -> sub)
-                .build(output.withConditions(new ModLoadedCondition("create")));
+                .build(output.withConditions(CREATE_LOADED));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ESItems.DEEP_CROSSBOW.toStack())
+                .pattern("WIW")
+                .pattern("SCS")
+                .pattern(" W ")
+                .define('W', Items.STICK)
+                .define('S', Items.STRING)
+                .define('I', ESItems.DEEPSLATE_REINFORCEMENT)
+                .define('C', ESItems.SILENT_SHOT)
+                .unlockedBy("has_silent_shot", has(ESItems.SILENT_SHOT))
+                .save(output, modid("shaped/deep_cross_bow"));
         // #endregion Crossbows
 
         // #region Bows
@@ -852,6 +923,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         GristCostRecipeBuilder.of(ESItems.BWO)
                 .grist(GristTypes.ARTIFACT, 3)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SILENT_SHOT)
+                .input(ESItems.SHOOTING_STAR).and().input(Items.SCULK_CATALYST)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SILENT_SHOT)
+                .grist(GristTypes.QUARTZ, 900).grist(GristTypes.TAR, 360).grist(GristTypes.DIAMOND, 100)
                 .build(output);
         // #endregion Bows
 
@@ -1033,7 +1111,7 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Cards
 
-        GristCostRecipeBuilder.of(ESItems.HANDGUN)
+        GristCostRecipeBuilder.of(AEESItems.HANDGUN)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
 
@@ -1188,19 +1266,19 @@ public final class ESRecipeProvider extends RecipeProvider {
     }
 
     private void ammoRecipes(@Nonnull RecipeOutput output) {
-        CombinationRecipeBuilder.of(ESItems.HANDGUN_BULLET)
+        CombinationRecipeBuilder.of(AEESItems.HANDGUN_BULLET)
                 .input(Items.GUNPOWDER).and().input(Items.IRON_NUGGET)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.HANDGUN_BULLET)
+                .build(output.withConditions(not(ALEX_LOADED)));
+        GristCostRecipeBuilder.of(AEESItems.HANDGUN_BULLET)
                 .grist(GristTypes.CHALK, 3).grist(GristTypes.TAR, 1)
-                .build(output);
+                .build(output.withConditions(not(ALEX_LOADED)));
 
-        CombinationRecipeBuilder.of(ESItems.HEAVY_HANDGUN_BULLET)
-                .input(ESItems.HANDGUN_BULLET).and().input(Items.IRON_INGOT)
-                .build(output);
-        GristCostRecipeBuilder.of(ESItems.HEAVY_HANDGUN_BULLET)
+        CombinationRecipeBuilder.of(AEESItems.HEAVY_HANDGUN_BULLET)
+                .input(AEESItems.HANDGUN_BULLET).and().input(Items.IRON_INGOT)
+                .build(output.withConditions(not(ALEX_LOADED)));
+        GristCostRecipeBuilder.of(AEESItems.HEAVY_HANDGUN_BULLET)
                 .grist(GristTypes.RUST, 5).grist(GristTypes.TAR, 2)
-                .build(output);
+                .build(output.withConditions(not(ALEX_LOADED)));
     }
 
     private void armorRecipes(@Nonnull RecipeOutput output) {
@@ -1438,6 +1516,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 260).grist(GristTypes.AMBER, 12).grist(GristTypes.CHALK, 12)
                 .grist(GristTypes.AMETHYST, 12).grist(GristTypes.GARNET, 12)
                 .build(output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.MASTERMIND_MODUS_CARD.toStack())
+                .requires(ESItems.MASTERMIND_MODUS_CARD)
+                .unlockedBy("has_modus_card", has(ESItems.MASTERMIND_MODUS_CARD))
+                .save(output, modid("shapeless/mastermind_modus_difficulty_reset"));
 
         CombinationRecipeBuilder.of(ESItems.MASTERMIND_DISK)
                 .input(MSItems.BLANK_DISK).and().input(ESItems.MASTERMIND_MODUS_CARD)
@@ -1603,6 +1685,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .requires(CreateESItems.GRIST_FILTER)
                 .unlockedBy("has_grist_filter", has(CreateESItems.GRIST_FILTER))
                 .save(output.withConditions(CREATE_LOADED), modid("shapeless/grist_filter_reset"));
+
+        CombinationRecipeBuilder.of(ESItems.TILL_SILENCE)
+                .input(Items.DIAMOND_HOE).and().input(Items.SCULK_SENSOR)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.TILL_SILENCE)
+                .grist(GristTypes.TAR, 133).grist(GristTypes.DIAMOND, 33)
+                .build(output);
     }
 
     private void foodRecipes(@Nonnull RecipeOutput output) {
@@ -1871,6 +1960,15 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .source(ESItems.LEMON_CAKE.get())
                 .multiplier(1f / 7f)
                 .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MSItems.PAN_CAKE)
+                .requires(ESItems.PAN_CAKE_SLICE, 7)
+                .unlockedBy("has_pan_cake_slice", has(ESItems.PAN_CAKE_SLICE))
+                .save(output, modid("shapeless/pan_cake"));
+        SourceGristCostBuilder.of(ESItems.PAN_CAKE_SLICE)
+                .source(MSItems.PAN_CAKE.get())
+                .multiplier(1f / 7f)
+                .build(output.withConditions(not(FARMERSDELIGHT_LOADED)));
         // #endregion Cake Slice
 
         CookingPotRecipeBuilder.cookingPotRecipe(ESItems.MORTAL_TEMPTATION_BLOCK, 1, 200, .5F, Items.CAULDRON)
@@ -1951,6 +2049,20 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.LEMON_CAKE)
                 .grist(GristTypes.AMBER, 21).grist(GristTypes.MARBLE, 11).grist(GristTypes.SULFUR, 9)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SCULK_SOUP)
+                .input(Items.BOWL).or().input(Items.SCULK)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SCULK_SOUP)
+                .grist(GristTypes.BUILD, 1).grist(GristTypes.TAR, 10)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.DREAD)
+                .input(Items.BREAD).or().input(Items.SCULK_VEIN)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.DREAD)
+                .grist(GristTypes.TAR, 9).grist(GristTypes.QUARTZ, 1)
+                .build(output);
     }
 
     private void drinkRecipes(@Nonnull RecipeOutput output) {
@@ -2001,6 +2113,14 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 50).grist(GristTypes.GOLD, 15).grist(GristTypes.URANIUM, 25)
                 .build(output);
 
+        CombinationRecipeBuilder.of(ESItems.WIRELESS_CHARGER)
+                .input(ESItems.CHARGER).or().input(Items.LIGHTNING_ROD)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.WIRELESS_CHARGER)
+                .grist(GristTypes.BUILD, 65).grist(GristTypes.GOLD, 20).grist(GristTypes.URANIUM, 35)
+                .grist(GristTypes.SHALE, 90)
+                .build(output);
+
         CombinationRecipeBuilder.of(ESItems.REACTOR)
                 .input(ESItems.CHARGER).and().input(MSItems.URANIUM_BLOCK)
                 .build(output);
@@ -2015,6 +2135,14 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.URANIUM_BLASTER)
                 .grist(GristTypes.RUST, 150).grist(GristTypes.RUBY, 1)
                 .grist(GristTypes.URANIUM, 25)
+                .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.SMALL_VENDING_MACHINE)
+                .input(Items.DROPPER).or().input(Items.GOLD_NUGGET)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SMALL_VENDING_MACHINE)
+                .grist(GristTypes.GOLD, 8).grist(GristTypes.MARBLE, 32)
+                .grist(GristTypes.BUILD, 256)
                 .build(output);
 
         CombinationRecipeBuilder.of(ESItems.DOWEL_STORAGE)
@@ -2032,6 +2160,20 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .build(output);
         // #endregion Machines
 
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(Items.COBBLED_DEEPSLATE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.DEEPSLATE_PILLAR)
+                .unlockedBy("has_cobbled_deepslate", has(Items.COBBLED_DEEPSLATE))
+                .save(output, modid("stonecutting/deepslate_pillar_from_cobbled_deepslate"));
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(Items.POLISHED_DEEPSLATE), RecipeCategory.BUILDING_BLOCKS,
+                        ESItems.DEEPSLATE_PILLAR)
+                .unlockedBy("has_polished_deepslate", has(Items.POLISHED_DEEPSLATE))
+                .save(output, modid("stonecutting/deepslate_pillar_from_polished_deepslate"));
+        CombinationRecipeBuilder.of(ESItems.DEEPSLATE_PILLAR)
+                .input(MSItems.COARSE_STONE_COLUMN).or().input(Items.INK_SAC)
+                .build(output);
+
         // #region Garnet
         CombinationRecipeBuilder.of(ESItems.CUT_GARNET)
                 .input(Items.AMETHYST_BLOCK).or().input(Tags.Items.DYES_RED)
@@ -2040,41 +2182,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GARNET, 4)
                 .build(output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.CUT_GARNET_STAIRS)
-                .unlockedBy("has_cut_garnet", has(ESItems.CUT_GARNET))
-                .save(output, modid("stonecutting/cut_garnet_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CUT_GARNET_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.CUT_GARNET)
-                .unlockedBy("has_cut_garnet", has(ESItems.CUT_GARNET))
-                .save(output, modid("shaped/cut_garnet_stairs"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.CUT_GARNET_SLAB, 2)
-                .unlockedBy("has_cut_garnet", has(ESItems.CUT_GARNET))
-                .save(output, modid("stonecutting/cut_garnet_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CUT_GARNET_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.CUT_GARNET)
-                .unlockedBy("has_cut_garnet", has(ESItems.CUT_GARNET))
-                .save(output, modid("shaped/cut_garnet_slab"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.CUT_GARNET), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.CUT_GARNET_WALL)
-                .unlockedBy("has_cut_garnet", has(ESItems.CUT_GARNET))
-                .save(output, modid("stonecutting/cut_garnet_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CUT_GARNET_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.CUT_GARNET)
-                .unlockedBy("has_cut_garnet", has(ESItems.CUT_GARNET))
-                .save(output, modid("shaped/cut_garnet_wall"));
+        blockShapes(ESItems.CUT_GARNET, ESItems.CUT_GARNET_STAIRS, ESItems.CUT_GARNET_SLAB, ESItems.CUT_GARNET_WALL,
+                output);
+        blockShapes(ESItems.GARNET_BRICKS, ESItems.GARNET_BRICK_STAIRS, ESItems.GARNET_BRICK_SLAB,
+                ESItems.GARNET_BRICK_WALL, output);
 
         CombinationRecipeBuilder.of(ESItems.GARNET_BRICKS)
                 .input(MSItems.CRUXITE_BRICKS).and().input(Tags.Items.DYES_RED)
@@ -2090,45 +2201,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .define('G', ESItems.CUT_GARNET)
                 .unlockedBy("has_cut_garnet", has(ESItems.CUT_GARNET))
                 .save(output, modid("shaped/garnet_bricks"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.GARNET_BRICK_STAIRS)
-                .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
-                .save(output, modid("stonecutting/garnet_brick_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.GARNET_BRICK_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.GARNET_BRICKS)
-                .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
-                .save(output, modid("shaped/garnet_brick_stairs"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.GARNET_BRICK_SLAB, 2)
-                .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
-                .save(output, modid("stonecutting/garnet_brick_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.GARNET_BRICK_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.GARNET_BRICKS)
-                .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
-                .save(output, modid("shaped/garnet_brick_slab"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.GARNET_BRICK_WALL)
-                .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
-                .save(output, modid("stonecutting/garnet_brick_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.GARNET_BRICK_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.GARNET_BRICKS)
-                .unlockedBy("has_garnet_bricks", has(ESItems.GARNET_BRICKS))
-                .save(output, modid("shaped/garnet_brick_wall"));
 
         SingleItemRecipeBuilder
                 .stonecutting(Ingredient.of(ESItems.GARNET_BRICKS, ESItems.CUT_GARNET),
@@ -2152,41 +2224,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.RUBY, 4)
                 .build(output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.CUT_RUBY_STAIRS)
-                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
-                .save(output, modid("stonecutting/cut_ruby_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CUT_RUBY_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.CUT_RUBY)
-                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
-                .save(output, modid("shaped/cut_ruby_stairs"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.CUT_RUBY_SLAB, 2)
-                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
-                .save(output, modid("stonecutting/cut_ruby_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CUT_RUBY_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.CUT_RUBY)
-                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
-                .save(output, modid("shaped/cut_ruby_slab"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.CUT_RUBY), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.CUT_RUBY_WALL)
-                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
-                .save(output, modid("stonecutting/cut_ruby_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.CUT_RUBY_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.CUT_RUBY)
-                .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
-                .save(output, modid("shaped/cut_ruby_wall"));
+        blockShapes(ESItems.CUT_RUBY, ESItems.CUT_RUBY_STAIRS, ESItems.CUT_RUBY_SLAB, ESItems.CUT_RUBY_WALL,
+                output);
+        blockShapes(ESItems.RUBY_BRICKS, ESItems.RUBY_BRICK_STAIRS, ESItems.RUBY_BRICK_SLAB,
+                ESItems.RUBY_BRICK_WALL, output);
 
         CombinationRecipeBuilder.of(ESItems.RUBY_BRICKS)
                 .input(ESItems.GARNET_BRICKS).and().input(Tags.Items.DUSTS_GLOWSTONE)
@@ -2202,45 +2243,6 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .define('G', ESItems.CUT_RUBY)
                 .unlockedBy("has_cut_ruby", has(ESItems.CUT_RUBY))
                 .save(output, modid("shaped/ruby_bricks"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.RUBY_BRICK_STAIRS)
-                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
-                .save(output, modid("stonecutting/ruby_brick_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICK_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.RUBY_BRICKS)
-                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
-                .save(output, modid("shaped/ruby_brick_stairs"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.RUBY_BRICK_SLAB, 2)
-                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
-                .save(output, modid("stonecutting/ruby_brick_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICK_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.RUBY_BRICKS)
-                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
-                .save(output, modid("shaped/ruby_brick_slab"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.RUBY_BRICK_WALL)
-                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
-                .save(output, modid("stonecutting/ruby_brick_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.RUBY_BRICK_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.RUBY_BRICKS)
-                .unlockedBy("has_ruby_bricks", has(ESItems.RUBY_BRICKS))
-                .save(output, modid("shaped/ruby_brick_wall"));
 
         SingleItemRecipeBuilder
                 .stonecutting(Ingredient.of(ESItems.RUBY_BRICKS, ESItems.CUT_RUBY),
@@ -2298,41 +2300,8 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.BUILD, 2).grist(GristTypes.SULFUR, 4)
                 .build(output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.SULFUROUS_STONE), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.SULFUROUS_STONE_STAIRS)
-                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
-                .save(output, modid("stonecutting/sulfurous_stone_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.SULFUROUS_STONE_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.SULFUROUS_STONE)
-                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
-                .save(output, modid("shaped/sulfurous_stone_stairs"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.SULFUROUS_STONE), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.SULFUROUS_STONE_SLAB, 2)
-                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
-                .save(output, modid("stonecutting/sulfurous_stone_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.SULFUROUS_STONE_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.SULFUROUS_STONE)
-                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
-                .save(output, modid("shaped/sulfurous_stone_slab"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.SULFUROUS_STONE), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.SULFUROUS_STONE_WALL)
-                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
-                .save(output, modid("stonecutting/sulfurous_stone_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.SULFUROUS_STONE_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.SULFUROUS_STONE)
-                .unlockedBy("has_sulfurous_stone", has(ESItems.SULFUROUS_STONE))
-                .save(output, modid("shaped/sulfurous_stone_wall"));
+        blockShapes(ESItems.SULFUROUS_STONE, ESItems.SULFUROUS_STONE_STAIRS, ESItems.SULFUROUS_STONE_SLAB,
+                ESItems.SULFUROUS_STONE_WALL, output);
         // #endregion Sulfur
 
         // #region Marble
@@ -2343,41 +2312,11 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.MARBLE, 4)
                 .build(output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.MARBLE_STAIRS)
-                .unlockedBy("has_marble", has(ESItems.MARBLE))
-                .save(output, modid("stonecutting/marble_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.MARBLE)
-                .unlockedBy("has_marble", has(ESItems.MARBLE))
-                .save(output, modid("shaped/marble_stairs"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.MARBLE_SLAB, 2)
-                .unlockedBy("has_marble", has(ESItems.MARBLE))
-                .save(output, modid("stonecutting/marble_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.MARBLE)
-                .unlockedBy("has_marble", has(ESItems.MARBLE))
-                .save(output, modid("shaped/marble_slab"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE), RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.MARBLE_WALL)
-                .unlockedBy("has_marble", has(ESItems.MARBLE))
-                .save(output, modid("stonecutting/marble_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.MARBLE)
-                .unlockedBy("has_marble", has(ESItems.MARBLE))
-                .save(output, modid("shaped/marble_wall"));
+        blockShapes(ESItems.MARBLE, ESItems.MARBLE_STAIRS, ESItems.MARBLE_SLAB, ESItems.MARBLE_WALL, output);
+        blockShapes(ESItems.POLISHED_MARBLE, ESItems.POLISHED_MARBLE_STAIRS, ESItems.POLISHED_MARBLE_SLAB,
+                ESItems.POLISHED_MARBLE_WALL, output);
+        blockShapes(ESItems.MARBLE_BRICKS, ESItems.MARBLE_BRICK_STAIRS, ESItems.MARBLE_BRICK_SLAB,
+                ESItems.MARBLE_BRICK_WALL, output);
 
         SingleItemRecipeBuilder
                 .stonecutting(Ingredient.of(ESItems.MARBLE), RecipeCategory.BUILDING_BLOCKS,
@@ -2394,45 +2333,6 @@ public final class ESRecipeProvider extends RecipeProvider {
         SingleItemRecipeBuilder
                 .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE),
                         RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.POLISHED_MARBLE_STAIRS)
-                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
-                .save(output, modid("stonecutting/polished_marble_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.POLISHED_MARBLE_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.POLISHED_MARBLE)
-                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
-                .save(output, modid("shaped/polished_marble_stairs"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.POLISHED_MARBLE_SLAB, 2)
-                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
-                .save(output, modid("stonecutting/polished_marble_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.POLISHED_MARBLE_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.POLISHED_MARBLE)
-                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
-                .save(output, modid("shaped/polished_marble_slab"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.POLISHED_MARBLE_WALL)
-                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
-                .save(output, modid("stonecutting/polished_marble_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.POLISHED_MARBLE_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.POLISHED_MARBLE)
-                .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
-                .save(output, modid("shaped/polished_marble_wall"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE),
-                        RecipeCategory.BUILDING_BLOCKS,
                         ESItems.MARBLE_BRICKS)
                 .unlockedBy("has_marble", has(ESItems.MARBLE_BRICKS))
                 .save(output, modid("stonecutting/marble_bricks"));
@@ -2442,96 +2342,176 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .define('G', ESItems.POLISHED_MARBLE)
                 .unlockedBy("has_polished_marble", has(ESItems.POLISHED_MARBLE))
                 .save(output, modid("shaped/marble_bricks"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE,
-                        ESItems.MARBLE_BRICKS),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.MARBLE_BRICK_STAIRS)
-                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
-                .save(output, modid("stonecutting/marble_bricks_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_BRICK_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.MARBLE_BRICKS)
-                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
-                .save(output, modid("shaped/marble_bricks_stairs"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE,
-                        ESItems.MARBLE_BRICKS),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.MARBLE_BRICK_SLAB, 2)
-                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
-                .save(output, modid("stonecutting/marble_bricks_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_BRICK_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.MARBLE_BRICKS)
-                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
-                .save(output, modid("shaped/marble_bricks_slab"));
-
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.MARBLE, ESItems.POLISHED_MARBLE,
-                        ESItems.MARBLE_BRICKS),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.MARBLE_BRICK_WALL)
-                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
-                .save(output, modid("stonecutting/marble_bricks_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.MARBLE_BRICK_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.MARBLE_BRICKS)
-                .unlockedBy("has_marble_bricks", has(ESItems.MARBLE_BRICKS))
-                .save(output, modid("shaped/marble_bricks_wall"));
         // #endregion Marble
 
         // #region Zillium
-        CombinationRecipeBuilder.of(ESItems.ZILLIUM_BRICKS)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.GREEN_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.ZILLIUM_BRICKS).unlockedBy("has_outdated", has(ESItems.ZILLIUM_BRICKS))
+                .save(output, modid("shapeless/update_zillium_bricks"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.GREEN_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.ZILLIUM_BRICK_STAIRS).unlockedBy("has_outdated", has(ESItems.ZILLIUM_BRICK_STAIRS))
+                .save(output, modid("shapeless/update_zillium_brick_stairs"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.GREEN_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.ZILLIUM_BRICK_SLAB).unlockedBy("has_outdated", has(ESItems.ZILLIUM_BRICK_SLAB))
+                .save(output, modid("shapeless/update_zillium_brick_slab"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ESItems.GREEN_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.ZILLIUM_BRICK_WALL).unlockedBy("has_outdated", has(ESItems.ZILLIUM_BRICK_WALL))
+                .save(output, modid("shapeless/update_zillium_brick_wall"));
+
+        CombinationRecipeBuilder.of(ESItems.GREEN_ZILLIUM_BRICKS)
                 .input(Items.STONE_BRICKS).and().input(MSItems.ZILLIUM_SKITTLES)
                 .build(output);
-        GristCostRecipeBuilder.of(ESItems.ZILLIUM_BRICKS)
+        GristCostRecipeBuilder.of(ESItems.GREEN_ZILLIUM_BRICKS)
+                .grist(GristTypes.ZILLIUM, 4)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.BLUE_ZILLIUM_BRICKS)
+                .grist(GristTypes.ZILLIUM, 4)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.PINK_ZILLIUM_BRICKS)
+                .grist(GristTypes.ZILLIUM, 4)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SECONDARY_ZILLIUM_BRICKS)
                 .grist(GristTypes.ZILLIUM, 4)
                 .build(output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.ZILLIUM_BRICKS),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.ZILLIUM_BRICK_STAIRS)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("stonecutting/zillium_bricks_stairs"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.ZILLIUM_BRICK_STAIRS.toStack(4))
-                .pattern("G  ")
-                .pattern("GG ")
-                .pattern("GGG")
-                .define('G', ESItems.ZILLIUM_BRICKS)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("shaped/zillium_bricks_stairs"));
+        // #region Green
+        blockShapes(ESItems.GREEN_ZILLIUM_BRICKS, ESItems.GREEN_ZILLIUM_BRICK_STAIRS, ESItems.GREEN_ZILLIUM_BRICK_SLAB,
+                ESItems.GREEN_ZILLIUM_BRICK_WALL, output);
+        blockShapes(ESItems.WAXED_GREEN_ZILLIUM_BRICKS, ESItems.WAXED_GREEN_ZILLIUM_BRICK_STAIRS,
+                ESItems.WAXED_GREEN_ZILLIUM_BRICK_SLAB, ESItems.WAXED_GREEN_ZILLIUM_BRICK_WALL, output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.ZILLIUM_BRICKS),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.ZILLIUM_BRICK_SLAB, 2)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("stonecutting/zillium_bricks_slab"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.ZILLIUM_BRICK_SLAB.toStack(6))
-                .pattern("GGG")
-                .define('G', ESItems.ZILLIUM_BRICKS)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("shaped/zillium_bricks_slab"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_GREEN_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.GREEN_ZILLIUM_BRICKS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.GREEN_ZILLIUM_BRICKS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_green_zillium_bricks"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.GREEN_ZILLIUM_BRICK_STAIRS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.GREEN_ZILLIUM_BRICK_STAIRS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_green_zillium_brick_stairs"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_GREEN_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.GREEN_ZILLIUM_BRICK_SLAB)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.GREEN_ZILLIUM_BRICK_SLAB))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_green_zillium_brick_slab"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_GREEN_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.GREEN_ZILLIUM_BRICK_WALL)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.GREEN_ZILLIUM_BRICK_WALL))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_green_zillium_brick_wall"));
+        // #endregion Green
+        // #region Blue
+        blockShapes(ESItems.BLUE_ZILLIUM_BRICKS, ESItems.BLUE_ZILLIUM_BRICK_STAIRS, ESItems.BLUE_ZILLIUM_BRICK_SLAB,
+                ESItems.BLUE_ZILLIUM_BRICK_WALL, output);
+        blockShapes(ESItems.WAXED_BLUE_ZILLIUM_BRICKS, ESItems.WAXED_BLUE_ZILLIUM_BRICK_STAIRS,
+                ESItems.WAXED_BLUE_ZILLIUM_BRICK_SLAB, ESItems.WAXED_BLUE_ZILLIUM_BRICK_WALL, output);
 
-        SingleItemRecipeBuilder
-                .stonecutting(Ingredient.of(ESItems.ZILLIUM_BRICKS),
-                        RecipeCategory.BUILDING_BLOCKS,
-                        ESItems.ZILLIUM_BRICK_WALL)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("stonecutting/zillium_bricks_wall"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ESItems.ZILLIUM_BRICK_WALL.toStack(6))
-                .pattern("GGG")
-                .pattern("GGG")
-                .define('G', ESItems.ZILLIUM_BRICKS)
-                .unlockedBy("has_zillium_bricks", has(ESItems.ZILLIUM_BRICKS))
-                .save(output, modid("shaped/zillium_bricks_wall"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_BLUE_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.BLUE_ZILLIUM_BRICKS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.BLUE_ZILLIUM_BRICKS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_blue_zillium_bricks"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.BLUE_ZILLIUM_BRICK_STAIRS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.BLUE_ZILLIUM_BRICK_STAIRS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_blue_zillium_brick_stairs"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_BLUE_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.BLUE_ZILLIUM_BRICK_SLAB)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.BLUE_ZILLIUM_BRICK_SLAB))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_blue_zillium_brick_slab"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_BLUE_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.BLUE_ZILLIUM_BRICK_WALL)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.BLUE_ZILLIUM_BRICK_WALL))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_blue_zillium_brick_wall"));
+        // #endregion Blue
+        // #region Pink
+        blockShapes(ESItems.PINK_ZILLIUM_BRICKS, ESItems.PINK_ZILLIUM_BRICK_STAIRS, ESItems.PINK_ZILLIUM_BRICK_SLAB,
+                ESItems.PINK_ZILLIUM_BRICK_WALL, output);
+        blockShapes(ESItems.WAXED_PINK_ZILLIUM_BRICKS, ESItems.WAXED_PINK_ZILLIUM_BRICK_STAIRS,
+                ESItems.WAXED_PINK_ZILLIUM_BRICK_SLAB, ESItems.WAXED_PINK_ZILLIUM_BRICK_WALL, output);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_PINK_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.PINK_ZILLIUM_BRICKS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.PINK_ZILLIUM_BRICKS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_pink_zillium_bricks"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_PINK_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.PINK_ZILLIUM_BRICK_STAIRS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.PINK_ZILLIUM_BRICK_STAIRS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_pink_zillium_brick_stairs"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_PINK_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.PINK_ZILLIUM_BRICK_SLAB)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.PINK_ZILLIUM_BRICK_SLAB))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_pink_zillium_brick_slab"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_PINK_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.PINK_ZILLIUM_BRICK_WALL)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.PINK_ZILLIUM_BRICK_WALL))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_pink_zillium_brick_wall"));
+        // #endregion Pink
+        // #region Secondary
+        blockShapes(ESItems.SECONDARY_ZILLIUM_BRICKS, ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS,
+                ESItems.SECONDARY_ZILLIUM_BRICK_SLAB,
+                ESItems.SECONDARY_ZILLIUM_BRICK_WALL, output);
+        blockShapes(ESItems.WAXED_SECONDARY_ZILLIUM_BRICKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS,
+                ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_WALL, output);
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICKS.toStack())
+                .requires(ESItems.SECONDARY_ZILLIUM_BRICKS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.SECONDARY_ZILLIUM_BRICKS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_secondary_zillium_bricks"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.toStack())
+                .requires(ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.SECONDARY_ZILLIUM_BRICK_STAIRS))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_secondary_zillium_brick_stairs"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.toStack())
+                .requires(ESItems.SECONDARY_ZILLIUM_BRICK_SLAB)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.SECONDARY_ZILLIUM_BRICK_SLAB))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_secondary_zillium_brick_slab"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.BUILDING_BLOCKS, ESItems.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.toStack())
+                .requires(ESItems.SECONDARY_ZILLIUM_BRICK_WALL)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_base", has(ESItems.SECONDARY_ZILLIUM_BRICK_WALL))
+                .group("waxed_zillium")
+                .save(output, modid("shapeless/wax_secondary_zillium_brick_wall"));
+        // #endregion Secondary
         // #endregion Zillium
 
         GristCostRecipeBuilder.of(ESItems.NORMAL_CAT_PLUSH)
@@ -2910,5 +2890,47 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .smoking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, experience, 100)
                 .unlockedBy("has_raw", has(raw))
                 .save(output, modid(String.format("smoking/%s", cooked.getId().getPath())));
+    }
+
+    private void blockShapes(DeferredItem<? extends Item> full, DeferredItem<? extends Item> stairs,
+            DeferredItem<? extends Item> slab, DeferredItem<? extends Item> wall, RecipeOutput output) {
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(full), RecipeCategory.BUILDING_BLOCKS, stairs)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("stonecutting/%s", stairs.getId().getPath())));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, stairs.toStack(4))
+                .pattern("G  ")
+                .pattern("GG ")
+                .pattern("GGG")
+                .define('G', full)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("shaped/%s", stairs.getId().getPath())));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(full), RecipeCategory.BUILDING_BLOCKS, slab, 2)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("stonecutting/%s", slab.getId().getPath())));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, slab.toStack(6))
+                .pattern("GGG")
+                .define('G', full)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("shaped/%s", slab.getId().getPath())));
+
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(full), RecipeCategory.BUILDING_BLOCKS, wall)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("stonecutting/%s", wall.getId().getPath())));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, wall.toStack(6))
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', full)
+                .unlockedBy("has_base", has(full))
+                .group(full.getId().getPath())
+                .save(output, modid(String.format("shaped/%s", wall.getId().getPath())));
     }
 }

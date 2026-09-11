@@ -190,6 +190,7 @@ dependencies {
     runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
     implementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
+    // Farmer's Delight
     implementation "maven.modrinth:farmers-delight:${farmersdelight_version}"
 
     // Iron's Spellbooks
@@ -204,6 +205,9 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${mc_jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${mc_jei_version}"
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${mc_jei_version}"
+
+    // Alchemy Expanded
+    implementation "maven.modrinth:alchemy-expanded:${alchemyexpanded_version}"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -256,5 +260,20 @@ idea {
     module {
         downloadSources = true
         downloadJavadoc = true
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title": "extrastuck",
+                "Specification-Vendor": "Medsal15",
+                "Specification-Version": "1", // We are version 1 of ourselves
+                "Implementation-Title": project.name,
+                "Implementation-Version": "${version}",
+                "Implementation-Vendor" :"Medsal15",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "${mod_id}.mixins.json"
+        ])
     }
 }

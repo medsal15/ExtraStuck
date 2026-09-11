@@ -59,12 +59,19 @@ public final class ConfigServer {
             .comment("How much Uranium power is transferred between storage and item per tick",
                     "Mostly to make charging fancier")
             .defineInRange("charger.uranium_transfer", 1, 1, Integer.MAX_VALUE);
+    public static final ConfigValue<Integer> CHARGER_WIRELESS_RADIUS = BUILDER
+            .comment("The radius of effect for the Wireless Charger")
+            .defineInRange("charger.wireless_radius", 5, 1, Integer.MAX_VALUE);
 
     public static final ConfigValue<Integer> BLASTER_URANIUM_STORAGE = BUILDER
             .comment("How much uranium power should a blaster hold",
                     "Note that each shot consumes 1 uranium power",
                     "Shouldn't be lower than 32, as that would prevent uranium chunks from being used")
             .defineInRange("blaster.uranium_storage", 128, 1, Short.MAX_VALUE);
+
+    public static final ConfigValue<Integer> VENDING_MACHINE_STACKS = BUILDER
+            .comment("How many stacks of one item a Vending Machine can hold")
+            .defineInRange("vending_machine.stacks", 9, 1, Short.MAX_VALUE);
 
     public static final ConfigValue<Integer> FLAME_SHIELD_BURN = BUILDER
             .comment("How long, in ticks, does the Flame Shield burn enemies for", "0 means it won't")
@@ -137,6 +144,9 @@ public final class ConfigServer {
             .comment("If true, Mastermind Codebreaker can change a Mastermind Modus Card's default difficulty",
                     "Only affects data components if change is disabled")
             .define("modus.mastermind.change_with_pc", true);
+    public static final ModConfigSpec.BooleanValue MASTERMIND_CHANGE_SYLLADEX = BUILDER
+            .comment("If true, Mastermind Modus difficulty can be changed in the Sylladex")
+            .define("modus.mastermind.change_with_sylladex", false);
 
     public static final ConfigValue<Integer> FURNACE_DEFAULT_COST = BUILDER
             .comment("How much fuel (in ticks) does it cost to extract an item from the Furnace Modus",

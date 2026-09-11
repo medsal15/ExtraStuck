@@ -11,4 +11,7 @@ public final class ESSounds {
 
     public static final DeferredHolder<SoundEvent, SoundEvent> GOLDEN_PAN_HIT = SOUND_EVENTS.register("golden_pan_hit",
             () -> SoundEvent.createVariableRangeEvent(ExtraStuck.modid("golden_pan_hit")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> UNREINFORCE_DEEPSLATE = SOUND_EVENTS.register(
+            "unreinforce_deepslate",
+            () -> SoundEvent.createVariableRangeEvent(ExtraStuck.modid("unreinforce_deepslate")));
 }

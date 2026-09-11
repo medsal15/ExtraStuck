@@ -20,6 +20,7 @@
     "extrastuck:carrot_cake_slice",
     "extrastuck:chocolatey_cake_slice",
     "extrastuck:moon_cake_slice",
+    "extrastuck:pan_cake_slice",
     "extrastuck:lemon_cake",
     "extrastuck:lemon_cake_slice",
     "extrastuck:mortal_temptation_block",
@@ -30,6 +31,8 @@
     "extrastuck:cosmic_sporeo",
     "extrastuck:spam",
     "extrastuck:gummy_ring",
+    "extrastuck:sculk_soup",
+    "extrastuck:dread",
     "extrastuck:sweet_tooth"
   ]
 }

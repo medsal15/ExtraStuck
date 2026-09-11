@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.config.ConfigClient;
 import com.medsal15.data.ESLangProvider;
+import com.medsal15.utils.ESLangHelper;
 import com.mraof.minestuck.item.weapon.WeaponItem;
 
 import net.minecraft.ChatFormatting;
@@ -17,14 +18,13 @@ import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 
 public class InnateEnchantsWeapon extends WeaponItem {
-    private Map<ResourceKey<Enchantment>, Integer> innate;
+    private final Map<ResourceKey<Enchantment>, Integer> innate;
 
     public InnateEnchantsWeapon(WeaponItem.Builder builder, Properties properties,
             Map<ResourceKey<Enchantment>, Integer> enchants) {
@@ -68,7 +68,7 @@ public class InnateEnchantsWeapon extends WeaponItem {
             return;
         for (ResourceKey<Enchantment> key : innate.keySet()) {
             int extra = innate.get(key);
-            MutableComponent ench = Component.translatable(getEnchantmentKey(key));
+            MutableComponent ench = Component.translatable(ESLangHelper.getEnchantmentKey(key));
             if (extra == 1) {
                 tooltipComponents.add(Component.translatable(ESLangProvider.INNATE_ENCHANT_KEY, 1, ench)
                         .withStyle(ChatFormatting.GRAY));
@@ -77,10 +77,5 @@ public class InnateEnchantsWeapon extends WeaponItem {
                         .withStyle(ChatFormatting.GRAY));
             }
         }
-    }
-
-    private static String getEnchantmentKey(ResourceKey<Enchantment> enchantment) {
-        ResourceLocation location = enchantment.location();
-        return "enchantment." + location.getNamespace() + "." + location.getPath();
     }
 }

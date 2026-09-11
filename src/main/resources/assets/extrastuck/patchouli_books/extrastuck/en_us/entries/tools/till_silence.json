@@ -1,0 +1,23 @@
+{
+    "name": "Till Silence",
+    "icon": "extrastuck:till_silence",
+    "category": "extrastuck:tools",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:till_silence"
+            },
+            "text": "Till silence does you apart. That is how it goes, right?$(br2)Can till the ground. You know. Like normal hoes."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Diamond Hoe and a Sculk Sensor in a Totem Lathe.",
+            "left": "minecraft:diamond_hoe",
+            "mode": "&&",
+            "right": "minecraft:sculk_sensor",
+            "result": "extrastuck:till_silence"
+        }
+    ]
+}

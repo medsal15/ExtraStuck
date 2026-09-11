@@ -1,13 +1,9 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": [
-    {
-      "item": "extrastuck:garnet_bricks"
-    },
-    {
-      "item": "extrastuck:cut_garnet"
-    }
-  ],
+  "group": "garnet_bricks",
+  "ingredient": {
+    "item": "extrastuck:garnet_bricks"
+  },
   "result": {
     "count": 1,
     "id": "extrastuck:garnet_brick_stairs"

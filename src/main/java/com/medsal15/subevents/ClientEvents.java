@@ -21,9 +21,13 @@ import com.medsal15.client.model.armor.ESArmorModels;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.renderers.ChargerBlockRenderer;
 import com.medsal15.client.renderers.ESArrowRenderer;
+import com.medsal15.client.renderers.VendingMachineRenderer;
 import com.medsal15.client.tooltips.ContainerTooltip;
 import com.medsal15.client.tooltips.ContainerTooltipComponent;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.alchemyexpanded.AEESMUtils;
+import com.medsal15.compat.alchemyexpanded.AEESUtils;
+import com.medsal15.compat.alchemyexpanded.items.guns.ESGun;
 import com.medsal15.compat.curios.ESCuriosEventsHandlers;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
@@ -37,12 +41,14 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.LandFishingHook;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.entities.projectiles.magic.circles.CircleEntity;
+import com.medsal15.entities.projectiles.magic.orbs.OrbEntity;
 import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.MoonCakeSliceColor;
+import com.medsal15.items.components.PanCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
 import com.medsal15.items.crossbow.RadBowItem;
-import com.medsal15.items.guns.ESGun;
 import com.medsal15.items.tools.LandFishingRod;
 import com.medsal15.particles.ESParticleTypes;
 import com.medsal15.particles.UraniumBlastParticle;
@@ -64,10 +70,12 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -75,6 +83,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.component.ChargedProjectiles;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.api.distmarker.Dist;
@@ -214,6 +225,13 @@ public final class ClientEvents {
         ESItems.getCrossbows().forEach(ClientEvents::addCrossbow);
         ESItems.getBows().forEach(ClientEvents::addBow);
 
+        ItemProperties.register(ESItems.DEEP_CROSSBOW.get(), ResourceLocation.withDefaultNamespace("firework"),
+                (stack, world, entity, entityId) -> {
+                    ChargedProjectiles chargedprojectiles = stack.get(DataComponents.CHARGED_PROJECTILES);
+                    return chargedprojectiles != null && chargedprojectiles.contains(Items.FIREWORK_ROCKET) ? 1.0F
+                            : 0.0F;
+                });
+
         ItemProperties.register(ESItems.FLUX_SHIELD.get(), ExtraStuck.modid("charged"),
                 (stack, world, entity, entityId) -> {
                     @SuppressWarnings("null")
@@ -236,6 +254,24 @@ public final class ClientEvents {
                         case DERSE:
                             return .5F;
                         case PROSPIT:
+                            return 1;
+                    }
+                });
+
+        ItemProperties.register(ESItems.PAN_CAKE_SLICE.get(), ExtraStuck.modid("pan_cake"),
+                (stack, world, entity, entityId) -> {
+                    PanCakeSliceColor color = stack.getOrDefault(
+                            ESDataComponents.PAN_CAKE_SLICE_COLOR,
+                            PanCakeSliceColor.TRIPLE);
+                    switch (color) {
+                        case TRIPLE:
+                        default:
+                            return 0;
+                        case MAGENTA:
+                            return .3f;
+                        case YELLOW:
+                            return .7f;
+                        case CYAN:
                             return 1;
                     }
                 });
@@ -277,8 +313,13 @@ public final class ClientEvents {
                             - entity.getUseItemRemainingTicks())
                             / (float) (CrossbowItem.getChargeDuration(stack, entity));
                 });
-        ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"), (stack, world,
-                entity, entityId) -> RadBowItem.isCharged(stack) ? 1F : 0F);
+        if (item.get() instanceof RadBowItem) {
+            ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"), (stack, world,
+                    entity, entityId) -> RadBowItem.isCharged(stack) ? 1F : 0F);
+        } else {
+            ItemProperties.register(item.get(), ResourceLocation.withDefaultNamespace("charged"),
+                    (stack, world, entity, entityId) -> CrossbowItem.isCharged(stack) ? 1.0F : 0.0F);
+        }
     }
 
     private static void addBow(DeferredItem<Item> item) {
@@ -319,6 +360,8 @@ public final class ClientEvents {
     public static void registerEntityRenderers(final RegisterRenderers event) {
         event.registerEntityRenderer(ESEntities.CAPTAIN_JUSTICE_SHIELD.get(),
                 CaptainJusticeShield.CJSRenderer::new);
+        event.registerEntityRenderer(ESEntities.LIGHT_ORB.get(), OrbEntity.Renderer::new);
+        event.registerEntityRenderer(ESEntities.LIFE_CIRCLE.get(), CircleEntity.CircleRenderer::new);
 
         event.registerEntityRenderer(ESEntities.FLAME_ARROW.get(), c -> new ESArrowRenderer(c,
                 modid("textures/entity/arrow/flame.png")));
@@ -380,12 +423,15 @@ public final class ClientEvents {
         event.registerEntityRenderer(ESEntities.LAND_FISHING_HOOK.get(), LandFishingHook.Renderer::new);
 
         event.registerBlockEntityRenderer(ESBlockEntities.CHARGER.get(), ChargerBlockRenderer::new);
+        event.registerBlockEntityRenderer(ESBlockEntities.SMALL_VENDING_MACHINE.get(), VendingMachineRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerEntityLayers(final RegisterLayerDefinitions event) {
         event.registerLayerDefinition(CaptainJusticeShield.CJSModel.LAYER_LOCATION,
                 CaptainJusticeShield.CJSModel::createLayer);
+        event.registerLayerDefinition(OrbEntity.Renderer.LAYER_LOCATION,
+                OrbEntity.Renderer::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -430,6 +476,12 @@ public final class ClientEvents {
                 ESItems.CHEF_HAT.get(), ESItems.CHEF_APRON.get());
         event.register((stack, index) -> index > 0 ? -1 : DyedItemColor.getOrDefault(stack, 0xFFFF0000),
                 ESItems.TOOLBOX.get());
+        event.register(
+                (stack, index) -> (index > 0 || !stack.has(DataComponents.POTION_CONTENTS))
+                        ? -1
+                        : FastColor.ARGB32.opaque(
+                                stack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY).getColor()),
+                ESItems.SYRINGE.get());
     }
 
     @SubscribeEvent
@@ -465,7 +517,11 @@ public final class ClientEvents {
 
                 registerBiConvertion(ESItems.CAPTAIN_JUSTICE_SHIELD_THROWABLE,
                         ESItems.CAPTAIN_JUSTICE_THROWABLE_SHIELD);
-                registerBiConvertion(ESItems.OFFICE_KEY, ESItems.HANDGUN);
+                if (ESCompatUtils.isLoaded("alchemyexpanded")) {
+                    AEESUtils.registerConvertions();
+                } else {
+                    AEESMUtils.registerConvertions();
+                }
                 registerBiConvertion(ESItems.OVERCHARGED_MAGNEFORK, ESItems.UNDERCHARGED_MAGNEFORK);
                 registerBiConvertion(ESItems.YELLOWCAKESAW, ESItems.YELLOWCAKESAW_LIPSTICK);
                 registerBiConvertion(ESItems.CASHGRABBERS, ESItems.CASHGRABBERS_SHEATHED);
@@ -486,12 +542,12 @@ public final class ClientEvents {
         });
     }
 
-    private static void registerBiConvertion(ItemLike first, ItemLike second) {
+    public static void registerBiConvertion(ItemLike first, ItemLike second) {
         registerConvertion(first, second);
         registerConvertion(second, first);
     }
 
-    private static void registerConvertion(ItemLike from, ItemLike to) {
+    public static void registerConvertion(ItemLike from, ItemLike to) {
         MysteriousItemConversionCategory.RECIPES.add(ConversionRecipe.create(new ItemStack(from), new ItemStack(to)));
     }
 

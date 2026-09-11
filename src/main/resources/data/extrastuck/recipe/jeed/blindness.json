@@ -10,6 +10,9 @@
     "providers": [
         {
             "item": "extrastuck:blind_hammer"
+        },
+        {
+            "item": "extrastuck:black_moonshine_collector"
         }
     ]
 }

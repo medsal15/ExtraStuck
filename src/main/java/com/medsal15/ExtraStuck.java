@@ -5,10 +5,12 @@ import org.slf4j.Logger;
 import com.medsal15.blockentities.ESBlockEntities;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
+import com.medsal15.compat.alchemyexpanded.items.AEESMissingItems;
 import com.medsal15.compat.create.client.menus.ESCreateMenuTypes;
-import com.medsal15.compat.create.items.ESCreateComponents;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.create.items.CreateESMissingItems;
+import com.medsal15.compat.create.items.ESCreateComponents;
 import com.medsal15.compat.create.potatoCannon.ESPotatoEntityHitActions;
 import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
@@ -33,7 +35,9 @@ import com.medsal15.menus.ESMenuTypes;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.modus.ESModus;
 import com.medsal15.particles.ESParticleTypes;
-import com.medsal15.structures.processors.ESProcessors;
+import com.medsal15.world.features.ESFeatures;
+import com.medsal15.world.land.ESLandTypes;
+import com.medsal15.world.structures.processors.ESProcessors;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.core.registries.Registries;
@@ -92,8 +96,10 @@ public class ExtraStuck {
         ESDataComponents.DATA_COMPONENTS.register(modEventBus);
         ESEntities.ENTITIES.register(modEventBus);
         ESEntityPredicates.ENTITY_PREDICATES.register(modEventBus);
+        ESFeatures.FEATURES.register(modEventBus);
         ESInterpretertypes.INTERPRETER_TYPES.register(modEventBus);
         ESItems.ITEMS.register(modEventBus);
+        ESLandTypes.TERRAINS.register(modEventBus);
         ESLootConditions.LOOT_CONDITIONS.register(modEventBus);
         ESLootFunctions.FUNCTIONS.register(modEventBus);
         ESLootModifiers.GLM_SERIALIZERS.register(modEventBus);
@@ -120,6 +126,12 @@ public class ExtraStuck {
             ESPotatoEntityHitActions.POTATO_PROJECTILE_ENTITY_HIT_ACTIONS.register(modEventBus);
         } else {
             CreateESMissingItems.ITEMS.register(modEventBus);
+        }
+
+        if (ESCompatUtils.isLoaded("alchemyexpanded")) {
+            AEESItems.ITEMS.register(modEventBus);
+        } else {
+            AEESMissingItems.ITEMS.register(modEventBus);
         }
 
         // Register our mod's ModConfigSpec so that FML can create and load the config

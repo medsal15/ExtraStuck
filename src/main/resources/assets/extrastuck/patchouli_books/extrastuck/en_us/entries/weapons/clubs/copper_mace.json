@@ -1,0 +1,20 @@
+{
+    "name": "Copper Mace",
+    "icon": "extrastuck:copper_mace",
+    "category": "extrastuck:clubs",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:copper_mace"
+            },
+            "text": "A mace made of copper. Not sure what you expected."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shaped/copper_mace",
+            "text": "Put a Copper Block on top of a Lightning Rod."
+        }
+    ]
+}

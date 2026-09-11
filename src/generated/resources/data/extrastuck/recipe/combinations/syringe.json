@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:the_sting"
+  },
+  "input2": {
+    "item": "extrastuck:crusader_crossbolt"
+  },
+  "mode": "and",
+  "output": "extrastuck:syringe"
+}

@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "garnet_bricks",
   "key": {
     "G": {
       "item": "extrastuck:garnet_bricks"

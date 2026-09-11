@@ -8,7 +8,7 @@
             "item": {
                 "item": "extrastuck:sushroom_stew"
             },
-            "text": "A stew made of (hopefully) safe mushrooms.$(br2)Has a 1 in 6 chances to give poison or regeneration for 2.5 seconds."
+            "text": "A stew made of (hopefully) safe mushrooms.$(br2)$(3)$(l)Special:$() Has a 1 in 6 chances to give poison or regeneration for 2.5 seconds."
         },
         {
             "type": "patchouli:crafting",

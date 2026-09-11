@@ -1,7 +1,5 @@
 package com.medsal15.items;
 
-import static com.medsal15.ExtraStuck.modid;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -11,6 +9,9 @@ import com.medsal15.ESSounds;
 import com.medsal15.ExtraStuck;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.compat.ESCompatUtils;
+import com.medsal15.compat.MissingModItem;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
+import com.medsal15.compat.alchemyexpanded.items.AEESMissingItems;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
@@ -19,7 +20,6 @@ import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.data.ESLootTableProvider.TableSubProvider;
-import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
@@ -40,7 +40,7 @@ import com.medsal15.entities.projectiles.arrows.PunchArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
-import com.medsal15.entities.projectiles.bullets.ESBullet;
+import com.medsal15.items.ESShield.IBlock;
 import com.medsal15.items.armor.CactusArmorItem;
 import com.medsal15.items.armor.ChefArmorItem;
 import com.medsal15.items.armor.DarkKnightArmorItem;
@@ -53,13 +53,18 @@ import com.medsal15.items.bows.DoublingBowItem;
 import com.medsal15.items.bows.FastBowItem;
 import com.medsal15.items.bows.MakeRainItem;
 import com.medsal15.items.bows.RainbowBowItem;
+import com.medsal15.items.bows.SilentShotBowItem;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.items.components.GristLayer;
 import com.medsal15.items.components.MoonCakeSliceColor;
+import com.medsal15.items.components.PanCakeSliceColor;
 import com.medsal15.items.components.SteamFuelComponent;
+import com.medsal15.items.crossbow.DeepCrossbowItem;
 import com.medsal15.items.crossbow.MechanicalRadBowItem;
 import com.medsal15.items.crossbow.RadBowItem;
 import com.medsal15.items.food.BurningFood;
+import com.medsal15.items.food.ESDrinkItem;
+import com.medsal15.items.food.ESFoodItem;
 import com.medsal15.items.food.ESFoods;
 import com.medsal15.items.food.ExplosiveFood;
 import com.medsal15.items.food.FortuneCookie;
@@ -67,19 +72,15 @@ import com.medsal15.items.food.HomeDonut;
 import com.medsal15.items.food.LootFood;
 import com.medsal15.items.food.MortalTemptation;
 import com.medsal15.items.food.RocketJump;
-import com.medsal15.items.guns.ESGun;
-import com.medsal15.items.melee.AltGunWeapon;
 import com.medsal15.items.melee.AttributeWeapon;
 import com.medsal15.items.melee.BrushWeapon;
 import com.medsal15.items.melee.InnateEnchantsWeapon;
 import com.medsal15.items.melee.JackpotWeapon;
 import com.medsal15.items.melee.SteamWeaponItem;
 import com.medsal15.items.melee.StorageWeapon;
+import com.medsal15.items.melee.SyringeWeapon;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.items.projectiles.ESArrowItem;
-import com.medsal15.items.projectiles.ESBulletItem;
-import com.medsal15.items.shields.ESShield;
-import com.medsal15.items.shields.ESShield.IBlock;
 import com.medsal15.items.throwables.BeeLarvaItem;
 import com.medsal15.items.throwables.BeenadeItem;
 import com.medsal15.items.throwables.LemonNadeItem;
@@ -100,12 +101,10 @@ import com.medsal15.items.weaponeffects.ESInventoryTickEffects;
 import com.medsal15.items.weaponeffects.ESRightClickBlockEffects;
 import com.medsal15.items.weaponeffects.ESRightClickEffects;
 import com.medsal15.mobeffects.ESMobEffects;
-import com.medsal15.utils.ESTags;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.armor.MSArmorItem;
 import com.mraof.minestuck.item.components.MSItemComponents;
-import com.mraof.minestuck.item.foods.DrinkableItem;
 import com.mraof.minestuck.item.weapon.FarmineEffect;
 import com.mraof.minestuck.item.weapon.ItemRightClickEffect;
 import com.mraof.minestuck.item.weapon.MagicRangedRightClickEffect;
@@ -147,7 +146,6 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import vazkii.patchouli.common.item.ItemModBook;
 
 public final class ESItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExtraStuck.MODID);
@@ -520,6 +518,10 @@ public final class ESItems {
                             new AttributeModifier(ExtraStuck.modid("big_club_range"), 1.5,
                                     Operation.ADD_VALUE),
                             EquipmentSlotGroup.MAINHAND))));
+    public static final DeferredItem<Item> COPPER_MACE = ITEMS.register("copper_mace",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(ESItemTiers.COPPER_TIER, 1, -2.8F).set(MSItemTypes.CLUB_TOOL),
+                    new Item.Properties()));
     // #endregion Clubs
     // #region Keys
     public static final DeferredItem<Item> KEY_OF_TRIALS = ITEMS.register("key_of_trials",
@@ -533,13 +535,6 @@ public final class ESItems {
                             .set(MSItemTypes.KEY_TOOL)
                             .add(ESHitEffects::stealLuck),
                     new MSItemProperties().durability(500), Map.of(Enchantments.LOOTING, 1)));
-    public static final DeferredItem<Item> OFFICE_KEY = ITEMS.register("office_key",
-            () -> new AltGunWeapon(
-                    new WeaponItem.Builder(Tiers.IRON, 0, -1F).efficiency(1F)
-                            .set(MSItemTypes.KEY_TOOL)
-                            .set(ItemRightClickEffect.switchTo(ESItems.HANDGUN)),
-                    new Item.Properties().component(DataComponents.CONTAINER,
-                            ItemContainerContents.EMPTY)));
     public static final DeferredItem<Item> ANCIENT_VAULT_OPENER = ITEMS.register("ancient_vault_opener",
             () -> new AttributeWeapon(
                     new WeaponItem.Builder(Tiers.IRON, 1, -1F).efficiency(2F)
@@ -567,6 +562,10 @@ public final class ESItems {
     public static final DeferredItem<Item> WIND_WAND = ITEMS.register("wind_wand", () -> new WeaponItem(
             new WeaponItem.Builder(Tiers.IRON, 3, -1F).set(MSItemTypes.WAND_TOOL)
                     .set(ESRightClickEffects::shootWindCharge),
+            new MSItemProperties().durability(1536)));
+    public static final DeferredItem<Item> WAND_OF_LIGHT = ITEMS.register("wand_of_light", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.GOLD, 3, -1F).set(MSItemTypes.WAND_TOOL)
+                    .set(ESRightClickEffects::shootLightOrb),
             new MSItemProperties().durability(1536)));
     // #endregion Wands
     // #region Canes
@@ -643,6 +642,10 @@ public final class ESItems {
     public static final DeferredItem<Item> STOCKS_UPTICKER = ITEMS.register("stocks_upticker", () -> new WeaponItem(
             new WeaponItem.Builder(Tiers.GOLD, 4, -1F).efficiency(2F).set(MSItemTypes.BATON_TOOL),
             new MSItemProperties().durability(1326)));
+    public static final DeferredItem<Item> SYRINGE = ITEMS.register("syringe", () -> new SyringeWeapon(
+            new WeaponItem.Builder(Tiers.IRON, 3, -1F).efficiency(2F).set(MSItemTypes.BATON_TOOL)
+                    .add(ESHitEffects::applySyringeEffect).set(ESRightClickEffects::useSyringe),
+            new MSItemProperties().durability(1250)));
     // #endregion Batons
     // #region Swords
     public static final DeferredItem<Item> SUN_REAVER = ITEMS.register("sun_reaver", () -> new WeaponItem(
@@ -654,6 +657,18 @@ public final class ESItems {
                             () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 0,
                                     false, false, false))),
             new Item.Properties()));
+    public static final DeferredItem<Item> SHADOW_KATANA = ITEMS.register("shadow_katana", () -> new WeaponItem(
+            new WeaponItem.Builder(Tiers.DIAMOND, 2, -2.4F).efficiency(15F)
+                    .set(MSItemTypes.SWORD_TOOL)
+                    .add(OnHitEffect.SWEEP)
+                    .add(ESHitEffects.armorBypassDamage(10f)),
+            new Item.Properties()));
+    public static final DeferredItem<Item> WHITE_SHARD = ITEMS.register("white_shard", () -> new WeaponItem(
+            new WeaponItem.Builder(MSItemTypes.DENIZEN_TIER, 2, -2.6F).efficiency(15F)
+                    .set(MSItemTypes.SWORD_TOOL)
+                    .add(OnHitEffect.SWEEP)
+                    .add(ESHitEffects.armorBypassDamage(15f)),
+            new MSItemProperties().durability(MSItemTypes.DENIZEN_TIER.getUses() * 4).rarity(Rarity.RARE)));
     // #endregion Swords
     // #region Sickles
     public static final DeferredItem<Item> NEW_MOON = ITEMS.register("new_moon",
@@ -697,6 +712,12 @@ public final class ESItems {
                     .add(ESHitEffects.steamPowered(true, OnHitEffect.setOnFire(15)))
                     .set(ESRightClickEffects::steamWeapon),
             new Item.Properties().component(ESDataComponents.STEAM_FUEL, SteamFuelComponent.empty())));
+    public static final DeferredItem<Item> BLACK_MOONSHINE_COLLECTOR = ITEMS.register("black_moonshine_collector",
+            () -> new InnateEnchantsWeapon(
+                    new WeaponItem.Builder(MSItemTypes.DENIZEN_TIER, 8, -2.6F).efficiency(15).disableShield()
+                            .set(MSItemTypes.SCYTHE_TOOL)
+                            .add(OnHitEffect.enemyPotionEffect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 100))),
+                    new Item.Properties(), Map.of(Enchantments.MENDING, 1)));
     // #endregion Scythes
     // #region Fans
     public static final DeferredItem<Item> NONE_OF_YOUR_BUSINESS = ITEMS.register("none_of_your_business",
@@ -730,6 +751,13 @@ public final class ESItems {
                     .set(ItemRightClickEffect.switchTo(ESItems.TWO_OF_SPADES)),
             new MSItemProperties().durability(500)));
     // #endregion Spoons
+    // #region Hoes
+    public static final DeferredItem<Item> TILL_SILENCE = ITEMS.register("till_silence",
+            () -> new InnateEnchantsWeapon(
+                    new WeaponItem.Builder(Tiers.DIAMOND, 0, 0).set(ESItemTypes.HOE_TOOL)
+                            .set(ESRightClickBlockEffects::till),
+                    new Item.Properties(), Map.of(Enchantments.MENDING, 1)));
+    // #endregion Hoes
 
     // Staves and Spellbooks are handled in the ISS compat package
     // See the ESISSItems and ESMissingItems classes
@@ -739,6 +767,8 @@ public final class ESItems {
             () -> new RadBowItem(new Properties().durability(350).stacksTo(1)));
     public static final DeferredItem<Item> MECHANICAL_RADBOW = ITEMS.register("mechanical_radbow",
             () -> new MechanicalRadBowItem(new Properties().durability(933).stacksTo(1)));
+    public static final DeferredItem<Item> DEEP_CROSSBOW = ITEMS.register("deep_crossbow",
+            () -> new DeepCrossbowItem(new Properties().durability(Tiers.DIAMOND.getUses() * 4), 2));
     // #endregion Crossbows
     // #region Bows
     public static final DeferredItem<Item> BOWWOB = ITEMS.register("bowwob",
@@ -753,24 +783,9 @@ public final class ESItems {
             () -> new FastBowItem(new Properties().durability(Tiers.DIAMOND.getUses())));
     public static final DeferredItem<Item> BWO = ITEMS.register("bwo",
             () -> new BwoItem(new Properties().durability(MSItemTypes.SBAHJ_TIER.getUses())));
+    public static final DeferredItem<Item> SILENT_SHOT = ITEMS.register("silent_shot",
+            () -> new SilentShotBowItem(new Properties().durability(Tiers.DIAMOND.getUses()), 2));
     // #endregion Bows
-    // #region Guns
-    public static final DeferredItem<Item> HANDGUN = ITEMS.register("handgun",
-            () -> new ESGun(
-                    new ESGun.Builder().ammo(ESTags.Items.AMMO_HANDGUN).maxBullets(6).zoom(.8F)
-                            .switchTo(ESItems.OFFICE_KEY),
-                    new MSItemProperties().durability(250)));
-    // #endregion Guns
-    // #region Ammo
-    public static final DeferredItem<Item> HANDGUN_BULLET = ITEMS.registerItem("handgun_bullet",
-            (p) -> new ESBulletItem(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 2f),
-                    ESBullet.createArrow(ESEntities.HANDGUN_BULLET.get()),
-                    ESBullet.asProjectile(ESEntities.HANDGUN_BULLET.get())));
-    public static final DeferredItem<Item> HEAVY_HANDGUN_BULLET = ITEMS.registerItem("heavy_handgun_bullet",
-            (p) -> new ESBulletItem(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 4f),
-                    ESBullet.createArrow(ESEntities.HEAVY_HANDGUN_BULLET.get()),
-                    ESBullet.asProjectile(ESEntities.HEAVY_HANDGUN_BULLET.get())));
-    // #endregion Ammo
     // #region Throwables
     public static final DeferredItem<Item> BEENADE = ITEMS.register("beenade",
             () -> new BeenadeItem(new Properties().stacksTo(16)));
@@ -865,13 +880,17 @@ public final class ESItems {
      * TODO maid clothing
      * dyable
      * bonus to maid players
+     *
      * TODO silver maid chestplate
      * dyable
      * immunity to time stop
+     * TODO titan helmet
+     * negates first attack every (serverconfig)
      */
     // #endregion Armors
 
     // #region Tools
+    public static final DeferredItem<Item> GUIDE;
     public static final DeferredItem<Item> ANTI_DIE = ITEMS.registerItem("anti_die", p -> new Item(p.stacksTo(1)));
     public static final DeferredItem<Item> OLD_BRUSH = ITEMS.registerItem("old_brush",
             p -> new BrushItem(p.stacksTo(1).durability(320)));
@@ -1015,47 +1034,50 @@ public final class ESItems {
     // #region Food
     public static final DeferredItem<BlockItem> PIZZA = ITEMS.registerSimpleBlockItem(ESBlocks.PIZZA);
     public static final DeferredItem<Item> PIZZA_SLICE = ITEMS.registerItem("pizza_slice",
-            p -> new Item(p.food(ESFoods.PIZZA_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.PIZZA_SLICE)));
     public static final DeferredItem<Item> SUSHROOM_STEW = ITEMS.registerItem("sushroom_stew",
-            p -> new Item(p.food(ESFoods.SUSHROOM_STEW).stacksTo(16).craftRemainder(Items.BOWL)));
+            p -> new ESFoodItem(p.food(ESFoods.SUSHROOM_STEW).stacksTo(16).craftRemainder(Items.BOWL)));
     public static final DeferredItem<Item> RADBURGER = ITEMS.registerItem("radburger",
-            p -> new Item(p.food(ESFoods.RADBURGER)));
+            p -> new ESFoodItem(p.food(ESFoods.RADBURGER)));
     public static final DeferredItem<BlockItem> DIVINE_TEMPTATION_BLOCK = ITEMS
             .registerSimpleBlockItem(ESBlocks.DIVINE_TEMPTATION_BLOCK);
     public static final DeferredItem<Item> DIVINE_TEMPTATION = ITEMS.registerItem("divine_temptation",
-            p -> new Item(p.food(ESFoods.DIVINE_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
+            p -> new ESFoodItem(p.food(ESFoods.DIVINE_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> YELLOWCAKE_SLICE = ITEMS.registerItem("yellowcake_slice",
-            p -> new Item(p.food(ESFoods.YELLOWCAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.YELLOWCAKE_SLICE)));
     public static final DeferredItem<Item> BEE_LARVA = ITEMS.registerItem("bee_larva",
             p -> new BeeLarvaItem(p.stacksTo(16)));
     public static final DeferredItem<Item> COOKED_BEE_LARVA = ITEMS.registerItem("cooked_bee_larva",
-            p -> new Item(p.food(ESFoods.COOKED_BEE_LARVA)));
+            p -> new ESFoodItem(p.food(ESFoods.COOKED_BEE_LARVA)));
     // #region Cake Slices
     public static final DeferredItem<Item> APPLE_CAKE_SLICE = ITEMS.registerItem("apple_cake_slice",
-            p -> new Item(p.food(ESFoods.APPLE_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.APPLE_CAKE_SLICE)));
     public static final DeferredItem<Item> BLUE_CAKE_SLICE = ITEMS.registerItem("blue_cake_slice",
-            p -> new Item(p.food(ESFoods.BLUE_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.BLUE_CAKE_SLICE)));
     public static final DeferredItem<Item> COLD_CAKE_SLICE = ITEMS.registerItem("cold_cake_slice",
-            p -> new Item(p.food(ESFoods.COLD_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.COLD_CAKE_SLICE)));
     public static final DeferredItem<Item> RED_CAKE_SLICE = ITEMS.registerItem("red_cake_slice",
-            p -> new Item(p.food(ESFoods.RED_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.RED_CAKE_SLICE)));
     public static final DeferredItem<Item> HOT_CAKE_SLICE = ITEMS.registerItem("hot_cake_slice",
             p -> new BurningFood(p.food(ESFoods.HOT_CAKE_SLICE), 4));
     public static final DeferredItem<Item> REVERSE_CAKE_SLICE = ITEMS.registerItem("reverse_cake_slice",
-            p -> new Item(p.food(ESFoods.REVERSE_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.REVERSE_CAKE_SLICE)));
     public static final DeferredItem<Item> FUCHSIA_CAKE_SLICE = ITEMS.registerItem("fuchsia_cake_slice",
-            p -> new Item(p.food(ESFoods.FUCHSIA_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.FUCHSIA_CAKE_SLICE)));
     public static final DeferredItem<Item> NEGATIVE_CAKE_SLICE = ITEMS.registerItem("negative_cake_slice",
-            p -> new Item(p.food(ESFoods.NEGATIVE_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.NEGATIVE_CAKE_SLICE)));
     public static final DeferredItem<Item> CARROT_CAKE_SLICE = ITEMS.registerItem("carrot_cake_slice",
-            p -> new Item(p.food(ESFoods.CARROT_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.CARROT_CAKE_SLICE)));
     public static final DeferredItem<Item> CHOCOLATEY_CAKE_SLICE = ITEMS.registerItem("chocolatey_cake_slice",
-            p -> new Item(p.food(ESFoods.CHOCOLATEY_CAKE_SLICE)));
+            p -> new ESFoodItem(p.food(ESFoods.CHOCOLATEY_CAKE_SLICE)));
     public static final DeferredItem<Item> MOON_CAKE_SLICE = ITEMS.registerItem("moon_cake_slice",
-            p -> new Item(p.food(ESFoods.MOON_CAKE_SLICE).component(ESDataComponents.MOON_CAKE_SLICE_COLOR,
+            p -> new ESFoodItem(p.food(ESFoods.MOON_CAKE_SLICE).component(ESDataComponents.MOON_CAKE_SLICE_COLOR,
                     MoonCakeSliceColor.DUAL)));
     public static final DeferredItem<Item> LEMON_CAKE_SLICE = ITEMS.registerItem("lemon_cake_slice",
             p -> new ExplosiveFood(p.food(ESFoods.LEMON_CAKE_SLICE)));
+    public static final DeferredItem<Item> PAN_CAKE_SLICE = ITEMS.registerItem("pan_cake_slice",
+            p -> new ESFoodItem(p.food(ESFoods.PAN_CAKE_SLICE).component(ESDataComponents.PAN_CAKE_SLICE_COLOR,
+                    PanCakeSliceColor.TRIPLE)));
     // #endregion Cake Slices
     public static final DeferredItem<BlockItem> MORTAL_TEMPTATION_BLOCK = ITEMS
             .registerSimpleBlockItem(ESBlocks.MORTAL_TEMPTATION_BLOCK);
@@ -1063,26 +1085,29 @@ public final class ESItems {
             p -> new MortalTemptation(
                     p.food(ESFoods.MORTAL_TEMPTATION).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> CANDY_CRUNCH = ITEMS.registerItem("candy_crunch",
-            p -> new Item(p.food(ESFoods.CANDY_CRUNCH).craftRemainder(Items.BOWL).stacksTo(16)));
+            p -> new ESFoodItem(p.food(ESFoods.CANDY_CRUNCH).craftRemainder(Items.BOWL).stacksTo(16)));
     public static final DeferredItem<Item> HOME_DONUT = ITEMS.registerItem("home_donut",
             p -> new HomeDonut(p.food(ESFoods.HOME_DONUT)));
     public static final DeferredItem<Item> SOUR_BOMB_CANDY = ITEMS.registerItem("sour_bomb_candy",
             p -> new ExplosiveFood(p.food(ESFoods.SOUR_BOMB_CANDY)));
     public static final DeferredItem<Item> COSMIC_SPOREO = ITEMS.registerItem("cosmic_sporeo",
-            p -> new Item(p.food(ESFoods.COSMIC_SPOREO)));
+            p -> new ESFoodItem(p.food(ESFoods.COSMIC_SPOREO)));
     public static final DeferredItem<Item> SPAM = ITEMS.registerItem("spam", p -> new LootFood(
             p.food(ESFoods.SPAM).component(ESDataComponents.GIFT_TABLE, TableSubProvider.SPAM_LOOT_TABLE),
             Component.translatable(ESLangProvider.SPAM_FOOD)));
     public static final DeferredItem<BlockItem> LEMON_CAKE = ITEMS.registerSimpleBlockItem(ESBlocks.LEMON_CAKE,
             new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> GUMMY_RING = ITEMS.registerItem("gummy_ring",
-            p -> new Item(p.stacksTo(1).food(ESFoods.GUMMY_RING)));
+            p -> new ESFoodItem(p.stacksTo(1).food(ESFoods.GUMMY_RING)));
+    public static final DeferredItem<Item> SCULK_SOUP = ITEMS.registerItem("sculk_soup",
+            p -> new ESFoodItem(p.stacksTo(16).food(ESFoods.SCULK_SOUP)));
+    public static final DeferredItem<Item> DREAD = ITEMS.registerItem("dread",
+            p -> new ESFoodItem(p.food(ESFoods.DREAD)));
     // #endregion Food
 
     // #region Drinks
     public static final DeferredItem<Item> DESERT_JUICE = ITEMS.registerItem("desert_juice",
-            p -> new DrinkableItem(
-                    p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
+            p -> new ESDrinkItem(p.food(ESFoods.DESERT_JUICE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
     public static final DeferredItem<Item> ROCKET_JUMP = ITEMS.registerItem("rocket_jump",
             p -> new RocketJump(
                     p.food(ESFoods.ROCKET_JUMP).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
@@ -1099,19 +1124,35 @@ public final class ESItems {
             p -> new Item(p.stacksTo(1)));
     public static final DeferredItem<Item> COSMIC_PLAGUE_SPORE = ITEMS.registerItem("cosmic_plague_spore",
             CosmicPlagueSporeItem::new);
+    public static final DeferredItem<Item> DEEPSLATE_REINFORCEMENT = ITEMS.registerItem("deepslate_reinforcement",
+            Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+    public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
+            (p) -> new GiftItem(
+                    p.component(ESDataComponents.GIFT_TABLE, TableSubProvider.GIFT_LOOT_TABLE)));
+    public static final DeferredItem<Item> LUCK_TOKEN = ITEMS.registerItem("luck_token", p -> new Tokenitem(p));
 
     // #region Blocks
     // #region Machines
     public static final DeferredItem<BlockItem> PRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.PRINTER);
     public static final DeferredItem<BlockItem> DISPRINTER = ITEMS.registerSimpleBlockItem(ESBlocks.DISPRINTER);
     public static final DeferredItem<BlockItem> CHARGER = ITEMS.registerSimpleBlockItem(ESBlocks.CHARGER);
+    public static final DeferredItem<BlockItem> WIRELESS_CHARGER = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WIRELESS_CHARGER);
     public static final DeferredItem<BlockItem> REACTOR = ITEMS.registerSimpleBlockItem(ESBlocks.REACTOR);
     public static final DeferredItem<BlockItem> URANIUM_BLASTER = ITEMS
             .registerSimpleBlockItem(ESBlocks.URANIUM_BLASTER);
     public static final DeferredItem<BlockItem> DOWEL_STORAGE = ITEMS
             .registerSimpleBlockItem(ESBlocks.DOWEL_STORAGE);
     public static final DeferredItem<BlockItem> CARD_STORAGE = ITEMS.registerSimpleBlockItem(ESBlocks.CARD_STORAGE);
+    public static final DeferredItem<BlockItem> SMALL_VENDING_MACHINE = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SMALL_VENDING_MACHINE);
     // #endregion Machines
+
+    public static final DeferredItem<BlockItem> DEEPSLATE_PILLAR = ITEMS
+            .registerSimpleBlockItem(ESBlocks.DEEPSLATE_PILLAR);
+    public static final DeferredItem<BlockItem> DEEPSLATE_CRUXITE_ORE = ITEMS
+            .registerSimpleBlockItem(ESBlocks.DEEPSLATE_CRUXITE_ORE);
+
     // #region Garnet
     public static final DeferredItem<BlockItem> CUT_GARNET = ITEMS.registerSimpleBlockItem(ESBlocks.CUT_GARNET);
     public static final DeferredItem<BlockItem> CUT_GARNET_STAIRS = ITEMS
@@ -1203,21 +1244,101 @@ public final class ESItems {
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_SLAB);
     public static final DeferredItem<BlockItem> ZILLIUM_BRICK_WALL = ITEMS
             .registerSimpleBlockItem(ESBlocks.ZILLIUM_BRICK_WALL);
+
+    // #region Green Zillium
+    public static final DeferredItem<BlockItem> GREEN_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GREEN_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> GREEN_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> GREEN_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> GREEN_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.GREEN_ZILLIUM_BRICK_WALL);
+
+    public static final DeferredItem<BlockItem> WAXED_GREEN_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_GREEN_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> WAXED_GREEN_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> WAXED_GREEN_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> WAXED_GREEN_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL);
+    // #endregion Green Zillium
+    // #region Blue Zillium
+    public static final DeferredItem<BlockItem> BLUE_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.BLUE_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> BLUE_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> BLUE_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> BLUE_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.BLUE_ZILLIUM_BRICK_WALL);
+
+    public static final DeferredItem<BlockItem> WAXED_BLUE_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_BLUE_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> WAXED_BLUE_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> WAXED_BLUE_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> WAXED_BLUE_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL);
+    // #endregion Blue Zillium
+    // #region Pink Zillium
+    public static final DeferredItem<BlockItem> PINK_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.PINK_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> PINK_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.PINK_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> PINK_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.PINK_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> PINK_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.PINK_ZILLIUM_BRICK_WALL);
+
+    public static final DeferredItem<BlockItem> WAXED_PINK_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_PINK_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> WAXED_PINK_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> WAXED_PINK_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> WAXED_PINK_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL);
+    // #endregion Pink Zillium
+    // #region Secondary Zillium
+    public static final DeferredItem<BlockItem> SECONDARY_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SECONDARY_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> SECONDARY_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> SECONDARY_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> SECONDARY_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL);
+
+    public static final DeferredItem<BlockItem> WAXED_SECONDARY_ZILLIUM_BRICKS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICKS);
+    public static final DeferredItem<BlockItem> WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS);
+    public static final DeferredItem<BlockItem> WAXED_SECONDARY_ZILLIUM_BRICK_SLAB = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB);
+    public static final DeferredItem<BlockItem> WAXED_SECONDARY_ZILLIUM_BRICK_WALL = ITEMS
+            .registerSimpleBlockItem(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL);
+    // #endregion Secondary Zillium
     // #endregion Zillium
     public static final DeferredItem<BlockItem> NORMAL_CAT_PLUSH = ITEMS
             .registerSimpleBlockItem(ESBlocks.NORMAL_CAT_PLUSH);
     // #endregion Blocks
 
-    public static final DeferredItem<Item> GIFT = ITEMS.registerItem("gift",
-            (p) -> new GiftItem(
-                    p.component(ESDataComponents.GIFT_TABLE, TableSubProvider.GIFT_LOOT_TABLE)));
-    public static final DeferredItem<Item> LUCK_TOKEN = ITEMS.registerItem("luck_token", p -> new Tokenitem(p));
+    static {
+        if (ESCompatUtils.isLoaded("patchouli")) {
+            GUIDE = ITEMS.register("guide", com.medsal15.compat.patchouli.items.GuideItem::new);
+        } else {
+            GUIDE = ITEMS.register("guide",
+                    () -> new MissingModItem(new Item.Properties().stacksTo(1), "Patchouli", "patchouli"));
+        }
+    }
 
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
         if (ESCompatUtils.isLoaded("patchouli")) {
-            output.accept(ItemModBook
-                    .forBook(modid("extrastuck")));
+            output.accept(GUIDE);
         }
 
         for (DeferredItem<Item> card : ESItems.getModusCards()) {
@@ -1259,8 +1380,9 @@ public final class ESItems {
         for (DeferredItem<Item> item : ESItems.getRangedWeapons()) {
             output.accept(item.get());
         }
-        output.accept(BEENADE);
-        output.accept(LEMONNADE);
+        for (DeferredItem<Item> item : ESItems.getThrowingWeapons()) {
+            output.accept(item.get());
+        }
 
         if (ESCompatUtils.isLoaded("irons_spellbooks")) {
             for (DeferredItem<Item> item : ISSESItems.getSpellbooks()) {
@@ -1301,6 +1423,17 @@ public final class ESItems {
                 prospit.set(ESDataComponents.MOON_CAKE_SLICE_COLOR, MoonCakeSliceColor.PROSPIT);
                 output.accept(prospit);
             }
+            if (item.get() == PAN_CAKE_SLICE.get()) {
+                ItemStack magenta = item.toStack();
+                magenta.set(ESDataComponents.PAN_CAKE_SLICE_COLOR, PanCakeSliceColor.MAGENTA);
+                output.accept(magenta);
+                ItemStack yellow = item.toStack();
+                yellow.set(ESDataComponents.PAN_CAKE_SLICE_COLOR, PanCakeSliceColor.YELLOW);
+                output.accept(yellow);
+                ItemStack cyan = item.toStack();
+                cyan.set(ESDataComponents.PAN_CAKE_SLICE_COLOR, PanCakeSliceColor.CYAN);
+                output.accept(cyan);
+            }
         }
         for (DeferredItem<? extends Item> item : ESItems.getDrinks()) {
             output.accept(item.get());
@@ -1309,6 +1442,7 @@ public final class ESItems {
         output.accept(EMPTY_ENERGY_CORE);
         output.accept(BOONDOLLARS_FOR_IDIOTS);
         output.accept(COSMIC_PLAGUE_SPORE);
+        output.accept(DEEPSLATE_REINFORCEMENT);
 
         for (DeferredItem<BlockItem> item : ESItems.getBlocks()) {
             output.accept(item.get());
@@ -1340,6 +1474,7 @@ public final class ESItems {
         list.addAll(getShovels());
         list.addAll(getPickaxes());
         list.addAll(getAxes());
+        list.addAll(getHoes());
         return list;
     }
 
@@ -1482,16 +1617,22 @@ public final class ESItems {
         list.add(WITHERED_MACE);
         list.add(D8TH_M8CE);
         list.add(BIG_CLUB);
+        list.add(COPPER_MACE);
         // Keys
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
-        list.add(OFFICE_KEY);
+        if (ESCompatUtils.isLoaded("alchemyexpanded")) {
+            list.addAll(AEESItems.getKeys());
+        } else {
+            list.addAll(AEESMissingItems.getKeys());
+        }
         list.add(ANCIENT_VAULT_OPENER);
         list.add(VAULT_MELTER);
         // Wands
         list.add(BAGUETTE_MAGIQUE);
         list.add(MONEY_MAGIC);
         list.add(WIND_WAND);
+        list.add(WAND_OF_LIGHT);
         // Canes
         list.add(BROOM);
         list.add(IRON_CROWBAR);
@@ -1506,6 +1647,7 @@ public final class ESItems {
         // Batons
         list.add(THE_STING);
         list.add(STOCKS_UPTICKER);
+        list.add(SYRINGE);
         // Swords
         list.add(SUN_REAVER);
         if (ESCompatUtils.isLoaded("irons_spellbooks")) {
@@ -1513,6 +1655,8 @@ public final class ESItems {
         } else {
             list.addAll(ISSESMissingItems.getSwords());
         }
+        list.add(SHADOW_KATANA);
+        list.add(WHITE_SHARD);
         // Sickles
         list.add(NEW_MOON);
         list.add(PIRATE_HOOK);
@@ -1521,6 +1665,7 @@ public final class ESItems {
         // Scythes
         list.add(DEBT_REAPER);
         list.add(LEAFBURNER);
+        list.add(BLACK_MOONSHINE_COLLECTOR);
         // Fans
         list.add(NONE_OF_YOUR_BUSINESS);
         // Lances
@@ -1560,6 +1705,7 @@ public final class ESItems {
         list.addAll(getShovels());
         list.addAll(getPickaxes());
         list.addAll(getAxes());
+        list.addAll(getHoes());
         return list;
     }
 
@@ -1587,6 +1733,14 @@ public final class ESItems {
         return list;
     }
 
+    public static Collection<DeferredItem<Item>> getHoes() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(TILL_SILENCE);
+
+        return list;
+    }
+
     public static Collection<DeferredItem<Item>> getRangedWeapons() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.addAll(getMagicWeapons());
@@ -1595,7 +1749,20 @@ public final class ESItems {
 
         list.add(YIN_YANG_ORB);
 
-        list.add(HANDGUN);
+        if (ESCompatUtils.isLoaded("alchemyexpanded")) {
+            list.addAll(AEESItems.getRangedWeapons());
+        } else {
+            list.addAll(AEESMissingItems.getRangedWeapons());
+        }
+        return list;
+    }
+
+    public static Collection<DeferredItem<Item>> getThrowingWeapons() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+
+        list.add(BEENADE);
+        list.add(LEMONNADE);
+
         return list;
     }
 
@@ -1605,6 +1772,7 @@ public final class ESItems {
         list.add(BAGUETTE_MAGIQUE);
         list.add(MONEY_MAGIC);
         list.add(WIND_WAND);
+        list.add(WAND_OF_LIGHT);
 
         return list;
     }
@@ -1613,6 +1781,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         list.add(RADBOW);
         list.add(MECHANICAL_RADBOW);
+        list.add(DEEP_CROSSBOW);
         return list;
     }
 
@@ -1623,13 +1792,15 @@ public final class ESItems {
         list.add(RAINBOW_BOW);
         list.add(MAKE_IT_RAIN);
         list.add(SHOOTING_STAR);
+        list.add(SILENT_SHOT);
         return list;
     }
 
     public static Collection<DeferredItem<Item>> getAmmo() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
-        list.add(HANDGUN_BULLET);
-        list.add(HEAVY_HANDGUN_BULLET);
+        if (!ESCompatUtils.isLoaded("alchemyexpanded")) {
+            list.addAll(AEESMissingItems.getAmmo());
+        }
         return list;
     }
 
@@ -1749,6 +1920,7 @@ public final class ESItems {
         list.add(CARROT_CAKE_SLICE);
         list.add(CHOCOLATEY_CAKE_SLICE);
         list.add(MOON_CAKE_SLICE);
+        list.add(PAN_CAKE_SLICE);
         list.add(LEMON_CAKE);
         list.add(LEMON_CAKE_SLICE);
         list.add(MORTAL_TEMPTATION_BLOCK);
@@ -1759,6 +1931,8 @@ public final class ESItems {
         list.add(COSMIC_SPOREO);
         list.add(SPAM);
         list.add(GUMMY_RING);
+        list.add(SCULK_SOUP);
+        list.add(DREAD);
         return list;
     }
 
@@ -1774,10 +1948,15 @@ public final class ESItems {
         list.add(PRINTER);
         list.add(DISPRINTER);
         list.add(CHARGER);
+        list.add(WIRELESS_CHARGER);
         list.add(REACTOR);
         list.add(URANIUM_BLASTER);
+        list.add(SMALL_VENDING_MACHINE);
         list.add(DOWEL_STORAGE);
         list.add(CARD_STORAGE);
+
+        list.add(DEEPSLATE_PILLAR);
+        list.add(DEEPSLATE_CRUXITE_ORE);
 
         list.add(CUT_GARNET);
         list.add(CUT_GARNET_STAIRS);
@@ -1823,10 +2002,41 @@ public final class ESItems {
         list.add(MARBLE_BRICK_SLAB);
         list.add(MARBLE_BRICK_WALL);
 
-        list.add(ZILLIUM_BRICKS);
-        list.add(ZILLIUM_BRICK_STAIRS);
-        list.add(ZILLIUM_BRICK_SLAB);
-        list.add(ZILLIUM_BRICK_WALL);
+        list.add(GREEN_ZILLIUM_BRICKS);
+        list.add(GREEN_ZILLIUM_BRICK_STAIRS);
+        list.add(GREEN_ZILLIUM_BRICK_SLAB);
+        list.add(GREEN_ZILLIUM_BRICK_WALL);
+        list.add(WAXED_GREEN_ZILLIUM_BRICKS);
+        list.add(WAXED_GREEN_ZILLIUM_BRICK_STAIRS);
+        list.add(WAXED_GREEN_ZILLIUM_BRICK_SLAB);
+        list.add(WAXED_GREEN_ZILLIUM_BRICK_WALL);
+
+        list.add(BLUE_ZILLIUM_BRICKS);
+        list.add(BLUE_ZILLIUM_BRICK_STAIRS);
+        list.add(BLUE_ZILLIUM_BRICK_SLAB);
+        list.add(BLUE_ZILLIUM_BRICK_WALL);
+        list.add(WAXED_BLUE_ZILLIUM_BRICKS);
+        list.add(WAXED_BLUE_ZILLIUM_BRICK_STAIRS);
+        list.add(WAXED_BLUE_ZILLIUM_BRICK_SLAB);
+        list.add(WAXED_BLUE_ZILLIUM_BRICK_WALL);
+
+        list.add(PINK_ZILLIUM_BRICKS);
+        list.add(PINK_ZILLIUM_BRICK_STAIRS);
+        list.add(PINK_ZILLIUM_BRICK_SLAB);
+        list.add(PINK_ZILLIUM_BRICK_WALL);
+        list.add(WAXED_PINK_ZILLIUM_BRICKS);
+        list.add(WAXED_PINK_ZILLIUM_BRICK_STAIRS);
+        list.add(WAXED_PINK_ZILLIUM_BRICK_SLAB);
+        list.add(WAXED_PINK_ZILLIUM_BRICK_WALL);
+
+        list.add(SECONDARY_ZILLIUM_BRICKS);
+        list.add(SECONDARY_ZILLIUM_BRICK_STAIRS);
+        list.add(SECONDARY_ZILLIUM_BRICK_SLAB);
+        list.add(SECONDARY_ZILLIUM_BRICK_WALL);
+        list.add(WAXED_SECONDARY_ZILLIUM_BRICKS);
+        list.add(WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS);
+        list.add(WAXED_SECONDARY_ZILLIUM_BRICK_SLAB);
+        list.add(WAXED_SECONDARY_ZILLIUM_BRICK_WALL);
 
         list.add(CARD_ORE);
 

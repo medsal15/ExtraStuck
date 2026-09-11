@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "polished_marble",
   "key": {
     "G": {
       "item": "extrastuck:polished_marble"

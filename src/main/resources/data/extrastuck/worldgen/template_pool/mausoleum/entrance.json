@@ -1,0 +1,24 @@
+{
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:mausoleum/entrance/hollow",
+                "projection": "rigid",
+                "processors": "minestuck:structure_block_registry"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:mausoleum/entrance/fragile",
+                "projection": "rigid",
+                "processors": "minestuck:structure_block_registry"
+            }
+        }
+    ]
+}
+

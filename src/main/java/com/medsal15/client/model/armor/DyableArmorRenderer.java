@@ -14,14 +14,23 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
  * Copied from Iron's Spells & Spellbooks
  */
 public class DyableArmorRenderer<T extends Item & GeoItem> extends GeoArmorRenderer<T> {
+    private final int defaultColor;
+
+    @Deprecated
     public DyableArmorRenderer(GeoModel<T> model) {
         super(model);
+        defaultColor = 0xFFFFFFFF;
+    }
+
+    public DyableArmorRenderer(GeoModel<T> model, int defaultColor) {
+        super(model);
+        this.defaultColor = defaultColor;
     }
 
     @Override
     public void renderCubesOfBone(PoseStack poseStack, GeoBone bone, VertexConsumer buffer, int packedLight,
             int packedOverlay, int color) {
-        color = 0xFFFFFFFF;
+        color = defaultColor;
         if (bone.getName().startsWith("dye") && currentStack != null) {
             color = Minecraft.getInstance().getItemColors().getColor(currentStack, 0) | 0xFF000000;
         }

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minestuck:coarse_stone_column"
+  },
+  "input2": {
+    "item": "minecraft:ink_sac"
+  },
+  "mode": "or",
+  "output": "extrastuck:deepslate_pillar"
+}

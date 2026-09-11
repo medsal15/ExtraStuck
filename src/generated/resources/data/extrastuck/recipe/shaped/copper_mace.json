@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "tag": "c:storage_blocks/copper"
+    },
+    "R": {
+      "item": "minecraft:lightning_rod"
+    }
+  },
+  "pattern": [
+    "B",
+    "R"
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrastuck:copper_mace"
+  }
+}

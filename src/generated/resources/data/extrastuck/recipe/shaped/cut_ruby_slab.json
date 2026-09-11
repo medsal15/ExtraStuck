@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "cut_ruby",
   "key": {
     "G": {
       "item": "extrastuck:cut_ruby"

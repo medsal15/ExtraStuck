@@ -1,13 +1,13 @@
 {
     "name": "Zillium Bricks",
-    "icon": "extrastuck:zillium_bricks",
+    "icon": "extrastuck:green_zillium_bricks",
     "category": "extrastuck:blocks",
     "sortnum": 1,
     "pages": [
         {
             "type": "patchouli:spotlight",
-            "item": "extrastuck:zillium_bricks",
-            "text": "Alright new zillionnaire, it's clear you're above the economy. So here are these blocks which are made of pure zillium."
+            "item": "extrastuck:green_zillium_bricks,extrastuck:blue_zillium_bricks,extrastuck:pink_zillium_bricks",
+            "text": "Alright new zillionnaire, it's clear you're above the economy. So here are these blocks which are made of pure zillium.$(br2)$(3)$(l)Special:$() Their unstability makes them switch color over time. You may need some honeycombs."
         },
         {
             "type": "extrastuck:combination",
@@ -15,7 +15,7 @@
             "left": "minecraft:stone_bricks",
             "mode": "||",
             "right": "minestuck:zillium_skittles",
-            "result": "extrastuck:zillium_bricks"
+            "result": "extrastuck:green_zillium_bricks"
         }
     ]
 }

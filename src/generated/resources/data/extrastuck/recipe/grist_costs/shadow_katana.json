@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:cobalt": 500,
+    "minestuck:diamond": 23,
+    "minestuck:tar": 333
+  },
+  "ingredient": {
+    "item": "extrastuck:shadow_katana"
+  }
+}

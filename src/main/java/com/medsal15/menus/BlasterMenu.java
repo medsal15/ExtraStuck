@@ -4,10 +4,10 @@ import javax.annotation.Nonnull;
 
 import com.medsal15.blockentities.BlasterBlockEntity;
 import com.medsal15.blocks.ESBlocks;
+import com.mraof.minestuck.api.uranium.UraniumPower;
 import com.mraof.minestuck.inventory.ContainerHelper;
 import com.mraof.minestuck.inventory.MachineContainerMenu;
 import com.mraof.minestuck.inventory.slot.UraniumPowerSlot;
-import com.mraof.minestuck.item.MSItems;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -76,7 +76,7 @@ public class BlasterMenu extends MachineContainerMenu {
             if (index == BlasterBlockEntity.SLOT_FUEL) {
                 result = moveItemStackTo(original, 1, all, false);
             } else {
-                if (original.getItem() == MSItems.RAW_URANIUM.asItem()) {
+                if (UraniumPower.hasUraniumPower(original)) {
                     // send to fuel
                     result = moveItemStackTo(original, 0, 1, false);
                 }

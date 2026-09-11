@@ -1,9 +1,7 @@
 package com.medsal15.items.armor;
 
-import java.util.Optional;
+import java.util.Map;
 import java.util.function.Consumer;
-
-import javax.annotation.Nonnull;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -11,17 +9,13 @@ import com.medsal15.ExtraStuck;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Holder.Reference;
-import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.client.GeoRenderProvider;
@@ -33,35 +27,11 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class CactusArmorItem extends ArmorItem implements GeoItem {
+public class CactusArmorItem extends InnateEnchantArmorItem implements GeoItem {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public CactusArmorItem(Holder<ArmorMaterial> material, ArmorItem.Type slot, Properties properties) {
-        super(material, slot, properties);
-    }
-
-    @Override
-    public int getEnchantmentLevel(@Nonnull ItemStack stack, @Nonnull Holder<Enchantment> enchantment) {
-        int level = super.getEnchantmentLevel(stack, enchantment);
-
-        if (enchantment.is(Enchantments.THORNS)) {
-            level += 1;
-        }
-
-        return level;
-    }
-
-    @Override
-    public ItemEnchantments getAllEnchantments(@Nonnull ItemStack stack, @Nonnull RegistryLookup<Enchantment> lookup) {
-        ItemEnchantments list = super.getAllEnchantments(stack, lookup);
-        ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(list);
-
-        Optional<Reference<Enchantment>> echantment = lookup.get(Enchantments.THORNS);
-        if (echantment.isPresent()) {
-            mutable.upgrade(echantment.get(), 1);
-        }
-
-        return mutable.toImmutable();
+        super(material, slot, properties, Map.of(Enchantments.THORNS, 1));
     }
 
     @Override

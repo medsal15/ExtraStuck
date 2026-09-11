@@ -1,0 +1,10 @@
+{
+  "ingredient": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "range": {
+    "type": "minecraft:uniform",
+    "max_inclusive": 150,
+    "min_inclusive": 75
+  }
+}

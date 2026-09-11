@@ -11,6 +11,7 @@ import com.medsal15.items.ESItems;
 import com.medsal15.items.components.ESDataComponents;
 import com.medsal15.menus.ChargerMenu;
 import com.medsal15.menus.CraftingModusRecipeMenu;
+import com.medsal15.menus.VendingMachineMenu;
 import com.medsal15.storage.ESBoondollarValues;
 import com.medsal15.storage.ESBoondollarValues.BoondollarValue;
 import com.mraof.minestuck.api.alchemy.GristType;
@@ -224,6 +225,46 @@ public final class ESPackets {
         public void execute(IPayloadContext context, ServerPlayer player) {
             if (player.containerMenu instanceof CraftingModusRecipeMenu menu) {
                 menu.saveRecipe(player);
+            }
+        }
+    }
+
+    public record VendingMachineSetCost(int cost) implements MSPacket.PlayToServer {
+        public static final Type<VendingMachineSetCost> ID = new Type<>(ExtraStuck.modid("vending_machine/set_cost"));
+        public static final StreamCodec<ByteBuf, VendingMachineSetCost> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.INT, VendingMachineSetCost::cost,
+                VendingMachineSetCost::new);
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context, ServerPlayer player) {
+            if (player.containerMenu instanceof VendingMachineMenu.Storage storageMenu) {
+                storageMenu.setCost(cost);
+            }
+        }
+    }
+
+    /** Tells the menu to save the crafting modus data */
+    public record VendingMachinePurchase(int amount) implements MSPacket.PlayToServer {
+        public static final StreamCodec<ByteBuf, VendingMachinePurchase> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.INT, VendingMachinePurchase::amount,
+                VendingMachinePurchase::new);
+        public static final Type<VendingMachinePurchase> ID = new Type<>(
+                ExtraStuck.modid("vending_machine/purchase"));
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return ID;
+        }
+
+        @Override
+        public void execute(IPayloadContext context, ServerPlayer player) {
+            if (player.containerMenu instanceof VendingMachineMenu.Sell sellMenu) {
+                sellMenu.purchase(player, amount);
             }
         }
     }

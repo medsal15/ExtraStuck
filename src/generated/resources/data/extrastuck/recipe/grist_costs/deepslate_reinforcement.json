@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:chalk": 550,
+    "minestuck:diamond": 1200,
+    "minestuck:zillium": 1
+  },
+  "ingredient": {
+    "item": "extrastuck:deepslate_reinforcement"
+  }
+}

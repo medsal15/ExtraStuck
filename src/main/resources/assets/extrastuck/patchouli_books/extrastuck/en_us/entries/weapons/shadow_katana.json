@@ -1,0 +1,23 @@
+{
+    "name": "Shadow Katana",
+    "icon": "extrastuck:shadow_katana",
+    "category": "extrastuck:weapons",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:shadow_katana"
+            },
+            "text": "Some crystallized sculk, in the shape of a katana.$(br2)$(3)$(l)Special:$() Deals extra damage that ignores armor."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Katana and a Sculk Vein in a Punch Designix.",
+            "left": "minestuck:katana",
+            "mode": "||",
+            "right": "minecraft:sculk_vein",
+            "result": "extrastuck:shadow_katana"
+        }
+    ]
+}

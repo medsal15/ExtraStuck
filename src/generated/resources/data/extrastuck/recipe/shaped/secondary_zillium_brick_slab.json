@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "secondary_zillium_bricks",
+  "key": {
+    "G": {
+      "item": "extrastuck:secondary_zillium_bricks"
+    }
+  },
+  "pattern": [
+    "GGG"
+  ],
+  "result": {
+    "count": 6,
+    "id": "extrastuck:secondary_zillium_brick_slab"
+  }
+}

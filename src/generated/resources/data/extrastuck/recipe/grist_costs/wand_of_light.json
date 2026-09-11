@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:chalk": 250,
+    "minestuck:gold": 180,
+    "minestuck:quartz": 450
+  },
+  "ingredient": {
+    "item": "extrastuck:wand_of_light"
+  }
+}

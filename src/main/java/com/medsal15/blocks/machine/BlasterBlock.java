@@ -20,7 +20,7 @@ public class BlasterBlock extends SmallMachineBlock<BlasterBlockEntity> {
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 
     public BlasterBlock(Properties properties) {
-        super(ESBlockShapes.URANIUM_BLASTER.createRotatedShapes(), ESBlockEntities.BLASTER, properties);
+        super(ESBlockShapes.FULL_BLOCK.createRotatedShapes(), ESBlockEntities.BLASTER, properties);
         registerDefaultState(this.stateDefinition.any().setValue(ACTIVE, false));
     }
 

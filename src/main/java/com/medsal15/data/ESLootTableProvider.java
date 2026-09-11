@@ -1,5 +1,7 @@
 package com.medsal15.data;
 
+import static com.mraof.minestuck.data.loot_table.MSChestLootTables.locationForTerrain;
+
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -16,7 +18,11 @@ import com.medsal15.items.ESItems;
 import com.medsal15.loot.conditions.ESTerrainCondition;
 import com.medsal15.loot.conditions.ESTitlecondition;
 import com.medsal15.loot.functions.TurnToCardFunction;
+import com.medsal15.world.land.ESLandTypes;
+import com.mraof.minestuck.data.loot_table.MSChestLootTables;
+import com.mraof.minestuck.data.loot_table.MSGiftLootTables;
 import com.mraof.minestuck.item.MSItems;
+import com.mraof.minestuck.item.loot.MSLootTables;
 import com.mraof.minestuck.item.loot.functions.SetBoondollarCount;
 import com.mraof.minestuck.util.MSTags;
 import com.mraof.minestuck.world.lands.LandTypes;
@@ -24,6 +30,7 @@ import com.mraof.minestuck.world.lands.LandTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -32,18 +39,25 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ProblemReporter.Collector;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemLore;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext.EntityTarget;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.entries.TagEntry;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.SetComponentsFunction;
@@ -63,6 +77,12 @@ public class ESLootTableProvider extends LootTableProvider {
                 lookupProvider);
     }
 
+    @Override
+    protected void validate(@Nonnull WritableRegistry<LootTable> writableregistry,
+            @Nonnull ValidationContext validationcontext, @Nonnull Collector problemreporter) {
+        // Stupid vanilla validation not being aware of vanilla loot tables
+    }
+
     public static class TableSubProvider implements LootTableSubProvider {
         private final HolderLookup.Provider provider;
 
@@ -72,6 +92,7 @@ public class ESLootTableProvider extends LootTableProvider {
 
         public static ResourceKey<LootTable> GIFT_LOOT_TABLE = key("gameplay/gift");
         public static ResourceKey<LootTable> SPAM_LOOT_TABLE = key("gameplay/spam");
+        public static ResourceKey<LootTable> DEEPSLATE_UNREINFORCING = key("gameplay/deepslate_unreinforcing");
 
         public static ResourceKey<LootTable> TWO_OF_DIAMONDS = key("gameplay/two_of_diamonds");
         public static ResourceKey<LootTable> TWO_OF_SPADES = key("gameplay/two_of_spades");
@@ -128,6 +149,51 @@ public class ESLootTableProvider extends LootTableProvider {
                                     .add(LootItem.lootTableItem(ESItems.PROJECDRILL)
                                             .setQuality(2)
                                             .apply(rangeAmount(0, 8)))));
+
+            // Dark
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSChestLootTables.WEAPON_ITEM_TABLE),
+                    LootTable.lootTable().withPool(LootPool.lootPool().name(MSChestLootTables.ITEM_POOL)
+                            .add(LootItem.lootTableItem(MSItems.DIAMOND_DAGGER).setWeight(10)
+                                    .apply(rangeDamage(.25f, .5f)))
+                            .add(LootItem.lootTableItem(MSItems.CLUBS_SUITARANG)
+                                    .apply(rangeAmount(1, 5)))));
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSChestLootTables.SUPPLY_ITEM_TABLE),
+                    LootTable.lootTable().withPool(LootPool.lootPool().name(MSChestLootTables.ITEM_POOL)
+                            .add(LootItem.lootTableItem(ESItems.SHINEBREAKER)
+                                    .apply(rangeDamage(.25f, .75f)).setQuality(5))
+                            .add(LootItem.lootTableItem(Items.SCULK_SENSOR)
+                                    .apply(rangeAmount(1, 5)).setQuality(3))));
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSChestLootTables.MISC_ITEM_TABLE),
+                    LootTable.lootTable().withPool(LootPool.lootPool().name(MSChestLootTables.ITEM_POOL)
+                            .add(LootItem.lootTableItem(Items.SCULK)
+                                    .apply(rangeAmount(2, 10)).setWeight(2))
+                            .add(LootItem.lootTableItem(Items.SCULK_VEIN)
+                                    .apply(rangeAmount(2, 10)).setWeight(4))));
+
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSLootTables.CONSORT_GENERAL_STOCK),
+                    LootTable.lootTable()
+                            .withPool(LootPool.lootPool().name(MSGiftLootTables.ITEM_POOL)
+                                    .add(LootItem.lootTableItem(Items.AMETHYST_SHARD).apply(rangeAmount(4, 10))
+                                            .setWeight(2))
+                                    .add(LootItem.lootTableItem(Items.DISC_FRAGMENT_5))
+                                    .add(LootItem.lootTableItem(Items.FEATHER).setWeight(6).apply(rangeAmount(5, 10))))
+                            .withPool(LootPool.lootPool().name(MSGiftLootTables.BLOCK_POOL)
+                                    .add(LootItem.lootTableItem(Items.SOUL_LANTERN).apply(rangeAmount(5, 15))
+                                            .setWeight(5))
+                                    .add(LootItem.lootTableItem(Items.DARK_OAK_LOG).setWeight(10)
+                                            .apply(rangeAmount(8, 20)))));
+            consumer.accept(locationForTerrain(ESLandTypes.DARK, MSLootTables.CONSORT_FOOD_STOCK),
+                    LootTable.lootTable()
+                            .withPool(LootPool.lootPool().name(MSGiftLootTables.MAIN_POOL)
+                                    .add(LootItem.lootTableItem(MSItems.JAR_OF_BUGS.get()).setWeight(5)
+                                            .apply(rangeAmount(3, 10)))
+                                    .add(LootItem.lootTableItem(MSItems.CONE_OF_FLIES.get()).setWeight(8)
+                                            .apply(rangeAmount(3, 10)))
+                                    .add(LootItem.lootTableItem(Items.GLOW_BERRIES).setWeight(8)
+                                            .apply(rangeAmount(5, 15)))
+                                    .add(LootItem.lootTableItem(Items.APPLE).setWeight(5).apply(rangeAmount(1, 5))))
+                            .withPool(LootPool.lootPool().name(MSGiftLootTables.SPECIAL_POOL)
+                                    .add(LootItem.lootTableItem(Items.GOLDEN_APPLE).apply(rangeAmount(1, 2)))));
             // #endregion Land Terrains
 
             // #region Land Titles
@@ -156,6 +222,9 @@ public class ESLootTableProvider extends LootTableProvider {
             // Misc
             consumer.accept(GIFT_LOOT_TABLE, giftLootTable());
             consumer.accept(SPAM_LOOT_TABLE, spamLootTable());
+            consumer.accept(DEEPSLATE_UNREINFORCING,
+                    LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                            .add(LootItem.lootTableItem(ESItems.DEEPSLATE_REINFORCEMENT))));
 
             // Cards
             consumer.accept(TWO_OF_DIAMONDS, LootTable.lootTable().withPool(
@@ -173,7 +242,6 @@ public class ESLootTableProvider extends LootTableProvider {
             // Fishing
             consumer.accept(LAND_FISHING_TREASURE, fishingTreasureLootTable());
             consumer.accept(LAND_FISHING_JUNK, fishingJunkLootTable());
-            consumer.accept(LAND_FISHING_FISH, fishingFishLootTable());
             consumer.accept(LAND_FISHING, LootTable.lootTable().withPool(
                     LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                             .add(NestedLootTable.lootTableReference(LAND_FISHING_TREASURE)
@@ -187,7 +255,7 @@ public class ESLootTableProvider extends LootTableProvider {
                                                                     .inOpenFluids(true)))))
                             .add(NestedLootTable.lootTableReference(LAND_FISHING_JUNK)
                                     .setQuality(-2).setWeight(10))
-                            .add(NestedLootTable.lootTableReference(LAND_FISHING_FISH)
+                            .add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_FISH)
                                     .setQuality(-1)
                                     .setWeight(85))));
         }
@@ -342,15 +410,15 @@ public class ESLootTableProvider extends LootTableProvider {
             // TODO actual land-based fishes to use here
             // Copy of vanilla loot table
             return LootTable.lootTable().withPool(
-                    LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                            .add(LootItem.lootTableItem(Items.COD).setWeight(60))
-                            .add(LootItem.lootTableItem(Items.SALMON).setWeight(25))
-                            .add(LootItem.lootTableItem(Items.TROPICAL_FISH).setWeight(2))
-                            .add(LootItem.lootTableItem(Items.PUFFERFISH).setWeight(13)));
+                    LootPool.lootPool().add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_FISH)));
         }
 
         public static ResourceKey<LootTable> key(String path) {
             return ResourceKey.create(Registries.LOOT_TABLE, ExtraStuck.modid(path));
+        }
+
+        public static ResourceKey<LootTable> key(String modid, String path) {
+            return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(modid, path));
         }
 
         public static LootItemFunction.Builder rangeAmount(float min, float max) {
@@ -383,6 +451,9 @@ public class ESLootTableProvider extends LootTableProvider {
 
         @Override
         protected void generate() {
+            dropSelf(ESBlocks.DEEPSLATE_PILLAR.get());
+            add(ESBlocks.DEEPSLATE_CRUXITE_ORE.get(), this::cruxiteOreDrop);
+
             dropSelf(ESBlocks.CUT_GARNET.get());
             dropSelf(ESBlocks.CUT_GARNET_STAIRS.get());
             add(ESBlocks.CUT_GARNET_SLAB.get(), createSlabItemTable(ESBlocks.CUT_GARNET_SLAB.get()));
@@ -429,10 +500,51 @@ public class ESLootTableProvider extends LootTableProvider {
             add(ESBlocks.MARBLE_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.MARBLE_BRICK_SLAB.get()));
             dropSelf(ESBlocks.MARBLE_BRICK_WALL.get());
 
-            dropSelf(ESBlocks.ZILLIUM_BRICKS.get());
-            dropSelf(ESBlocks.ZILLIUM_BRICK_STAIRS.get());
-            add(ESBlocks.ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.ZILLIUM_BRICK_SLAB.get()));
-            dropSelf(ESBlocks.ZILLIUM_BRICK_WALL.get());
+            dropOther(ESBlocks.ZILLIUM_BRICKS.get(), ESItems.GREEN_ZILLIUM_BRICKS);
+            dropOther(ESBlocks.ZILLIUM_BRICK_STAIRS.get(), ESItems.GREEN_ZILLIUM_BRICKS);
+            add(ESBlocks.ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get()));
+            dropOther(ESBlocks.ZILLIUM_BRICK_WALL.get(), ESItems.GREEN_ZILLIUM_BRICKS);
+
+            dropSelf(ESBlocks.GREEN_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.GREEN_ZILLIUM_BRICK_WALL.get());
+            dropSelf(ESBlocks.WAXED_GREEN_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL.get());
+
+            dropSelf(ESBlocks.BLUE_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.BLUE_ZILLIUM_BRICK_WALL.get());
+            dropSelf(ESBlocks.WAXED_BLUE_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL.get());
+
+            dropSelf(ESBlocks.PINK_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.PINK_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.PINK_ZILLIUM_BRICK_SLAB.get(), createSlabItemTable(ESBlocks.PINK_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.PINK_ZILLIUM_BRICK_WALL.get());
+            dropSelf(ESBlocks.WAXED_PINK_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL.get());
+
+            dropSelf(ESBlocks.SECONDARY_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL.get());
+            dropSelf(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICKS.get());
+            dropSelf(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS.get());
+            add(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get(),
+                    createSlabItemTable(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB.get()));
+            dropSelf(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL.get());
 
             add(ESBlocks.PIZZA.get(), noDrop());
             dropOther(ESBlocks.DIVINE_TEMPTATION_BLOCK.get(), Items.CAULDRON);
@@ -444,18 +556,29 @@ public class ESLootTableProvider extends LootTableProvider {
             dropSelf(ESBlocks.PRINTER.get());
             dropSelf(ESBlocks.DISPRINTER.get());
             dropSelf(ESBlocks.CHARGER.get());
+            dropSelf(ESBlocks.WIRELESS_CHARGER.get());
             dropSelf(ESBlocks.REACTOR.get());
             dropSelf(ESBlocks.URANIUM_BLASTER.get());
             dropSelf(ESBlocks.DOWEL_STORAGE.get());
             dropSelf(ESBlocks.CARD_STORAGE.get());
+            dropSelf(ESBlocks.SMALL_VENDING_MACHINE.get());
 
             dropSelf(ESBlocks.NORMAL_CAT_PLUSH.get());
         }
 
-        private LootTable.Builder droppingWithOreItem(Block block) {
+        public LootTable.Builder droppingWithOreItem(Block block) {
             return LootTable.lootTable().withPool(applyExplosionCondition(block, LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1))
                     .add(DynamicLoot.dynamicEntry(CardOreBlockEntity.ITEM_DYNAMIC))));
+        }
+
+        public LootTable.Builder cruxiteOreDrop(Block block) {
+            HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries
+                    .lookupOrThrow(Registries.ENCHANTMENT);
+            return createSilkTouchDispatchTable(block, applyExplosionDecay(block,
+                    LootItem.lootTableItem(MSItems.RAW_CRUXITE.get())
+                            .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F)))
+                            .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
         }
     }
 }

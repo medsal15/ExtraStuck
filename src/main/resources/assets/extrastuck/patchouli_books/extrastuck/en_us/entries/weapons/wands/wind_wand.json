@@ -1,0 +1,23 @@
+{
+    "name": "Wind Wand",
+    "icon": "extrastuck:wind_wand",
+    "category": "extrastuck:wands",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:wind_wand"
+            },
+            "text": "A magic wand that shoots wind charges. Neat!$(br2)$(3)$(l)Special:$() Shoots wind charges."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Zephyr Cane and a Breeze Rod in a Punch Designix.",
+            "left": "minestuck:zephyr_cane",
+            "mode": "&&",
+            "right": "minecraft:breeze_rod",
+            "result": "extrastuck:wind_wand"
+        }
+    ]
+}

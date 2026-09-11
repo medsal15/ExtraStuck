@@ -1,4 +1,13 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "alchemyexpanded"
+      }
+    }
+  ],
   "type": "minestuck:combination",
   "input1": {
     "item": "extrastuck:handgun_bullet"

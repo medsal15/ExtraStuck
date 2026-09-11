@@ -129,12 +129,31 @@ public class CompactModus extends BaseModus {
         if (size <= list.size() || item.isEmpty())
             return false;
 
-        if (list.size() < size) {
-            list.add(item);
+        ItemStack toStore = item.copy();
+        for (int i = 0; i < list.size(); i++) {
+            ItemStack stored = list.get(i);
+            if (ItemStack.isSameItemSameComponents(toStore, stored)) {
+                int increase = Math.min(toStore.getCount(), toStore.getMaxStackSize() - stored.getCount());
+                stored.grow(increase);
+                toStore.shrink(increase);
+                markDirty();
+                if (toStore.isEmpty())
+                    break;
+            }
+        }
+        if (list.size() < size && !toStore.isEmpty()) {
+            list.add(toStore);
 
-            addToGroup(item, list.indexOf(item));
+            addToGroup(toStore, list.indexOf(toStore));
             markDirty();
+            toStore = ItemStack.EMPTY;
 
+            return true;
+        }
+        if (toStore.getCount() < item.getCount()) {
+            if (!toStore.isEmpty()) {
+                CaptchaDeckHandler.launchAnyItem(player, toStore);
+            }
             return true;
         }
 

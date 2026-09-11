@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "extrastuck:block/green_zillium_bricks",
+    "side": "extrastuck:block/green_zillium_bricks",
+    "top": "extrastuck:block/green_zillium_bricks"
+  }
+}

@@ -29,6 +29,9 @@ public class ConfigClient {
     private static final ModConfigSpec.BooleanValue DISPLAY_VISION_WARNING = BUILDER
             .comment("If enabled, infused visions will include a warning about the use limit")
             .define("tooltip.vision_warning", true);
+    private static final ModConfigSpec.BooleanValue DISPLAY_FOOD_EFFECTS = BUILDER
+            .comment("If enabled, food added by ExtraStuck will display their effects in their tooltips")
+            .define("tooltip.food_effects", true);
     private static final ModConfigSpec.BooleanValue ADD_MISSING_MOD_TOOLTIP = BUILDER
             .comment("If enabled, compat items which require a specific mod will mention it in their tooltip")
             .define("tooltip.missing_mod", true);
@@ -64,6 +67,11 @@ public class ConfigClient {
             .comment(
                     "If enabled and Create is installed, mysterious convertion recipes will be added for Extrastuck items")
             .define("compat.convertion_recipes", true);
+    private static final ModConfigSpec.BooleanValue ADD_AE_CONVERTION_RECIPES = BUILDER
+            .comment(
+                    "If enabled, and both Create and Alchemy Expanded are installed, mysterious convertion recipes will be added for Alchemy Expanded items",
+                    "Exists solely because I want them and do not know how to add them with KubeJS")
+            .define("compat.extra_convertion_recipes.alchemyexpanded", false);
     private static final ModConfigSpec.BooleanValue ADD_MINESTUCK_PONDER = BUILDER
             .comment("If enabled and Ponder is installed, Minestuck machines will have ponder entries")
             .define("compat.ponder_minestuck_machines", true);
@@ -117,7 +125,9 @@ public class ConfigClient {
     public static boolean displayShieldInfo;
     public static boolean displayInnateEnchants;
     public static boolean displayVisionWarning;
+    public static boolean displayFoodEffects;
     public static boolean addConvertionRecipes;
+    public static boolean addAEConvertionRecipes;
     public static boolean addMissingModTooltip;
     public static boolean addPonderMinestuckEntries;
     public static DisplayLocation gristDisplayLocation;
@@ -133,8 +143,10 @@ public class ConfigClient {
         displayShieldInfo = DISPLAY_SHIELD_INFO.get();
         displayInnateEnchants = DISPLAY_INNATE_ENCHANTMENTS.get();
         displayVisionWarning = DISPLAY_VISION_WARNING.get();
+        displayFoodEffects = DISPLAY_FOOD_EFFECTS.get();
         boondollarDisplayMode = BOONDOLLAR_DISPLAY_MODE.get();
         addConvertionRecipes = ADD_CONVERTION_RECIPES.get();
+        addAEConvertionRecipes = ADD_AE_CONVERTION_RECIPES.get();
         addMissingModTooltip = ADD_MISSING_MOD_TOOLTIP.get();
         addPonderMinestuckEntries = ADD_MINESTUCK_PONDER.get();
         gristDisplayLocation = GRIST_DISPLAY_LOCATION.get();

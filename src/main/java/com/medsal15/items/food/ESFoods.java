@@ -69,6 +69,8 @@ public final class ESFoods {
             .saturationModifier(.5F).fast().build();
     public static final FoodProperties LEMON_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
             .saturationModifier(.5F).fast().build();
+    public static final FoodProperties PAN_CAKE_SLICE = new FoodProperties.Builder().nutrition(2)
+            .saturationModifier(.5F).fast().build();
     // #endregion Cake slices
     public static final FoodProperties MORTAL_TEMPTATION = new FoodProperties.Builder().nutrition(5)
             .saturationModifier(.45F)
@@ -83,13 +85,6 @@ public final class ESFoods {
             .alwaysEdible().build();
     public static final FoodProperties SOUR_BOMB_CANDY = new FoodProperties.Builder().nutrition(2)
             .saturationModifier(.1F).alwaysEdible().fast().build();
-
-    public static final FoodProperties DESERT_JUICE = new FoodProperties.Builder().alwaysEdible()
-            .usingConvertsTo(Items.GLASS_BOTTLE)
-            .effect(() -> new MobEffectInstance(MobEffects.HEAL), 1)
-            .build();
-    public static final FoodProperties ROCKET_JUMP = new FoodProperties.Builder().alwaysEdible()
-            .usingConvertsTo(Items.GLASS_BOTTLE).build();
     public static final FoodProperties COSMIC_SPOREO = new FoodProperties.Builder().nutrition(6).saturationModifier(.3F)
             .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 100), .1F)
             .build();
@@ -98,6 +93,20 @@ public final class ESFoods {
     public static final FoodProperties GUMMY_RING = new FoodProperties.Builder().nutrition(10).saturationModifier(.3F)
             .effect(() -> new MobEffectInstance(MobEffects.SATURATION, 100), 1)
             .fast().alwaysEdible().build();
+    public static final FoodProperties SCULK_SOUP = new FoodProperties.Builder().nutrition(5).saturationModifier(.2F)
+            .usingConvertsTo(Items.BOWL)
+            .effect(() -> new MobEffectInstance(ESMobEffects.SILENT, 200), 1)
+            .alwaysEdible().build();
+    public static final FoodProperties DREAD = new FoodProperties.Builder().nutrition(5).saturationModifier(.2F)
+            .effect(() -> new MobEffectInstance(ESMobEffects.SILENT, 200), .25F)
+            .build();
+
+    public static final FoodProperties DESERT_JUICE = new FoodProperties.Builder().alwaysEdible()
+            .usingConvertsTo(Items.GLASS_BOTTLE)
+            .effect(() -> new MobEffectInstance(MobEffects.HEAL), 1)
+            .build();
+    public static final FoodProperties ROCKET_JUMP = new FoodProperties.Builder().alwaysEdible()
+            .usingConvertsTo(Items.GLASS_BOTTLE).build();
 
     public static class FoodBuilder extends FoodProperties.Builder {
         private float eatSeconds = 0F;

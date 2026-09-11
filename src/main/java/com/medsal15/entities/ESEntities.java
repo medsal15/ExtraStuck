@@ -3,6 +3,7 @@ package com.medsal15.entities;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 import com.medsal15.ExtraStuck;
 import com.medsal15.entities.projectiles.CaptainJusticeShield;
@@ -32,8 +33,11 @@ import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
 import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.entities.projectiles.bullets.ItemBullet;
+import com.medsal15.entities.projectiles.magic.circles.LifeCircle;
+import com.medsal15.entities.projectiles.magic.orbs.LightOrb;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntityType.EntityFactory;
 import net.minecraft.world.entity.MobCategory;
@@ -44,11 +48,9 @@ public final class ESEntities {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(
             BuiltInRegistries.ENTITY_TYPE, ExtraStuck.MODID);
 
-    public static final Supplier<EntityType<CaptainJusticeShield>> CAPTAIN_JUSTICE_SHIELD = ENTITIES.register(
-            "captain_justice_shield",
-            () -> EntityType.Builder.<CaptainJusticeShield>of(CaptainJusticeShield::new, MobCategory.MISC)
-                    .sized(1F, .25F).setTrackingRange(1).setUpdateInterval(10)
-                    .build(ExtraStuck.modid("captain_justice_shield").toString()));
+    public static final Supplier<EntityType<CaptainJusticeShield>> CAPTAIN_JUSTICE_SHIELD = register(
+            "captain_justice_shield", CaptainJusticeShield::new, MobCategory.MISC,
+            builder -> builder.sized(1F, .25F).setTrackingRange(1).setUpdateInterval(10));
 
     // #region Arrows
     public static final Supplier<EntityType<FlameArrow>> FLAME_ARROW = registerArrow("flame_arrow", FlameArrow::new);
@@ -95,29 +97,43 @@ public final class ESEntities {
     public static final Supplier<EntityType<ESBullet>> HANDGUN_BULLET = registerArrow("handgun_bullet", ESBullet::new);
     public static final Supplier<EntityType<ESBullet>> HEAVY_HANDGUN_BULLET = registerArrow("heavy_handgun_bullet",
             ESBullet::new);
-    public static final Supplier<EntityType<ItemBullet>> ITEM_BULLET = ENTITIES.register("item_bullet",
-            () -> EntityType.Builder.<ItemBullet>of(ItemBullet::new, MobCategory.MISC).sized(.5F, .5F)
-                    .clientTrackingRange(4).setUpdateInterval(10).build(ExtraStuck.modid("item_bullet").toString()));
+    public static final Supplier<EntityType<ItemBullet>> ITEM_BULLET = register("item_bullet", ItemBullet::new,
+            MobCategory.MISC, builder -> builder.sized(.5F, .5F).clientTrackingRange(4).setUpdateInterval(10));
     // #endregion Bullets
 
-    public static final Supplier<EntityType<ThrownBeeLarva>> THROWN_BEE_LARVA = ENTITIES.register("thrown_bee_larva",
-            () -> EntityType.Builder.<ThrownBeeLarva>of(ThrownBeeLarva::new, MobCategory.MISC).sized(.25F, .25F)
-                    .clientTrackingRange(4).updateInterval(10).build(ExtraStuck.modid("thrown_bee_larva").toString()));
-    public static final Supplier<EntityType<ThrownBeenade>> THROWN_BEENADE = ENTITIES.register("thrown_beenade",
-            () -> EntityType.Builder.<ThrownBeenade>of(ThrownBeenade::new, MobCategory.MISC).sized(.25F, .25F)
-                    .clientTrackingRange(4).updateInterval(10).build(ExtraStuck.modid("thrown_beenade").toString()));
-    public static final Supplier<EntityType<LemonNade>> LEMONNADE = ENTITIES.register("lemonnade",
-            () -> EntityType.Builder.<LemonNade>of(LemonNade::new, MobCategory.MISC).sized(.25F, .25F)
-                    .clientTrackingRange(4).updateInterval(20).build(ExtraStuck.modid("lemonnade").toString()));
+    public static final Supplier<EntityType<ThrownBeeLarva>> THROWN_BEE_LARVA = register("thrown_bee_larva",
+            ThrownBeeLarva::new, MobCategory.MISC, builder -> builder.sized(.25F, .25F)
+                    .clientTrackingRange(4).updateInterval(10));
+    public static final Supplier<EntityType<ThrownBeenade>> THROWN_BEENADE = register("thrown_beenade",
+            ThrownBeenade::new, MobCategory.MISC,
+            builder -> builder.sized(.25F, .25F).clientTrackingRange(4).updateInterval(10));
+    public static final Supplier<EntityType<LemonNade>> LEMONNADE = register("lemonnade", LemonNade::new,
+            MobCategory.MISC, builder -> builder.sized(.25F, .25F).clientTrackingRange(4).updateInterval(20));
 
-    public static final Supplier<EntityType<LandFishingHook>> LAND_FISHING_HOOK = ENTITIES.register("land_fishing_hook",
-            () -> EntityType.Builder.<LandFishingHook>of(LandFishingHook::new, MobCategory.MISC).fireImmune().noSave()
-                    .noSummon().sized(.25F, .25F).clientTrackingRange(4).updateInterval(5)
-                    .build(ExtraStuck.modid("land_fishing_hook").toString()));
+    public static final Supplier<EntityType<LandFishingHook>> LAND_FISHING_HOOK = register("land_fishing_hook",
+            LandFishingHook::new, MobCategory.MISC, builder -> builder.fireImmune().noSave().noSummon()
+                    .sized(.25F, .25F).clientTrackingRange(4).updateInterval(5));
+
+    // #region Magic
+    public static final Supplier<EntityType<LightOrb>> LIGHT_ORB = register("light_orb", LightOrb::new,
+            MobCategory.MISC, builder -> builder.fireImmune().sized(.75F, .75F).clientTrackingRange(16)
+                    .updateInterval(Integer.MAX_VALUE));
+
+    public static final Supplier<EntityType<LifeCircle>> LIFE_CIRCLE = register("life_circle", LifeCircle::new,
+            MobCategory.MISC, builder -> builder.fireImmune().sized(5F, .1F).clientTrackingRange(16)
+                    .updateInterval(Integer.MAX_VALUE));
+    // #endregion Magic
 
     private static <T extends AbstractArrow> Supplier<EntityType<T>> registerArrow(String name, EntityFactory<T> fac) {
-        return ENTITIES.register(name, () -> EntityType.Builder.<T>of(fac, MobCategory.MISC)
-                .sized(.5F, .5F).setTrackingRange(1).setUpdateInterval(20).build(ExtraStuck.modid(name).toString()));
+        return register(name, fac, MobCategory.MISC,
+                builder -> builder.sized(.5F, .5F).setTrackingRange(1).updateInterval(20));
+    }
+
+    private static <T extends Entity> Supplier<EntityType<T>> register(String name, EntityFactory<T> factory,
+            MobCategory category, UnaryOperator<EntityType.Builder<T>> complete) {
+        return ENTITIES.register(name,
+                () -> complete.apply(EntityType.Builder.<T>of(factory, category))
+                        .build(ExtraStuck.modid(name).toString()));
     }
 
     public static Collection<EntityType<? extends AbstractArrow>> getArrows() {

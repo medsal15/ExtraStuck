@@ -6,7 +6,7 @@ import java.util.Collection;
 import com.medsal15.ExtraStuck;
 import com.medsal15.data.ESCassetteSongsProvider;
 import com.medsal15.items.ESItemTiers;
-import com.medsal15.items.shields.ESShield;
+import com.medsal15.items.ESShield;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
 import com.mraof.minestuck.item.components.CassettePlayable;

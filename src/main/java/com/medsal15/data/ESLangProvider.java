@@ -10,11 +10,15 @@ import com.medsal15.blockentities.ChargerBlockEntity;
 import com.medsal15.blockentities.PrinterBlockEntity;
 import com.medsal15.blockentities.ReactorBlockEntity;
 import com.medsal15.blockentities.StorageBlockEntity;
+import com.medsal15.blockentities.VendingMachineBlockEntity;
+import com.medsal15.blockentities.WirelessChargerBlockEntity;
 import com.medsal15.blocks.ESBlocks;
 import com.medsal15.client.gui.LoopButton;
 import com.medsal15.client.programs.MastermindAppScreen;
 import com.medsal15.client.screen.computer.MastermindDecodeScreen;
 import com.medsal15.client.screen.computer.MastermindEncodeScreen;
+import com.medsal15.client.screen.machine.VendingMachineScreen;
+import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.create.client.menus.GristFilterMenu;
 import com.medsal15.compat.create.client.screens.GristFilterScreen;
 import com.medsal15.compat.create.items.CreateESItems;
@@ -26,8 +30,10 @@ import com.medsal15.entities.ESEntities;
 import com.medsal15.items.ESItems;
 import com.medsal15.mobeffects.ESMobEffects;
 import com.medsal15.utils.ESTags;
+import com.medsal15.world.land.terrains.DarkLandTerrain;
 import com.mraof.minestuck.computer.ProgramType;
 import com.mraof.minestuck.computer.ProgramTypes;
+import com.mraof.minestuck.data.MinestuckLanguageProvider;
 import com.mraof.minestuck.entity.MSAttributes;
 
 import net.minecraft.core.Holder;
@@ -36,12 +42,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public final class ESLangProvider extends LanguageProvider {
+public final class ESLangProvider extends MinestuckLanguageProvider {
     public ESLangProvider(PackOutput output) {
         super(output, ExtraStuck.MODID, "en_us");
     }
@@ -65,7 +70,9 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String JACKPOT_ROLLED_6 = ESItems.JACKPOT.get().getDescriptionId() + ".rolled.6";
     public static final String TOKEN_TETRAHEDRON_TOKEN_KEY = ESItems.TOKEN_TETRAHEDRON.get().getDescriptionId()
             + ".token_drop";
+    public static final String SYRINGE_CONTENTS = ESItems.SYRINGE.get().getDescriptionId() + ".contents";
     public static final String SBURBDB_SECONDARIES_KEY = ExtraStuck.MODID + ".sburbdb.secondaries";
+    public static final String BURN_DURATION_SECONDS = ExtraStuck.MODID + ".burn_duration_seconds";
 
     public static final String GOLDEN_PAN_HIT = "sound." + ExtraStuck.MODID + ".golden_pan_hit";
     public static final String GUN_CONTENT_KEY = ExtraStuck.MODID + ".gun_content";
@@ -86,6 +93,8 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String SPAM_DESC_2 = ESItems.SPAM.get().getDescriptionId() + ".desc.2";
     public static final String SPAM_DESC_3 = ESItems.SPAM.get().getDescriptionId() + ".desc.3";
     public static final String ANTIDIE_HEAL = ESItems.ANTI_DIE.get().getDescriptionId() + ".heal";
+    public static final String UNREINFORCE_MISSING_EFFECT = ESItems.DEEPSLATE_REINFORCEMENT.get().getDescriptionId()
+            + ".missing_effect";
 
     public static final String VISION_HINT_ONE = ExtraStuck.MODID + ".vision.hint_curios";
     public static final String VISION_HINT_MANY = ExtraStuck.MODID + ".vision.hint_nocurios";
@@ -102,6 +111,8 @@ public final class ESLangProvider extends LanguageProvider {
     public static final String GRIST_VIEWERS_COMMON = ExtraStuck.MODID + ".grist_viewers.common";
     public static final String GRIST_VIEWERS_UNCOMMON = ExtraStuck.MODID + ".grist_viewers.uncommon";
     public static final String MASTERMIND_GRIST_BASE = ExtraStuck.MODID + ".mastermind.grist.";
+    public static final String MASTERMIND_DIFFICULTY = ExtraStuck.MODID + ".mastermind.difficulty";
+    public static final String MASTERMIND_DIFFICULTY_SET = ExtraStuck.MODID + ".mastermind.set_difficulty";
     public static final String FURNACE_MODUS_FUEL = ESItems.FURNACE_MODUS_CARD.get().getDescriptionId() + ".fuel";
     public static final String COMPACT_MODUS_STRICT_ON = ESItems.COMPACT_MODUS_CARD.get().getDescriptionId()
             + ".strict.on";
@@ -134,6 +145,7 @@ public final class ESLangProvider extends LanguageProvider {
         add(BOONDOLLAR_RANGE_KEY, "Value: %1$s-%2$s ฿");
         add(MISSING_MOD_KEY, "Requires %s loaded to be useful");
         add(MISSING_MOD_KEY_ADVANCED, "Requires %1$s [%2$s] loaded to be useful");
+        add(BURN_DURATION_SECONDS, "Sets on fire for %s seconds");
 
         add("patchouli.extrastuck.title", "ExtraStuck Guide");
         add("patchouli.extrastuck.landing", "Unofficial ExtraStuck Walkthrough (100%% official)");
@@ -151,6 +163,9 @@ public final class ESLangProvider extends LanguageProvider {
         addTags();
         addMobEffects();
         addPonder();
+        addSoundsSubtitles();
+        addEntities();
+        addLands();
 
         addItem(ESItems.GIFT, "Gift");
         addItemTooltip(ESItems.GIFT, "\"For you\"");
@@ -165,7 +180,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.EMPTY_ENERGY_CORE, "Empty Energy Core");
         addItemTooltip(ESItems.EMPTY_ENERGY_CORE, "You forgot the uranium");
         addBlock(ESBlocks.NORMAL_CAT_PLUSH, "Normal Cat Plush");
-        addBlockTooltip(ESBlocks.NORMAL_CAT_PLUSH, "In what world is that normal?");
+        addEBlockTooltip(ESBlocks.NORMAL_CAT_PLUSH, "In what world is that normal?");
         addItem(ESItems.MASTERMIND_DISK, "Mastermind Codebreaker Disk");
         addItemTooltip(ESItems.MASTERMIND_DISK, "Screw that. Puzzles suck.");
         addItem(ESItems.BEE_LARVA, "Bee Larva");
@@ -176,6 +191,11 @@ public final class ESLangProvider extends LanguageProvider {
                 "Contains all you need to know to become the richest player in the session");
         addItem(ESItems.COSMIC_PLAGUE_SPORE, "Cosmic Plague Spore");
         addItemTooltip(ESItems.COSMIC_PLAGUE_SPORE, "Extremely toxic in airless environements");
+        addItem(ESItems.DEEPSLATE_REINFORCEMENT, "Deepslate Reinforcement");
+        addItemTooltip(ESItems.DEEPSLATE_REINFORCEMENT, "Holy crap this thing is heavy");
+        add(UNREINFORCE_MISSING_EFFECT,
+                "You manage to fit your tool between the deepslate and the reinforcement, but fail to budge it");
+        addItem(ESItems.GUIDE, "ExtraStuck Guide");
 
         addItem(ISSESItems.CASSETTE_DEAD_KING_LULLABY, "Cassette");
         addItem(ISSESItems.CASSETTE_FLAME_STILL_BURNS, "Cassette");
@@ -368,11 +388,12 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.BIG_CLUB, "Big Club");
         addItemTooltip(ESItems.BIG_CLUB, "Whoa");
         addItem(ESItems.TOOLBOX, "Toolbox");
+        addItem(ESItems.COPPER_MACE, "Copper Mace");
         // Keys
         addItem(ESItems.KEY_OF_TRIALS, "Key of Trials");
         addItem(ESItems.KEY_OF_OMINOUS_TRIALS, "Key of Ominous Trials");
         addItemTooltip(ESItems.KEY_OF_OMINOUS_TRIALS, "Reward for challenging dangerous foes");
-        addItem(ESItems.OFFICE_KEY, "Office Key");
+        addItem(AEESItems.OFFICE_KEY, "Office Key");
         addItem(ESItems.ANCIENT_VAULT_OPENER, "Ancient Vault Opener");
         addItem(ESItems.VAULT_MELTER, "Vault Melter");
         addItemTooltip(ESItems.VAULT_MELTER, "No vault can stand the heat. What is the point?");
@@ -382,6 +403,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.MONEY_MAGIC, "Money Magic");
         addItemTooltip(ESItems.MONEY_MAGIC, "Empowered by your bank account");
         addItem(ESItems.WIND_WAND, "Wind Wand");
+        addItem(ESItems.WAND_OF_LIGHT, "Wand of Light");
+        addItemTooltip(ESItems.WAND_OF_LIGHT, "Despite the name, does not place lights");
         // Canes
         addItem(ESItems.BROOM, "Broom");
         addItemTooltip(ESItems.BROOM, "Sweep sweep sweep");
@@ -401,11 +424,18 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.THE_STING, "The Sting");
         addItem(ESItems.STOCKS_UPTICKER, "Stocks Upticker");
         addItemTooltip(ESItems.STOCKS_UPTICKER, "Looks like your investments are finally paying off!");
+        addItem(ESItems.SYRINGE, "Syringe");
+        addItemTooltip(ESItems.SYRINGE, "For the more... troublesome patients");
+        add(SYRINGE_CONTENTS, "Contents (%s doses):");
         // Swords
         addItem(ESItems.SUN_REAVER, "Sun Reaver");
         addItemTooltip(ESItems.SUN_REAVER, "To kill a god...");
         addItem(ISSESItems.LEADER_SWORD, "Leader's Sword");
         addItemTooltip(ISSESItems.LEADER_SWORD, "Your reflection judges you");
+        addItem(ESItems.SHADOW_KATANA, "Shadow Katana");
+        addItemTooltip(ESItems.SHADOW_KATANA, "Must it really be upgraded to deal more damage?");
+        addItem(ESItems.WHITE_SHARD, "White Shard");
+        addItemTooltip(ESItems.WHITE_SHARD, "That can't be it");
         // Sickles
         addItem(ESItems.PIRATE_HOOK, "Pirate Hook");
         addItemTooltip(ESItems.PIRATE_HOOK, "Yarr! Thy booty is mine!");
@@ -418,6 +448,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.DEBT_REAPER, "Debt Reaper");
         addItemTooltip(ESItems.DEBT_REAPER, "You can't escape taxes");
         addItem(ESItems.LEAFBURNER, "Leafburner");
+        addItem(ESItems.BLACK_MOONSHINE_COLLECTOR, "Black Moonshine Collector");
+        addItemTooltip(ESItems.BLACK_MOONSHINE_COLLECTOR, "Does not howl");
         // Fans
         addItem(ESItems.NONE_OF_YOUR_BUSINESS, "None of Your Business");
         addItemTooltip(ESItems.NONE_OF_YOUR_BUSINESS, "Privacy first");
@@ -442,6 +474,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.INCOMPLETE_MECHANICAL_RADBOW, "You can tell this is a great idea");
         addItem(ESItems.MECHANICAL_RADBOW, "Mechanical Radbow");
         addItemTooltip(ESItems.MECHANICAL_RADBOW, "An engineer's weapon of choice");
+        addItem(ESItems.DEEP_CROSSBOW, "Deep Crossbow");
         // Bows
         addItem(ESItems.BWO, "bwo");
         addItem(ESItems.BOWWOB, "BowwoB");
@@ -450,6 +483,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.MAKE_IT_RAIN, "Make It Rain");
         addItemTooltip(ESItems.MAKE_IT_RAIN, "25x Arrow Combo");
         addItem(ESItems.SHOOTING_STAR, "Shooting Star");
+        addItem(ESItems.SILENT_SHOT, "Silent Shot");
         // Throwables
         addItem(ESItems.BEENADE, "Beenade");
         add(BEENADE_LOADED, "It buzzes softly");
@@ -485,10 +519,10 @@ public final class ESLangProvider extends LanguageProvider {
         // Other Ranged
         add(GUN_CONTENT_KEY, "Loaded with %1$s %2$s");
         add(GUN_EMPTY_KEY, "Unloaded");
-        addItem(ESItems.HANDGUN, "Handgun");
-        addItem(ESItems.HANDGUN_BULLET, "Handgun Bullet");
+        addItem(AEESItems.HANDGUN, "Handgun");
+        addItem(AEESItems.HANDGUN_BULLET, "Handgun Bullet");
         addEntityType(ESEntities.HANDGUN_BULLET, "Handgun Bullet");
-        addItem(ESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
+        addItem(AEESItems.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.HEAVY_HANDGUN_BULLET, "Heavy Handgun Bullet");
         addEntityType(ESEntities.ITEM_BULLET, "Item Bullet");
     }
@@ -594,6 +628,8 @@ public final class ESLangProvider extends LanguageProvider {
         add(MASTERMIND_GRIST_BASE + 4, "Citrine");
         add(MASTERMIND_GRIST_BASE + 5, "Antibuild");
         addItem(ESItems.MASTERMIND_CARD, "Mastermind Card");
+        add(MASTERMIND_DIFFICULTY_SET, "Set to %s");
+        add(MASTERMIND_DIFFICULTY, "Difficulty: %s");
 
         addItem(ESItems.FURNACE_MODUS_CARD, "Furnace Modus");
         addItemTooltip(ESItems.FURNACE_MODUS_CARD, "Portable smelter");
@@ -640,6 +676,8 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.SHINEBREAKER, "Shinebreaker");
         // Axes
         addItem(ESItems.DOORBUSTER, "Doorbuster");
+        // Hoes
+        addItem(ESItems.TILL_SILENCE, "Till Silence");
         // Curios
         addItem(ESItems.SILVER_WATCH, "Silver Watch");
         addItemTooltip(ESItems.SILVER_WATCH, "A second passes every second");
@@ -715,16 +753,21 @@ public final class ESLangProvider extends LanguageProvider {
 
         // Disrinter
         addBlock(ESBlocks.DISPRINTER, "Disprinter");
-        addBlockTooltip(ESBlocks.DISPRINTER, "Is this really an upgrade?");
+        addEBlockTooltip(ESBlocks.DISPRINTER, "Is this really an upgrade?");
         add(PrinterBlockEntity.TITLE_DISPRINTER, "Disprinter");
 
         // Charger
         addBlock(ESBlocks.CHARGER, "Charger");
         add(ChargerBlockEntity.TITLE, "Charger");
 
+        // Wireless Charger
+        addBlock(ESBlocks.WIRELESS_CHARGER, "Wireless Charger");
+        addEBlockTooltip(ESBlocks.WIRELESS_CHARGER, "There weren't any wires to begin with!");
+        add(WirelessChargerBlockEntity.TITLE, "Wireless Charger");
+
         // Reactor
         addBlock(ESBlocks.REACTOR, "Nuclear Reactor");
-        addBlockTooltip(ESBlocks.REACTOR,
+        addEBlockTooltip(ESBlocks.REACTOR,
                 "You don't think it's a good idea to contain so much power in such a small machine");
         add(ReactorBlockEntity.TITLE, "Nuclear Reactor");
         add(ESTags.Fluids.REACTOR_FLUIDS, "Reactor Coolants");
@@ -732,6 +775,13 @@ public final class ESLangProvider extends LanguageProvider {
         // Uranium Blaster
         addBlock(ESBlocks.URANIUM_BLASTER, "Uranium Blaster");
         add(BlasterBlockEntity.TITLE, "Uranium Blaster");
+
+        // Vending Machines
+        addBlock(ESBlocks.SMALL_VENDING_MACHINE, "Small Vending Machine");
+        add(VendingMachineBlockEntity.TITLE, "Vending Machine");
+        add(VendingMachineScreen.COST_TEXT, "Costs %s ฿");
+        add(VendingMachineScreen.STORAGE_TITLE, "Stored:");
+        add(VendingMachineScreen.STORAGE_TEXT, "%1$s / %2$s");
 
         // Storage Blocks
         addBlock(ESBlocks.DOWEL_STORAGE, "Dowel Drive");
@@ -760,6 +810,9 @@ public final class ESLangProvider extends LanguageProvider {
     }
 
     private void addBlocks() {
+        addBlock(ESBlocks.DEEPSLATE_PILLAR, "Deepslate Pillar");
+        addBlock(ESBlocks.DEEPSLATE_CRUXITE_ORE, "Deepslate Cruxite Ore");
+
         addBlock(ESBlocks.CUT_GARNET, "Cut Garnet");
         addBlock(ESBlocks.CUT_GARNET_STAIRS, "Cut Garnet Stairs");
         addBlock(ESBlocks.CUT_GARNET_SLAB, "Cut Garnet Slab");
@@ -808,6 +861,42 @@ public final class ESLangProvider extends LanguageProvider {
         addBlock(ESBlocks.ZILLIUM_BRICK_STAIRS, "Zillium Brick Stairs");
         addBlock(ESBlocks.ZILLIUM_BRICK_SLAB, "Zillium Brick Slab");
         addBlock(ESBlocks.ZILLIUM_BRICK_WALL, "Zillium Brick Wall");
+
+        addBlock(ESBlocks.GREEN_ZILLIUM_BRICKS, "Green Zillium Bricks");
+        addBlock(ESBlocks.GREEN_ZILLIUM_BRICK_STAIRS, "Green Zillium Brick Stairs");
+        addBlock(ESBlocks.GREEN_ZILLIUM_BRICK_SLAB, "Green Zillium Brick Slab");
+        addBlock(ESBlocks.GREEN_ZILLIUM_BRICK_WALL, "Green Zillium Brick Wall");
+        addBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICKS, "Waxed Green Zillium Bricks");
+        addBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_STAIRS, "Waxed Green Zillium Brick Stairs");
+        addBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_SLAB, "Waxed Green Zillium Brick Slab");
+        addBlock(ESBlocks.WAXED_GREEN_ZILLIUM_BRICK_WALL, "Waxed Green Zillium Brick Wall");
+
+        addBlock(ESBlocks.BLUE_ZILLIUM_BRICKS, "Blue Zillium Bricks");
+        addBlock(ESBlocks.BLUE_ZILLIUM_BRICK_STAIRS, "Blue Zillium Brick Stairs");
+        addBlock(ESBlocks.BLUE_ZILLIUM_BRICK_SLAB, "Blue Zillium Brick Slab");
+        addBlock(ESBlocks.BLUE_ZILLIUM_BRICK_WALL, "Blue Zillium Brick Wall");
+        addBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICKS, "Waxed Blue Zillium Bricks");
+        addBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_STAIRS, "Waxed Blue Zillium Brick Stairs");
+        addBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_SLAB, "Waxed Blue Zillium Brick Slab");
+        addBlock(ESBlocks.WAXED_BLUE_ZILLIUM_BRICK_WALL, "Waxed Blue Zillium Brick Wall");
+
+        addBlock(ESBlocks.PINK_ZILLIUM_BRICKS, "Pink Zillium Bricks");
+        addBlock(ESBlocks.PINK_ZILLIUM_BRICK_STAIRS, "Pink Zillium Brick Stairs");
+        addBlock(ESBlocks.PINK_ZILLIUM_BRICK_SLAB, "Pink Zillium Brick Slab");
+        addBlock(ESBlocks.PINK_ZILLIUM_BRICK_WALL, "Pink Zillium Brick Wall");
+        addBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICKS, "Waxed Pink Zillium Bricks");
+        addBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_STAIRS, "Waxed Pink Zillium Brick Stairs");
+        addBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_SLAB, "Waxed Pink Zillium Brick Slab");
+        addBlock(ESBlocks.WAXED_PINK_ZILLIUM_BRICK_WALL, "Waxed Pink Zillium Brick Wall");
+
+        addBlock(ESBlocks.SECONDARY_ZILLIUM_BRICKS, "Secondary Zillium Bricks");
+        addBlock(ESBlocks.SECONDARY_ZILLIUM_BRICK_STAIRS, "Secondary Zillium Brick Stairs");
+        addBlock(ESBlocks.SECONDARY_ZILLIUM_BRICK_SLAB, "Secondary Zillium Brick Slab");
+        addBlock(ESBlocks.SECONDARY_ZILLIUM_BRICK_WALL, "Secondary Zillium Brick Wall");
+        addBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICKS, "Waxed Secondary Zillium Bricks");
+        addBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_STAIRS, "Waxed Secondary Zillium Brick Stairs");
+        addBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_SLAB, "Waxed Secondary Zillium Brick Slab");
+        addBlock(ESBlocks.WAXED_SECONDARY_ZILLIUM_BRICK_WALL, "Waxed Secondary Zillium Brick Wall");
     }
 
     private void addFood() {
@@ -817,7 +906,7 @@ public final class ESLangProvider extends LanguageProvider {
         addItemTooltip(ESItems.SUSHROOM_STEW, "Is this stewmate trustworthy?");
         addItem(ESItems.RADBURGER, "Big Rad");
         addBlock(ESBlocks.DIVINE_TEMPTATION_BLOCK, "Divine Temptation");
-        addBlockTooltip(ESBlocks.DIVINE_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
+        addEBlockTooltip(ESBlocks.DIVINE_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
         addItem(ESItems.DIVINE_TEMPTATION, "Bowl of Divine Temptation");
         addItem(ESItems.YELLOWCAKE_SLICE, "Slice of Yellowcake");
         addItemTooltip(ESItems.YELLOWCAKE_SLICE, "It's cake, right?");
@@ -834,11 +923,12 @@ public final class ESLangProvider extends LanguageProvider {
         addItem(ESItems.CARROT_CAKE_SLICE, "Slice of Carrot Cake");
         addItem(ESItems.CHOCOLATEY_CAKE_SLICE, "Slice of Chocolatey Cake");
         addItem(ESItems.MOON_CAKE_SLICE, "Slice of Moon Cake");
-        addItem(ESItems.LEMON_CAKE, "Lemon Cake");
-        addItemTooltip(ESItems.LEMON_CAKE, "An explosive flavor!");
+        addBlock(ESBlocks.LEMON_CAKE, "Lemon Cake");
+        addBlockTooltip(ESBlocks.LEMON_CAKE, "An explosive flavor!");
         addItem(ESItems.LEMON_CAKE_SLICE, "Slice of Lemon Cake");
+        addItem(ESItems.PAN_CAKE_SLICE, "Slice of PANCake");
         addBlock(ESBlocks.MORTAL_TEMPTATION_BLOCK, "Mortal Temptation");
-        addBlockTooltip(ESBlocks.MORTAL_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
+        addEBlockTooltip(ESBlocks.MORTAL_TEMPTATION_BLOCK, "You're gonna need a bowl for that");
         addItem(ESItems.MORTAL_TEMPTATION, "Bowl of Mortal Temptation");
         addItemTooltip(ESItems.MORTAL_TEMPTATION, "Even consorts love it");
         addItem(ESItems.CANDY_CRUNCH, "Bowl of Candy Crunch");
@@ -857,6 +947,9 @@ public final class ESLangProvider extends LanguageProvider {
         add(SPAM_DESC_2, "All of our affiliate shops have everything on sale (up to) 75% off!");
         add(SPAM_TITLE_3, "Stained Paper");
         add(SPAM_DESC_3, "You can't make out the text, but you can tell there's a phone number.");
+        addItem(ESItems.SCULK_SOUP, "Sculk Soup");
+        addItemTooltip(ESItems.SCULK_SOUP, "Ewww");
+        addItem(ESItems.DREAD, "Dread");
 
         addItem(ESItems.DESERT_JUICE, "Desert Juice");
         addItem(ESItems.ROCKET_JUMP, "Rocket Jump");
@@ -872,6 +965,8 @@ public final class ESLangProvider extends LanguageProvider {
         addEffect(ESMobEffects.COSMIC_PLAGUE, "Cosmic Plague");
         addEffectDescription(ESMobEffects.COSMIC_PLAGUE,
                 "Deals 2 damage every 2 seconds.\nEvery level halves the time between damage ticks.\nSpreads to nearby entities with one less level");
+        addEffect(ESMobEffects.SILENT, "Silent");
+        addEffectDescription(ESMobEffects.SILENT, "Negates vibrations from the user");
     }
 
     private void addTags() {
@@ -895,6 +990,8 @@ public final class ESLangProvider extends LanguageProvider {
 
         add(ESTags.EntityTypes.BEENADE_ACCEPTS, "Accepted by Beenades");
         add(ESTags.EntityTypes.COSMIC_PLAGUE_IMMUNE, "Immune to Cosmic Plague");
+        add(ESTags.EntityTypes.ALWAYS_FRIENDLY, "Always treated as friendly");
+        add(ESTags.EntityTypes.ALWAYS_HOSTILE, "Always treated as hostile");
 
         add(ESTags.MobEffects.COSMIC_PLAGUE_IMMUNITY, "Prevented with cosmic plague armor");
         add(ESTags.MobEffects.COSMIC_PLAGUE_PARTIAL_IMMUNITY, "Sometimes prevented with cosmic plague armor");
@@ -966,15 +1063,26 @@ public final class ESLangProvider extends LanguageProvider {
         add("extrastuck.ponder.tag.alchemy/recipes.description", "How to alchemize new items");
     }
 
-    private void addItemTooltip(Supplier<? extends Item> key, String text) {
-        addItemExtra(key, "tooltip", text);
+    private void addSoundsSubtitles() {
+        add(ESSoundDefinitions.UNREINFORCE_DEEPSLATE, "Deepslate reinforcement is pried");
     }
 
-    private void addItemExtra(Supplier<? extends Item> key, String extra, String text) {
-        add(((Item) (key.get())).getDescriptionId() + "." + extra, text);
+    private void addEntities() {
+        addEntityType(ESEntities.LIGHT_ORB, "Light Orb");
+        addEntityType(ESEntities.LIFE_CIRCLE, "Life Circle");
     }
 
-    private void addBlockTooltip(Supplier<? extends Block> key, String text) {
+    private void addLands() {
+        addLand(DarkLandTerrain.DARK, "Darkness");
+        addLand(DarkLandTerrain.DEEP, "Depths");
+
+        addStore(Items.AMETHYST_SHARD, "Pink Diamond Shard");
+        addStore(Items.DISC_FRAGMENT_5, "Mysterious Fragment");
+        addStoreTooltip(Items.DISC_FRAGMENT_5, "This valuable looking item seems to be a part of something bigger...");
+        addStore(Items.SOUL_LANTERN, "Blue Lantern");
+    }
+
+    protected void addEBlockTooltip(Supplier<? extends Block> key, String text) {
         add(((Block) (key.get())).getDescriptionId() + ".tooltip", text);
     }
 
@@ -998,10 +1106,6 @@ public final class ESLangProvider extends LanguageProvider {
 
     private void addBookDescription(ResourceLocation key, String text) {
         add(key.toString() + ".book_desc", text);
-    }
-
-    private void addEffectDescription(Supplier<? extends MobEffect> effect, String desc) {
-        add(effect.get().getDescriptionId() + ".description", desc);
     }
 
     private void addProgram(Holder<ProgramType<?>> program, String text) {

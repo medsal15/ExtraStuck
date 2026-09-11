@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "minecraft:diamond_hoe"
+  },
+  "input2": {
+    "item": "minecraft:sculk_sensor"
+  },
+  "mode": "and",
+  "output": "extrastuck:till_silence"
+}

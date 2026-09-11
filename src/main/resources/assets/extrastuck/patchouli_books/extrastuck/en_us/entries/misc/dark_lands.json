@@ -1,0 +1,10 @@
+{
+    "name": "Dark Lands",
+    "icon": "minecraft:deepslate",
+    "category": "extrastuck:misc",
+    "sortnum": 1,
+    "pages": [
+        "Lands of Darkness/Depths are entirely composed of deepslate.$(br)This property naturally extends to any and all structures that may generate.$(br2)The underground contains iron, gold, and diamond ores, alongside amethyst geodes.",
+        "Some rare sculk may grow on the surface, while the underground is mostly infected.$(br)This may even affect some of the deeper dungeons.$(br)Just try not to trigger the Sculk Shriekers. Wardens can spawn even on the surface."
+    ]
+}

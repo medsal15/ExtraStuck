@@ -1,0 +1,23 @@
+{
+    "name": "Wand of Light",
+    "icon": "extrastuck:wand_of_light",
+    "category": "extrastuck:wands",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:wand_of_light"
+            },
+            "text": "A magic wand that shoots balls of light. Oddly, these glow in the dark without lighting their surroundings.$(br2)$(3)$(l)Special:$() Shoots orbs of light that blind nearby enemies and makes them glow."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Needle Wand and Glowstone in a Totem Lathe.",
+            "left": "minestuck:needle_wand",
+            "mode": "&&",
+            "right": "minecraft:glowstone",
+            "result": "extrastuck:wand_of_light"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Sculk Soup",
+    "icon": "extrastuck:sculk_soup",
+    "category": "extrastuck:food",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:sculk_soup"
+            },
+            "text": "Certainly, making a soup out of sculk is... a unique idea...$(br2)Eating will make you stealthier, though."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine a Bowl and Sculk in a Punch Designix.",
+            "left": "minecraft:bowl",
+            "mode": "||",
+            "right": "minecraft:sculk",
+            "result": "extrastuck:sculk_soup"
+        }
+    ]
+}
+

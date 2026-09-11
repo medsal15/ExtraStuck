@@ -8,7 +8,7 @@ import com.medsal15.compat.MissingModItem;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.items.ESItemTiers;
 import com.medsal15.items.melee.SburbDBWeapon;
-import com.medsal15.items.shields.ESShield;
+import com.medsal15.items.ESShield;
 import com.medsal15.items.weaponeffects.ESRightClickEffects;
 import com.mraof.minestuck.item.MSItemProperties;
 import com.mraof.minestuck.item.MSItemTypes;
@@ -36,7 +36,7 @@ public final class ISSESMissingItems {
     public static final DeferredItem<Item> LEADER_SWORD = ITEMS.register("leader_sword",
             () -> new WeaponItem(
                     new WeaponItem.Builder(MSItemTypes.REGI_TIER, 4, -2.4f).set(MSItemTypes.SWORD_TOOL).efficiency(15f)
-                            .set(ESRightClickEffects.healNearby(5)),
+                            .set(ESRightClickEffects::spawnLifeCircle),
                     new MSItemProperties().durability(1500).rarity(Rarity.UNCOMMON)));
 
     public static final DeferredItem<Item> CAST_GOLD_SHIELD = ITEMS.register("cast_gold_shield",

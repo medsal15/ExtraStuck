@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "extrastuck:block/green_zillium_bricks"
+  }
+}

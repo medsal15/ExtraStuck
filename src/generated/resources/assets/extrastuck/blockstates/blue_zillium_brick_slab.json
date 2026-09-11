@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extrastuck:block/blue_zillium_brick_slab"
+    },
+    "type=double": {
+      "model": "extrastuck:block/blue_zillium_bricks"
+    },
+    "type=top": {
+      "model": "extrastuck:block/blue_zillium_brick_slab_top"
+    }
+  }
+}

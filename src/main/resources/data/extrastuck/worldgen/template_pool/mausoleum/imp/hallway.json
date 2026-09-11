@@ -1,0 +1,14 @@
+{
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "extrastuck:mausoleum/imp/hallway/straight",
+                "projection": "rigid",
+                "processors": "minestuck:structure_block_registry"
+            }
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:amethyst": 450,
+    "minestuck:quartz": 750,
+    "minestuck:tar": 2666
+  },
+  "ingredient": {
+    "item": "extrastuck:black_moonshine_collector"
+  }
+}
