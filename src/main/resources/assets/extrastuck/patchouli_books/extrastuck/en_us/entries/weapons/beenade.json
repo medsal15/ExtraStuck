@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Barbasol Bomb and a Beehive in a Totem Lathe.",
-            "left": "minestuck:barbasol_bomb",
-            "mode": "&&",
-            "right": "minecraft:beehive",
-            "result": "extrastuck:beenade"
+            "recipe": "extrastuck:combinations/beenade"
         }
     ]
 }

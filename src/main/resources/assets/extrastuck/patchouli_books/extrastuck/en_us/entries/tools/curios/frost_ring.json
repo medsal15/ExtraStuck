@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Iron Ring and a Powder Snow Bucket in a Totem Lathe.",
-            "left": "minecraft:powder_snow_bucket",
-            "mode": "&&",
-            "right": "extrastuck:metal_ring",
-            "result": "extrastuck:frost_ring"
+            "recipe": "extrastuck:combinations/frost_ring"
         }
     ]
 }

@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Iron Helmet and Garnet Twix in a Totem Lathe.",
-            "left": "minecraft:iron_helmet",
-            "mode": "&&",
-            "right": "minestuck:garnet_twix",
-            "result": "extrastuck:lich_crown"
+            "recipe": "extrastuck:combinations/lich_crown"
         },
         {
             "type": "patchouli:smithing",

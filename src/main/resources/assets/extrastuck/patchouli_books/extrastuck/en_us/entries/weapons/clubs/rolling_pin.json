@@ -9,15 +9,12 @@
             "item": {
                 "item": "extrastuck:rolling_pin"
             },
-            "text": "Everybody knows a good cook uses a rolling pin. Not as weapons. Why is it $(o)here$(o), then?."
+            "text": "Everybody knows a good cook uses a rolling pin. Not as weapons. Why is it $(o)here$(o), then?"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine a Pizza and a Deuce Club in a Punch Designix.",
-            "left": "extrastuck:pizza",
-            "mode": "||",
-            "right": "minestuck:deuce_club",
-            "result": "extrastuck:rolling_pin"
+            "recipe": "extrastuck:combinations/rolling_pin"
         }
     ]
 }

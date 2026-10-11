@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Cosmic Plague Spore and a Milk Bucket in a Totem Lathe.",
-            "left": "extrastuck:cosmic_plague_spore",
-            "mode": "&&",
-            "right": "minecraft:milk_bucket",
-            "result": "extrastuck:cosmic_sporeo"
+            "recipe": "extrastuck:combinations/cosmic_sporeo"
         }
     ]
 }

@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Salesman Goggles and Saleswoman Glasses in a Totem Lathe.",
-            "left": "extrastuck:salesman_goggles",
-            "mode": "&&",
-            "right": "extrastuck:saleswoman_glasses",
-            "result": "extrastuck:boondollars_for_idiots"
+            "recipe": "extrastuck:combinations/boondollars_for_idiots"
         }
     ]
 }

@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Arrow and a Bear-Poking Stick in a Punch Designix.",
-            "left": "minecraft:arrow",
-            "mode": "||",
-            "right": "minestuck:bear_poking_stick",
-            "result": "extrastuck:punch_arrow"
+            "recipe": "extrastuck:combinations/punch_arrow"
         }
     ]
 }

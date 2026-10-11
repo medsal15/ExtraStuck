@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Rubik's Mace and a Skeleton Skull in a Punch Designix.",
-            "left": "minestuck:rubiks_mace",
-            "mode": "||",
-            "right": "minecraft:skeleton_skull",
-            "result": "extrastuck:death_mace"
+            "recipe": "extrastuck:combinations/death_mace"
         }
     ]
 }

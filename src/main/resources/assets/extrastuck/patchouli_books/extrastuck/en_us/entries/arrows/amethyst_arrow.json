@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Glass Arrow and an Amethyst Shard in a Punch Designix.",
-            "left": "extrastuck:glass_arrow",
-            "mode": "||",
-            "right": "minecraft:amethyst_shard",
-            "result": "extrastuck:amethyst_arrow"
+            "recipe": "extrastuck:combinations/amethyst_arrow"
         }
     ]
 }

@@ -12,18 +12,12 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Cruxite Bricks and Red Dye in a Totem Lathe.",
-            "left": "minestuck:cruxite_bricks",
-            "mode": "&&",
-            "right": "minecraft:red_dye",
-            "result": "extrastuck:garnet_bricks"
+            "recipe": "extrastuck:combinations/garnet_bricks"
         },
         {
             "type": "extrastuck:combination",
             "text": "Alternatively, combine a Block of Amethyst and Red Dye in a Punch Designix.",
-            "left": "minecraft:amethyst_block",
-            "mode": "||",
-            "right": "minecraft:red_dye",
-            "result": "extrastuck:cut_garnet"
+            "recipe": "extrastuck:combinations/cut_garnet"
         }
     ]
 }

@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Iron Shield and Spikes in a Punch Designix.",
-            "left": "extrastuck:iron_shield",
-            "mode": "||",
-            "right": "minestuck:spikes",
-            "result": "extrastuck:spikes_on_a_slab"
+            "recipe": "extrastuck:combinations/spikes_on_a_slab"
         }
     ]
 }

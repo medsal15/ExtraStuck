@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Token Tetrahedron and a Clock in a Totem Lathe.",
-            "left": "extrastuck:token_tetrahedron",
-            "mode": "&&",
-            "right": "minecraft:clock",
-            "result": "extrastuck:d10"
+            "recipe": "extrastuck:combinations/d10"
         }
     ]
 }

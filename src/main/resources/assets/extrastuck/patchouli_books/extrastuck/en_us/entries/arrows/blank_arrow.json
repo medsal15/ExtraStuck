@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine missed you and a Phantom Membrane in a Totem Lathe.",
-            "left": "extrastuck:missed_you",
-            "mode": "&&",
-            "right": "minecraft:phantom_membrane",
-            "result": "extrastuck:blank_arrow"
+            "recipe": "extrastuck:combinations/blank_arrow"
         }
     ]
 }

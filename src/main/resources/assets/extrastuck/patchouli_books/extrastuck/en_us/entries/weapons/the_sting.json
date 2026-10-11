@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Conductor's Baton and a Beehive or Bee Larva in a Totem Lathe.",
-            "left": "minestuck:conductors_baton",
-            "mode": "&&",
-            "right": "minecraft:beehive",
-            "result": "extrastuck:the_sting"
+            "recipe": "extrastuck:combinations/the_sting"
         }
     ]
 }

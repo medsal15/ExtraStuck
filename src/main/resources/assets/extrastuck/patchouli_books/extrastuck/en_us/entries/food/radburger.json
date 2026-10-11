@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Bread and an Irradiated Steak in a Totem Lathe.",
-            "left": "minecraft:bread",
-            "mode": "&&",
-            "right": "minestuck:irradiated_steak",
-            "result": "extrastuck:radburger"
+            "recipe": "extrastuck:combinations/radburger"
         },
         {
             "type": "patchouli:crafting",

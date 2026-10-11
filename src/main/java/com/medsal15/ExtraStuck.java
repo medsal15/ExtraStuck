@@ -16,6 +16,7 @@ import com.medsal15.compat.irons_spellbooks.items.ESISSComponents;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
 import com.medsal15.compat.irons_spellbooks.items.ISSESMissingItems;
 import com.medsal15.compat.irons_spellbooks.subevents.ISSCommonEvents;
+import com.medsal15.compat.patchouli.ESBookRegistry;
 import com.medsal15.compat.ponder.ESPonderPlugin;
 import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.conditions.ESConditions;
@@ -150,6 +151,9 @@ public class ExtraStuck {
     private void clientSetup(final FMLClientSetupEvent event) {
         if (ESCompatUtils.isLoaded("ponder")) {
             ESPonderPlugin.register();
+        }
+        if (ESCompatUtils.isLoaded("patchouli")) {
+            ESBookRegistry.register();
         }
     }
 }

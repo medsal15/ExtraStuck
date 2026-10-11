@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Food Can and Salesman Goggles in a Totem Lathe.",
-            "left": "minestuck:food_can",
-            "mode": "&&",
-            "right": "extrastuck:salesman_goggles",
-            "result": "extrastuck:spam"
+            "recipe": "extrastuck:combinations/spam"
         }
     ]
 }

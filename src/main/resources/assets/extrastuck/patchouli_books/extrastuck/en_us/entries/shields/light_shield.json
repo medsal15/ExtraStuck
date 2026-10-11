@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Flame Shield and a Beacon in a Totem Lathe.",
-            "left": "extrastuck:flame_shield",
-            "mode": "&&",
-            "right": "minecraft:beacon",
-            "result": "extrastuck:light_shield"
+            "recipe": "extrastuck:combinations/light_shield"
         }
     ]
 }

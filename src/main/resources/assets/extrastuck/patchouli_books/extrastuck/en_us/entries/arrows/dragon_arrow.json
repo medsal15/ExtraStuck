@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Telerrow and Dragon Breath in a Punch Designix.",
-            "left": "extrastuck:telerrow",
-            "mode": "||",
-            "right": "minecraft:dragon_breath",
-            "result": "extrastuck:dragon_arrow"
+            "recipe": "extrastuck:combinations/dragon_arrow"
         }
     ]
 }

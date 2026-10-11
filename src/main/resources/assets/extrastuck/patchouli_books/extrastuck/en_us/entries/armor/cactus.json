@@ -12,34 +12,22 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Leather Helmet and a Cactus in a Punch Designix.",
-            "left": "minecraft:leather_helmet",
-            "mode": "||",
-            "right": "minecraft:cactus",
-            "result": "extrastuck:cactus_helmet"
+            "recipe": "extrastuck:combinations/cactus_helmet"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine a Leather Chestplate and a Cactus in a Punch Designix.",
-            "left": "minecraft:leather_chestplate",
-            "mode": "||",
-            "right": "minecraft:cactus",
-            "result": "extrastuck:cactus_chestplate"
+            "recipe": "extrastuck:combinations/cactus_chestplate"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine Leather Leggings and a Cactus in a Punch Designix.",
-            "left": "minecraft:leather_leggings",
-            "mode": "||",
-            "right": "minecraft:cactus",
-            "result": "extrastuck:cactus_leggings"
+            "recipe": "extrastuck:combinations/cactus_leggings"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine Leather Boots and a Cactus in a Punch Designix.",
-            "left": "minecraft:leather_boots",
-            "mode": "||",
-            "right": "minecraft:cactus",
-            "result": "extrastuck:cactus_boots"
+            "recipe": "extrastuck:combinations/cactus_boots"
         }
     ]
 }

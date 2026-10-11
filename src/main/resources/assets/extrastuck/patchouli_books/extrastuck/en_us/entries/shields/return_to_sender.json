@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Pogo Shield and a Mailbox in a Punch Designix.",
-            "left": "extrastuck:pogo_shield",
-            "mode": "||",
-            "right": "minestuck:mailbox",
-            "result": "extrastuck:return_to_sender"
+            "recipe": "extrastuck:combinations/return_to_sender"
         }
     ]
 }

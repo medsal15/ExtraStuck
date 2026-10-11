@@ -13,11 +13,8 @@
         },
         {
             "type": "extrastuck:combination",
-            "text": "Combine Firestarter and Boondollars for Idiots in a Totem Lathe.",
-            "left": "minestuck:firestarter",
-            "mode": "&&",
-            "right": "extrastuck:boondollars_for_idiots",
-            "result": "extrastuck:investlance"
+            "text": "Combine a Jousting Lance and Boondollars for Idiots in a Totem Lathe.",
+            "recipe": "extrastuck:combinations/investlance"
         },
         {
             "type": "extrastuck:boondollar_weapon_desc"

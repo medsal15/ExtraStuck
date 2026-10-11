@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine any modus card and a Cookie in a Totem Lathe.",
-            "left": "tag:minestuck:modus_card",
-            "mode": "&&",
-            "right": "minecraft:cookie",
-            "result": "extrastuck:fortune_modus_card"
+            "recipe": "extrastuck:combinations/fortune_modus_card"
         }
     ]
 }

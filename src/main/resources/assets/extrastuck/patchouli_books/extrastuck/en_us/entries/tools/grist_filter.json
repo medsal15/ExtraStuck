@@ -15,10 +15,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a List Filter and Raw Cruxite in a Punch Designix.",
-            "left": "create:filter",
-            "mode": "||",
-            "right": "minestuck:raw_cruxite",
-            "result": "extrastuck:grist_filter"
+            "recipe": "extrastuck:combinations/grist_filter"
         }
     ]
 }

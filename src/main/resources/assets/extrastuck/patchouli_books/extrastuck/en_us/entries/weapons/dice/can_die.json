@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Dice and Candy Corn in a Punch Designix.",
-            "left": "minestuck:dice",
-            "mode": "||",
-            "right": "minestuck:candy_corn",
-            "result": "extrastuck:can_die"
+            "recipe": "extrastuck:combinations/can_die"
         }
     ]
 }

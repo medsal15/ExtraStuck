@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Compass and any Grist Candy in a Punch Designix.",
-            "left": "minecraft:compass",
-            "mode": "||",
-            "right": "tag:minestuck:grist_candy",
-            "result": "extrastuck:grist_detector"
+            "recipe": "extrastuck:combinations/grist_detector"
         }
     ]
 }

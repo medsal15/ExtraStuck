@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Arrow and a Golden Carrot/Glistering Melon Slice in a Punch Designix.",
-            "left": "minecraft:arrow",
-            "mode": "||",
-            "right": "minecraft:golden_carrot,minecraft:glistering_melon_slice",
-            "result": "extrastuck:crusader_crossbolt"
+            "recipe": "extrastuck:combinations/crusader_crossbolt"
         }
     ]
 }

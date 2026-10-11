@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Regisickle and a Bucket of Shale Oil in a Punch Designix.",
-            "left": "minestuck:regisickle",
-            "mode": "||",
-            "right": "minestuck:oil_bucket",
-            "result": "extrastuck:new_moon"
+            "recipe": "extrastuck:combinations/new_moon"
         }
     ]
 }

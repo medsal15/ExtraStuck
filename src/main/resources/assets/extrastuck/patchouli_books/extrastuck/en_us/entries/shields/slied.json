@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Non-Contact Contract and a SBaHJ Poster in a Totem Lathe.",
-            "left": "extrastuck:non_contact_contract",
-            "mode": "&&",
-            "right": "minestuck:sbahj_poster",
-            "result": "extrastuck:slied"
+            "recipe": "extrastuck:combinations/slied"
         }
     ]
 }

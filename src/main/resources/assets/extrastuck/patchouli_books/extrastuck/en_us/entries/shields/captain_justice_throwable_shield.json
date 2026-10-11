@@ -12,15 +12,12 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Riot Shield and a Trident in a Totem Lathe.",
-            "left": "extrastuck:riot_shield",
-            "mode": "&&",
-            "right": "minecraft:trident",
-            "result": "extrastuck:captain_justice_throwable_shield"
+            "recipe": "extrastuck:combinations/captain_justice_throwable_shield"
         },
         {
             "type": "extrastuck:grist_cost",
             "text": "Throwable version. Make sure you don't mistake it with the shield!",
-            "item": "extrastuck:captain_justice_shield_throwable"
+            "recipe": "extrastuck:grist_costs/captain_justice_throwable_shield"
         }
     ]
 }

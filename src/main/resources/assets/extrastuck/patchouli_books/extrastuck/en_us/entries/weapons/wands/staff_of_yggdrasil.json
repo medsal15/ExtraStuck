@@ -1,0 +1,36 @@
+{
+    "name": "Staff of Yggdrasil",
+    "icon": "extrastuck:staff_of_yggdrasil",
+    "category": "extrastuck:wands",
+    "sortnum": 1,
+    "pages": [
+        {
+            "flag": "!mod:irons_spellbooks",
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:staff_of_yggdrasil"
+            },
+            "text": "Now this is a staff worth your time.$(br)Sure, gathering the materials was difficult, but it sure was worth it.$(br2)$(3)$(l)Special:$() Shoots magic used. Damage increases based on the amount of negative effects and their levels."
+        },
+        {
+            "flag": "!mod:irons_spellbooks",
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shaped/staff_of_yggdrasil",
+            "text": "Combine gold blocks, elemental materials and a Branch of Yggdrasil in a crafting table."
+        },
+        {
+            "flag": "mod:irons_spellbooks",
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:staff_of_yggdrasil"
+            },
+            "text": "Now this is a staff worth your time.$(br)Sure, gathering the materials was difficult, but it sure was worth it."
+        },
+        {
+            "flag": "mod:irons_spellbooks",
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shaped/staff_of_yggdrasil_iss",
+            "text": "Combine gold blocks, elemental runes and a Branch of Yggdrasil in a crafting table."
+        }
+    ]
+}

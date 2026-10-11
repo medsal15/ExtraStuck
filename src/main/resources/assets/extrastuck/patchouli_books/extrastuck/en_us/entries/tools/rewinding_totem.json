@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Silver Watch and an Totem of Undying in a Totem Lathe.",
-            "left": "extrastuck:silver_watch",
-            "mode": "&&",
-            "right": "minecraft:totem_of_undying",
-            "result": "extrastuck:rewinding_totem"
+            "recipe": "extrastuck:combinations/rewinding_totem"
         }
     ]
 }

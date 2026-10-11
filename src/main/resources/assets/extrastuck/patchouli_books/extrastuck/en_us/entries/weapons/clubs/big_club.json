@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Deuce Club and a Spyglass in a Punch Designix.",
-            "left": "minestuck:deuce_club",
-            "mode": "||",
-            "right": "minecraft:spyglass",
-            "result": "extrastuck:big_club"
+            "recipe": "extrastuck:combinations/big_club"
         }
     ]
 }

@@ -15,7 +15,7 @@
         {
             "type": "extrastuck:grist_cost",
             "text": "Cheapest Avarita item",
-            "item": "extrastuck:perfectly_unique_spellbook"
+            "recipe": "extrastuck:grist_costs/perfectly_unique_spellbook"
         }
     ]
 }

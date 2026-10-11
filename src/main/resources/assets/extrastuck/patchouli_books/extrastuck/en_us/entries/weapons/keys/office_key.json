@@ -14,31 +14,24 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a House Key and an Iron Door in a Totem Lathe.",
-            "left": "minestuck:house_key",
-            "mode": "&&",
-            "right": "minecraft:iron_door",
-            "result": "extrastuck:office_key"
+            "recipe": "extrastuck:combinations/office_key"
         },
         {
             "type": "extrastuck:grist_cost",
             "text": "A real gun! Reload by right-clicking bullets on it.",
-            "item": "extrastuck:handgun"
+            "recipe": "extrastuck:grist_costs/handgun"
         },
         {
+            "flag": "!mod:alchemy_expanded",
             "type": "extrastuck:combination",
             "text": "Combine an Arrow and Gunpowder in a Totem Lathe for basic ammunition.",
-            "left": "minecraft:arrow",
-            "mode": "&&",
-            "right": "minecraft:gunpowder",
-            "result": "extrastuck:handgun_bullet"
+            "recipe": "extrastuck:combinations/handgun_bullet"
         },
         {
+            "flag": "!mod:alchemy_expanded",
             "type": "extrastuck:combination",
             "text": "Combine a Handgun Bullet and an Iron Ingot in a Totem Lathe for better ammunition.",
-            "left": "extrastuck:handgun_bullet",
-            "mode": "&&",
-            "right": "minecraft:iron_ingot",
-            "result": "extrastuck:heavy_handgun_bullet"
+            "recipe": "extrastuck:combinations/heavy_handgun_bullet"
         }
     ]
 }

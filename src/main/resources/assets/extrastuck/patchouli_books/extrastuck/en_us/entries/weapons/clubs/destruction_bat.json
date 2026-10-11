@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Silver Bat and Netherite Scrap in a Punch Designix.",
-            "left": "extrastuck:silver_bat",
-            "mode": "&&",
-            "right": "minecraft:netherite_scrap",
-            "result": "extrastuck:destruction_bat"
+            "recipe": "extrastuck:combinations/destruction_bat"
         }
     ]
 }

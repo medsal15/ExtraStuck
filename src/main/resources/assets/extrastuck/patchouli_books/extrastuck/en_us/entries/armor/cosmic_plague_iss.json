@@ -13,34 +13,22 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Netherite Battlemage Hat and a Cosmic Plague Spore in a Totem Lathe.",
-            "left": "irons_spellbooks:netherite_mage_helmet",
-            "mode": "&&",
-            "right": "extrastuck:cosmic_plague_spore",
-            "result": "extrastuck:cosmic_plague_helmet"
+            "recipe": "extrastuck:combinations/cosmic_plague_helmet_irons_spellbooks"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine Netherite Battlemage Robes and a Cosmic Plague Spore in a Totem Lathe.",
-            "left": "irons_spellbooks:netherite_mage_chestplate",
-            "mode": "&&",
-            "right": "extrastuck:cosmic_plague_spore",
-            "result": "extrastuck:cosmic_plague_chestplate"
+            "recipe": "extrastuck:combinations/cosmic_plague_chestplate_irons_spellbooks"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine Netherite Battlemage Leggings and a Cosmic Plague Spore in a Totem Lathe.",
-            "left": "irons_spellbooks:netherite_mage_leggings",
-            "mode": "&&",
-            "right": "extrastuck:cosmic_plague_spore",
-            "result": "extrastuck:cosmic_plague_leggings"
+            "recipe": "extrastuck:combinations/cosmic_plague_leggings_irons_spellbooks"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine Netherite Battlemage Boots and a Cosmic Plague Spore in a Totem Lathe.",
-            "left": "irons_spellbooks:netherite_mage_boots",
-            "mode": "&&",
-            "right": "extrastuck:cosmic_plague_spore",
-            "result": "extrastuck:cosmic_plague_boots"
+            "recipe": "extrastuck:combinations/cosmic_plague_boots_irons_spellbooks"
         }
     ]
 }

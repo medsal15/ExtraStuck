@@ -1,0 +1,20 @@
+{
+    "name": "ExtraStuck Guide",
+    "icon": "extrastuck:guide",
+    "category": "extrastuck:tools",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:guide"
+            },
+            "text": "It's a guide to the mod ExtraStuck. It contains all the information you need about its items.$(br2)You're currently reading it."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "extrastuck:shapeless/guide",
+            "text": "Combine a Book and a Cruxite Block in a Crafting Table."
+        }
+    ]
+}

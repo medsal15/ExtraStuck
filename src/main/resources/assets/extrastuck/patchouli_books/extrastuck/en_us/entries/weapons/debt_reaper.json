@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Prospecting Pickscythe and Boondollars for Idiots in a Punch Designix.",
-            "left": "minestuck:prospecting_pickscythe",
-            "mode": "||",
-            "right": "extrastuck:boondollars_for_idiots",
-            "result": "extrastuck:debt_reaper"
+            "recipe": "extrastuck:combinations/debt_reaper"
         },
         {
             "type": "extrastuck:boondollar_weapon_desc"

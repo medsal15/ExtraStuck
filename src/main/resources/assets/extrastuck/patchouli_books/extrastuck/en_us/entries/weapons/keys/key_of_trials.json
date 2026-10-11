@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a house key and a trial key in a Totem Lathe.",
-            "left": "minestuck:house_key",
-            "mode": "&&",
-            "right": "minecraft:trial_key",
-            "result": "extrastuck:key_of_trials"
+            "recipe": "extrastuck:combinations/key_of_trials"
         }
     ]
 }

@@ -12,18 +12,12 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Pizza and a Leather Cap in a Punch Designix.",
-            "left": "extrastuck:pizza",
-            "mode": "||",
-            "right": "minecraft:leather_helmet",
-            "result": "extrastuck:chef_hat"
+            "recipe": "extrastuck:combinations/chef_hat"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine a Pizza and a Leather Tunic in a Punch Designix.",
-            "left": "extrastuck:pizza",
-            "mode": "||",
-            "right": "minecraft:leather_chestplate",
-            "result": "extrastuck:chef_apron"
+            "recipe": "extrastuck:combinations/chef_apron"
         }
     ]
 }

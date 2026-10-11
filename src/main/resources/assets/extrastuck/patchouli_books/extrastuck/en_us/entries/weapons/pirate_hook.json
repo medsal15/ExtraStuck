@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Hereticus Aururum and Boondollars for Idiots in a Totem Lathe.",
-            "left": "minestuck:hereticus_aururm",
-            "mode": "&&",
-            "right": "extrastuck:boondollars_for_idiots",
-            "result": "extrastuck:pirate_hook"
+            "recipe": "extrastuck:combinations/pirate_hook"
         },
         {
             "type": "extrastuck:boondollar_weapon_desc"

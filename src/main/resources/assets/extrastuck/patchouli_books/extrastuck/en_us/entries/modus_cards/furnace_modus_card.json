@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine any modus card and a Furnace in a Punch Designix.",
-            "left": "tag:minestuck:modus_card",
-            "mode": "||",
-            "right": "minecraft:furnace",
-            "result": "extrastuck:furnace_modus_card"
+            "recipe": "extrastuck:combinations/furnace_modus_card"
         }
     ]
 }

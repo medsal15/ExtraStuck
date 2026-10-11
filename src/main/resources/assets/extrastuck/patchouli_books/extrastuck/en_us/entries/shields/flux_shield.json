@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Gold Shield and a Block of Redstone in a Punch Designix.",
-            "left": "extrastuck:gold_shield",
-            "mode": "||",
-            "right": "minecraft:redstone_block",
-            "result": "extrastuck:flux_shield"
+            "recipe": "extrastuck:combinations/flux_shield"
         }
     ]
 }

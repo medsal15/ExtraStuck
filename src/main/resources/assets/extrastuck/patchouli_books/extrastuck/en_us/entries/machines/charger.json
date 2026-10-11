@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Power Hub and a Hopper in a Punch Designix.",
-            "left": "minestuck:power_hub",
-            "mode": "||",
-            "right": "minecraft:hopper",
-            "result": "extrastuck:charger"
+            "recipe": "extrastuck:combinations/charger"
         },
         "Chargables can be inserted and removed from any side. If you're already holding one, you can directly add it by using it on the top. Removing one is the same, but while holding shift with an empty hand.",
         "Each piece of Uranium Lump produces 16'000 FE."

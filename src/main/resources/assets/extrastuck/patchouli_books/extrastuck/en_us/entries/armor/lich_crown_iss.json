@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Tarnished Crown and Garnet Twix in a Totem Lathe.",
-            "left": "irons_spellbooks:tarnished_helmet",
-            "mode": "&&",
-            "right": "minestuck:garnet_twix",
-            "result": "extrastuck:lich_crown"
+            "recipe": "extrastuck:combinations/lich_crown_irons_spellbooks"
         },
         {
             "type": "patchouli:smithing",

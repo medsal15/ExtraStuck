@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Battery and a Honeycomb in a Totem Lathe.",
-            "left": "minestuck:battery",
-            "mode": "&&",
-            "right": "minecraft:honeycomb",
-            "result": "extrastuck:field_charger"
+            "recipe": "extrastuck:combinations/field_charger"
         }
     ]
 }

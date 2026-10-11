@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Pogo Hammer and a Horn in a Punch Designix.",
-            "left": "minestuck:pogo_hammer",
-            "mode": "||",
-            "right": "minestuck:horn",
-            "result": "extrastuck:toy_hammer"
+            "recipe": "extrastuck:combinations/toy_hammer"
         }
     ]
 }

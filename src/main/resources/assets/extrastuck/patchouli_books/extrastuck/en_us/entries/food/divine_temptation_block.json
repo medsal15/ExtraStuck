@@ -11,10 +11,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Cauldron and a Golden Apple in a Totem Lathe.",
-            "left": "minecraft:cauldron",
-            "mode": "&&",
-            "right": "minecraft:golden_apple",
-            "result": "extrastuck:divine_temptation_block"
+            "recipe": "extrastuck:combinations/divine_temptation_block"
         }
     ]
 }

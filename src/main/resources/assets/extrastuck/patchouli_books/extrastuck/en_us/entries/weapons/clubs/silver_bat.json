@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Metal Bat and Glass in a Totem Lathe.",
-            "left": "minestuck:metal_bat",
-            "mode": "&&",
-            "right": "minecraft:glass",
-            "result": "extrastuck:silver_bat"
+            "recipe": "extrastuck:combinations/silver_bat"
         }
     ]
 }

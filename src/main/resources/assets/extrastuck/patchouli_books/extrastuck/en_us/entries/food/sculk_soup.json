@@ -13,11 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Bowl and Sculk in a Punch Designix.",
-            "left": "minecraft:bowl",
-            "mode": "||",
-            "right": "minecraft:sculk",
-            "result": "extrastuck:sculk_soup"
+            "recipe": "extrastuck:combinations/sculk_soup"
         }
     ]
 }
-

@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Death Mace and D8 Night in a Totem Lathe.",
-            "left": "extrastuck:death_mace",
-            "mode": "&&",
-            "right": "extrastuck:d8_night",
-            "result": "extrastuck:d8th_m8ce"
+            "recipe": "extrastuck:combinations/d8th_m8ce"
         }
     ]
 }

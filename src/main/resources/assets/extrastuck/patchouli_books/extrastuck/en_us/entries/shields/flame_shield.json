@@ -13,7 +13,7 @@
         },
         {
             "type": "extrastuck:grist_cost",
-            "item": "extrastuck:flame_shield"
+            "recipe": "extrastuck:grist_costs/flame_shield"
         }
     ]
 }

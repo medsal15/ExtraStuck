@@ -14,11 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Blacksmith's Hammer and a Furnace in a Totem Lathe.",
-            "left": "minestuck:blacksmith_hammer",
-            "mode": "&&",
-            "right": "minecraft:furnace",
-            "result": "extrastuck:steam_hammer"
+            "recipe": "extrastuck:combinations/steam_hammer"
         }
     ]
 }
-

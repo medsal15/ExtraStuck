@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a LemonNade and Sugar in a Totem Lathe.",
-            "left": "extrastuck:lemonnade",
-            "mode": "&&",
-            "right": "minecraft:sugar",
-            "result": "extrastuck:sour_bomb_candy"
+            "recipe": "extrastuck:combinations/sour_bomb_candy"
         }
     ]
 }

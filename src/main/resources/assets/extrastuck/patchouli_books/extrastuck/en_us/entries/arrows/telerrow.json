@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an End Arrow and an Ender Pearl in a Punch Designix.",
-            "left": "extrastuck:end_arrow",
-            "mode": "||",
-            "right": "minecraft:ender_pearl",
-            "result": "extrastuck:telerrow"
+            "recipe": "extrastuck:combinations/telerrow"
         }
     ]
 }

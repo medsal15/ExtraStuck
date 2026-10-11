@@ -12,34 +12,22 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Netherite Helmet and Tinted Glass in a Totem Lathe.",
-            "left": "minecraft:netherite_helmet",
-            "mode": "&&",
-            "right": "minecraft:tinted_glass",
-            "result": "extrastuck:dark_knight_helmet"
+            "recipe": "extrastuck:combinations/dark_knight_helmet"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine a Netherite Chestplate and Tinted Glass in a Totem Lathe.",
-            "left": "minecraft:netherite_chestplate",
-            "mode": "&&",
-            "right": "minecraft:tinted_glass",
-            "result": "extrastuck:dark_knight_chestplate"
+            "recipe": "extrastuck:combinations/dark_knight_chestplate"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine Netherite Leggings and Tinted Glass in a Totem Lathe.",
-            "left": "minecraft:netherite_leggings",
-            "mode": "&&",
-            "right": "minecraft:tinted_glass",
-            "result": "extrastuck:dark_knight_leggings"
+            "recipe": "extrastuck:combinations/dark_knight_leggings"
         },
         {
             "type": "extrastuck:combination",
             "text": "Combine Netherite Boots and Tinted Glass in a Totem Lathe.",
-            "left": "minecraft:netherite_boots",
-            "mode": "&&",
-            "right": "minecraft:tinted_glass",
-            "result": "extrastuck:dark_knight_boots"
+            "recipe": "extrastuck:combinations/dark_knight_boots"
         }
     ]
 }

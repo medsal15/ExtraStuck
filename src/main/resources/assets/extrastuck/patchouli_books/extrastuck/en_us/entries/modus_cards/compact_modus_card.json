@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Set Modus Card and a Barrel in a Totem Lathe.",
-            "left": "minestuck:set_modus_card",
-            "mode": "&&",
-            "right": "minecraft:barrel",
-            "result": "extrastuck:compact_modus_card"
+            "recipe": "extrastuck:combinations/compact_modus_card"
         }
     ]
 }

@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Bell Hammer and a Sculk Shrieker in a Punch Designix.",
-            "left": "extrastuck:bell_hammer",
-            "mode": "&&",
-            "right": "minecraft:sculk_shrieker",
-            "result": "extrastuck:blind_hammer"
+            "recipe": "extrastuck:combinations/blind_hammer"
         }
     ]
 }

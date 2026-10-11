@@ -11,10 +11,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Divine Temptation and a Golden Grasshopper in a Totem Lathe.",
-            "left": "extrastuck:divine_temptation_block",
-            "mode": "&&",
-            "right": "minestuck:golden_grasshopper",
-            "result": "extrastuck:mortal_temptation_block"
+            "recipe": "extrastuck:combinations/mortal_temptation_block"
         }
     ]
 }

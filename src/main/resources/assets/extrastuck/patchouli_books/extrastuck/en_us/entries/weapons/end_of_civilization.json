@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Blight and a Cosmic Plague Spore in a Totem Lathe.",
-            "left": "extrastuck:blight",
-            "mode": "&&",
-            "right": "extrastuck:cosmic_plague_spore",
-            "result": "extrastuck:end_of_civilization"
+            "recipe": "extrastuck:combinations/end_of_civilization"
         }
     ]
 }

@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Lightning Rod and a Battery in a Punch Designix.",
-            "left": "minecraft:lightning_rod",
-            "mode": "||",
-            "right": "minestuck:battery",
-            "result": "extrastuck:lightning_arrow"
+            "recipe": "extrastuck:combinations/lightning_arrow"
         }
     ]
 }

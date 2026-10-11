@@ -1,11 +1,11 @@
 {
     "name": "Prospitian Wand",
     "icon": "extrastuck:prospitian_wand",
-    "flag": "!mod:irons_spellbooks",
     "category": "extrastuck:wands",
     "sortnum": 1,
     "pages": [
         {
+            "flag": "!mod:irons_spellbooks",
             "type": "patchouli:spotlight",
             "item": {
                 "item": "extrastuck:prospitian_wand"
@@ -13,8 +13,16 @@
             "text": "A wand commonly used by Prospitians.$(br2)$(3)$(l)Special:$() Can shoot fireballs, and can be turned into a Cast Gold Shield by using it while holding shift (does not work with a spellbook equipped)."
         },
         {
+            "flag": "mod:irons_spellbooks",
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:prospitian_wand"
+            },
+            "text": "A wand commonly used by Prospitians.$(br2)$(3)$(l)Special:$() Reduces cast time by 15%, increases holy spell power by 20%, and can be turned into a Cast Gold Shield by using it while holding shift (does not work with a spellbook equipped)."
+        },
+        {
             "type": "extrastuck:grist_cost",
-            "item": "extrastuck:prospitian_wand"
+            "recipe": "extrastuck:grist_costs/prospitian_wand"
         }
     ]
 }

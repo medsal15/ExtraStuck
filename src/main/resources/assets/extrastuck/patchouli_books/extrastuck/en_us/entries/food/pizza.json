@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Bread and a Beetroot in a Punch Designix.",
-            "left": "minecraft:bread",
-            "mode": "||",
-            "right": "minecraft:beetroot",
-            "result": "extrastuck:pizza"
+            "recipe": "extrastuck:combinations/pizza"
         },
         {
             "type": "patchouli:spotlight",
@@ -28,10 +25,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Pizza and a Dagger in a Punch Designix.",
-            "left": "extrastuck:pizza",
-            "mode": "||",
-            "right": "minestuck:dagger",
-            "result": "extrastuck:pizza_slice"
+            "recipe": "extrastuck:combinations/pizza_slice"
         }
     ]
 }

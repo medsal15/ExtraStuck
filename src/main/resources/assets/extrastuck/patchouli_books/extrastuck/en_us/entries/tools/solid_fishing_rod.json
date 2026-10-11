@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Fishing Rod and Raw Cruxite in a Punch Designix.",
-            "left": "minecraft:fishing_rod",
-            "mode": "||",
-            "right": "minestuck:raw_cruxite",
-            "result": "extrastuck:solid_fishing_rod"
+            "recipe": "extrastuck:combinations/solid_fishing_rod"
         }
     ]
 }

@@ -15,10 +15,7 @@
             "flag": "!mod:irons_spellbooks",
             "type": "extrastuck:combination",
             "text": "Combine an Ancient Vault Opener and a Blaze Rod in a Totem Lathe.",
-            "left": "extrastuck:key_of_trials",
-            "mode": "&&",
-            "right": "minecraft:blaze_rod",
-            "result": "extrastuck:vault_melter"
+            "recipe": "extrastuck:combinations/vault_melter"
         },
         {
             "flag": "mod:irons_spellbooks",

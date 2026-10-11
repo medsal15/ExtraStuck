@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Shooting Star and a Sculk Catalyst in a Totem Lathe.",
-            "left": "extrastuck:shooting_star",
-            "mode": "&&",
-            "right": "minecraft:sculk_catalyst",
-            "result": "extrastuck:silent_shot"
+            "recipe": "extrastuck:combinations/silent_shot"
         }
     ]
 }

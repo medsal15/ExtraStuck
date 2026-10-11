@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Flame Shield and a wooden door in a Punch Designix.",
-            "left": "extrastuck:flame_shield",
-            "mode": "||",
-            "right": "tag:minecraft:wooden_doors",
-            "result": "extrastuck:halt_shield"
+            "recipe": "extrastuck:combinations/halt_shield"
         }
     ]
 }

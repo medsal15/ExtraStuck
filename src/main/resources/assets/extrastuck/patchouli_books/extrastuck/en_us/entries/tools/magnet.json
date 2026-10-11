@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Item Magnet and Redstone in a Punch Designix.",
-            "left": "minestuck:item_magnet",
-            "mode": "||",
-            "right": "minecraft:redstone",
-            "result": "extrastuck:magnet"
+            "recipe": "extrastuck:combinations/magnet"
         }
     ]
 }

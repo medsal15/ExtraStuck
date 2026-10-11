@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a $(l:extrastuck:weapons/dice/gold_coin)gold coin$(/l) and an emerald in a Totem Lathe.",
-            "left": "extrastuck:gold_coin",
-            "mode": "&&",
-            "right": "minecraft:emerald",
-            "result": "extrastuck:token_tetrahedron"
+            "recipe": "extrastuck:combinations/token_tetrahedron"
         }
     ]
 }

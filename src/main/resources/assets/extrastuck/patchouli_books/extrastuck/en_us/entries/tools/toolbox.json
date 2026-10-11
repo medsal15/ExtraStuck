@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Chest and Iron Bars in a Punch Designix.",
-            "left": "minecraft:chest",
-            "mode": "||",
-            "right": "minecraft:iron_bars",
-            "result": "extrastuck:toolbox"
+            "recipe": "extrastuck:combinations/toolbox"
         }
     ]
 }

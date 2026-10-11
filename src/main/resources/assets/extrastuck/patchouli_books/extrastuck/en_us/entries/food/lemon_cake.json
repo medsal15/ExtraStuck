@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Apple Cake and a LemonNade in a Totem Lathe.",
-            "left": "minestuck:apple_cake",
-            "mode": "&&",
-            "right": "extrastuck:lemonnade",
-            "result": "extrastuck:lemon_cake"
+            "recipe": "extrastuck:combinations/lemon_cake"
         }
     ]
 }

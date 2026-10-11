@@ -13,11 +13,8 @@
         },
         {
             "type": "extrastuck:combination",
-            "text": "Combine any modus card and an Eye of Ender in a Totem Lathe.",
-            "left": "tag:minestuck:modus_card",
-            "mode": "&&",
-            "right": "minecraft:ender_chest",
-            "result": "extrastuck:ender_modus_card"
+            "text": "Combine any modus card and an Ender Chest in a Totem Lathe.",
+            "recipe": "extrastuck:combinations/ender_modus_card"
         }
     ]
 }

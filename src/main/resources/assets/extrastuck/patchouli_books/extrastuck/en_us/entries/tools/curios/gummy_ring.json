@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine any candy weapon and String in a Totem Lathe.",
-            "left": "tag:extrastuck:candy_weapon",
-            "mode": "&&",
-            "right": "minecraft:string",
-            "result": "extrastuck:gummy_ring"
+            "recipe": "extrastuck:combinations/gummy_ring"
         }
     ]
 }

@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Chest and a Cruxite Dowel in a Punch Designix.",
-            "left": "minecraft:chest",
-            "mode": "||",
-            "right": "minestuck:cruxite_dowel",
-            "result": "extrastuck:dowel_storage"
+            "recipe": "extrastuck:combinations/dowel_storage"
         }
     ]
 }

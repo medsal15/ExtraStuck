@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Non-Contact Contract and a Gift in a Punch Designix.",
-            "left": "extrastuck:non_contact_contract",
-            "mode": "||",
-            "right": "extrastuck:gift",
-            "result": "extrastuck:gift_protection"
+            "recipe": "extrastuck:combinations/gift_protection"
         }
     ]
 }

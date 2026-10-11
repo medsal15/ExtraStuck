@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Barrel and Paper in a Punch Designix.",
-            "left": "minecraft:barrel",
-            "mode": "||",
-            "right": "minecraft:paper",
-            "result": "extrastuck:card_storage"
+            "recipe": "extrastuck:combinations/card_storage"
         }
     ]
 }

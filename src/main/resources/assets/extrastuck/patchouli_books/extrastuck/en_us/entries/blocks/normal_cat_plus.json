@@ -11,7 +11,7 @@
         },
         {
             "type": "extrastuck:grist_cost",
-            "item": "extrastuck:normal_cat_plush"
+            "recipe": "extrastuck:grist_costs/normal_cat_plush"
         }
     ]
 }

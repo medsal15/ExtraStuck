@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Bread and a Respawn Anchor in a Punch Designix.",
-            "left": "minecraft:bread",
-            "mode": "||",
-            "right": "minecraft:respawn_anchor",
-            "result": "extrastuck:home_donut"
+            "recipe": "extrastuck:combinations/home_donut"
         }
     ]
 }

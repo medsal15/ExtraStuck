@@ -1,7 +1,11 @@
 {
-    "name": "patchouli.extrastuck.title",
-    "landing_text": "patchouli.extrastuck.landing",
+    "name": "extrastuck.patchouli.title",
+    "landing_text": "extrastuck.patchouli.landing",
     "version": 1,
     "model": "extrastuck:guide",
+    "custom_book_item": "extrastuck:guide",
+    "book_texture": "patchouli:textures/gui/book_green.png",
+    "crafting_texture": "extrastuck:textures/gui/book.png",
+    "show_progress": false,
     "use_resource_pack": true
 }

@@ -15,10 +15,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Ironbound Tome and a completed Sburb Code in a Totem Lathe.",
-            "left": "irons_spellbooks:iron_spell_book",
-            "mode": "&&",
-            "right": "minestuck:completed_sburb_code",
-            "result": "extrastuck:sburbdb"
+            "recipe": "extrastuck:combinations/sburbdb"
         }
     ]
 }

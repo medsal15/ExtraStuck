@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Quartz Arrow and Glass in a Totem Lathe.",
-            "left": "extrastuck:quartz_arrow",
-            "mode": "&&",
-            "right": "tag:c:glass_blocks",
-            "result": "extrastuck:glass_arrow"
+            "recipe": "extrastuck:combinations/quartz_arrow"
         }
     ]
 }

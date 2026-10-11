@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Till Silence and New Moon in a Punch Designix.",
-            "left": "extrastuck:till_silence",
-            "mode": "||",
-            "right": "extrastuck:new_moon",
-            "result": "extrastuck:black_moonshine_collector"
+            "recipe": "extrastuck:combinations/black_moonshine_collector"
         }
     ]
 }

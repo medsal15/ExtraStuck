@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Ace of Diamonds and an Mirror in a Totem Lathe.",
-            "left": "minestuck:ace_of_diamonds",
-            "mode": "&&",
-            "right": "minestuck:mirror",
-            "result": "extrastuck:two_of_diamonds"
+            "recipe": "extrastuck:combinations/two_of_diamonds"
         }
     ]
 }

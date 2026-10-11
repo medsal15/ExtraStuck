@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Iron Boots and an Anvil in a Totem Lathe.",
-            "left": "minecraft:iron_boots",
-            "mode": "&&",
-            "right": "minecraft:anvil",
-            "result": "extrastuck:heavy_boots"
+            "recipe": "extrastuck:combinations/heavy_boots"
         }
     ]
 }

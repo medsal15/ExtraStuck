@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combiner une Baguette Rassise et une Baguette dans une tour à totem.",
-            "left": "minestuck:stale_baguette",
-            "mode": "&&",
-            "right": "minestuck:wand",
-            "result": "extrastuck:baguette_magique"
+            "recipe": "extrastuck:combinations/baguette_magique"
         }
     ]
 }

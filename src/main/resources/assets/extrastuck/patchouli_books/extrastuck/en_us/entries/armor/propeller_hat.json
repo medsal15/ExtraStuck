@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Iron Helmet and a Feather in a Totem Lathe.",
-            "left": "minecraft:iron_helmet",
-            "mode": "&&",
-            "right": "minecraft:feather",
-            "result": "extrastuck:propeller_hat"
+            "recipe": "extrastuck:combinations/propeller_hat"
         }
     ]
 }

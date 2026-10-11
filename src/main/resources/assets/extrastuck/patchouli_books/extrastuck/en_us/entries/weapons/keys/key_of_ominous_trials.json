@@ -14,18 +14,13 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Key of Trials and an Ominous Trial Key in a Totem Lathe.",
-            "left": "extrastuck:key_of_trials",
-            "mode": "&&",
-            "right": "minecraft:ominous_trial_key",
-            "result": "extrastuck:key_of_ominous_trials"
+            "recipe": "extrastuck:combinations/key_of_ominous_trials"
         },
         {
             "type": "extrastuck:combination",
             "text": "Or combine a Key of Trials and an Ominous Bottle in a Totem Lathe.",
-            "left": "extrastuck:key_of_trials",
-            "mode": "&&",
-            "right": "minecraft:ominous_bottle",
-            "result": "extrastuck:key_of_ominous_trials"
+            "recipe": "extrastuck:combinations/key_of_ominous_trials_alt",
+            "link_recipe": false
         }
     ]
 }

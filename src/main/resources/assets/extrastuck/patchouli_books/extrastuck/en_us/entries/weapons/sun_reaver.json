@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Regisword and a Daylight Detector in a Punch Designix.",
-            "left": "minestuck:regisword",
-            "mode": "||",
-            "right": "minecraft:daylight_detector",
-            "result": "extrastuck:sun_reaver"
+            "recipe": "extrastuck:combinations/sun_reaver"
         }
     ]
 }

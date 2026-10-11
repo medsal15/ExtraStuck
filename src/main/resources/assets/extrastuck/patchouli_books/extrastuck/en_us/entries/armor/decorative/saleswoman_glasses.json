@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Red Stained Glass Pane and a Gold Nugget in a Totem Lathe.",
-            "left": "minecraft:red_stained_glass_pane",
-            "mode": "&&",
-            "right": "minecraft:gold_nugget",
-            "result": "extrastuck:saleswoman_glasses"
+            "recipe": "extrastuck:combinations/saleswoman_glasses"
         }
     ]
 }

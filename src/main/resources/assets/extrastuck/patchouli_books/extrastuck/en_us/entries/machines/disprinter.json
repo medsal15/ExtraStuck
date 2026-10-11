@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Printer and a Dispenser in a Punch Designix.",
-            "left": "extrastuck:printer",
-            "mode": "||",
-            "right": "minecraft:dispenser",
-            "result": "extrastuck:disprinter"
+            "recipe": "extrastuck:combinations/disprinter"
         }
     ]
 }

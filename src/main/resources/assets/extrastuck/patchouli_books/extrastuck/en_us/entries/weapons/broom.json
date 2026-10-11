@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Brush and a Hay Bale in a Totem Lathe.",
-            "left": "minecraft:brush",
-            "mode": "&&",
-            "right": "minecraft:hay_block",
-            "result": "extrastuck:broom"
+            "recipe": "extrastuck:combinations/broom"
         }
     ]
 }

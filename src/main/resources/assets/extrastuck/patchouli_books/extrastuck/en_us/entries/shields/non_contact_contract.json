@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Wooden Shield and Paper in a Totem Lathe.",
-            "left": "extrastuck:wooden_shield",
-            "mode": "&&",
-            "right": "minecraft:paper",
-            "result": "extrastuck:non_contact_contract"
+            "recipe": "extrastuck:combinations/non_contact_contract"
         }
     ]
 }

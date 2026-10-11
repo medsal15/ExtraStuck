@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a D-Ice and a SBaHJ Poster in a Punch Designix.",
-            "left": "extrastuck:d_ice",
-            "mode": "||",
-            "right": "minestuck:sbahj_poster",
-            "result": "extrastuck:done"
+            "recipe": "extrastuck:combinations/done"
         }
     ]
 }

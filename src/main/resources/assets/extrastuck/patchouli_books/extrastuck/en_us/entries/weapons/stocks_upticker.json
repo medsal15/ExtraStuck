@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Uranium Baton and Boondollars for Idiots in a Totem Lathe.",
-            "left": "minestuck:uranium_baton",
-            "mode": "&&",
-            "right": "extrastuck:boondollars_for_idiots",
-            "result": "extrastuck:stocks_upticker"
+            "recipe": "extrastuck:combinations/stocks_upticker"
         },
         {
             "type": "extrastuck:boondollar_weapon_desc"

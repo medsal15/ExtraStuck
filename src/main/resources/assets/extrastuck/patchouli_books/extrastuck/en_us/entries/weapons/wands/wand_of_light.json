@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Needle Wand and Glowstone in a Totem Lathe.",
-            "left": "minestuck:needle_wand",
-            "mode": "&&",
-            "right": "minecraft:glowstone",
-            "result": "extrastuck:wand_of_light"
+            "recipe": "extrastuck:combinations/wand_of_light_glowstone"
         }
     ]
 }

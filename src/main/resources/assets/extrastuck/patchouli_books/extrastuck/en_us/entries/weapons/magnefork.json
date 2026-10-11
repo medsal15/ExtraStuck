@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Tuning Fork and a Magnet in a Totem Lathe.",
-            "left": "minestuck:tuning_fork",
-            "mode": "&&",
-            "right": "extrastuck:magnet",
-            "result": "extrastuck:magnefork"
+            "recipe": "extrastuck:combinations/magnefork"
         }
     ]
 }

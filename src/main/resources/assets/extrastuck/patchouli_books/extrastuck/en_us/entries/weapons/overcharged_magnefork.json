@@ -14,23 +14,17 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Magnefork and a Battery in a Punch Designix.",
-            "left": "extrastuck:magnefork",
-            "mode": "||",
-            "right": "minestuck:battery",
-            "result": "extrastuck:overcharged_magnefork"
+            "recipe": "extrastuck:combinations/overcharged_magnefork"
         },
         {
             "type": "extrastuck:combination",
             "text": "Alternatively, combine Edison's Fury and a Magnet in a Totem Lathe.",
-            "left": "minestuck:edisons_fury",
-            "mode": "&&",
-            "right": "extrastuck:magnet",
-            "result": "extrastuck:overcharged_magnefork"
+            "recipe": "extrastuck:combinations/overcharged_magnefork_alt"
         },
         {
             "type": "extrastuck:grist_cost",
             "text": "Now turned off, it no longer consumes FE nor attracts things.",
-            "item": "extrastuck:undercharged_magnefork"
+            "recipe": "extrastuck:grist_costs/undercharged_magnefork"
         }
     ]
 }

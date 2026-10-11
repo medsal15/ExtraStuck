@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Sticky Die and Ice in a Totem Lathe.",
-            "left": "extrastuck:sticky_die",
-            "mode": "&&",
-            "right": "minecraft:ice",
-            "result": "extrastuck:d_ice"
+            "recipe": "extrastuck:combinations/d_ice"
         }
     ]
 }

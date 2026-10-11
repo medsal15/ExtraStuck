@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine any wooden stick and any wooden pressure plate in a Totem Lathe.",
-            "left": "tag:c:rods/wooden",
-            "mode": "&&",
-            "right": "tag:minecraft:wooden_pressure_plates",
-            "result": "extrastuck:wooden_shield"
+            "recipe": "extrastuck:combinations/wooden_shield"
         }
     ]
 }

@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Non-Contact Contract and Rockefeller's Walking Bladecane in a Punch Designix.",
-            "left": "extrastuck:non_contact_contract",
-            "mode": "||",
-            "right": "minestuck:rockefellers_walking_bladecane",
-            "result": "extrastuck:riot_shield"
+            "recipe": "extrastuck:combinations/riot_shield"
         }
     ]
 }

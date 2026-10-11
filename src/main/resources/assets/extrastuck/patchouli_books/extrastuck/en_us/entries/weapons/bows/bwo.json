@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Bow and a SBaHJ Poster in a Punch Designix.",
-            "left": "minecraft:bow",
-            "mode": "||",
-            "right": "minestuck:sbahj_poster",
-            "result": "extrastuck:bwo"
+            "recipe": "extrastuck:combinations/bwo"
         }
     ]
 }

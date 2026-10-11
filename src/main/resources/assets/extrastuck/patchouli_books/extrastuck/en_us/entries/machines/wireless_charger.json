@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Charger and a Lightning Rod in a Punch Designix.",
-            "left": "extrastuck:charger",
-            "mode": "||",
-            "right": "minecraft:lightning_rod",
-            "result": "extrastuck:wireless_charger"
+            "recipe": "extrastuck:combinations/wireless_charger"
         },
         "Each piece of Uranium Lump produces 16'000 FE."
     ]

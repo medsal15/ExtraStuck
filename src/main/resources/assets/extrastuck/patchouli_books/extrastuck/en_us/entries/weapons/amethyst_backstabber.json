@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Shadowrazor and a Block of Amethyst in a Totem Lathe.",
-            "left": "minestuck:shadowrazor",
-            "mode": "&&",
-            "right": "minecraft:amethyst_block",
-            "result": "extrastuck:amethyst_backstabber"
+            "recipe": "extrastuck:combinations/amethyst_backstabber"
         }
     ]
 }

@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Block of Iron and Blue Dye in a Punch Designix.",
-            "left": "minecraft:iron_block",
-            "mode": "||",
-            "right": "minecraft:blue_dye",
-            "result": "extrastuck:cobalt_block"
+            "recipe": "extrastuck:combinations/cobalt_block"
         }
     ]
 }

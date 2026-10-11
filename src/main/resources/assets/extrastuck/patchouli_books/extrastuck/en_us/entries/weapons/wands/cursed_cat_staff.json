@@ -1,11 +1,11 @@
 {
     "name": "Cursed Cat Staff",
     "icon": "extrastuck:cursed_cat_staff",
-    "flag": "!mod:irons_spellbooks",
     "category": "extrastuck:wands",
     "sortnum": 1,
     "pages": [
         {
+            "flag": "!mod:irons_spellbooks",
             "type": "patchouli:spotlight",
             "item": {
                 "item": "extrastuck:cursed_cat_staff"
@@ -13,12 +13,24 @@
             "text": "A cursed magic staff that whispers curses in your ears.$(br2)$(3)$(l)Special:$() Deals some magic damage to enemies around."
         },
         {
+            "flag": "!mod:irons_spellbooks",
             "type": "extrastuck:combination",
             "text": "Combine a Pool Cue Wand and a Normal Cat in a Totem Lathe.",
-            "left": "minestuck:pool_cue_wand",
-            "mode": "&&",
-            "right": "extrastuck:normal_cat_plush",
-            "result": "extrastuck:cursed_cat_staff"
+            "recipe": "extrastuck:combinations/cursed_cat_staff"
+        },
+        {
+            "flag": "mod:irons_spellbooks",
+            "type": "patchouli:spotlight",
+            "item": {
+                "item": "extrastuck:cursed_cat_staff"
+            },
+            "text": "A cursed magic staff that whispers curses in your ears.$(br2)$(3)$(l)Special:$() Increases mana regeneration by 15%, blood spell power by 20% and eldritch spell power by 10%."
+        },
+        {
+            "flag": "mod:irons_spellbooks",
+            "type": "extrastuck:combination",
+            "text": "Combine The Blood Staff and a Normal Cat in a Totem Lathe.",
+            "recipe": "extrastuck:combinations/cursed_cat_staff_from_blood_staff"
         }
     ]
 }

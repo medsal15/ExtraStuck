@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Rainbow Bow and a Beacon in a Totem Lathe.",
-            "left": "extrastuck:rainbow_bow",
-            "mode": "&&",
-            "right": "minecraft:beacon",
-            "result": "extrastuck:make_it_rain"
+            "recipe": "extrastuck:combinations/make_it_rain"
         }
     ]
 }

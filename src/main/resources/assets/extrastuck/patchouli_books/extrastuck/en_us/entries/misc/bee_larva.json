@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Egg and a Bee Nest in a Totem Lathe.",
-            "left": "minecraft:egg",
-            "mode": "&&",
-            "right": "minecraft:bee_nest",
-            "result": "extrastuck:bee_larva"
+            "recipe": "extrastuck:combinations/bee_larva"
         }
     ]
 }

@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Ace of Spades and an Mirror in a Totem Lathe.",
-            "left": "minestuck:ace_of_spades",
-            "mode": "&&",
-            "right": "minestuck:mirror",
-            "result": "extrastuck:two_of_spades"
+            "recipe": "extrastuck:combinations/two_of_spades"
         }
     ]
 }

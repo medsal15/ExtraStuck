@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Crafter and an Alchemiter in a Totem Lathe.",
-            "left": "minecraft:crafter",
-            "mode": "&&",
-            "right": "minestuck:alchemiter",
-            "result": "extrastuck:printer"
+            "recipe": "extrastuck:combinations/printer"
         },
         "Dowels can be inserted and removed from the top. If you're already holding one, you can directly add it by using it on the top. Removing one is the same, but while holding shift with an empty hand.",
         "Uranium can be inserted from any side that's not the top, and cannot be extracted.$(br2)Alchemized items can be extracted from the same sides as uranium. The printer takes 10 seconds per item."

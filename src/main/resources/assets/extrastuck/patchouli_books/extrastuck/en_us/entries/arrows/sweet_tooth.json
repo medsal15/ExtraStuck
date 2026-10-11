@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Bone or a Cardboard Arrow and Candy Corn in a Totem Lathe.",
-            "left": "minecraft:bone,extrastuck:cardboard_arrow",
-            "mode": "&&",
-            "right": "minestuck:candy_corn",
-            "result": "extrastuck:sweet_tooth"
+            "recipe": "extrastuck:combinations/sweet_tooth"
         }
     ]
 }

@@ -14,11 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Sunray Harvester and a Smoker in a Punch Designix.",
-            "left": "minestuck:sunray_harvester",
-            "mode": "||",
-            "right": "minecraft:smoker",
-            "result": "extrastuck:leafburner"
+            "recipe": "extrastuck:combinations/leafburner"
         }
     ]
 }
-

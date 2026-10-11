@@ -15,10 +15,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Wise Guy and an Ironbound Tome in a Totem Lathe.",
-            "left": "minestuck:wiseguy",
-            "mode": "&&",
-            "right": "irons_spellbooks:iron_spell_book",
-            "result": "extrastuck:mage_guy"
+            "recipe": "extrastuck:combinations/mage_guy"
         }
     ]
 }

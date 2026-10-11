@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Glass Pane and a Grist Detector in a Totem Lathe.",
-            "left": "minecraft:glass_pane",
-            "mode": "&&",
-            "right": "extrastuck:grist_detector",
-            "result": "extrastuck:grist_viewers"
+            "recipe": "extrastuck:combinations/grist_viewers"
         }
     ]
 }

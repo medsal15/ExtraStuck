@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Blank Disk and a Mastermind Modus in a Totem Lathe.",
-            "left": "minestuck:blank_disk",
-            "mode": "&&",
-            "right": "extrastuck:mastermind_modus_card",
-            "result": "extrastuck:mastermind_disk"
+            "recipe": "extrastuck:combinations/mastermind_disk"
         },
         "Some could argue that it's useless, as you can just swap modus..."
     ]

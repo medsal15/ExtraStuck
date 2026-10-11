@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Bread and some Sculk Vein in a Punch Designix.",
-            "left": "minecraft:bread",
-            "mode": "||",
-            "right": "minecraft:sculk_vein",
-            "result": "extrastuck:dread"
+            "recipe": "extrastuck:combinations/dread"
         }
     ]
 }

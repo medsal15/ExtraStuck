@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Diamond Shield and a Frog in a Totem Lathe.",
-            "left": "extrastuck:diamond_shield",
-            "mode": "&&",
-            "right": "minestuck:frog",
-            "result": "extrastuck:garnet_shield"
+            "recipe": "extrastuck:combinations/garnet_shield"
         }
     ]
 }

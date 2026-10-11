@@ -12,18 +12,12 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Garnet Bricks and Glowstone Dust in a Punch Designix.",
-            "left": "extrastuck:garnet_bricks",
-            "mode": "||",
-            "right": "minecraft:glowstone_dust",
-            "result": "extrastuck:ruby_bricks"
+            "recipe": "extrastuck:combinations/ruby_bricks"
         },
         {
             "type": "extrastuck:combination",
             "text": "You can also combine Cut Garnet and Glowstone Dust in a Punch Designix.",
-            "left": "extrastuck:cut_garnet",
-            "mode": "||",
-            "right": "minecraft:glowstone_dust",
-            "result": "extrastuck:cut_ruby"
+            "recipe": "extrastuck:combinations/cut_ruby"
         }
     ]
 }

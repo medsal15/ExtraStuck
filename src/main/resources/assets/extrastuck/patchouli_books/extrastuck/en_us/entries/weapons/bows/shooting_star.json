@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Bow and a Mirror in a Punch Designix.",
-            "left": "minecraft:bow",
-            "mode": "||",
-            "right": "minecraft:firework_star",
-            "result": "extrastuck:shooting_star"
+            "recipe": "extrastuck:combinations/shooting_star"
         }
     ]
 }

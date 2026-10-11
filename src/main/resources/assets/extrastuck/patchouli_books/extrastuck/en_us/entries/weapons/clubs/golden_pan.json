@@ -13,7 +13,7 @@
         },
         {
             "type": "extrastuck:grist_cost",
-            "item": "extrastuck:golden_pan"
+            "recipe": "extrastuck:grist_costs/golden_pan"
         }
     ]
 }

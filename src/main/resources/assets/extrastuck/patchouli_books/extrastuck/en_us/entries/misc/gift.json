@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Kundler Embryo and Paper in a Totem Lathe.",
-            "left": "minestuck:surprise_embryo",
-            "mode": "&&",
-            "right": "minecraft:paper",
-            "result": "extrastuck:gift"
+            "recipe": "extrastuck:combinations/gift"
         }
     ]
 }

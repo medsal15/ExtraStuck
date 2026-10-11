@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Diamond Hoe and a Sculk Sensor in a Totem Lathe.",
-            "left": "minecraft:diamond_hoe",
-            "mode": "&&",
-            "right": "minecraft:sculk_sensor",
-            "result": "extrastuck:till_silence"
+            "recipe": "extrastuck:combinations/till_silence"
         }
     ]
 }

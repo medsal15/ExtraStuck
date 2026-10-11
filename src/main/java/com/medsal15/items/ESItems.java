@@ -1327,6 +1327,7 @@ public final class ESItems {
     // #endregion Blocks
 
     static {
+        // Patchouli Compat
         if (ESCompatUtils.isLoaded("patchouli")) {
             GUIDE = ITEMS.register("guide", com.medsal15.compat.patchouli.items.GuideItem::new);
         } else {
@@ -1338,7 +1339,9 @@ public final class ESItems {
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
             CreativeModeTab.Output output) {
         if (ESCompatUtils.isLoaded("patchouli")) {
-            output.accept(GUIDE);
+            ItemStack guide = GUIDE.toStack();
+            guide.set(vazkii.patchouli.common.item.PatchouliDataComponents.BOOK, ExtraStuck.modid("extrastuck"));
+            output.accept(guide);
         }
 
         for (DeferredItem<Item> card : ESItems.getModusCards()) {

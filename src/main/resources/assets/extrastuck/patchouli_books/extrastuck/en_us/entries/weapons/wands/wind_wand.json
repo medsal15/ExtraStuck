@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Zephyr Cane and a Breeze Rod in a Punch Designix.",
-            "left": "minestuck:zephyr_cane",
-            "mode": "&&",
-            "right": "minecraft:breeze_rod",
-            "result": "extrastuck:wind_wand"
+            "recipe": "extrastuck:combinations/wind_wand_breeze_rod"
         }
     ]
 }

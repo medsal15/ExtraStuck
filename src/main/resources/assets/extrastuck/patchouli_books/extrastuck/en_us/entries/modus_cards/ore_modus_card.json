@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine any modus card and an Iron Pickaxe in a Punch Designix.",
-            "left": "tag:minestuck:modus_card",
-            "mode": "||",
-            "right": "minecraft:iron_pickaxe",
-            "result": "extrastuck:ore_modus_card"
+            "recipe": "extrastuck:combinations/ore_modus_card"
         }
     ]
 }

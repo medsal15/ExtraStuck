@@ -24,6 +24,6 @@
             ],
             "text": "Yes it's your inventory being cut off below"
         },
-        "$(li)The 3 by 3 grid made of cards is for item input. Items are not consumed when placed. Be aware that once placed, an item cannot be removed!$(li)The arrow points towards the recipe result card.$(li)The small card above allows switching between conflicting recipes. You'll know it's useful when numbers appear below.$(li)The checkmark card saves the recipe to the modus and sends you back.$(li)The cross mark cancels the recipe (and sends you back)."
+        "$(li)The 3 by 3 grid made of cards is for item input. Items are not consumed when placed.$(li)The arrow points towards the recipe result card.$(li)The small card above allows switching between conflicting recipes. You'll know it's useful when numbers appear below.$(li)The checkmark card saves the recipe to the modus and sends you back.$(li)The cross mark cancels the recipe (and sends you back)."
     ]
 }

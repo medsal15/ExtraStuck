@@ -15,19 +15,13 @@
             "flag": "mod:irons_spellbooks",
             "type": "extrastuck:combination",
             "text": "Combine a Key of Trials and a Decrepit Key in a Punch Designix.",
-            "left": "extrastuck:key_of_trials",
-            "mode": "||",
-            "right": "irons_spellbooks:decrepit_key",
-            "result": "extrastuck:ancient_vault_opener"
+            "recipe": "extrastuck:combinations/ancient_vault_opener_irons_spellbooks"
         },
         {
             "flag": "!mod:irons_spellbooks",
             "type": "extrastuck:combination",
             "text": "Combine a Key of Trials and Netherite Scrap in a Punch Designix.",
-            "left": "extrastuck:key_of_trials",
-            "mode": "||",
-            "right": "minecraft:netherite_scrap",
-            "result": "extrastuck:ancient_vault_opener"
+            "recipe": "extrastuck:combinations/ancient_vault_opener"
         }
     ]
 }

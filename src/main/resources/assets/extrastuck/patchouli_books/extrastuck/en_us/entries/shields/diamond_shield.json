@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Gold Shield and a Diamond in a Punch Designix.",
-            "left": "extrastuck:gold_shield",
-            "mode": "||",
-            "right": "minecraft:diamond",
-            "result": "extrastuck:diamond_shield"
+            "recipe": "extrastuck:combinations/diamond_shield"
         }
     ]
 }

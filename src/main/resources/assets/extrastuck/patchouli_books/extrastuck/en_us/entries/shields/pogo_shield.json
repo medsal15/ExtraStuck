@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Iron Shield and a Slimeball in a Totem Lathe.",
-            "left": "extrastuck:iron_shield",
-            "mode": "&&",
-            "right": "minecraft:slime_ball",
-            "result": "extrastuck:pogo_shield"
+            "recipe": "extrastuck:combinations/pogo_shield"
         }
     ]
 }

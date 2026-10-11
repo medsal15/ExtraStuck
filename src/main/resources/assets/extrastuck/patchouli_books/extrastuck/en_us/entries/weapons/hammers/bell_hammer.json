@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Lucerne Hammer and a Bell in a Totem Lathe.",
-            "left": "minestuck:lucerne_hammer",
-            "mode": "&&",
-            "right": "minecraft:bell",
-            "result": "extrastuck:bell_hammer"
+            "recipe": "extrastuck:combinations/bell_hammer"
         }
     ]
 }

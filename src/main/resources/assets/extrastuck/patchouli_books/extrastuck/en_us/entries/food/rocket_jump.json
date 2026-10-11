@@ -13,10 +13,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a LemonNade and a Glass Bottle in a Totem Lathe.",
-            "left": "extrastuck:lemonnade",
-            "mode": "&&",
-            "right": "minecraft:glass_bottle",
-            "result": "extrastuck:rocket_jump"
+            "recipe": "extrastuck:combinations/rocket_jump"
         }
     ]
 }

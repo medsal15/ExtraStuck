@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine any modus card and a Brush in a Punch Designix.",
-            "left": "tag:minestuck:modus_card",
-            "mode": "||",
-            "right": "minecraft:brush",
-            "result": "extrastuck:archeology_modus_card"
+            "recipe": "extrastuck:combinations/archeology_modus_card"
         }
     ]
 }

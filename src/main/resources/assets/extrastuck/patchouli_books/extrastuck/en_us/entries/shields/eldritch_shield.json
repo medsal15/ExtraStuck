@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Jawbiter and a Grimoire in a Punch Designix.",
-            "left": "extrastuck:jawbiter",
-            "mode": "||",
-            "right": "minestuck:grimoire",
-            "result": "extrastuck:eldritch_shield"
+            "recipe": "extrastuck:combinations/eldritch_shield"
         }
     ]
 }

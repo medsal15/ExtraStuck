@@ -12,10 +12,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Dispenser and a Lump of Uranium in a Punch Designix.",
-            "left": "minecraft:dispenser",
-            "mode": "||",
-            "right": "minestuck:raw_uranium",
-            "result": "extrastuck:uranium_blaster"
+            "recipe": "extrastuck:combinations/uranium_blaster"
         }
     ]
 }

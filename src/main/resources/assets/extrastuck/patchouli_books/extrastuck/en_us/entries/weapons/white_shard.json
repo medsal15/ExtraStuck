@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Shadow Katana and Deepslate Reinforcement in a Totem Lathe.",
-            "left": "extrastuck:shadow_katana",
-            "mode": "&&",
-            "right": "extrastuck:deepslate_reinforcement",
-            "result": "extrastuck:white_shard"
+            "recipe": "extrastuck:combinations/white_shard"
         }
     ]
 }

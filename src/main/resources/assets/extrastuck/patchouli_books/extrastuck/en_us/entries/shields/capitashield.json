@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Gold Shield and a Non-Contact Contract in a Totem Lathe.",
-            "left": "extrastuck:gold_shield",
-            "mode": "&&",
-            "right": "extrastuck:non_contact_contract",
-            "result": "extrastuck:capitashield"
+            "recipe": "extrastuck:combinations/capitashield"
         }
     ]
 }

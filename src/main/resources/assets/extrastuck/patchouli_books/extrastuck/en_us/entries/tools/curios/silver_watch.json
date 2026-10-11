@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Clock and an Mirror in a Totem Lathe.",
-            "left": "minecraft:clock",
-            "mode": "&&",
-            "right": "minestuck:mirror",
-            "result": "extrastuck:silver_watch"
+            "recipe": "extrastuck:combinations/silver_watch"
         }
     ]
 }

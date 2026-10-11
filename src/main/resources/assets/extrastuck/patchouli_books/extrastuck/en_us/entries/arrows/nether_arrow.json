@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Arrow and Netherrack in a Totem Lathe.",
-            "left": "minecraft:arrow",
-            "mode": "&&",
-            "right": "minecraft:netherrack",
-            "result": "extrastuck:nether_arrow"
+            "recipe": "extrastuck:combinations/nether_arrow"
         }
     ]
 }

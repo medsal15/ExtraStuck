@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Brush and Netherite Scrap in a Totem Lathe.",
-            "left": "minecraft:brush",
-            "mode": "&&",
-            "right": "minecraft:netherite_scrap",
-            "result": "extrastuck:old_brush"
+            "recipe": "extrastuck:combinations/old_brush"
         }
     ]
 }

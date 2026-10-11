@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Crossbow and an Uranium-Powered Stick in a Totem Lathe.",
-            "left": "minecraft:crossbow",
-            "mode": "&&",
-            "right": "minestuck:uranium_powered_stick",
-            "result": "extrastuck:radbow"
+            "recipe": "extrastuck:combinations/radbow"
         }
     ]
 }

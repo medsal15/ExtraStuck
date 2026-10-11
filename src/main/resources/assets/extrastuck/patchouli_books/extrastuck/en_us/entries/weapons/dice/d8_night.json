@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Raindow D7 and a Nightstick in a Punch Designix.",
-            "left": "extrastuck:rainbow_d7",
-            "mode": "||",
-            "right": "minestuck:nightstick",
-            "result": "extrastuck:d8_night"
+            "recipe": "extrastuck:combinations/d8_night"
         }
     ]
 }

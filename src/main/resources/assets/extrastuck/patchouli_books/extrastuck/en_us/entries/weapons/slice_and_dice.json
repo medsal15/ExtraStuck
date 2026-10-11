@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Dagger and a Dice in a Punch Designix.",
-            "left": "minestuck:dagger",
-            "mode": "||",
-            "right": "minestuck:dice",
-            "result": "extrastuck:slice_and_dice"
+            "recipe": "extrastuck:combinations/slice_and_dice"
         }
     ]
 }

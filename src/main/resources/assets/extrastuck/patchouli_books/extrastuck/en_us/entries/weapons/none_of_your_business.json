@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine Firestarter and Boondollars for Idiots in a Totem Lathe.",
-            "left": "minestuck:firestarter",
-            "mode": "&&",
-            "right": "extrastuck:boondollars_for_idiots",
-            "result": "extrastuck:none_of_your_business"
+            "recipe": "extrastuck:combinations/none_of_your_business"
         },
         {
             "type": "extrastuck:boondollar_weapon_desc"

@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Barbasol Bomb and yellow dye in a Punch Designix.",
-            "left": "minestuck:barbasol_bomb",
-            "mode": "||",
-            "right": "minecraft:yellow_dye",
-            "result": "extrastuck:lemonnade"
+            "recipe": "extrastuck:combinations/lemonnade"
         },
         "If Create is installed, LemonNades can be used as Potato Cannon ammo. They explode when hitting entities."
     ]

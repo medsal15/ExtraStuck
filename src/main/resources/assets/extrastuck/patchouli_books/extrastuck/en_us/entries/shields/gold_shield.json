@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Iron Shield and a Gold Ingot in a Totem Lathe.",
-            "left": "extrastuck:iron_shield",
-            "mode": "&&",
-            "right": "minecraft:gold_ingot",
-            "result": "extrastuck:gold_shield"
+            "recipe": "extrastuck:combinations/gold_shield"
         }
     ]
 }

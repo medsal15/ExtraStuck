@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Flame Arrow and a Lightning Arrow in a Punch Designix.",
-            "left": "extrastuck:flame_arrow",
-            "mode": "||",
-            "right": "extrastuck:lightning_arrow",
-            "result": "extrastuck:explosive_arrow"
+            "recipe": "extrastuck:combinations/explosive_arrow"
         }
     ]
 }

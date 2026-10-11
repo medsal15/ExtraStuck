@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Token Tetrahedron and Boondollars for Idiots in a Punch Designix.",
-            "left": "extrastuck:token_tetrahedron",
-            "mode": "||",
-            "right": "extrastuck:boondollars_for_idiots",
-            "result": "extrastuck:jackpot"
+            "recipe": "extrastuck:combinations/jackpot"
         },
         "$(li)Diamonds give Strength and Resistance$(li)Hearts give Regeneration$(li)Spades give Strength$(li)Clubs give Haste$(li)Horseshoes give Luck$(li)Bells apply Slowness and Weakness to enemies"
     ]

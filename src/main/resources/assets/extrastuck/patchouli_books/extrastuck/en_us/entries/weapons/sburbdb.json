@@ -15,10 +15,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Spyglass and a completed Sburb Code in a Totem Lathe.",
-            "left": "minecraft:spyglass",
-            "mode": "&&",
-            "right": "minestuck:completed_sburb_code",
-            "result": "extrastuck:sburbdb"
+            "recipe": "extrastuck:combinations/sburbdb"
         }
     ]
 }

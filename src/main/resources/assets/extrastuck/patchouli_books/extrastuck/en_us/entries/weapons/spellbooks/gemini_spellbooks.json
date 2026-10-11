@@ -20,10 +20,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine an Enchanted Spell Book and a Mirror in a Punch Designix.",
-            "left": "irons_spellbooks:diamond_spell_book",
-            "mode": "||",
-            "right": "minestuck:mirror",
-            "result": "extrastuck:gemini_spellbook_blue"
+            "recipe": "extrastuck:combinations/gemini_spellbook_blue"
         }
     ]
 }

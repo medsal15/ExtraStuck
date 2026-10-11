@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Cueball and an Ender Portal Frame in a Totem Lathe.",
-            "left": "minestuck:cueball",
-            "mode": "&&",
-            "right": "minecraft:end_portal_frame",
-            "result": "extrastuck:vision_blank"
+            "recipe": "extrastuck:combinations/vision_blank"
         },
         "If a mortal (any player without an aspect) infuses it, it will create a dull vision which can still block effects.",
         "If Curios is installed, the vision(s) must be equipped by the player for any effect."

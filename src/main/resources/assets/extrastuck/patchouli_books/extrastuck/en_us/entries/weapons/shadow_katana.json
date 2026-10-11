@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Katana and a Sculk Vein in a Punch Designix.",
-            "left": "minestuck:katana",
-            "mode": "||",
-            "right": "minecraft:sculk_vein",
-            "result": "extrastuck:shadow_katana"
+            "recipe": "extrastuck:combinations/shadow_katana"
         }
     ]
 }

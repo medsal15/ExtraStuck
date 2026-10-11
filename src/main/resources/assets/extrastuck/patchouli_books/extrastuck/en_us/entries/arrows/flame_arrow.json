@@ -14,10 +14,7 @@
         {
             "type": "extrastuck:combination",
             "text": "Combine a Nether Arrow and a Blaze Rod/Powder in a Totem Lathe.",
-            "left": "extrastuck:nether_arrow",
-            "mode": "&&",
-            "right": "minecraft:blaze_rod,minecraft:blaze_powder",
-            "result": "extrastuck:flame_arrow"
+            "recipe": "extrastuck:combinations/flame_arrow"
         }
     ]
 }
