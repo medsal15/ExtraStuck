@@ -4,11 +4,12 @@ import static com.medsal15.subevents.ClientEvents.registerBiConvertion;
 
 import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.config.ConfigClient;
+import com.medsal15.items.ESItems;
 import com.rosebushes.alchemyexpanded.item.AEItems;
 
 public class AEESUtils {
     public static void registerConvertions() {
-        registerBiConvertion(AEESItems.HANDGUN, AEESItems.OFFICE_KEY);
+        registerBiConvertion(AEESItems.HANDGUN, ESItems.OFFICE_KEY);
 
         if (ConfigClient.addAEConvertionRecipes) {
             registerBiConvertion(AEItems.RED_DRAGON_LIPSTICK, AEItems.DRAGON_SAW);

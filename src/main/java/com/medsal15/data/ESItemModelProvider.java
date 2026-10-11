@@ -137,8 +137,8 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.PUNCH_ARROW.get());
         basicItem(ESItems.BLANK_ARROW.get());
 
-        basicItem(AEESItems.HANDGUN_BULLET.get());
-        basicItem(AEESItems.HEAVY_HANDGUN_BULLET.get());
+        basicItem(ESItems.HANDGUN_BULLET.get());
+        basicItem(ESItems.HEAVY_HANDGUN_BULLET.get());
     }
 
     private void modelDie(DeferredItem<Item> die, String path) {
@@ -188,7 +188,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         // Keys
         handheldItem(ESItems.KEY_OF_TRIALS.get());
         handheldItem(ESItems.KEY_OF_OMINOUS_TRIALS.get());
-        handheldItem(AEESItems.OFFICE_KEY.get());
+        handheldItem(ESItems.OFFICE_KEY.get());
         handheldItem(ESItems.ANCIENT_VAULT_OPENER.get());
         handheldItem(ESItems.VAULT_MELTER.get());
         // Wands

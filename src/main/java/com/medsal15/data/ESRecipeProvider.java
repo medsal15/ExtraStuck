@@ -554,10 +554,10 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.GARNET, 6).grist(GristTypes.SHALE, 43)
                 .build(output);
 
-        CombinationRecipeBuilder.of(AEESItems.OFFICE_KEY)
+        CombinationRecipeBuilder.of(ESItems.OFFICE_KEY)
                 .input(MSItems.HOUSE_KEY).or().input(Items.IRON_DOOR)
                 .build(output);
-        GristCostRecipeBuilder.of(AEESItems.OFFICE_KEY)
+        GristCostRecipeBuilder.of(ESItems.OFFICE_KEY)
                 .grist(GristTypes.MARBLE, 33).grist(GristTypes.TAR, 12)
                 .build(output);
 
@@ -1266,17 +1266,17 @@ public final class ESRecipeProvider extends RecipeProvider {
     }
 
     private void ammoRecipes(@Nonnull RecipeOutput output) {
-        CombinationRecipeBuilder.of(AEESItems.HANDGUN_BULLET)
+        CombinationRecipeBuilder.of(ESItems.HANDGUN_BULLET)
                 .input(Items.GUNPOWDER).and().input(Items.IRON_NUGGET)
                 .build(output.withConditions(not(ALEX_LOADED)));
-        GristCostRecipeBuilder.of(AEESItems.HANDGUN_BULLET)
+        GristCostRecipeBuilder.of(ESItems.HANDGUN_BULLET)
                 .grist(GristTypes.CHALK, 3).grist(GristTypes.TAR, 1)
                 .build(output.withConditions(not(ALEX_LOADED)));
 
-        CombinationRecipeBuilder.of(AEESItems.HEAVY_HANDGUN_BULLET)
-                .input(AEESItems.HANDGUN_BULLET).and().input(Items.IRON_INGOT)
+        CombinationRecipeBuilder.of(ESItems.HEAVY_HANDGUN_BULLET)
+                .input(ESItems.HANDGUN_BULLET).and().input(Items.IRON_INGOT)
                 .build(output.withConditions(not(ALEX_LOADED)));
-        GristCostRecipeBuilder.of(AEESItems.HEAVY_HANDGUN_BULLET)
+        GristCostRecipeBuilder.of(ESItems.HEAVY_HANDGUN_BULLET)
                 .grist(GristTypes.RUST, 5).grist(GristTypes.TAR, 2)
                 .build(output.withConditions(not(ALEX_LOADED)));
     }

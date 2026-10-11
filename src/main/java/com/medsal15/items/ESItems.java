@@ -12,6 +12,7 @@ import com.medsal15.compat.ESCompatUtils;
 import com.medsal15.compat.MissingModItem;
 import com.medsal15.compat.alchemyexpanded.items.AEESItems;
 import com.medsal15.compat.alchemyexpanded.items.AEESMissingItems;
+import com.medsal15.compat.alchemyexpanded.items.AltGunWeapon;
 import com.medsal15.compat.create.items.CreateESItems;
 import com.medsal15.compat.irons_spellbooks.ISSAttributes;
 import com.medsal15.compat.irons_spellbooks.items.ISSESItems;
@@ -20,6 +21,7 @@ import com.medsal15.computer.ESProgramTypes;
 import com.medsal15.config.ConfigServer;
 import com.medsal15.data.ESLangProvider;
 import com.medsal15.data.ESLootTableProvider.TableSubProvider;
+import com.medsal15.entities.ESEntities;
 import com.medsal15.entities.projectiles.arrows.AmethystArrow;
 import com.medsal15.entities.projectiles.arrows.CandyArrow;
 import com.medsal15.entities.projectiles.arrows.CardboardArrow;
@@ -40,6 +42,7 @@ import com.medsal15.entities.projectiles.arrows.PunchArrow;
 import com.medsal15.entities.projectiles.arrows.QuartzArrow;
 import com.medsal15.entities.projectiles.arrows.RainArrow;
 import com.medsal15.entities.projectiles.arrows.TeleportArrow;
+import com.medsal15.entities.projectiles.bullets.ESBullet;
 import com.medsal15.items.ESShield.IBlock;
 import com.medsal15.items.armor.CactusArmorItem;
 import com.medsal15.items.armor.ChefArmorItem;
@@ -81,6 +84,7 @@ import com.medsal15.items.melee.StorageWeapon;
 import com.medsal15.items.melee.SyringeWeapon;
 import com.medsal15.items.modus.MastermindCardItem;
 import com.medsal15.items.projectiles.ESArrowItem;
+import com.medsal15.items.projectiles.ESBulletItem;
 import com.medsal15.items.throwables.BeeLarvaItem;
 import com.medsal15.items.throwables.BeenadeItem;
 import com.medsal15.items.throwables.LemonNadeItem;
@@ -548,6 +552,7 @@ public final class ESItems {
                             .add(OnHitEffect.setOnFire(10)),
                     new MSItemProperties().durability(1000),
                     ISSAttributes::vaultMelter));
+    public static final DeferredItem<Item> OFFICE_KEY;
     // #endregion Keys
     // #region Wands
     public static final DeferredItem<Item> BAGUETTE_MAGIQUE = ITEMS.register("baguette_magique",
@@ -786,6 +791,16 @@ public final class ESItems {
     public static final DeferredItem<Item> SILENT_SHOT = ITEMS.register("silent_shot",
             () -> new SilentShotBowItem(new Properties().durability(Tiers.DIAMOND.getUses()), 2));
     // #endregion Bows
+    // #region Ammo
+    public static final DeferredItem<Item> HANDGUN_BULLET = ITEMS.registerItem("handgun_bullet",
+            (p) -> new ESBulletItem(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 2f),
+                    ESBullet.createArrow(ESEntities.HANDGUN_BULLET.get()),
+                    ESBullet.asProjectile(ESEntities.HANDGUN_BULLET.get())));
+    public static final DeferredItem<Item> HEAVY_HANDGUN_BULLET = ITEMS.registerItem("heavy_handgun_bullet",
+            (p) -> new ESBulletItem(p.stacksTo(99).component(ESDataComponents.AMMO_DAMAGE, 4f),
+                    ESBullet.createArrow(ESEntities.HEAVY_HANDGUN_BULLET.get()),
+                    ESBullet.asProjectile(ESEntities.HEAVY_HANDGUN_BULLET.get())));
+    // #endregion Ammo
     // #region Throwables
     public static final DeferredItem<Item> BEENADE = ITEMS.register("beenade",
             () -> new BeenadeItem(new Properties().stacksTo(16)));
@@ -1334,6 +1349,22 @@ public final class ESItems {
             GUIDE = ITEMS.register("guide",
                     () -> new MissingModItem(new Item.Properties().stacksTo(1), "Patchouli", "patchouli"));
         }
+
+        // Alchemy Expanded Compat
+        if (ESCompatUtils.isLoaded("alchemyexpanded")) {
+            OFFICE_KEY = ITEMS.register("office_key",
+                    () -> new com.medsal15.compat.alchemyexpanded.items.AltAEGunWeapon(
+                            new WeaponItem.Builder(Tiers.IRON, 0, -1F).efficiency(1F)
+                                    .set(MSItemTypes.KEY_TOOL)
+                                    .set(ItemRightClickEffect.switchTo(AEESItems.HANDGUN)),
+                            new Item.Properties()));
+        } else {
+            OFFICE_KEY = ITEMS.register("office_key",
+                    () -> new AltGunWeapon(
+                            new WeaponItem.Builder(Tiers.IRON, 0, -1F).efficiency(1F).set(MSItemTypes.KEY_TOOL)
+                                    .set(ItemRightClickEffect.switchTo(AEESMissingItems.HANDGUN)),
+                            new Item.Properties()));
+        }
     }
 
     public static void addToCreativeTab(CreativeModeTab.ItemDisplayParameters parameters,
@@ -1624,11 +1655,7 @@ public final class ESItems {
         // Keys
         list.add(KEY_OF_TRIALS);
         list.add(KEY_OF_OMINOUS_TRIALS);
-        if (ESCompatUtils.isLoaded("alchemyexpanded")) {
-            list.addAll(AEESItems.getKeys());
-        } else {
-            list.addAll(AEESMissingItems.getKeys());
-        }
+        list.add(OFFICE_KEY);
         list.add(ANCIENT_VAULT_OPENER);
         list.add(VAULT_MELTER);
         // Wands
@@ -1752,11 +1779,7 @@ public final class ESItems {
 
         list.add(YIN_YANG_ORB);
 
-        if (ESCompatUtils.isLoaded("alchemyexpanded")) {
-            list.addAll(AEESItems.getRangedWeapons());
-        } else {
-            list.addAll(AEESMissingItems.getRangedWeapons());
-        }
+        list.addAll(getGuns());
         return list;
     }
 
@@ -1799,10 +1822,21 @@ public final class ESItems {
         return list;
     }
 
+    public static Collection<DeferredItem<Item>> getGuns() {
+        ArrayList<DeferredItem<Item>> list = new ArrayList<>();
+        if (ESCompatUtils.isLoaded("alchemyexpanded")) {
+            list.addAll(AEESItems.getGuns());
+        } else {
+            list.addAll(AEESMissingItems.getGuns());
+        }
+        return list;
+    }
+
     public static Collection<DeferredItem<Item>> getAmmo() {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
         if (!ESCompatUtils.isLoaded("alchemyexpanded")) {
-            list.addAll(AEESMissingItems.getAmmo());
+            list.add(HANDGUN_BULLET);
+            list.add(HEAVY_HANDGUN_BULLET);
         }
         return list;
     }

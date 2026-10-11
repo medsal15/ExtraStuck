@@ -1,10 +1,12 @@
 package com.medsal15.compat.alchemyexpanded;
 
+import static com.medsal15.subevents.ClientEvents.registerBiConvertion;
+
 import com.medsal15.compat.alchemyexpanded.items.AEESMissingItems;
-import com.medsal15.subevents.ClientEvents;
+import com.medsal15.items.ESItems;
 
 public class AEESMUtils {
     public static void registerConvertions() {
-        ClientEvents.registerBiConvertion(AEESMissingItems.HANDGUN, AEESMissingItems.OFFICE_KEY);
+        registerBiConvertion(AEESMissingItems.HANDGUN, ESItems.OFFICE_KEY);
     }
 }
