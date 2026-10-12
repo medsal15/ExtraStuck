@@ -36,7 +36,7 @@ public abstract class AEGunFix {
                 && !self.getDualWieldable()) {
             return;
         }
-        if (!self.getInnocuousDouble().isEmpty() && player.isShiftKeyDown() && self.getAmmo(gun) > 0) {
+        if (!self.getInnocuousDouble().isEmpty() && player.isShiftKeyDown() && self.getAmmoCurrent(gun) > 0) {
             ItemStack newItem = self.getInnocuousDouble();
             newItem = new ItemStack(newItem.getItemHolder(), newItem.getCount(), gun.getComponentsPatch());
             cb.setReturnValue(InteractionResultHolder.success(newItem));
