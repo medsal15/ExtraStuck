@@ -138,7 +138,7 @@ public final class VendingMachineMenu {
             return costHolder.get();
         }
 
-        public void setCost(int cost, ServerPlayer player) {
+        public void setCost(int cost, Player player) {
             boolean valid = access.evaluate((level, pos) -> {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (!(be instanceof VendingMachineBlockEntity vending))

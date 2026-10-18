@@ -98,7 +98,8 @@ public final class VendingMachineScreen {
                     if (price < 0)
                         return;
                 }
-                menu.setCost(price);
+                if (minecraft != null)
+                    menu.setCost(price, minecraft.player);
                 PacketDistributor.sendToServer(new VendingMachineSetCost(price), new CustomPacketPayload[0]);
             });
             addRenderableWidget(priceBox);
