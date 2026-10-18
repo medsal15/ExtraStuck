@@ -243,7 +243,7 @@ public final class ESPackets {
         @Override
         public void execute(IPayloadContext context, ServerPlayer player) {
             if (player.containerMenu instanceof VendingMachineMenu.Storage storageMenu) {
-                storageMenu.setCost(cost);
+                storageMenu.setCost(cost, player);
             }
         }
     }
