@@ -178,6 +178,10 @@
                 {
                   "condition": "extrastuck:land_terrain",
                   "terrain": "minestuck:sandstone"
+                },
+                {
+                  "condition": "extrastuck:land_terrain",
+                  "terrain": "extrastuck:dark"
                 }
               ]
             }

@@ -271,10 +271,8 @@ public class ESLootTableProvider extends LootTableProvider {
                     .add(LootItem.lootTableItem(MSItems.STRAWBERRY).setQuality(1).setWeight(10))
                     .add(LootItem.lootTableItem(Items.MELON).setQuality(1).setWeight(10))
                     .add(LootItem.lootTableItem(Items.PUMPKIN).setQuality(1).setWeight(10))
-                    .add(LootItem.lootTableItem(Items.GOLD_INGOT).setQuality(2).setWeight(5)
-                            .apply(rangeAmount(1, 8)))
-                    .add(LootItem.lootTableItem(Items.REDSTONE).setQuality(2).setWeight(5)
-                            .apply(rangeAmount(1, 8)))
+                    .add(LootItem.lootTableItem(Items.GOLD_INGOT).setQuality(2).setWeight(5).apply(rangeAmount(1, 8)))
+                    .add(LootItem.lootTableItem(Items.REDSTONE).setQuality(2).setWeight(5).apply(rangeAmount(1, 8)))
                     .add(TagEntry.expandTag(MSTags.Items.FAYGO).setWeight(6))
                     .add(TagEntry.expandTag(MSTags.Items.GRIST_CANDY).setQuality(1).setWeight(3))
                     .add(LootItem.lootTableItem(ESItems.GOLDEN_PAN).setQuality(5)));
@@ -284,29 +282,20 @@ public class ESLootTableProvider extends LootTableProvider {
             return LootTable.lootTable().withPool(LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1))
                     .add(LootItem.lootTableItem(Items.PAPER)
-                            .apply(SetComponentsFunction.setComponent(
-                                    DataComponents.ITEM_NAME,
-                                    Component.translatable(
-                                            ESLangProvider.SPAM_TITLE_1)))
+                            .apply(SetComponentsFunction.setComponent(DataComponents.ITEM_NAME,
+                                    Component.translatable(ESLangProvider.SPAM_TITLE_1)))
                             .apply(SetComponentsFunction.setComponent(DataComponents.LORE,
-                                    new ItemLore(List.of(Component.translatable(
-                                            ESLangProvider.SPAM_DESC_1))))))
+                                    new ItemLore(List.of(Component.translatable(ESLangProvider.SPAM_DESC_1))))))
                     .add(LootItem.lootTableItem(Items.PAPER)
-                            .apply(SetComponentsFunction.setComponent(
-                                    DataComponents.ITEM_NAME,
-                                    Component.translatable(
-                                            ESLangProvider.SPAM_TITLE_2)))
+                            .apply(SetComponentsFunction.setComponent(DataComponents.ITEM_NAME,
+                                    Component.translatable(ESLangProvider.SPAM_TITLE_2)))
                             .apply(SetComponentsFunction.setComponent(DataComponents.LORE,
-                                    new ItemLore(List.of(Component.translatable(
-                                            ESLangProvider.SPAM_DESC_2))))))
+                                    new ItemLore(List.of(Component.translatable(ESLangProvider.SPAM_DESC_2))))))
                     .add(LootItem.lootTableItem(Items.PAPER)
-                            .apply(SetComponentsFunction.setComponent(
-                                    DataComponents.ITEM_NAME,
-                                    Component.translatable(
-                                            ESLangProvider.SPAM_TITLE_3)))
+                            .apply(SetComponentsFunction.setComponent(DataComponents.ITEM_NAME,
+                                    Component.translatable(ESLangProvider.SPAM_TITLE_3)))
                             .apply(SetComponentsFunction.setComponent(DataComponents.LORE,
-                                    new ItemLore(List.of(Component.translatable(
-                                            ESLangProvider.SPAM_DESC_3)
+                                    new ItemLore(List.of(Component.translatable(ESLangProvider.SPAM_DESC_3)
                                             .withStyle(ChatFormatting.GRAY)))))));
         }
 
@@ -316,68 +305,46 @@ public class ESLootTableProvider extends LootTableProvider {
                             .add(LootItem.lootTableItem(ESItems.SOLID_FISHING_ROD)
                                     .apply(rangeDamage(0f, .25f))
                                     .apply(enchantWithLevel(30)))
-                            .add(LootItem.lootTableItem(Items.BOOK)
-                                    .apply(enchantWithLevel(30)))
-                            .add(TagEntry.expandTag(MSTags.Items.GRIST_CANDY)
-                                    .apply(rangeAmount(1, 5)))
-                            .add(LootItem.lootTableItem(MSItems.GLUB_CLUB)
-                                    .apply(rangeDamage(.25f, .75f)))
+                            .add(LootItem.lootTableItem(Items.BOOK).apply(enchantWithLevel(30)))
+                            .add(TagEntry.expandTag(MSTags.Items.GRIST_CANDY).apply(rangeAmount(1, 5)))
+                            .add(LootItem.lootTableItem(MSItems.GLUB_CLUB).apply(rangeDamage(.25f, .75f)))
                             .add(LootItem.lootTableItem(MSItems.BOONDOLLARS)
-                                    .apply(SetBoondollarCount.builder(
-                                            UniformGenerator.between(10,
-                                                    500))))
+                                    .apply(SetBoondollarCount.builder(UniformGenerator.between(10, 500))))
                             .add(LootItem.lootTableItem(MSItems.MUSIC_DISC_RETRO_BATTLE))
                             // funny dialogue reference
                             .add(LootItem.lootTableItem(ESItems.GUMMY_RING))
                             // Plushes
                             .add(LootItem.lootTableItem(MSItems.PLUSH_NAKAGATOR)
                                     .when(AnyOfCondition.anyOf(
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.END.get()),
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.HEAT.get()),
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.ROCK.get()))))
+                                            () -> new ESTerrainCondition(LandTypes.END.get()),
+                                            () -> new ESTerrainCondition(LandTypes.HEAT.get()),
+                                            () -> new ESTerrainCondition(LandTypes.ROCK.get()))))
                             .add(LootItem.lootTableItem(MSItems.PLUSH_IGUANA)
                                     .when(AnyOfCondition.anyOf(
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.FLORA.get()),
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.FOREST.get()),
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.FROST.get()))))
+                                            () -> new ESTerrainCondition(LandTypes.FLORA.get()),
+                                            () -> new ESTerrainCondition(LandTypes.FOREST.get()),
+                                            () -> new ESTerrainCondition(LandTypes.FROST.get()))))
                             .add(LootItem.lootTableItem(MSItems.PLUSH_SALAMANDER)
                                     .when(AnyOfCondition.anyOf(
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.FUNGI.get()),
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.SHADE.get()),
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.WOOD.get()))))
+                                            () -> new ESTerrainCondition(LandTypes.FUNGI.get()),
+                                            () -> new ESTerrainCondition(LandTypes.SHADE.get()),
+                                            () -> new ESTerrainCondition(LandTypes.WOOD.get()))))
                             .add(LootItem.lootTableItem(MSItems.PLUSH_TURTLE)
                                     .when(AnyOfCondition.anyOf(
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.RAIN.get()),
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.RAINBOW
-                                                            .get()),
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.SAND.get()),
-                                            () -> new ESTerrainCondition(
-                                                    LandTypes.SANDSTONE
-                                                            .get())))));
+                                            () -> new ESTerrainCondition(LandTypes.RAIN.get()),
+                                            () -> new ESTerrainCondition(LandTypes.RAINBOW.get()),
+                                            () -> new ESTerrainCondition(LandTypes.SAND.get()),
+                                            () -> new ESTerrainCondition(LandTypes.SANDSTONE.get()),
+                                            () -> new ESTerrainCondition(ESLandTypes.DARK.get())))));
         }
 
         private static LootTable.Builder fishingJunkLootTable() {
             return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                     .add(LootItem.lootTableItem(MSItems.STONE_TABLET).setWeight(15))
                     .add(LootItem.lootTableItem(MSItems.CRUMPLY_HAT).setWeight(10))
-                    .add(LootItem.lootTableItem(MSItems.RAW_CRUXITE).apply(rangeAmount(1, 8))
-                            .setWeight(10))
-                    .add(LootItem.lootTableItem(MSItems.GRASSHOPPER).apply(rangeAmount(1, 5))
-                            .setWeight(10))
-                    .add(LootItem.lootTableItem(MSItems.CICADA).apply(rangeAmount(1, 5))
-                            .setWeight(10))
+                    .add(LootItem.lootTableItem(MSItems.RAW_CRUXITE).apply(rangeAmount(1, 8)).setWeight(10))
+                    .add(LootItem.lootTableItem(MSItems.GRASSHOPPER).apply(rangeAmount(1, 5)).setWeight(10))
+                    .add(LootItem.lootTableItem(MSItems.CICADA).apply(rangeAmount(1, 5)).setWeight(10))
                     .add(LootItem.lootTableItem(MSItems.TAB).apply(rangeAmount(1, 3)).setWeight(8))
                     .add(LootItem.lootTableItem(MSItems.SOPOR_SLIME_PIE).setWeight(5))
                     .add(LootItem.lootTableItem(Items.BAMBOO).setWeight(3))
@@ -386,18 +353,14 @@ public class ESLootTableProvider extends LootTableProvider {
                     .add(LootItem.lootTableItem(MSItems.CLOTHES_IRON))
                     .add(LootItem.lootTableItem(MSItems.INK_SQUID_PRO_QUO))
                     // Terrain-specific
-                    .add(LootItem.lootTableItem(Items.OAK_PLANKS).apply(rangeAmount(1, 5))
-                            .setWeight(5)
+                    .add(LootItem.lootTableItem(Items.OAK_PLANKS).apply(rangeAmount(1, 5)).setWeight(5)
                             .when(() -> new ESTerrainCondition(LandTypes.FOREST.get())))
-                    .add(LootItem.lootTableItem(Items.BIRCH_PLANKS).apply(rangeAmount(1, 5))
-                            .setWeight(5)
+                    .add(LootItem.lootTableItem(Items.BIRCH_PLANKS).apply(rangeAmount(1, 5)).setWeight(5)
                             .when(() -> new ESTerrainCondition(LandTypes.FOREST.get())))
                     .add(LootItem.lootTableItem(MSItems.ROCK_COOKIE)
                             .when(AnyOfCondition.anyOf(
-                                    () -> new ESTerrainCondition(
-                                            LandTypes.ROCK.get()),
-                                    () -> new ESTerrainCondition(
-                                            LandTypes.PETRIFICATION.get())))
+                                    () -> new ESTerrainCondition(LandTypes.ROCK.get()),
+                                    () -> new ESTerrainCondition(LandTypes.PETRIFICATION.get())))
                             .apply(rangeAmount(1, 5)).setWeight(5))
                     .add(LootItem.lootTableItem(MSItems.WOODEN_CARROT).setWeight(5)
                             .when(() -> new ESTerrainCondition(LandTypes.WOOD.get())))
