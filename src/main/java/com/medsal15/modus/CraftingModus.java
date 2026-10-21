@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.Nonnull;
+
 import com.mraof.minestuck.inventory.captchalogue.CaptchaDeckHandler;
 import com.mraof.minestuck.inventory.captchalogue.Modus;
 import com.mraof.minestuck.inventory.captchalogue.ModusType;
@@ -16,11 +18,15 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.fml.LogicalSide;
 
 //TODO verify recipes on load/reload
@@ -127,7 +133,10 @@ public class CraftingModus extends Modus {
         CraftingModusRecipe recipe = list.get(slot);
         ItemStack result = ItemStack.EMPTY;
 
-        if (player.hasInfiniteMaterials()) {
+        if (!recipe.isValid(player.serverLevel(), player.serverLevel().registryAccess())) {
+            list.remove(slot);
+            markDirty();
+        } else if (player.hasInfiniteMaterials()) {
             result = recipe.result.copy();
         } else if (canCraftRecipe(player, recipe)) {
             List<ItemStack> subsum = recipe.sum.stream().map(stack -> stack.copy()).toList();
@@ -277,6 +286,16 @@ public class CraftingModus extends Modus {
             nbt.putInt("height", ingredients.height());
 
             return nbt;
+        }
+
+        public boolean isValid(@Nonnull ServerLevel level, @Nonnull Provider provider) {
+            List<RecipeHolder<CraftingRecipe>> recipes = level.getRecipeManager().getRecipesFor(RecipeType.CRAFTING,
+                    ingredients, level);
+            for (RecipeHolder<CraftingRecipe> recipe : recipes) {
+                if (ItemStack.isSameItemSameComponents(recipe.value().getResultItem(provider), result))
+                    return true;
+            }
+            return false;
         }
     }
 }

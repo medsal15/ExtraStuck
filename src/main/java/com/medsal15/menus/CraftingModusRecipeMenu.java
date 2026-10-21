@@ -188,10 +188,13 @@ public class CraftingModusRecipeMenu extends AbstractContainerMenu {
         if (!output.getItem(0).isEmpty() && !inputContainer.isEmpty()) {
             var modus = CaptchaDeckHandler.getModus(player);
             if (modus != null && modus instanceof CraftingModus craftingModus) {
-                craftingModus.addRecipe(new CraftingModusRecipe(CraftingInput.of(3, 3, inputList), output.getItem(0)));
-                craftingModus.checkAndResend(player);
-                PacketDistributor.sendToPlayer(player, CraftingModusRecipeMenuQuit.INSTANCE,
-                        new CustomPacketPayload[0]);
+                var recipe = new CraftingModusRecipe(CraftingInput.of(3, 3, inputList), output.getItem(0));
+                if (recipe.isValid(player.serverLevel(), player.serverLevel().registryAccess())) {
+                    craftingModus.addRecipe(recipe);
+                    craftingModus.checkAndResend(player);
+                    PacketDistributor.sendToPlayer(player, CraftingModusRecipeMenuQuit.INSTANCE,
+                            new CustomPacketPayload[0]);
+                }
             }
         }
     }
