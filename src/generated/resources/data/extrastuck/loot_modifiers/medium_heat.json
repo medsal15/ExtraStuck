@@ -6,6 +6,5 @@
       "loot_table_id": "minestuck:chests/medium_basic"
     }
   ],
-  "inject": "extrastuck:chests/inject/medium_heat",
-  "terrain": "minestuck:heat"
+  "inject": "extrastuck:chests/inject/medium"
 }

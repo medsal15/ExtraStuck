@@ -99,14 +99,7 @@ public class ESLootTableProvider extends LootTableProvider {
 
         public static ResourceKey<LootTable> INJECT_PUSB = key("chests/inject/unique_spellbook");
 
-        public static ResourceKey<LootTable> INJECT_TERRAIN_END = key("chests/inject/medium_end");
-        public static ResourceKey<LootTable> INJECT_TERRAIN_HEAT = key("chests/inject/medium_heat");
-        public static ResourceKey<LootTable> INJECT_TERRAIN_FROST = key("chests/inject/medium_frost");
-        public static ResourceKey<LootTable> INJECT_TERRAIN_RAIN = key("chests/inject/medium_rain");
-        public static ResourceKey<LootTable> INJECT_TERRAIN_ROCK = key("chests/inject/medium_rock");
-
-        public static ResourceKey<LootTable> INJECT_TITLE_THUNDER = key("chests/inject/medium_thunder");
-        public static ResourceKey<LootTable> INJECT_TITLE_CAKE = key("chests/inject/medium_cake");
+        public static ResourceKey<LootTable> INJECT_MEDIUM = key("chests/inject/medium");
 
         public static ResourceKey<LootTable> LAND_FISHING = key("gameplay/fishing/land");
         public static ResourceKey<LootTable> LAND_FISHING_TREASURE = key("gameplay/fishing/land/treasure");
@@ -115,41 +108,35 @@ public class ESLootTableProvider extends LootTableProvider {
 
         @Override
         public void generate(@Nonnull BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
-            // #region Land Terrains
-            consumer.accept(INJECT_TERRAIN_END,
-                    LootTable.lootTable()
-                            .withPool(LootPool.lootPool()
-                                    .setRolls(UniformGenerator.between(0, 1))
-                                    .add(LootItem.lootTableItem(ESItems.END_ARROW)
-                                            .setQuality(1)
-                                            .apply(rangeAmount(0, 8)))));
-            consumer.accept(INJECT_TERRAIN_HEAT,
-                    LootTable.lootTable().withPool(LootPool.lootPool()
+            consumer.accept(INJECT_MEDIUM, LootTable.lootTable()
+                    .withPool(LootPool.lootPool().when(() -> new ESTerrainCondition(LandTypes.END.get()))
                             .setRolls(UniformGenerator.between(0, 1))
-                            .add(LootItem.lootTableItem(ESItems.NETHER_ARROW).setQuality(1)
-                                    .apply(rangeAmount(0, 8)))));
-            consumer.accept(INJECT_TERRAIN_FROST,
-                    LootTable.lootTable().withPool(LootPool.lootPool()
+                            .add(LootItem.lootTableItem(ESItems.END_ARROW).setQuality(1).apply(rangeAmount(0, 8))))
+                    .withPool(LootPool.lootPool().when(() -> new ESTerrainCondition(LandTypes.HEAT.get()))
                             .setRolls(UniformGenerator.between(0, 1))
-                            .add(LootItem.lootTableItem(ESItems.FLAME_ARROW).setQuality(1)
-                                    .apply(rangeAmount(0, 8))
+                            .add(LootItem.lootTableItem(ESItems.NETHER_ARROW).setQuality(1).apply(rangeAmount(0, 8))))
+                    .withPool(LootPool.lootPool().when(() -> new ESTerrainCondition(LandTypes.FROST.get()))
+                            .setRolls(UniformGenerator.between(0, 1))
+                            .add(LootItem.lootTableItem(ESItems.FLAME_ARROW).setQuality(1).apply(rangeAmount(0, 8))
                                     .setWeight(4))
                             .add(LootItem.lootTableItem(ESItems.FLAME_SHIELD).setQuality(2)
-                                    .apply(rangeDamage(.75f, 1)))));
-            consumer.accept(INJECT_TERRAIN_RAIN,
-                    LootTable.lootTable().withPool(LootPool.lootPool()
+                                    .apply(rangeDamage(.75f, 1))))
+                    .withPool(LootPool.lootPool().when(() -> new ESTerrainCondition(LandTypes.RAIN.get()))
                             .setRolls(UniformGenerator.between(0, 1))
-                            .add(LootItem.lootTableItem(ESItems.PRISMARINE_ARROW)
-                                    .setQuality(1)
-                                    .apply(rangeAmount(0, 8)))));
-            consumer.accept(INJECT_TERRAIN_ROCK,
-                    LootTable.lootTable()
-                            .withPool(LootPool.lootPool()
-                                    .setRolls(UniformGenerator.between(0, 1))
-                                    .add(LootItem.lootTableItem(ESItems.PROJECDRILL)
-                                            .setQuality(2)
-                                            .apply(rangeAmount(0, 8)))));
-
+                            .add(LootItem.lootTableItem(ESItems.PRISMARINE_ARROW).setQuality(1)
+                                    .apply(rangeAmount(0, 8))))
+                    .withPool(LootPool.lootPool().when(() -> new ESTerrainCondition(LandTypes.ROCK.get()))
+                            .setRolls(UniformGenerator.between(0, 1))
+                            .add(LootItem.lootTableItem(ESItems.PROJECDRILL).setQuality(2).apply(rangeAmount(0, 8))))
+                    .withPool(LootPool.lootPool().when(() -> new ESTitlecondition(LandTypes.THUNDER.get()))
+                            .setRolls(UniformGenerator.between(0, 1))
+                            .add(LootItem.lootTableItem(ESItems.LIGHTNING_ARROW).setQuality(2)
+                                    .apply(rangeAmount(0, 8))))
+                    .withPool(LootPool.lootPool().when(() -> new ESTitlecondition(LandTypes.CAKE.get()))
+                            .setRolls(ConstantValue.exactly(1))
+                            .add(LootItem.lootTableItem(ESItems.LEMON_CAKE).setQuality(1))
+                            .add(EmptyLootItem.emptyItem().setWeight(12))));
+            // #region Land Terrains
             // Dark
             consumer.accept(locationForTerrain(ESLandTypes.DARK, MSChestLootTables.WEAPON_ITEM_TABLE),
                     LootTable.lootTable().withPool(LootPool.lootPool().name(MSChestLootTables.ITEM_POOL)
@@ -195,21 +182,6 @@ public class ESLootTableProvider extends LootTableProvider {
                             .withPool(LootPool.lootPool().name(MSGiftLootTables.SPECIAL_POOL)
                                     .add(LootItem.lootTableItem(Items.GOLDEN_APPLE).apply(rangeAmount(1, 2)))));
             // #endregion Land Terrains
-
-            // #region Land Titles
-            consumer.accept(INJECT_TITLE_THUNDER,
-                    LootTable.lootTable().withPool(LootPool.lootPool()
-                            .setRolls(UniformGenerator.between(0, 1))
-                            .add(LootItem.lootTableItem(ESItems.LIGHTNING_ARROW)
-                                    .setQuality(1)
-                                    .apply(rangeAmount(0, 8)))));
-            consumer.accept(INJECT_TITLE_CAKE,
-                    LootTable.lootTable()
-                            .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                                    .add(LootItem.lootTableItem(ESItems.LEMON_CAKE)
-                                            .setQuality(1))
-                                    .add(EmptyLootItem.emptyItem().setWeight(12))));
-            // #endregion Land Titles
 
             consumer.accept(INJECT_PUSB,
                     LootTable.lootTable().withPool(LootPool.lootPool()
