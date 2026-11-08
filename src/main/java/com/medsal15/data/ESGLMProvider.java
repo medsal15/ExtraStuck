@@ -26,7 +26,7 @@ public class ESGLMProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        add("medium_heat", new ESLandLootModifier(
+        add("inject_medium", new ESLandLootModifier(
                 new LootItemCondition[] { LootTableIdCondition.builder(Minestuck.id("chests/medium_basic")).build() },
                 TableSubProvider.INJECT_MEDIUM.location(), Optional.empty(), Optional.empty()), List.of());
 
