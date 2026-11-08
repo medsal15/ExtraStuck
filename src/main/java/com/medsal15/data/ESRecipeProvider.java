@@ -1692,6 +1692,13 @@ public final class ESRecipeProvider extends RecipeProvider {
         GristCostRecipeBuilder.of(ESItems.TILL_SILENCE)
                 .grist(GristTypes.TAR, 133).grist(GristTypes.DIAMOND, 33)
                 .build(output);
+
+        CombinationRecipeBuilder.of(ESItems.PIAKS)
+                .input(Items.WOODEN_PICKAXE).or().input(MSItems.SBAHJ_POSTER)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.PIAKS)
+                .grist(GristTypes.ARTIFACT, -3)
+                .build(output);
     }
 
     private void foodRecipes(@Nonnull RecipeOutput output) {

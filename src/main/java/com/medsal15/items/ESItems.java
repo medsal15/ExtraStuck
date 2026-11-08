@@ -932,6 +932,11 @@ public final class ESItems {
                             .add(ESItemTypes.BOONDOLLAR_MINING)
                             .set(ItemRightClickEffect.switchTo(ESItems.TWO_OF_DIAMONDS)),
                     new MSItemProperties().durability(500), Map.of(Enchantments.FORTUNE, 1)));
+    public static final DeferredItem<Item> PIAKS = ITEMS.register("piaks",
+            () -> new WeaponItem(
+                    new WeaponItem.Builder(MSItemTypes.SBAHJ_TIER, 0, -2.8f).set(MSItemTypes.PICKAXE_TOOL)
+                            .set(ESDestroyBlockEffects::dropSelf),
+                    new Item.Properties()));
     // #endregion Pickaxes
     // #region Axes
     public static final DeferredItem<Item> DOORBUSTER = ITEMS.register("doorbuster", () -> new WeaponItem(
@@ -1751,6 +1756,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(SHINEBREAKER);
+        list.add(PIAKS);
 
         return list;
     }

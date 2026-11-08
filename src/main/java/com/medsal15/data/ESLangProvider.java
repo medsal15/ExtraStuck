@@ -674,6 +674,8 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         addItemTooltip(ESItems.GOLD_DIGGER, "There's money everywhere!");
         // Pickaxes
         addItem(ESItems.SHINEBREAKER, "Shinebreaker");
+        addItem(ESItems.PIAKS, "piaks");
+        addItemExtra(ESItems.PIAKS, "drop_message", "You dropped down your piaks");
         // Axes
         addItem(ESItems.DOORBUSTER, "Doorbuster");
         // Hoes

@@ -376,6 +376,7 @@ public final class ESItemModelProvider extends ItemModelProvider {
         basicItem(ESItems.GOLD_DIGGER.get());
         // Pickaxes
         handheldItem(ESItems.SHINEBREAKER.get());
+        handheldItem(ESItems.PIAKS.get());
         // Axes
         handheldItem(ESItems.DOORBUSTER.get());
         // Hoes
