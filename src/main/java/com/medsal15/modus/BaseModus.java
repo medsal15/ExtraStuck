@@ -142,11 +142,26 @@ public class BaseModus extends Modus {
             return false;
 
         boolean added = false;
-        if (!added && list.size() < size) {
-            list.add(item);
-            markDirty();
+        ItemStack toStore = item.copy();
+        if (canStackExisting())
+            for (int i = 0; i < list.size(); i++) {
+                ItemStack stored = list.get(i);
+                if (ItemStack.isSameItemSameComponents(toStore, stored)) {
+                    int increase = Math.min(toStore.getCount(), toStore.getMaxStackSize() - stored.getCount());
+                    stored.grow(increase);
+                    toStore.shrink(increase);
+                    added = true;
+                    if (toStore.isEmpty())
+                        break;
+                }
+            }
+        if (!toStore.isEmpty() && list.size() < size) {
+            list.add(toStore);
             added = true;
         }
+
+        if (added)
+            markDirty();
 
         return added;
     }
@@ -172,5 +187,12 @@ public class BaseModus extends Modus {
     @Override
     public int getSize() {
         return size;
+    }
+
+    /**
+     * If true, captchalogued items will be added to existing cards first
+     */
+    protected boolean canStackExisting() {
+        return true;
     }
 }
