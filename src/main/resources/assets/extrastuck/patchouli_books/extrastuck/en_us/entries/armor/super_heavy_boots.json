@@ -1,0 +1,18 @@
+{
+    "name": "Super Heavy Boots",
+    "icon": "extrastuck:super_heavy_boots",
+    "category": "extrastuck:armor",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "extrastuck:super_heavy_boots",
+            "text": "A pair of boots reinforced with a heavy core. Are you sure this is a good idea?$(br2)$(3)$(l)Special:$() Heavily increases gravity.$(br2)May cause single block falls to be significantly more dangerous."
+        },
+        {
+            "type": "extrastuck:combination",
+            "text": "Combine Iron Boots and an Anvil in a Totem Lathe.",
+            "recipe": "extrastuck:combinations/super_heavy_boots"
+        }
+    ]
+}

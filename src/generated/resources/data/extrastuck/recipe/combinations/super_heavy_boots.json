@@ -1,0 +1,11 @@
+{
+  "type": "minestuck:combination",
+  "input1": {
+    "item": "extrastuck:heavy_boots"
+  },
+  "input2": {
+    "item": "minecraft:heavy_core"
+  },
+  "mode": "and",
+  "output": "extrastuck:super_heavy_boots"
+}

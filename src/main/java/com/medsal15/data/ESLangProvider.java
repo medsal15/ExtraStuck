@@ -532,6 +532,8 @@ public final class ESLangProvider extends MinestuckLanguageProvider {
         addItem(ESItems.CHEF_APRON, "Chef Apron");
 
         addItem(ESItems.HEAVY_BOOTS, "Heavy Boots");
+        addItem(ESItems.SUPER_HEAVY_BOOTS, "Super Heavy Boots");
+        addItemTooltip(ESItems.SUPER_HEAVY_BOOTS, "Slabs and stairs recommended");
         addItem(ESItems.PROPELLER_HAT, "Propeller Hat");
         addItem(ESItems.SALESMAN_GOGGLES, "Salesman Goggles");
         addItemTooltip(ESItems.SALESMAN_GOGGLES, "How valuable is it?");

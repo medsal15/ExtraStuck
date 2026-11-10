@@ -1303,6 +1303,13 @@ public final class ESRecipeProvider extends RecipeProvider {
                 .grist(GristTypes.RUST, 54).grist(GristTypes.TAR, 27)
                 .build(output);
 
+        CombinationRecipeBuilder.of(ESItems.SUPER_HEAVY_BOOTS)
+                .input(ESItems.HEAVY_BOOTS).and().input(Items.HEAVY_CORE)
+                .build(output);
+        GristCostRecipeBuilder.of(ESItems.SUPER_HEAVY_BOOTS)
+                .grist(GristTypes.RUST, 981).grist(GristTypes.MERCURY, 400)
+                .build(output);
+
         CombinationRecipeBuilder.of(ESItems.PROPELLER_HAT)
                 .input(Items.IRON_HELMET).and().input(Items.FEATHER)
                 .build(output);

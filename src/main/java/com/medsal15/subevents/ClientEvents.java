@@ -443,7 +443,7 @@ public final class ClientEvents {
                     @Nonnull HumanoidModel<?> original) {
                 return new HumanoidModel<>(ESArmorModels.heavyBootsModel().bakeRoot());
             }
-        }, ESItems.HEAVY_BOOTS);
+        }, ESItems.HEAVY_BOOTS, ESItems.SUPER_HEAVY_BOOTS);
     }
 
     @SubscribeEvent

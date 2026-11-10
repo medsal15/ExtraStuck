@@ -1,0 +1,10 @@
+{
+  "type": "minestuck:grist_cost",
+  "grist_cost": {
+    "minestuck:mercury": 400,
+    "minestuck:rust": 981
+  },
+  "ingredient": {
+    "item": "extrastuck:super_heavy_boots"
+  }
+}

@@ -834,6 +834,31 @@ public final class ESItems {
                                             Operation.ADD_VALUE),
                                     EquipmentSlotGroup.FEET)
                             .build())));
+    public static final DeferredItem<Item> SUPER_HEAVY_BOOTS = ITEMS.register("super_heavy_boots",
+            () -> new MSArmorItem(ArmorMaterials.IRON, ArmorItem.Type.BOOTS, new Item.Properties()
+                    .durability(ArmorItem.Type.BOOTS.getDurability(23))
+                    .attributes(ItemAttributeModifiers.builder()
+                            .add(Attributes.GRAVITY,
+                                    new AttributeModifier(ExtraStuck.modid(
+                                            "super_heavy_boots_gravity_1"), .8F,
+                                            Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.FEET)
+                            .add(Attributes.GRAVITY,
+                                    new AttributeModifier(ExtraStuck.modid(
+                                            "super_heavy_boots_gravity_2"), 1F,
+                                            Operation.ADD_MULTIPLIED_BASE),
+                                    EquipmentSlotGroup.FEET)
+                            .add(Attributes.ARMOR,
+                                    new AttributeModifier(ExtraStuck
+                                            .modid("super_heavy_boots_armor"), 6F,
+                                            Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.FEET)
+                            .add(Attributes.ARMOR_TOUGHNESS,
+                                    new AttributeModifier(ExtraStuck
+                                            .modid("super_heavy_boots_toughness"), 3F,
+                                            Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.FEET)
+                            .build())));
     public static final DeferredItem<Item> PROPELLER_HAT = ITEMS.register("propeller_hat",
             () -> new PropellerHatItem(ESArmorMaterials.PROPELLER_HAT, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(17))
@@ -1855,6 +1880,7 @@ public final class ESItems {
 
         list.add(PROPELLER_HAT);
         list.add(HEAVY_BOOTS);
+        list.add(SUPER_HEAVY_BOOTS);
         list.add(SALESMAN_GOGGLES);
         list.add(SALESWOMAN_GLASSES);
         list.add(GRIST_VIEWERS);
@@ -1930,6 +1956,7 @@ public final class ESItems {
         ArrayList<DeferredItem<Item>> list = new ArrayList<>();
 
         list.add(HEAVY_BOOTS);
+        list.add(SUPER_HEAVY_BOOTS);
         list.add(DARK_KNIGHT_BOOTS);
         list.add(CACTUS_BOOTS);
         if (ESCompatUtils.isLoaded("irons_spellbooks")) {
