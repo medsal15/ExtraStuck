@@ -1,6 +1,7 @@
 package com.medsal15.modus;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.mraof.minestuck.inventory.captchalogue.CaptchaDeckHandler;
 import com.mraof.minestuck.inventory.captchalogue.ModusType;
@@ -64,7 +65,7 @@ public class PileModus extends BaseModus {
             return ItemStack.EMPTY;
         }
 
-        ArrayList<ItemStack> pile = removePile(id);
+        List<ItemStack> pile = removePile(id);
         ItemStack item = pile.getLast();
         for (int i = 0; i < pile.size() - 1; i++)
             CaptchaDeckHandler.launchAnyItem(player, pile.get(i));
@@ -83,19 +84,66 @@ public class PileModus extends BaseModus {
         return (int) Math.ceil(Math.sqrt(list.size()));
     }
 
-    protected ArrayList<ItemStack> removePile(int id) {
-        ArrayList<ItemStack> items = new ArrayList<>();
-        ArrayList<Integer> ids = new ArrayList<>();
+    @Override
+    public boolean putItemStack(ServerPlayer player, ItemStack item) {
+        if (size <= list.size() || item.isEmpty())
+            return false;
 
+        boolean added = false;
+        if (getWidth() > 0) {
+            // Get top slots with the same item
+            ArrayList<Integer> matchingSlots = new ArrayList<>();
+            final int COLS = getWidth();
+            for (int i = 0; i < COLS; i++) {
+                List<Integer> pile = getPile(i);
+                int last = pile.getLast();
+                if (ItemStack.isSameItemSameComponents(list.get(last), item))
+                    matchingSlots.add(last);
+            }
+            // Add to top slots
+            for (int slot : matchingSlots) {
+                ItemStack stored = list.get(slot);
+                int increase = Math.min(item.getCount(), item.getMaxStackSize() - stored.getCount());
+                stored.grow(increase);
+                item.shrink(increase);
+                added = true;
+                if (item.isEmpty())
+                    break;
+            }
+        }
+        if (!item.isEmpty()) {
+            added |= super.putItemStack(player, item);
+        }
+        if (added)
+            markDirty();
+
+        return added;
+    }
+
+    protected List<Integer> getPile(int slot) {
+        ArrayList<Integer> ids = new ArrayList<>();
         // I know there's a better way to do this, but I can't figure it out
         int cols = getWidth();
-        for (int i = id; i < list.size(); i += cols) {
+        for (int i = slot; i < list.size(); i += cols) {
             ids.add(i);
         }
+
+        return ids;
+    }
+
+    protected List<ItemStack> removePile(int id) {
+        ArrayList<ItemStack> items = new ArrayList<>();
+        List<Integer> ids = getPile(id);
+
         for (int i : ids.reversed()) {
             items.add(list.remove(i));
         }
 
         return items;
+    }
+
+    @Override
+    protected boolean canStackExisting() {
+        return false;
     }
 }
